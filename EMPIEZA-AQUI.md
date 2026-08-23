@@ -7,7 +7,7 @@ Este es el repositorio del curso. Aquí subo yo el material y las guías de labo
 entregas tú los labs, y aquí viven las lecturas (en **Discussions**). Todos trabajamos **en
 este mismo repositorio**, como un equipo en una empresa.
 
-## Tus tres primeros pasos
+## Tus cuatro primeros pasos
 
 1. **Mándame tu usuario de GitHub** (formato de una línea, como la encuesta de la clase 1:
    `usuario: fulanito123`). Te llega una **invitación de colaborador**: acéptala en tu
@@ -16,7 +16,10 @@ este mismo repositorio**, como un equipo en una empresa.
    ```bash
    git clone https://github.com/OscarRuiz21/sd-2027-1.git
    ```
-3. **Participa en la Lectura 1** en la pestaña
+3. **Instala Docker antes del sábado 29** con la
+   [guía por sistema operativo](https://oscarruiz21.github.io/sd-2027-1/labs/Instala-Docker.html).
+   Termina con `docker run hello-world`; si lo ves, ya quedaste.
+4. **Participa en la Lectura 1** en la pestaña
    [Discussions](https://github.com/OscarRuiz21/sd-2027-1/discussions): 2 preguntas +
    1 hallazgo **antes del jueves 23:59**. Para esto no necesitas ser colaborador todavía,
    solo tu cuenta.

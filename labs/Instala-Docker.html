@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SD · Instala Docker</title>
+<style>
+:root{--bg:#f5f8fc;--panel:#fff;--line:#d9e2ee;--ink:#12253d;--dim:#4b6178;
+--am:#b45309;--amsoft:#fff8ef;--gr:#15803d;--grsoft:#f0fdf4;--rd:#b91c1c;--rdsoft:#fef2f2;--code:#0f1e33}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);line-height:1.6;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 5vw 6rem}
+header{background:linear-gradient(160deg,#12253d,#1d3a60);color:#fff;padding:3rem 5vw 2.4rem;margin-bottom:2rem}
+header .in{max-width:920px;margin:0 auto}
+.kicker{color:#ffb340;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+header h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin:.35em 0 .3em;letter-spacing:-.02em}
+header p{color:#b9cde6;max-width:60ch}
+h2{font-size:clamp(1.35rem,2.6vw,1.9rem);margin:2.6rem 0 .3rem;letter-spacing:-.01em;
+border-top:2px solid var(--line);padding-top:1.6rem}
+h2:first-of-type{border-top:none;padding-top:0}
+h3{font-size:clamp(1.05rem,1.8vw,1.25rem);margin:1.7rem 0 .5rem}
+p{margin:.7rem 0;color:var(--dim)}
+p strong,li strong{color:var(--ink)}
+em{color:var(--am);font-style:normal;font-weight:700}
+ul,ol{margin:.6rem 0 .6rem 1.3rem;color:var(--dim)}li{margin:.35rem 0}
+a{color:var(--am)}
+code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.92em;
+background:#e8eef7;border:1px solid var(--line);border-radius:5px;padding:.08em .38em;color:#12253d}
+pre{background:var(--code);border-radius:10px;padding:1rem 1.15rem;overflow:auto;margin:.7rem 0;position:relative}
+pre code{background:none;border:none;padding:0;color:#dbe7f7;font-size:.93rem;line-height:1.75;display:block}
+pre .c{color:#7d93b0}pre .o{color:#7dd3fc}pre .v{color:#fbbf24}
+.out{background:#eef3f9;border:1px solid var(--line);border-left:4px solid #64748b;border-radius:0 8px 8px 0;
+padding:.75rem 1rem;margin:.5rem 0 1rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.86rem;color:#33465e;white-space:pre-wrap}
+.out b{display:block;font-family:inherit;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-bottom:.35rem;font-weight:800}
+.box{border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin:1.1rem 0;background:var(--panel)}
+.box h4{font-size:1rem;margin-bottom:.3rem;display:flex;gap:.5rem;align-items:center}
+.warn{background:var(--rdsoft);border-color:#f2c4c4}
+.warn h4{color:var(--rd)}
+.tip{background:var(--amsoft);border-color:#f0d3ab}
+.tip h4{color:var(--am)}
+.cp{background:var(--grsoft);border:1px solid #bbe6c8;border-radius:12px;padding:1rem 1.2rem;margin:1.4rem 0}
+.cp h4{color:var(--gr);font-size:1.02rem;display:flex;gap:.55rem;align-items:center;margin-bottom:.25rem}
+.cp .n{background:var(--gr);color:#fff;width:1.55em;height:1.55em;border-radius:50%;display:inline-flex;
+align-items:center;justify-content:center;font-size:.85em;font-weight:800;flex:none}
+.cp p{color:#245c38;margin:.25rem 0 0}
+#ostabs{position:sticky;top:0;z-index:20;background:rgba(245,248,252,.94);backdrop-filter:blur(8px);
+border-bottom:1px solid var(--line);padding:.7rem 5vw;margin-bottom:1.6rem}
+#ostabs .in{max-width:920px;margin:0 auto;display:flex;gap:.5rem;align-items:center;flex-wrap:wrap}
+#ostabs span{font-size:.78rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-right:.3rem}
+.osbtn{border:1px solid var(--line);background:var(--panel);color:var(--dim);border-radius:999px;
+padding:.42em 1.1em;font-size:.9rem;font-weight:700;cursor:pointer;font-family:inherit}
+.osbtn.on{background:var(--ink);border-color:var(--ink);color:#fff}
+[data-os]{display:none}[data-os].on{display:block}
+table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;color:var(--dim);vertical-align:top}
+th{color:var(--am);font-size:.75rem;text-transform:uppercase;letter-spacing:.09em}
+td b{color:var(--ink)}
+footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color:var(--dim);font-size:.9rem}
+</style></head><body>
+
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · Antes del sábado 29</div>
+  <h1>Instala <em style="color:#ffb340">Docker</em></h1>
+  <p>El sábado 29 el laboratorio arranca con Docker funcionando desde el minuto uno. Instálalo esta semana siguiendo tu sistema, verifica con la prueba del final, y si algo truena me escribes entre semana, no el sábado a las 7:05.</p>
+</div></header>
+
+<nav id="ostabs"><div class="in">
+  <span>Tu sistema</span>
+  <button class="osbtn" data-set="win">Windows</button>
+  <button class="osbtn" data-set="mac">macOS</button>
+  <button class="osbtn" data-set="linux">Linux</button>
+</div></nav>
+
+<div class="wrap">
+
+<div class="box tip">
+  <h4>Antes de empezar: elige tu sistema arriba</h4>
+  <p>Los comandos y los instaladores cambian según el sistema y según el procesador. Toda la guía se adapta a lo que elijas.</p>
+</div>
+
+<h2>1 · Qué vas a instalar y por qué</h2>
+<p>Docker corre <strong>contenedores</strong>: programas empaquetados con todo lo que necesitan para ejecutarse, aislados del resto de tu máquina. En este curso son la herramienta central: un sistema distribuido son varios servicios corriendo y hablándose entre sí, y con Docker vas a levantar todos esos servicios <strong>en tu propia computadora</strong>, desde la primera sesión de laboratorio.</p>
+<div data-os="win"><p>En Windows se instala <strong>Docker Desktop</strong>: la aplicación completa, con el motor y una interfaz gráfica para ver qué está corriendo.</p></div>
+<div data-os="mac"><p>En macOS se instala <strong>Docker Desktop</strong>: la aplicación completa, con el motor y una interfaz gráfica para ver qué está corriendo.</p></div>
+<div data-os="linux"><p>En Linux se instala <strong>Docker Engine</strong>: el motor solo, sin interfaz gráfica. Es más ligero que el Docker Desktop de Windows y Mac, y todo lo que hagamos en el curso es por terminal de todas formas.</p></div>
+<p>Docker Desktop y Docker Engine son <strong>gratis para uso personal y educativo</strong>. No necesitas crear ninguna cuenta para instalarlos ni para usarlos en el curso.</p>
+
+<h2>2 · ¿Qué procesador tiene tu máquina?</h2>
+<p>Hay dos familias de procesador y el instalador es distinto para cada una. Treinta segundos para averiguar la tuya:</p>
+<div data-os="win">
+<p>Abre <strong>Configuración → Sistema → Acerca de</strong> y busca <strong>"Tipo de sistema"</strong>:</p>
+<ul>
+  <li><strong>"Procesador x64"</strong>: eres <em>x64</em>. Es la enorme mayoría de las laptops con Windows.</li>
+  <li><strong>"Procesador basado en ARM"</strong>: eres <em>ARM64</em> (algunas Surface y laptops con Snapdragon).</li>
+</ul>
+</div>
+<div data-os="mac">
+<p>Menú manzana → <strong>Acerca de esta Mac</strong>:</p>
+<ul>
+  <li>Dice <strong>"Chip Apple M1"</strong> (o M2, M3, M4): eres <em>Apple Silicon</em>.</li>
+  <li>Dice <strong>"Intel"</strong>: eres <em>Intel</em>.</li>
+</ul>
+</div>
+<div data-os="linux">
+<p>En tu terminal:</p>
+<pre><code>uname -m</code></pre>
+<p>Si imprime <code>x86_64</code> eres <em>x64</em>; si imprime <code>aarch64</code> eres <em>ARM64</em>. Los comandos de abajo funcionan igual en las dos, así que aquí solo lo confirmas.</p>
+</div>
+
+<h2>3 · Requisitos</h2>
+<div data-os="win">
+<ul>
+  <li><strong>Windows 10 (22H2) o Windows 11 (23H2 o más nuevo)</strong>, de 64 bits. La edición <strong>Home sirve perfectamente</strong>: solo corre contenedores Linux, que es lo único que usamos en el curso.</li>
+  <li><strong>8 GB de RAM</strong> recomendados (con 4 se puede, pero vas a sentir la máquina lenta con varios servicios arriba).</li>
+  <li><strong>Virtualización habilitada</strong> en el BIOS/UEFI. En casi todas las laptops ya viene activada; si no, en la tabla de errores está el arreglo.</li>
+  <li><strong>WSL 2</strong>, el subsistema de Linux de Windows. Lo instalamos en el paso siguiente.</li>
+</ul>
+</div>
+<div data-os="mac">
+<ul>
+  <li>Una de las <strong>últimas tres versiones mayores de macOS</strong>. Si tu Mac se actualiza normal, estás dentro.</li>
+  <li><strong>4 GB de RAM</strong> mínimo; 8 recomendados.</li>
+</ul>
+</div>
+<div data-os="linux">
+<ul>
+  <li>Una distribución de 64 bits razonablemente actual. Probé esta guía tal cual, comando por comando, en <strong>Ubuntu 24.04, Debian 13 y Fedora 44</strong>; el mismo script cubre también Ubuntu 22.04+, Debian 12 y derivados. Para <strong>Arch</strong> hay bloque aparte abajo.</li>
+  <li>Poder usar <code>sudo</code>.</li>
+</ul>
+</div>
+
+<h2>4 · Instalación</h2>
+
+<div data-os="win">
+<h3>4.1 · Primero WSL 2</h3>
+<p>Docker en Windows corre los contenedores dentro de un Linux ligero que administra el propio Windows: eso es WSL 2. Abre <strong>PowerShell como administrador</strong> (menú Inicio → escribe "PowerShell" → clic derecho → "Ejecutar como administrador") y corre:</p>
+<pre><code>wsl --install</code></pre>
+<p>Si te dice que ya está instalado, actualízalo:</p>
+<pre><code>wsl --update</code></pre>
+<p>Si te pide reiniciar, <strong>reinicia antes de seguir</strong>.</p>
+
+<h3>4.2 · Ahora Docker Desktop</h3>
+<p>En la misma PowerShell (ya no necesita ser de administrador):</p>
+<pre><code>winget install Docker.DockerDesktop</code></pre>
+<p>O si prefieres el instalador clásico de doble clic: descarga
+<a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Docker Desktop para x64</a>
+(o <a href="https://desktop.docker.com/win/main/arm64/Docker%20Desktop%20Installer.exe">el de ARM64</a> si tu "Tipo de sistema" dice ARM) y córrelo con las opciones que trae por defecto. Deja marcada la opción de <strong>WSL 2</strong> si te la pregunta.</p>
+<p>Al terminar, <strong>cierra tu sesión de Windows y vuelve a entrar</strong> (el instalador te agrega a un grupo de usuarios y eso se aplica al reingresar).</p>
+
+<h3>4.3 · Ábrelo una vez</h3>
+<p>Abre <strong>Docker Desktop</strong> desde el menú Inicio. La primera vez te muestra el acuerdo de servicio (acéptalo, el uso educativo entra en la capa gratuita) y te ofrece iniciar sesión: <strong>dale "Skip", no necesitas cuenta</strong>. Espera a que abajo a la izquierda la ballena se ponga verde con el estado <strong>"Engine running"</strong>. Puede tardar un par de minutos la primera vez.</p>
+</div>
+
+<div data-os="mac">
+<h3>4.1 · Instala Docker Desktop</h3>
+<p>Si tienes Homebrew, es una línea:</p>
+<pre><code>brew install --cask docker-desktop</code></pre>
+<p>Sin Homebrew: descarga el DMG de tu procesador,
+<a href="https://desktop.docker.com/mac/main/arm64/Docker.dmg">Apple Silicon (M1 a M4)</a> o
+<a href="https://desktop.docker.com/mac/main/amd64/Docker.dmg">Intel</a>,
+ábrelo y arrastra <strong>Docker</strong> a la carpeta <strong>Aplicaciones</strong>, como cualquier app.</p>
+
+<h3>4.2 · Ábrelo una vez</h3>
+<p>Abre <strong>Docker</strong> desde Aplicaciones. La primera vez te muestra el acuerdo de servicio (acéptalo, el uso educativo entra en la capa gratuita), te pide tu contraseña de la Mac para instalar su componente de red, y te ofrece iniciar sesión: <strong>dale "Skip", no necesitas cuenta</strong>. Cuando la ballena aparezca fija en la barra de menús, el motor ya está corriendo.</p>
+</div>
+
+<div data-os="linux">
+<h3>4.1 · El script oficial (Ubuntu, Debian, Fedora y derivados)</h3>
+<p>Docker mantiene un script que detecta tu distribución, da de alta su repositorio oficial e instala el motor completo con el plugin de Compose:</p>
+<pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh</code></pre>
+<p>Tarda unos minutos. Al final imprime la versión instalada del cliente y el servidor.</p>
+
+<h3>4.2 · Úsalo sin sudo y déjalo encendido</h3>
+<pre><code><span class="c"># tu usuario entra al grupo docker</span>
+sudo usermod -aG docker $USER
+
+<span class="c"># que el motor arranque solo al prender la máquina</span>
+sudo systemctl enable --now docker</code></pre>
+<p>El grupo se aplica <strong>al cerrar sesión y volver a entrar</strong>. Si quieres probar ya, sin salirte, corre <code>newgrp docker</code> en la terminal y esa terminal ya lo trae aplicado.</p>
+
+<h3>4.3 · Si usas Arch</h3>
+<pre><code>sudo pacman -S docker docker-compose
+sudo usermod -aG docker $USER
+sudo systemctl enable --now docker.service</code></pre>
+<p>Y el mismo cierre de sesión para que aplique el grupo.</p>
+</div>
+
+<h2>5 · Verifica: la prueba de fuego</h2>
+<div data-os="win"><p>Abre una terminal <strong>nueva</strong> (Git Bash o PowerShell, con Docker Desktop abierto) y corre los tres comandos:</p></div>
+<div data-os="mac"><p>Abre una <strong>Terminal nueva</strong> (con Docker corriendo, la ballena en la barra de menús) y corre los tres comandos:</p></div>
+<div data-os="linux"><p>En una sesión nueva (o tras <code>newgrp docker</code>), corre los tres comandos:</p></div>
+<pre><code>docker --version
+docker compose version
+docker run hello-world</code></pre>
+<div class="out"><b>Deberías ver algo así</b>Docker version 29.4.0, build 9d7ad9f
+Docker Compose version v5.1.2
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+...</div>
+<p>Los números pueden variar; lo que importa es el <strong>"Hello from Docker!"</strong>. Ese mensajito hizo el viaje completo: tu terminal le pidió al motor un contenedor, el motor bajó la imagen de internet, la corrió y te trajo la salida. Es exactamente el ciclo que vamos a usar todo el semestre.</p>
+
+<div class="cp"><h4><span class="n">✓</span>Punto de control</h4>
+<p>Si viste el <b>Hello from Docker!</b>, ya quedaste: eso es todo lo que necesito de ti antes del sábado 29. Tómale captura por si acaso.</p></div>
+
+<h2>Los errores de siempre</h2>
+<table>
+  <tr><th>Lo que pasa</th><th>Qué significa y qué haces</th></tr>
+  <tr><td><b>Windows:</b> "WSL 2 installation is incomplete" o pide un kernel más nuevo</td><td>PowerShell como administrador → <code>wsl --update</code> → reinicia Docker Desktop.</td></tr>
+  <tr><td><b>Windows:</b> "Virtualization support not detected" o "hardware assisted virtualization... not enabled"</td><td>La virtualización está apagada en el BIOS/UEFI. Se enciende ahí: busca <b>Intel VT-x</b> o <b>AMD SVM</b> y actívalo. Si no sabes entrar a tu BIOS, mándame modelo de tu laptop y te paso los pasos.</td></tr>
+  <tr><td><b>Windows:</b> "you are not allowed to use Docker, you must be in the 'docker-users' group"</td><td>Te faltó cerrar la sesión de Windows después de instalar. Cierra sesión, vuelve a entrar y abre Docker Desktop de nuevo.</td></tr>
+  <tr><td><b>Linux:</b> <code>permission denied ... docker.sock</code></td><td>Te faltó el <code>usermod -aG docker $USER</code>, o no has cerrado sesión desde que lo corriste. El grupo se aplica al volver a entrar; <code>newgrp docker</code> lo aplica en la terminal actual.</td></tr>
+  <tr><td><b>Linux:</b> <code>Cannot connect to the Docker daemon</code></td><td>El motor está apagado: <code>sudo systemctl start docker</code>. Con el <code>enable --now</code> del paso 4.2 no vuelve a pasar.</td></tr>
+  <tr><td><b>Mac y Windows:</b> <code>docker: command not found</code> con todo instalado</td><td>La aplicación Docker Desktop tiene que estar <b>abierta</b>: el comando funciona mientras la app corre. Ábrela y prueba en una terminal nueva.</td></tr>
+  <tr><td>Te pide iniciar sesión o crear cuenta</td><td>No es necesaria para nada del curso. Dale "Skip" o cierra el aviso.</td></tr>
+  <tr><td>La descarga de <code>hello-world</code> se queda colgada</td><td>Casi siempre es la red (los datos del celular a veces bloquean estos puertos). Prueba en otra red y avísame si sigue.</td></tr>
+</table>
+
+<div class="box warn"><h4>¿Tu máquina de plano no puede?</h4>
+<p>Si no da la RAM, el disco o el sistema, no te vas a quedar fuera del laboratorio: existe
+<a href="https://labs.play-with-docker.com">Play with Docker</a>, un Docker completo en el navegador con sesiones de 4 horas (ahí sí necesitas una cuenta gratuita de Docker Hub). <strong>Avísame antes del sábado</strong> y lo dejamos listo juntos.</p></div>
+
+<h2>Lo otro que debe estar listo antes del 29</h2>
+<ul>
+  <li><strong>Tu cuenta de GitHub y tu usuario enviado.</strong> Los pasos están en el <a href="https://github.com/OscarRuiz21/sd-2027-1/blob/main/EMPIEZA-AQUI.md">EMPIEZA-AQUI del repositorio</a>.</li>
+  <li><strong>Git instalado</strong> (<code>git --version</code> en tu terminal lo confirma).</li>
+  <li><strong>La Lectura 1 comentada</strong> en la <a href="https://github.com/OscarRuiz21/sd-2027-1/discussions/1">Discussion del repo</a> antes del jueves 23:59.</li>
+</ul>
+
+<footer>
+  <p><strong>Sistemas Distribuidos 2027-1 · Grupo 2 · Facultad de Ingeniería, UNAM</strong><br>
+  Prof. Oscar Manuel Ruiz Hurtado · Preparación para la S2 · agosto de 2026</p>
+</footer>
+</div>
+
+<script>
+const KEY='sd-os';
+function setOS(os){
+  document.querySelectorAll('[data-os]').forEach(e=>e.classList.toggle('on',e.dataset.os===os));
+  document.querySelectorAll('.osbtn').forEach(b=>b.classList.toggle('on',b.dataset.set===os));
+  try{localStorage.setItem(KEY,os)}catch(e){}
+}
+document.querySelectorAll('.osbtn').forEach(b=>b.onclick=()=>setOS(b.dataset.set));
+let saved=null; try{saved=localStorage.getItem(KEY)}catch(e){}
+if(!saved){const p=navigator.platform+navigator.userAgent;
+  saved=/Win/i.test(p)?'win':/Mac/i.test(p)?'mac':'linux';}
+setOS(saved);
+</script>
+</body></html>
