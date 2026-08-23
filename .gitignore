@@ -1,0 +1,13 @@
+# IDE
+.idea/
+*.iml
+.vscode/
+target/
+out/
+# Java / build
+*.class
+# contenedores y entornos
+.env
+# sistema
+.DS_Store
+Thumbs.db
