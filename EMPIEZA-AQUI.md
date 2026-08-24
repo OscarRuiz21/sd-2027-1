@@ -19,10 +19,10 @@ este mismo repositorio**, como un equipo en una empresa.
 3. **Instala Docker antes del sábado 29** con la
    [guía por sistema operativo](https://oscarruiz21.github.io/sd-2027-1/labs/Instala-Docker.html).
    Termina con `docker run hello-world`; si lo ves, ya quedaste.
-4. **Participa en la Lectura 1** en la pestaña
-   [Discussions](https://github.com/OscarRuiz21/sd-2027-1/discussions): 2 preguntas +
-   1 hallazgo **antes del jueves 23:59**. Para esto no necesitas ser colaborador todavía,
-   solo tu cuenta.
+4. **La Lectura 1, opcional pero recomendada**, en la pestaña
+   [Discussions](https://github.com/OscarRuiz21/sd-2027-1/discussions): si participas,
+   el formato es 2 preguntas + 1 hallazgo, de preferencia antes del jueves para que
+   alcancen a votarse. No necesitas ser colaborador, solo tu cuenta.
 
 ## Cómo funciona el repositorio
 
