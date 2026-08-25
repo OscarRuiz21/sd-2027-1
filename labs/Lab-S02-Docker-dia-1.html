@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SD · Lab S2 · Docker, día uno</title>
+<style>
+:root{--bg:#f5f8fc;--panel:#fff;--line:#d9e2ee;--ink:#12253d;--dim:#4b6178;
+--am:#b45309;--amsoft:#fff8ef;--gr:#15803d;--grsoft:#f0fdf4;--rd:#b91c1c;--rdsoft:#fef2f2;--code:#0f1e33}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);line-height:1.6;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 5vw 6rem}
+header{background:linear-gradient(160deg,#12253d,#1d3a60);color:#fff;padding:3rem 5vw 2.4rem;margin-bottom:2rem}
+header .in{max-width:920px;margin:0 auto}
+.kicker{color:#ffb340;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+header h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin:.35em 0 .3em;letter-spacing:-.02em}
+header p{color:#b9cde6;max-width:62ch}
+h2{font-size:clamp(1.35rem,2.6vw,1.9rem);margin:2.6rem 0 .3rem;letter-spacing:-.01em;
+border-top:2px solid var(--line);padding-top:1.6rem}
+h2:first-of-type{border-top:none;padding-top:0}
+h3{font-size:clamp(1.05rem,1.8vw,1.25rem);margin:1.7rem 0 .5rem}
+p{margin:.7rem 0;color:var(--dim)}
+p strong,li strong{color:var(--ink)}
+em{color:var(--am);font-style:normal;font-weight:700}
+ul,ol{margin:.6rem 0 .6rem 1.3rem;color:var(--dim)}li{margin:.35rem 0}
+a{color:var(--am)}
+code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.92em;
+background:#e8eef7;border:1px solid var(--line);border-radius:5px;padding:.08em .38em;color:#12253d}
+pre{background:var(--code);border-radius:10px;padding:1rem 1.15rem;overflow:auto;margin:.7rem 0;position:relative}
+pre code{background:none;border:none;padding:0;color:#dbe7f7;font-size:.93rem;line-height:1.75;display:block}
+pre .c{color:#7d93b0}pre .o{color:#7dd3fc}pre .v{color:#fbbf24}
+.out{background:#eef3f9;border:1px solid var(--line);border-left:4px solid #64748b;border-radius:0 8px 8px 0;
+padding:.75rem 1rem;margin:.5rem 0 1rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.83rem;color:#33465e;white-space:pre;overflow-x:auto}
+.out b{display:block;font-family:inherit;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-bottom:.35rem;font-weight:800}
+.box{border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin:1.1rem 0;background:var(--panel)}
+.box h4{font-size:1rem;margin-bottom:.3rem;display:flex;gap:.5rem;align-items:center}
+.warn{background:var(--rdsoft);border-color:#f2c4c4}
+.warn h4{color:var(--rd)}
+.tip{background:var(--amsoft);border-color:#f0d3ab}
+.tip h4{color:var(--am)}
+.cp{background:var(--grsoft);border:1px solid #bbe6c8;border-radius:12px;padding:1rem 1.2rem;margin:1.4rem 0}
+.cp h4{color:var(--gr);font-size:1.02rem;display:flex;gap:.55rem;align-items:center;margin-bottom:.25rem}
+.cp .n{background:var(--gr);color:#fff;width:1.55em;height:1.55em;border-radius:50%;display:inline-flex;
+align-items:center;justify-content:center;font-size:.85em;font-weight:800;flex:none}
+.cp p{color:#245c38;margin:.25rem 0 0}
+table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;color:var(--dim);vertical-align:top}
+th{color:var(--am);font-size:.75rem;text-transform:uppercase;letter-spacing:.09em}
+td b{color:var(--ink)}
+.tree{background:var(--code);border-radius:10px;padding:1rem 1.15rem;color:#dbe7f7;
+font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.7;overflow:auto;white-space:pre}
+.tree .d{color:#fbbf24}.tree .c{color:#7d93b0}
+footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color:var(--dim);font-size:.9rem}
+</style></head><body>
+
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · Laboratorio de la S2 · Sábado 29</div>
+  <h1>Docker, día uno:<br>de cero a <em style="color:#ffb340">tu propia imagen</em></h1>
+  <p>Cada servicio de este curso va a vivir en un contenedor, así que hoy dominamos la unidad básica: qué es una imagen, qué es un contenedor, cómo se publican, cómo se diagnostican y cómo construyes la tuya. El cierre es un <strong style="color:#fff">reto</strong> que rompe a propósito lo que acabas de aprender, y entregarlo por pull request es tu <strong style="color:#fff">primera entrega real del curso</strong>.</p>
+</div></header>
+
+<div class="wrap">
+
+<div class="box tip">
+  <h4>Antes de empezar</h4>
+  <p>Necesitas: <strong>Docker corriendo</strong> (<code>docker --version</code> responde; en Windows y Mac la app Docker Desktop debe estar abierta), <strong>Git instalado</strong> y tu <strong>invitación de colaborador aceptada</strong>. Si tu máquina no puede con Docker, abre <a href="https://labs.play-with-docker.com">Play with Docker</a> y sigue exactamente los mismos pasos ahí (solo cambia que las URLs te las da la página en lugar de <code>localhost</code>).</p>
+</div>
+
+<h2>Parte 0 · Qué es Docker y qué piezas tiene</h2>
+<p>Un <strong>contenedor</strong> es un proceso empaquetado con todo lo que necesita para correr (sistema base, librerías, configuración) y aislado del resto de tu máquina. No es una máquina virtual: no trae su propio kernel ni "arranca un sistema"; es <strong>un proceso de tu máquina con una burbuja alrededor</strong>, y por eso levanta en milisegundos.</p>
+<p><strong>Para qué lo queremos aquí:</strong> un sistema distribuido son varios servicios corriendo a la vez, y este curso los vas a levantar todos en tu computadora, idénticos a los del profesor y a los de tus 39 compañeros. La frase "en mi máquina sí funciona" <strong>se muere hoy</strong>: si corre en un contenedor, corre igual en todas partes.</p>
+<table>
+  <tr><th>Pieza</th><th>Qué es</th></tr>
+  <tr><td><b>Imagen</b></td><td>La plantilla, de solo lectura: sistema base + librerías + tu aplicación, congelados en capas.</td></tr>
+  <tr><td><b>Contenedor</b></td><td>Una <b>instancia en ejecución</b> de esa imagen. De una imagen puedes lanzar muchos, como de una clase creas muchos objetos.</td></tr>
+  <tr><td><b>Dockerfile</b></td><td>La receta de texto con la que se construye una imagen. Hoy escribes tu primera.</td></tr>
+  <tr><td><b>Docker Hub</b></td><td>La tienda pública de imágenes: de ahí salen <code>nginx</code>, <code>postgres</code>, <code>alpine</code>…</td></tr>
+  <tr><td><b>Engine + CLI</b></td><td>El motor que corre los contenedores y el comando <code>docker</code> con el que le hablas.</td></tr>
+</table>
+<div class="tree"><span class="d">imagen</span>  (plantilla, solo lectura)
+  │  docker run
+  ├──►  <span class="d">contenedor 1</span>   (en ejecución)
+  ├──►  <span class="d">contenedor 2</span>
+  └──►  <span class="d">contenedor 3</span></div>
+
+<h2>Parte 1 · El flujo de entrega, primera vez</h2>
+<p>Todo lo que hagas hoy vive en <strong>tu carpeta dentro del repositorio del curso</strong>, en una rama tuya. Así se entrega aquí todo el semestre, y así se entrega en la industria:</p>
+<pre><code><span class="c"># 1. clona el repo del curso (solo la primera vez)</span>
+git clone https://github.com/OscarRuiz21/sd-2027-1.git
+cd sd-2027-1
+
+<span class="c"># 2. tu rama de esta sesión</span>
+git checkout -b s02-<span class="v">apellido</span>      <span class="c"># ejemplo: s02-ramirez</span>
+
+<span class="c"># 3. tu carpeta de hoy (apellido_nombre, minúsculas, sin acentos)</span>
+mkdir -p entregas/<span class="v">apellido_nombre</span>/s02
+cd entregas/<span class="v">apellido_nombre</span>/s02</code></pre>
+<div class="box warn"><h4>Si el clone te pide contraseña y la rechaza</h4>
+<p>La contraseña de GitHub no funciona en la terminal. En Windows, Git abre el navegador: dale <strong>Authorize</strong>. En macOS y Linux necesitas un token: GitHub → Settings → Developer settings → Tokens (classic) → genera uno con permiso <code>repo</code> y pégalo donde pide la contraseña. Y si el push del final te dice <code>403</code>, casi seguro no has <strong>aceptado la invitación</strong> de colaborador.</p></div>
+<div class="cp"><h4><span class="n">1</span>Punto de control</h4>
+<p><code>git branch</code> muestra <b>s02-tuapellido</b> con asterisco, y estás parado en tu carpeta <code>entregas/apellido_nombre/s02</code>. Desde aquí corre todo lo que sigue.</p></div>
+
+<h2>Ejercicio 1 · Una imagen, muchos contenedores</h2>
+<p>Baja una imagen de la tienda y lanza <strong>dos contenedores desde la misma plantilla</strong>:</p>
+<pre><code>docker pull nginx:alpine
+docker images
+docker run -d --name web1 nginx:alpine
+docker run -d --name web2 nginx:alpine
+docker ps</code></pre>
+<div class="out"><b>Deberías ver algo así (tus IDs cambian)</b>NAMES     IMAGE          STATUS
+web2      nginx:alpine   Up 3 seconds
+web1      nginx:alpine   Up 5 seconds</div>
+<p>Dos contenedores vivos, misma imagen. Cada uno tiene su propio sistema de archivos y sus propios procesos aunque compartan plantilla: <strong>imagen es a contenedor lo que clase es a objeto</strong>.</p>
+
+<h2>Ejercicio 2 · El ciclo de vida</h2>
+<div class="tree">created  ──►  <span class="d">running</span>  ──►  stopped  ──►  removed
+           (start)         (stop)        (rm)</div>
+<pre><code>docker stop web1
+docker ps          <span class="c"># web1 ya no aparece…</span>
+docker ps -a       <span class="c"># …pero aquí sí: "Exited (0)"</span>
+docker start web1  <span class="c"># y revive</span></code></pre>
+<p><strong>Detener no es borrar.</strong> <code>docker ps</code> enseña solo lo que corre; <code>docker ps -a</code> enseña todo, incluidos los detenidos. Borrar de verdad es <code>docker rm</code> (con el contenedor detenido).</p>
+
+<h2>Ejercicio 3 · Los parámetros que vas a usar todo el semestre</h2>
+<table>
+  <tr><th>Opción</th><th>Qué hace</th></tr>
+  <tr><td><code>-d</code></td><td>Corre en segundo plano (<i>detached</i>), sin secuestrar tu terminal.</td></tr>
+  <tr><td><code>-it</code></td><td>Modo interactivo con terminal: para meterte adentro.</td></tr>
+  <tr><td><code>--rm</code></td><td>Borra el contenedor al salir. Ideal para pruebas.</td></tr>
+  <tr><td><code>--name</code></td><td>Nombre fijo en lugar del aleatorio.</td></tr>
+  <tr><td><code>-p</code></td><td>Publica un puerto del contenedor hacia tu máquina.</td></tr>
+  <tr><td><code>-e</code>, <code>-v</code></td><td>Variables de entorno y volúmenes. <b>Los estrenamos la próxima sesión.</b></td></tr>
+</table>
+<p>Prueba <code>-it</code> y <code>--rm</code> metiéndote a un Linux ajeno:</p>
+<pre><code>docker run -it --rm alpine sh
+<span class="c"># ya estás DENTRO del contenedor:</span>
+cat /etc/os-release   <span class="c"># Alpine Linux, no tu sistema</span>
+ps aux                <span class="c"># cuenta los procesos…</span>
+exit</code></pre>
+<div class="out"><b>El momento importante</b>PID   USER     TIME  COMMAND
+    1 root      0:00 sh
+    2 root      0:00 ps aux</div>
+<p><strong>Dos procesos.</strong> Tu máquina tiene cientos corriendo; el contenedor solo ve los suyos. Esa es la burbuja, y con <code>--rm</code>, al salir no quedó rastro.</p>
+<div class="box tip"><h4>Bonus para el stack del curso</h4>
+<p><code>docker run --rm -it eclipse-temurin:21 jshell</code> te abre un Java 21 interactivo sin instalar nada. Escribe <code>System.out.println("Hola SD")</code> y sal con <code>/exit</code>. La descarga es grande; hazlo con calma en tu casa si la red del sábado no da.</p></div>
+
+<h2>Ejercicio 4 · Publicar un puerto: tu primer servicio</h2>
+<p>Por defecto el contenedor está aislado también de la red. Para alcanzar el servicio que corre adentro se <strong>publica</strong> su puerto con <code>-p puerto-de-tu-máquina:puerto-del-contenedor</code>:</p>
+<div class="tree">navegador                          contenedor
+localhost:8080  ────►  <span class="d">-p 8080:80</span>  ────►  nginx (puerto 80)</div>
+<pre><code>docker run -d -p 8080:80 --name miweb nginx:alpine</code></pre>
+<p>Abre <strong>http://localhost:8080</strong> en tu navegador: la página de bienvenida de nginx, servida desde adentro del contenedor. Ahora intenta levantar <strong>otro</strong> en el mismo puerto, a propósito:</p>
+<pre><code>docker run -d -p 8080:80 --name choque nginx:alpine</code></pre>
+<div class="out"><b>El error que hay que conocer</b>docker: Error response from daemon: … Bind for 0.0.0.0:8080 failed:
+port is already allocated</div>
+<p>Un puerto de tu máquina solo puede tener un dueño. La solución es otro puerto del lado del host: <code>-p 8081:80</code>. Bórralo con <code>docker rm choque</code> (nunca llegó a arrancar).</p>
+<div class="cp"><h4><span class="n">2</span>Punto de control</h4>
+<p>Ves la página de nginx en <b>localhost:8080</b> y entendiste el error de puerto ocupado (te lo vas a encontrar toda la vida).</p></div>
+
+<h2>Ejercicio 5 · Diagnóstico: entrar y leer registros</h2>
+<p>Cuando un servicio falla, estas dos herramientas son siempre el primer paso:</p>
+<pre><code><span class="c"># una terminal DENTRO de un contenedor que ya corre</span>
+docker exec -it miweb sh
+ls /usr/share/nginx/html      <span class="c"># ahí vive la página que viste</span>
+exit
+
+<span class="c"># lo que el servicio ha escrito en su salida</span>
+docker logs miweb</code></pre>
+<div class="out"><b>En los logs vas a ver tu propia visita</b>192.168.65.1 - - [29/Aug/2026:14:03:50 +0000] "GET / HTTP/1.1" 200 896 …</div>
+<p><code>exec</code> inspecciona el interior como si fuera una máquina aparte; <code>logs</code> te cuenta qué ha pasado. En un microservicio enfermo, empiezas por aquí.</p>
+
+<h2>Ejercicio 6 · Tu primera imagen</h2>
+<p>Hasta ahora corriste imágenes de otros. Ahora la tuya. En tu carpeta <code>entregas/apellido_nombre/s02</code> crea <strong>dos archivos</strong>. Primero <code>index.html</code>, con tu nombre de verdad:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta charset="utf-8"&gt;&lt;title&gt;Mi primer contenedor&lt;/title&gt;&lt;/head&gt;
+&lt;body style="font-family:sans-serif"&gt;
+&lt;h1&gt;Hola, soy <span class="v">Tu Nombre</span>&lt;/h1&gt;
+&lt;p&gt;Esta página la sirve un contenedor que yo construí.&lt;/p&gt;
+&lt;/body&gt;&lt;/html&gt;</code></pre>
+<p>Y junto a él, un archivo llamado exactamente <code>Dockerfile</code> (sin extensión), la receta de tres líneas:</p>
+<pre><code><span class="o">FROM</span> nginx:alpine
+<span class="o">COPY</span> index.html /usr/share/nginx/html/index.html
+<span class="o">EXPOSE</span> 80</code></pre>
+<p>Constrúyela y córrela:</p>
+<pre><code>docker build -t mi-sitio .
+docker images                 <span class="c"># aparece "mi-sitio"</span>
+docker run -d -p 9090:80 --name sitio mi-sitio</code></pre>
+<p>Abre <strong>http://localhost:9090</strong>: tu página, con tu nombre, servida por tu imagen. Eso que acabas de hacer (empaquetar una app en una imagen portable) es exactamente lo que haremos con cada microservicio del curso.</p>
+<div class="cp"><h4><span class="n">3</span>Punto de control</h4>
+<p><b>localhost:9090</b> muestra tu página con tu nombre. Ya construyes imágenes: pasaste de usuario a fabricante.</p></div>
+
+<h2>El reto · tu práctica de hoy</h2>
+<p>El paso a paso lo hicimos juntos; <strong>el reto lo haces tú, y es tu evidencia</strong>. Son cuatro misiones sobre lo que acabas de construir:</p>
+<table>
+  <tr><th>#</th><th>Misión</th><th>Qué demuestra</th></tr>
+  <tr><td><b>1</b></td><td><b>Haz tuya la página.</b> Tu <code>index.html</code> debe traer tu nombre y una tabla con los <b>5 comandos de hoy que más te sirvieron</b> y qué hace cada uno, con tus palabras.</td><td>Que documentas mientras aprendes</td></tr>
+  <tr><td><b>2</b></td><td><b>La trampa.</b> Con <code>sitio</code> corriendo, edita tu <code>index.html</code> otra vez (agrega una línea) y recarga <b>localhost:9090</b>. <b>No va a cambiar.</b> Explica por qué en tu evidencia, y luego lógralo de verdad: reconstruye como <code>mi-sitio:v2</code>, borra el contenedor viejo y levanta el nuevo.</td><td>Que entendiste que <b>la imagen es inmutable</b>: el build congela</td></tr>
+  <tr><td><b>3</b></td><td><b>Multiplícate.</b> Deja corriendo <b>dos contenedores de tu imagen a la vez</b> (9090 y 9091) y pega el <code>docker ps</code> como texto en tu evidencia.</td><td>Una imagen, muchas instancias: el corazón de escalar horizontal</td></tr>
+  <tr><td><b>4</b></td><td><b>Evidencia escrita.</b> Un archivo <code>evidencia.md</code> en tu carpeta con: los comandos que usaste, el <code>docker ps</code> pegado, el error de puerto ocupado pegado (prodúcelo tú), y las respuestas a: <i>¿por qué no cambió la página sin reconstruir?</i> · <i>¿qué comparten y qué no dos contenedores de la misma imagen?</i></td><td>Que puedes explicar lo que hiciste, que es lo que se califica</td></tr>
+</table>
+<div class="box tip"><h4>Qué se sube y qué no</h4>
+<p>A tu carpeta <code>s02</code> van <b>tres archivos de texto</b>: <code>Dockerfile</code>, <code>index.html</code> y <code>evidencia.md</code>. Las imágenes de Docker <b>no se suben al repo</b> (viven en tu máquina); las salidas van <b>pegadas como texto</b>, no como capturas, para que tu revisor pueda leerlas.</p></div>
+
+<h2>La entrega · tu primer pull request del curso</h2>
+<pre><code><span class="c"># desde la raíz del repo (cd ../../..)</span>
+git status
+git add entregas/<span class="v">apellido_nombre</span>/s02
+git commit -m <span class="v">"S02: primer contenedor e imagen propia"</span>
+git push -u origin s02-<span class="v">apellido</span></code></pre>
+<p>En GitHub aparece el aviso amarillo con tu rama: <strong>Compare &amp; pull request</strong> → título <code>S02 · Apellido</code> → se llena sola la <strong>plantilla</strong>. Así se contesta para este lab:</p>
+<ul>
+  <li><strong>Qué hice:</strong> dos líneas honestas + qué misión te costó más.</li>
+  <li><strong>Qué se rompió cuando lo quité:</strong> esta sección es para los labs F1-F5: <b>bórrala hoy</b> (la propia plantilla lo dice).</li>
+  <li><strong>Qué característica gané y cuál pagué:</strong> compara correr nginx en contenedor contra instalarlo directo en tu máquina.</li>
+  <li><strong>Qué haría distinto si el volumen fuera 10x:</strong> si tu página recibiera 10 veces más visitas, ¿qué te da la misión 3?</li>
+</ul>
+<p>Después del PR, el <strong>peer review</strong>: esta primera semana la regla es simple: <strong>revisas el PR que se abrió justo antes que el tuyo</strong> (y el primero de todos revisa al último). Tu PR necesita esa aprobación con un comentario sustantivo antes de que yo lo integre. La política de horarios completa está en <a href="https://github.com/OscarRuiz21/sd-2027-1/blob/main/ENTREGAS.md">ENTREGAS.md</a>; el resumen: <strong>en clase 10 · sábado 9 · domingo 7 · lunes-martes 6</strong>, y la descripción del PR se puede pulir hasta el martes.</p>
+<div class="cp"><h4><span class="n">✓</span>Checklist final</h4>
+<p>□ Mi carpeta <code>s02</code> trae Dockerfile, index.html y evidencia.md &nbsp; □ Mi PR se llama <code>S02 · Apellido</code> y la plantilla está contestada &nbsp; □ Ya revisé el PR de un compañero &nbsp; □ <code>docker ps</code> con mis dos contenedores está pegado en la evidencia</p></div>
+
+<h2>Limpieza</h2>
+<pre><code>docker stop web1 web2 miweb sitio sitio2
+docker rm   web1 web2 miweb sitio sitio2
+docker system prune     <span class="c"># pregunta antes de borrar lo no usado</span></code></pre>
+
+<h2>Si algo falla</h2>
+<table>
+  <tr><th>Síntoma</th><th>Arreglo</th></tr>
+  <tr><td><code>Cannot connect to the Docker daemon</code></td><td>Docker Desktop no está abierto (Win/Mac), o en Linux el motor está apagado: <code>sudo systemctl start docker</code>.</td></tr>
+  <tr><td><code>port is already allocated</code></td><td>Ese puerto del host ya tiene dueño (a veces, tu propio contenedor anterior). <code>docker ps</code> para ver quién, o usa otro puerto.</td></tr>
+  <tr><td><code>The container name … is already in use</code></td><td>Ya existe un contenedor (aunque esté detenido) con ese nombre: <code>docker rm nombre</code> y reintenta.</td></tr>
+  <tr><td>Cambié el HTML y localhost no cambia</td><td>No es bug, es la lección de la misión 2: la imagen congeló tu archivo. Reconstruye y recrea el contenedor.</td></tr>
+  <tr><td><code>permission denied … docker.sock</code> (Linux)</td><td>Falta el grupo: <code>sudo usermod -aG docker $USER</code> y reinicia sesión (está en la guía de instalación).</td></tr>
+  <tr><td><code>docker exec … bash</code> no funciona</td><td>Las imágenes alpine no traen bash: usa <code>sh</code>.</td></tr>
+</table>
+
+<h2>Qué sigue</h2>
+<p>La próxima sesión los contenedores dejan de estar solos: <strong>volúmenes</strong> (datos que sobreviven), <strong>redes</strong> (contenedores que se hablan) y <strong>Compose</strong> (levantar varios de un tiro), justo lo que necesitamos para abrir el sistema del curso como caja negra. Lo de hoy es el peldaño cero de todo eso.</p>
+
+<footer>
+  <p><strong>Sistemas Distribuidos 2027-1 · Grupo 2 · Facultad de Ingeniería, UNAM</strong><br>
+  Prof. Oscar Manuel Ruiz Hurtado · Laboratorio de la S2 · agosto de 2026</p>
+</footer>
+</div>
+</body></html>
