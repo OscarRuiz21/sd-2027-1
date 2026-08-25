@@ -111,6 +111,14 @@ docker ps</code></pre>
 <div class="out"><b>Deberías ver algo así (tus IDs cambian)</b>NAMES     IMAGE          STATUS
 web2      nginx:alpine   Up 3 seconds
 web1      nginx:alpine   Up 5 seconds</div>
+<p>Qué hizo cada comando:</p>
+<table>
+  <tr><th>Comando</th><th>Qué hizo</th></tr>
+  <tr><td><code>docker pull</code></td><td>Bajó la <b>imagen</b> (la plantilla) de Docker Hub a tu disco. Solo hace falta la primera vez; <code>run</code> la baja solo si no la tienes.</td></tr>
+  <tr><td><code>docker images</code></td><td>Lista las plantillas que ya viven en tu máquina.</td></tr>
+  <tr><td><code>docker run -d --name …</code></td><td>Fabricó un <b>contenedor</b> a partir de la imagen y lo arrancó, con nombre fijo y en segundo plano.</td></tr>
+  <tr><td><code>docker ps</code></td><td>Lista los contenedores <b>que están corriendo</b> ahorita.</td></tr>
+</table>
 <p>Dos contenedores vivos, misma imagen. Cada uno tiene su propio sistema de archivos y sus propios procesos aunque compartan plantilla: <strong>imagen es a contenedor lo que clase es a objeto</strong>.</p>
 
 <h2>Ejercicio 2 · El ciclo de vida</h2>
@@ -150,6 +158,14 @@ exit</code></pre>
 <div class="tree">navegador                          contenedor
 localhost:8080  ────►  <span class="d">-p 8080:80</span>  ────►  nginx (puerto 80)</div>
 <pre><code>docker run -d -p 8080:80 --name miweb nginx:alpine</code></pre>
+<p>Este es el comando más cargado del día; conviene leerlo por partes:</p>
+<div class="tree">docker run <span class="d">-d</span> <span class="d">-p 8080:80</span> <span class="d">--name miweb</span> <span class="d">nginx:alpine</span>
+           │       │              │              │
+           │       │              │              └─ la imagen de la que nace
+           │       │              └─ su nombre fijo, para stop/logs/exec
+           │       │
+           │       └─ puerto 8080 <span class="c">de tu máquina</span> → puerto 80 <span class="c">del contenedor</span>
+           └─ segundo plano: te regresa la terminal</div>
 <p>Abre <strong>http://localhost:8080</strong> en tu navegador: la página de bienvenida de nginx, servida desde adentro del contenedor. Ahora intenta levantar <strong>otro</strong> en el mismo puerto, a propósito:</p>
 <pre><code>docker run -d -p 8080:80 --name choque nginx:alpine</code></pre>
 <div class="out"><b>El error que hay que conocer</b>docker: Error response from daemon: … Bind for 0.0.0.0:8080 failed:
@@ -182,10 +198,20 @@ docker logs miweb</code></pre>
 <pre><code><span class="o">FROM</span> nginx:alpine
 <span class="o">COPY</span> index.html /usr/share/nginx/html/index.html
 <span class="o">EXPOSE</span> 80</code></pre>
+<p>Tres líneas, y cada una hace algo muy concreto:</p>
+<table>
+  <tr><th>Instrucción</th><th>Qué hace</th></tr>
+  <tr><td><code>FROM nginx:alpine</code></td><td><b>El punto de partida.</b> Tu imagen hereda <b>todo</b> lo que esa imagen base ya sabe hacer: un Linux mínimo con nginx instalado y configurado. Siempre es la primera instrucción: nadie construye desde la nada.</td></tr>
+  <tr><td><code>COPY index.html /usr/share/nginx/html/…</code></td><td>Mete <b>tu archivo dentro de la imagen</b>, en la carpeta exacta donde nginx busca qué servir. ¿Te suena la ruta? <b>Es la que viste con <code>exec</code> en el Ejercicio 5.</b></td></tr>
+  <tr><td><code>EXPOSE 80</code></td><td><b>Documenta</b> que el contenedor escucha en el 80. Ojo: no publica nada; publicar sigue siendo trabajo de <code>-p</code> al correrlo.</td></tr>
+</table>
 <p>Constrúyela y córrela:</p>
 <pre><code>docker build -t mi-sitio .
 docker images                 <span class="c"># aparece "mi-sitio"</span>
 docker run -d -p 9090:80 --name sitio mi-sitio</code></pre>
+<p>Del <code>build</code>, dos detalles que importan: <code>-t mi-sitio</code> le pone <strong>nombre (tag)</strong> a la imagen resultante, y el <strong>punto final es el contexto</strong>: "esta carpeta es lo que Docker puede ver durante la construcción" (por eso el Dockerfile y el index.html viven juntos). Cada instrucción del Dockerfile genera una <strong>capa</strong>, y Docker las guarda en caché: si reconstruyes sin cambiar nada, tarda milisegundos porque reutiliza todo. Lo vas a comprobar en la misión 2 del reto: al cambiar solo el HTML, únicamente la capa del <code>COPY</code> se rehace.</p>
+<div class="box tip"><h4>Las instrucciones que vienen (aún no las necesitas)</h4>
+<p>Un Dockerfile real trae más verbos, y los vas a estrenar cuando empaquetemos Java: <code>RUN</code> (ejecuta un comando <b>al construir</b>, p. ej. instalar algo), <code>WORKDIR</code> (fija la carpeta de trabajo), <code>CMD</code> (el comando que corre <b>al arrancar</b> el contenedor) y <code>ENV</code> (variables horneadas en la imagen). Hoy, con tres líneas basta y sobra.</p></div>
 <p>Abre <strong>http://localhost:9090</strong>: tu página, con tu nombre, servida por tu imagen. Eso que acabas de hacer (empaquetar una app en una imagen portable) es exactamente lo que haremos con cada microservicio del curso.</p>
 <div class="cp"><h4><span class="n">3</span>Punto de control</h4>
 <p><b>localhost:9090</b> muestra tu página con tu nombre. Ya construyes imágenes: pasaste de usuario a fabricante.</p></div>
@@ -194,7 +220,7 @@ docker run -d -p 9090:80 --name sitio mi-sitio</code></pre>
 <p>El paso a paso lo hicimos juntos; <strong>el reto lo haces tú, y es tu evidencia</strong>. Son cuatro misiones sobre lo que acabas de construir:</p>
 <table>
   <tr><th>#</th><th>Misión</th><th>Qué demuestra</th></tr>
-  <tr><td><b>1</b></td><td><b>Haz tuya la página.</b> Tu <code>index.html</code> debe traer tu nombre y una tabla con los <b>5 comandos de hoy que más te sirvieron</b> y qué hace cada uno, con tus palabras.</td><td>Que documentas mientras aprendes</td></tr>
+  <tr><td><b>1</b></td><td><b>Haz tuya la página.</b> Tu <code>index.html</code> debe traer tu nombre y una tabla con los <b>5 comandos de hoy que más te sirvieron</b> y qué hace cada uno, <b>con tus palabras</b> (el repertorio del final es tu banco, pero copiarlo textual no cuenta).</td><td>Que documentas mientras aprendes</td></tr>
   <tr><td><b>2</b></td><td><b>La trampa.</b> Con <code>sitio</code> corriendo, edita tu <code>index.html</code> otra vez (agrega una línea) y recarga <b>localhost:9090</b>. <b>No va a cambiar.</b> Explica por qué en tu evidencia, y luego lógralo de verdad: reconstruye como <code>mi-sitio:v2</code>, borra el contenedor viejo y levanta el nuevo.</td><td>Que entendiste que <b>la imagen es inmutable</b>: el build congela</td></tr>
   <tr><td><b>3</b></td><td><b>Multiplícate.</b> Deja corriendo <b>dos contenedores de tu imagen a la vez</b> (9090 y 9091) y pega el <code>docker ps</code> como texto en tu evidencia.</td><td>Una imagen, muchas instancias: el corazón de escalar horizontal</td></tr>
   <tr><td><b>4</b></td><td><b>Evidencia escrita.</b> Un archivo <code>evidencia.md</code> en tu carpeta con: los comandos que usaste, el <code>docker ps</code> pegado, el error de puerto ocupado pegado (prodúcelo tú), y las respuestas a: <i>¿por qué no cambió la página sin reconstruir?</i> · <i>¿qué comparten y qué no dos contenedores de la misma imagen?</i></td><td>Que puedes explicar lo que hiciste, que es lo que se califica</td></tr>
@@ -223,6 +249,22 @@ git push -u origin s02-<span class="v">apellido</span></code></pre>
 <pre><code>docker stop web1 web2 miweb sitio sitio2
 docker rm   web1 web2 miweb sitio sitio2
 docker system prune     <span class="c"># pregunta antes de borrar lo no usado</span></code></pre>
+
+<h2>El repertorio de hoy, en una tabla</h2>
+<p>Todo lo que tecleaste, junto. De aquí salen los 5 de tu misión 1:</p>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>docker pull imagen</code></td><td>Baja una imagen de Docker Hub sin correrla.</td></tr>
+  <tr><td><code>docker images</code></td><td>Las imágenes que tienes en el disco.</td></tr>
+  <tr><td><code>docker run [opciones] imagen</code></td><td>Crea <b>y</b> arranca un contenedor desde una imagen (bajándola si falta).</td></tr>
+  <tr><td><code>docker ps</code> / <code>docker ps -a</code></td><td>Contenedores corriendo / todos, incluidos los detenidos.</td></tr>
+  <tr><td><code>docker stop</code> / <code>docker start</code></td><td>Detener sin borrar / revivir un detenido.</td></tr>
+  <tr><td><code>docker rm</code> / <code>docker rmi</code></td><td>Borrar un contenedor / borrar una imagen.</td></tr>
+  <tr><td><code>docker exec -it nombre sh</code></td><td>Una terminal <b>dentro</b> de un contenedor que ya corre.</td></tr>
+  <tr><td><code>docker logs nombre</code></td><td>Lo que el servicio ha escrito en su salida.</td></tr>
+  <tr><td><code>docker build -t nombre .</code></td><td>Construye una imagen con la receta del Dockerfile de la carpeta.</td></tr>
+  <tr><td><code>docker system prune</code></td><td>Limpia lo detenido y lo huérfano (pregunta antes).</td></tr>
+</table>
 
 <h2>Si algo falla</h2>
 <table>
