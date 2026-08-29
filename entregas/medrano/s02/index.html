@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lab 1 - Mi primer contenedor</title>
+    <style>
+        th,
+        td {
+            padding-right: 60px;
+            padding-bottom: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body style="font-family:sans-serif; margin: 20px">
+    <h2>Comandos Básicos de Docker nub</h2>
+
+    <h1>Mi nombre es Enrique Medrano Solano</h1>
+
+    <table>
+        <tr>
+            <th>Comando</th>
+            <th>Descripción</th>
+        </tr>
+        <tr>
+            <td><code>docker exec -it nombre sh</code></td>
+            <td>Nos permite acceder a la terminal dentro de un docker ya iniciado, de forma fácil.</td>
+        </tr>
+        <tr>
+            <td><code>docker pull imagen</code></td>
+            <td>Permite descargar una imagen de Docker Hub (su tienda o biblioteca) sin necesidad de correrla.</td>
+        </tr>
+        <tr>
+            <td><code>docker tag viejo nuevo:tag</code></td>
+            <td>Permite renombrar nuestra imagen.</td>
+        </tr>
+        <tr>
+            <td><code>docker ps -a</code></td>
+            <td>Permite visualizar todos los dockers aunque estén detenidos.</td>
+        </tr>
+        <tr>
+            <td><code>docker stats</code></td>
+            <td>Comprueba e indica los recursos consumidos por cada docker.</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
