@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Laboratorio S02</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 20px;
+      background-color: #f4f6f9;
+    }
+    h1 {
+      color: #2c3e50;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    th {
+      background-color: #4a90e2;
+      color: #ffffff;
+      padding: 12px;
+      text-align: left;
+    }
+    td {
+      padding: 10px;
+      border-bottom: 1px solid #e1e8ed;
+      color: #333333;
+    }
+    tr:nth-child(even) {
+      background-color: #f8fafc;
+    }
+    code {
+      background-color: #eef2f5;
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: #c0392b;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hola, soy Cecilia Solís</h1>
+  <p>Esta página la sirve un contenedor que yo construí.</p>
+
+  <table>
+    <tr>
+      <th>Comando</th>
+      <th>¿Qué hace?</th>
+    </tr>
+    <tr>
+      <td><code>docker stop web1</code></td>
+      <td>Apaga el contenedor sin borrarlo; congela sus procesos y su estado temporalmente.</td>
+    </tr>
+    <tr>
+      <td><code>docker start web1</code></td>
+      <td>Vuelve a encender el contenedor detenido, conservando todo tal como quedó.</td>
+    </tr>
+    <tr>
+      <td><code>docker run -d -p 8080:80 --name miweb nginx:alpine</code></td>
+      <td>Crea e inicia en segundo plano un contenedor con Nginx ligando el puerto 8080 local con el 80 interno.</td>
+    </tr>
+    <tr>
+      <td><code>docker exec -it miweb sh</code></td>
+      <td>Abre una terminal interactiva dentro del contenedor en ejecución para inspeccionarlo internamente.</td>
+    </tr>
+    <tr>
+      <td><code>ls /usr/share/nginx/html</code></td>
+      <td>Lista los archivos del directorio interno donde Nginx almacena y sirve el contenido web.</td>
+    </tr>
+    <tr>
+      <td><code>exit</code></td>
+      <td>Cierra la sesión de la terminal interna del contenedor sin detener el servicio.</td>
+    </tr>
+    <tr>
+      <td><code>docker logs miweb</code></td>
+      <td>Muestra el registro histórico de eventos, accesos y mensajes que el servicio ha emitido.</td>
+    </tr>
+    <tr>
+      <td><code>docker build -t mi-sitio .</code></td>
+      <td>Compila una imagen propia llamada mi-sitio leyendo las instrucciones del Dockerfile en la carpeta actual.</td>
+    </tr>
+    <tr>
+      <td><code>docker images</code></td>
+      <td>Muestra la lista de imágenes guardadas y disponibles en el almacenamiento local.</td>
+    </tr>
+    <tr>
+      <td><code>docker run -d -p 9090:80 --name sitio mi-sitio</code></td>
+      <td>Arranca un contenedor en segundo plano con la imagen personalizada mapeando el puerto 9090.</td>
+    </tr>
+  </table>
+</body>
+</html>
