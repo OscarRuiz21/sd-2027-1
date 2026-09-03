@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mi primer contenedor</title>
+</head>
+<body style="font-family:sans-serif">
+  <h1>Hola, soy Oscar Montiel</h1>
+  <p>Esta página la sirve un contenedor que yo construí.</p>
+
+  <table border="1" cellpadding="10" style="border-collapse: collapse; margin-top: 20px;">
+    <tr>
+      <th>Comando</th>
+      <th>¿Para qué sirve?</th>
+    </tr>
+    <tr>
+      <td><code>docker ps</code></td>
+      <td>Siempre es importante ver los contenedores vivos; sirve para saber si algo está funcionado o si las cosas van bien. Es un comando básico pero importante.</td>
+    </tr>
+    <tr>
+      <td><code>docker stop / start</code></td>
+      <td>Para pausar y reanudar contenedores. Como el anterior, son comandos básicos pero con una utilidad inmensa.</td>
+    </tr>
+    <tr>
+      <td><code>docker run -it --rm alpine sh</code></td>
+      <td>Para correr un contenedor y meternos directo en su terminal (y que se borre solo al salir).</td>
+    </tr>
+    <tr>
+      <td><code>docker run -d -p 8080:80...</code></td>
+      <td>No conocía este comando; sirve para arrancar el contenedor dejándolo en segundo plano y para inicializar el server en el puerto seleccionado.</td>
+    </tr>
+    <tr>
+      <td><code>docker build -t mi-sitio .</code></td>
+      <td>Para crear nuestras propias imágenes (o los sitios) a partir de los archivos de nuestra carpeta.</td>
+    </tr>
+  </table>
+</body>
+</html>
