@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mi primer contenedor</title>
+  <style> 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: "Georgia", "Times New Roman", serif;
+      background-color: #f3eee6;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 80px 60px;
+    }
+    .content {
+      max-width: 680px;
+    }
+    h1 {
+      font-size: 3.2rem;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 28px;
+      color: #1a1a1a;
+    }
+    p {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: #5c5c5c;
+      font-weight: 400;
+      max-width: 480px;
+      margin-bottom: 48px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 1.05rem;
+      color: #1a1a1a;
+    }
+    th {
+      text-align: left;
+      padding: 14px 18px;
+      border-bottom: 1px solid #d4cfc5;
+      font-weight: 400;
+      color: #5c5c5c;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+    }
+    td {
+      padding: 16px 18px;
+      border-bottom: 1px solid #e8e2d9;
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    tr:last-child td {
+      border-bottom: none;
+    }
+    .comando {
+      font-family: "Courier New", monospace;
+      font-size: 0.98rem;
+      color: #2c2c2c;
+      white-space: nowrap;
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Hola, soy Tu Nombre</h1>
+    <p>Esta página la sirve un contenedor que yo construí.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Comando</th>
+          <th>Para qué sirve</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="comando">docker pull</td>
+          <td>Para bajar plantillas (imágenes) desde Docker Hub y tenerlas listas en tu máquina.</td>
+        </tr>
+        <tr>
+          <td class="comando">docker run</td>
+          <td>Para crear y arrancar un contenedor a partir de una imagen que ya tengas.</td>
+        </tr>
+        <tr>
+          <td class="comando">docker ps</td>
+          <td>Para ver la lista de los contenedores que están corriendo (o todos si le pones -a).</td>
+        </tr>
+        <tr>
+          <td class="comando">docker stop</td>
+          <td>Para detener un contenedor que esté en marcha, sin borrarlo.</td>
+        </tr>
+        <tr>
+          <td class="comando">docker build</td>
+          <td>Para construir tu propia imagen personalizada usando un Dockerfile y los archivos que indiques.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>
