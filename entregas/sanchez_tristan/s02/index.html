@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer contenedor | Sanchez Mayen Tristan Qesen</title>
+    <style>
+        :root {
+            --primary-color: #2496ed;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-color: #0f172a;
+            --text-muted: #475569;
+            --border-color: #e2e8f0;
+            --code-bg: #1e293b;
+            --code-text: #f8fafc;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 680px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 2rem 2.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        h1 {
+            color: var(--text-color);
+            font-size: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 0.4rem;
+            margin-top: 2rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .command-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .command-title {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-color);
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            color: var(--code-text);
+            padding: 0.85rem 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        footer {
+            margin-top: 2.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Hola, soy Sanchez Mayen Tristan Qesen</h1>
+        <p>Mi pagina tendra los comandos que mas me sirvieron para realizar esta practica</p>
+
+        <h2>MISION 1:</h2>
+
+        <div class="command-group">
+            <div class="command-title">1. Lista de todos los contenedores</div>
+            <pre><code>docker ps -a</code></pre>
+        </div>
+
+        <div class="command-group">
+            <div class="command-title">2. Encender y detener un contenedor</div>
+            <pre><code>docker start "nombre_contenedor"
+docker stop "nombre_contenedor"</code></pre>
+        </div>
+
+        <div class="command-group">
+            <div class="command-title">3. Construir la imagen del contenedor</div>
+            <pre><code>docker build -t "nombre_imagen" .</code></pre>
+        </div>
+
+        <div class="command-group">
+            <div class="command-title">4. Ejecutar el contenedor</div>
+            <pre><code>docker run [parametros] "nombre_imagen"</code></pre>
+        </div>
+
+        <div class="command-group">
+            <div class="command-title">5. Borrar un contenedor o imagen</div>
+            <pre><code>docker rm "nombre_contenedor"
+docker rmi "nombre_imagen"</code></pre>
+        </div>
+
+
+        <h2>MISION 2:</h2>
+        <p>El motivo por el cual no se actualiza el contenedor cuando se cambia el index es porque solo hacemos una
+            copia de un momento exacto del index para el contenedor, si queremos que este se actualice debemos volver a
+            crear la imagen y arrancar el contenedor de nuevo.</p>
+
+
+        <h2>MISION 3:</h2>
+
+        <img src="Evidencia_Mision3.png" alt="Evidencia Mision 3" width="650">
+
+        <footer>
+            Sistemas Distribuidos (SD-2027-1) — Práctica S02
+        </footer>
+    </div>
+</body>
+
+</html>
