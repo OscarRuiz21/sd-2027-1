@@ -37,7 +37,7 @@ Run 'docker run --help' for more information
 La salida de docker ps con los dos contenedores funcionando:
 
 ```text
-C:\\Users\\franc\\Desktop\\Sistemas Distribuidos\\sd-2027-1\\entregas\\perez\_francisco\\s02>docker ps
+C:\\Users\\franc\\Desktop\\Sistemas Distribuidos\\sd-2027-1\\entregas\\perez_francisco\\s02>docker ps
 
 CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS          PORTS                                     NAMES
 68eca791fce3   mi-sitio:v2    "/docker-entrypoint.…"   14 seconds ago   Up 14 seconds   0.0.0.0:9091->80/tcp, [::]:9091->80/tcp   sitio2
@@ -51,8 +51,8 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 
 ### 4.1 Por que no cambio la pagina sin reconstruir
 
-La pagina no cambio porque el archivo index.html ya habia quedado guardado dentro de la imagen cuando ejecute docker build. Aunque modifique el archivo en mi computadora, el contenedor seguia usando la imagen anterior. Despues para que fuera visible se reconstruyo la imagen, borrar el contenedor que existia y crear uno nuevo.
+La pagina no cambio porque el archivo index.html ya habia quedado guardado dentro de la imagen cuando ejecute docker build. Aunque modifique el archivo en mi computadora, el contenedor seguia usando el archivo que tenia cargado. Para que fuera visible se reconstruyo la imagen, borrar el contenedor que existia y crear uno nuevo.
 
 ### 4.2 Que comparten y que no dos contenedores de la misma imagen
 
-Los dos contenedores comparten la misma imagen como base, por lo que parten de los mismos archivos y configuracion. Sin embargo, cada contenedor funciona de manera independiente, tiene sus propios procesos y puede ejecutarse usando un puerto diferente.
+Los dos contenedores comparten la misma imagen como base, por lo que comparten los mismos archivos y configuracion. Sin embargo, cada contenedor funciona de manera independiente, tiene sus propios procesos y se ejecutan usando un puerto diferente.
