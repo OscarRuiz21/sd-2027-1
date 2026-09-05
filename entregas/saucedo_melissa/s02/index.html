@@ -1,0 +1,15 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Mi primer contenedor</title></head>
+<body style="font-family:sans-serif">
+<h1>Hola, soy Melissa Saucedo</h1>
+<p>Esta página la sirve un contenedor que yo construí.</p>
+<h2>Mis 5 comandos favoritos de hoy</h2>
+<table border="1" cellpadding="8" style="border-collapse:collapse">
+<tr><th>Comando</th><th>Qué hace</th></tr>
+<tr><td>docker run -d --name nombre imagen</td><td>Crea y arranca un contenedor nuevo a partir de una imagen. Lo usé para levantar web1, web2, miweb y sitio.</td></tr>
+<tr><td>docker ps / docker ps -a</td><td>ps muestra solo los contenedores corriendo; ps -a muestra todos, incluidos los detenidos. Me sirvió para confirmar que web1 seguía existiendo aunque estuviera detenido.</td></tr>
+<tr><td>docker stop / docker start</td><td>Detiene un contenedor sin borrarlo, y start lo revive después. Lo comprobé con web1.</td></tr>
+<tr><td>docker exec -it nombre sh</td><td>Me abre una terminal dentro de un contenedor que ya corre, como entrar a otra computadora. Lo usé para ver los archivos dentro de miweb.</td></tr>
+<tr><td>docker build -t nombre .</td><td>Construye una imagen nueva a partir de mi propio Dockerfile. Así creé mi-sitio, mi primera imagen propia.</td></tr>
+</table>
+</body></html>
