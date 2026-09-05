@@ -42,8 +42,9 @@ git push -u origin entregas_apellido_nombre
 ```
 
 El `-u origin …` solo la primera vez; después basta `git push`. **La hora del último push
-es la que califica.** **NO abras pull request**: el PR es UNO solo, al final del curso,
-con todo tu trabajo.
+define si tu entrega queda en tiempo (hasta el domingo) o tarde** — tarde no baja puntos,
+pero se registra para tu tendencia (ver `ENTREGAS.md`). **NO abras pull request**: el PR
+es UNO solo, al final del curso, con todo tu trabajo.
 
 ## Los errores de siempre
 
