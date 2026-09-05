@@ -1,6 +1,57 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>Mi primer contenedor</title></head>
+<html>
+    <head><meta charset="utf-8"><title>Mi primer contenedor</title>
+        <style>
+    body { font-family: sans-serif; margin: 40px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #dddddd; text-align: left; padding: 8px; }
+    th { background-color: #f2f2f2; }
+    code { background-color: #eee; padding: 2px 4px; border-radius: 4px; }
+  </style>
+    </head>
 <body style="font-family:sans-serif">
 <h1>Hola, soy Erick Nava Santiago</h1>
 <p>Esta página la sirve un contenedor que yo construí.</p>
+
+<h2>Tabla con comandos Docker</h2>
+<table>
+    <tr>
+        <th> Comando</th>
+        <th> Descripción </th>
+    </tr>
+
+    <tr>
+        <th>docker run -d -p 9090:80 --name sitio mi-sitio</th>
+        <th>El comando docker run crea al un contenedor haciendo uso de mi imagen y nombrandola, -d hace 
+            la ejecución en segundo plano, -p y el puerto es el puerto en que se asignada y el aprametro --name
+            esta diciendo el nombre con el que se guardara y a imagen con la versión a utilizar
+        </th>
+    </tr>
+
+    <tr>
+        <th>docker ps</th>
+        <th>Docker ps enlista los contenedores actualmente activos, con la bandera -a muesta los que no</th>
+    </tr>
+
+    <tr>
+        <th>Docker build -t</th>
+        <th>Comando para crear la imagen apartir de un Dockerfile, permite guardar el tag</th>
+    </tr>
+
+    <tr>
+        <th>docker rm </th>
+        <th>Elimina un contenedor, pero debe de estar detenido. Con -f se forza a borrarlo</th>
+    </tr>
+
+    <tr>
+        <th>docker exec</th>
+        <th>Te permite ingresar dentro del docker. Con -it haces dos cosas. La -i sirve para 
+            habilitar la entrada standar para interactuar con la terminal y -t es para 
+            tener una terminal similar a shell
+        </th>
+    </tr>
+
+</table>
+
+
 </body></html>
