@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mi primer contenedor de Docker</title>
+  <style>
+    table { border-collapse: collapse; width: 100%; max-width: 700px; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body style="font-family:sans-serif">
+  <h1>Hola, soy Brent Armando Pérez Paitán :)</h1>
+  <p>Esta página la sirve un contenedor que yo construí.</p>
+
+  <h2>Mis 5 comandos de Docker más útiles</h2>
+  <table>
+    <tr>
+      <th>Comando</th>
+      <th>¿Para qué sirve?</th>
+    </tr>
+    <tr>
+      <td><code>docker build</code></td>
+      <td>Lee las instrucciones de un archivo de configuracion "Dockerfile" para construir una imagen.</td>
+    </tr>
+    <tr>
+      <td><code>docker run</code></td>
+      <td>Es el que le da vida a la aplicación, toma la imagen que se creó con <code>build</code> y genera un contenedor en donde estará el nuevo sistema operativo.</td>
+    </tr>
+    <tr>
+      <td><code>docker ps</code></td>
+      <td>Es una herramienta que monitorea los contenedores, imprime una tabla en la terminal con la lista de los que están activos.</td>
+    </tr>
+    <tr>
+      <td><code>docker stop</code></td>
+      <td>Le pone freno a un contenedor que está corriendo, apagándolo de forma segura sin borrarlo.</td>
+    </tr>
+    <tr>
+      <td><code>docker rm</code></td>
+      <td>Borra por completo un contenedor que ya está apagado para limpiar el espacio en mi sistema.</td>
+    </tr>
+  </table>
+</body>
+</html>
