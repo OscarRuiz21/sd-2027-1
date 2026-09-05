@@ -1,5 +1,5 @@
 # Evidencia Práctica S02 - Docker, dia uno: de cero a tu propia imagen
-**Nombre:** Jesús Martínez Trejo
+Jesús Martínez Trejo
 
 ## 1. Comandos utilizados
 ### 1.1 Construcción de la primera versión de la página
