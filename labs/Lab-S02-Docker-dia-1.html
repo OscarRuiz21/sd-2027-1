@@ -53,11 +53,13 @@ font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;line-height:1
 .tree .d{color:#fbbf24}.tree .c{color:#7d93b0}
 footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color:var(--dim);font-size:.9rem}
 </style></head><body>
+<div style="background:#fff8ef;border:2px solid #b45309;border-radius:10px;padding:.8em 1em;margin:1em;font-family:sans-serif"><b>Actualización (05-sep):</b> el modelo de entrega cambió — todo va con <b>push a tu rama <code>entregas_apellido_nombre</code></b> y <b>SIN pull request</b> hasta el final del curso. Donde esta guía diga «abre tu PR», ignóralo. La rutina vigente está en el <a href="https://github.com/OscarRuiz21/sd-2027-1/blob/main/GIT-CHEATSHEET.md">GIT-CHEATSHEET</a>.</div>
 
 <header><div class="in">
   <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · Laboratorio de la S2 · Sábado 29</div>
   <h1>Docker, día uno:<br>de cero a <em style="color:#ffb340">tu propia imagen</em></h1>
-  <p>Cada servicio de este curso va a vivir en un contenedor, así que hoy dominamos la unidad básica: qué es una imagen, qué es un contenedor, cómo se publican, cómo se diagnostican y cómo construyes la tuya. El cierre es un <strong style="color:#fff">reto</strong> que rompe a propósito lo que acabas de aprender, y entregarlo por pull request es tu <strong style="color:#fff">primera entrega real del curso</strong>.</p>
+  <p>Docker va en <strong style="color:#fff">dos sesiones</strong>, y esta es la primera: el vocabulario y las operaciones del día a día. Cada servicio de este curso va a vivir en un contenedor, así que hoy dominamos la unidad básica: qué es una imagen, qué es un contenedor, cómo se publican, cómo se diagnostican y cómo construyes la tuya. El cierre es un <strong style="color:#fff">reto</strong> que rompe a propósito lo que acabas de aprender, y entregarlo por pull request es tu <strong style="color:#fff">primera entrega real del curso</strong>.</p>
+  <p style="margin-top:1em"><a href="https://oscarruiz21.github.io/sd-2027-1/material/S02/S02-Clase-2-SD.html" style="display:inline-block;background:#ffb340;color:#12253d;text-decoration:none;font-weight:800;padding:.5em 1.2em;border-radius:10px">📽️ Abrir la teoría de hoy (deck)</a></p>
 </div></header>
 
 <div class="wrap">
@@ -68,7 +70,19 @@ footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color
 </div>
 
 <h2>Parte 0 · Qué es Docker y qué piezas tiene</h2>
-<p>Un <strong>contenedor</strong> es un proceso empaquetado con todo lo que necesita para correr (sistema base, librerías, configuración) y aislado del resto de tu máquina. No es una máquina virtual: no trae su propio kernel ni "arranca un sistema"; es <strong>un proceso de tu máquina con una burbuja alrededor</strong>, y por eso levanta en milisegundos.</p>
+<h3>El problema que Docker mata</h3>
+<p>Llega alguien nuevo al equipo y para correr el proyecto debe instalar la base de datos <strong>versión 10.3</strong> (no la 11), el broker <strong>6.0.10</strong> y el runtime <strong>5.0.0</strong>, con sus configuraciones exactas. Dos días de pelearse con instaladores. Y cuando por fin corre… resulta que la <strong>otra</strong> app del equipo necesita <strong>otras versiones de las mismas herramientas en la misma máquina</strong>: una tarea casi imposible. Y al desinstalar, quedan tirados archivos, servicios y configuraciones a medias.</p>
+<p>Con contenedores, cada app viaja con <strong>sus</strong> versiones adentro, aisladas de las demás: puedes correr la 10.3 y la 11 lado a lado sin que se vean, un solo comando descarga y levanta todo, y al borrar el contenedor <strong>no queda rastro</strong>. Eso es lo que vas a comprobar hoy con tus manos.</p>
+<h3>¿Y no es eso una máquina virtual?</h3>
+<p>No, y la diferencia importa:</p>
+<table>
+  <tr><th></th><th>Máquina virtual</th><th>Contenedor</th></tr>
+  <tr><td><b>Qué carga</b></td><td>Un sistema operativo completo, con su propio kernel emulado</td><td>Solo tu proceso y sus librerías: <b>comparte el kernel</b> de tu máquina</td></tr>
+  <tr><td><b>Arranque</b></td><td>Minutos</td><td>Milisegundos</td></tr>
+  <tr><td><b>Peso</b></td><td>Gigabytes</td><td>Megabytes</td></tr>
+  <tr><td><b>En una laptop caben</b></td><td>Dos o tres</td><td>Decenas: por eso podrás correr un sistema distribuido completo</td></tr>
+</table>
+<p>Un <strong>contenedor</strong> es, entonces, un proceso empaquetado con todo lo que necesita (sistema base, librerías, configuración) y aislado del resto: <strong>un proceso de tu máquina con una burbuja alrededor</strong>.</p>
 <p><strong>Para qué lo queremos aquí:</strong> un sistema distribuido son varios servicios corriendo a la vez, y este curso los vas a levantar todos en tu computadora, idénticos a los del profesor y a los de tus 39 compañeros. La frase "en mi máquina sí funciona" <strong>se muere hoy</strong>: si corre en un contenedor, corre igual en todas partes.</p>
 <table>
   <tr><th>Pieza</th><th>Qué es</th></tr>
@@ -119,6 +133,8 @@ web1      nginx:alpine   Up 5 seconds</div>
   <tr><td><code>docker run -d --name …</code></td><td>Fabricó un <b>contenedor</b> a partir de la imagen y lo arrancó, con nombre fijo y en segundo plano.</td></tr>
   <tr><td><code>docker ps</code></td><td>Lista los contenedores <b>que están corriendo</b> ahorita.</td></tr>
 </table>
+<div class="box tip"><h4>El <code>:alpine</code> tiene nombre: es el tag</h4>
+<p>Toda imagen se nombra <code>imagen:tag</code>. El <strong>tag</strong> (etiqueta) dice qué variante o versión quieres: <code>nginx:alpine</code> es nginx sobre un Linux mínimo; <code>postgres:15.1</code> es esa versión exacta. Si no pones tag, Docker asume <code>:latest</code>, que es una etiqueta como cualquier otra, no una garantía de "lo más nuevo". En el reto vas a crear tu propio tag: <code>mi-sitio:v2</code>.</p></div>
 <p>Dos contenedores vivos, misma imagen. Cada uno tiene su propio sistema de archivos y sus propios procesos aunque compartan plantilla: <strong>imagen es a contenedor lo que clase es a objeto</strong>.</p>
 
 <h2>Ejercicio 2 · El ciclo de vida</h2>
@@ -140,6 +156,8 @@ docker start web1  <span class="c"># y revive</span></code></pre>
   <tr><td><code>-p</code></td><td>Publica un puerto del contenedor hacia tu máquina.</td></tr>
   <tr><td><code>-e</code>, <code>-v</code></td><td>Variables de entorno y volúmenes. <b>Los estrenamos la próxima sesión.</b></td></tr>
 </table>
+<div class="box tip"><h4>Tres mañas del oficio</h4>
+<p>(1) Las banderas se combinan: <code>-d -p 8080:80</code> = <code>-dp 8080:80</code>. (2) Donde va un nombre de contenedor también va su ID, y <b>bastan sus primeros 3 o 4 caracteres</b>. (3) Todo comando explica sus opciones con <code>docker <i>comando</i> --help</code>.</p></div>
 <p>Prueba <code>-it</code> y <code>--rm</code> metiéndote a un Linux ajeno:</p>
 <pre><code>docker run -it --rm alpine sh
 <span class="c"># ya estás DENTRO del contenedor:</span>
@@ -210,6 +228,7 @@ docker logs miweb</code></pre>
 docker images                 <span class="c"># aparece "mi-sitio"</span>
 docker run -d -p 9090:80 --name sitio mi-sitio</code></pre>
 <p>Del <code>build</code>, dos detalles que importan: <code>-t mi-sitio</code> le pone <strong>nombre (tag)</strong> a la imagen resultante, y el <strong>punto final es el contexto</strong>: "esta carpeta es lo que Docker puede ver durante la construcción" (por eso el Dockerfile y el index.html viven juntos). Cada instrucción del Dockerfile genera una <strong>capa</strong>, y Docker las guarda en caché: si reconstruyes sin cambiar nada, tarda milisegundos porque reutiliza todo. Lo vas a comprobar en la misión 2 del reto: al cambiar solo el HTML, únicamente la capa del <code>COPY</code> se rehace.</p>
+<p>Y con esto ya conoces el <strong>viaje completo de una imagen</strong>: se <code>build</code>ea en una máquina, se sube a un registry con <code>push</code>, y cualquier otra máquina la baja con <code>pull</code> y la corre idéntica. Hoy hiciste build y pull; el push te toca cuando publiquemos imágenes propias del proyecto.</p>
 <div class="box tip"><h4>Las instrucciones que vienen (aún no las necesitas)</h4>
 <p>Un Dockerfile real trae más verbos, y los vas a estrenar cuando empaquetemos Java: <code>RUN</code> (ejecuta un comando <b>al construir</b>, p. ej. instalar algo), <code>WORKDIR</code> (fija la carpeta de trabajo), <code>CMD</code> (el comando que corre <b>al arrancar</b> el contenedor) y <code>ENV</code> (variables horneadas en la imagen). Hoy, con tres líneas basta y sobra.</p></div>
 <p>Abre <strong>http://localhost:9090</strong>: tu página, con tu nombre, servida por tu imagen. Eso que acabas de hacer (empaquetar una app en una imagen portable) es exactamente lo que haremos con cada microservicio del curso.</p>
@@ -263,6 +282,10 @@ docker system prune     <span class="c"># pregunta antes de borrar lo no usado</
   <tr><td><code>docker exec -it nombre sh</code></td><td>Una terminal <b>dentro</b> de un contenedor que ya corre.</td></tr>
   <tr><td><code>docker logs nombre</code></td><td>Lo que el servicio ha escrito en su salida.</td></tr>
   <tr><td><code>docker build -t nombre .</code></td><td>Construye una imagen con la receta del Dockerfile de la carpeta.</td></tr>
+  <tr><td><code>docker tag viejo nuevo:tag</code></td><td>Renombra o re-etiqueta una imagen (así saldrá tu <code>mi-sitio:v2</code>).</td></tr>
+  <tr><td><code>docker logs -f nombre</code></td><td>Logs <b>en vivo</b>: la pantalla se queda pegada al servicio (sales con Ctrl+C).</td></tr>
+  <tr><td><code>docker stats</code></td><td>CPU y memoria de cada contenedor, en tiempo real.</td></tr>
+  <tr><td><code>docker image prune</code></td><td>Borra imágenes huérfanas (las "colgadas" sin tag).</td></tr>
   <tr><td><code>docker system prune</code></td><td>Limpia lo detenido y lo huérfano (pregunta antes).</td></tr>
 </table>
 
@@ -278,7 +301,7 @@ docker system prune     <span class="c"># pregunta antes de borrar lo no usado</
 </table>
 
 <h2>Qué sigue</h2>
-<p>La próxima sesión los contenedores dejan de estar solos: <strong>volúmenes</strong> (datos que sobreviven), <strong>redes</strong> (contenedores que se hablan) y <strong>Compose</strong> (levantar varios de un tiro), justo lo que necesitamos para abrir el sistema del curso como caja negra. Lo de hoy es el peldaño cero de todo eso.</p>
+<p>Docker va en dos sesiones, y hoy fue la primera: el vocabulario (imagen, contenedor, tag, registry), las operaciones del día a día y tu primera imagen. <strong>La próxima sesión bajamos un nivel:</strong> los tres tipos de <strong>volúmenes</strong> (datos que sobreviven al contenedor), <strong>redes</strong> (contenedores que se hablan entre sí por nombre) y <strong>Compose</strong> (levantar un sistema de varios servicios con un solo comando), justo lo que hace falta para abrir el sistema del curso como caja negra. Y dos sesiones después llega la pregunta que abre la segunda mitad del semestre: cuando son cientos de contenedores, <strong>¿quién los cuida?</strong> (spoiler: se llama Kubernetes).</p>
 
 <footer>
   <p><strong>Sistemas Distribuidos 2027-1 · Grupo 2 · Facultad de Ingeniería, UNAM</strong><br>
