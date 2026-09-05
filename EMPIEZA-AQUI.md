@@ -16,13 +16,11 @@ este mismo repositorio**, como un equipo en una empresa.
    ```bash
    git clone https://github.com/OscarRuiz21/sd-2027-1.git
    ```
-3. **Instala Docker antes del sábado 29** con la
-   [guía por sistema operativo](https://oscarruiz21.github.io/sd-2027-1/labs/Instala-Docker.html).
-   Termina con `docker run hello-world`; si lo ves, ya quedaste.
-4. **La Lectura 1, opcional pero recomendada**, en la pestaña
-   [Discussions](https://github.com/OscarRuiz21/sd-2027-1/discussions): si participas,
-   el formato es 2 preguntas + 1 hallazgo, de preferencia antes del jueves para que
-   alcancen a votarse. No necesitas ser colaborador, solo tu cuenta.
+3. **Crea tu rama y tu p00** siguiendo [`GIT-CHEATSHEET.md`](GIT-CHEATSHEET.md): rama
+   `entregas_apellido_nombre` con `entregas/apellido_nombre/p00/prueba.txt`.
+4. **Las lecturas** viven en la pestaña
+   [Discussions](https://github.com/OscarRuiz21/sd-2027-1/discussions): 2 preguntas +
+   1 hallazgo antes del jueves 23:59.
 
 ## Cómo funciona el repositorio
 
@@ -31,24 +29,25 @@ sd-2027-1/
 ├── material/        ← decks y material de cada sesión (lo subo yo)
 ├── labs/            ← las guías de laboratorio (las subo yo)
 ├── lecturas/        ← el programa de lecturas y sus enlaces
+├── calificaciones/  ← cortes de entregas, por número de cuenta
 └── entregas/        ← aquí va tu trabajo, en tu carpeta
     └── apellido_nombre/
+        ├── p00/
         ├── s02/
         └── s03/ … s12/
 ```
 
 Cinco reglas:
 
-1. **Nunca trabajas en `main`**: está protegida. Cada sesión trabajas en una rama
-   `sNN-apellido` y entregas con un **pull request**.
-2. **El PR lleva plantilla** (se llena sola al abrirlo). La descripción es parte de la
-   entrega: ahí va tu razonamiento, no un trámite.
-3. **Tu PR necesita la aprobación de un compañero** antes de que yo lo revise, con al menos
-   un comentario sustantivo. GitHub no me deja integrarlo sin esa aprobación. Revisar
-   enseña tanto como escribir, y también se califica la calidad de tus revisiones.
-4. **Cada quien toca solo su carpeta** de `entregas/`.
-5. **La hora que cuenta es la del último push a tu rama.** La política completa de
+1. **Nunca trabajas en `main`**: está protegida. Trabajas TODO el semestre en **tu rama**
+   `entregas_apellido_nombre`, y cada push a esa rama es tu entrega.
+2. **No abras pull requests durante el semestre.** El PR es UNO, al final del curso, con
+   todo tu trabajo — y ese es el que se integra a `main` (con revisión de un compañero).
+3. **Cada quien toca solo su carpeta** de `entregas/`.
+4. **La hora que cuenta es la del último push a tu rama.** La política completa de
    puntualidad, con la ficha de rescate, está en [`ENTREGAS.md`](ENTREGAS.md).
+5. **Tu reflexión (`evidencia.md`) se puede pulir hasta el martes** sin penalización; el
+   código cierra con la clase.
 
 ## La rutina de cada sábado
 
