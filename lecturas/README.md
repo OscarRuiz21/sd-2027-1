@@ -13,4 +13,11 @@ discusión del sábado. El programa calificado arranca con la lectura de la S3.
 - Lewis y Fowler, *Microservices* (2014): https://martinfowler.com/articles/microservices.html
 - Fowler, *MonolithFirst*: https://martinfowler.com/bliki/MonolithFirst.html
 
+## Lectura 2 · para la S3 (5 de septiembre) · **con esta arranca el programa calificado**
+
+- Waldo, Wyant, Wollrath y Kendall, *A Note on Distributed Computing* (1994):
+  https://github.com/papers-we-love/papers-we-love/blob/main/distributed_systems/a-note-on-distributed-computing.pdf
+- 2 preguntas + 1 hallazgo en la [Discussion #2](https://github.com/OscarRuiz21/sd-2027-1/discussions/2)
+  **antes del jueves 3 de septiembre, 23:59.**
+
 El calendario completo de lecturas se publica aquí conforme avanza el curso.
