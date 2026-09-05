@@ -1,8 +1,8 @@
-# Evidencia S02 - Docker
+# Evidencia Laboratorio S02 - Docker día uno: de cero a tu propia imagen
 
-# Perez Nava Francisco Javier
+## Perez Nava Francisco Javier
 
-## Comandos utilizados
+## 1. Comandos utilizados
 
 ```bash
 docker pull nginx:alpine
@@ -10,14 +10,12 @@ docker images
 docker run
 docker ps
 docker stop
-docker start
-docker exec
-docker logs
+docker rm
 docker build
 docker system prune
 ```
 
-## Error de puerto ocupado
+## 2. Error de puerto ocupado
 
 El error que obtuve al intentar utilizar un puerto que ya estaba ocupado:
 
@@ -34,7 +32,7 @@ docker: Error response from daemon: failed to set up container networking: drive
 Run 'docker run --help' for more information
 ```
 
-## Docker ps con dos contenedores
+## 3. Docker ps con dos contenedores
 
 La salida de docker ps con los dos contenedores funcionando:
 
@@ -49,10 +47,12 @@ CONTAINER ID   IMAGE          COMMAND                  CREATED          STATUS  
 4e66defe933c   nginx:alpine   "/docker-entrypoint.…"   3 hours ago      Up 3 hours      80/tcp                                    web1
 ```
 
-## Por que no cambio la pagina sin reconstruir
+## 4.Preguntas
+
+### 4.1 Por que no cambio la pagina sin reconstruir
 
 La pagina no cambio porque el archivo index.html ya habia quedado guardado dentro de la imagen cuando ejecute docker build. Aunque modifique el archivo en mi computadora, el contenedor seguia usando la imagen anterior. Despues para que fuera visible se reconstruyo la imagen, borrar el contenedor que existia y crear uno nuevo.
 
-## Que comparten y que no dos contenedores de la misma imagen
+### 4.2 Que comparten y que no dos contenedores de la misma imagen
 
 Los dos contenedores comparten la misma imagen como base, por lo que parten de los mismos archivos y configuracion. Sin embargo, cada contenedor funciona de manera independiente, tiene sus propios procesos y puede ejecutarse usando un puerto diferente.
