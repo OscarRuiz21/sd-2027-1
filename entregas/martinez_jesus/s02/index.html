@@ -1,0 +1,54 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Mi primer contenedor</title></head>
+<body style="font-family:sans-serif">
+<h1>Hola, soy Jesus</h1>
+<p>Esta página la sirve un contenedor que yo construí.</p>
+
+<h3>5 comandos clave</h3>
+<table border="1" cellpadding="5">
+<tr>
+  <th>Comando</th>
+  <th>Descripción</th>
+</tr>
+
+<tr>
+  <td>docker run [opciones] imagen</td>
+  <td>Crea e inicializa un contenedor a partir de una imagen ya sea que esta se encuentre localmente o deba ser descargada.
+    <br>Entre las opciones principales se encuentran:
+    <ul>
+      <li>-d: Ejecuta el contenedor en segundo plano</li>
+      <li>-p: Asocia un puerto del contenedor a un puerto del host</li>
+      <li>--name: Asigna un nombre al contenedor</li>
+      <li>-it: Abre una terminal interactiva dentro del contenedor</li>
+      <li>-v: Monta un volumen en el contenedor</li>
+      <li>-e: Establece variables de entorno</li>
+      <li>--rm: Elimina el contenedor después de su ejecución</li>
+    </ul>
+  </td>
+</tr>
+
+<tr>
+  <td>docker ps -a</td>
+  <td>Muestra todos los contenedores, su fecha de creación, estado y otros detalles.</td>
+</tr>
+
+<tr>
+  <td>docker build -t nombre_imagen .</td>
+  <td>Construye una imagen a partir de las instrucciones en un Dockerfile que se encuentra en el directorio actual</td>
+</tr>
+
+<tr>
+  <td>docker images</td>
+  <td>Muestra todas las imágenes disponibles y el espacio que ocupan.</td>
+</tr>
+
+<tr>
+  <td>docker exec [opciones] nombre_contenedor comando</td>
+  <td>Ejecuta un comando dentro de un contenedor en ejecución. 
+    <br>Una de las opciones más comunes es -it para abrir una terminal interactiva de tipo shell dentro del contenedor.
+  </td>
+</tr>
+
+</table>
+</body>
+</html>
