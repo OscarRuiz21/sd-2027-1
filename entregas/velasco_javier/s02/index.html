@@ -1,6 +1,64 @@
 <!doctype html>
-<html><head><meta charset="utf-8"><title>Mi primer contenedor</title></head>
-<body style="font-family:sans-serif">
-<h1>Hola, soy Javier Velasco Pacheco</h1>
-<p>Esta página la sirve un contenedor que yo construí.</p>
-</body></html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Javier Velasco Pacheco</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 40px;
+            color: #000000;
+        }
+        h1 {
+            color: #111;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #030303;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+    </style>
+</head>
+<body>
+    <h1>Javier Velasco Pacheco</h1>
+    <h2>Comandos Docker</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Comando</th>
+                <th>Descripción</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>docker run</code></td>
+                <td>Inicializa el contenedor sobre una imagen</td>
+            </tr>
+            <tr>
+                <td><code>docker start "nombre"</code></td>
+                <td>Activar un contenedor especifico</td>
+            </tr>
+            <tr>
+                <td><code>docker rm "nombre"</code></td>
+                <td>Eliminamos un contenedor especifico</td>
+            </tr>
+            <tr>
+                <td><code>docker images</code></td>
+                <td>Muestra todas las imágenes creadas</td>
+            </tr>
+            <tr>
+                <td><code>docker ps</code></td>
+                <td>Muestra los contenedores activos</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
