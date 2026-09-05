@@ -1,0 +1,45 @@
+<!doctype html>
+<html><head><meta charset="utf-8"><title>Mi primer contenedor</title></head>
+<body style="font-family:sans-serif">
+<h1>Hola, soy Alejandro Victoria Domínguez :D</h1>
+<p>Esta página la sirve un contenedor que yo construí.</p>
+<h2>Estos fueron los 5 comandos que más me sirvieron en la práctica</h2>
+<table border="1">
+    <tr>
+        <th>
+            <th>Comando</th>
+            <th>Uso</th>
+        </th>
+    </tr> 
+    <tr>
+        <th>
+            <th>docker pull imagen:tag</th>
+            <th>Descarga una imagen que ocupé para montar la página en localhost. Bajé nginx en versión alpine.</th>
+        </th>
+    </tr> 
+<tr>        
+    <th>
+        <th>docker run -d -p puerto-de-mi-máquina:puerto-del-contenedor --name nombre imagen:tag</th>
+        <th>Crea y ejecuta un contenedor en segundo plano con un puerto de mi máquina abierto y un puerto del contenedor abierto. El nombre es arbitrario y se basa en la imágen y versión especificada.</th>
+    </th>
+</tr>
+<tr>        
+    <th>
+        <th>docker logs nombre</th>
+        <th>Imprime en la terminal todo lo que ha sucedido desde la creación del contenedor. Ahí pude ver mi visita a la página que se levantó.</th>
+    </th>
+</tr>
+<tr>        
+    <th>
+        <th>docker build -t nombre</th>
+        <th>Se crea una imágen a partir de los archivos que se encuentran en el directorio donde se ejecuta el comando. En este caso utilizó el archivo Dockerfile para configurar la imágen y index.html como el archivo con el contenido de la página web.</th>
+    </th>
+</tr>
+<tr>        
+    <th>
+        <th>docker rm nombre</th>
+        <th>Elimina el contenedor del nombre especificado.</th>
+    </th>
+</tr>
+</table>
+</body></html>
