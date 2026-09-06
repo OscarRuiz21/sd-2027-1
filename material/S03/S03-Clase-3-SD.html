@@ -1,0 +1,927 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SD 2027-1 · Clase 3 · Anatomía de un sistema real</title>
+<style>
+:root{--bg:#f5f8fc;--panel:#ffffff;--line:#d9e2ee;--ink:#12253d;--dim:#4b6178;
+--am:#b45309;--amsoft:#fff8ef;--gr:#15803d;--grsoft:#f0fdf4;--rd:#b91c1c;--code:#eef3f9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);height:100vh;overflow:hidden;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+section{position:absolute;inset:0;display:none;flex-direction:column;padding:3vh 4.2vw 4.2vh;animation:f .3s ease both}
+section.on{display:flex}
+@keyframes f{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--am);font-size:clamp(.7rem,1.05vw,1rem);font-weight:800;
+letter-spacing:.18em;text-transform:uppercase;margin-bottom:.5em}
+h1{font-size:clamp(2.1rem,3.9vw,3.5rem);line-height:1.06;letter-spacing:-.02em;font-weight:800;margin-bottom:.5em}
+h2{font-size:clamp(1.3rem,2.1vw,2.1rem);line-height:1.15;font-weight:750;margin-bottom:.45em}
+h2 small{color:var(--dim);font-weight:600;font-size:.62em}
+p{font-size:clamp(.92rem,1.3vw,1.32rem);line-height:1.5;color:var(--dim)}
+strong{color:var(--ink);font-weight:700}
+em{color:var(--am);font-style:normal;font-weight:700}
+.body{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;justify-content:center;gap:0}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1.1em}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:.9em}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:.95em 1.1em;
+box-shadow:0 1px 2px rgba(18,37,61,.05),0 4px 14px rgba(18,37,61,.045)}
+.card h3{font-size:clamp(.96rem,1.34vw,1.34rem);color:var(--ink);font-weight:750;margin-bottom:.3em}
+.card p{font-size:clamp(.82rem,1.12vw,1.14rem);line-height:1.45}
+ul{list-style:none}
+li{font-size:clamp(.86rem,1.18vw,1.2rem);line-height:1.45;color:var(--dim);margin:.4em 0;padding-left:1.25em;position:relative}
+li::before{content:"";position:absolute;left:0;top:.55em;width:.42em;height:.42em;border-radius:50%;background:var(--am)}
+li b{color:var(--ink)}
+ol.flow{list-style:none;counter-reset:st;margin:0}
+ol.flow li{counter-increment:st;padding-left:2.1em;margin:.5em 0}
+ol.flow li::before{content:counter(st);width:1.5em;height:1.5em;border-radius:50%;
+background:var(--am);color:#fff;font-weight:800;font-size:.82em;display:flex;align-items:center;
+justify-content:center;top:.15em}
+pre{background:var(--code);border:1px solid var(--line);border-radius:11px;padding:.7em .9em;overflow:auto}
+code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:clamp(.82rem,1.2vw,1.22rem);line-height:1.55;color:#1e293b}
+.k{color:#0369a1}.t{color:#b45309}.n{color:#64748b}.s{color:#15803d}
+table{border-collapse:collapse;width:100%;font-size:clamp(.8rem,1.1vw,1.12rem)}
+td,th{padding:.4em .65em;border-bottom:1px solid var(--line);text-align:left;color:var(--dim);vertical-align:top}
+th{color:var(--am);font-size:.78em;text-transform:uppercase;letter-spacing:.09em}
+td b,td code{color:var(--ink)}
+td code{font-size:.92em}
+.quote{border-left:4px solid var(--am);padding-left:.9em;font-size:clamp(1rem,1.5vw,1.5rem);
+line-height:1.35;color:var(--ink);font-weight:700}
+.chip{display:inline-block;background:#edf3fa;border:1px solid var(--line);border-radius:999px;
+padding:.2em .7em;font-size:clamp(.74rem,1.02vw,1rem);color:var(--dim);margin:.16em .22em .16em 0}
+.chip b{color:var(--am)}
+.def{background:var(--amsoft);border:1px solid #ecd9b8;border-left:4px solid var(--am);
+border-radius:0 11px 11px 0;padding:.65em .9em;margin-bottom:.7em}
+.def p{color:var(--ink);font-size:clamp(.9rem,1.26vw,1.28rem);line-height:1.45}
+.def .lb{display:block;font-size:.68em;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--am);margin-bottom:.2em}
+.lbl{font-size:clamp(.66rem,.92vw,.92rem);font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--am);margin:.1em 0 .35em}
+.srf{border-top:1px solid var(--line);margin-top:.8em;padding-top:.5em;font-size:clamp(.82rem,1.12vw,1.14rem)}
+.ph{border:2px dashed #b8c6d8;border-radius:11px;min-height:7em;display:flex;align-items:center;
+justify-content:center;flex-direction:column;gap:.25em;padding:.5em;text-align:center;background:#fbfdff;overflow:hidden}
+.ph img{max-width:100%;max-height:38vh;border-radius:8px;display:none}
+.ph.ok{border:1px solid var(--line);background:var(--panel)}
+.ph.ok img{display:block}
+.ph.ok .phl{display:none}
+.phl{font-family:ui-monospace,Menlo,monospace;font-size:clamp(.68rem,.95vw,.95rem);color:#7d92aa;line-height:1.5}
+.phl b{color:var(--am)}
+.tag{display:inline-block;padding:.28em .75em;border-radius:7px;font-weight:750;font-size:clamp(.72rem,1vw,1rem);margin:.15em .2em}
+.tag.svc{background:#fff;border:1.5px solid var(--ink);color:var(--ink)}
+.tag.db{background:#1d3a60;border:1.5px solid #1d3a60;color:#eaf3ff}
+.tag.brk{background:var(--am);border:1.5px solid var(--am);color:#fff}
+.tag.x{background:transparent;border:1.5px dashed #7d92aa;color:var(--dim)}
+.dg{display:grid;grid-template-columns:1fr 13em;gap:1em;align-items:start}
+.dgcol{display:flex;flex-direction:column;gap:.3em}
+.dgrow{display:flex;gap:.6em;justify-content:center}
+.dgrow>*{flex:1;text-align:center}
+.dgbox{padding:.5em .6em;border-radius:8px;font-weight:750;font-size:clamp(.76rem,1.06vw,1.08rem)}
+.dgbox small{display:block;font-weight:500;font-size:.78em;opacity:.8}
+.dgb-cli{background:#edf3fa;border:1px solid var(--line);color:var(--dim)}
+.dgb-svc{background:#fff;border:1.5px solid var(--ink);color:var(--ink)}
+.dgb-db{background:#1d3a60;color:#eaf3ff}
+.dgb-brk{background:var(--am);color:#fff}
+.dgb-x{border:1.5px dashed #7d92aa;color:var(--dim);background:transparent}
+.dgar{text-align:center;color:#7d92aa;font-size:clamp(.7rem,.98vw,1rem);font-weight:700;line-height:1.1}
+[data-s]{opacity:0;transform:translateY(6px);transition:opacity .35s ease,transform .35s ease}
+[data-s].on{opacity:1;transform:none}
+tr[data-s]{transform:none}
+.lane{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:13px;margin-top:.6em}
+.pkt{position:absolute;width:1.05em;height:1.05em;border-radius:50%;background:var(--am);
+box-shadow:0 0 0 5px rgba(180,83,9,.16);transition:left .55s ease,top .55s ease;z-index:3}
+#bar{position:fixed;left:0;bottom:0;height:3px;background:var(--am);transition:width .3s}
+#num{position:fixed;right:1vw;bottom:.7vh;font-size:.72rem;color:#9db0c6;font-variant-numeric:tabular-nums}
+#hint{position:fixed;left:1.2vw;bottom:.7vh;font-size:.72rem;color:#9db0c6}
+body:fullscreen #hint{display:none}
+</style></head><body>
+
+<!-- 1 · PORTADA -->
+<section>
+ <div class="body" style="align-items:center;text-align:center;gap:.5em">
+  <div class="eyebrow" style="margin-bottom:0">Sistemas Distribuidos 2027-1 · Grupo 2 · Clase 3 · Sábado 5 de septiembre</div>
+  <h1>Anatomía de un<br><em>sistema real</em></h1>
+  <p style="max-width:36em">Las piezas estándar de un sistema distribuido en producción: qué es cada una, qué problema resuelve y cómo funciona.</p>
+  <div style="margin-top:1em">
+    <span class="chip"><b>0</b> Objetivo y demo</span>
+    <span class="chip"><b>I</b> Del monolito al sistema</span>
+    <span class="chip"><b>II</b> Cómo se hablan los servicios</span>
+    <span class="chip"><b>III</b> Las piezas del sistema</span>
+    <span class="chip"><b>IV</b> Los datos</span>
+    <span class="chip"><b>·</b> Decisión + lectura</span>
+  </div>
+ </div>
+</section>
+
+<!-- · OBJETIVO -->
+<section data-steps="4">
+ <div class="eyebrow">Objetivo de la sesión</div>
+ <div class="body">
+  <h2>Al final de hoy podrán…</h2>
+  <ol class="flow" style="max-width:46em">
+   <li data-s="1" style="margin:.85em 0">Identificar las <b>piezas estándar</b> de un sistema distribuido en producción y el <b>problema que cada una resuelve</b>.</li>
+   <li data-s="2" style="margin:.85em 0">Leer y construir una <b>llamada REST</b>: verbos, códigos de estado y JSON.</li>
+   <li data-s="3" style="margin:.85em 0">Explicar cómo un servicio <b>encuentra</b> a otro: naming, binding, DNS y service discovery.</li>
+   <li data-s="4" style="margin:.85em 0">Argumentar la decisión entre <b>llamada síncrona y evento</b> — y decir qué se sacrifica.</li>
+  </ol>
+  <p class="srf">Todo sobre el mismo <b>sistema de referencia</b> que van a ver correr en la demo — y sobre el que trabajarán el resto del semestre.</p>
+ </div>
+</section>
+
+<!-- 2 · DEMO · caja negra -->
+<section>
+ <div class="eyebrow">Demo · el sistema de referencia, como caja negra</div>
+ <div class="body">
+  <div class="g2" style="grid-template-columns:1.25fr 1fr;gap:1.2em;align-items:start">
+   <div>
+    <div class="def"><span class="lb">Qué van a ver</span>
+     <p>Un sistema completo corriendo en contenedores: servicios de negocio, sus bases de datos y la infraestructura alrededor. Hoy se observa por fuera; las próximas semanas se trabaja sobre él.</p>
+    </div>
+    <table>
+     <tr><th>Pieza</th><th>Rol</th><th>Puerto*</th></tr>
+     <tr><td><b>API Gateway</b> (Spring Cloud Gateway)</td><td>entrada única</td><td><code>8080</code></td></tr>
+     <tr><td><b>Discovery</b> (Eureka)</td><td>registro de servicios</td><td><code>8761</code></td></tr>
+     <tr><td><b>Config server</b> (Spring Cloud Config)</td><td>configuración central</td><td><code>8888</code></td></tr>
+     <tr><td><b>Servidor de autenticación</b> (Keycloak)</td><td>quién es y qué puede hacer</td><td><code>8180</code></td></tr>
+     <tr><td><b>Broker</b> (RabbitMQ)</td><td>mensajería asíncrona</td><td><code>5672</code> · consola <code>15672</code></td></tr>
+     <tr><td><b>Caché</b> (Redis)</td><td>lecturas rápidas en memoria</td><td><code>6379</code></td></tr>
+     <tr><td><b>Datos</b> (PostgreSQL · MongoDB)</td><td>bases de datos de los servicios</td><td><code>5432</code> / <code>27017</code></td></tr>
+     <tr><td><b>Observabilidad</b> (Grafana · Prometheus · Jaeger)</td><td>métricas y trazas</td><td><code>3000</code> · <code>9090</code> · <code>16686</code></td></tr>
+    </table>
+    <p style="font-size:clamp(.74rem,1vw,1rem);margin-top:.4em">*Puertos por defecto; los definitivos van en el <code style="font-size:.9em">compose</code> del curso.</p>
+   </div>
+   <div>
+    <pre style="margin-bottom:.7em"><code>$ docker compose up -d
+$ docker compose ps</code></pre>
+    <figure class="ph" style="min-height:12em">
+     <img data-img="demo-sistema" alt="Sistema de referencia corriendo">
+     <figcaption class="phl">img/<b>demo-sistema</b>.png<br>captura: docker compose ps con todos los contenedores arriba</figcaption>
+    </figure>
+    <p class="srf"><b>Mismos comandos del lab de hoy:</b> imágenes, contenedores, puertos y logs — solo que ahora son ~12 contenedores coordinados.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- · PORTADILLA I -->
+<section>
+ <div class="body" style="align-items:center;text-align:center;gap:.55em">
+  <div class="eyebrow" style="margin-bottom:0">Bloque I de IV</div>
+  <h1 style="font-size:clamp(1.7rem,3.1vw,2.9rem)">Del monolito al<br><em>sistema distribuido</em></h1>
+  <p style="max-width:33em">El modelo cliente-servidor — y los cinco problemas que aparecen al partir un monolito.</p>
+  <figure class="ph" style="width:min(64%,30em);min-height:10em;margin-top:.4em">
+   <img data-img="seccion-modelo" alt="">
+   <figcaption class="phl">img/<b>seccion-modelo</b>.png · imagen de sección (libre)</figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- · CLIENTE-SERVIDOR -->
+<section data-steps="6">
+ <div class="eyebrow">Arquitectura · el modelo del que todo parte</div>
+ <div class="body">
+  <h2>Cliente-servidor <small>· roles asimétricos: uno espera, el otro inicia</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">Definición</span>
+     <p>Dos roles asimétricos sobre una red: el <b>servidor</b> ofrece un servicio y espera peticiones en una dirección conocida (IP y puerto); el <b>cliente</b> inicia la conversación. Todo lo que sigue en el curso — REST, gRPC, mensajería — es una variación de este modelo.</p>
+    </div>
+    <div class="lbl">Las capas</div>
+    <ul>
+     <li><b>2 capas:</b> interfaz en el cliente ↔ lógica y datos en el servidor.</li>
+     <li><b>3 capas:</b> presentación · lógica de negocio · datos. El monolito clásico: las tres en un solo proceso.</li>
+     <li><b>N capas:</b> la lógica se reparte entre varios servidores — el paso natural hacia los servicios.</li>
+     <li data-s="6">En microservicios cada servicio juega <b>ambos roles</b>: servidor de su API y cliente de las demás.</li>
+    </ul>
+   </div>
+   <div>
+    <div class="lbl">Cómo funciona</div>
+    <ol class="flow">
+     <li data-s="1">El servidor arranca y <b>escucha</b> en una dirección conocida: IP:puerto.</li>
+     <li data-s="2">El cliente <b>resuelve el nombre</b> a esa dirección: <b>DNS</b>, el naming de Internet (nombre → IP).</li>
+     <li data-s="3">Con la IP en mano, abre conexión y envía la petición.</li>
+     <li data-s="4">Para responder, el servidor puede actuar a su vez <b>como cliente de otro</b>.</li>
+     <li data-s="5">La respuesta regresa; el servidor queda esperando la siguiente petición.</li>
+     <li data-s="6">Muchos clientes concurrentes, un servidor: la <b>concurrencia</b> se resuelve del lado del servidor.</li>
+    </ol>
+   </div>
+  </div>
+  <div class="lane" style="height:10em">
+   <div class="dgbox dgb-x" style="position:absolute;left:6%;top:6%">DNS</div>
+   <div class="dgbox dgb-cli" style="position:absolute;left:4%;top:52%">Cliente</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:40%;top:52%">Servidor · pagos</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:76%;top:52%">Servidor · cuentas</div>
+   <span class="chip" data-s="1" style="position:absolute;left:42%;top:22%">escucha en 10.0.0.7:8080</span>
+   <span class="chip" data-s="2" style="position:absolute;left:16%;top:10%">pagos.boletix.mx → 10.0.0.7</span>
+   <span class="chip" data-s="3" style="position:absolute;left:24%;top:80%">petición</span>
+   <span class="chip" data-s="4" style="position:absolute;left:62%;top:22%">ahora es cliente de otro</span>
+   <span class="chip" data-s="5" style="position:absolute;left:24%;top:36%">respuesta</span>
+   <div class="pkt" data-pos="13%,62%;13%,62%;13%,22%;46%,62%;82%,62%;13%,62%;13%,62%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> cada uno de los ~12 contenedores de la demo es un servidor escuchando en su puerto — y casi todos son además clientes de otros.</p>
+ </div>
+</section>
+
+<!-- 3 · PUENTE -->
+<section data-steps="7">
+ <div class="eyebrow">Del monolito a los servicios · por qué existen las piezas</div>
+ <div class="body">
+  <h2>Partir el monolito crea problemas nuevos <small>· y cada problema tiene una pieza estándar</small></h2>
+  <div class="def"><span class="lb">LO QUE CAMBIA</span><p>En un monolito, un módulo llama a otro con una llamada a función: local, confiable, instantánea. Al partirlo en servicios, cada llamada cruza la red — y la red falla, tarda y cambia de direcciones.</p></div>
+  <div class="lane" style="height:11em;margin-top:.6em">
+   <div class="dgbox dgb-cli" style="position:absolute;left:4%;top:20%;width:13em">Monolito<div style="font-size:clamp(.74rem,1vw,1rem);font-weight:normal;margin-top:.3em">interfaz + lógica + datos, un solo proceso</div></div>
+   <div class="dgar" data-s="1" style="position:absolute;left:33%;top:42%;width:12%">→ se parte</div>
+   <div class="dgbox dgb-svc" data-s="1" style="position:absolute;left:50%;top:8%;width:14%">Cuentas</div>
+   <div class="dgbox dgb-svc" data-s="1" style="position:absolute;left:66%;top:8%;width:14%">Pagos</div>
+   <div class="dgbox dgb-svc" data-s="1" style="position:absolute;left:82%;top:8%;width:14%">Notificaciones</div>
+   <div class="dgbox dgb-db" data-s="1" style="position:absolute;left:54%;top:62%;width:6%">BD</div>
+   <div class="dgbox dgb-db" data-s="1" style="position:absolute;left:70%;top:62%;width:6%">BD</div>
+   <div class="dgbox dgb-db" data-s="1" style="position:absolute;left:86%;top:62%;width:6%">BD</div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:.7em;margin-top:.7em">
+   <div class="card" data-s="2"><p style="font-size:clamp(.74rem,1vw,1rem)">1 · ¿Por dónde entra el cliente si ahora son N servicios? → <b>API Gateway</b></p></div>
+   <div class="card" data-s="3"><p style="font-size:clamp(.74rem,1vw,1rem)">2 · ¿Cómo se encuentran entre sí, si sus direcciones cambian? → <b>Service discovery</b></p></div>
+   <div class="card" data-s="4"><p style="font-size:clamp(.74rem,1vw,1rem)">3 · ¿Dónde vive la configuración de cada uno? → <b>Config server</b></p></div>
+   <div class="card" data-s="5"><p style="font-size:clamp(.74rem,1vw,1rem)">4 · ¿Qué pasa con una operación si el otro servicio está caído? → <b>Broker de mensajes</b></p></div>
+   <div class="card" data-s="6"><p style="font-size:clamp(.74rem,1vw,1rem)">5 · ¿Cómo sé dónde falló una operación que cruzó varios? → <b>Observabilidad</b></p></div>
+  </div>
+  <div class="quote" data-s="7">Ninguna de estas piezas existe en el monolito. Todas existen en cualquier sistema distribuido serio — con estos nombres.</div>
+ </div>
+</section>
+
+<!-- · PORTADILLA II -->
+<section>
+ <div class="body" style="align-items:center;text-align:center;gap:.55em">
+  <div class="eyebrow" style="margin-bottom:0">Bloque II de IV</div>
+  <h1 style="font-size:clamp(1.7rem,3.1vw,2.9rem)">Cómo se hablan<br><em>los servicios</em></h1>
+  <p style="max-width:33em">Las cinco preguntas de toda llamada remota — y REST como la respuesta más común.</p>
+  <figure class="ph" style="width:min(64%,30em);min-height:10em;margin-top:.4em">
+   <img data-img="seccion-comunicacion" alt="">
+   <figcaption class="phl">img/<b>seccion-comunicacion</b>.png · imagen de sección (libre)</figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- · COMPONENTES DE LA COMUNICACIÓN -->
+<section data-steps="5">
+ <div class="eyebrow">Comunicación · qué resuelve cualquier llamada remota</div>
+ <div class="body">
+  <h2>Los componentes de la comunicación <small>· cinco preguntas, siempre las mismas</small></h2>
+  <div class="def"><span class="lb">La idea</span>
+   <p>Para que un proceso invoque a otro a través de la red, <b>cinco cosas deben quedar resueltas</b>. Cada tecnología del curso es una combinación concreta de respuestas a estas cinco preguntas.</p>
+  </div>
+  <table style="margin-top:.4em">
+   <tr><th>Componente</th><th>Pregunta que resuelve</th><th>En este curso</th></tr>
+   <tr data-s="1"><td><b>Naming</b></td><td>¿Cómo se llama el destino? Un <b>nombre lógico</b>, no una dirección física.</td><td>DNS (los nombres de Internet — AWS: Route 53) · nombres de servicio (<code>pagos</code>)</td></tr>
+   <tr data-s="2"><td><b>Binding</b></td><td>¿Cómo se asocia ese nombre a una <b>dirección concreta</b> (IP:puerto) al momento de llamar?</td><td>estático (en la config) · dinámico (<b>service discovery</b>, en cada llamada)</td></tr>
+   <tr data-s="3"><td><b>Protocolo</b></td><td>¿Cómo viajan los bytes, con qué reglas y en qué orden?</td><td>HTTP sobre TCP · HTTP/2 (gRPC) · AMQP (broker)</td></tr>
+   <tr data-s="4"><td><b>Serialización</b> (marshalling)</td><td>¿Cómo se <b>codifican los datos</b> para viajar y reconstruirse al llegar?</td><td>JSON (texto) · protobuf (binario)</td></tr>
+   <tr data-s="5"><td><b>Contrato</b> (interfaz)</td><td>¿Qué <b>operaciones</b> existen, con qué parámetros y qué respuestas?</td><td>rutas y verbos (REST) · archivo <code>.proto</code> (gRPC)</td></tr>
+  </table>
+  <p class="srf">Naming y binding reaparecen como la pieza de <b>service discovery</b>; serialización y contrato, al comparar REST con gRPC en la <b>S4</b>.</p>
+ </div>
+</section>
+
+<!-- 4 · REST · LA LLAMADA -->
+<section data-steps="5">
+ <div class="eyebrow">Comunicación · la unidad básica: una llamada HTTP</div>
+ <div class="body">
+  <h2>REST <small>· petición y respuesta sobre HTTP</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def">
+     <span class="lb">DEFINICIÓN</span>
+     <p>Estilo de comunicación sobre HTTP (el mismo protocolo que ya conocen de redes): un servicio expone sus datos como recursos con URL propia; otro servicio — o un navegador — los pide y espera la respuesta. Es síncrono: quien llama, espera.</p>
+    </div>
+    <div class="lbl">PROBLEMA / CONTEXTO</div>
+    <ul>
+     <li>Toda pieza de las próximas slides existe alrededor de estas llamadas.</li>
+     <li data-s="4">La representación viaja en <b>JSON</b>: texto estructurado de pares campo: valor, legible por humanos y por máquinas.</li>
+     <li data-s="5">El cliente queda <b>esperando</b>: si el servidor tarda o muere, el cliente lo sufre — de ahí saldrán varias piezas.</li>
+    </ul>
+   </div>
+   <div>
+    <div class="lbl">CÓMO FUNCIONA</div>
+    <ol class="flow">
+     <li data-s="1">El cliente arma la petición: verbo + ruta del recurso.</li>
+     <li data-s="2">La petición viaja por la red al servidor.</li>
+     <li data-s="3">El servidor la procesa y arma la respuesta: código de estado + cuerpo.</li>
+     <li data-s="4">La respuesta regresa; el cliente la interpreta.</li>
+    </ol>
+   </div>
+  </div>
+  <div class="lane" style="height:9em">
+   <div class="dgbox dgb-svc" style="position:absolute;left:4%;top:30%;max-width:12em">Servicio A (cliente)</div>
+   <div class="dgbox dgb-svc" style="position:absolute;right:4%;top:30%;max-width:12em">Servicio B (servidor)</div>
+   <span class="chip" data-s="1" style="position:absolute;left:34%;top:6%">GET /api/cuentas/42</span>
+   <span class="chip" data-s="3" style="position:absolute;left:58%;top:76%">200 OK + JSON</span>
+   <div class="pkt" data-pos="13%,46%;13%,46%;48%,46%;83%,46%;13%,46%;13%,46%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> cada URL de la demo fue exactamente esto — un verbo, una ruta, un código y un JSON.</p>
+ </div>
+</section>
+
+<!-- 5 · REST · VERBOS Y CÓDIGOS -->
+<section data-steps="2">
+ <div class="eyebrow">Comunicación · el vocabulario de REST</div>
+ <div class="body">
+  <h2>Verbos y códigos de estado <small>· la semántica está estandarizada</small></h2>
+  <div class="g2" style="align-items:start">
+   <div data-s="1">
+    <div class="lbl">VERBOS Y SU SEMÁNTICA</div>
+    <table>
+     <tr><th>Verbo</th><th>Semántica</th><th>¿Idempotente?*</th></tr>
+     <tr><td><b>GET</b></td><td>leer un recurso</td><td>sí</td></tr>
+     <tr><td><b>POST</b></td><td>crear u operar</td><td>no</td></tr>
+     <tr><td><b>PUT</b></td><td>reemplazar completo</td><td>sí</td></tr>
+     <tr><td><b>PATCH</b></td><td>modificar parcial</td><td>en general, no</td></tr>
+     <tr><td><b>DELETE</b></td><td>eliminar</td><td>sí</td></tr>
+    </table>
+    <p style="font-size:clamp(.74rem,1vw,1rem);margin-top:.5em">*idempotente: repetirla deja el mismo estado. La definición formal viene en unas slides.</p>
+   </div>
+   <div data-s="2">
+    <div class="lbl">CÓDIGOS DE ESTADO: LAS FAMILIAS</div>
+    <table>
+     <tr><th>Familia</th><th>Significado</th><th>Códigos típicos</th></tr>
+     <tr><td><b>2xx</b></td><td>éxito</td><td>200 OK · 201 creado · 204 sin cuerpo</td></tr>
+     <tr><td><b>4xx</b></td><td>error del cliente</td><td>400 inválida · 401-403 identidad-permiso · 404 no existe · 409 conflicto</td></tr>
+     <tr><td><b>5xx</b></td><td>error del servidor</td><td>500 interno · 503 no disponible</td></tr>
+    </table>
+   </div>
+  </div>
+   </div>
+</section>
+
+<!-- · PORTADILLA III -->
+<section>
+ <div class="body" style="align-items:center;text-align:center;gap:.55em">
+  <div class="eyebrow" style="margin-bottom:0">Bloque III de IV</div>
+  <h1 style="font-size:clamp(1.7rem,3.1vw,2.9rem)">Las piezas<br><em>del sistema</em></h1>
+  <p style="max-width:33em">Seis piezas estándar, cada una nacida de un problema concreto. Primero el mapa; luego, una por una.</p>
+  <figure class="ph" style="width:min(64%,30em);min-height:10em;margin-top:.4em">
+   <img data-img="seccion-piezas" alt="">
+   <figcaption class="phl">img/<b>seccion-piezas</b>.png · imagen de sección (libre)</figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- 6 · MAPA -->
+<section data-steps="6">
+ <div class="eyebrow">El mapa · las respuestas a los 5 problemas, en un dibujo</div>
+ <div class="body">
+  <div class="g2" style="grid-template-columns:1fr 13em;align-items:start;gap:1em">
+   <div style="display:flex;flex-direction:column;gap:.3em">
+    <div data-s="1" style="display:flex;flex-direction:column;gap:.3em">
+     <div class="dgbox dgb-cli" style="max-width:20em;width:100%;margin:0 auto;text-align:center">Clientes (web · móvil)</div>
+     <div class="dgar">HTTPS</div>
+     <div class="dgbox dgb-svc" style="border-width:2.5px;max-width:20em;width:100%;margin:0 auto;text-align:center">API Gateway · problema 1</div>
+     <div class="dgar">enruta y balancea</div>
+    </div>
+    <div style="display:flex;gap:.6em">
+     <div class="dgbox dgb-svc" style="flex:1;text-align:center">Cuentas</div>
+     <div class="dgbox dgb-svc" style="flex:1;text-align:center">Pagos</div>
+     <div class="dgbox dgb-svc" style="flex:1;text-align:center">Notificaciones</div>
+    </div>
+    <div data-s="4" style="display:flex;flex-direction:column;gap:.3em">
+     <div class="dgar">eventos (asíncrono)</div>
+     <div class="dgbox dgb-brk" style="max-width:24em;width:100%;margin:0 auto;text-align:center">Broker · RabbitMQ · problema 4</div>
+    </div>
+    <div class="dgar">cada servicio, su almacenamiento</div>
+    <div style="display:flex;gap:.6em">
+     <div class="dgbox dgb-db" style="flex:1;text-align:center">PostgreSQL</div>
+     <div class="dgbox dgb-db" style="flex:1;text-align:center">MongoDB</div>
+     <div class="dgbox dgb-db" style="flex:1;text-align:center">Redis</div>
+    </div>
+   </div>
+   <div style="display:flex;flex-direction:column;gap:.5em">
+    <div class="lbl" style="text-align:center">TRANSVERSALES<br><span style="font-size:clamp(.74rem,1vw,1rem);text-transform:none;letter-spacing:0">(hablan con todos)</span></div>
+    <div class="dgbox dgb-x" data-s="2" style="text-align:center">Discovery · problema 2</div>
+    <div class="dgbox dgb-x" data-s="3" style="text-align:center">Config server · problema 3</div>
+    <div class="dgbox dgb-x" data-s="5" style="text-align:center">Observabilidad · problema 5</div>
+    <div class="dgbox dgb-x" data-s="6" style="text-align:center">Servidor de autenticación<br><span style="font-size:clamp(.74rem,1vw,1rem)">(Keycloak) — emite credenciales firmadas; hoy solo se nombra</span></div>
+   </div>
+  </div>
+  <div style="text-align:center;margin-top:.7em">
+   <span class="tag svc">servicio</span> <span class="tag db">almacenamiento</span> <span class="tag brk">mensajería</span> <span class="tag x">transversal</span>
+  </div>
+ </div>
+</section>
+
+<!-- 7 · GATEWAY -->
+<section data-steps="5">
+ <div class="eyebrow">Anatomía · problema 1: por dónde entra el cliente</div>
+ <div class="body">
+  <h2>API Gateway <small>· punto de entrada único</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">DEFINICIÓN</span><p>Servicio que recibe todas las peticiones externas y las enruta al servicio interno correspondiente, aplicando en un solo lugar las políticas comunes: identidad, cifrado y límites de uso.</p></div>
+    <div class="lbl">PROBLEMA QUE RESUELVE</div>
+    <ul>
+     <li>Sin gateway, cada servicio expone su propio <b>host y puerto</b>: la seguridad y los límites se implementan N veces.</li>
+     <li>Los clientes quedan <b>acoplados a la topología interna</b>: mover o dividir un servicio rompe a todos los consumidores.</li>
+    </ul>
+    <div style="margin-top:.6em"><span class="chip">Spring Cloud Gateway</span> <span class="chip">Kong</span> <span class="chip">NGINX</span> <span class="chip">Traefik</span> <span class="chip"><b>AWS:</b> Amazon API Gateway</span></div>
+   </div>
+   <div>
+    <div class="lbl">CÓMO FUNCIONA</div>
+    <ol class="flow">
+     <li data-s="1">El cliente llama a una sola URL pública: <b>/api/pagos</b>.</li>
+     <li data-s="2">El gateway <b>valida la credencial</b> y aplica políticas.</li>
+     <li data-s="3">Resuelve la <b>ruta configurada</b> → servicio destino.</li>
+     <li data-s="4">Reenvía la petición a una <b>instancia interna</b>.</li>
+     <li data-s="5">Regresa la respuesta; registra <b>métricas y log de acceso</b>.</li>
+    </ol>
+    <figure class="ph" style="margin-top:.6em;min-height:5.5em"><img data-img="gateway" alt=""><figcaption class="phl">img/<b>gateway</b>.png · imagen opcional de apoyo</figcaption></figure>
+   </div>
+  </div>
+  <div class="lane" style="height:9em">
+   <div class="dgbox dgb-cli" style="position:absolute;left:3%;top:34%;max-width:9em">Cliente</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:40%;top:30%;max-width:10em;border-width:3px">Gateway</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:78%;top:18%;max-width:9em">Pagos</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:78%;top:62%;max-width:9em">Cuentas</div>
+   <div class="dgar" style="position:absolute;left:16%;top:38%">→</div>
+   <div class="dgar" style="position:absolute;left:60%;top:24%">→</div>
+   <span class="chip" data-s="2" style="position:absolute;left:36%;top:0">valida y aplica políticas</span>
+   <div class="pkt" data-pos="10%,46%;45%,42%;45%,42%;45%,42%;82%,28%;10%,46%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> todas las URLs de la demo pasaron por el gateway (:8080); ningún servicio interno está expuesto directamente.</p>
+ </div>
+</section>
+
+<!-- 8 · DISCOVERY -->
+<section data-steps="6">
+ <div class="eyebrow">Anatomía · problema 2: cómo se encuentran entre sí</div>
+ <div class="body">
+  <h2>Service Discovery <small>· nombre lógico → instancias vivas</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">DEFINICIÓN</span><p>Registro central y dinámico: traduce un nombre lógico de servicio («pagos») a la lista de direcciones de sus instancias vivas. Es el <b>binding dinámico</b>: el nombre se resuelve a direcciones en el momento de llamar — el papel del DNS, pero dentro del sistema y con direcciones que cambian a cada rato.</p></div>
+    <div class="lbl">PROBLEMA QUE RESUELVE</div>
+    <ul>
+     <li>En contenedores las direcciones IP son <b>efímeras</b>: cada arranque asigna una distinta.</li>
+     <li>Al escalar hay <b>N instancias</b> del mismo servicio: una dirección fija no alcanza.</li>
+    </ul>
+    <div class="lbl">HERRAMIENTAS</div>
+    <div><span class="chip">Eureka</span> <span class="chip">Consul</span> <span class="chip">etcd</span> <span class="chip">DNS de Kubernetes</span> <span class="chip"><b>AWS:</b> Cloud Map</span></div>
+   </div>
+   <div>
+    <div class="lbl">CÓMO FUNCIONA</div>
+    <ol class="flow">
+     <li data-s="1">La instancia arranca y <b>se registra</b>: nombre, IP, puerto.</li>
+     <li data-s="2">Renueva su registro con <b>heartbeats</b> (señales periódicas de vida).</li>
+     <li data-s="3">Un consumidor <b>pide «pagos»</b> al registro.</li>
+     <li data-s="4">Recibe la <b>lista de instancias vivas</b> y reparte entre ellas.</li>
+     <li data-s="5">Llama <b>directo</b> a la instancia elegida.</li>
+     <li data-s="6">Si el heartbeat no llega en el plazo, la instancia <b>sale del registro</b>.</li>
+    </ol>
+   </div>
+  </div>
+  <div class="lane" style="height:10em">
+   <div class="dgbox dgb-x" style="position:absolute;left:40%;top:2%;width:14em">Registro (Eureka)</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:4%;top:14%;width:12em">pagos · instancia 1</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:4%;top:58%;width:12em">pagos · instancia 2</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:80%;top:34%;width:10em">Consumidor</div>
+   <div class="dgar" data-s="1" style="position:absolute;left:22%;top:8%;width:16%">nombre, IP, puerto</div>
+   <span class="chip" data-s="2" style="position:absolute;left:52%;top:36%">heartbeat</span>
+   <div class="dgar" data-s="3" style="position:absolute;left:62%;top:20%;width:17%">consulta «pagos»</div>
+   <span class="chip" data-s="4" style="position:absolute;left:74%;top:66%">lista: inst 1, inst 2</span>
+   <div class="dgar" data-s="5" style="position:absolute;left:28%;top:44%;width:16%">llamada directa</div>
+   <div data-s="6" style="position:absolute;left:3.5%;top:54%;width:14em;height:3.4em;border-radius:.4em;background:rgba(128,128,128,.55);display:flex;align-items:center;justify-content:center"><span class="chip">sin heartbeat → fuera del registro</span></div>
+   <div class="pkt" data-pos="12%,24%;49%,12%;49%,12%;49%,12%;85%,42%;12%,24%;12%,24%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> el dashboard de Eureka (:8761) lista cada servicio con sus instancias registradas.</p>
+ </div>
+</section>
+
+<!-- 9 · CONFIG SERVER -->
+<section data-steps="5">
+ <div class="eyebrow">Anatomía · problema 3: dónde vive la configuración</div>
+ <div class="body">
+  <h2>Config Server <small>· la configuración vive fuera del artefacto</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def">
+     <span class="lb">DEFINICIÓN</span>
+     <p>Servicio que centraliza la configuración de los demás: cada servicio la solicita al arrancar, en lugar de llevarla dentro de su imagen (el paquete inmutable con su código y dependencias).</p>
+    </div>
+    <div class="lbl">Problema que resuelve</div>
+    <ul>
+     <li>La misma <b>imagen</b> corre en desarrollo, pruebas y producción con valores distintos (URLs, credenciales).</li>
+     <li>Config dentro de la imagen = <b>reconstruir y redesplegar</b> para cambiar un valor.</li>
+    </ul>
+    <div style="margin-top:.6em"><span class="chip">Spring Cloud Config</span> <span class="chip">ConfigMaps (k8s)</span> <span class="chip">Vault</span> <span class="chip"><b>AWS:</b> AppConfig · Parameter Store</span></div>
+   </div>
+   <div>
+    <div class="lbl">Cómo funciona</div>
+    <ol class="flow">
+     <li data-s="1">El servicio arranca y se identifica: <b>nombre + perfil</b> (dev / prod).</li>
+     <li data-s="2">Solicita su configuración al <b>config server</b>.</li>
+     <li data-s="3">El config server la lee de su fuente: un <b>repositorio git</b> versionado.</li>
+     <li data-s="4">El servicio la <b>aplica</b> y termina de arrancar.</li>
+     <li data-s="5">Un cambio de config se <b>recarga sin reconstruir</b> la imagen.</li>
+    </ol>
+    <figure class="ph" style="margin-top:.6em;min-height:5.5em"><img data-img="config-server" alt=""><figcaption class="phl">img/<b>config-server</b>.png · imagen opcional de apoyo</figcaption></figure>
+   </div>
+  </div>
+  <div class="lane" style="position:relative;height:9.5em;margin-top:.8em">
+   <div class="dgbox dgb-db" style="position:absolute;left:2%;top:20%;max-width:12em">Repo git de config</div>
+   <div class="dgbox dgb-x" style="position:absolute;left:41%;top:20%;max-width:11em">Config server</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:72%;top:20%;max-width:14em">Servicio pagos (perfil: prod)</div>
+   <div class="dgar" data-s="3" style="position:absolute;left:18%;top:28%;width:21%">⟵ lee</div>
+   <div class="dgar" data-s="2" style="position:absolute;left:55%;top:28%;width:15%">⟵ solicita</div>
+   <span class="chip" data-s="3" style="position:absolute;left:14%;top:66%">lee pagos-prod.yml</span>
+   <span class="chip" data-s="5" style="position:absolute;left:70%;top:66%">refresh en caliente</span>
+   <div class="pkt" data-pos="80%,34%;80%,34%;47%,34%;9%,34%;80%,34%;80%,34%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> ninguna URL ni credencial está dentro de las imágenes; todo llega del config server (:8888) o del compose.</p>
+ </div>
+</section>
+
+<!-- 10 · BROKER -->
+<section data-steps="6">
+ <div class="eyebrow">Anatomía · problema 4: qué pasa si el otro está caído</div>
+ <div class="body">
+  <h2>Message Broker <small>· comunicación asíncrona y desacoplada</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">DEFINICIÓN</span><p>Intermediario que almacena y entrega mensajes: los productores publican, los consumidores procesan a su ritmo. Emisor y receptor no tienen que estar vivos al mismo tiempo.</p></div>
+    <div class="lbl">Problema que resuelve</div>
+    <ul>
+     <li>Una llamada síncrona <b>acopla disponibilidad</b>: si el receptor está caído o lento, el emisor falla o espera.</li>
+     <li>Un pico de carga se propaga <b>en cascada</b> por la cadena de llamadas.</li>
+    </ul>
+    <div style="margin-top:.7em"><span class="chip">cola</span> <span class="chip">productor / consumidor</span> <span class="chip">ack</span> <span class="chip">reentrega</span> <span class="chip">dead-letter queue</span></div>
+    <div style="margin-top:.4em"><span class="chip">RabbitMQ</span> <span class="chip">Kafka (S11)</span> <span class="chip"><b>AWS:</b> SQS · Amazon MQ · MSK</span></div>
+   </div>
+   <div>
+    <div class="lbl">Cómo funciona</div>
+    <ol class="flow">
+     <li data-s="1">El productor <b>publica</b> un evento en el broker.</li>
+     <li data-s="2">El broker lo <b>persiste</b> en una cola (lista ordenada de mensajes pendientes).</li>
+     <li data-s="3">El consumidor lo toma <b>a su propio ritmo</b>.</li>
+     <li data-s="4">Al procesarlo con éxito confirma: <b>ack</b> (acuse de recibo).</li>
+     <li data-s="5">Sin ack, el broker lo <b>reentrega</b>.</li>
+     <li data-s="6">Tras N fallos, el mensaje va a la <b>dead-letter queue</b> (cola aparte para mensajes fallidos) para revisión.</li>
+    </ol>
+   </div>
+  </div>
+  <div class="lane" style="height:9.5em;margin-top:.8em">
+   <div class="dgbox dgb-svc" style="position:absolute;left:2%;top:26%;max-width:11em">Ventas (productor)</div>
+   <div class="dgar" style="position:absolute;left:19%;top:8%;width:16%">publica</div>
+   <div class="dgbox dgb-brk" style="position:absolute;left:38%;top:22%;width:14em;max-width:14em">Broker · cola</div>
+   <div class="dgar" style="position:absolute;left:63%;top:8%;width:14%">consume</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:80%;top:26%;max-width:11em">Correo (consumidor)</div>
+   <div class="dgbox dgb-db" style="position:absolute;left:45%;top:68%;max-width:6.5em">DLQ</div>
+   <span class="chip" data-s="2" style="position:absolute;left:41%;top:0">persistido</span>
+   <span class="chip" data-s="4" style="position:absolute;left:81%;top:0">ack</span>
+   <span class="chip" data-s="5" style="position:absolute;left:58%;top:64%">sin ack → reintento</span>
+   <div class="pkt" data-pos="8%,42%;33%,42%;47%,42%;76%,42%;85%,42%;47%,42%;49%,80%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> la consola de RabbitMQ (:15672) muestra colas, tasas y consumidores conectados.</p>
+ </div>
+</section>
+
+<!-- 11 · CACHÉ -->
+<section data-steps="6">
+ <div class="eyebrow">Anatomía · lecturas repetidas sin castigar la base de datos</div>
+ <div class="body">
+  <h2>Caché <small>· patrón cache-aside</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">DEFINICIÓN</span><p>Almacén en memoria para resultados de operaciones costosas: sirve lecturas repetidas en microsegundos sin tocar la base de datos.</p></div>
+    <div class="lbl">PROBLEMA QUE RESUELVE</div>
+    <ul>
+     <li>La base de datos es el <b>recurso caro y compartido</b>: cada lectura repetida suma latencia (tiempo de espera) y carga.</li>
+     <li>Datos que se <b>leen mucho y cambian poco</b> (catálogos, sesiones) se recalculan sin necesidad.</li>
+     <li data-s="6">Lo difícil no es guardar: es <b>invalidar</b> — mantener la caché coherente con la fuente (S9, con medición).</li>
+    </ul>
+    <div style="margin-top:.6em">
+     <span class="chip">Redis</span>
+     <span class="chip">Memcached</span> <span class="chip"><b>AWS:</b> ElastiCache</span>
+     <span class="chip">hit ratio (proporción de aciertos)</span>
+     <span class="chip">TTL (vida máxima de la entrada)</span>
+    </div>
+   </div>
+   <div>
+    <div class="lbl">CÓMO FUNCIONA</div>
+    <ol class="flow">
+     <li data-s="1">Llega la primera lectura: el servicio <b>busca la llave</b> en la caché.</li>
+     <li data-s="2"><b>Miss</b>: no está. Va a la base de datos.</li>
+     <li data-s="3"><b>Guarda</b> el resultado en la caché con un <b>TTL</b>.</li>
+     <li data-s="4">Responde.</li>
+     <li data-s="5">Llega la misma lectura otra vez: <b>hit</b> — responde desde memoria, sin tocar la BD.</li>
+    </ol>
+    <figure class="ph" style="margin-top:.6em;min-height:5.5em"><img data-img="cache" alt=""><figcaption class="phl">img/<b>cache</b>.png · imagen opcional de apoyo</figcaption></figure>
+   </div>
+  </div>
+  <div class="lane" style="height:9em;position:relative">
+   <div class="dgbox dgb-svc" style="position:absolute;left:4%;top:34%;width:9em">Servicio</div>
+   <div class="dgbox dgb-x" style="position:absolute;left:42%;top:8%;width:10em">Caché (Redis)</div>
+   <div class="dgbox dgb-db" style="position:absolute;left:78%;top:50%;width:9em">PostgreSQL</div>
+   <span class="chip" data-s="1" style="position:absolute;left:17%;top:6%">¿existe la llave?</span>
+   <span class="chip" data-s="2" style="position:absolute;left:61%;top:46%">miss</span>
+   <span class="chip" data-s="3" style="position:absolute;left:60%;top:6%">guarda + TTL</span>
+   <span class="chip" data-s="5" style="position:absolute;left:14%;top:68%">hit · microsegundos</span>
+   <div class="pkt" data-pos="8%,50%;47%,25%;83%,68%;47%,25%;8%,50%;47%,25%;47%,25%"></div>
+  </div>
+  <p class="srf"><b>En el sistema de referencia:</b> la primera consulta de la demo tarda; las repetidas responden desde Redis (:6379).</p>
+ </div>
+</section>
+
+<!-- 12 · OBSERVABILIDAD -->
+<section data-steps="6">
+ <div class="eyebrow">Anatomía · problema 5: dónde falló, dónde tardó</div>
+ <div class="body">
+  <h2>Observabilidad <small>· logs, métricas y trazas</small></h2>
+  <div class="def">
+   <span class="lb">DEFINICIÓN</span>
+   <p>Poder inferir el estado interno del sistema a partir de lo que emite. Tres señales estándar, cada una responde una pregunta distinta.</p>
+  </div>
+  <table>
+   <thead>
+    <tr><th>Señal</th><th>Qué es</th><th>Pregunta que responde</th><th>Herramienta típica</th></tr>
+   </thead>
+   <tbody>
+    <tr data-s="1"><td><b>Logs</b></td><td>eventos discretos con contexto, uno por ocurrencia</td><td>¿qué pasó exactamente en este punto?</td><td>Loki · ELK — AWS: CloudWatch Logs</td></tr>
+    <tr data-s="2"><td><b>Métricas</b></td><td>series numéricas agregadas en el tiempo</td><td>¿cómo se comporta? ¿cuándo alertar?</td><td>Prometheus + Grafana — AWS: CloudWatch</td></tr>
+    <tr data-s="3"><td><b>Trazas</b></td><td>el recorrido de UNA petición a través de los servicios, con tiempos por salto</td><td>¿dónde falló / dónde tardó esta petición?</td><td>Jaeger · Tempo — AWS: X-Ray</td></tr>
+   </tbody>
+  </table>
+  <div class="lane" style="height:8.5em">
+   <span class="chip" data-s="4" style="position:absolute;left:50%;top:0;transform:translateX(-50%)">trace id: a1b2c3 — viaja en cada llamada</span>
+   <div class="dgbox dgb-svc" style="position:absolute;left:5%;top:2.1em;width:11em">Gateway</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:42%;top:2.1em;width:11em">Pagos</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:78%;top:2.1em;width:11em">Cuentas</div>
+   <div class="dgar" style="position:absolute;left:26%;top:2.5em;width:8em">→</div>
+   <div class="dgar" style="position:absolute;left:63%;top:2.5em;width:8em">→</div>
+   <div data-s="4" style="position:absolute;left:5%;top:5.6em;width:34%;height:.5em;background:var(--am);border-radius:3px"></div>
+   <div data-s="5" style="position:absolute;left:42%;top:5.6em;width:18%;height:.5em;background:var(--am);border-radius:3px"></div>
+   <div data-s="6" style="position:absolute;left:78%;top:5.6em;width:8%;height:.5em;background:var(--am);border-radius:3px"></div>
+   <div class="dgar" data-s="4" style="position:absolute;left:0;right:0;bottom:0;font-size:clamp(.74rem,1vw,1rem)">cada barra = span: tiempo que la petición pasa dentro de ese servicio</div>
+   <div class="pkt" data-s="4" data-pos="12%,33%;12%,33%;12%,33%;12%,33%;49%,33%;85%,33%;85%,33%"></div>
+  </div>
+  <ul>
+   <li data-s="6">La <b>correlación</b> la da el <b>trace id</b> (identificador único que acompaña a la petición) propagado de servicio en servicio; sin él, depurar es adivinar. Se instrumenta en S8.</li>
+  </ul>
+  <p class="srf"><b>En el sistema de referencia:</b> Grafana (:3000) y Jaeger (:16686) ya reciben datos de todos los servicios.</p>
+ </div>
+</section>
+
+<!-- · PORTADILLA IV -->
+<section>
+ <div class="body" style="align-items:center;text-align:center;gap:.55em">
+  <div class="eyebrow" style="margin-bottom:0">Bloque IV de IV</div>
+  <h1 style="font-size:clamp(1.7rem,3.1vw,2.9rem)">Los <em>datos</em></h1>
+  <p style="max-width:33em">Por qué un sistema distribuido rara vez tiene una sola base de datos — y cómo se elige cada motor.</p>
+  <figure class="ph" style="width:min(64%,30em);min-height:10em;margin-top:.4em">
+   <img data-img="seccion-datos" alt="">
+   <figcaption class="phl">img/<b>seccion-datos</b>.png · imagen de sección (libre)</figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- 13 · PERSISTENCIA POLÍGLOTA -->
+<section>
+ <div class="eyebrow">Datos 1/2 · el principio</div>
+ <div class="body">
+  <h2>Persistencia políglota <small>· cada servicio, su motor; cada motor, su patrón</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">Definición</span>
+     <p>Cada servicio elige su motor de datos <b>según su patrón de acceso</b>, y esa base de datos es <b>privada del servicio</b>.</p>
+    </div>
+    <div class="lbl">Problema que resuelve</div>
+    <ul>
+     <li>Un solo motor para todos los patrones obliga a <b>compromisos en todos</b>: transaccional, catálogo, caché y análisis no piden lo mismo.</li>
+     <li>Una BD compartida <b>acopla los esquemas</b> de los servicios: nadie puede cambiar su modelo sin coordinar con todos los demás.</li>
+    </ul>
+   </div>
+   <div>
+    <div class="def" style="border-left-color:var(--rd);background:#fef6f6;border-color:#eed3d3"><span class="lb" style="color:var(--rd)">Regla</span>
+     <p>Los datos de un servicio se acceden <b>por su API, nunca por su base de datos</b>. La BD compartida entre servicios es el antipatrón clásico de integración.</p>
+    </div>
+    <div class="lbl">El costo, explícito</div>
+    <ul>
+     <li><b>No hay joins</b> entre datos de servicios distintos: se componen por API.</li>
+     <li>La <b>consistencia entre servicios</b> deja de ser automática — se vuelve un problema de diseño (S6: consistencia · S12: sagas).</li>
+    </ul>
+   </div>
+  </div>
+  <p class="srf">Profundización: <b>S9</b> — replicación, sharding y el resto de datos distribuidos.</p>
+ </div>
+</section>
+
+<!-- 14 · TIPOS DE BD -->
+<section>
+ <div class="eyebrow">Datos 2/2 · el menú de motores</div>
+ <div class="body">
+  <h2>Tipos de base de datos <small>· estructura, fortaleza y caso de cada familia</small></h2>
+  <table style="margin-bottom:.6em">
+   <tr><th>Modelo</th><th>Estructura</th><th>Fortaleza</th><th>Caso típico</th><th>Ejemplo</th></tr>
+   <tr><td><b>Relacional</b></td><td>tablas, esquema fijo, SQL</td><td>transacciones ACID, joins, integridad referencial</td><td>núcleo transaccional: cuentas, pagos</td><td>PostgreSQL · MySQL — AWS: RDS · Aurora</td></tr>
+   <tr><td><b>Documental</b></td><td>documentos JSON, esquema flexible</td><td>el agregado completo en una lectura; el esquema evoluciona</td><td>catálogos, perfiles, contenido</td><td>MongoDB — AWS: DocumentDB</td></tr>
+   <tr><td><b>Llave-valor</b></td><td>pares llave → valor, en memoria</td><td>latencia de microsegundos, acceso directo</td><td>caché, sesiones, contadores</td><td>Redis — AWS: DynamoDB · ElastiCache</td></tr>
+   <tr><td><b>Columnar amplia</b></td><td>filas por llave, columnas dinámicas</td><td>escritura masiva, distribuida por diseño</td><td>series de tiempo, eventos</td><td>Cassandra — AWS: Keyspaces</td></tr>
+   <tr><td><b>Grafo</b></td><td>nodos y aristas</td><td>recorrer relaciones profundas sin joins encadenados</td><td>recomendaciones, detección de fraude</td><td>Neo4j — AWS: Neptune</td></tr>
+   <tr><td><b>Objetos</b></td><td>archivos binarios + metadatos</td><td>volumen barato y durable</td><td>imágenes, respaldos, documentos</td><td>MinIO — AWS: Amazon S3</td></tr>
+  </table>
+  <div class="quote" style="font-size:clamp(.92rem,1.35vw,1.35rem)">El criterio de elección es el <em>patrón de acceso</em>: cómo se escribe, cómo se lee, qué se pregunta — no la moda del motor.</div>
+  <p class="srf"><b>En el sistema de referencia</b> conviven tres: PostgreSQL (transaccional), MongoDB (documentos) y Redis (llave-valor).</p>
+ </div>
+</section>
+
+<!-- 15 · IDEMPOTENCIA -->
+<section data-steps="6">
+ <div class="eyebrow">Comunicación · la propiedad que permite reintentar</div>
+ <div class="body">
+  <h2>Idempotencia <small>· N ejecuciones, el mismo estado final</small></h2>
+  <div class="g2" style="align-items:start">
+   <div>
+    <div class="def"><span class="lb">DEFINICIÓN</span><p>Una operación es <b>idempotente</b> si ejecutarla varias veces deja el sistema en el mismo estado que ejecutarla una sola vez: <b>f(f(x)) = f(x)</b>.</p></div>
+    <div class="lbl">POR QUÉ ES CENTRAL</div>
+    <ul>
+     <li>Un <b>timeout</b> (se agotó el tiempo de espera) no distingue entre <b>nunca llegó</b> y <b>se ejecutó pero la respuesta se perdió</b> — visto en S2.</li>
+     <li>La salida práctica es <b>reintentar</b>; reintentar una operación no idempotente <b>duplica efectos</b>: doble cargo, doble correo.</li>
+    </ul>
+    <table data-s="6" style="font-size:clamp(.78rem,1.05vw,.95rem)">
+     <tr><th>Operación</th><th>¿Idempotente?</th></tr>
+     <tr><td>consultar saldo (GET)</td><td>sí</td></tr>
+     <tr><td>poner saldo = 500</td><td>sí</td></tr>
+     <tr><td>sumar 100 al saldo</td><td><b>no</b></td></tr>
+     <tr><td>crear un pedido (POST)</td><td><b>no</b></td></tr>
+    </table>
+   </div>
+   <div>
+    <div class="lbl">CÓMO FUNCIONA</div>
+    <ol class="flow">
+     <li data-s="1">El cliente genera una <b>llave única</b> por operación (un UUID: identificador único universal) y la manda en el header (encabezado HTTP) <b>Idempotency-Key</b>.</li>
+     <li data-s="2">El servidor procesa el cargo y <b>guarda llave → resultado</b>.</li>
+     <li data-s="3">La respuesta se pierde en la red: para el cliente fue un <b>timeout</b>.</li>
+     <li data-s="4">El cliente <b>reintenta</b> con la <b>misma llave</b>.</li>
+     <li data-s="5">El servidor reconoce la llave: <b>devuelve el resultado guardado</b> sin volver a ejecutar.</li>
+    </ol>
+   </div>
+  </div>
+  <div class="lane" style="position:relative;height:8.5em">
+   <div class="dgbox dgb-svc" style="position:absolute;left:4%;top:30%;width:9em">Cliente</div>
+   <div class="dgbox dgb-svc" style="position:absolute;left:73%;top:30%;width:11em">Servidor de pagos</div>
+   <span class="chip" data-s="1" style="position:absolute;left:24%;top:4%">cobrar $500 · llave k-71</span>
+   <span class="chip" data-s="2" style="position:absolute;left:58%;top:4%">ejecuta y guarda k-71 → ok</span>
+   <span class="chip" data-s="3" style="position:absolute;left:36%;top:64%;color:#b0483d;border-color:#b0483d">respuesta perdida · timeout</span>
+   <span class="chip" data-s="4" style="position:absolute;left:4%;top:64%">reintento · misma llave k-71</span>
+   <span class="chip" data-s="5" style="position:absolute;left:58%;top:64%">resultado guardado — no se cobra dos veces</span>
+   <div class="pkt" data-pos="10%,42%;74%,42%;80%,42%;46%,42%;76%,42%;12%,42%;12%,42%"></div>
+  </div>
+  <p class="srf">Reaparece en las <b>reentregas del broker de mensajes</b> (S10) y en los <b>pasos de una saga</b> (S12): es lo que hace seguro todo reintento del curso.</p>
+ </div>
+</section>
+
+<!-- 16 · RECAP -->
+<section>
+ <div class="eyebrow">Resumen · el sistema, pieza por pieza</div>
+ <div class="body">
+  <h2>Una línea por pieza</h2>
+  <table>
+   <tr><th>Pieza</th><th>Problema que resuelve</th><th>En el sistema</th><th>En AWS</th></tr>
+   <tr><td><b>API Gateway</b></td><td>un solo punto de entrada; políticas comunes una sola vez</td><td>Spring Cloud Gateway</td><td>Amazon API Gateway</td></tr>
+   <tr><td><b>Discovery</b></td><td>encontrar instancias cuando las IPs son efímeras</td><td>Eureka</td><td>Cloud Map</td></tr>
+   <tr><td><b>Config server</b></td><td>misma imagen, configuración por entorno, sin reconstruir</td><td>Spring Cloud Config</td><td>AppConfig · Parameter Store</td></tr>
+   <tr><td><b>Broker</b></td><td>desacoplar disponibilidad y ritmo entre servicios</td><td>RabbitMQ</td><td>SQS · Amazon MQ</td></tr>
+   <tr><td><b>Caché</b></td><td>lecturas repetidas sin cargar la base de datos</td><td>Redis</td><td>ElastiCache</td></tr>
+   <tr><td><b>Observabilidad</b></td><td>ver dentro del sistema en producción: logs, métricas, trazas</td><td>Prometheus · Grafana · Jaeger</td><td>CloudWatch · X-Ray</td></tr>
+   <tr><td><b>Servidor de autenticación</b></td><td>autenticación y autorización centralizadas, tokens firmados</td><td>Keycloak</td><td>Cognito</td></tr>
+   <tr><td><b>Datos políglotas</b></td><td>cada patrón de acceso con su motor; BD privada por servicio</td><td>PostgreSQL · MongoDB · Redis</td><td>RDS · DocumentDB · DynamoDB</td></tr>
+  </table>
+  <p class="srf">Cada pieza se estudia a fondo en su sesión: caché y datos en <b>S9</b>, broker en <b>S10–S11</b>, observabilidad y resiliencia en <b>S8</b>, consistencia en <b>S6</b>.</p>
+ </div>
+</section>
+
+<!-- 17 · DECISIÓN -->
+<section>
+ <div class="eyebrow">La decisión de hoy · ensayo, al chat</div>
+ <div class="body">
+  <div class="g2" style="align-items:start">
+   <div>
+    <h2>Caso BoleTix</h2>
+    <p style="margin-bottom:.6em">Cuando se vende un boleto, el sistema debe: <b>actualizar el inventario</b>, <b>generar la confirmación</b>, <b>enviar el correo</b> y <b>registrar el dato para análisis</b>.</p>
+    <div class="def"><span class="lb">La decisión</span>
+     <p>¿Los tres pasos posteriores se resuelven con <b>llamadas síncronas</b> (REST/gRPC) o publicando un <b>evento en el broker</b>?</p>
+    </div>
+    <ul>
+     <li>¿Qué pasa con la venta si el servicio de correo <b>está caído</b> en cada opción?</li>
+     <li>¿Qué garantía pierde el cliente en cada opción?</li>
+    </ul>
+   </div>
+   <div>
+    <div class="lbl">Formato de respuesta — 3 líneas</div>
+    <pre><code>elección:  <span class="n">síncrono | evento</span>
+porque:    <span class="n">el requisito que persigo</span>
+sacrifico: <span class="n">lo que dejo atrás</span></code></pre>
+    <p style="margin-top:.6em">Mismo formato que la Decisión 0. Sigue siendo <b>ensayo</b>: se practica el movimiento, no se califica. Desde la S7 se registra en el repo del equipo.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- 18 · LECTURA Y S4 -->
+<section>
+ <div class="eyebrow">Para la próxima semana</div>
+ <div class="body">
+  <div class="g2" style="align-items:start;margin-bottom:.9em">
+   <div class="card">
+    <h3>Lectura · para la S4</h3>
+    <p style="margin-bottom:.5em"><b>The Twelve-Factor App</b> — <code style="font-size:.85em">12factor.net</code> (los 12; atención a III Config y VI Procesos).</p>
+    <p style="margin-bottom:.5em"><b>Burns et al., <i>Borg, Omega, and Kubernetes</i></b> (2016) — panorama de una década de orquestación en Google.</p>
+    <p><b>2 preguntas + 1 hallazgo</b> en la Discussion de la semana, antes del <b>jueves 10-sep, 23:59</b>.</p>
+   </div>
+   <div class="card" style="border-color:var(--am);background:var(--amsoft)">
+    <h3 style="color:var(--am)">S4 · el sistema en tu máquina</h3>
+    <p style="margin-bottom:.5em">Descargan las <b>imágenes del curso</b> (<code style="font-size:.85em">docker pull</code>), levantan el sistema completo con el <code style="font-size:.85em">compose</code> dado y lo exploran por dentro.</p>
+    <p style="margin-bottom:.5em">La teoría abre con <b>gRPC</b> y el criterio REST vs gRPC — ya con una semana de REST vivido.</p>
+    <p><b>Requisito</b>: Docker funcionando — exactamente lo del lab de hoy.</p>
+   </div>
+  </div>
+  <div class="quote">Todo el semestre se trabaja sobre este sistema: el ambiente es el mismo para todos, y el enfoque es aplicar la teoría sobre él.</div>
+ </div>
+</section>
+
+<!-- 19 · CIERRE -->
+<section>
+ <div class="eyebrow">Cierre · autoevaluación</div>
+ <div class="body">
+  <h2>Ocho preguntas que hoy ya pueden responder</h2>
+  <div class="g2" style="align-items:start">
+   <ul>
+    <li>¿Qué problema resuelve un <b>API gateway</b> y qué pasa sin él?</li>
+    <li>¿Cómo encuentra un servicio a otro si las <b>IPs cambian</b> en cada arranque?</li>
+    <li>¿Por qué la <b>configuración</b> vive fuera de la imagen?</li>
+    <li>¿Cuándo conviene un <b>broker</b> en lugar de una llamada directa, y qué se sacrifica?</li>
+   </ul>
+   <ul>
+    <li>¿Qué es <b>cache-aside</b> y cuál es su problema difícil?</li>
+    <li>¿Qué pregunta responde cada pilar: <b>log, métrica, traza</b>?</li>
+    <li>¿Con qué criterio se elige el <b>tipo de base de datos</b>?</li>
+    <li>¿Qué hace <b>idempotente</b> a una operación y por qué importa al reintentar?</li>
+   </ul>
+  </div>
+  <div class="quote" style="margin-top:.9em;text-align:center">La que no puedan responder, esa es la que se estudia esta semana.</div>
+ </div>
+</section>
+
+<!-- · REFERENCIAS -->
+<section>
+ <div class="eyebrow">Fuentes</div>
+ <div class="body">
+  <h2>Referencias de esta sesión</h2>
+  <ul style="max-width:52em">
+   <li>Richards, M. y Ford, N. — <i>Fundamentals of Software Architecture</i> (O&#39;Reilly). La base de la columna de arquitectura del curso.</li>
+   <li>Kleppmann, M. — <i>Designing Data-Intensive Applications</i> (O&#39;Reilly, 2017). Datos distribuidos, replicación y caché.</li>
+   <li>Tanenbaum, A. y van Steen, M. — <i>Distributed Systems</i>. Naming, binding y comunicación.</li>
+   <li>Newman, S. — <i>Building Microservices</i>, 2.ª ed. (O&#39;Reilly, 2021). Descomposición y comunicación entre servicios.</li>
+   <li>Waldo, Wyant, Wollrath y Kendall — <i>A Note on Distributed Computing</i> (1994). La Lectura 2 de esta semana.</li>
+   <li><i>The Twelve-Factor App</i> — 12factor.net. La lectura para la S4.</li>
+  </ul>
+  <p class="srf">Los enlaces del programa de lecturas viven en el repo del curso: <code style="font-size:.9em">lecturas/README.md</code>.</p>
+ </div>
+</section>
+
+<div id="bar"></div>
+<div id="num"></div>
+<div id="hint">&#8592;/&#8594; avanzar (pasos y slides) &nbsp;·&nbsp; &#8595; completa los pasos &nbsp;·&nbsp; F pantalla completa &nbsp;·&nbsp; R reinicia</div>
+
+<script>
+const S=[...document.querySelectorAll('section')];let i=0;
+const bar=document.getElementById('bar'),num=document.getElementById('num');
+function steps(sec){return +(sec.dataset.steps||0)}
+function sync(sec){const c=+(sec.dataset.cur||0);
+ sec.querySelectorAll('[data-s]').forEach(el=>el.classList.toggle('on',+el.dataset.s<=c));
+ sec.querySelectorAll('.pkt').forEach(p=>{const ps=(p.dataset.pos||'').split(';');
+  const k=Math.max(0,Math.min(c,ps.length-1));const xy=ps[k]?ps[k].split(','):null;
+  if(c===0)p.style.transition='none';
+  if(xy&&xy[0])p.style.left=xy[0].trim();if(xy&&xy[1])p.style.top=xy[1].trim();
+  if(c===0){void p.offsetWidth;p.style.transition='';}});
+ upd();}
+function upd(){const sec=S[i],st=steps(sec),c=+(sec.dataset.cur||0);
+ bar.style.width=((i+1)/S.length*100)+'%';
+ num.textContent=(i+1)+' / '+S.length+(st?(' · paso '+c+'/'+st):'');}
+function show(n){i=Math.max(0,Math.min(S.length-1,n));
+ S.forEach((s,k)=>s.classList.toggle('on',k===i));
+ S[i].dataset.cur=0;sync(S[i]);}
+function fwd(){const sec=S[i],st=steps(sec),c=+(sec.dataset.cur||0);
+ if(c<st){sec.dataset.cur=c+1;sync(sec);}else show(i+1);}
+function back(){const sec=S[i],c=+(sec.dataset.cur||0);
+ if(c>0){sec.dataset.cur=c-1;sync(sec);}else show(i-1);}
+addEventListener('keydown',e=>{
+ if(['ArrowRight','PageDown',' ','Enter'].includes(e.key)){e.preventDefault();fwd()}
+ else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();back()}
+ else if(e.key==='ArrowDown'){e.preventDefault();const sec=S[i];sec.dataset.cur=steps(sec);sync(sec);}
+ else if(e.key==='Home')show(0);else if(e.key==='End')show(S.length-1);
+ else if(e.key.toLowerCase()==='r')show(0);
+ else if(e.key.toLowerCase()==='f'||e.key==='F11'){e.preventDefault();fs();}});
+function fs(){document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();}
+addEventListener('dblclick',fs);
+document.querySelectorAll('.ph img').forEach(im=>{
+ const base=im.dataset.img,exts=['png','jpg','jpeg','webp'];let k=0;
+ im.onload=()=>im.closest('.ph').classList.add('ok');
+ im.onerror=()=>{k++;if(k<exts.length)im.src='img/'+base+'.'+exts[k]};
+ im.src='img/'+base+'.'+exts[0];
+});
+show(0);
+</script></body></html>
