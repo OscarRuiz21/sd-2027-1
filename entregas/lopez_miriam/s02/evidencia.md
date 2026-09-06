@@ -185,7 +185,7 @@ y obtuve la siguiente salida:
 
 CONTAINER ID   IMAGE          STATUS        PORTS                                      NAMES
 
-9065ca55a31a   mi-sitio:v2    Up            0.0.0.0:9091->80/tcp, \[::]:9091->80/tcp   sitio2
+96c5ca55a31a   mi-sitio:v2    Up            0.0.0.0:9091->80/tcp, \[::]:9091->80/tcp   sitio2
 
 30287340e0fa   mi-sitio:v2    Up            0.0.0.0:9090->80/tcp, \[::]:9090->80/tcp   sitio
 
