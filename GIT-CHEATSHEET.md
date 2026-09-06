@@ -15,9 +15,12 @@ git pull                                  # trae tu última versión (por si tra
 ## 1 · (Opcional) trae el material nuevo del curso a tu rama
 
 ```bash
-git fetch origin          # entérate de lo nuevo en el repositorio
-git merge origin/main     # trae guías y material nuevos a tu rama (no genera conflictos: tú solo tocas tu carpeta)
+git pull origin main      # trae guías y material nuevos DIRECTO a tu rama, en un paso
 ```
+
+No te asustes si te lista ramas de tus compañeros: es solo el índice, no toca tu trabajo.
+Y el merge no genera conflictos porque tú solo tocas tu carpeta. Basta hacerlo al empezar
+cada práctica.
 
 ## 2 · Trabaja
 
