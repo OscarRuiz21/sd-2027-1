@@ -1,8 +1,7 @@
 # Evidencia del laboratorio S02 — Docker
 
 **Nombre:** Pablo Vaquero  
-**Rama:** `s02-vaquero`
-
+**Rama:** `entregas_vaquero_pablo`
 ## Comandos utilizados
 
 ```text
@@ -36,12 +35,12 @@ docker ps
 ## Contenedores ejecutándose
 
 ```text
-CONTAINER ID   IMAGE          STATUS         PORTS                                     NAMES
-9b7b27c2d653   mi-sitio:v2    Up             0.0.0.0:9091->80/tcp, [::]:9091->80/tcp   sitio2
-c093d7b8f3e0   mi-sitio:v2    Up             0.0.0.0:9090->80/tcp, [::]:9090->80/tcp   sitio
-fd9255947654   nginx:alpine   Up             0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   miweb
-dfaa0438b10c   nginx:alpine   Up             80/tcp                                    web2
-bd50f2227ad9   nginx:alpine   Up             80/tcp                                    web1
+CONTAINER ID   IMAGE          COMMAND                  CREATED                  STATUS                  PORTS                                     NAMES
+9b7b27c2d653   mi-sitio:v2    "/docker-entrypoint.…"   Less than a second ago   Up Less than a second   0.0.0.0:9091->80/tcp, [::]:9091->80/tcp   sitio2
+c093d7b8f3e0   mi-sitio:v2    "/docker-entrypoint.…"   Less than a second ago   Up Less than a second   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp   sitio
+fd9255947654   nginx:alpine   "/docker-entrypoint.…"   12 minutes ago           Up 12 minutes           0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   miweb
+dfaa0438b10c   nginx:alpine   "/docker-entrypoint.…"   16 minutes ago           Up 16 minutes           80/tcp                                    web2
+bd50f2227ad9   nginx:alpine   "/docker-entrypoint.…"   16 minutes ago           Up 16 minutes           80/tcp                                    web1
 ```
 
 ## Error de puerto ocupado
