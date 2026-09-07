@@ -2,6 +2,42 @@
 
 Cada sábado, siempre igual. **Una sola rama tuya para todo el semestre.**
 
+## Primera vez · conecta tu clon con TU rama del semestre
+
+Tu rama `entregas_apellido_nombre` **ya existe en GitHub** (te la creamos desde tu rama
+del lab, con tu trabajo adentro). Elige UN camino según tu caso:
+
+**A · Lo más común — solo tráela:**
+
+```bash
+git fetch origin                          # entérate de las ramas nuevas del repositorio
+git checkout entregas_apellido_nombre     # crea tu copia local, ya conectada con la remota
+```
+
+**B · Ya tenías una rama local con otro nombre (s02-apellido, etc.) y quieres conservarla renombrándola:**
+
+```bash
+git branch -m s02-apellido entregas_apellido_nombre   # renómbrala (-m = move/rename)
+git fetch origin                                      # entérate de la rama remota
+git branch -u origin/entregas_apellido_nombre         # conéctala con la remota (-u = upstream)
+git pull                                              # mezcla lo que ya haya en la remota con lo tuyo
+git push                                              # y sube el resultado
+```
+
+**C · Prefieres empezar de cero:** haz el camino A, copia tus archivos a tu carpeta de
+`entregas/apellido_nombre/`, y sigue la rutina normal de abajo.
+
+Cualquiera de los tres se hace **una sola vez**; después, tu semana es la rutina de abajo.
+
+## Mantén tu local al día
+
+Son **dos pulls distintos, para dos cosas distintas**:
+
+```bash
+git pull                    # trae TU rama tal como está en GitHub (si trabajas en dos máquinas, o si te subimos algo)
+git pull origin main        # trae el material nuevo del curso (guías, labs, lecturas) a tu rama
+```
+
 ## 0 · Párate en tu rama
 
 ```bash
