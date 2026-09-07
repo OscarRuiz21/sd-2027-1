@@ -58,3 +58,7 @@ Run 'docker run --help' for more information
 ## ¿Por qué no cambio la pagina?
 
 El motivo por el cual no se actualiza el contenedor cuando se cambia el index es porque solo hacemos una copia de un momento exacto del index para el contenedor, si queremos que este se actualice debemos volver a crear la imagen y arrancar el contenedor de nuevo
+
+
+## ¿Qué comparten y qué no dos contenedores de la misma imagen?
+Al ser contenedores de la misma imagen, tendrán la misma "plantilla" por asi decirlo, pero deben de tener un puerto distinto.
