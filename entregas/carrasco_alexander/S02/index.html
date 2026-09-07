@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mi primer contenedor</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+            background-color: #f7f7f9;
+            color: #222;
+        }
+        h1 {
+            color: #0b5fff;
+            border-bottom: 3px solid #0b5fff;
+            padding-bottom: 10px;
+        }
+        h2 {
+            margin-top: 40px;
+            color: #333;
+        }
+        p {
+            font-size: 1.05em;
+            line-height: 1.5;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px 15px;
+            text-align: left;
+        }
+        th {
+            background-color: #0b5fff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f6ff;
+        }
+        td:first-child {
+            font-family: monospace;
+            font-weight: bold;
+            color: #d6336c;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hola, soy Diego Alexander Carrasco Quinones</h1>
+    <p>
+        Esta página la sirve un contenedor que yo construí.
+    </p>
+    <h2>Los 5 comandos que más me sirvieron fueron:</h2>
+    <table>
+        <tr>
+            <th>Comando</th>
+            <th>¿Qué hace?</th>
+        </tr>
+        <tr>
+            <td>docker ps</td>
+            <td>Lo uso para ver qué contenedores tengo corriendo en ese momento, con su ID, nombre, estado y puertos. Si le agrego -a, también me muestra los que ya están detenidos.</td>
+        </tr>
+        <tr>
+            <td>docker run</td>
+            <td>Lo uso para poner a funcionar una imagen y crear un contenedor a partir de ella, todo en un solo paso.</td>
+        </tr>
+        <tr>
+            <td>docker exec</td>
+            <td>Me sirve para meterme a un contenedor que ya está corriendo y ejecutar algo dentro, sin necesidad de apagarlo. Así puedo revisar qué está pasando por dentro en tiempo real.</td>
+        </tr>
+        <tr>
+            <td>docker logs</td>
+            <td>Me deja ver todo lo que el contenedor ha ido imprimiendo desde que arrancó. Lo uso cuando algo no funciona y necesito entender qué está haciendo la aplicación sin entrar al contenedor.</td>
+        </tr>
+        <tr>
+            <td>docker run -it</td>
+            <td>Es una variante de docker run que uso cuando quiero entrar directo a una terminal interactiva dentro del contenedor apenas se crea, en lugar de que corra en segundo plano. La "i" mantiene la entrada abierta y la "t" me da una terminal donde puedo escribir.</td>
+        </tr>
+    </table>
+</body>
+</html>
+
+<p><strong>Esta línea la agregué durante el reto.</strong></p>
