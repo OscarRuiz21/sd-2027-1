@@ -19,3 +19,13 @@ Contenido Docker:
 contenedores, ciclo de vida, puertos, diagnóstico y tu primera imagen. Cierra con el
 **reto de cuatro misiones**, que es la entrega de la sesión. Cada comando y cada salida
 esperada están probados tal cual.
+
+## Lab de la S4 · sábado 12 de septiembre
+
+**[Docker, día dos: estado, red, configuración y compose](https://oscarruiz21.github.io/sd-2027-1/labs/Lab-S04-Docker-dia-2.html)**:
+volúmenes (el estado sobrevive al contenedor), redes definidas por el usuario (los
+contenedores se encuentran por nombre), variables de entorno y `.env` (la configuración
+vive fuera de la imagen) y `docker compose` (el sistema en un archivo). Antes del sábado
+baja las imágenes en tu casa: `postgres:17-alpine`, `nginx:alpine`, `redis:8-alpine`,
+`rabbitmq:4-management-alpine` y `alpine:3.20`. Cierra con el **reto de cuatro misiones**;
+la entrega es un push a tu rama en `entregas/apellido_nombre/s04/`, sin pull request.
