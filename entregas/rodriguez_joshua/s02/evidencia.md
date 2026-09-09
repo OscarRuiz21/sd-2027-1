@@ -7,10 +7,10 @@
 ---
 ```bash
 docker pull nginx:alpine 
-docker build -t mi-sitio-v2
+docker build -t mi-sitio:v2 .
 docker images
-docker run -d -p 9090:80 --name sitio mi-sitio-v2
-docker run -d -p 9091:80 --name sitio2 mi-sitio-v2
+docker run -d -p 9090:80 --name sitio mi-sitio:v2
+docker run -d -p 9091:80 --name sitio2 mi-sitio:v2
 docker ps
 ```
 ---
@@ -19,15 +19,15 @@ docker ps
 ```bash
 $ docker ps
 CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS            NAMES
-8956552846bf   mi-sitio-v2   "/docker-entrypoint.…"   45 seconds ago   Up 44 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp   sitio
-9a53ba54ff33   mi-sitio-v2   "/docker-entrypoint.…"   17 minutes ago   Up 2 seconds    0.0.0.0:9091->80/tcp, [::]:9091->80/tcp   sitio2
+8956552846bf   mi-sitio:v2   "/docker-entrypoint.…"   45 seconds ago   Up 44 seconds   0.0.0.0:9090->80/tcp, [::]:9090->80/tcp   sitio
+9a53ba54ff33   mi-sitio:v2   "/docker-entrypoint.…"   17 minutes ago   Up 2 seconds    0.0.0.0:9091->80/tcp, [::]:9091->80/tcp   sitio2
 ```
 
 ---
 ### Error generado de puerto ocupado
 ---
 ```bash
-$ docker run -d -p 9090:80 --name mi-sitio-error mi-sitio-v2
+$ docker run -d -p 9090:80 --name mi-sitio-error mi-sitio:v2
 74fa7d3d84b133a864ad38edfcd192572308e4e9c45c73972afbdbd50dcd5fee
 
 What's next:
