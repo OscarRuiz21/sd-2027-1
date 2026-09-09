@@ -1,0 +1,3 @@
+Este es el archivo de prueba de la práctica 00
+Victoria Domínguez Alejandro
+Sistemas Distribuidos :D
