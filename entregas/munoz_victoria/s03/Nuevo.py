@@ -1,29 +1,55 @@
-@app.post("/cobrar")
-def cobrar(request_payload, idempotency_key: str = Header(...)):
+from fastapi import FastAPI, Header, HTTPException, status
+from pydantic import BaseModel
+import asyncio
+import random
+
+app = FastAPI()
+
+class PagoRequest(BaseModel):
+    monto: float
+
+db_records = {}
+
+@app.post("/cobrar", status_code=status.HTTP_201_CREATED)
+async def cobrar(pago: PagoRequest, idempotency_key: str = Header(None)):
+    if not idempotency_key:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Falta la cabecera Idempotency-Key"
+        )
+
+    if idempotency_key in db_records:
+        record = db_records[idempotency_key]
+        
+        if record["status"] == "PROCESSING":
+            raise HTTPException(
+                status_code=status.HTTP_409_CONFLICT,
+                detail="La petición con esta llave ya está en vuelo"
+            )
+        
+        return record["response_body"]
+
+    db_records[idempotency_key] = {"status": "PROCESSING"}
+
     try:
-        # 1. Intento de inserción atómica y reserva de la llave (Respaldado por UNIQUE en la BD)
-        database.execute(
-            "INSERT INTO idempotency_records (key, status) VALUES (?, 'PROCESSING')", 
-            idempotency_key
+        await asyncio.sleep(1)
+
+        response_body = {
+            "mensaje": "Cobro exitoso",
+            "monto": pago.monto,
+            "transaccion_id": random.randint(10000, 99999)
+        }
+        
+        db_records[idempotency_key] = {
+            "status": "COMPLETED",
+            "response_body": response_body
+        }
+
+        return response_body
+
+    except Exception as e:
+        del db_records[idempotency_key]
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail="Error interno procesando el pago"
         )
-        
-        # 2. Procesar el cobro si el registro es exclusivo
-        response = payment_gateway.charge(request_payload)
-        
-        # 3. Actualizar el registro con la respuesta obtenida para futuros reintentos
-        database.execute(
-            "UPDATE idempotency_records SET response = ?, status = 'COMPLETED' WHERE key = ?", 
-            response, idempotency_key
-        )
-        
-        return response, 201
-        
-    except DataIntegrityViolationException:
-        # 4. Si la llave ya existía (colisión por concurrencia simultánea o reintento), 
-        # se recupera la respuesta previa sin ejecutar el cobro de nuevo[cite: 1]
-        existing_record = database.query(
-            "SELECT response FROM idempotency_records WHERE key = ?", 
-            idempotency_key
-        )
-        
-        return existing_record.response, 200
