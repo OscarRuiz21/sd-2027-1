@@ -44,10 +44,11 @@ Cinco reglas:
 2. **No abras pull requests durante el semestre.** El PR es UNO, al final del curso, con
    todo tu trabajo — y ese es el que se integra a `main` (con revisión de un compañero).
 3. **Cada quien toca solo su carpeta** de `entregas/`.
-4. **La hora que cuenta es la del último push a tu rama.** La política completa de
-   puntualidad, con la ficha de rescate, está en [`ENTREGAS.md`](ENTREGAS.md).
-5. **Tu reflexión (`evidencia.md`) se puede pulir hasta el martes** sin penalización; el
-   código cierra con la clase.
+4. **Los labs van en tiempo hasta el domingo** y tarde hasta antes de la siguiente sesión
+   — tarde no baja puntos, pero queda registrado para tu tendencia (cuenta en los puntos
+   extra del final). Detalle en [`ENTREGAS.md`](ENTREGAS.md).
+5. **Las lecturas**: en tiempo hasta el **sábado antes de las 07:00**; tarde hasta el
+   **domingo** todo el día.
 
 ## La rutina de cada sábado
 
