@@ -8,7 +8,8 @@ La unicidad se delega a un motor de base de datos relacional porque este sí gar
 En lugar de revisar primero y actuar después, la estrategia correcta intenta insertar la llave de forma anticipada respaldada por una restricción 'UNIQUE'. El motor de base de datos se encarga de serializar las operaciones concurrentes: si dos peticiones intentan insertar la misma llave al mismo tiempo, la base de datos dejará pasar a una y rechazará a la otra lanzando una excepción por duplicidad ('DataIntegrityViolationException'). De este modo, solo una petición ejecuta el cobro real, mientras que la otra detecta el fallo por duplicado y se limita a devolver la respuesta guardada previamente.
 -------------------------------------------------------------------
 Pseudocódigo
-1. Versión ingenua (Map en memoria - ¡Falla!):
+1. Versión ingenua (Map en memoria - Falla):
+
 FUNCTION procesar_cobro(idempotency_key, datos_pago):
     // Verificamos si la llave ya existe en el Map compartido
     IF memory_map.containsKey(idempotency_key) THEN
