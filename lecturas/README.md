@@ -19,7 +19,7 @@ discusión del sábado. El programa calificado arranca con la lectura de la S3.
 - Waldo, Wyant, Wollrath y Kendall, *A Note on Distributed Computing* (1994):
   https://github.com/papers-we-love/papers-we-love/blob/main/distributed_systems/a-note-on-distributed-computing.pdf
 - 2 preguntas + 1 hallazgo en la [Discussion #2](https://github.com/OscarRuiz21/sd-2027-1/discussions/2)
-  **antes del jueves 3 de septiembre, 23:59.**
+  **antes del jueves 3 de septiembre, 23:59** (ese fue su plazo, con la política anterior; desde la Lectura 3 el corte es el sábado 06:59).
 
 ## Lectura 3 · para la S4 (12 de septiembre)
 
