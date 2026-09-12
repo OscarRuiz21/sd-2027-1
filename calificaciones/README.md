@@ -17,7 +17,10 @@ La hoja **Matriz** tiene un renglón por persona, con una columna por práctica 
 | **sin nombre** | La entregaste, pero el archivo no lleva tu nombre adentro |
 | **tarde** | Fuera de tiempo. **No baja puntos**, solo queda registrado (ver [`ENTREGAS.md`](../ENTREGAS.md)) |
 | **✗** | No entregada |
-| **—** | No aplica (la Lectura 1 era opcional; la Lectura 3 sigue abierta) |
+| **—** | No aplica todavía (la Lectura 1 era opcional; una lectura o tarea que sigue abierta) |
+
+La columna **Idempotency key** es la tarea **extra** de [`OPCIONALES.md`](../entregas/OPCIONALES.md):
+es opcional, **no afecta tu calificación** y cuenta para los puntos extra del final.
 
 Si tu renglón dice **parcial** o **sin nombre**, busca abajo la pestaña con tu número de
 cuenta: ahí está el detalle en dos columnas (qué falta · cómo se corrige) y los comandos
@@ -30,4 +33,4 @@ observación— **abre un Issue** en este repositorio con tu número de cuenta y
 La causa más común es que la entrega quedó en una rama vieja o en una carpeta con otro
 nombre, y se resuelve rápido.
 
-El corte más reciente es el del **7 de septiembre**.
+El corte más reciente es el del **11 de septiembre**.
