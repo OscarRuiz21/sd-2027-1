@@ -1,29 +1,55 @@
-Opcional S03 · Implementa bien el patrón de idempotency key
+Patrón Idempotency-Key: ¿Por qué falla el Map y por qué el UNIQUE no?
+1. El problema de la implementación ingenua (Map en memoria)
+La implementación basada en un 'Map' en memoria falla debido a una condición de carrera conocida como TOCTOU (Time-of-Check to Time-of-Use). 
+Entre el momento en que el hilo verifica si la llave existe ('check') y el momento en que procede a registrarla y cobrar ('use'), existe una ventana de tiempo infinitesimal. Si dos peticiones idénticas llegan de forma concurrente (por ejemplo, por un reintento automático de red tras un timeout), ambas pueden ver que la llave "no existe", pasar la validación al mismo tiempo y terminar ejecutando el cobro por duplicado. Además, si el servicio se escala horizontalmente en múltiples réplicas, cada contenedor tendrá su propio mapa aislado que no se comunica con los demás.
 
-Por qué el Map en memoria falla y el UNIQUE no
-La implementación ingenua de una llave de idempotencia utilizando un mapa en memoria (`Map`) presenta fallas fundamentales en entornos concurrentes y distribuidos:
-La condición de carrera TOCTOU (Time-Of-Check to Time-Of-Use): Entre el instante en que el sistema verifica si la llave ya existe en el mapa y el instante en que efectivamente la registra y procesa el pago, transcurre una ventana de tiempo infinitesimal. Si dos peticiones idénticas llegan de manera concurrente, ambas evaluarán el mapa como "no visto", sobrepasarán la validación de forma simultánea y provocarán un cobro doble.
-
-Aislamiento entre réplicas: En una arquitectura moderna con múltiples instancias o réplicas de un microservicio, cada contenedor o servidor mantiene su propia memoria RAM y, por ende, su propio mapa independiente, volviendo imposible la sincronización del estado global de las peticiones.
-
-Por el contrario, delegar la unicidad en una restricción `UNIQUE` a nivel de base de datos resuelve el problema de forma atómica:
-Serialización nativa: La base de datos opera como un coordinador centralizado que serializa de manera estricta las escrituras concurrentes.
-Control transaccional: Al intentar insertar la llave antes de procesar el cobro, el motor de la base de datos permite que solo una petición triunfe mientras rechaza de inmediato cualquier intento duplicado mediante una excepción de integridad de datos. De este modo, la aplicación intercepta dicho fallo y devuelve la respuesta original sin reejecutar la transacción.
-----------------------------------------------------------------------
-Pseudocódigo de las versiones
-Global memoryMap = new Map<String, Response>()
-
-Endpoint POST /cobrar(Header Idempotency-Key, Request payload):
-    // 1. Check (Vulnerable a TOCTOU)
-    if memoryMap.containsKey(Idempotency-Key):
-        return memoryMap.get(Idempotency-Key) // Devuelve respuesta anterior
-
-    // --- VENTANA DE CARRERA (TOCTOU) ---
+2. La solución correcta con base de datos (Restricción UNIQUE)
+La unicidad se delega a un motor de base de datos relacional porque este sí garantiza atomicidad a nivel de almacenamiento. 
+En lugar de revisar primero y actuar después, la estrategia correcta intenta insertar la llave de forma anticipada respaldada por una restricción 'UNIQUE'. El motor de base de datos se encarga de serializar las operaciones concurrentes: si dos peticiones intentan insertar la misma llave al mismo tiempo, la base de datos dejará pasar a una y rechazará a la otra lanzando una excepción por duplicidad ('DataIntegrityViolationException'). De este modo, solo una petición ejecuta el cobro real, mientras que la otra detecta el fallo por duplicado y se limita a devolver la respuesta guardada previamente.
+-------------------------------------------------------------------
+Pseudocódigo
+1. Versión ingenua (Map en memoria - ¡Falla!):
+FUNCTION procesar_cobro(idempotency_key, datos_pago):
+    // Verificamos si la llave ya existe en el Map compartido
+    IF memory_map.containsKey(idempotency_key) THEN
+        RETURN memory_map.get(idempotency_key) // Devuelve respuesta previa
+    END IF
     
-    // 2. Procesar cobro externo
-    response = PaymentGateway.charge(payload)
-
-    // 3. Use / Guardar
-    memoryMap.put(Idempotency-Key, response)
+    // --- AQUÍ OCURRE LA CARRERA (TOCTOU) ---
+    // Dos hilos pueden pasar el if anterior al mismo tiempo si llegan juntos.
     
-    return response
+    // Ejecutamos el cobro real en la pasarela externa
+    resultado = pasarela_externa.cobrar(datos_pago)
+    
+    // Guardamos en memoria
+    memory_map.put(idempotency_key, resultado)
+    
+    RETURN resultado
+END FUNCTION
+
+2. Versión correcta (Restricción UNIQUE en Base de Datos):
+FUNCTION procesar_cobro(idempotency_key, datos_pago):
+    INICIAR TRANSACCIÓN DB
+    
+    TRY:
+        // Intentamos insertar la llave de inmediato. La BD garantiza atomicidad.
+        INSERT INTO idempotency_records (key, status) VALUES (idempotency_key, 'PROCESSING')
+        
+        // Si el INSERT pasa, somos el único hilo autorizado para cobrar
+        resultado = pasarela_externa.cobrar(datos_pago)
+        
+        // Actualizamos el registro con el resultado final (código y cuerpo)
+        UPDATE idempotency_records SET status = 'COMPLETED', response = resultado WHERE key = idempotency_key
+        
+        COMMIT TRANSACCIÓN
+        RETURN resultado
+        
+    CATCH DuplicateKeyException:
+        // Si la llave ya existía, el UNIQUE constraint frena el INSERT al instante
+        ROLLBACK TRANSACCIÓN
+        
+        // Consultamos la respuesta guardada del proceso original y la devolvemos
+        registro_previo = SELECT * FROM idempotency_records WHERE key = idempotency_key
+        RETURN registro_previo.response
+    END TRY
+END FUNCTION
