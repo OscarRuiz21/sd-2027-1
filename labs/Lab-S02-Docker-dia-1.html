@@ -267,7 +267,9 @@ git push -u origin s02-<span class="v">apellido</span></code></pre>
 <h2>Limpieza</h2>
 <pre><code>docker stop web1 web2 miweb sitio sitio2
 docker rm   web1 web2 miweb sitio sitio2
-docker system prune     <span class="c"># pregunta antes de borrar lo no usado</span></code></pre>
+docker rmi  mi-sitio mi-sitio:v2    <span class="c"># solo tus imágenes de hoy, si ya no las quieres</span></code></pre>
+<div class="box warn"><h4>Limpia por nombre, nunca de un barrido</h4>
+<p>Vas a encontrar en internet <code>docker system prune</code> y <code>docker image prune</code>. Barren <b>todo</b> lo que Docker considere sin uso en tu máquina: contenedores detenidos, imágenes huérfanas, redes y, con <code>-a</code> o <code>--volumes</code>, también imágenes en uso ocasional y volúmenes con datos de otros proyectos tuyos. No preguntan cuáles te importaban. En este curso siempre borramos <b>por nombre</b>, como arriba: es más largo de teclear y no se lleva nada por delante.</p></div>
 
 <h2>El repertorio de hoy, en una tabla</h2>
 <p>Todo lo que tecleaste, junto. De aquí salen los 5 de tu misión 1:</p>
@@ -285,8 +287,8 @@ docker system prune     <span class="c"># pregunta antes de borrar lo no usado</
   <tr><td><code>docker tag viejo nuevo:tag</code></td><td>Renombra o re-etiqueta una imagen (así saldrá tu <code>mi-sitio:v2</code>).</td></tr>
   <tr><td><code>docker logs -f nombre</code></td><td>Logs <b>en vivo</b>: la pantalla se queda pegada al servicio (sales con Ctrl+C).</td></tr>
   <tr><td><code>docker stats</code></td><td>CPU y memoria de cada contenedor, en tiempo real.</td></tr>
-  <tr><td><code>docker image prune</code></td><td>Borra imágenes huérfanas (las "colgadas" sin tag).</td></tr>
-  <tr><td><code>docker system prune</code></td><td>Limpia lo detenido y lo huérfano (pregunta antes).</td></tr>
+  <tr><td><code>docker rmi nombre</code></td><td>Borra <b>una</b> imagen tuya, por nombre. (Existe <code>docker image prune</code>, que barre todas las huérfanas de la máquina: no lo uses aquí.)</td></tr>
+  <tr><td><code>docker stop</code> + <code>docker rm</code> por nombre</td><td>La limpieza del curso. Evita <code>docker system prune</code>: barre contenedores, imágenes y redes sin uso de <b>todos</b> tus proyectos.</td></tr>
 </table>
 
 <h2>Si algo falla</h2>
