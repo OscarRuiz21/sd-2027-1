@@ -6,9 +6,18 @@ acentos, unidos por un guion bajo**:
 ```
 entregas/
 └── ramirez_ana/
+    ├── p00/
     ├── s02/
     └── s03/ … s12/
 ```
 
-Cada sesión se entrega desde una rama `sNN-apellido` como **pull request** con la
-plantilla llena y la aprobación de tu revisor. Cada quien toca solo la suya.
+Todo se entrega con **push a tu rama** `entregas_apellido_nombre` — sin pull request hasta
+el final del curso (la rutina completa está en el
+[`GIT-CHEATSHEET.md`](../GIT-CHEATSHEET.md); los tiempos, en
+[`ENTREGAS.md`](../ENTREGAS.md)). Cada quien toca solo su carpeta.
+
+## 📣 Tareas opcionales
+
+Las instrucciones de las **tareas opcionales** (no obligatorias; cuentan para tu tendencia
+y los puntos extra del final) viven en **[`OPCIONALES.md`](OPCIONALES.md)**. Ya está
+publicada la primera: **implementar bien el patrón de idempotency key** (S03).
