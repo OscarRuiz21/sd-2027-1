@@ -9,7 +9,7 @@ En lugar de revisar primero y actuar después, la estrategia correcta intenta in
 -------------------------------------------------------------------
 Pseudocódigo
 1. Versión ingenua (Map en memoria - Falla):
-
+```text
 FUNCTION procesar_cobro(idempotency_key, datos_pago):
     // Verificamos si la llave ya existe en el Map compartido
     IF memory_map.containsKey(idempotency_key) THEN
@@ -29,6 +29,7 @@ FUNCTION procesar_cobro(idempotency_key, datos_pago):
 END FUNCTION
 
 2. Versión correcta (Restricción UNIQUE en Base de Datos):
+```text
 FUNCTION procesar_cobro(idempotency_key, datos_pago):
     INICIAR TRANSACCIÓN DB
     
@@ -39,7 +40,7 @@ FUNCTION procesar_cobro(idempotency_key, datos_pago):
         // Si el INSERT pasa, somos el único hilo autorizado para cobrar
         resultado = pasarela_externa.cobrar(datos_pago)
         
-        // Actualizamos el registro con el resultado final (código y cuerpo)
+        // Actualizamos el resultado final (código y cuerpo)
         UPDATE idempotency_records SET status = 'COMPLETED', response = resultado WHERE key = idempotency_key
         
         COMMIT TRANSACCIÓN
@@ -49,7 +50,7 @@ FUNCTION procesar_cobro(idempotency_key, datos_pago):
         // Si la llave ya existía, el UNIQUE constraint frena el INSERT al instante
         ROLLBACK TRANSACCIÓN
         
-        // Consultamos la respuesta guardada del proceso original y la devolvemos
+        // Consultamos la respuesta guardada y la devolvemos
         registro_previo = SELECT * FROM idempotency_records WHERE key = idempotency_key
         RETURN registro_previo.response
     END TRY
