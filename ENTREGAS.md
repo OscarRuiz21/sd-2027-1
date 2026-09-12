@@ -14,6 +14,12 @@ entregas/apellido_nombre/
 └── s03/ … s12/
 ```
 
+## Tareas opcionales
+
+Hay tareas **opcionales** en [`entregas/OPCIONALES.md`](entregas/OPCIONALES.md). No son
+obligatorias y **no afectan tu calificación**: cuentan para tu tendencia de entregas y para
+los **puntos extra** del final del curso. La primera es el *idempotency key* sin TOCTOU.
+
 ## Los tiempos
 
 **Labs de la semana** (la hora es la de tu último push a esa carpeta):
