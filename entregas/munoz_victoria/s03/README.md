@@ -9,3 +9,21 @@ Aislamiento entre réplicas: En una arquitectura moderna con múltiples instanci
 Por el contrario, delegar la unicidad en una restricción `UNIQUE` a nivel de base de datos resuelve el problema de forma atómica:
 Serialización nativa: La base de datos opera como un coordinador centralizado que serializa de manera estricta las escrituras concurrentes.
 Control transaccional: Al intentar insertar la llave antes de procesar el cobro, el motor de la base de datos permite que solo una petición triunfe mientras rechaza de inmediato cualquier intento duplicado mediante una excepción de integridad de datos. De este modo, la aplicación intercepta dicho fallo y devuelve la respuesta original sin reejecutar la transacción.
+----------------------------------------------------------------------
+Pseudocódigo de las versiones
+Global memoryMap = new Map<String, Response>()
+
+Endpoint POST /cobrar(Header Idempotency-Key, Request payload):
+    // 1. Check (Vulnerable a TOCTOU)
+    if memoryMap.containsKey(Idempotency-Key):
+        return memoryMap.get(Idempotency-Key) // Devuelve respuesta anterior
+
+    // --- VENTANA DE CARRERA (TOCTOU) ---
+    
+    // 2. Procesar cobro externo
+    response = PaymentGateway.charge(payload)
+
+    // 3. Use / Guardar
+    memoryMap.put(Idempotency-Key, response)
+    
+    return response
