@@ -27,3 +27,31 @@ FUNCTION procesar_cobro(idempotency_key, datos_pago):
     
     RETURN resultado
 END FUNCTION
+
+
+2)Versión correcta (Restricción UNIQUE en Base de Datos):
+FUNCTION procesar_cobro(idempotency_key, datos_pago):
+    INICIAR TRANSACCIÓN DB
+    
+    TRY:
+        // Intentamos insertar la llave de inmediato. La BD garantiza atomicidad.
+        INSERT INTO idempotency_records (key, status) VALUES (idempotency_key, 'PROCESSING')
+        
+        // Si el INSERT pasa, somos el único hilo autorizado para cobrar
+        resultado = pasarela_externa.cobrar(datos_pago)
+        
+        // Actualizamos el resultado final (código y cuerpo)
+        UPDATE idempotency_records SET status = 'COMPLETED', response = resultado WHERE key = idempotency_key
+        
+        COMMIT TRANSACCIÓN
+        RETURN resultado
+        
+    CATCH DuplicateKeyException:
+        // Si la llave ya existía, el UNIQUE constraint frena el INSERT al instante
+        ROLLBACK TRANSACCIÓN
+        
+        // Consultamos la respuesta guardada y la devolvemos
+        registro_previo = SELECT * FROM idempotency_records WHERE key = idempotency_key
+        RETURN registro_previo.response
+    END TRY
+END FUNCTION
