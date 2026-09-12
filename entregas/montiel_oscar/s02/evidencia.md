@@ -1,4 +1,4 @@
-# Evidencia - Reto Docker (Día Uno)
+# Evidencia - Reto Docker - Montiel Oscar
 
 ## Comandos principales utilizados
 * `docker build -t mi-sitio:v2 .` : Para reconstruir la imagen con los nuevos cambios en el HTML.
@@ -7,7 +7,9 @@
 * `docker run -d -p 9091:80 --name sitio2 mi-sitio:v2`: Para levantar una segunda instancia.
 
 ## Misión 3: Multiplícate (Contenedores corriendo)
-[Aquí va el texto que te salió cuando hiciste `docker ps`]
+CONTAINER ID   IMAGE         COMMAND                  CREATED          STATUS          PORTS                  NAMES
+076437dc8004   mi-sitio:v2   "/docker-entrypoint.…"   2 minutes ago    Up 2 minutes    0.0.0.0:9091->80/tcp   sitio2
+e49b2878db47   mi-sitio:v2   "/docker-entrypoint.…"   3 minutes ago    Up 3 minutes    0.0.0.0:9090->80/tcp   sitio
 
 ## Misión 4: Error de puerto ocupado
 docker: Error response from daemon: failed to set up container networking: driver failed programming external connectivity on endpoint sitio3... Bind for 0.0.0.0:9090 failed: port is already allocated
