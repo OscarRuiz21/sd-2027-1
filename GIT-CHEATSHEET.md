@@ -60,14 +60,15 @@ cada práctica.
 
 ## 2 · Trabaja
 
-Tu trabajo va en `entregas/apellido_nombre/sNN/`. Nunca toques la carpeta de otro ni el
+Los **labs** van en `entregas/apellido_nombre/sNN/` y las **tareas** en
+`entregas/apellido_nombre/tareas/tNN/`. Nunca toques la carpeta de otro ni el
 material del curso.
 
 ## 3 · Guarda
 
 ```bash
 git status
-git add entregas/apellido_nombre/sNN
+git add entregas/apellido_nombre/sNN      # o tareas/tNN si es una tarea
 git commit -m "S03: mis dos servicios sobre el sistema del curso"
 ```
 
