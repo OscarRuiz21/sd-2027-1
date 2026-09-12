@@ -2,6 +2,10 @@
 
 Las guías de laboratorio de cada sesión.
 
+> **Tarea del caso de estudio:** el ejercicio de **REST contra gRPC** asignado en la S4 vive
+> aparte, en [`tareas/T01-REST-vs-gRPC.md`](../tareas/T01-REST-vs-gRPC.md). Vence el
+> **domingo 20 de septiembre**.
+
 ## Antes del sábado 29 de agosto
 
 **[Instala Docker](https://oscarruiz21.github.io/sd-2027-1/labs/Instala-Docker.html)**:
