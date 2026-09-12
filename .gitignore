@@ -11,3 +11,7 @@ out/
 # sistema
 .DS_Store
 Thumbs.db
+
+# grabaciones de referencia y sus fotogramas (pesan cientos de MB; se quedan locales)
+material/**/videos/*.mov
+material/**/videos/*_frames/

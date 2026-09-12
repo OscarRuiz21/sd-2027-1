@@ -1,0 +1,10 @@
+/* S04 · tabla y recuadro sobre el tema oscuro por defecto del motor */
+body{--thead:#1B2836}
+.trow{display:flex;gap:3px}
+.trow .c{display:flex;align-items:center;height:100%;padding:0 14px;white-space:pre-line;
+  font:400 16px/1.25 var(--display);color:var(--ink);background:var(--panel-b)}
+.trow.alt .c{background:var(--panel-a)}
+.trow.thead .c{background:var(--thead);color:#fff;font-weight:600;font-size:15px}
+.trow.hl .c{background:color-mix(in srgb,var(--green) 12%,var(--panel-a));border:1.5px solid var(--green);color:var(--green);font-weight:600}
+.trow.pulse .c{background:color-mix(in srgb,var(--blue) 12%,var(--panel-a));color:var(--blue);font-weight:600}
+.box{border:2.5px solid var(--c);border-radius:8px;background:color-mix(in srgb,var(--c) 6%,transparent)}
