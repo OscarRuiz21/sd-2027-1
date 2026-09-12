@@ -1,5 +1,6 @@
 #### Misión 1 ####
 1.1 NO hay volumen
+
 Comenté las líneas que hacen referencia al volumen en el archivo compose.yaml
 services:
   web:
@@ -30,9 +31,10 @@ services:
       - "15672:15672"
 
 #volumes:
-#  datos_banco:
+  #datos_banco:
 
 ###Salida###
+
 (base) alex@Apples-MacBook-Pro s04 % docker compose up -d
 [+] Running 5/5
  ✔ Network s04_default     Created                                                                                                              0.2s 
@@ -40,6 +42,7 @@ services:
  ✔ Container s04-broker-1  Started                                                                                                              2.8s 
  ✔ Container s04-cache-1   Started                                                                                                              2.6s 
  ✔ Container s04-web-1     Started                                                                                                             13.0s 
+ 
 (base) alex@Apples-MacBook-Pro s04 % docker exec -it s04-db-1 psql -U postgres -c "CREATE TABLE usuarios(id int primary key, nombre varchar(10), edad int);"
 CREATE TABLE
 (base) alex@Apples-MacBook-Pro s04 % docker exec -it s04-db-1 psql -U postgres -c "INSERT INTO usuarios VALUES (1, 'Ale',22);"
