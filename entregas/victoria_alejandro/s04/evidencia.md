@@ -128,8 +128,6 @@ db:5432 - no response
 db:5432 - accepting connections
 
 ### Misión 3 ###
-Para esta misión encontré que puedo evitar que se suban todos los archivos .env a git utilizando el *
-Entonces mi archivo .gitignore contiene la línea .env*
 (base) alex@Apples-MacBook-Pro s04 % docker run --rm --env-file .env postgres:17-alpine env | grep POSTGRES 
 POSTGRES_DATABASE=banco_postgres
 POSTGRES_CONTRA=contraseña

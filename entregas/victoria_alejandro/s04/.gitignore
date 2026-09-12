@@ -1,2 +1,2 @@
-.env*
-comandos.txt
+.env
+.env.prod
