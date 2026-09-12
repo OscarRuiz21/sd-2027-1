@@ -150,7 +150,7 @@ PGDATA=/var/lib/postgresql/data
 
 Con esto se demuestra que se puede utilizar la misma imagen `postgres:17-alpine` con configuraciones diferentes, dependiendo de las variables de entorno que se le asignen.
 
-El archivo `.env` se agregó al `.gitignore` para evitar subir las credenciales al repositorio. También se creó `.env.example` con los nombres de las variables y valores de ejemplo.
+El archivo `.env` y `.env.produ` se agregó al `.gitignore` para evitar subir las credenciales al repositorio. También se creó `.env.example` con los nombres de las variables y valores de ejemplo.
 
 ## 4. Compose
 
