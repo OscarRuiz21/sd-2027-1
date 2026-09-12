@@ -1,34 +1,47 @@
 # Política de entregas
 
-## El acantilado
+## El modelo: una rama tuya para todo el semestre
 
-El incentivo es terminar en clase, porque ahí estoy yo y ahí se aprende más. Se califica
-solo con el timestamp del último push a tu rama; yo no adjudico nada.
+Trabajas SIEMPRE en **tu rama** `entregas_apellido_nombre`. Ahí subes con push cada lab y
+cada tarea, dentro de tu carpeta `entregas/apellido_nombre/`. **No se abren pull requests
+durante el semestre**: al final del curso cada quien abre UN PR con todo su trabajo y ese
+es el que se integra a `main`.
 
-| Cuándo pusheas | Sobre |
+```
+entregas/apellido_nombre/
+├── p00/        ← la prueba de git
+├── s02/        ← lab de la sesión 2 (Docker)
+└── s03/ … s12/
+```
+
+## Tareas opcionales
+
+Hay tareas **opcionales** en [`entregas/OPCIONALES.md`](entregas/OPCIONALES.md). No son
+obligatorias y **no afectan tu calificación**: cuentan para tu tendencia de entregas y para
+los **puntos extra** del final del curso. La primera es el *idempotency key* sin TOCTOU.
+
+## Los tiempos
+
+**Labs de la semana** (la hora es la de tu último push a esa carpeta):
+
+| Cuándo pusheas | Cómo se registra |
 |---|---|
-| **Durante la clase** | **10** |
-| Mismo sábado, hasta las 23:59 | **9** |
-| Domingo | **7** |
-| Lunes o martes | **6** |
-| Después del martes | No se recibe |
+| Hasta el **domingo** 23:59 | **En tiempo y forma** |
+| De lunes a sábado, antes de la siguiente sesión | **Tarde** |
+| Después de la siguiente sesión | Ya no se registra para esa semana |
 
-## El código cierra con la clase, la reflexión no
+**Tarde NO baja puntos.** Se registra solo para ver tu **tendencia de entregas**, y esa
+tendencia se toma en cuenta al asignar los **puntos extra** del final del curso.
 
-**El código** se entrega dentro del horario y aplica la tabla de arriba.
+**Lecturas** (2 preguntas + 1 hallazgo en la Discussion de la semana):
 
-**La descripción del PR** (qué se rompió, qué gané y qué pagué) la puedes editar **hasta el
-martes sin penalización**. Pensar bien eso no se hace con prisa, y es la parte que de
-verdad me interesa. Editar la descripción no mueve el timestamp de tu entrega.
-
-## La ficha de rescate
-
-Tienes **un pase libre por semestre**: una entrega tarde que cuenta como puntual, sin
-explicar por qué. Lo declaras al abrir el PR poniendo `[rescate]` en el título, y se acabó.
-Cubre la laptop muerta, la gripa y la emergencia, sin que yo tenga que juzgar excusas.
+| Cuándo comentas | Cómo se registra |
+|---|---|
+| Hasta el **sábado antes de las 07:00** (cuando abre la teoría) | **En tiempo** |
+| Hasta el **domingo**, todo el día | **Tarde** (no penaliza; queda en la tendencia) |
 
 ## Peer review
 
-Tu PR necesita la aprobación de un compañero con al menos un comentario sustantivo. Si tu
-revisor no aparece, **tu entrega no se penaliza**: el retraso es de él y cuenta en su
-calificación. La calidad de las revisiones que das también se califica.
+Con el modelo de rama única, la revisión entre pares semanal queda **pausada**: vuelve
+sobre el **PR final del curso**, que necesitará la aprobación de un compañero con al menos
+un comentario sustantivo antes de integrarse a `main`.
