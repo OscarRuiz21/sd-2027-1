@@ -18,7 +18,8 @@ el final del curso (la rutina completa está en el
 
 ## Las tareas
 
-Aquí se van apilando. La más reciente, hasta arriba.
+Aquí se van apilando las **tareas**, la más reciente hasta arriba. Las **prácticas de
+laboratorio** no van aquí: cada una tiene su guía en [`labs/`](../labs/).
 
 ### Caso de estudio · el mismo servicio por REST y por gRPC
 
@@ -33,14 +34,6 @@ Se entrega en `entregas/apellido_nombre/s04/rest-vs-grpc/` y va con cliente, ser
 y un `README.md` con tu diseño. **Punto extra** si mides los bytes que viajan por cada uno.
 
 **Las instrucciones completas están en [`../tareas/T01-REST-vs-gRPC.md`](../tareas/T01-REST-vs-gRPC.md).**
-
-### Práctica de Docker de la S4
-
-**Asignada en la S4 (12-sep) · entrega el domingo 13 de septiembre, 23:59**
-
-Volúmenes, redes, variables de entorno y `docker compose`. La guía es
-[`Lab-S04-Docker-dia-2`](https://oscarruiz21.github.io/sd-2027-1/labs/Lab-S04-Docker-dia-2.html)
-y se entrega en `entregas/apellido_nombre/s04/`.
 
 ## Tareas opcionales
 
