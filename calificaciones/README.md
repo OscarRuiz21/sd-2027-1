@@ -19,7 +19,7 @@ La hoja **Matriz** tiene un renglón por persona, con una columna por práctica 
 | **✗** | No entregada |
 | **—** | No aplica todavía (la Lectura 1 era opcional; una lectura o tarea que sigue abierta) |
 
-La columna **Idempotency key** es la tarea **extra** de [`OPCIONALES.md`](../entregas/OPCIONALES.md):
+La columna **S04** dice si ya subiste el lab de Docker día dos: vence el **domingo 13** y su contenido se revisa al cierre. La columna **Idempotency key** es la tarea **extra** de [`OPCIONALES.md`](../entregas/OPCIONALES.md):
 es opcional, **no afecta tu calificación** y cuenta para los puntos extra del final.
 
 Si tu renglón dice **parcial** o **sin nombre**, busca abajo la pestaña con tu número de
@@ -33,4 +33,4 @@ observación— **abre un Issue** en este repositorio con tu número de cuenta y
 La causa más común es que la entrega quedó en una rama vieja o en una carpeta con otro
 nombre, y se resuelve rápido.
 
-El corte más reciente es el del **11 de septiembre**.
+El corte más reciente es el del **12 de septiembre**, después de la S4.
