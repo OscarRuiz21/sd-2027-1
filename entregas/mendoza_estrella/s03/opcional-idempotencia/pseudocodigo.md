@@ -1,6 +1,6 @@
-## Pseudocódigo Map vs UNIQUE
+# Pseudocódigo Map vs UNIQUE
 
-# VERSION CON MAP
+## VERSION CON MAP
 
 mapa = {}
 
@@ -15,7 +15,7 @@ Entre revisar si existe y guardar hay un hueco de tiempo.
 Si dos peticiones llegan casi juntas, ninguna ve la otra a tiempo y las dos cobran.
 
 
-# VERSION CON UNIQUE
+## VERSION CON UNIQUE
 
 función cobrar(llave, monto):
     intentar INSERT INTO tabla (llave, estado='pending')
