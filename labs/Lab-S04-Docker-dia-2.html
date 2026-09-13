@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SD · Lab S4 · Docker, día dos</title>
+<style>
+:root{--bg:#f5f8fc;--panel:#fff;--line:#d9e2ee;--ink:#12253d;--dim:#4b6178;
+--am:#b45309;--amsoft:#fff8ef;--gr:#15803d;--grsoft:#f0fdf4;--rd:#b91c1c;--rdsoft:#fef2f2;--code:#0f1e33}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);line-height:1.6;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 5vw 6rem}
+header{background:linear-gradient(160deg,#12253d,#1d3a60);color:#fff;padding:3rem 5vw 2.4rem;margin-bottom:2rem}
+header .in{max-width:920px;margin:0 auto}
+.kicker{color:#ffb340;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+header h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin:.35em 0 .3em;letter-spacing:-.02em}
+header p{color:#b9cde6;max-width:62ch}
+h2{font-size:clamp(1.35rem,2.6vw,1.9rem);margin:2.6rem 0 .3rem;letter-spacing:-.01em;
+border-top:2px solid var(--line);padding-top:1.6rem}
+h2:first-of-type{border-top:none;padding-top:0}
+h3{font-size:clamp(1.05rem,1.8vw,1.25rem);margin:1.7rem 0 .5rem}
+p{margin:.7rem 0;color:var(--dim)}
+p strong,li strong{color:var(--ink)}
+em{color:var(--am);font-style:normal;font-weight:700}
+ul,ol{margin:.6rem 0 .6rem 1.3rem;color:var(--dim)}li{margin:.35rem 0}
+a{color:var(--am)}
+code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.92em;
+background:#e8eef7;border:1px solid var(--line);border-radius:5px;padding:.08em .38em;color:#12253d}
+pre{background:var(--code);border-radius:10px;padding:1rem 1.15rem;overflow:auto;margin:.7rem 0;position:relative}
+pre code{background:none;border:none;padding:0;color:#dbe7f7;font-size:.93rem;line-height:1.75;display:block}
+pre .c{color:#7d93b0}pre .o{color:#7dd3fc}pre .v{color:#fbbf24}
+.out{background:#eef3f9;border:1px solid var(--line);border-left:4px solid #64748b;border-radius:0 8px 8px 0;
+padding:.75rem 1rem;margin:.5rem 0 1rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.83rem;color:#33465e;white-space:pre;overflow-x:auto}
+.out b{display:block;font-family:inherit;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-bottom:.35rem;font-weight:800}
+.box{border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin:1.1rem 0;background:var(--panel)}
+.box h4{font-size:1rem;margin-bottom:.3rem;display:flex;gap:.5rem;align-items:center}
+.warn{background:var(--rdsoft);border-color:#f2c4c4}
+.warn h4{color:var(--rd)}
+.tip{background:var(--amsoft);border-color:#f0d3ab}
+.tip h4{color:var(--am)}
+.cp{background:var(--grsoft);border:1px solid #bbe6c8;border-radius:12px;padding:1rem 1.2rem;margin:1.4rem 0}
+.cp h4{color:var(--gr);font-size:1.02rem;display:flex;gap:.55rem;align-items:center;margin-bottom:.25rem}
+.cp .n{background:var(--gr);color:#fff;width:1.55em;height:1.55em;border-radius:50%;display:inline-flex;
+align-items:center;justify-content:center;font-size:.85em;font-weight:800;flex:none}
+.cp p{color:#245c38;margin:.25rem 0 0}
+table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;color:var(--dim);vertical-align:top}
+th{color:var(--am);font-size:.75rem;text-transform:uppercase;letter-spacing:.09em}
+td b{color:var(--ink)}
+.tree{background:var(--code);border-radius:10px;padding:1rem 1.15rem;color:#dbe7f7;
+font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.7;overflow:auto;white-space:pre}
+.tree .d{color:#fbbf24}.tree .c{color:#7d93b0}
+footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color:var(--dim);font-size:.9rem}
+</style></head><body>
+
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · Laboratorio de la S4 · Sábado 12 de septiembre</div>
+  <h1>Docker, día dos:<br><em style="color:#ffb340">estado, red, configuración y compose</em></h1>
+  <p>El día uno fue <strong style="color:#fff">un contenedor</strong>. Hoy son <strong style="color:#fff">varios</strong>: guardan datos que sobreviven, se encuentran entre sí por nombre, se configuran desde afuera y se declaran en un solo archivo. Con eso, un sistema de cuatro piezas se levanta con un comando y se apaga con otro. El cierre es un <strong style="color:#fff">reto</strong> de cuatro misiones, y la entrega es un <strong style="color:#fff">push</strong> a tu rama.</p>
+  <p style="margin-top:1em"><a href="https://oscarruiz21.github.io/sd-2027-1/material/S04/S04-Clase-4-SD.pdf" style="display:inline-block;background:#ffb340;color:#12253d;text-decoration:none;font-weight:800;padding:.5em 1.2em;border-radius:10px">📽️ Abrir la teoría de hoy (deck)</a></p>
+</div></header>
+
+<div class="wrap">
+
+<div class="box tip">
+  <h4>Antes de empezar</h4>
+  <p>Necesitas: <strong>Docker corriendo</strong> (<code>docker --version</code> y <code>docker compose version</code> responden; en Windows y Mac, Docker Desktop abierto), <strong>Git</strong> y <strong>tu rama del semestre</strong>. Si tu máquina no puede con Docker, un <a href="https://github.com/codespaces"><strong>GitHub Codespace</strong></a> corre todo lo de esta guía igual (github.com/codespaces → <strong>New codespace</strong> → <strong>Blank</strong>); cuando publiques un puerto, <strong>Open in Browser</strong> es tu <code>localhost</code>.</p>
+  <p>Las imágenes de hoy pesan. <strong>Bájalas en tu casa</strong>, antes del sábado, para no depender de la red del salón:</p>
+<pre><code>docker pull postgres:17-alpine
+docker pull nginx:alpine
+docker pull redis:8-alpine
+docker pull rabbitmq:4-management-alpine
+docker pull alpine:3.20</code></pre>
+</div>
+
+<table>
+  <tr><th>Hora</th><th>Qué pasa</th></tr>
+  <tr><td><b>07:00 a 08:00</b></td><td>Lo recorremos <b>juntos</b>, en pantalla, hasta el <b>Ejercicio 4</b> (compose arriba).</td></tr>
+  <tr><td><b>08:00 a 10:00</b></td><td>Teoría. Lo que hiciste con las manos tiene nombre ahí: discovery, config, broker, caché.</td></tr>
+  <tr><td><b>10:00 en adelante</b></td><td><b>El reto es tuyo.</b> Ejercicio 5, las cuatro misiones y el push.</td></tr>
+</table>
+
+<h3>Tu rama, tu carpeta</h3>
+<p>Todo el semestre trabajas en <strong>tu rama</strong> <code>entregas_apellido_nombre</code> y en <strong>tu carpeta</strong> <code>entregas/apellido_nombre/</code>. Hoy toca la subcarpeta <code>s04</code>:</p>
+<pre><code><span class="c"># 1. párate en tu rama (NUNCA en main)</span>
+cd sd-2027-1
+git checkout entregas_<span class="v">apellido_nombre</span>
+
+<span class="c"># 2. trae lo nuevo de main (esta guía, por ejemplo)</span>
+git pull origin main
+
+<span class="c"># 3. tu carpeta de hoy (apellido_nombre, minúsculas, sin acentos)</span>
+mkdir -p entregas/<span class="v">apellido_nombre</span>/s04
+cd entregas/<span class="v">apellido_nombre</span>/s04</code></pre>
+<div class="box warn"><h4>Si <code>git checkout</code> dice que la rama no existe</h4>
+<p>Todavía no hiciste tu <code>p00</code>. Créala ahora mismo: <code>git checkout -b entregas_apellido_nombre</code> y sigue; el primer <code>push</code> del final va con <code>-u origin entregas_apellido_nombre</code>. Si el push te dice <code>403</code>, no has aceptado la invitación de colaborador. Los detalles están en el <a href="https://github.com/OscarRuiz21/sd-2027-1/blob/main/GIT-CHEATSHEET.md">GIT-CHEATSHEET</a>.</p></div>
+<div class="cp"><h4><span class="n">1</span>Punto de control</h4>
+<p><code>git branch</code> muestra <b>entregas_apellido_nombre</b> con asterisco y estás parado en <code>entregas/apellido_nombre/s04</code>. Desde aquí corre todo lo que sigue.</p></div>
+
+<h2>Parte 0 · Lo que un contenedor no resuelve solo</h2>
+<p>El sábado pasado levantaste nginx, publicaste un puerto y construiste tu imagen. Con eso puedes correr <strong>un</strong> servicio. Un sistema distribuido son <strong>varios</strong>, y ahí un contenedor solo deja cuatro huecos:</p>
+<table>
+  <tr><th>Hueco del día uno</th><th>Qué pasa</th><th>La pieza de hoy</th></tr>
+  <tr><td><b>Los datos mueren con el contenedor</b></td><td>Borras el contenedor de la base de datos y se va la base de datos completa.</td><td><b>Volúmenes</b> (<code>-v</code>): el estado vive afuera y sobrevive.</td></tr>
+  <tr><td><b>Dos contenedores no se ven</b></td><td>Tu servicio no sabe en qué dirección está su base de datos, y la dirección cambia cada vez.</td><td><b>Redes</b> (<code>--network</code>): el nombre del contenedor es su dirección.</td></tr>
+  <tr><td><b>La configuración horneada no sirve para dos entornos</b></td><td>La contraseña de desarrollo va dentro de la imagen; producción necesita otra y hay que reconstruir.</td><td><b>Variables de entorno</b> (<code>-e</code>, <code>--env-file</code>): la misma imagen, configuración distinta.</td></tr>
+  <tr><td><b>Cinco <code>docker run</code> a mano no son un sistema</b></td><td>Cada quien los teclea distinto, en otro orden, con otro puerto. Nadie reproduce lo mismo.</td><td><b>Compose</b> (<code>compose.yaml</code>): el sistema declarado en un archivo, arriba con un comando.</td></tr>
+</table>
+<div class="tree">                    ┌─ los datos mueren con él ............ <span class="d">volumen</span>      -v datos:/ruta
+                    ├─ no encuentra a los demás ........... <span class="d">red</span>          --network redlab
+<span class="d">un contenedor</span> ──────┼─ trae la configuración horneada ..... <span class="d">variables</span>    -e, --env-file
+                    └─ cinco a mano no son un sistema ..... <span class="d">compose</span>      compose.yaml</div>
+<p>Los cuatro ejercicios de hoy tapan un hueco cada uno, en ese orden. El quinto es diagnóstico. Al final vas a tener un <code>compose.yaml</code> que levanta base de datos, servidor web, caché y broker con <code>docker compose up -d</code>, y ese archivo es lo que entregas.</p>
+
+<h2>Ejercicio 1 · Volúmenes: el estado sobrevive al contenedor</h2>
+<h3>Primero, sin volumen: pierde los datos a propósito</h3>
+<p>Levanta un Postgres, crea una tabla, mete una fila y luego bórralo:</p>
+<pre><code>docker run -d --name db1 -e POSTGRES_PASSWORD=secreto postgres:17-alpine
+<span class="c"># espera unos 5 segundos: Postgres inicializa su carpeta de datos la primera vez</span>
+docker exec -it db1 psql -U postgres -c "CREATE TABLE cuentas(id int primary key, saldo int);"
+docker exec -it db1 psql -U postgres -c "INSERT INTO cuentas VALUES (1, 100);"
+docker exec -it db1 psql -U postgres -c "SELECT * FROM cuentas;"</code></pre>
+<div class="out"><b>Salida esperada de los tres psql</b>CREATE TABLE
+INSERT 0 1
+ id | saldo
+----+-------
+  1 |   100
+(1 row)</div>
+<p>El <code>exec</code> es el comando cargado de este ejercicio; léelo por partes:</p>
+<div class="tree">docker exec <span class="d">-it</span> <span class="d">db1</span> <span class="d">psql -U postgres</span> <span class="d">-c "SELECT * FROM cuentas;"</span>
+            │    │    │                 │
+            │    │    │                 └─ el SQL que psql ejecuta y luego sale
+            │    │    └─ el cliente de Postgres, como el usuario postgres
+            │    └─ dentro de cuál contenedor
+            └─ terminal interactiva (en Git Bash de Windows, antepón winpty)</div>
+<p>Ahora bórralo a la fuerza y vuelve a crearlo <strong>con el mismo comando</strong>:</p>
+<pre><code>docker rm -f db1
+docker run -d --name db1 -e POSTGRES_PASSWORD=secreto postgres:17-alpine
+<span class="c"># espera otros 5 segundos</span>
+docker exec -it db1 psql -U postgres -c "SELECT * FROM cuentas;"</code></pre>
+<div class="out"><b>La tabla ya no existe</b>ERROR:  relation "cuentas" does not exist
+LINE 1: SELECT * FROM cuentas;
+                      ^</div>
+<p>Mismo nombre, misma imagen, misma contraseña, <strong>cero datos</strong>. Los archivos de la base vivían en la capa de escritura del contenedor, y esa capa se fue con <code>rm</code>. Eso es lo que <code>docker rm -f</code> le hace a una base de datos sin volumen.</p>
+<div class="box warn"><h4>Fija el tag: <code>postgres:17-alpine</code></h4>
+<p>En Postgres 18 la imagen oficial cambió la ruta de datos (ya no es <code>/var/lib/postgresql/data</code>). Toda esta guía usa <code>17-alpine</code>; si pones <code>postgres:latest</code>, el volumen se monta en la carpeta equivocada y los datos no persisten. Es la misma lección del sábado pasado: <code>latest</code> no es una garantía, es una etiqueta.</p></div>
+
+<h3>Ahora con un volumen nombrado</h3>
+<pre><code>docker rm -f db1
+docker run -d --name db1 -v datos_banco:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secreto postgres:17-alpine</code></pre>
+<div class="tree">docker run -d --name db1 <span class="d">-v datos_banco:/var/lib/postgresql/data</span>  …  postgres:17-alpine
+                            │  │           │
+                            │  │           └─ la carpeta DEL CONTENEDOR donde Postgres guarda todo
+                            │  └─ el nombre del volumen: Docker lo crea si no existe
+                            └─ monta: "lo que el contenedor escriba ahí, guárdalo afuera"</div>
+<p>Repite la secuencia completa: crear la tabla, insertar, borrar el contenedor, recrearlo <strong>con el mismo <code>-v</code></strong> y consultar:</p>
+<pre><code>docker exec -it db1 psql -U postgres -c "CREATE TABLE cuentas(id int primary key, saldo int);"
+docker exec -it db1 psql -U postgres -c "INSERT INTO cuentas VALUES (1, 100);"
+docker rm -f db1
+docker run -d --name db1 -v datos_banco:/var/lib/postgresql/data -e POSTGRES_PASSWORD=secreto postgres:17-alpine
+docker exec -it db1 psql -U postgres -c "SELECT * FROM cuentas;"</code></pre>
+<div class="out"><b>La fila sobrevivió al contenedor</b> id | saldo
+----+-------
+  1 |   100
+(1 row)</div>
+<p>El contenedor murió; el volumen no. Míralo:</p>
+<pre><code>docker volume ls
+docker volume inspect datos_banco</code></pre>
+<div class="out"><b>Deberías ver algo así</b>DRIVER    VOLUME NAME
+local     datos_banco
+
+[
+    {
+        "CreatedAt": "2026-09-12T13:05:37Z",
+        "Driver": "local",
+        "Labels": null,
+        "Mountpoint": "/var/lib/docker/volumes/datos_banco/_data",
+        "Name": "datos_banco",
+        "Options": null,
+        "Scope": "local"
+    }
+]</div>
+<div class="box tip"><h4>Si <code>docker volume ls</code> te escupe cientos de renglones con nombres de 64 caracteres</h4>
+<p>Son <b>volúmenes anónimos</b>: los crea Docker cuando corres una imagen que declara un volumen y tú no le das <code>-v</code> (justo lo que acabas de hacer con Postgres en el primer intento). Quedan ahí, sin nombre y sin contenedor, con los datos adentro. Para encontrar el tuyo, filtra:</p>
+<pre><code>docker volume ls | grep datos_banco</code></pre>
+<p>Y ojo con la tentación de "limpiar": <code>docker volume prune</code> borra <b>todos</b> los anónimos que no estén en uso, de todos tus proyectos, sin preguntar cuáles te importaban. En la limpieza del final de esta guía se borra solo lo de hoy, por nombre.</p></div>
+<p>Ese <code>Mountpoint</code> es la carpeta real donde viven los archivos. En Linux la puedes ver con <code>sudo ls</code>; en Mac y Windows está dentro de la máquina virtual de Docker Desktop, y no te hace falta entrar: <strong>Docker administra el volumen, tú lo nombras</strong>.</p>
+<div class="box tip"><h4>Volumen nombrado o bind mount</h4>
+<p>Hay dos formas de montar. <strong>Volumen nombrado</strong> (<code>-v datos_banco:/ruta</code>): Docker decide dónde guardarlo, es portable y es lo que usa una base de datos. <strong>Bind mount</strong> (<code>-v $(pwd)/carpeta:/ruta</code>): montas <b>una carpeta tuya</b>, con ruta absoluta, y ves los archivos desde tu editor: ideal para desarrollo (tu código adentro del contenedor sin reconstruir). En PowerShell de Windows, <code>$(pwd)</code> se escribe <code>${PWD}</code>; en Codespaces y Linux es tal cual.</p>
+<table>
+  <tr><th></th><th>Volumen nombrado</th><th>Bind mount</th></tr>
+  <tr><td><b>Sintaxis</b></td><td><code>-v nombre:/ruta</code></td><td><code>-v /ruta/absoluta:/ruta</code></td></tr>
+  <tr><td><b>Quién lo administra</b></td><td>Docker</td><td>Tú (es tu carpeta)</td></tr>
+  <tr><td><b>Para qué</b></td><td>Datos de servicios: bases, colas, caché con persistencia</td><td>Código y archivos que editas mientras el contenedor corre</td></tr>
+  <tr><td><b>Sobrevive a <code>docker rm</code></b></td><td>Sí</td><td>Sí (nunca fue del contenedor)</td></tr>
+</table>
+<p>La regla que se lleva el día: <strong>la imagen es inmutable, el estado vive en el volumen</strong>. Si un contenedor guarda algo que te importa y no hay <code>-v</code>, ese algo ya está perdido; solo falta que te enteres.</p></div>
+<div class="cp"><h4><span class="n">2</span>Punto de control</h4>
+<p>Viste el <b><code>ERROR: relation "cuentas" does not exist</code></b> sin volumen, y la fila <b>1 | 100</b> viva después de <code>rm -f</code> con volumen. <code>docker volume ls</code> lista <code>datos_banco</code>.</p></div>
+
+<h2>Ejercicio 2 · Redes: contenedores que se encuentran por nombre</h2>
+<p>Crea una red y mete un servidor web en ella. Después, desde <strong>otro</strong> contenedor de la misma red, pídele la página <strong>por su nombre</strong>:</p>
+<pre><code>docker network create redlab
+docker run -d --name web --network redlab nginx:alpine
+docker run --rm --network redlab alpine:3.20 wget -qO- http://web</code></pre>
+<div class="out"><b>Responde el HTML de nginx (recortado)</b>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;Welcome to nginx!&lt;/title&gt;
+…</div>
+<div class="tree">docker run <span class="d">--rm</span> <span class="d">--network redlab</span> <span class="d">alpine:3.20</span> <span class="d">wget -qO- http://web</span>
+           │     │                │            │
+           │     │                │            └─ baja la URL y la imprime (-q calla, -O- a pantalla);
+           │     │                │               "web" es el NOMBRE del otro contenedor
+           │     │                └─ un Linux mínimo, solo para tener wget
+           │     └─ conéctalo a la misma red que "web"
+           └─ bórralo al terminar: es un cliente de un solo uso</div>
+<p>No publicaste ningún puerto (no hay <code>-p</code>) y no buscaste ninguna IP: <strong>el nombre del contenedor es un nombre DNS dentro de la red</strong>. Docker corre un pequeño servidor DNS para cada red que tú creas, y ahí registra a cada contenedor por su <code>--name</code>.</p>
+<h3>La contraprueba: fuera de la red no hay nombre</h3>
+<pre><code>docker run --rm alpine:3.20 wget -qO- http://web</code></pre>
+<div class="out"><b>Sin --network, falla</b>wget: can't connect to remote host (127.0.53.53): Connection refused</div>
+<p>Este contenedor cayó en la red <code>bridge</code> por defecto, y <strong>el bridge por defecto no resuelve nombres</strong>. Solo las <strong>redes definidas por el usuario</strong> (las que creas con <code>docker network create</code>, o las que Compose crea por ti) traen DNS. Por eso el sábado pasado dos contenedores no se veían, y por eso hoy sí.</p>
+<div class="box tip"><h4>Por qué esa dirección tan rara, y qué ves si no</h4>
+<p>Sin una red de Docker que conozca a <code>web</code>, la pregunta se fue al DNS de internet, y <code>web</code> es un dominio de primer nivel nuevo: ICANN contesta <code>127.0.53.53</code>, su dirección de "colisión de nombres", mientras se estrena. Si tu resolver no llega hasta allá, vas a ver en su lugar <code>wget: bad address 'web'</code>: las dos salidas dicen lo mismo. Compruébalo con un nombre que no sea dominio de nadie, y sale siempre el clásico:</p>
+<pre><code>docker run --rm alpine:3.20 wget -qO- http://db</code></pre>
+<div class="out"><b>Ningún DNS conoce a "db"</b>wget: bad address 'db'</div>
+<p>El punto no cambia: <strong>fuera de la red, <code>web</code> no es tu contenedor</strong>.</p></div>
+<p>Mira quién vive en la red y con qué dirección:</p>
+<pre><code>docker network inspect redlab</code></pre>
+<div class="out"><b>La parte que importa (recortada)</b>"Containers": {
+    "98e7492564c4…": {
+        "Name": "web",
+        "IPv4Address": "172.18.0.2/16",
+        …</div>
+<p>La IP existe, pero <strong>tú no la usaste y no la vas a usar</strong>: si borras <code>web</code> y lo recreas, puede tocarle otra, y el nombre sigue siendo <code>web</code>. Para ver solo nombres y direcciones: <code>docker network inspect redlab --format '{{range .Containers}}{{.Name}} {{.IPv4Address}}{{println}}{{end}}'</code>.</p>
+<div class="box tip"><h4>Eso que acabas de ver es "service discovery", versión mínima</h4>
+<p><strong>Nombre estable, dirección de hoy.</strong> El cliente pregunta por <code>web</code>; alguien (aquí, el DNS de Docker) le contesta la dirección que <code>web</code> tiene ahorita. Cuando el sistema crece a tres máquinas y N réplicas, ese "alguien" se vuelve una pieza con nombre propio, y la teoría de las 08:00 la explica. Tú ya la usaste.</p></div>
+<div class="cp"><h4><span class="n">3</span>Punto de control</h4>
+<p><code>wget http://web</code> responde el HTML <b>dentro</b> de <code>redlab</code> y falla <b>fuera</b>. Puedes decir con tus palabras por qué el bridge por defecto no sirve para esto.</p></div>
+
+<h2>Ejercicio 3 · Variables de entorno: una imagen, dos configuraciones</h2>
+<p>Ya usaste <code>-e POSTGRES_PASSWORD=…</code> sin pensarlo. Ahora hazlo a propósito: <strong>la misma imagen, levantada dos veces con configuración distinta</strong>, las dos en la red del ejercicio anterior:</p>
+<pre><code>docker run -d --name db_dev --network redlab -e POSTGRES_PASSWORD=dev -e POSTGRES_DB=banco_dev postgres:17-alpine
+docker run -d --name db_prod --network redlab -e POSTGRES_PASSWORD=prod -e POSTGRES_DB=banco_prod postgres:17-alpine
+docker exec db_dev env | grep POSTGRES
+docker exec db_prod env | grep POSTGRES</code></pre>
+<div class="out"><b>Cada contenedor ve solo su configuración (las dos líneas pueden salir en otro orden)</b>POSTGRES_PASSWORD=dev
+POSTGRES_DB=banco_dev
+
+POSTGRES_PASSWORD=prod
+POSTGRES_DB=banco_prod</div>
+<p><code>env</code> imprime las variables de entorno <strong>del proceso dentro del contenedor</strong>; en tu máquina esas variables no existen. La imagen no cambió: <code>postgres:17-alpine</code> es la misma en los dos. Cambió el gafete. Compruébalo con la base de datos que cada uno creó:</p>
+<pre><code># espera unos 5 segundos: las dos bases se están inicializando
+docker exec db_dev psql -U postgres -c "\l" | grep banco</code></pre>
+<div class="out"><b>Salida esperada</b> banco_dev | postgres | UTF8 | …</div>
+<h3>Sacar la configuración a un archivo</h3>
+<p>Cinco <code>-e</code> en una línea no escalan. Crea en tu carpeta <code>s04</code> un archivo llamado <code>.env</code> (con punto, sin extensión):</p>
+<pre><code>POSTGRES_PASSWORD=secreto
+POSTGRES_DB=banco</code></pre>
+<p>Y pásalo entero:</p>
+<pre><code>docker run --rm --env-file .env postgres:17-alpine env | grep POSTGRES</code></pre>
+<div class="out"><b>Las mismas variables, leídas del archivo</b>POSTGRES_PASSWORD=secreto
+POSTGRES_DB=banco</div>
+<p>Una línea por variable, formato <code>NOMBRE=valor</code>, sin comillas ni espacios alrededor del <code>=</code>. El archivo se busca <strong>relativo a donde corres el comando</strong>: si <code>docker</code> dice <code>open .env: no such file or directory</code>, estás parado en otra carpeta.</p>
+<div class="box tip"><h4>Factor III: la configuración vive fuera de la imagen</h4>
+<p><a href="https://12factor.net/es/config">The Twelve-Factor App</a> lo dice en una línea: <strong>guarda la configuración en el entorno</strong>. Configuración es todo lo que cambia entre despliegues (credenciales, direcciones de otros servicios, puertos) y por eso <b>no</b> va dentro de la imagen: <strong>la imagen es el uniforme, la configuración es el gafete</strong>. El mismo uniforme sirve en desarrollo y en producción; el gafete dice quién eres hoy.</p>
+<p>De ahí salen dos reglas de repo que hoy se vuelven obligatorias:</p>
+<ol>
+  <li><strong><code>.env</code> NUNCA se sube.</strong> Trae contraseñas. Crea un <code>.gitignore</code> en tu carpeta <code>s04</code> con una sola línea: <code>.env</code></li>
+  <li><strong>En su lugar se sube <code>.env.example</code></strong>: los <b>nombres</b> de las variables con valores falsos, para que quien clone sepa qué llenar. Por ejemplo: <code>POSTGRES_PASSWORD=cambia-esto</code> y <code>POSTGRES_DB=banco</code>.</li>
+</ol>
+<p>La prueba de fuego del factor III: <strong>¿podrías hacer público tu repo ahora mismo sin comprometer una credencial?</strong> Si la respuesta es "mmm", ya sabes qué archivo está mal puesto.</p></div>
+<div class="cp"><h4><span class="n">4</span>Punto de control</h4>
+<p><code>docker exec db_dev env</code> y <code>db_prod</code> muestran configuraciones distintas con la misma imagen; tu <code>.env</code> funciona con <code>--env-file</code>; ya existen <code>.gitignore</code> y <code>.env.example</code> en tu carpeta.</p></div>
+
+<h2>Ejercicio 4 · Compose: el sistema en un archivo</h2>
+<p>Hasta aquí llevas seis <code>docker run</code> con banderas distintas. Un compañero que quiera reproducir tu sistema tendría que teclearlos igual y en el mismo orden. <strong>Compose</strong> resuelve eso: describes los servicios en un archivo y Docker los levanta, conecta y apaga juntos. En tu carpeta <code>s04</code>, junto al <code>.env</code>, crea <code>compose.yaml</code>:</p>
+<pre><code><span class="o">services</span>:
+  <span class="o">web</span>:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  <span class="o">db</span>:
+    image: postgres:17-alpine
+    env_file: .env
+    volumes:
+      - datos_banco:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  <span class="o">cache</span>:
+    image: redis:8-alpine
+
+  <span class="o">broker</span>:
+    image: rabbitmq:4-management-alpine
+    ports:
+      - "15672:15672"
+
+<span class="o">volumes</span>:
+  datos_banco:</code></pre>
+<p>Es YAML: <strong>la indentación son dos espacios y no hay tabuladores</strong>. Cada bloque traduce algo que ya tecleaste hoy:</p>
+<table>
+  <tr><th>Clave</th><th>Qué hace</th><th>El equivalente a mano</th></tr>
+  <tr><td><code>services:</code></td><td>La lista de contenedores del sistema. Cada nombre (<code>web</code>, <code>db</code>…) es un <b>servicio</b>.</td><td>Un <code>docker run</code> por servicio</td></tr>
+  <tr><td><code>image:</code></td><td>De qué imagen nace.</td><td>El último argumento del <code>run</code></td></tr>
+  <tr><td><code>ports:</code></td><td>Publica <code>máquina:contenedor</code>. Solo <code>web</code> y la consola de <code>broker</code> se publican; <code>db</code> y <code>cache</code> <b>no</b>, y aun así los demás los alcanzan.</td><td><code>-p 8080:80</code></td></tr>
+  <tr><td><code>env_file:</code></td><td>Carga las variables desde tu <code>.env</code>.</td><td><code>--env-file .env</code></td></tr>
+  <tr><td><code>volumes:</code> (dentro de <code>db</code>)</td><td>Monta el volumen nombrado en la carpeta de datos.</td><td><code>-v datos_banco:/var/lib/postgresql/data</code></td></tr>
+  <tr><td><code>healthcheck:</code></td><td>Cómo saber si el servicio <b>ya sirve</b>, no solo si arrancó: <code>pg_isready</code> cada 5 s, hasta 5 intentos.</td><td>No hay equivalente cómodo: por eso Compose</td></tr>
+  <tr><td><code>depends_on:</code> con <code>condition: service_healthy</code></td><td><code>web</code> no arranca hasta que <code>db</code> pase su healthcheck.</td><td>Tú esperando 5 segundos con un <code>sleep</code></td></tr>
+  <tr><td><code>volumes:</code> (arriba, al nivel de <code>services</code>)</td><td>Declara el volumen para que Compose lo cree y lo administre.</td><td><code>docker volume create</code></td></tr>
+</table>
+<div class="box tip"><h4>Lo que no está en el archivo, y no hace falta</h4>
+<p>No declaraste <b>ninguna red</b>: Compose crea una <b>por proyecto</b> (el proyecto se llama como tu carpeta, así que la red es <code>s04_default</code>) y conecta todos los servicios. Adentro, cada servicio se resuelve <b>por su nombre de servicio</b>: <code>web</code> alcanza a <code>db</code> en <code>db:5432</code> sin que nadie publique el 5432. Es el ejercicio 2, ya automático. Tampoco hay <code>version:</code> arriba: era de la sintaxis vieja; si lo pones, Compose te avisa que lo ignora. El comando es <code>docker compose</code>, <b>con espacio</b>; el <code>docker-compose</code> con guion es la versión 1, retirada.</p></div>
+<h3>Arriba</h3>
+<pre><code>docker compose up -d
+docker compose ps</code></pre>
+<div class="out"><b>El up cuenta lo que va creando (recortado)</b> Network s04_default          Created
+ Volume s04_datos_banco       Created
+ Container s04-cache-1        Started
+ Container s04-broker-1       Started
+ Container s04-db-1           Healthy
+ Container s04-web-1          Started</div>
+<div class="out"><b>ps: cuatro filas, y db en healthy (cada puerto publicado sale dos veces: IPv4 y IPv6)</b>NAME           IMAGE                          COMMAND                  SERVICE   CREATED         STATUS                   PORTS
+s04-broker-1   rabbitmq:4-management-alpine   "docker-entrypoint.s…"   broker    6 seconds ago   Up 5 seconds             0.0.0.0:15672-&gt;15672/tcp, [::]:15672-&gt;15672/tcp
+s04-cache-1    redis:8-alpine                 "docker-entrypoint.s…"   cache     6 seconds ago   Up 5 seconds             6379/tcp
+s04-db-1       postgres:17-alpine             "docker-entrypoint.s…"   db        6 seconds ago   Up 5 seconds (healthy)   5432/tcp
+s04-web-1      nginx:alpine                   "/docker-entrypoint.…"   web       6 seconds ago   Up Less than a second    0.0.0.0:8080-&gt;80/tcp, [::]:8080-&gt;80/tcp</div>
+<p>La tabla es ancha; si no te cabe en la terminal, pide solo las columnas que importan (y esta es la versión cómoda para pegar en tu evidencia):</p>
+<pre><code>docker compose ps --format "table {{.Name}}\t{{.Service}}\t{{.Status}}\t{{.Ports}}"</code></pre>
+<div class="out"><b>Las mismas cuatro filas, sin ruido</b>NAME           SERVICE   STATUS                   PORTS
+s04-broker-1   broker    Up 5 seconds             0.0.0.0:15672-&gt;15672/tcp, [::]:15672-&gt;15672/tcp
+s04-cache-1    cache     Up 5 seconds             6379/tcp
+s04-db-1       db        Up 5 seconds (healthy)   5432/tcp
+s04-web-1      web       Up Less than a second    0.0.0.0:8080-&gt;80/tcp, [::]:8080-&gt;80/tcp</div>
+<p>Fíjate en los nombres: Compose los arma como <code>proyecto-servicio-número</code>, y al volumen le puso el prefijo del proyecto: <code>s04_datos_banco</code>, que es <strong>otro</strong> volumen distinto del <code>datos_banco</code> del ejercicio 1. Si <code>db</code> dice <code>(health: starting)</code>, espera unos segundos y repite el <code>ps</code>. Mira que <code>web</code> arrancó unos segundos después que los demás: estuvo esperando a que <code>db</code> pasara su healthcheck; ese es <code>depends_on</code> con <code>condition: service_healthy</code>. Sin la condición, <code>depends_on</code> solo ordena el <em>arranque</em>, y "arrancó" no es "ya atiende": Postgres tarda segundos en abrir el puerto, y un servicio que lo consulte en ese hueco falla. El healthcheck convierte "arrancó" en "ya sirve".</p>
+<h3>Úsalo</h3>
+<pre><code>docker compose logs db
+docker compose exec db psql -U postgres -c "\l"
+docker compose exec cache redis-cli ping</code></pre>
+<div class="out"><b>logs db (últimas líneas)</b>db-1  | PostgreSQL init process complete; ready for start up.
+db-1  | …
+db-1  | LOG:  database system is ready to accept connections</div>
+<div class="out"><b>exec db: la base "banco" salió del .env</b>                          List of databases
+   Name    |  Owner   | Encoding | …
+-----------+----------+----------+---
+ banco     | postgres | UTF8     | …
+ postgres  | postgres | UTF8     | …
+ template0 | postgres | UTF8     | …
+ template1 | postgres | UTF8     | …
+(4 rows)</div>
+<div class="out"><b>exec cache: Redis contesta</b>PONG</div>
+<p>Con <code>docker compose</code> hablas con los servicios <strong>por su nombre de servicio</strong> (<code>db</code>, <code>cache</code>), no por el nombre largo del contenedor. Ahora abre en tu navegador <strong>http://localhost:8080</strong> (nginx, servido por <code>web</code>) y <strong>http://localhost:15672</strong>: es la <strong>consola de RabbitMQ</strong>. Entra con usuario <code>guest</code> y contraseña <code>guest</code>. Ese es el <strong>broker</strong> de la teoría de hoy: la pieza que convierte "procesar ahora" en "procesar eventualmente". Deja abierta la pestaña Overview; en la S5 la vas a ver llena de colas del sistema del curso.</p>
+<h3>Abajo, de tres formas distintas</h3>
+<pre><code>docker compose stop        <span class="c"># detiene los cuatro; los contenedores siguen ahí</span>
+docker compose start       <span class="c"># los revive, con sus datos</span>
+docker compose down        <span class="c"># borra contenedores y red; CONSERVA el volumen</span>
+docker volume ls           <span class="c"># s04_datos_banco sigue</span>
+docker compose up -d       <span class="c"># todo vuelve, y "banco" sigue ahí con lo que tuviera</span>
+docker compose down -v     <span class="c"># borra también el volumen: los datos se van</span>
+docker volume ls           <span class="c"># s04_datos_banco ya no está</span></code></pre>
+<div class="out"><b>down, y luego down -v</b> Container s04-web-1        Removed
+ Container s04-cache-1      Removed
+ Container s04-broker-1     Removed
+ Container s04-db-1         Removed
+ Network s04_default        Removed
+
+ …
+ Volume s04_datos_banco     Removed
+ Network s04_default        Removed</div>
+<p>Tres niveles de "abajo": <code>stop</code> es pausa, <code>down</code> es "quita el sistema pero guarda el estado", <code>down -v</code> es "borra todo, incluidos los datos". Aprende a distinguirlos hoy; en el reto te van a preguntar exactamente eso.</p>
+<div class="cp"><h4><span class="n">5</span>Punto de control</h4>
+<p><code>docker compose ps</code> muestra <b>las cuatro filas</b>, <code>db</code> en <b>healthy</b>, y tienes <b>la consola de RabbitMQ abierta</b> en localhost:15672. Hasta aquí llegamos juntos; a las 08:00 empieza la teoría.</p></div>
+
+<h2>Ejercicio 5 · Diagnóstico en compose</h2>
+<p>Las mismas dos herramientas del día uno (<code>logs</code> y <code>exec</code>), más dos nuevas. Con el sistema arriba (<code>docker compose up -d</code>):</p>
+<pre><code>docker compose logs -f          <span class="c"># los cuatro servicios entrelazados, en vivo; sales con Ctrl+C</span>
+docker compose logs -f db       <span class="c"># solo uno</span>
+docker compose config           <span class="c"># el archivo YA RESUELTO: variables sustituidas</span>
+docker compose exec web sh      <span class="c"># una terminal dentro de nginx (ls /usr/share/nginx/html: index.html y 50x.html); sal con exit</span>
+docker network ls               <span class="c"># aparece s04_default: la red del proyecto</span>
+docker network inspect s04_default   <span class="c"># quién está y con qué IP (o con el --format del ejercicio 2)</span></code></pre>
+<div class="out"><b>config: así lo entendió Compose (recortado)</b>name: s04
+services:
+  db:
+    environment:
+      POSTGRES_DB: banco
+      POSTGRES_PASSWORD: secreto
+    image: postgres:17-alpine
+    networks:
+      default: null
+    volumes:
+      - type: volume
+        source: datos_banco
+        target: /var/lib/postgresql/data
+…
+networks:
+  default:
+    name: s04_default
+volumes:
+  datos_banco:
+    name: s04_datos_banco</div>
+<div class="out"><b>inspect de la red, con el --format: los cuatro, cada uno con su IP</b>s04-broker-1 172.19.0.3/16
+s04-cache-1 172.19.0.4/16
+s04-db-1 172.19.0.2/16
+s04-web-1 172.19.0.5/16</div>
+<p><code>config</code> es la primera herramienta cuando "el compose no hace lo que dice": te enseña lo que Compose <strong>entendió</strong>, con el <code>.env</code> ya aplicado, la red <code>default</code> que nunca escribiste y el prefijo del proyecto en el volumen. Si un valor no es el que esperabas, el problema está antes de Docker.</p>
+<div class="box warn"><h4><code>config</code> imprime tu contraseña en claro</h4>
+<p>Es lo que hace: resuelve el <code>.env</code>. Por eso su salida <b>no se pega</b> en <code>evidencia.md</code>. Si quieres mostrarla, borra la línea de la contraseña a mano antes de pegar.</p></div>
+<div class="cp"><h4><span class="n">6</span>Punto de control</h4>
+<p>Sabes leer <code>docker compose config</code> y ubicar ahí el volumen con prefijo y la red <code>default</code>; <code>docker network ls</code> te muestra <code>s04_default</code> y <code>inspect</code> lista los cuatro contenedores.</p></div>
+
+<div class="box tip"><h4>¿Y en tres máquinas?</h4>
+<p>Todo lo de hoy vive en <strong>una</strong> máquina: la tuya. Compose es magnífico para eso y no pretende más. Apenas el sistema necesita dos o tres máquinas, aparecen preguntas que <code>compose.yaml</code> no responde:</p>
+<ul>
+  <li><strong>¿Quién reinicia un contenedor que muere?</strong> <code>restart: unless-stopped</code> lo hace, pero solo en esta máquina; si la máquina se apaga, nadie.</li>
+  <li><strong>¿Quién reparte los contenedores entre tres máquinas</strong>, y los mueve cuando una se llena?</li>
+  <li><strong>¿Quién da una dirección estable</strong> cuando la instancia cambia de máquina y su IP cambia con ella? El DNS de hoy solo conoce esta máquina.</li>
+  <li><strong>¿Quién guarda el secreto?</strong> Tu <code>.env</code> está en tu disco; en tres máquinas hay que repartirlo sin copiarlo a mano.</li>
+</ul>
+<p>La respuesta a las cuatro tiene nombre: <strong>un orquestador</strong>. La lectura de esta semana (Burns et al., <em>Borg, Omega, and Kubernetes</em>) cuenta cómo Google llegó ahí en tres intentos. En la <strong>S5</strong> desglosamos el sistema del curso con compose, que es justo lo que ya sabes leer, y cerramos con Kubernetes básico: el mismo <code>compose.yaml</code>, pensado para N máquinas.</p></div>
+
+<h2>El reto · tu práctica de hoy</h2>
+<p>El paso a paso lo hicimos juntos; <strong>el reto lo haces tú, y es tu evidencia</strong>. Cuatro misiones, una por hueco de la Parte 0:</p>
+<table>
+  <tr><th>#</th><th>Misión</th><th>Qué demuestra</th></tr>
+  <tr><td><b>1</b></td><td><b>Persistencia.</b> Demuestra, con las salidas pegadas como texto, que una fila <b>sobrevive</b> a <code>docker rm -f</code> cuando hay volumen y <b>no sobrevive</b> cuando no lo hay. Las dos corridas, el <code>ERROR</code> incluido.</td><td>Que entendiste dónde vive el estado</td></tr>
+  <tr><td><b>2</b></td><td><b>Red.</b> Desde otro contenedor, alcanza a <code>db</code> <b>por nombre</b> con <code>pg_isready -h db</code> (pista: <code>docker run --rm --network s04_default postgres:17-alpine pg_isready -h db</code>, con tu compose arriba). Pega la respuesta, y pega también el error cuando <b>no</b> está en la misma red (quita el <code>--network</code>).</td><td>Que el nombre es la dirección, y solo dentro de la red</td></tr>
+  <tr><td><b>3</b></td><td><b>Configuración.</b> La misma imagen levantada dos veces con dos <code>.env</code> distintos (por ejemplo <code>.env</code> y <code>.env.prod</code>, con <code>--env-file</code>), y el <code>docker exec … env</code> de cada una pegado. En el repo: <code>.env</code> dentro de <code>.gitignore</code> y un <code>.env.example</code> con los nombres de las variables y valores falsos.</td><td>Factor III: la imagen es el uniforme, la configuración es el gafete</td></tr>
+  <tr><td><b>4</b></td><td><b>Compose.</b> Tu <code>compose.yaml</code> con al menos <code>web</code>, <code>db</code> y <code>cache</code>, un volumen nombrado y <code>env_file</code>. Pega <code>docker compose ps</code> como texto. Y en <code>evidencia.md</code> responde: <i>¿qué se pierde con <code>down</code> y qué con <code>down -v</code>?</i> · <i>¿por qué <code>web</code> alcanza a <code>db</code> sin publicar el puerto 5432?</i> · <i>¿qué pasaría si el <code>.env</code> estuviera dentro de la imagen?</i></td><td>Que puedes declarar un sistema y explicar lo que declaraste</td></tr>
+</table>
+<div class="out"><b>Misión 2, salidas esperadas (dentro y fuera de la red)</b>db:5432 - accepting connections
+
+db:5432 - no response</div>
+<div class="box tip"><h4>Qué se sube y qué no</h4>
+<p>A tu carpeta <code>entregas/apellido_nombre/s04/</code> van <b>cuatro archivos de texto</b>: <code>compose.yaml</code>, <code>.env.example</code>, <code>.gitignore</code> y <code>evidencia.md</code>. <b>NO</b> se sube <code>.env</code> (tiene tu contraseña; el <code>.gitignore</code> lo impide), ni imágenes, ni volúmenes: viven en tu máquina. Las salidas van <b>pegadas como texto</b>, no como capturas, para que se puedan leer y buscar.</p></div>
+
+<h2>La entrega · un push a tu rama</h2>
+<pre><code><span class="c"># desde la raíz del repo (cd ../../..)</span>
+git status                              <span class="c"># .env NO debe aparecer aquí</span>
+git add entregas/<span class="v">apellido_nombre</span>/s04
+git commit -m <span class="v">"S04: volúmenes, redes, env y compose"</span>
+git push</code></pre>
+<p><strong>La entrega ES el push.</strong> No abres pull request: el PR es uno solo, al final del curso, con todo tu trabajo. Si es tu primer push de la rama, Git te pide el upstream: <code>git push -u origin entregas_apellido_nombre</code>. Después, entra a GitHub, cámbiate a tu rama y confirma que tus cuatro archivos están ahí y que <code>.env</code> <strong>no</strong>.</p>
+<p><strong>Plazos:</strong> en tiempo hasta el <strong>domingo 13 de septiembre a las 23:59</strong>; tarde hasta antes de la siguiente sesión. Tarde no baja puntos; solo se registra la tendencia. Lo que sí baja puntos es un <code>.env</code> con contraseña en el repo.</p>
+<div class="cp"><h4><span class="n">✓</span>Checklist final</h4>
+<p>□ Mi carpeta <code>s04</code> trae compose.yaml, .env.example, .gitignore y evidencia.md &nbsp; □ <code>.env</code> NO está en el repo &nbsp; □ <code>docker compose ps</code> con mis servicios está pegado como texto &nbsp; □ Las tres preguntas de la misión 4 están contestadas &nbsp; □ Hice push a <code>entregas_apellido_nombre</code>, no a main, y no abrí PR</p></div>
+
+<h2>Limpieza</h2>
+<pre><code>docker compose down -v                  <span class="c"># el proyecto completo, con su volumen</span>
+docker rm -f db1 web db_dev db_prod     <span class="c"># los de los ejercicios 1 a 3</span>
+docker network rm redlab                <span class="c"># primero se borran los conectados a ella</span>
+docker volume rm datos_banco            <span class="c"># el volumen del ejercicio 1</span></code></pre>
+<div class="box warn"><h4>No corras <code>docker volume prune</code> para "dejarlo limpio"</h4>
+<p>Borra de un golpe todos los volúmenes anónimos que no estén en uso en tu máquina, no solo los de hoy, y ahí puede haber datos de otros proyectos tuyos (cualquier base que hayas levantado sin <code>-v</code> dejó uno). No pregunta cuáles. Borra por nombre, como arriba: es más largo y no te lleva nada por delante.</p></div>
+
+<h2>El repertorio de hoy, en una tabla</h2>
+<p>Todo lo que tecleaste, junto:</p>
+<table>
+  <tr><th>Comando</th><th>Qué hace</th></tr>
+  <tr><td><code>-v nombre:/ruta</code></td><td>Monta un <b>volumen nombrado</b> en esa carpeta del contenedor (Docker lo crea si no existe).</td></tr>
+  <tr><td><code>-v $(pwd)/carpeta:/ruta</code></td><td><b>Bind mount</b>: una carpeta tuya dentro del contenedor (<code>${PWD}</code> en PowerShell).</td></tr>
+  <tr><td><code>docker volume ls</code> / <code>inspect</code> / <code>rm</code></td><td>Lista, detalla y borra volúmenes.</td></tr>
+  <tr><td><code>docker volume prune</code></td><td>Borra <b>todos</b> los volúmenes anónimos sin contenedor de tu máquina, de cualquier proyecto (con <code>-a</code>, también los nombrados). Úsalo sabiendo lo que barre; para esta guía, borra por nombre.</td></tr>
+  <tr><td><code>docker network create red</code></td><td>Una red definida por el usuario: <b>con DNS</b> por nombre de contenedor.</td></tr>
+  <tr><td><code>--network red</code></td><td>Conecta el contenedor a esa red al crearlo.</td></tr>
+  <tr><td><code>docker network ls</code> / <code>inspect</code> / <code>rm</code></td><td>Lista, detalla (contenedores e IPs) y borra redes.</td></tr>
+  <tr><td><code>-e NOMBRE=valor</code></td><td>Una variable de entorno para el proceso del contenedor.</td></tr>
+  <tr><td><code>--env-file .env</code></td><td>Todas las variables de un archivo, una por línea.</td></tr>
+  <tr><td><code>docker exec nombre env</code></td><td>Ver las variables que el contenedor recibió.</td></tr>
+  <tr><td><code>docker compose up -d</code></td><td>Crea red, volúmenes y contenedores del <code>compose.yaml</code> y los arranca.</td></tr>
+  <tr><td><code>docker compose ps</code> / <code>ps -a</code></td><td>Los servicios del proyecto corriendo / todos, con su salud.</td></tr>
+  <tr><td><code>docker compose logs [-f] [servicio]</code></td><td>Registros de todos o de uno; <code>-f</code> en vivo.</td></tr>
+  <tr><td><code>docker compose exec servicio cmd</code></td><td>Corre un comando dentro de un servicio (<code>sh</code>, <code>psql</code>, <code>redis-cli</code>).</td></tr>
+  <tr><td><code>docker compose config</code></td><td>El archivo resuelto: lo que Compose entendió.</td></tr>
+  <tr><td><code>docker compose stop</code> / <code>start</code></td><td>Pausa y reanuda sin borrar nada.</td></tr>
+  <tr><td><code>docker compose down</code></td><td>Borra contenedores y red del proyecto; <b>conserva</b> volúmenes.</td></tr>
+  <tr><td><code>docker compose down -v</code></td><td>Lo mismo, y <b>borra</b> los volúmenes: los datos se van.</td></tr>
+  <tr><td><code>psql -U postgres -c "SQL"</code></td><td>Ejecuta un SQL en Postgres y sale; <code>\l</code> lista las bases.</td></tr>
+  <tr><td><code>pg_isready -h host</code></td><td>Pregunta si un Postgres atiende: <code>accepting connections</code> o <code>no response</code>.</td></tr>
+  <tr><td><code>redis-cli ping</code></td><td>Redis contesta <code>PONG</code> si vive.</td></tr>
+  <tr><td><code>wget -qO- http://nombre</code></td><td>Baja una URL y la imprime; sirve para probar que un nombre resuelve.</td></tr>
+</table>
+
+<h2>Si algo falla</h2>
+<table>
+  <tr><th>Síntoma</th><th>Arreglo</th></tr>
+  <tr><td><code>port is already allocated</code></td><td>Otro contenedor (quizá tu <code>web</code> del ejercicio 2, o <code>miweb</code> del sábado pasado) tiene el 8080. <code>docker ps</code> para ver quién; bórralo o cambia el puerto del host en <code>ports:</code>.</td></tr>
+  <tr><td><code>wget: bad address 'web'</code> estando <b>dentro</b> de la red</td><td>O el nombre está mal escrito, o ese contenedor no está en esa red: <code>docker network inspect redlab</code> y busca su nombre. Fuera de la red es el comportamiento correcto.</td></tr>
+  <tr><td><code>can't connect to remote host (127.0.53.53)</code></td><td>Es el <code>bad address</code> con otro disfraz: el nombre lo contestó el DNS de internet, no Docker. Ese contenedor no está en tu red.</td></tr>
+  <tr><td><code>password authentication failed</code></td><td>El volumen guardó la contraseña de la <b>primera</b> vez: <code>POSTGRES_PASSWORD</code> solo se aplica cuando la carpeta de datos está vacía. O regresas al valor original en tu <code>.env</code>, o <code>docker compose down -v</code> (pierdes los datos).</td></tr>
+  <tr><td><code>env file … .env not found</code> / <code>open .env: no such file</code></td><td>El <code>.env</code> se busca en la carpeta donde está tu <code>compose.yaml</code> (o donde corres <code>docker run</code>). Párate ahí: <code>ls -a</code> lo muestra.</td></tr>
+  <tr><td><code>psql: error: connection … failed</code> justo después del <code>run</code></td><td>Postgres todavía está inicializando. Espera 5 segundos y repite, o mira <code>docker logs db1</code> hasta ver <code>ready to accept connections</code>.</td></tr>
+  <tr><td><code>the input device is not a TTY</code> (Git Bash en Windows)</td><td>Antepón <code>winpty</code> al <code>docker exec -it</code>, o quita <code>-it</code> cuando el comando trae <code>-c</code> y no necesita terminal.</td></tr>
+  <tr><td>Windows: el bind mount no encuentra la carpeta</td><td>En PowerShell es <code>${PWD}</code>, no <code>$(pwd)</code>; en cmd es <code>%cd%</code>. Y Docker Desktop debe tener compartida la unidad donde está tu carpeta.</td></tr>
+  <tr><td><code>docker compose</code>: <code>'compose' is not a docker command</code></td><td>Te falta el plugin: en Linux instala <code>docker-compose-plugin</code>; Docker Desktop lo trae. No instales <code>docker-compose</code> con guion: es la versión 1, retirada en 2023.</td></tr>
+  <tr><td><code>the attribute 'version' is obsolete</code></td><td>Copiaste un compose viejo. Borra la línea <code>version:</code>; todo lo demás sigue igual.</td></tr>
+  <tr><td>Un servicio sale <code>(unhealthy)</code> y <code>up</code> dice <code>dependency failed to start</code></td><td>El healthcheck no pasó: <code>docker compose logs db</code>. Suele ser el <code>.env</code> incompleto (sin <code>POSTGRES_PASSWORD</code>, Postgres se niega a arrancar) o el tag equivocado de la imagen.</td></tr>
+  <tr><td><code>network redlab has active endpoints</code></td><td>Hay contenedores conectados. Bórralos primero (<code>docker rm -f …</code>) y luego <code>docker network rm redlab</code>.</td></tr>
+  <tr><td>YAML: <code>mapping values are not allowed</code> o "did not find expected key"</td><td>Indentación. Dos espacios por nivel, nunca tabuladores, y los dos puntos pegados a la clave. <code>docker compose config</code> te dice la línea.</td></tr>
+</table>
+
+<h2>Qué sigue</h2>
+<p>Hoy cerraste Docker: volúmenes, redes, variables de entorno y compose. Ya sabes leer y escribir el archivo con el que se levanta cualquier sistema de este curso. <strong>La S5 abre con eso mismo, pero con el sistema del curso</strong>: un <code>compose.yaml</code> de verdad, con gateway, discovery, config server, RabbitMQ, Redis y Jaeger, para verlo correr y desglosarlo pieza por pieza, y al final <strong>Kubernetes básico</strong>: la respuesta a "¿y en tres máquinas?". Dos cosas antes del sábado 19: tu <code>s04</code> entregado por push (es requisito para el lab de la S5) y la Lectura 4 (Ongaro y Ousterhout, Raft, secciones 1 a 5) en la Discussion de la semana. Y piensa con quién quieres equipo: los equipos de cuatro se forman en la S5.</p>
+
+<footer>
+  <p><strong>Sistemas Distribuidos 2027-1 · Grupo 2 · Facultad de Ingeniería, UNAM</strong><br>
+  Prof. Oscar Manuel Ruiz Hurtado · Laboratorio de la S4 · septiembre de 2026</p>
+</footer>
+</div>
+</body></html>
