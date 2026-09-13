@@ -1,0 +1,14 @@
+FROM python:3.12-slim
+
+WORKDIR /app
+ENV PYTHONUNBUFFERED=1
+
+COPY requirements-servidor.txt .
+RUN pip install --no-cache-dir -r requirements-servidor.txt
+
+COPY catalogo.proto nucleo.py controlador_rest.py controlador_grpc.py main.py ./
+RUN python -m grpc_tools.protoc -I . --python_out=. --grpc_python_out=. catalogo.proto
+
+EXPOSE 8000 50051
+
+CMD ["python", "-u", "main.py"]
