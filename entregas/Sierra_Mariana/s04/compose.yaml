@@ -1,0 +1,23 @@
+services:
+  db:
+    image: postgres:17-alpine
+    volumes:
+      - datos_banco:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=secreto
+
+  web:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+
+  cache:
+    image: redis:8-alpine
+
+  broker:
+    image: rabbitmq:4-management-alpine
+    ports:
+      - "15672:15672"
+
+volumes:
+  datos_banco:
