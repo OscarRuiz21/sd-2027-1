@@ -1,0 +1,4 @@
+Ejercicio 5: Diagnostico en Compose 
+- Se valido la configuracion interpretada por Compose mediante 'docker compose config'. 
+- Se inspecciono la red 's04_default' listando los contenedores activos y sus IPs. 
+- Se verifico el uso de 'docker compose exec' y lectura de logs. 
