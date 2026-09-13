@@ -11,3 +11,15 @@ out/
 # sistema
 .DS_Store
 Thumbs.db
+
+# grabaciones de referencia y sus fotogramas (pesan cientos de MB; se quedan locales)
+material/**/videos/*.mov
+material/**/videos/*_frames/
+
+# fuentes de trabajo del material: NO se publican, solo el PDF final
+material/**/animada/src/
+material/**/animada/presentacion.html
+material/**/animada/guion.md
+material/**/animada/shots.png
+material/**/videos/
+material/**/BRIEF-*.md
