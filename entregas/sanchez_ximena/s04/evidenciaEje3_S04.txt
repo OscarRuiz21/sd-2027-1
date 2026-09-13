@@ -1,0 +1,4 @@
+Ejercicio 3: Variables de entorno 
+- Se levantaron db_dev y db_prod con la misma imagen pero diferente configuracion. 
+- Se probo el uso de --env-file para leer variables desde el archivo .env. 
+- Se crearon .gitignore y .env.example para proteger las credenciales reales. 
