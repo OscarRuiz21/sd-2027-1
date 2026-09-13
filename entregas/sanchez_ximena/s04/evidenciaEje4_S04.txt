@@ -1,0 +1,4 @@
+Ejercicio 4: Docker Compose 
+- Se creo el archivo compose.yaml definiendo los servicios web, db, cache y broker. 
+- Se logro el despliegue exitoso mediante 'docker compose up -d'. 
+- Se verifico el estado healthy de Postgres y la comunicacion con los servicios. 
