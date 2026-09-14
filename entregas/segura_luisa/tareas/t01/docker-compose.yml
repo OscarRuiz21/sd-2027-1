@@ -1,0 +1,15 @@
+services:
+  servidor:
+    build:
+      context: ./server
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+
+  cliente:
+    build:
+      context: ./client
+    environment:
+      - SERVER_HOST=servidor
+    depends_on:
+      - servidor

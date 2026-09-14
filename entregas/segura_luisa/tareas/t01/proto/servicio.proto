@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package servicio;
+
+message ItemRequest {
+  string id = 1;
+}
+
+message ItemResponse {
+  string id = 1;
+  string nombre = 2;
+  string detalle = 3;
+  bool encontrado = 4;
+}
+
+service ItemService {
+  rpc GetItem (ItemRequest) returns (ItemResponse);
+}
