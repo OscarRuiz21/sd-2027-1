@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  server:
+    build: 
+      context: .
+      dockerfile: ./servidor/Dockerfile
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    
+  cliente:
+    build:
+      context: .
+      dockerfile: ./cliente/Dockerfile
+    depends_on:
+      - server
+    environment:
+      - SERVER_HOST=server

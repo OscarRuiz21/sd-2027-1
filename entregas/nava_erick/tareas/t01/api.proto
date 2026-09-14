@@ -1,0 +1,19 @@
+syntax = "proto3";
+package api;
+
+service Buscar
+{
+    rpc Busqueda (Peticion) returns (Respuesta);
+}
+
+message Peticion
+{
+    string id = 1;
+}
+
+message Respuesta
+{
+    bool success = 1 ;
+    string message = 2;
+    string data =3;
+}
