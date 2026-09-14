@@ -5,6 +5,7 @@
 Para levantar el proyecro se deben de ejecutar los comandos desde el directorio `t01`. Se usarán tres terminales simultaneas.
 
 ## Diseño:
+```
 t01/
 ├── cliente
 │   ├── cliente.js
@@ -21,6 +22,7 @@ t01/
 ├── api.proto
 ├── docker-compose.yml
 └── README.md
+```
 
 ### creación de entronos
 Tanto en el directorio cliente/ y en el directorio servidor sera necesario la creacion de un entorno de desarrollo con los compandos 
