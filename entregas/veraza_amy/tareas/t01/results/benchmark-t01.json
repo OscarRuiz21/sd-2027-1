@@ -1,0 +1,54 @@
+﻿{
+  "timestamp_utc": "2026-09-13T03:43:31.289402+00:00",
+  "samples_per_protocol": 100,
+  "warmup_calls": 10,
+  "environment": "Cliente Python y servidores en red Docker Compose; sin TLS ni compresión",
+  "wire_scope": "Bytes de aplicación TCP observados en proxy: incluye HTTP/1.1 o HTTP/2 y gRPC; excluye cabeceras TCP/IP/Ethernet, ACK y retransmisiones. Primera llamada incluye establecimiento HTTP/2; cierre excluido. Tráfico posterior: promedio de 100 llamadas en la misma conexión, con 200 ms para frames pendientes.",
+  "latency_scope": "Llamadas secuenciales con conexión reutilizada, sin proxy; incluye serialización y comprobación de respuesta del cliente.",
+  "REST": {
+    "response_payload_bytes": 56,
+    "latency_ms": {
+      "mean": 0.83,
+      "median": 0.661,
+      "p95": 2.539
+    },
+    "first_call_tcp_payload_bytes": {
+      "client_to_server": 78,
+      "server_to_client": 216,
+      "total": 294
+    },
+    "warm_call_tcp_payload_bytes_mean": {
+      "client_to_server": 78.0,
+      "server_to_client": 216.0,
+      "total": 294.0
+    }
+  },
+  "gRPC": {
+    "response_payload_bytes": 17,
+    "latency_ms": {
+      "mean": 1.819,
+      "median": 1.23,
+      "p95": 5.08
+    },
+    "first_call_tcp_payload_bytes": {
+      "client_to_server": 409,
+      "server_to_client": 259,
+      "total": 668
+    },
+    "warm_call_tcp_payload_bytes_mean": {
+      "client_to_server": 60.53,
+      "server_to_client": 81.51,
+      "total": 142.04
+    }
+  },
+  "contract_lines": {
+    "openapi.yaml": {
+      "physical": 59,
+      "nonblank": 59
+    },
+    "proto/catalog.proto": {
+      "physical": 17,
+      "nonblank": 14
+    }
+  }
+}
