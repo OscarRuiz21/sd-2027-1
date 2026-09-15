@@ -24,6 +24,17 @@ en `entregas/apellido_nombre/s02/`**, conservando el número de la guía.
 `entregas_apellido_nombre`, SIN pull request hasta el final del curso; donde la guía diga
 "abre tu PR", ignóralo (ver [`GIT-CHEATSHEET.md`](../GIT-CHEATSHEET.md)).*
 
+## Mexi Banco con Compose · sábado 19 de septiembre (S5)
+
+**[Lab S05: Mexi Banco con Docker Compose](Lab-S05-Mexi-Banco-Compose.md)** (rúbrica en
+[`Lab-S05-rubrica.md`](Lab-S05-rubrica.md)): el caso hilo conductor del curso ya es código.
+Antes del sábado: `git clone --branch v05 https://github.com/OscarRuiz21/mexi-banco.git` y baja
+las imágenes `postgres:17-alpine`, `eclipse-temurin:21-jdk-alpine` y `eclipse-temurin:21-jre-alpine`.
+Tres hitos: arriba y respondiendo, las propiedades de Compose con tus manos (red, healthcheck,
+volumen, matar `app` y ver que no revive sola) e idempotencia del SPEI. Entrega en
+`entregas/apellido_nombre/s05/` con push a tu rama, en tiempo hasta el domingo 20 de septiembre;
+tarde sin penalización hasta antes de la S06.
+
 ## Docker, día dos · sábado 12 de septiembre (S4)
 
 **[Docker, día dos: estado, red, configuración y compose](https://oscarruiz21.github.io/sd-2027-1/labs/Lab-S04-Docker-dia-2.html)**:
