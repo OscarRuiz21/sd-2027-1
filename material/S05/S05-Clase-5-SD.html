@@ -462,28 +462,28 @@ DECK.scenes.push({
 
 // ---- 01 · Mapa de la sesión ---------------------------------------------
 DECK.scenes.push({
-  tag: '01 / Mapa', title: '240 minutos,', sub: 'una decisión.', block: 'Puente', layout: 'wide',
+  tag: '01 / Mapa', title: 'El mapa', sub: 'de hoy.', block: 'Puente', layout: 'wide',
   items: [
     { id: 'tr', type: 'term', x: 80, y: 260, w: 760, k: 'Cuatro horas',
-      v: 'La mañana es Compose, Kubernetes y una introducción a consenso, con una decisión antes del descanso; la tarde es Mexi Banco *en su máquina* y en un clúster.' },
-    { id: 'ls', type: 'list', x: 880, y: 260, w: 640, head: 'Avisos', rows: [
-      ['Equipos', 'formulario esta semana, se validan en el Taller (S07)'],
-      ['Examen', 'sale en la S07, individual, *a mano y en casa*'],
-      ['Hoy sí hay lab', 'Mexi Banco con Compose, tres hitos']
+      v: 'Primero Compose, Kubernetes y una introducción a consenso, con una decisión al final; después Mexi Banco *en su máquina* y en un clúster.' },
+    { id: 'ls', type: 'list', x: 880, y: 260, w: 640, head: 'Lo que te llevas', rows: [
+      ['Compose', 'por dentro, y lo que no hace'],
+      ['Kubernetes', 'tres piezas y un clúster que *se repara solo*'],
+      ['Consenso', 'latido, elección y mayoría']
     ] },
-    { id: 'm1', x: 80, y: 470, w: 160, h: 80, t: 'Arranque', m: '10 min', tone: 'gray' },
-    { id: 'm2', x: 260, y: 470, w: 140, h: 80, t: 'Puente', m: '5 min · S04', tone: 'gray' },
-    { id: 'm3', x: 420, y: 470, w: 160, h: 80, t: 'Pregunta', m: '10 min · Raft', tone: 'violet' },
-    { id: 'm4', x: 600, y: 470, w: 160, h: 80, t: 'Compose', m: '30 min', tone: 'blue' },
-    { id: 'm5', x: 780, y: 470, w: 150, h: 80, t: 'Límites', m: '10 min', tone: 'red' },
-    { id: 'm6', x: 950, y: 470, w: 190, h: 80, t: 'Kubernetes', m: '25 min', tone: 'green' },
-    { id: 'm8', x: 1160, y: 470, w: 170, h: 80, t: 'Consenso', m: '10 min · intro', tone: 'violet' },
-    { id: 'm7', x: 1350, y: 470, w: 160, h: 80, t: 'Decisión', m: '10 min · 08:40', tone: 'amber' },
-    { id: 't1', x: 80, y: 620, w: 180, h: 80, t: 'Descanso', m: '30 min · 09:20', tone: 'gray' },
-    { id: 't2', x: 290, y: 620, w: 180, h: 80, t: 'Mexi Banco', m: '10 min', tone: 'blue' },
-    { id: 't3', x: 500, y: 620, w: 180, h: 80, t: 'Lab', m: '55 min · 3 hitos', tone: 'blue' },
-    { id: 't4', x: 710, y: 620, w: 180, h: 80, t: 'Demo', m: '20 min · minikube', tone: 'green' },
-    { id: 't5', x: 920, y: 620, w: 180, h: 80, t: 'Cierre', m: '10 min · 10:50', tone: 'gray' }
+    { id: 'm1', x: 80, y: 470, w: 160, h: 80, t: 'Arranque', m: 'rompehielos', tone: 'gray' },
+    { id: 'm2', x: 260, y: 470, w: 140, h: 80, t: 'Puente', m: 'la S04', tone: 'gray' },
+    { id: 'm3', x: 420, y: 470, w: 160, h: 80, t: 'Pregunta', m: 'Raft', tone: 'violet' },
+    { id: 'm4', x: 600, y: 470, w: 160, h: 80, t: 'Compose', m: 'por dentro', tone: 'blue' },
+    { id: 'm5', x: 780, y: 470, w: 150, h: 80, t: 'Límites', m: 'una máquina', tone: 'red' },
+    { id: 'm6', x: 950, y: 470, w: 190, h: 80, t: 'Kubernetes', m: 'básico', tone: 'green' },
+    { id: 'm8', x: 1160, y: 470, w: 170, h: 80, t: 'Consenso', m: 'intro', tone: 'violet' },
+    { id: 'm7', x: 1350, y: 470, w: 160, h: 80, t: 'Decisión', m: 'del día', tone: 'amber' },
+    { id: 't1', x: 80, y: 620, w: 180, h: 80, t: 'Descanso', m: 'clone + up', tone: 'gray' },
+    { id: 't2', x: 290, y: 620, w: 180, h: 80, t: 'Mexi Banco', m: 'v05', tone: 'blue' },
+    { id: 't3', x: 500, y: 620, w: 180, h: 80, t: 'Lab', m: '3 hitos', tone: 'blue' },
+    { id: 't4', x: 710, y: 620, w: 180, h: 80, t: 'Demo', m: 'minikube', tone: 'green' },
+    { id: 't5', x: 920, y: 620, w: 180, h: 80, t: 'Cierre', m: 'ticket de salida', tone: 'gray' }
   ],
   edges: [
     { id: 'a1', from: 'm1', to: 'm2', arrow: true }, { id: 'a2', from: 'm2', to: 'm3', arrow: true },
@@ -493,7 +493,7 @@ DECK.scenes.push({
     { id: 'b3', from: 't3', to: 't4', arrow: true }, { id: 'b4', from: 't4', to: 't5', arrow: true }
   ],
   set: { 'a1,a2,a3,a4,a5,a6,a7,b1,b2,b3,b4': 'flow slow' },
-  notes: ['Avisos aquí, después del rompehielos de la siguiente lámina si llegan tarde (que pierdan el aviso, no la idea). Liga del formulario de equipos: [VERIFICAR antes del sábado]. El examen no se repasa en clase: es en casa, con investigacion.md y las lecturas.']
+  notes: ['Avisos EN VOZ (no en la lámina): equipos por formulario esta semana, se validan en el Taller (S07); el examen sale en la S07, individual, a mano y en casa; hoy sí hay lab, Mexi Banco con Compose. Los minutos de cada bloque están en el guion, no en pantalla. Avisos aquí, después del rompehielos de la siguiente lámina si llegan tarde (que pierdan el aviso, no la idea). Liga del formulario de equipos: [VERIFICAR antes del sábado]. El examen no se repasa en clase: es en casa, con investigacion.md y las lecturas.']
 });
 
 // ---- 02 · Puente: lo que quedó de la S4 ---------------------------------
@@ -1044,14 +1044,14 @@ DECK.scenes.push({
 
 // ---- 22 · Descanso ----------------------------------------------------------
 DECK.scenes.push({
-  tag: '22 / Descanso', title: 'Regresamos', sub: 'a las 09:20.', block: 'Decisión',
+  tag: '22 / Descanso', title: 'Descanso.', sub: 'Mexi Banco arriba.', block: 'Decisión',
   items: [
     { id: 'tr', type: 'term', x: 80, y: 380, w: 440, k: 'Descanso', tone: 'green',
-      v: '30 minutos. Regresamos a las *09:20* con Mexi Banco corriendo en su máquina.' },
+      v: 'Al regresar, Mexi Banco corriendo *en su máquina*: clone y compose up.' },
     { id: 'ls', type: 'list', x: 80, y: 590, w: 420, head: 'Mientras tanto', rows: [
       ['`git clone`', 'el repo mexi-banco, liga en el chat'],
       ['`docker compose up --build`', 'la primera vez tarda unos minutos'],
-      ['Si algo truena', 'lo vemos a las 09:20, *no lo peleen solos*']
+      ['Si algo truena', 'lo vemos al regresar, *no lo peleen solos*']
     ] },
     { id: 's1', x: 620, y: 380, w: 260, h: 120, t: 'clone', m: 'mexi-banco · v05' },
     { id: 's2', x: 940, y: 380, w: 260, h: 120, t: 'up --build', m: 'db + app' },
@@ -1126,8 +1126,8 @@ DECK.scenes.push({
 DECK.scenes.push({
   tag: '25 / Mexi Banco', title: 'Un sistema', sub: 'que crece.', block: 'Mexi Banco',
   items: [
-    { id: 'tr', type: 'term', x: 80, y: 380, w: 440, k: 'Una pieza por sábado',
-      v: 'Hoy es un monolito. Cada sábado le agregamos *la pieza que ese día se explica*, igual que ustedes en su proyecto.' },
+    { id: 'tr', type: 'term', x: 80, y: 380, w: 440, k: 'Una pieza por sesión',
+      v: 'Hoy es un monolito. Cada sesión le agregamos *la pieza que ese día se explica*, igual que ustedes en su proyecto.' },
     { id: 'ls', type: 'list', x: 80, y: 590, w: 420, head: 'Lo que viene', rows: [
       ['S06', 'se parte en tres; aparecen la puerta y el directorio'],
       ['S08 · S09', 'resiliencia y trazas · caché del saldo'],
@@ -1153,14 +1153,14 @@ DECK.scenes.push({
   items: [
     { id: 'tr', type: 'term', x: 80, y: 260, w: 760, k: 'Con tus manos',
       v: 'Arriba y respondiendo, las propiedades de Compose, la idempotencia otra vez. *Cada hito termina con algo que se ve.*' },
-    { id: 'ls', type: 'list', x: 880, y: 260, w: 640, head: 'Entrega, antes del domingo', rows: [
+    { id: 'ls', type: 'list', x: 880, y: 260, w: 640, head: 'Entrega', rows: [
       ['`docker compose ps`', 'ambos servicios `healthy`'],
       ['Segundo intento de SPEI', 'misma clave, sin doble cobro'],
       ['README', 'las tres preguntas de cierre']
     ] },
-    { id: 'h1', x: 80, y: 470, w: 440, h: 220, t: 'Hito 1 · Arriba y respondiendo', m: 'compose up --build · abrir y consultar una cuenta · 20 min', tone: 'blue' },
-    { id: 'h2', x: 560, y: 470, w: 440, h: 220, t: 'Hito 2 · Propiedades de Compose', m: 'network inspect · transferencia · matas app y no revive · 20 min', tone: 'amber' },
-    { id: 'h3', x: 1040, y: 470, w: 440, h: 220, t: 'Hito 3 · Idempotencia otra vez', m: 'mismo SPEI, misma clave, un solo cobro · 15 min', tone: 'green' }
+    { id: 'h1', x: 80, y: 470, w: 440, h: 220, t: 'Hito 1 · Arriba y respondiendo', m: 'compose up --build · abrir y consultar una cuenta', tone: 'blue' },
+    { id: 'h2', x: 560, y: 470, w: 440, h: 220, t: 'Hito 2 · Propiedades de Compose', m: 'network inspect · transferencia · matas app y no revive', tone: 'amber' },
+    { id: 'h3', x: 1040, y: 470, w: 440, h: 220, t: 'Hito 3 · Idempotencia otra vez', m: 'mismo SPEI, misma clave, un solo cobro', tone: 'green' }
   ],
   edges: [
     { id: 'e1', from: 'h1', to: 'h2', arrow: true },
@@ -1203,10 +1203,10 @@ DECK.scenes.push({
   items: [
     { id: 'tr', type: 'term', x: 80, y: 380, w: 440, k: 'Para la S6',
       v: 'Raft a fondo, consistencia y CAP. En el lab, Mexi Banco se parte en tres y la transferencia *deja de funcionar* sin gateway ni discovery.' },
-    { id: 'ls', type: 'list', x: 80, y: 590, w: 420, head: 'Antes del sábado 26', rows: [
-      ['Lectura 5', 'Brewer, CAP Twelve Years Later (2012); Discussion el jueves'],
+    { id: 'ls', type: 'list', x: 80, y: 590, w: 420, head: 'Para la S6', rows: [
+      ['Lectura 5', 'Brewer, CAP Twelve Years Later (2012)'],
       ['Traer', 'Mexi Banco corriendo en Compose, como hoy'],
-      ['Equipos', 'formulario esta semana; se validan en el Taller']
+      ['Equipos', 'formulario; se validan en el Taller']
     ] },
     { id: 'mono', x: 620, y: 390, w: 260, h: 120, t: 'mexi-banco', m: 'v05 · monolito', tone: 'green' },
     { id: 'cu', x: 1160, y: 120, w: 260, h: 110, t: 'cuentas', m: 'ledger · su base' },
@@ -1276,7 +1276,7 @@ DECK.scenes.push({
       v: '*Compose asume que la máquina no falla; Kubernetes asume que sí, y automatiza la reacción.* Y ya lo comprobaste con tus manos.' },
     { id: 'ls', type: 'list', x: 80, y: 590, w: 420, head: 'Antes de cerrar', rows: [
       ['Ticket de salida', '¿acertaste tu predicción? ¿qué fue lo más confuso?'],
-      ['Lectura', 'Raft §1-5, jueves 23:59, 2 preguntas + 1 hallazgo'],
+      ['Lectura', 'Raft §1 a 5: 2 preguntas + 1 hallazgo'],
       ['Próxima', 'S06 · Raft a fondo, consistencia y CAP; Mexi Banco en tres']
     ] },
     ...window.MAPA('green')
