@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  rest-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.rest
+    ports:
+      - "5000:5000"
+
+  grpc-service:
+    build:
+      context: .
+      dockerfile: Dockerfile.grpc
+    ports:
+      - "50051:50051"

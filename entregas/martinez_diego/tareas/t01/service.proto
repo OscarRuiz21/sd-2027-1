@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package producto;
+
+service ProductoService {
+  rpc ObtenerProducto (ProductoRequest) returns (ProductoResponse);
+  rpc CrearProducto (CrearProductoRequest) returns (ProductoResponse);
+}
+
+message ProductoRequest {
+  string id = 1;
+}
+
+message CrearProductoRequest {
+  string nombre = 1;
+  float precio = 2;
+}
+
+message ProductoResponse {
+  string id = 1;
+  string nombre = 2;
+  float precio = 3;
+  string error = 4;
+}
