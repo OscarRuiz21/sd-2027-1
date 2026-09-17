@@ -103,3 +103,5 @@ Cómo se midió:
 - REST: `requests` conserva la petición enviada y la respuesta, se reconstruye el texto
   HTTP/1.1 y se cuentan sus bytes.
 - gRPC: `ByteSize()` del mensaje protobuf más el marco de 5 bytes que gRPC antepone. **No** incluye las cabeceras HTTP/2, que van comprimidas con HPACK y dependen del estado de la conexión.
+
+Sabemos que JSON corre sobre HTTP/1.1, donde todo se maneja como texto. Por otra parte, protobuf, si bien trabaja con HTTP/2, hay que recordar que se trabaja con binario; por esa razón pesa menos.
