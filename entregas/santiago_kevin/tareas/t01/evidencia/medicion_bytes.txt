@@ -1,0 +1,8 @@
+Llamada: producto 2
+
+             petición  respuesta    total   (solo datos)
+REST              133        164      297   (39 B de JSON)
+gRPC                7         17       24   (12 B de protobuf)
+
+REST: línea + cabeceras HTTP/1.1 + cuerpo JSON.
+gRPC: mensaje protobuf + marco de 5 bytes. No incluye las cabeceras HTTP/2.

@@ -1,0 +1,12 @@
+--- id=1 ---
+  REST: {'name': 'sneakers', 'value': 200, 'stock': 4}
+  gRPC: {'name': 'sneakers', 'value': 200, 'stock': 4}
+--- id=2 ---
+  REST: {'name': 'socks', 'value': 20, 'stock': 200}
+  gRPC: {'name': 'socks', 'value': 20, 'stock': 200}
+--- id=3 ---
+  REST: {'name': 'tracksuit', 'value': 200, 'stock': 6}
+  gRPC: {'name': 'tracksuit', 'value': 200, 'stock': 6}
+--- id=5 ---
+  REST: no hay datos (HTTP 404)
+  gRPC: no hay datos (gRPC NOT_FOUND)

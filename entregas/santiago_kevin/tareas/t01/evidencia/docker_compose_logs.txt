@@ -1,0 +1,55 @@
+servidor-1  | INFO:     Started server process [1]
+servidor-1  | INFO:     Waiting for application startup.
+servidor-1  | INFO:     Application startup complete.
+servidor-1  | INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+servidor-1  | gRPC escuchando en puerto 50051
+servidor-1  | INFO:     127.0.0.1:52522 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     172.20.0.3:37492 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     172.20.0.3:37496 - "GET /products/2 HTTP/1.1" 200 OK
+servidor-1  | INFO:     172.20.0.3:37500 - "GET /products/3 HTTP/1.1" 200 OK
+servidor-1  | INFO:     172.20.0.3:37502 - "GET /products/5 HTTP/1.1" 404 Not Found
+servidor-1  | INFO:     127.0.0.1:54328 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:54342 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:54350 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:39282 - "GET /products/1 HTTP/1.1" 200 OK
+cliente-1   | --- id=1 ---
+cliente-1   |   REST: {'name': 'sneakers', 'value': 200, 'stock': 4}
+cliente-1   |   gRPC: {'name': 'sneakers', 'value': 200, 'stock': 4}
+cliente-1   | --- id=2 ---
+cliente-1   |   REST: {'name': 'socks', 'value': 20, 'stock': 200}
+servidor-1  | INFO:     127.0.0.1:39298 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:39304 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:39320 - "GET /products/1 HTTP/1.1" 200 OK
+cliente-1   |   gRPC: {'name': 'socks', 'value': 20, 'stock': 200}
+cliente-1   | --- id=3 ---
+cliente-1   |   REST: {'name': 'tracksuit', 'value': 200, 'stock': 6}
+cliente-1   |   gRPC: {'name': 'tracksuit', 'value': 200, 'stock': 6}
+cliente-1   | --- id=5 ---
+cliente-1   |   REST: no hay datos (HTTP 404)
+cliente-1   |   gRPC: no hay datos (gRPC NOT_FOUND)
+servidor-1  | INFO:     127.0.0.1:59752 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:59766 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:59774 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:55298 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:55306 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:55310 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:37186 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:37198 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:37200 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:44116 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:44124 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:44126 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:56636 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:56648 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:56654 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:41694 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:41698 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:41702 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:41710 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:45900 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:45908 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:45922 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:60034 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:60036 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:60044 - "GET /products/1 HTTP/1.1" 200 OK
+servidor-1  | INFO:     127.0.0.1:34090 - "GET /products/1 HTTP/1.1" 200 OK

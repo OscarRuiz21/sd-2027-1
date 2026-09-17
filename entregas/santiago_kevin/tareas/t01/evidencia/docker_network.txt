@@ -1,0 +1,57 @@
+[
+    {
+        "Name": "t01_default",
+        "Id": "3055abfa36e3369bb12ea1df74670940bbb60d684f25a13e445a80228139a711",
+        "Created": "2026-09-17T03:10:43.227166594Z",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.20.0.0/16",
+                    "Gateway": "172.20.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Options": {
+            "com.docker.network.enable_ipv4": "true",
+            "com.docker.network.enable_ipv6": "false"
+        },
+        "Labels": {
+            "com.docker.compose.config-hash": "45a01ca48e40ec9ddaae67c6e856bfc05d0d39e35587913625c9964f0a2c1cf1",
+            "com.docker.compose.network": "default",
+            "com.docker.compose.project": "t01",
+            "com.docker.compose.version": "5.4.0"
+        },
+        "Containers": {
+            "d29595ea632c9e8abf6007e0dcff9e5a9d3193c934a53eb077e491407d35659c": {
+                "Name": "t01-servidor-1",
+                "EndpointID": "97994de55df6600857ed5d0749489bb6b46d0524320d76b29d4eb1297b73ade8",
+                "MacAddress": "da:7a:92:87:0c:03",
+                "IPv4Address": "172.20.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Status": {
+            "IPAM": {
+                "Subnets": {
+                    "172.20.0.0/16": {
+                        "IPsInUse": 4,
+                        "DynamicIPsAvailable": 65532
+                    }
+                }
+            }
+        }
+    }
+]

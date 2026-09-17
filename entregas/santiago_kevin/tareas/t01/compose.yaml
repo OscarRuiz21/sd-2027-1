@@ -1,0 +1,24 @@
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: servidor/Dockerfile
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/products/1')"]
+      interval: 3s
+      timeout: 2s
+      retries: 5
+
+  cliente:
+    build:
+      context: .
+      dockerfile: cliente/Dockerfile
+    environment:
+      REST_URL: http://servidor:8000
+      GRPC_TARGET: servidor:50051
+    depends_on:
+      servidor:
+        condition: service_healthy

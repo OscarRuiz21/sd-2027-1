@@ -1,0 +1,2 @@
+NAME             IMAGE                                                                     COMMAND            SERVICE    CREATED         STATUS                        PORTS
+t01-servidor-1   sha256:adbae9336e4cb03a76bd0f45c4cf26635f21ee9cdd25265e5286bdeb56ad8056   "python main.py"   servidor   3 minutes ago   Up About a minute (healthy)   0.0.0.0:8000->8000/tcp, [::]:8000->8000/tcp, 0.0.0.0:50051->50051/tcp, [::]:50051->50051/tcp
