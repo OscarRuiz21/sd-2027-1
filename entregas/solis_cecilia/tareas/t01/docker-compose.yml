@@ -1,0 +1,15 @@
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+
+  cliente:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    depends_on:
+      - servidor
