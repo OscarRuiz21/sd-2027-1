@@ -1,0 +1,30 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    container_name: t01_server
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    networks:
+      - t01_net
+
+  client:
+    build:
+      context: .
+      dockerfile: client/Dockerfile
+    container_name: t01_client
+    environment:
+      - REST_HOST=server
+      - REST_PORT=8080
+      - GRPC_HOST=server
+      - GRPC_PORT=50051
+    depends_on:
+      - server
+    networks:
+      - t01_net
+
+networks:
+  t01_net:
+    driver: bridge
