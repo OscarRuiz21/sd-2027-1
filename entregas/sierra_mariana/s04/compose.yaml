@@ -1,15 +1,19 @@
 services:
+services:
   db:
     image: postgres:17-alpine
     volumes:
       - datos_banco:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=secreto
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    env_file:
+      - .env
 
   web:
     image: nginx:alpine
     ports:
       - "8080:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
 
   cache:
     image: redis:8-alpine
