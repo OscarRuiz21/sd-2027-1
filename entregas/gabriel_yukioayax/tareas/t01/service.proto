@@ -1,0 +1,15 @@
+﻿syntax = "proto3";
+package data;
+
+service Busqueda {
+  rpc Buscar (Peticion) returns (Respuesta) {}
+}
+
+message Peticion {
+  string id = 1;
+}
+
+message Respuesta {
+  bool existe = 1;
+  string info = 2;
+}
