@@ -1,0 +1,12 @@
+services:
+  rest:
+    build: ./rest
+    container_name: s04-rest
+    ports:
+      - "5001:5000"
+
+  grpc:
+    build: ./grpc
+    container_name: s04-grpc
+    ports:
+      - "50052:50051"
