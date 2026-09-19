@@ -20,7 +20,7 @@ este mismo repositorio**, como un equipo en una empresa.
    `entregas_apellido_nombre` con `entregas/apellido_nombre/p00/prueba.txt`.
 4. **Las lecturas** viven en la pestaña
    [Discussions](https://github.com/OscarRuiz21/sd-2027-1/discussions): 2 preguntas +
-   1 hallazgo antes del jueves 23:59.
+   1 hallazgo, en tiempo hasta el **sábado antes de las 07:00**.
 
 ## Cómo funciona el repositorio
 
@@ -32,9 +32,10 @@ sd-2027-1/
 ├── calificaciones/  ← cortes de entregas, por número de cuenta
 └── entregas/        ← aquí va tu trabajo, en tu carpeta
     └── apellido_nombre/
-        ├── p00/
-        ├── s02/
-        └── s03/ … s12/
+        ├── p00/          ← la prueba de git
+        ├── s02/ … s12/   ← los labs, uno por sesión
+        └── tareas/       ← las tareas van aparte
+            └── t01/
 ```
 
 Cinco reglas:
@@ -46,7 +47,9 @@ Cinco reglas:
 3. **Cada quien toca solo su carpeta** de `entregas/`.
 4. **Los labs van en tiempo hasta el domingo** y tarde hasta antes de la siguiente sesión
    — tarde no baja puntos, pero queda registrado para tu tendencia (cuenta en los puntos
-   extra del final). Detalle en [`ENTREGAS.md`](ENTREGAS.md).
+   extra del final). Detalle en [`ENTREGAS.md`](ENTREGAS.md). **Las tareas son aparte de
+   los labs**: van en `tareas/` dentro de tu carpeta, con su propia fecha, y se listan en
+   el [`README.md` de entregas](entregas/README.md).
 5. **Las lecturas**: en tiempo hasta el **sábado antes de las 07:00**; tarde hasta el
    **domingo** todo el día.
 
