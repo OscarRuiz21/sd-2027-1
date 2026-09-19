@@ -1,0 +1,19 @@
+services:
+  server:
+    build: ./server
+    container_name: t01-server
+    ports:
+      - "5000:5000"
+      - "50051:50051"
+
+  client:
+    build: ./client
+    container_name: t01-client
+    depends_on:
+      - server
+    environment:
+      REST_URL: http://server:5000
+      GRPC_HOST: server:50051
+    stdin_open: true
+    tty: true
+    command: ["tail", "-f", "/dev/null"]

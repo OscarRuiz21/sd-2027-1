@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package usuarios;
+
+service Usuarios {
+  rpc BuscarUsuario (UsuarioRequest) returns (UsuarioResponse);
+}
+
+message UsuarioRequest {
+  string id = 1;
+}
+
+message UsuarioResponse {
+  string id = 1;
+  string nombre = 2;
+  string correo = 3;
+}

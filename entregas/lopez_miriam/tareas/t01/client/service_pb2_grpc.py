@@ -3,7 +3,7 @@
 import grpc
 import warnings
 
-import calculator_pb2 as calculator__pb2
+import service_pb2 as service__pb2
 
 GRPC_GENERATED_VERSION = '1.84.0'
 GRPC_VERSION = grpc.__version__
@@ -18,14 +18,14 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in calculator_pb2_grpc.py depends on'
+        + ' but the generated code in service_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
     )
 
 
-class CalculatorStub:
+class UsuariosStub:
     """Missing associated documentation comment in .proto file."""
 
     def __init__(self, channel):
@@ -34,43 +34,43 @@ class CalculatorStub:
         Args:
             channel: A grpc.Channel.
         """
-        self.Sumar = channel.unary_unary(
-                '/calculator.Calculator/Sumar',
-                request_serializer=calculator__pb2.SumaRequest.SerializeToString,
-                response_deserializer=calculator__pb2.SumaResponse.FromString,
+        self.BuscarUsuario = channel.unary_unary(
+                '/usuarios.Usuarios/BuscarUsuario',
+                request_serializer=service__pb2.UsuarioRequest.SerializeToString,
+                response_deserializer=service__pb2.UsuarioResponse.FromString,
                 _registered_method=True)
 
 
-class CalculatorServicer:
+class UsuariosServicer:
     """Missing associated documentation comment in .proto file."""
 
-    def Sumar(self, request, context):
+    def BuscarUsuario(self, request, context):
         """Missing associated documentation comment in .proto file."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
 
-def add_CalculatorServicer_to_server(servicer, server):
+def add_UsuariosServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'Sumar': grpc.unary_unary_rpc_method_handler(
-                    servicer.Sumar,
-                    request_deserializer=calculator__pb2.SumaRequest.FromString,
-                    response_serializer=calculator__pb2.SumaResponse.SerializeToString,
+            'BuscarUsuario': grpc.unary_unary_rpc_method_handler(
+                    servicer.BuscarUsuario,
+                    request_deserializer=service__pb2.UsuarioRequest.FromString,
+                    response_serializer=service__pb2.UsuarioResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'calculator.Calculator', rpc_method_handlers)
+            'usuarios.Usuarios', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
-    server.add_registered_method_handlers('calculator.Calculator', rpc_method_handlers)
+    server.add_registered_method_handlers('usuarios.Usuarios', rpc_method_handlers)
 
 
  # This class is part of an EXPERIMENTAL API.
-class Calculator:
+class Usuarios:
     """Missing associated documentation comment in .proto file."""
 
     @staticmethod
-    def Sumar(request,
+    def BuscarUsuario(request,
             target,
             options=(),
             channel_credentials=None,
@@ -83,9 +83,9 @@ class Calculator:
         return grpc.experimental.unary_unary(
             request,
             target,
-            '/calculator.Calculator/Sumar',
-            calculator__pb2.SumaRequest.SerializeToString,
-            calculator__pb2.SumaResponse.FromString,
+            '/usuarios.Usuarios/BuscarUsuario',
+            service__pb2.UsuarioRequest.SerializeToString,
+            service__pb2.UsuarioResponse.FromString,
             options,
             channel_credentials,
             insecure,
