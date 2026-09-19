@@ -1,0 +1,33 @@
+networks:
+  red-sd:
+    name: red-sd
+    driver: bridge
+
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: servidor_unificado
+    ports:
+      - "3000:3000"
+      - "50051:50051"
+    environment:
+      - REST_PORT=3000
+      - GRPC_PORT=50051
+    networks:
+      - red-sd
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: cliente_unificado
+    environment:
+      - SERVER_HOST=servidor
+      - REST_PORT=3000
+      - GRPC_PORT=50051
+    depends_on:
+      - servidor
+    networks:
+      - red-sd

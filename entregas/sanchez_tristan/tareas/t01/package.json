@@ -1,0 +1,15 @@
+{
+  "name": "t01-rest-grpc",
+  "version": "1.0.0",
+  "description": "Tarea 01 - El mismo servicio por REST y por gRPC",
+  "main": "server/main.js",
+  "scripts": {
+    "start:server": "node server/main.js",
+    "start:client": "node cliente/cliente.js"
+  },
+  "dependencies": {
+    "@grpc/grpc-js": "^1.10.8",
+    "@grpc/proto-loader": "^0.7.13",
+    "express": "^4.19.2"
+  }
+}
