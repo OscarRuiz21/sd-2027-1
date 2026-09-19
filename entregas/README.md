@@ -10,7 +10,8 @@ entregas/
     ├── s02/
     ├── s03/ … s12/     ← los labs de cada sesion
     └── tareas/         ← las tareas van aparte, aqui
-        └── t01/
+        ├── t01/
+        └── t02/
 ```
 
 Todo se entrega con **push a tu rama** `entregas_apellido_nombre` — sin pull request hasta
@@ -22,6 +23,41 @@ el final del curso (la rutina completa está en el
 
 Aquí se van apilando las **tareas**, la más reciente hasta arriba. Las **prácticas de
 laboratorio** no van aquí: cada una tiene su guía en [`labs/`](../labs/).
+
+### T02 · Dos algoritmos de consenso que no son Raft
+
+**Asignada en la S5 (19-sep) · entrega el domingo 27 de septiembre, 23:59**
+
+En la clase vimos cómo Raft pone de acuerdo a varios nodos con un líder, latidos y mayoría. Hay
+otros algoritmos que resuelven el mismo problema de otra forma.
+
+**Qué haces.** Eliges **dos algoritmos o protocolos de consenso que no sean Raft ni Paxos** y
+escribes, para cada uno, **un resumen de cómo funciona**, con tus palabras. Al final, las fuentes
+que usaste.
+
+Algunos para elegir (no es obligatorio escoger de aquí): Zab (ZooKeeper), Viewstamped
+Replication, PBFT, Tendermint, HotStuff, Proof of Work (Bitcoin), Proof of Stake (Ethereum).
+
+Si Raft se te quedó a medias, empieza por este video: https://youtu.be/IujMVjKvWP4
+
+**Dónde va:**
+
+```
+entregas/apellido_nombre/tareas/t02/README.md
+```
+
+```bash
+git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/tareas/t02
+# ... tu README.md ...
+git add entregas/apellido_nombre/tareas/t02
+git commit -m "T02: dos algoritmos de consenso"
+git push
+```
+
+**No abras pull request**: el push ES la entrega. Tarde no baja puntos, pero queda registrado
+en tu tendencia (ver [`ENTREGAS.md`](../ENTREGAS.md)).
 
 ### T01 · El mismo servicio, por REST y por gRPC
 
