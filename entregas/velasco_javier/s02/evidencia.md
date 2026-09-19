@@ -13,7 +13,7 @@ docker build -t mi-sitio:v2 .
 docker stop sitio
 docker rm sitio
 docker run -d -p 9090:80 --name sitio-v2-1 mi-sitio:v2
-docker run -d -p 9091:80 -error de puerto ocupad-name sitio-v2-2 mi-sitio:v2
+docker run -d -p 9091:80 --v2-2 mi-sitio:v2
 docker ps
 ```
 ## 2. Docker PS
