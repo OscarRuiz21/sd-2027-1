@@ -36,20 +36,12 @@ la entrega es un push a tu rama en `entregas/apellido_nombre/s04/`, sin pull req
 
 ## Mexi Banco con Compose · sábado 19 de septiembre (S5)
 
-**[Lab S05: Mexi Banco con Docker Compose](s05-mexi-banco/Lab-S05-Mexi-Banco-Compose.md)** (rúbrica en
-[`Lab-S05-rubrica.md`](s05-mexi-banco/Lab-S05-rubrica.md)): el caso hilo conductor del curso ya es código.
-`git clone --branch v05.1 https://github.com/OscarRuiz21/mexi-banco.git` y `docker compose up --build`.
-Tres hitos: arriba y respondiendo, las propiedades de Compose con tus manos (red, healthcheck,
-volumen, matar `app` y ver que no revive sola) e idempotencia del SPEI.
-
-**[Guía visual con Postman](https://oscarruiz21.github.io/sd-2027-1/labs/s05-mexi-banco/Lab-S05-Mexi-Banco-Postman.html)**:
-lo mismo que se mostró en clase, petición por petición, con la colección
-[`mexi-banco-v05.1.postman_collection.json`](s05-mexi-banco/mexi-banco-v05.1.postman_collection.json) y 34 pruebas
-automáticas. Usa Postman de escritorio.
-
-Entrega en `entregas/apellido_nombre/s05/` con push a tu rama, **en tiempo hasta el domingo 27 de
-septiembre** (se movió del 20: en clase el lab se hizo como demostración); tarde sin penalización
-hasta antes de la S07.
+**[Lab S05: Mexi Banco con Docker Compose](https://oscarruiz21.github.io/sd-2027-1/labs/s05-mexi-banco/Lab-S05-Mexi-Banco-Postman.html)**:
+los pasos de la clase en tu máquina. Clonar, levantar con Compose, probar los endpoints con
+Postman, bajar con y sin volumen, revisar el código, y estudiar el compose y el Dockerfile.
+Entregas un **reporte corto en PDF** (con el procesador de textos que quieras) con tus observaciones
+y capturas en `entregas/apellido_nombre/s05/`,
+**en tiempo hasta el domingo 27 de septiembre**.
 
 ---
 
