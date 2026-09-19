@@ -1,0 +1,18 @@
+services:
+  server:
+    build: ./server
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    networks:
+      - red_t01
+
+  client:
+    build: ./client
+    depends_on:
+      - server
+    networks:
+      - red_t01
+
+networks:
+  red_t01:
