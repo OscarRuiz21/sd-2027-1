@@ -10,7 +10,8 @@ entregas/
     ├── s02/
     ├── s03/ … s12/     ← los labs de cada sesion
     └── tareas/         ← las tareas van aparte, aqui
-        └── t01/
+        ├── t01/
+        └── t02/
 ```
 
 Todo se entrega con **push a tu rama** `entregas_apellido_nombre` — sin pull request hasta
@@ -22,6 +23,67 @@ el final del curso (la rutina completa está en el
 
 Aquí se van apilando las **tareas**, la más reciente hasta arriba. Las **prácticas de
 laboratorio** no van aquí: cada una tiene su guía en [`labs/`](../labs/).
+
+### T02 · Dos algoritmos de consenso que no son Raft
+
+**Asignada en la S5 (19-sep) · entrega el domingo 27 de septiembre, 23:59**
+
+En la clase vimos Raft: un líder, latidos, elección con tiempos aleatorios y mayoría. También
+vimos lo que Raft supone: los nodos se pueden caer o quedar incomunicados, pero no mienten. Hay
+otros algoritmos que resuelven el mismo problema, **que varios nodos decidan el mismo valor**,
+con otras suposiciones y otros costos. Esta tarea es para que conozcas dos.
+
+**Qué haces.** Eliges **dos algoritmos o protocolos de consenso que no sean Raft ni Paxos** y
+los investigas. Para cada uno respondes:
+
+| | Pregunta |
+|---|---|
+| 1 | ¿Qué problema resuelve y quién lo propuso? (autores y año) |
+| 2 | ¿Qué supone que puede fallar? ¿Solo caídas, o también nodos que mienten (fallos bizantinos)? |
+| 3 | ¿Cómo decide? ¿Hay líder? ¿Cómo se vota, o qué reemplaza al voto? |
+| 4 | ¿Cuántos participantes necesita para tolerar `f` fallas? (en Raft, `2f + 1`) |
+| 5 | ¿Dónde se usa hoy? Nombra un sistema real que lo use |
+| 6 | Contra Raft: ¿qué gana y qué paga? |
+
+Cierras con una **tabla comparativa** de tus dos algoritmos contra Raft, fila por fila con las
+seis preguntas, y **un párrafo**: si tuvieras que decidir cómo se ponen de acuerdo las réplicas de
+Mexi Banco, ¿cuál de los tres usarías y por qué?
+
+**Algunos para elegir** (no es obligatorio escoger de aquí): Zab (ZooKeeper), Viewstamped
+Replication, PBFT, Tendermint, HotStuff, Proof of Work (Bitcoin), Proof of Stake (Ethereum).
+Una sugerencia: elige **uno que solo tolere caídas y otro que tolere nodos maliciosos**; la
+comparación sale mucho más rica.
+
+**Qué entregas:** un `README.md` de dos a cuatro páginas, con tus palabras, y las **fuentes al
+final** con su enlace (el paper original o la documentación oficial siempre que exista). Si usas
+IA, di para qué, como marca la política del curso.
+
+**Qué se califica.** Que respondas las seis preguntas de cada algoritmo con tus palabras, que la
+tabla compare de verdad contra Raft (no que repita las definiciones) y que las fuentes existan y
+digan lo que citas. En la S6 platicamos de lo que encontraron.
+
+Si Raft se te quedó a medias, empieza por este video, que lo explica muy bien:
+https://youtu.be/IujMVjKvWP4
+
+**Dónde va:**
+
+```
+entregas/apellido_nombre/tareas/t02/
+```
+
+```bash
+git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/tareas/t02
+# ... tu README.md ...
+git status
+git add entregas/apellido_nombre/tareas/t02
+git commit -m "T02: dos algoritmos de consenso"
+git push
+```
+
+**No abras pull request**: el push ES la entrega. Tarde no baja puntos, pero queda registrado
+en tu tendencia (ver [`ENTREGAS.md`](../ENTREGAS.md)).
 
 ### T01 · El mismo servicio, por REST y por gRPC
 

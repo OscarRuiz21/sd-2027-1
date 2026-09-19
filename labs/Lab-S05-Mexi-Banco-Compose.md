@@ -12,13 +12,18 @@ Al terminar puedes levantar un sistema de varios contenedores con un solo comand
   docker pull eclipse-temurin:21-jdk-alpine
   docker pull eclipse-temurin:21-jre-alpine
   ```
-- Clona Mexi Banco en la etiqueta de esta sesión (`v05`):
+- Clona Mexi Banco en la etiqueta de esta sesión (`v05.1`):
   ```
-  git clone --branch v05 https://github.com/OscarRuiz21/mexi-banco.git
+  git clone --branch v05.1 https://github.com/OscarRuiz21/mexi-banco.git
   cd mexi-banco
   ```
 - Verifica que arranca: `docker compose up --build`. La primera vez tarda unos minutos (construye
   la imagen); las siguientes es casi instantáneo.
+- Si prefieres Postman a `curl`, la guía visual [`Lab-S05-Mexi-Banco-Postman.html`](Lab-S05-Mexi-Banco-Postman.html)
+  recorre lo mismo petición por petición, con la colección
+  [`mexi-banco-v05.1.postman_collection.json`](mexi-banco-v05.1.postman_collection.json) y 34 pruebas
+  automáticas. Es lo que se mostró en la clase del 2026-09-19. Usa Postman de escritorio: la versión
+  web no alcanza tu `localhost`.
 
 ## Contexto
 Mexi Banco es el banco digital ficticio del que hemos hablado desde la S01: cuenta, movimiento,
@@ -74,8 +79,8 @@ Intenta `docker compose up --scale app=3` tal cual: falla, porque el puerto 8080
 se puede ocupar una vez. Cambia en `docker-compose.yml` la línea `"8080:8080"` por el rango
 `"8080-8082:8080"` y vuelve a escalar: ahora hay 3 copias, en 8080, 8081 y 8082. Manda 10
 peticiones a `GET /cuentas/{clabe}` en el 8080: ¿algo las reparte entre las 3 copias? (no: son
-tres puertos distintos y Compose no trae balanceador). Anota tu observación para la demo de la
-tarde, donde un Service sí reparte.
+tres puertos distintos y Compose no trae balanceador). Anota tu observación: en la S06 vemos que
+un Service de Kubernetes sí reparte, y esa es exactamente la diferencia.
 
 ## Entrega
 En tu rama `entregas_apellido_nombre`, carpeta `entregas/apellido_nombre/s05/`: un `README.md`
@@ -83,8 +88,9 @@ con (a) la captura de `docker compose ps` mostrando ambos servicios `healthy`, (
 completa de tu segundo intento de SPEI (mostrando que no se duplicó el movimiento), y (c) tus
 respuestas a las preguntas de cierre. Sin PR, solo push: el push es la entrega.
 
-En tiempo hasta el domingo 2026-09-20 a las 23:59. Tarde sin penalización hasta antes de la S06
-(2026-09-26). Lo que cuenta es la hora del último push a tu rama, no la fecha del commit.
+En tiempo hasta el **domingo 2026-09-27 a las 23:59** (se movió del 20: en la clase el laboratorio
+se hizo como demostración). Tarde sin penalización de lunes a sábado, antes de la S07 (2026-10-03).
+Lo que cuenta es la hora del último push a tu rama, no la fecha del commit.
 
 ## Preguntas de cierre
 1. ¿Qué te dijo Compose que ya sabías, y qué te sorprendió?

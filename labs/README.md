@@ -28,12 +28,18 @@ en `entregas/apellido_nombre/s02/`**, conservando el número de la guía.
 
 **[Lab S05: Mexi Banco con Docker Compose](Lab-S05-Mexi-Banco-Compose.md)** (rúbrica en
 [`Lab-S05-rubrica.md`](Lab-S05-rubrica.md)): el caso hilo conductor del curso ya es código.
-Antes del sábado: `git clone --branch v05 https://github.com/OscarRuiz21/mexi-banco.git` y baja
-las imágenes `postgres:17-alpine`, `eclipse-temurin:21-jdk-alpine` y `eclipse-temurin:21-jre-alpine`.
+`git clone --branch v05.1 https://github.com/OscarRuiz21/mexi-banco.git` y `docker compose up --build`.
 Tres hitos: arriba y respondiendo, las propiedades de Compose con tus manos (red, healthcheck,
-volumen, matar `app` y ver que no revive sola) e idempotencia del SPEI. Entrega en
-`entregas/apellido_nombre/s05/` con push a tu rama, en tiempo hasta el domingo 20 de septiembre;
-tarde sin penalización hasta antes de la S06.
+volumen, matar `app` y ver que no revive sola) e idempotencia del SPEI.
+
+**[Guía visual con Postman](https://oscarruiz21.github.io/sd-2027-1/labs/Lab-S05-Mexi-Banco-Postman.html)**:
+lo mismo que se mostró en clase, petición por petición, con la colección
+[`mexi-banco-v05.1.postman_collection.json`](mexi-banco-v05.1.postman_collection.json) y 34 pruebas
+automáticas. Usa Postman de escritorio.
+
+Entrega en `entregas/apellido_nombre/s05/` con push a tu rama, **en tiempo hasta el domingo 27 de
+septiembre** (se movió del 20: en clase el lab se hizo como demostración); tarde sin penalización
+hasta antes de la S07.
 
 ## Docker, día dos · sábado 12 de septiembre (S4)
 
