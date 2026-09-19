@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SD · Lab S5 · Mexi Banco con Postman</title>
+<title>SD · Lab S5 · Mexi Banco con Docker Compose</title>
 <style>
 :root{--bg:#f5f8fc;--panel:#fff;--line:#d9e2ee;--ink:#12253d;--dim:#4b6178;
 --am:#b45309;--amsoft:#fff8ef;--gr:#15803d;--grsoft:#f0fdf4;--rd:#b91c1c;--rdsoft:#fef2f2;--code:#0f1e33}
@@ -54,12 +54,13 @@ font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;line-height:1
 footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color:var(--dim);font-size:.9rem}
 </style>
 </head>
+
 <body>
 
 <header><div class="in">
   <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · Laboratorio de la S5 · Mexi Banco v05.1</div>
-  <h1>Mexi Banco con Postman:<br><em style="color:#ffb340">el monolito, petición por petición</em></h1>
-  <p>Mexi Banco es <strong style="color:#fff">un solo programa</strong>: cuentas, movimientos, transferencias, SPEI y avisos viven en el mismo proceso y la misma base. Hoy lo vas a manejar desde <strong style="color:#fff">Postman</strong>, sin escribir un solo <code style="background:#1d3a60;color:#fff;border-color:#2c4f7c">curl</code>: abres cuentas, mueves dinero, mandas el mismo SPEI dos veces y ves qué deja cada operación adentro. Al final, <strong style="color:#fff">una sola corrida</strong> comprueba todo con 34 pruebas automáticas.</p>
+  <h1>Mexi Banco con Docker Compose:<br><em style="color:#ffb340">lo de la clase, en tu máquina</em></h1>
+  <p>Seis pasos, los mismos que hicimos en clase, y un reporte corto en PDF. Entrega hasta el <strong style="color:#fff">domingo 27 de septiembre, 23:59</strong>.</p>
   <p style="margin-top:1em"><a href="mexi-banco-v05.1.postman_collection.json" download style="display:inline-block;background:#ffb340;color:#12253d;text-decoration:none;font-weight:800;padding:.5em 1.2em;border-radius:10px">⬇️ Descargar la colección de Postman</a></p>
 </div></header>
 
@@ -67,166 +68,47 @@ footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color
 
 <div class="box tip">
   <h4>Antes de empezar</h4>
-  <p>Necesitas <strong>Docker corriendo</strong> (<code>docker compose version</code> responde) y <strong>Postman de escritorio</strong> (<a href="https://www.postman.com/downloads/">postman.com/downloads</a>). La versión web de Postman no alcanza tu <code>localhost</code> sin instalar su agente, así que usa la de escritorio.</p>
-<pre><code><span class="c"># 1. el monolito, en la etiqueta de esta sesión</span>
-git clone --branch v05.1 https://github.com/OscarRuiz21/mexi-banco.git
-cd mexi-banco
-
-<span class="c"># 2. Postgres y la app, con un comando</span>
-docker compose up --build</code></pre>
+  <p>Necesitas <strong>Docker corriendo</strong> (<code>docker compose version</code> responde) y <strong>Postman de escritorio</strong> (<a href="https://www.postman.com/downloads/">postman.com/downloads</a>). La versión web de Postman no alcanza tu <code>localhost</code>.</p>
 </div>
-<div class="cp"><h4><span class="n">1</span>Punto de control</h4>
-<p>En otra terminal, <code>docker compose ps</code> muestra <b>db</b> y <b>app</b> como <b>healthy</b>, no solo <i>running</i>. Si <code>app</code> no llega, revisa <code>docker compose logs app</code>.</p></div>
 
-<h2>Ejercicio 0 · Importa la colección</h2>
-<p>En Postman: <strong>Import</strong> (arriba a la izquierda) y arrastra <code>mexi-banco-v05.1.postman_collection.json</code>. Aparece <strong>Mexi Banco v05.1</strong> con cinco carpetas, una por ejercicio, y 20 peticiones en orden.</p>
-<p>La colección trae <strong>variables</strong>: en las URL y en los cuerpos verás <code>{{origen}}</code> en lugar de una CLABE escrita a mano. Las ves al hacer clic en la colección, pestaña <strong>Variables</strong>:</p>
-<table>
-  <tr><th>Variable</th><th>Valor</th><th>Quién la llena</th></tr>
-  <tr><td><b>baseUrl</b></td><td><code>http://localhost:8080</code></td><td>Tú, si cambias el puerto.</td></tr>
-  <tr><td><b>origen</b> y <b>destino</b></td><td>Dos CLABEs de 18 dígitos</td><td>La petición <i>Abrir cuenta origen</i>, cada vez que la mandas.</td></tr>
-  <tr><td><b>idempotencyKey</b></td><td><code>prueba-…</code></td><td>También <i>Abrir cuenta origen</i>.</td></tr>
-  <tr><td><b>transferenciaId</b> y <b>speiId</b></td><td>Los <code>id</code> que regresa la app</td><td>Las pruebas de cada petición, al recibir la respuesta.</td></tr>
-</table>
-<div class="box tip"><h4>Por qué las CLABEs cambian solas</h4>
-<p>La CLABE es única: si abres dos veces la misma cuenta, la app responde <code>409</code>. Para que puedas repetir el lab cuantas veces quieras sobre la misma base, <i>Abrir cuenta origen</i> tiene un <strong>Pre-request Script</strong> que genera CLABEs nuevas. Ábrelo en su pestaña <strong>Scripts</strong>: son cuatro líneas.</p></div>
-<div class="cp"><h4><span class="n">2</span>Punto de control</h4>
-<p>Ves la colección con sus cinco carpetas y la pestaña <b>Variables</b> muestra <b>baseUrl</b> en <code>http://localhost:8080</code>.</p></div>
+<h2>Paso 1 · Clona el repo</h2>
+<pre><code>git clone --branch v05.1 https://github.com/OscarRuiz21/mexi-banco.git
+cd mexi-banco</code></pre>
 
-<h2>Ejercicio 1 · Arriba y respondiendo</h2>
-<p>Carpeta <strong>1 · Arriba y respondiendo</strong>. Manda cada petición con <strong>Send</strong>, en orden:</p>
-<table>
-  <tr><th>Petición</th><th>Método y ruta</th><th>Esperas</th></tr>
-  <tr><td><b>Salud de la app</b></td><td><code>GET /actuator/health</code></td><td><code>200</code> y <code>{"status":"UP"}</code></td></tr>
-  <tr><td><b>Abrir cuenta origen (1000)</b></td><td><code>POST /cuentas</code></td><td><code>201 Created</code> y tu cuenta con saldo 1000</td></tr>
-  <tr><td><b>Consultar cuenta origen</b></td><td><code>GET /cuentas/{{origen}}</code></td><td><code>200</code> con saldo <code>1000.00</code></td></tr>
-</table>
-<p>El cuerpo de <i>Abrir cuenta</i> está en la pestaña <strong>Body</strong>, tipo <strong>raw · JSON</strong>:</p>
-<pre><code>{
-  "clabe": "{{origen}}",
-  "titular": "Ana",
-  "saldoInicial": 1000
-}</code></pre>
-<div class="out"><b>Respuesta</b>{"id":1,"clabe":"002180123456789012","titular":"Ana","saldo":1000}</div>
-<div class="cp"><h4><span class="n">3</span>Punto de control</h4>
-<p>La consulta regresa tu cuenta con <b>saldo 1000</b>, y abajo, en <b>Test Results</b>, las pruebas de la petición salen en verde.</p></div>
+<h2>Paso 2 · Levántalo con Compose</h2>
+<pre><code>docker compose up --build -d
+docker compose ps</code></pre>
+<p><code>db</code> y <code>app</code> deben decir <strong>healthy</strong>, no solo <i>running</i>. Si <code>app</code> no llega, revisa <code>docker compose logs app</code>.</p>
 
-<h2>Ejercicio 2 · Una transferencia, una transacción</h2>
-<p>Carpeta <strong>2 · Transferencia interna</strong>. Abres una segunda cuenta con 500 y le mandas 200 desde la primera:</p>
-<pre><code>{
-  "claveOrigen": "{{origen}}",
-  "claveDestino": "{{destino}}",
-  "monto": 200
-}</code></pre>
-<div class="out"><b>Respuesta de POST /transferencias · 201</b>{"id":1,"claveOrigen":"002180…","claveDestino":"012180…","monto":200,"fecha":"2026-…Z"}</div>
-<p>Consulta las dos cuentas: <strong>800</strong> y <strong>700</strong>. Los 1500 de antes siguen siendo 1500. Cargo, abono, los dos movimientos y los dos avisos se guardaron en <strong>una sola transacción</strong>: o todo o nada.</p>
+<h2>Paso 3 · Prueba los endpoints</h2>
+<p>En Postman: <strong>Import</strong> y arrastra la colección que descargaste arriba. Manda las peticiones en orden con <strong>Send</strong> y revisa lo que responde cada una: abrir cuentas, transferir, mandar el mismo SPEI dos veces, el estado de cuenta, los avisos y los errores.</p>
 
-<h3>Mata app a propósito</h3>
-<p>En la terminal, dentro de <code>mexi-banco</code>:</p>
-<pre><code>docker compose stop app</code></pre>
-<p>Vuelve a mandar <i>Consultar origen (800)</i> en Postman:</p>
-<div class="out"><b>Postman</b>Could not send request
-Error: connect ECONNREFUSED 127.0.0.1:8080</div>
-<p>Espera 15 segundos y mándala otra vez. <strong>¿Volvió sola?</strong> No. Compose levanta el sistema, pero no lo vigila. Levántala tú:</p>
-<pre><code>docker compose start app</code></pre>
-<p>Cuando <code>docker compose ps</code> la vuelva a marcar <code>healthy</code>, consulta de nuevo: <strong>800</strong>. El volumen de <code>db</code> no se tocó.</p>
-<div class="cp"><h4><span class="n">4</span>Punto de control</h4>
-<p>Hiciste una transferencia con saldos que cuadran (800 y 700), viste el <b>ECONNREFUSED</b>, comprobaste que <code>app</code> no revivió sola y la levantaste sin perder datos.</p></div>
-
-<h2>Ejercicio 3 · El mismo SPEI dos veces</h2>
-<p>Carpeta <strong>3 · Idempotencia</strong>. El SPEI sale a otro banco y lleva una cabecera extra. Ábrela en la pestaña <strong>Headers</strong>:</p>
-<table>
-  <tr><th>Key</th><th>Value</th></tr>
-  <tr><td><code>Idempotency-Key</code></td><td><code>{{idempotencyKey}}</code></td></tr>
-</table>
-<p>Manda <i>SPEI de 50 (primer envío)</i> y después <i>SPEI de 50 (reintento, misma clave)</i>, que es <strong>exactamente la misma petición</strong>:</p>
-<div class="out"><b>Las dos respuestas · 201</b>{"id":1,"idempotencyKey":"prueba-…","monto":50,"estado":"ENVIADO", …}
-{"id":1,"idempotencyKey":"prueba-…","monto":50.00,"estado":"ENVIADO", …}</div>
-<p>Mismo <code>id</code>: el segundo no creó otro SPEI. Consulta el origen: <strong>750</strong>, no 700.</p>
-<div class="box tip"><h4>Por qué no cobró dos veces</h4>
-<p>Es el patrón de la T01. Antes de cobrar, la app intenta <strong>insertar</strong> la clave en una tabla con <code>UNIQUE</code>. Ese INSERT es a la vez la comprobación y la reserva: el primer envío lo gana y cobra; el reintento choca contra el <code>UNIQUE</code> y la app regresa lo que ya había hecho. Está en <code>spei/SpeiService.java</code>.</p></div>
-<div class="cp"><h4><span class="n">5</span>Punto de control</h4>
-<p>Los dos envíos regresan el <b>mismo id</b>, el saldo quedó en <b>750</b>, y puedes explicar con tus palabras por qué el segundo no cobró.</p></div>
-
-<h2>Ejercicio 4 · El monolito por dentro</h2>
-<p>Carpeta <strong>4 · El monolito por dentro</strong>. <i>Estado de cuenta del origen</i> (<code>GET /movimientos?clabe={{origen}}</code>) muestra lo que dejó cada operación en el libro de movimientos:</p>
-<div class="out"><b>Del más reciente al más viejo</b>SPEI_ENVIADO            -50.00   saldo 750.00
-TRANSFERENCIA_ENVIADA  -200.00   saldo 800.00
-DEPOSITO              1000.00   saldo 1000.00</div>
-<p>Súmalos: <strong>750</strong>, el saldo de la cuenta. El saldo es una copia; <strong>la verdad son los movimientos</strong>, que solo se agregan y nunca se editan. <i>Avisos del origen</i> (<code>GET /notificaciones?clabe=…</code>) muestra los dos avisos: uno por la transferencia y otro por el SPEI.</p>
-<h3>Cada petición atraviesa cuatro capas</h3>
-<p>Abre el código en tu editor, en <code>src/main/java/mx/mexibanco</code>. Cada módulo tiene las mismas cuatro piezas, y cada petición de Postman entra por la de arriba:</p>
-<table>
-  <tr><th>Petición</th><th>Controlador</th><th>Servicio</th><th>Repositorio</th><th>Entidad</th></tr>
-  <tr><td><code>POST /cuentas</code></td><td><b>CuentaController</b></td><td>CuentaService</td><td>CuentaRepository</td><td>Cuenta</td></tr>
-  <tr><td><code>POST /transferencias</code></td><td><b>TransferenciaController</b></td><td>TransferenciaService</td><td>TransferenciaRepository</td><td>Transferencia</td></tr>
-  <tr><td><code>GET /movimientos</code></td><td><b>MovimientoController</b></td><td>MovimientoService</td><td>MovimientoRepository</td><td>Movimiento</td></tr>
-  <tr><td><code>GET /notificaciones</code></td><td><b>NotificacionController</b></td><td>NotificacionService</td><td>NotificacionRepository</td><td>Notificacion</td></tr>
-  <tr><td><code>POST /spei</code></td><td><b>SpeiController</b></td><td>SpeiService</td><td>SpeiSolicitudRepository</td><td>SpeiSolicitud</td></tr>
-</table>
-<div class="box tip"><h4>La costura por donde se va a partir</h4>
-<p>Abre <code>transferencia/TransferenciaService.java</code>. Nunca toca la tabla de cuentas: le <strong>pide</strong> a <code>CuentaService</code> que cargue y abone, a <code>MovimientoService</code> que registre y a <code>NotificacionService</code> que avise. Hoy son llamadas dentro del mismo proceso, en una sola transacción. En las próximas sesiones cada módulo será su propio servicio, y cada una de esas llamadas viajará por la red. Esa transacción única ya no va a existir. Pregúntate qué pasa si el cargo sale bien y el abono no.</p></div>
-<div class="cp"><h4><span class="n">6</span>Punto de control</h4>
-<p>Tus movimientos suman tu saldo, y sabes señalar en el código por qué capas pasa un <code>POST /transferencias</code>.</p></div>
-
-<h2>Ejercicio 5 · Cuando algo sale mal</h2>
-<p>Carpeta <strong>5 · Cuando algo sale mal</strong>. Cada error de negocio tiene su código, y <strong>ninguno es 500</strong>. Un 500 quiere decir que el programa no supo qué hacer; estos casos sí están previstos.</p>
-<table>
-  <tr><th>Petición</th><th>Código</th><th>Por qué</th></tr>
-  <tr><td><b>CLABE que no existe</b></td><td><code>404</code></td><td>No hay cuenta que consultar.</td></tr>
-  <tr><td><b>CLABE repetida</b></td><td><code>409</code></td><td>Choca con una cuenta que ya existe.</td></tr>
-  <tr><td><b>Cuerpo sin clabe</b></td><td><code>400</code></td><td>La petición está mal formada: falta un campo obligatorio.</td></tr>
-  <tr><td><b>Saldo insuficiente</b></td><td><code>422</code></td><td>La petición está bien escrita, pero una regla del banco la impide.</td></tr>
-  <tr><td><b>Transferir a la misma cuenta</b></td><td><code>422</code></td><td>Otra regla del banco.</td></tr>
-  <tr><td><b>SPEI sin Idempotency-Key</b></td><td><code>400</code></td><td>Sin clave no hay forma de detectar un reintento.</td></tr>
-</table>
-<div class="out"><b>Respuesta de Saldo insuficiente · 422</b>{"type":"about:blank","title":"Unprocessable Entity","status":422,
- "detail":"Saldo insuficiente en la CLABE 002180…","instance":"/transferencias"}</div>
-<p>La última petición de la carpeta consulta el origen otra vez: sigue en <strong>750</strong>. Ningún error movió dinero.</p>
-<div class="cp"><h4><span class="n">7</span>Punto de control</h4>
-<p>Los seis errores regresan el código de la tabla y el saldo sigue en <b>750</b>.</p></div>
-
-<h2>Todo de un jalón</h2>
-<p>Clic derecho en la colección → <strong>Run collection</strong> → <strong>Run Mexi Banco v05.1</strong>. Postman manda las 20 peticiones en orden y corre sus pruebas:</p>
-<div class="out"><b>Resultado esperado</b>20 peticiones · 34 pruebas · 34 passed · 0 failed</div>
-<p>Si prefieres la terminal, el mismo resultado sale con Newman, el runner de Postman para línea de comandos (necesita Node):</p>
-<pre><code>npx newman run mexi-banco-v05.1.postman_collection.json</code></pre>
-<div class="cp"><h4><span class="n">✓</span>Checklist final</h4>
-<p>La corrida completa sale en verde: 20 peticiones y 34 pruebas sin fallas.</p></div>
-
-<h2>El repertorio de hoy, en una tabla</h2>
-<table>
-  <tr><th>Método y ruta</th><th>Cuerpo o cabecera</th><th>Qué hace</th></tr>
-  <tr><td><code>GET /actuator/health</code></td><td></td><td>¿La app está viva? (la usa el healthcheck de Compose)</td></tr>
-  <tr><td><code>POST /cuentas</code></td><td><code>clabe</code>, <code>titular</code>, <code>saldoInicial</code></td><td>Abre una cuenta</td></tr>
-  <tr><td><code>GET /cuentas/{clabe}</code></td><td></td><td>Consulta el saldo</td></tr>
-  <tr><td><code>POST /transferencias</code></td><td><code>claveOrigen</code>, <code>claveDestino</code>, <code>monto</code></td><td>Transferencia interna</td></tr>
-  <tr><td><code>GET /transferencias/{id}</code></td><td></td><td>Consulta una transferencia</td></tr>
-  <tr><td><code>POST /spei</code></td><td>cabecera <code>Idempotency-Key</code> + <code>claveOrigen</code>, <code>bancoDestino</code>, <code>claveDestino</code>, <code>monto</code></td><td>Transferencia a otro banco</td></tr>
-  <tr><td><code>GET /movimientos?clabe=…</code></td><td></td><td>Estado de cuenta</td></tr>
-  <tr><td><code>GET /notificaciones?clabe=…</code></td><td></td><td>Avisos de la cuenta</td></tr>
-</table>
-
-<h2>Si algo falla</h2>
-<table>
-  <tr><th>Ves</th><th>Qué pasa</th><th>Qué haces</th></tr>
-  <tr><td><b>ECONNREFUSED 127.0.0.1:8080</b></td><td><code>app</code> no está arriba.</td><td><code>docker compose ps</code>; si falta, <code>docker compose start app</code> o <code>docker compose up</code>.</td></tr>
-  <tr><td><b>409 al abrir una cuenta</b></td><td>Esa CLABE ya existe.</td><td>Vuelve a mandar <i>Abrir cuenta origen</i>: genera CLABEs nuevas.</td></tr>
-  <tr><td><b>404 en <i>Consultar la transferencia</i></b></td><td><code>{{transferenciaId}}</code> está vacío.</td><td>Manda antes <i>Transferir 200</i>, que es quien lo llena.</td></tr>
-  <tr><td><b>Las pruebas de saldo fallan (esperaba 800 y hay 600)</b></td><td>Mandaste una transferencia de más.</td><td>Empieza otra vez desde <i>Abrir cuenta origen</i>.</td></tr>
-  <tr><td><b>Could not send request en Postman web</b></td><td>La web no ve tu <code>localhost</code>.</td><td>Usa Postman de escritorio.</td></tr>
-  <tr><td><b>port is already allocated al levantar</b></td><td>Otro proceso usa el 8080.</td><td>Apágalo, o cambia <code>"8080:8080"</code> por <code>"8081:8080"</code> y <b>baseUrl</b> por <code>http://localhost:8081</code>.</td></tr>
-</table>
-
-<h2>Limpieza</h2>
-<pre><code><span class="c"># apaga todo y CONSERVA los datos</span>
+<h2>Paso 4 · Bájalo con y sin volumen</h2>
+<pre><code><span class="c"># apaga, vuelve a levantar y consulta tu cuenta en Postman</span>
 docker compose down
+docker compose up -d
 
-<span class="c"># apaga todo y BORRA los datos (el volumen de db)</span>
-docker compose down -v</code></pre>
+<span class="c"># ahora apaga borrando el volumen, levanta y consulta otra vez</span>
+docker compose down -v
+docker compose up -d</code></pre>
+<p>Anota qué pasó con tus datos en cada caso, y por qué.</p>
 
-<h2>Qué sigue</h2>
-<p>Esta colección es un <strong>contrato</strong>: dice qué entra y qué sale, sin decir cómo está hecho por dentro. En las próximas sesiones vamos a partir Mexi Banco en servicios separados: cuentas, transferencias y notificaciones, cada uno con su base. La colección va a seguir siendo la misma. Si las 34 pruebas siguen en verde contra el sistema partido, lo partimos sin romperlo.</p>
+<h2>Paso 5 · Revisa el código</h2>
+<p>Abre el proyecto en tu editor, en <code>src/main/java/mx/mexibanco</code>. Cada módulo (<code>cuenta</code>, <code>movimiento</code>, <code>transferencia</code>, <code>notificacion</code> y <code>spei</code>) tiene sus cuatro capas: controlador, servicio, repositorio y entidad. Familiarízate con él: es el monolito que vamos a ir partiendo en las siguientes sesiones.</p>
+
+<h2>Paso 6 · Estudia el compose y el Dockerfile</h2>
+<p>Léelos línea por línea, como en clase: qué servicios levanta el compose, el healthcheck, la red y el volumen; y en el <code>Dockerfile</code>, sus dos etapas, la que compila y la que ejecuta.</p>
+
+<h2>Entrega · un reporte corto</h2>
+<p>Un <strong>reporte en PDF</strong>, hecho con el procesador de textos que quieras, con tus <strong>observaciones</strong> de cada paso y <strong>capturas</strong> de lo que hiciste. Va en tu carpeta <code>entregas/apellido_nombre/s05/</code>, con push a tu rama y sin pull request.</p>
+<pre><code>git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/s05
+<span class="c"># ... copia aquí tu reporte, por ejemplo reporte-s05.pdf ...</span>
+git add entregas/apellido_nombre/s05
+git commit -m "S05: Mexi Banco con Compose"
+git push</code></pre>
+<p>En tiempo hasta el <strong>domingo 27 de septiembre, 23:59</strong>. Tarde no baja puntos, pero queda en tu tendencia de entregas.</p>
 
 <footer>
   <p><strong>Sistemas Distribuidos 2027-1 · Grupo 2 · Facultad de Ingeniería, UNAM</strong><br>
