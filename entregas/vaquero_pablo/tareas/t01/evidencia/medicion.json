@@ -1,0 +1,19 @@
+{
+  "id": 1,
+  "connection": "fresh, plaintext, one RPC/request",
+  "scope": "TCP payload in both directions; excludes TCP/IP/Ethernet headers",
+  "measurements": {
+    "REST": {
+      "request_stream_bytes": 129,
+      "response_stream_bytes": 205,
+      "total_stream_bytes": 334,
+      "response_body_bytes": 45
+    },
+    "gRPC": {
+      "request_stream_bytes": 412,
+      "response_stream_bytes": 257,
+      "total_stream_bytes": 669,
+      "response_body_bytes": 15
+    }
+  }
+}

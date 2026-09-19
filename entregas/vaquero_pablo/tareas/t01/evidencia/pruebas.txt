@@ -1,0 +1,19 @@
+test_found_and_missing (test_service.ServiceTests.test_found_and_missing) ... ok
+test_invalid_ids (test_service.ServiceTests.test_invalid_ids) ... ok
+test_existing_products (test_service.TransportTests.test_existing_products) ... 127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/1 HTTP/1.1" 200 -
+127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/2 HTTP/1.1" 200 -
+ok
+test_invalid (test_service.TransportTests.test_invalid) ... 127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/0 HTTP/1.1" 400 -
+127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/-1 HTTP/1.1" 400 -
+ok
+test_missing (test_service.TransportTests.test_missing) ... 127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/999 HTTP/1.1" 404 -
+ok
+test_same_instance_receives_both_calls (test_service.TransportTests.test_same_instance_receives_both_calls) ... 127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/1 HTTP/1.1" 200 -
+ok
+test_text_id_rest (test_service.TransportTests.test_text_id_rest) ... 127.0.0.1 - - [19/Sep/2026 18:50:47] "GET /products/abc HTTP/1.1" 400 -
+ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.544s
+
+OK

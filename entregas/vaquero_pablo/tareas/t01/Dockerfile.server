@@ -1,0 +1,11 @@
+FROM python:3.12-slim
+WORKDIR /app
+ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY proto/ proto/
+RUN python -m grpc_tools.protoc -Iproto --python_out=. --grpc_python_out=. proto/catalog.proto
+COPY service.py server.py healthcheck.py test_service.py client.py ./
+USER 10001:10001
+EXPOSE 8000 50051
+CMD ["python", "server.py"]

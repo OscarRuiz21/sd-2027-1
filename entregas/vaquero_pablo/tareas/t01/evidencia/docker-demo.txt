@@ -1,0 +1,39 @@
+Attaching to client-1, server-1
+server-1  | Una instancia de CatalogService; REST :8000; gRPC :50051
+server-1  | 127.0.0.1 - - [19/Sep/2026 18:50:10] "GET /products/1 HTTP/1.1" 200 -
+client-1  |
+client-1  | ID 1
+server-1  | 172.20.0.3 - - [19/Sep/2026 18:50:11] "GET /products/1 HTTP/1.1" 200 -
+client-1  | REST: 200 | {"id": 1, "name": "Cuaderno", "price_cents": 4500}
+client-1  |   Cuerpo de respuesta: 45 bytes (sin cabeceras ni transporte)
+client-1  | gRPC: OK | {"id": 1, "name": "Cuaderno", "price_cents": 4500}
+client-1  |   Cuerpo de respuesta: 15 bytes (sin cabeceras ni transporte)
+client-1  | Coinciden el resultado y el significado del estado: SÍ
+client-1  |
+client-1  | ID 2
+server-1  | 172.20.0.3 - - [19/Sep/2026 18:50:11] "GET /products/2 HTTP/1.1" 200 -
+client-1  | REST: 200 | {"id": 2, "name": "Lápiz", "price_cents": 1000}
+client-1  |   Cuerpo de respuesta: 43 bytes (sin cabeceras ni transporte)
+client-1  | gRPC: OK | {"id": 2, "name": "Lápiz", "price_cents": 1000}
+client-1  |   Cuerpo de respuesta: 13 bytes (sin cabeceras ni transporte)
+client-1  | Coinciden el resultado y el significado del estado: SÍ
+client-1  |
+client-1  | ID 999
+server-1  | 172.20.0.3 - - [19/Sep/2026 18:50:11] "GET /products/999 HTTP/1.1" 404 -
+client-1  | REST: 404 | {"error": "No hay datos para el ID 999"}
+client-1  |   Cuerpo de respuesta: 39 bytes (sin cabeceras ni transporte)
+client-1  | gRPC: NOT_FOUND | {"error": "No hay datos para el ID 999"}
+client-1  | Coinciden el resultado y el significado del estado: SÍ
+client-1  |
+client-1  | ID 0
+server-1  | 172.20.0.3 - - [19/Sep/2026 18:50:11] "GET /products/0 HTTP/1.1" 400 -
+client-1  | REST: 400 | {"error": "El ID debe ser un entero entre 1 y 2147483647"}
+client-1  |   Cuerpo de respuesta: 57 bytes (sin cabeceras ni transporte)
+client-1  | gRPC: INVALID_ARGUMENT | {"error": "El ID debe ser un entero entre 1 y 2147483647"}
+client-1  | Coinciden el resultado y el significado del estado: SÍ
+client-1 exited with code 0
+Aborting on container exit...
+ Container t01-vaquero-pablo-client-1  Stopping
+ Container t01-vaquero-pablo-client-1  Stopped
+ Container t01-vaquero-pablo-server-1  Stopping
+ Container t01-vaquero-pablo-server-1  Stopped

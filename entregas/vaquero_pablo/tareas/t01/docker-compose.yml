@@ -1,0 +1,30 @@
+name: t01-vaquero-pablo
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "127.0.0.1:18000:8000"
+      - "127.0.0.1:15051:50051"
+    networks: [catalog]
+    healthcheck:
+      test: ["CMD", "python", "healthcheck.py"]
+      interval: 3s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    environment:
+      REST_URL: http://server:8000
+      GRPC_TARGET: server:50051
+    depends_on:
+      server:
+        condition: service_healthy
+    networks: [catalog]
+networks:
+  catalog:
+    driver: bridge
