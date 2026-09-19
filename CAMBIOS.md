@@ -4,6 +4,7 @@ Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
 ## 2026-09-19
 
+- **Lab S05, más simple**: queda solo la guía `labs/s05-mexi-banco/Lab-S05-Mexi-Banco-Postman.html` con los pasos de la clase, y se entrega un reporte corto en PDF, hecho con cualquier procesador de textos, con observaciones y capturas. Ya no hay enunciado en Markdown ni rúbrica.
 - **Labs ordenados**: cada lab vive ahora en su carpeta, en orden de sesión (`labs/s00-instala-docker/`, `labs/s02-docker-dia-1/`, `labs/s04-docker-dia-2/`, `labs/s05-mexi-banco/`). Las ligas viejas a `labs/<archivo>` ya no funcionan: entra desde [`labs/README.md`](labs/README.md) o desde el índice.
 - **S05, material final**: el deck `material/S05/` (HTML y PDF) es ahora el de 52 láminas que se usó en clase. Kubernetes (láminas 18 a 26) y el cierre de Raft (término, reparación del log y etcd) no alcanzaron y se ven en la S06.
 - **Lab S05**: Mexi Banco en la etiqueta `v05.1`, con una guía visual en Postman (`labs/s05-mexi-banco/Lab-S05-Mexi-Banco-Postman.html`) y su colección. **La entrega se mueve al domingo 27 de septiembre, 23:59**, porque en clase el lab se hizo como demostración.
