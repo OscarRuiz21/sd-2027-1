@@ -1,0 +1,11 @@
+services:
+  servidor:
+    image: t01-servidor
+    ports:
+      - "3000:3000"
+      - "50051:50051"
+
+  cliente:
+    image: t01-cliente
+    depends_on:
+      - servidor  
