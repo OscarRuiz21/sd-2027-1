@@ -9,10 +9,15 @@ es el que se integra a `main`.
 
 ```
 entregas/apellido_nombre/
-├── p00/        ← la prueba de git
-├── s02/        ← lab de la sesión 2 (Docker)
-└── s03/ … s12/
+├── p00/          ← la prueba de git
+├── s02/ … s12/   ← los labs, uno por sesión
+└── tareas/       ← las tareas van aparte
+    └── t01/
 ```
+
+Los **labs** van en la carpeta de su sesión; las **tareas**, dentro de `tareas/`. Son cosas
+distintas: las guías de laboratorio están en [`labs/`](labs/) y las tareas se apilan en el
+[`README.md` de entregas](entregas/README.md).
 
 ## Tareas opcionales
 
@@ -22,7 +27,7 @@ los **puntos extra** del final del curso. La primera es el *idempotency key* sin
 
 ## Los tiempos
 
-**Labs de la semana** (la hora es la de tu último push a esa carpeta):
+**Labs y tareas** (la hora es la de tu último push a esa carpeta; para las tareas con fecha propia, manda la fecha de la tarea):
 
 | Cuándo pusheas | Cómo se registra |
 |---|---|
