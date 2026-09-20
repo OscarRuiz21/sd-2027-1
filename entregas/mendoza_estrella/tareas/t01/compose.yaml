@@ -1,0 +1,25 @@
+services:
+  servidor-rest:
+    build:
+      context: .
+      dockerfile: Dockerfile.rest
+    ports:
+      - "3000:3000"
+
+  servidor-grpc:
+    build:
+      context: .
+      dockerfile: Dockerfile.grpc
+    ports:
+      - "50051:50051"
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliente
+    environment:
+      HOST_REST: servidor-rest
+      HOST_GRPC: servidor-grpc
+    depends_on:
+      - servidor-rest
+      - servidor-grpc

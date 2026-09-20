@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY logica.py server_grpc.py servicio.proto ./
+RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. servicio.proto
+EXPOSE 50051
+CMD ["python", "-u", "server_grpc.py"]

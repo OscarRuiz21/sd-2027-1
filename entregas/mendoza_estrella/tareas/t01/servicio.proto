@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package servicio;
+
+service ServicioItems {
+  rpc Buscar (SolicitudId) returns (RespuestaItem);
+}
+
+message SolicitudId {
+  string id = 1;
+}
+
+message RespuestaItem {
+  bool encontrado = 1;
+  string id = 2;
+  string nombre = 3;
+  string mensaje = 4;
+}
