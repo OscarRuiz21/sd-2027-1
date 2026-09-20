@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+grpc:
+  server:
+    port: 50051
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    root: INFO
+    com.distribuidos: DEBUG
+    net.devh.boot.grpc: INFO

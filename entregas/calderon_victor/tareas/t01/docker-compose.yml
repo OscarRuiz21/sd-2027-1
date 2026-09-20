@@ -1,0 +1,37 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    container_name: t01-server
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    networks:
+      - t01-net
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+      start_period: 15s
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: t01-client
+    environment:
+      - SERVER_HOST=server
+      - REST_PORT=8080
+      - GRPC_PORT=50051
+    depends_on:
+      server:
+        condition: service_healthy
+    networks:
+      - t01-net
+
+networks:
+  t01-net:
+    name: t01-network
+    driver: bridge
