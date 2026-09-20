@@ -1,0 +1,14 @@
+version: '3.8'
+services:
+  servidor:
+    build: .
+    command: python servidor.py
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+    
+  cliente:
+    build: .
+    command: python cliente.py
+    depends_on:
+      - servidor

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service ServicioInfo {
+  rpc ObtenerInfo (InfoRequest) returns (InfoResponse);
+}
+
+message InfoRequest { 
+  int32 id = 1; 
+}
+
+message InfoResponse {
+  bool existe = 1;
+  string datos = 2;
+}
