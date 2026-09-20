@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package servicio;
+
+// Definición del servicio y sus métodos
+service BuscadorService {
+  rpc Consultar (ConsultaRequest) returns (ConsultaResponse);
+}
+
+// El mensaje que envía el cliente (solo el ID)
+message ConsultaRequest {
+  string id = 1;
+}
+
+// El mensaje que responde el servidor
+message ConsultaResponse {
+  string id = 1;
+  string informacion = 2;
+  bool encontrado = 3;
+}
