@@ -1,52 +1,34 @@
 # Política de entregas
 
-## El modelo: una rama tuya para todo el semestre
+## El acantilado
 
-Trabajas SIEMPRE en **tu rama** `entregas_apellido_nombre`. Ahí subes con push cada lab y
-cada tarea, dentro de tu carpeta `entregas/apellido_nombre/`. **No se abren pull requests
-durante el semestre**: al final del curso cada quien abre UN PR con todo su trabajo y ese
-es el que se integra a `main`.
+El incentivo es terminar en clase, porque ahí estoy yo y ahí se aprende más. Se califica
+solo con el timestamp del último push a tu rama; yo no adjudico nada.
 
-```
-entregas/apellido_nombre/
-├── p00/          ← la prueba de git
-├── s02/ … s12/   ← los labs, uno por sesión
-└── tareas/       ← las tareas van aparte
-    └── t01/
-```
-
-Los **labs** van en la carpeta de su sesión; las **tareas**, dentro de `tareas/`. Son cosas
-distintas: las guías de laboratorio están en [`labs/`](labs/) y las tareas se apilan en el
-[`README.md` de entregas](entregas/README.md).
-
-## Tareas opcionales
-
-Hay tareas **opcionales** en [`entregas/OPCIONALES.md`](entregas/OPCIONALES.md). No son
-obligatorias y **no afectan tu calificación**: cuentan para tu tendencia de entregas y para
-los **puntos extra** del final del curso. La primera es el *idempotency key* sin TOCTOU.
-
-## Los tiempos
-
-**Labs y tareas** (la hora es la de tu último push a esa carpeta; para las tareas con fecha propia, manda la fecha de la tarea):
-
-| Cuándo pusheas | Cómo se registra |
+| Cuándo pusheas | Sobre |
 |---|---|
-| Hasta el **domingo** 23:59 | **En tiempo y forma** |
-| De lunes a sábado, antes de la siguiente sesión | **Tarde** |
-| Después de la siguiente sesión | Ya no se registra para esa semana |
+| **Durante la clase** | **10** |
+| Mismo sábado, hasta las 23:59 | **9** |
+| Domingo | **7** |
+| Lunes o martes | **6** |
+| Después del martes | No se recibe |
 
-**Tarde NO baja puntos.** Se registra solo para ver tu **tendencia de entregas**, y esa
-tendencia se toma en cuenta al asignar los **puntos extra** del final del curso.
+## El código cierra con la clase, la reflexión no
 
-**Lecturas** (2 preguntas + 1 hallazgo en la Discussion de la semana):
+**El código** se entrega dentro del horario y aplica la tabla de arriba.
 
-| Cuándo comentas | Cómo se registra |
-|---|---|
-| Hasta el **sábado antes de las 07:00** (cuando abre la teoría) | **En tiempo** |
-| Hasta el **domingo**, todo el día | **Tarde** (no penaliza; queda en la tendencia) |
+**La descripción del PR** (qué se rompió, qué gané y qué pagué) la puedes editar **hasta el
+martes sin penalización**. Pensar bien eso no se hace con prisa, y es la parte que de
+verdad me interesa. Editar la descripción no mueve el timestamp de tu entrega.
+
+## La ficha de rescate
+
+Tienes **un pase libre por semestre**: una entrega tarde que cuenta como puntual, sin
+explicar por qué. Lo declaras al abrir el PR poniendo `[rescate]` en el título, y se acabó.
+Cubre la laptop muerta, la gripa y la emergencia, sin que yo tenga que juzgar excusas.
 
 ## Peer review
 
-Con el modelo de rama única, la revisión entre pares semanal queda **pausada**: vuelve
-sobre el **PR final del curso**, que necesitará la aprobación de un compañero con al menos
-un comentario sustantivo antes de integrarse a `main`.
+Tu PR necesita la aprobación de un compañero con al menos un comentario sustantivo. Si tu
+revisor no aparece, **tu entrega no se penaliza**: el retraso es de él y cuenta en su
+calificación. La calidad de las revisiones que das también se califica.
