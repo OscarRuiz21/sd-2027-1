@@ -1,0 +1,6 @@
+services:
+  idempotency-key:
+    build: .
+    container_name: idempotency-key
+    ports:
+      - "8080:8080"
