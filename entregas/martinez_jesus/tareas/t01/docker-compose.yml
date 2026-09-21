@@ -1,0 +1,17 @@
+# docker-compose.yml
+
+services:
+  servidor:
+    build: ./servidor
+    ports:
+      - "8080:8080"
+      - "50051:50051"
+
+  cliente:
+    build: ./cliente
+    depends_on:
+      - servidor
+    # Variables de entorno para Docker
+    environment:
+      - HOST_REST=http://servidor:8080
+      - HOST_GRPC=servidor:50051
