@@ -1,0 +1,13 @@
+D:\GitHub\sd-2027-1\entregas\velasco_javier\tareas\t01>docker compose --profile cliente run --rm cliente --id 1 --tiempos --veces 200
+[+] run 1/1
+ ✔ Container t01-servidor-1 Running                                                                                 0.0s
+Container t01-servidor-1 Waiting
+Container t01-servidor-1 Healthy
+Container t01-cliente-run-7437beb9e08f Creating
+Container t01-cliente-run-7437beb9e08f Created
+Midiendo id=1, 200 llamadas por protocolo (más 1 llamada inicial aparte)
+
+| Protocolo | 1ª llamada (ms) | Promedio (ms) | Mediana (ms) | p95 (ms) | Mínimo (ms) |
+|---|---|---|---|---|---|
+| REST | 28.28 | 2.20 | 2.03 | 3.43 | 0.59 |
+| gRPC | 19.39 | 1.46 | 1.31 | 2.73 | 0.66 |

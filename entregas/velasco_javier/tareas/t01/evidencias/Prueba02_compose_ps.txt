@@ -1,0 +1,2 @@
+NAME             IMAGE          COMMAND                  SERVICE    CREATED          STATUS                    PORTS
+t01-servidor-1   t01-servidor   "docker-entrypoint.s…"   servidor   22 minutes ago   Up 22 minutes (healthy)   8080/tcp, 50051/tcp

@@ -1,0 +1,8 @@
+Prueba local (sin Docker) de core.js + restController.js + client.js (solo ruta REST), Node v22:
+core 1  -> { id: 1, nombre: 'Boing de manzana', precio: 18.5, stock: 40 }
+core 99 -> null
+node client.js --id 1  --protocolo rest -> REST : { encontrado: true, id: 1, nombre: 'Boing de manzana', precio: 18.5, stock: 40 }
+node client.js --id 99 --protocolo rest -> REST : { encontrado: false, mensaje: 'no hay datos' }
+curl -i localhost:8080/boings/3 -> HTTP/1.1 200 OK, Content-Type: application/json; charset=utf-8, Content-Length: 76
+Log del servidor: [REST] GET /boings/1, /boings/99, /boings/2, /boings/2, /boings/3
+(La evidencia de gRPC y de Docker va en los otros archivos de esta carpeta: ver README, sección "Evidencia".)

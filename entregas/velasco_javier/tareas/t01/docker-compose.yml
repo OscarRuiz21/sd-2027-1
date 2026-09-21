@@ -1,0 +1,28 @@
+services:
+  servidor:
+    build: { context: ., dockerfile: server/Dockerfile }
+    networks: [red-boings]
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:8080/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 3s
+      retries: 10
+
+  cliente:
+    build: { context: ., dockerfile: client/Dockerfile }
+    environment:
+      SERVIDOR_HOST: servidor       # el nombre del servicio es el DNS dentro de la red
+    networks: [red-boings]
+    depends_on:
+      servidor: { condition: service_healthy }
+    profiles: ["cliente"]           # solo corre cuando lo pides con "run"
+
+  # Solo para el punto extra: comparte la red del servidor y captura paquetes
+  sniffer:
+    image: nicolaka/netshoot
+    network_mode: "service:servidor"
+    cap_add: [NET_ADMIN, NET_RAW]
+    command: sleep infinity
+    profiles: ["medicion"]
+
+networks:
+  red-boings:

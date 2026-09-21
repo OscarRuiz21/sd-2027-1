@@ -1,0 +1,47 @@
+Huawei@LAPTOP-BL4SIPMN MINGW64 /d/GitHub/sd-2027-1/entregas/velasco_javier/tareas/t01 (entregas_velasco_javier)
+$ MSYS_NO_PATHCONV=1 ./medir_bytes.sh 1
+[+] Building 1.6s (13/13) FINISHED
+ => [internal] load local bake definitions                                 0.0s
+ => => reading from stdin 581B                                             0.0s
+ => [internal] load build definition from Dockerfile                       0.0s
+ => => transferring dockerfile: 204B                                       0.0s
+ => [internal] load metadata for docker.io/library/node:22-slim            1.1s
+ => [internal] load .dockerignore                                          0.0s
+ => => transferring context: 2B                                            0.0s
+ => [1/6] FROM docker.io/library/node:22-slim@sha256:48e4b67d85f87bd551df  0.0s
+ => => resolve docker.io/library/node:22-slim@sha256:48e4b67d85f87bd551df  0.0s
+ => [internal] load build context                                          0.0s
+ => => transferring context: 286B                                          0.0s
+ => CACHED [2/6] WORKDIR /app                                              0.0s
+ => CACHED [3/6] COPY server/package.json .                                0.0s
+ => CACHED [4/6] RUN npm install --omit=dev                                0.0s
+ => CACHED [5/6] COPY proto/ proto/                                        0.0s
+ => CACHED [6/6] COPY server/*.js .                                        0.0s
+ => exporting to image                                                     0.1s
+ => => exporting layers                                                    0.0s
+ => => exporting manifest sha256:9f2240960a0fb2dc4d1cd6a954cdfb828445dbc7  0.0s
+ => => exporting config sha256:48e99ccbf7cc5da2ad5673ff7230e4a0fdac86bafc  0.0s
+ => => exporting attestation manifest sha256:3b3be9000d55d45052c6e0578d8b  0.0s
+ => => exporting manifest list sha256:dc000884a80a7389e526c0be62ef4f39b73  0.0s
+ => => naming to docker.io/library/t01-servidor:latest                     0.0s
+ => => unpacking to docker.io/library/t01-servidor:latest                  0.0s
+ => resolving provenance for metadata file                                 0.0s
+[+] up 4/4
+ ✔ Image t01-servidor       Built                                           1.8s
+ ✔ Network t01_red-boings   Created                                         0.0s
+ ✔ Container t01-servidor-1 Started                                         0.3s
+ ✔ Container t01-sniffer-1  Started                                         0.4s
+[+] run 1/1
+ ✔ Container t01-servidor-1 Running                                         0.0s
+Container t01-servidor-1 Waiting
+Container t01-servidor-1 Healthy
+Container t01-cliente-run-a7e614244188 Creating
+Container t01-cliente-run-a7e614244188 Created
+rest: 427 bytes de payload
+[+] run 1/1
+ ✔ Container t01-servidor-1 Running                                         0.0s
+Container t01-servidor-1 Waiting
+Container t01-servidor-1 Healthy
+Container t01-cliente-run-9b7ff463fa37 Creating
+Container t01-cliente-run-9b7ff463fa37 Created
+grpc: 464 bytes de payload

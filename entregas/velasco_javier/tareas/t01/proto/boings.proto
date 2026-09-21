@@ -1,0 +1,21 @@
+// Contrato de gRPC. Es el equivalente a "las rutas y el JSON" de REST,
+// pero escrito una sola vez y con tipos.
+syntax = "proto3";
+
+package boings;
+
+service Boings {
+  rpc ObtenerBoing (BoingRequest) returns (BoingReply);
+}
+
+message BoingRequest {
+  int32 id = 1;
+}
+
+message BoingReply {
+  bool   encontrado = 1;  // false = "no hay datos" para ese ID
+  int32  id         = 2;
+  string nombre     = 3;
+  double precio     = 4;
+  int32  stock      = 5;
+}
