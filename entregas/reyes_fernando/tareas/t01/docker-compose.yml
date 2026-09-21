@@ -1,0 +1,18 @@
+services:
+
+  server:
+    build:
+      context: ./server
+    container_name: t01-server
+    ports:
+      - "5001:5001"
+      - "50051:50051"
+
+  client:
+    build:
+      context: ./client
+    environment:
+      REST_URL: http://server:5001
+      GRPC_HOST: server:50051
+    depends_on:
+      - server
