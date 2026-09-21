@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+service UsuarioService {
+  rpc BuscarUsuario (UsuarioRequest) returns (UsuarioResponse);
+}
+
+message UsuarioRequest {
+  int32 id = 1;
+}
+
+message UsuarioResponse {
+  int32 id = 1;
+  string nombre = 2;
+  string carrera = 3;
+  bool encontrado = 4;
+}
