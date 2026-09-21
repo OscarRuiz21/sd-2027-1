@@ -9,7 +9,7 @@
 
 Se ejecutó el comando `docker compose up --build` para compilar las imágenes `t01-servidor` y `t01-cliente` desde sus respectivos `Dockerfile`, instalando las dependencias (`fastapi`, `uvicorn`, `grpcio`, `grpcio-tools`, `requests`) y generando el código de Protocol Buffers a partir de `service.proto`.
 
-![Construcción de imágenes en Docker](Imagen1.png)
+![Construcción de imágenes en Docker](<Imagen 1.png>)
 
 ---
 
@@ -19,7 +19,7 @@ Una vez creados los contenedores y la red `t01_default`, el servidor inicia dos 
 - **Servidor REST**: FastAPI/Uvicorn escuchando en el puerto `8000`.
 - **Servidor gRPC**: Servicio `UsuarioServiceServicer` escuchando en el puerto `50051`.
 
-![Arranque de los servidores y logs HTTP](Imagen2.png)
+![Arranque de los servidores y logs HTTP](<Imagen 2.png>)
 
 ---
 
@@ -27,7 +27,7 @@ Una vez creados los contenedores y la red `t01_default`, el servidor inicia dos 
 
 El contenedor cliente ejecuta las pruebas automáticamente contra ambos puertos del servidor:
 
-![Salida completa del cliente](Imagen3.png)
+![Salida completa del cliente](<Imagen 3.png>)
 
 ### Explicación de los Resultados:
 
