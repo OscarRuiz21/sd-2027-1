@@ -1,0 +1,23 @@
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"fetch('http://localhost:3000/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))\""]
+      interval: 3s
+      timeout: 2s
+      retries: 10
+      start_period: 3s
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    depends_on:
+      server:
+        condition: service_healthy
+    environment:
+      REST_BASE_URL: http://server:3000
+      GRPC_ADDRESS: server:50051
+    profiles: ["cliente"]

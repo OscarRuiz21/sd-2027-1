@@ -1,0 +1,10 @@
+FROM node:24-alpine
+
+WORKDIR /app
+COPY package.json package-lock.json ./
+RUN npm ci --omit=dev
+COPY proto ./proto
+COPY src ./src
+
+EXPOSE 3000 50051
+CMD ["npm", "run", "start:server"]
