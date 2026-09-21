@@ -1,0 +1,19 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY logica.py .
+COPY servicio.proto .
+COPY servicio_pb2.py .
+COPY servicio_pb2_grpc.py .
+COPY server_rest.py .
+COPY server_grpc.py .
+COPY iniciar_servidores.py .
+
+EXPOSE 5000
+EXPOSE 50051
+
+CMD ["python", "iniciar_servidores.py"]

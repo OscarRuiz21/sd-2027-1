@@ -1,0 +1,21 @@
+syntax = "proto3";
+
+package servicio;
+
+// El contrato: que mensajes existen y que metodo se puede llamar.
+// El servidor implementa esto, el cliente genera un "stub" (representante)
+// a partir de este mismo archivo para poder llamarlo.
+
+message ItemRequest {
+  string id = 1;
+}
+
+message ItemResponse {
+  bool encontrado = 1;
+  string nombre = 2;
+  string carrera = 3;
+}
+
+service ServicioItems {
+  rpc ObtenerItem(ItemRequest) returns (ItemResponse);
+}
