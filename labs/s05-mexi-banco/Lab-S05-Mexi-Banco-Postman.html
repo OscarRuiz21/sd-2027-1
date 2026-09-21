@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SD · Lab S5 · Mexi Banco con Docker Compose</title>
+<style>
+:root{--bg:#f5f8fc;--panel:#fff;--line:#d9e2ee;--ink:#12253d;--dim:#4b6178;
+--am:#b45309;--amsoft:#fff8ef;--gr:#15803d;--grsoft:#f0fdf4;--rd:#b91c1c;--rdsoft:#fef2f2;--code:#0f1e33}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);line-height:1.6;
+font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 5vw 6rem}
+header{background:linear-gradient(160deg,#12253d,#1d3a60);color:#fff;padding:3rem 5vw 2.4rem;margin-bottom:2rem}
+header .in{max-width:920px;margin:0 auto}
+.kicker{color:#ffb340;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+header h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.1;margin:.35em 0 .3em;letter-spacing:-.02em}
+header p{color:#b9cde6;max-width:62ch}
+h2{font-size:clamp(1.35rem,2.6vw,1.9rem);margin:2.6rem 0 .3rem;letter-spacing:-.01em;
+border-top:2px solid var(--line);padding-top:1.6rem}
+h2:first-of-type{border-top:none;padding-top:0}
+h3{font-size:clamp(1.05rem,1.8vw,1.25rem);margin:1.7rem 0 .5rem}
+p{margin:.7rem 0;color:var(--dim)}
+p strong,li strong{color:var(--ink)}
+em{color:var(--am);font-style:normal;font-weight:700}
+ul,ol{margin:.6rem 0 .6rem 1.3rem;color:var(--dim)}li{margin:.35rem 0}
+a{color:var(--am)}
+code{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:.92em;
+background:#e8eef7;border:1px solid var(--line);border-radius:5px;padding:.08em .38em;color:#12253d}
+pre{background:var(--code);border-radius:10px;padding:1rem 1.15rem;overflow:auto;margin:.7rem 0;position:relative}
+pre code{background:none;border:none;padding:0;color:#dbe7f7;font-size:.93rem;line-height:1.75;display:block}
+pre .c{color:#7d93b0}pre .o{color:#7dd3fc}pre .v{color:#fbbf24}
+.out{background:#eef3f9;border:1px solid var(--line);border-left:4px solid #64748b;border-radius:0 8px 8px 0;
+padding:.75rem 1rem;margin:.5rem 0 1rem;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.83rem;color:#33465e;white-space:pre;overflow-x:auto}
+.out b{display:block;font-family:inherit;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#64748b;margin-bottom:.35rem;font-weight:800}
+.box{border:1px solid var(--line);border-radius:12px;padding:1rem 1.2rem;margin:1.1rem 0;background:var(--panel)}
+.box h4{font-size:1rem;margin-bottom:.3rem;display:flex;gap:.5rem;align-items:center}
+.warn{background:var(--rdsoft);border-color:#f2c4c4}
+.warn h4{color:var(--rd)}
+.tip{background:var(--amsoft);border-color:#f0d3ab}
+.tip h4{color:var(--am)}
+.cp{background:var(--grsoft);border:1px solid #bbe6c8;border-radius:12px;padding:1rem 1.2rem;margin:1.4rem 0}
+.cp h4{color:var(--gr);font-size:1.02rem;display:flex;gap:.55rem;align-items:center;margin-bottom:.25rem}
+.cp .n{background:var(--gr);color:#fff;width:1.55em;height:1.55em;border-radius:50%;display:inline-flex;
+align-items:center;justify-content:center;font-size:.85em;font-weight:800;flex:none}
+.cp p{color:#245c38;margin:.25rem 0 0}
+table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+th,td{padding:.55rem .7rem;border-bottom:1px solid var(--line);text-align:left;color:var(--dim);vertical-align:top}
+th{color:var(--am);font-size:.75rem;text-transform:uppercase;letter-spacing:.09em}
+td b{color:var(--ink)}
+.tree{background:var(--code);border-radius:10px;padding:1rem 1.15rem;color:#dbe7f7;
+font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.88rem;line-height:1.7;overflow:auto;white-space:pre}
+.tree .d{color:#fbbf24}.tree .c{color:#7d93b0}
+footer{border-top:2px solid var(--line);margin-top:3rem;padding-top:1.4rem;color:var(--dim);font-size:.9rem}
+</style>
+</head>
+
+<body>
+
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · Laboratorio de la S5 · Mexi Banco v05.1</div>
+  <h1>Mexi Banco con Docker Compose:<br><em style="color:#ffb340">lo de la clase, en tu máquina</em></h1>
+  <p>Seis pasos, los mismos que hicimos en clase, y un reporte corto en PDF. Entrega hasta el <strong style="color:#fff">domingo 27 de septiembre, 23:59</strong>.</p>
+  <p style="margin-top:1em"><a href="mexi-banco-v05.1.postman_collection.json" download style="display:inline-block;background:#ffb340;color:#12253d;text-decoration:none;font-weight:800;padding:.5em 1.2em;border-radius:10px">⬇️ Descargar la colección de Postman</a></p>
+</div></header>
+
+<div class="wrap">
+
+<div class="box tip">
+  <h4>Antes de empezar</h4>
+  <p>Necesitas <strong>Docker corriendo</strong> (<code>docker compose version</code> responde) y <strong>Postman de escritorio</strong> (<a href="https://www.postman.com/downloads/">postman.com/downloads</a>). La versión web de Postman no alcanza tu <code>localhost</code>.</p>
+</div>
+
+<h2>Paso 1 · Clona el repo</h2>
+<pre><code>git clone --branch v05.1 https://github.com/OscarRuiz21/mexi-banco.git
+cd mexi-banco</code></pre>
+
+<h2>Paso 2 · Levántalo con Compose</h2>
+<pre><code>docker compose up --build -d
+docker compose ps</code></pre>
+<p><code>db</code> y <code>app</code> deben decir <strong>healthy</strong>, no solo <i>running</i>. Si <code>app</code> no llega, revisa <code>docker compose logs app</code>.</p>
+
+<h2>Paso 3 · Prueba los endpoints</h2>
+<p>En Postman: <strong>Import</strong> y arrastra la colección que descargaste arriba. Manda las peticiones en orden con <strong>Send</strong> y revisa lo que responde cada una: abrir cuentas, transferir, mandar el mismo SPEI dos veces, el estado de cuenta, los avisos y los errores.</p>
+
+<h2>Paso 4 · Bájalo con y sin volumen</h2>
+<pre><code><span class="c"># apaga, vuelve a levantar y consulta tu cuenta en Postman</span>
+docker compose down
+docker compose up -d
+
+<span class="c"># ahora apaga borrando el volumen, levanta y consulta otra vez</span>
+docker compose down -v
+docker compose up -d</code></pre>
+<p>Anota qué pasó con tus datos en cada caso, y por qué.</p>
+
+<h2>Paso 5 · Revisa el código</h2>
+<p>Abre el proyecto en tu editor, en <code>src/main/java/mx/mexibanco</code>. Cada módulo (<code>cuenta</code>, <code>movimiento</code>, <code>transferencia</code>, <code>notificacion</code> y <code>spei</code>) tiene sus cuatro capas: controlador, servicio, repositorio y entidad. Familiarízate con él: es el monolito que vamos a ir partiendo en las siguientes sesiones.</p>
+
+<h2>Paso 6 · Estudia el compose y el Dockerfile</h2>
+<p>Léelos línea por línea, como en clase: qué servicios levanta el compose, el healthcheck, la red y el volumen; y en el <code>Dockerfile</code>, sus dos etapas, la que compila y la que ejecuta.</p>
+
+<h2>Entrega · un reporte corto</h2>
+<p>Un <strong>reporte en PDF</strong>, hecho con el procesador de textos que quieras, con tus <strong>observaciones</strong> de cada paso y <strong>capturas</strong> de lo que hiciste. Va en tu carpeta <code>entregas/apellido_nombre/s05/</code>, con push a tu rama y sin pull request.</p>
+<pre><code>git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/s05
+<span class="c"># ... copia aquí tu reporte, por ejemplo reporte-s05.pdf ...</span>
+git add entregas/apellido_nombre/s05
+git commit -m "S05: Mexi Banco con Compose"
+git push</code></pre>
+<p>En tiempo hasta el <strong>domingo 27 de septiembre, 23:59</strong>. Tarde no baja puntos, pero queda en tu tendencia de entregas.</p>
+
+<footer>
+  <p><strong>Sistemas Distribuidos 2027-1 · Grupo 2 · Facultad de Ingeniería, UNAM</strong><br>
+  Prof. Oscar Manuel Ruiz Hurtado · Laboratorio de la S5 · septiembre de 2026</p>
+</footer>
+</div>
+</body></html>
