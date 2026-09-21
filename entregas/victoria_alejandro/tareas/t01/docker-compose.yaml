@@ -1,0 +1,19 @@
+services:
+  server:
+    container_name: t01_servidor
+    build:
+      context: .
+      dockerfile: Dockerfile.server
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+
+  client:
+    container_name: t01_cliente
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    stdin_open: true
+    tty: true
+    depends_on:
+      - server

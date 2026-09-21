@@ -1,0 +1,10 @@
+FROM python:3.10-slim
+WORKDIR /app
+# Instalar tcpdump y procps para la captura de paquetes
+RUN apt-get update && apt-get install -y tcpdump procps && rm -rf /var/lib/apt/lists/*
+COPY requerimientos.txt .
+RUN pip install --no-cache-dir -r requerimientos.txt
+COPY . .
+RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. supermercado.proto
+# Mantenemos el contenedor vivo para poder entrar e interactuar
+CMD ["tail", "-f", "/dev/null"]

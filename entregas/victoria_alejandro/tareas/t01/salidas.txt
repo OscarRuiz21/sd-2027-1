@@ -1,0 +1,100 @@
+###Salidas del programa cliente.py###
+
+[+] Running 4/4
+ ✔ client                  Built                                                                                                                 0.0s 
+ ✔ server                  Built                                                                                                                 0.0s 
+ ✔ Container t01_servidor  Started                                                                                                               1.1s 
+ ✔ Container t01_cliente   Started                                                                                                               1.4s 
+
+(base) alex@Apples-MacBook-Pro t01 % docker exec -it t01_cliente bash
+root@91f1ed1d7d4f:/app# tcpdump -i eth0 port 8000 or port 50051 -w captura.pcap &
+[1] 12
+root@91f1ed1d7d4f:/app# tcpdump: listening on eth0, link-type EN10MB (Ethernet), snapshot length 262144 bytes
+python cliente.py
+
+Ingresa el ID del producto a buscar (0 para salir): 1
+Selecciona el protocolo:
+1. REST
+2. gRPC
+3. Ambos
+Opción: 1
+
+--- Petición REST para ID 1 ---
+Respuesta: {'descripcion': '1 Litro', 'encontrado': True, 'existencias': 50, 'nombre': 'Leche Entera', 'precio': 25.5}
+
+Ingresa el ID del producto a buscar (0 para salir): 1
+Selecciona el protocolo:
+1. REST
+2. gRPC
+3. Ambos
+Opción: 2
+
+--- Petición gRPC para ID 1 ---
+Respuesta: nombre='Leche Entera', descripcion='1 Litro', precio=25.5, existencias=50
+
+Ingresa el ID del producto a buscar (0 para salir): 0
+
+###Salida de tcpdump###
+root@91f1ed1d7d4f:/app# kill %1
+root@91f1ed1d7d4f:/app# 28 packets captured
+28 packets received by filter
+0 packets dropped by kernel
+tcpdump -r captura.pcap -n -v
+reading from file captura.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+02:41:22.272984 IP (tos 0x0, ttl 64, id 31335, offset 0, flags [DF], proto TCP (6), length 60)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [S], cksum 0x585c (incorrect -> 0x1509), seq 50479388, win 64240, options [mss 1460,sackOK,TS val 3775982888 ecr 0,nop,wscale 7], length 0
+02:41:22.273029 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    172.20.0.2.8000 > 172.20.0.3.44608: Flags [S.], cksum 0x585c (incorrect -> 0xfa6a), seq 1944072503, ack 50479389, win 65160, options [mss 1460,sackOK,TS val 244802374 ecr 3775982888,nop,wscale 7], length 0
+02:41:22.273044 IP (tos 0x0, ttl 64, id 31336, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [.], cksum 0x5854 (incorrect -> 0x25ca), ack 1, win 502, options [nop,nop,TS val 3775982888 ecr 244802374], length 0
+02:41:22.273161 IP (tos 0x0, ttl 64, id 31337, offset 0, flags [DF], proto TCP (6), length 204)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [P.], cksum 0x58ec (incorrect -> 0x4586), seq 1:153, ack 1, win 502, options [nop,nop,TS val 3775982888 ecr 244802374], length 152
+02:41:22.273234 IP (tos 0x0, ttl 64, id 55119, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.2.8000 > 172.20.0.3.44608: Flags [.], cksum 0x5854 (incorrect -> 0x252c), ack 153, win 508, options [nop,nop,TS val 244802374 ecr 3775982888], length 0
+02:41:22.275884 IP (tos 0x0, ttl 64, id 55120, offset 0, flags [DF], proto TCP (6), length 218)
+    172.20.0.2.8000 > 172.20.0.3.44608: Flags [P.], cksum 0x58fa (incorrect -> 0xf120), seq 1:167, ack 153, win 508, options [nop,nop,TS val 244802377 ecr 3775982888], length 166
+02:41:22.275934 IP (tos 0x0, ttl 64, id 31338, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [.], cksum 0x5854 (incorrect -> 0x2487), ack 167, win 501, options [nop,nop,TS val 3775982891 ecr 244802377], length 0
+02:41:22.276101 IP (tos 0x0, ttl 64, id 55121, offset 0, flags [DF], proto TCP (6), length 151)
+    172.20.0.2.8000 > 172.20.0.3.44608: Flags [P.], cksum 0x58b7 (incorrect -> 0x0356), seq 167:266, ack 153, win 508, options [nop,nop,TS val 244802377 ecr 3775982891], length 99
+02:41:22.276107 IP (tos 0x0, ttl 64, id 31339, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [.], cksum 0x5854 (incorrect -> 0x2424), ack 266, win 501, options [nop,nop,TS val 3775982891 ecr 244802377], length 0
+02:41:22.276743 IP (tos 0x0, ttl 64, id 31340, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [F.], cksum 0x5854 (incorrect -> 0x2422), seq 153, ack 266, win 501, options [nop,nop,TS val 3775982892 ecr 244802377], length 0
+02:41:22.276981 IP (tos 0x0, ttl 64, id 55122, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.2.8000 > 172.20.0.3.44608: Flags [F.], cksum 0x5854 (incorrect -> 0x2419), seq 266, ack 154, win 508, options [nop,nop,TS val 244802378 ecr 3775982892], length 0
+02:41:22.276989 IP (tos 0x0, ttl 64, id 31341, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.44608 > 172.20.0.2.8000: Flags [.], cksum 0x5854 (incorrect -> 0x2420), ack 267, win 501, options [nop,nop,TS val 3775982892 ecr 244802378], length 0
+02:41:46.062023 IP (tos 0x0, ttl 64, id 48708, offset 0, flags [DF], proto TCP (6), length 60)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [S], cksum 0x585c (incorrect -> 0x50ce), seq 2437587802, win 64240, options [mss 1460,sackOK,TS val 3776006678 ecr 0,nop,wscale 7], length 0
+02:41:46.062092 IP (tos 0x0, ttl 64, id 0, offset 0, flags [DF], proto TCP (6), length 60)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [S.], cksum 0x585c (incorrect -> 0x5f1e), seq 2605614060, ack 2437587803, win 65160, options [mss 1460,sackOK,TS val 244826164 ecr 3776006678,nop,wscale 7], length 0
+02:41:46.062109 IP (tos 0x0, ttl 64, id 48709, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [.], cksum 0x5854 (incorrect -> 0x8a7d), ack 1, win 502, options [nop,nop,TS val 3776006678 ecr 244826164], length 0
+02:41:46.063037 IP (tos 0x0, ttl 64, id 22415, offset 0, flags [DF], proto TCP (6), length 98)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [P.], cksum 0x5882 (incorrect -> 0xd5b7), seq 1:47, ack 1, win 510, options [nop,nop,TS val 244826165 ecr 3776006678], length 46
+02:41:46.063053 IP (tos 0x0, ttl 64, id 48710, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [.], cksum 0x5854 (incorrect -> 0x8a4d), ack 47, win 502, options [nop,nop,TS val 3776006679 ecr 244826165], length 0
+02:41:46.068582 IP (tos 0x0, ttl 64, id 48711, offset 0, flags [DF], proto TCP (6), length 134)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [P.], cksum 0x58a6 (incorrect -> 0x7f57), seq 1:83, ack 47, win 502, options [nop,nop,TS val 3776006685 ecr 244826165], length 82
+02:41:46.068677 IP (tos 0x0, ttl 64, id 22416, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [.], cksum 0x5854 (incorrect -> 0x89e7), ack 83, win 510, options [nop,nop,TS val 244826171 ecr 3776006685], length 0
+02:41:46.068833 IP (tos 0x0, ttl 64, id 22417, offset 0, flags [DF], proto TCP (6), length 61)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [P.], cksum 0x585d (incorrect -> 0x88d2), seq 47:56, ack 83, win 510, options [nop,nop,TS val 244826171 ecr 3776006685], length 9
+02:41:46.068964 IP (tos 0x0, ttl 64, id 48712, offset 0, flags [DF], proto TCP (6), length 334)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [P.], cksum 0x596e (incorrect -> 0x3f99), seq 83:365, ack 56, win 502, options [nop,nop,TS val 3776006685 ecr 244826171], length 282
+02:41:46.069478 IP (tos 0x0, ttl 64, id 22418, offset 0, flags [DF], proto TCP (6), length 69)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [P.], cksum 0x5865 (incorrect -> 0x80a6), seq 56:73, ack 365, win 508, options [nop,nop,TS val 244826172 ecr 3776006685], length 17
+02:41:46.069584 IP (tos 0x0, ttl 64, id 48713, offset 0, flags [DF], proto TCP (6), length 69)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [P.], cksum 0x5865 (incorrect -> 0x7f9a), seq 365:382, ack 73, win 502, options [nop,nop,TS val 3776006686 ecr 244826172], length 17
+02:41:46.070762 IP (tos 0x0, ttl 64, id 22419, offset 0, flags [DF], proto TCP (6), length 237)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [P.], cksum 0x590d (incorrect -> 0x5bc2), seq 73:258, ack 382, win 508, options [nop,nop,TS val 244826173 ecr 3776006686], length 185
+02:41:46.070971 IP (tos 0x0, ttl 64, id 48714, offset 0, flags [DF], proto TCP (6), length 69)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [P.], cksum 0x5865 (incorrect -> 0x7fcf), seq 382:399, ack 258, win 501, options [nop,nop,TS val 3776006687 ecr 244826173], length 17
+02:41:46.071018 IP (tos 0x0, ttl 64, id 22420, offset 0, flags [DF], proto TCP (6), length 69)
+    172.20.0.2.50051 > 172.20.0.3.32962: Flags [P.], cksum 0x5865 (incorrect -> 0x7eb7), seq 258:275, ack 399, win 508, options [nop,nop,TS val 244826173 ecr 3776006687], length 17
+02:41:46.072245 IP (tos 0x0, ttl 64, id 48715, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [F.], cksum 0x5854 (incorrect -> 0x87c9), seq 399, ack 275, win 501, options [nop,nop,TS val 3776006689 ecr 244826173], length 0
+02:41:46.072374 IP (tos 0x0, ttl 64, id 48716, offset 0, flags [DF], proto TCP (6), length 52)
+    172.20.0.3.32962 > 172.20.0.2.50051: Flags [R.], cksum 0x5854 (incorrect -> 0x87c5), seq 400, ack 275, win 501, options [nop,nop,TS val 3776006689 ecr 244826173], length 0
+[1]+  Done

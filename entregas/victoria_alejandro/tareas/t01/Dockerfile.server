@@ -1,0 +1,8 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY requerimientos.txt .
+RUN pip install --no-cache-dir -r requerimientos.txt
+COPY . .
+# Generar los archivos Python de gRPC a partir del .proto
+RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. supermercado.proto
+CMD ["python", "servidor.py"]
