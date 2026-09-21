@@ -2,7 +2,6 @@
  * Lógica de negocio unificada para el servicio de búsqueda.
  */
 
-
 const BASE_DE_DATOS = {
   "101": "Laptop Dell XPS 15 - 16GB RAM, 512GB SSD",
   "102": "Teclado Mecánico Keychron K2 - Switches Brown",
