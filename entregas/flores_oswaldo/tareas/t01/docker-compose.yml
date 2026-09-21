@@ -1,0 +1,21 @@
+services:
+  servidor:
+    build: ./server
+    ports:
+      - "5000:5000"
+      - "50051:50051"
+    networks:
+      - red_t01
+
+  cliente:
+    build: ./client
+    environment:
+      - SERVIDOR=servidor
+    command: sh -c "sleep 3 && python cliente.py"
+    depends_on:
+      - servidor
+    networks:
+      - red_t01
+
+networks:
+  red_t01:

@@ -1,0 +1,3 @@
+NAME             IMAGE                                                                     COMMAND                  SERVICE    CREATED         STATUS                     PORTS
+t01-cliente-1    sha256:1086424cd56ddba80b47fe99b4d4abef2fdd919b91953fc68d6f8bef57506323   "sh -c 'sleep 3 && p…"   cliente    5 minutes ago   Exited (0) 8 seconds ago   
+t01-servidor-1   sha256:b2de3aa3eb717b3ca37221fe81c60ef1cda24bbe04832ba935faed7d1eeccfd2   "python servidor.py"     servidor   5 minutes ago   Up 12 seconds              0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp, 0.0.0.0:50051->50051/tcp, [::]:50051->50051/tcp

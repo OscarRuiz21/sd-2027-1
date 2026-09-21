@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package servicio;
+
+service Consulta {
+  rpc Buscar (BuscarRequest) returns (BuscarResponse);
+}
+
+message BuscarRequest {
+  string id = 1;
+}
+
+message BuscarResponse {
+  bool encontrado = 1;
+  string nombre = 2;
+  string rol = 3;
+  int32 edad = 4;
+}
