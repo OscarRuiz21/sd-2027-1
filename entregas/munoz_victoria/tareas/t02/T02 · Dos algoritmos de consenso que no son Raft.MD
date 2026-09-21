@@ -32,14 +32,14 @@ Ethereum utiliza la prueba de participación. En lugar de competir gastando much
 
 ## **Diferencia principal**
 
-|Aspecto|Bitcoin (PoW)|Ethereum (PoS)|
+|**Aspecto**|**Bitcoin (PoW)**|**Ethereum (PoS)**|
 |-|-|-|
-|Quién participa|Mineros|Validadores|
-|Recurso utilizado|Poder computacional y electricidad|Moneda bloqueada como garantía|
-|Cómo se elige quién propone el bloque|Competencia para resolver un problema criptográfico|Selección protocolaria de validadores|
-|Incentivo de seguridad|Coste de la electricidad y del hardware|Riesgo de perder el ETH depositado|
-|Recompensa|Subsidio de bloque y comisiones|Recompensas por proponer y validar|
-|Impacto energético|Alto, debido a la minería|Menor, porque no requiere una competencia constante de cómputo|
+|*Quién participa*|Mineros|Validadores|
+|*Recurso utilizado*|Poder computacional y electricidad|Moneda bloqueada como garantía|
+|*Cómo se elige quién propone el bloque*|Competencia para resolver un problema criptográfico|Selección protocolaria de validadores|
+|*Incentivo de seguridad*|Coste de la electricidad y del hardware|Riesgo de perder el ETH depositado|
+|*Recompensa*|Subsidio de bloque y comisiones|Recompensas por proponer y validar|
+|*Impacto energético*|Alto, debido a la minería|Menor, porque no requiere una competencia constante de cómputo|
 
 
 
