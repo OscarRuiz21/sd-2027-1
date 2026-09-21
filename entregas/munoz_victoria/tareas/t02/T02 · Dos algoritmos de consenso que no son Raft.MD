@@ -32,11 +32,7 @@ Ethereum utiliza la prueba de participación. En lugar de competir gastando much
 
 ## **Diferencia principal**
 
-\## Diferencia principal
-
-
-
-| Aspecto | Bitcoin — Proof of Work | Ethereum — Proof of Stake |
+| Aspecto | Bitcoin (PoW) | Ethereum (PoSh) |
 
 | :--- | :--- | :--- |
 
