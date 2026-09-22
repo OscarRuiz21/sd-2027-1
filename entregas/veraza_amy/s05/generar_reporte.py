@@ -6,17 +6,26 @@ from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Preformatted, Table, TableStyle, KeepTogether
 
 HERE = Path(__file__).parent
+FONT_DIR = Path("C:/Windows/Fonts")
+pdfmetrics.registerFont(TTFont("Arial", str(FONT_DIR / "arial.ttf")))
+pdfmetrics.registerFont(TTFont("Arial-Bold", str(FONT_DIR / "arialbd.ttf")))
+pdfmetrics.registerFont(TTFont("Arial-Italic", str(FONT_DIR / "ariali.ttf")))
+pdfmetrics.registerFont(TTFont("Arial-BoldItalic", str(FONT_DIR / "arialbi.ttf")))
+pdfmetrics.registerFontFamily("Arial", normal="Arial", bold="Arial-Bold",
+                              italic="Arial-Italic", boldItalic="Arial-BoldItalic")
 data = json.loads((HERE / "resultados.json").read_text(encoding="utf-8"))
 doc = SimpleDocTemplate(str(HERE / "reporte-s05.pdf"), pagesize=(21 * cm, 29.7 * cm),
                         leftMargin=2 * cm, rightMargin=2 * cm, topMargin=1.7 * cm, bottomMargin=1.5 * cm)
 styles = getSampleStyleSheet()
-styles.add(ParagraphStyle(name="TitleS05", parent=styles["Title"], fontName="Helvetica-Bold", fontSize=17, alignment=TA_CENTER, spaceAfter=10))
-styles.add(ParagraphStyle(name="BodyS05", parent=styles["BodyText"], fontSize=9.5, leading=13, spaceAfter=7))
-styles.add(ParagraphStyle(name="HeadS05", parent=styles["Heading2"], fontSize=11.5, spaceBefore=12, spaceAfter=6))
-styles.add(ParagraphStyle(name="CodeS05", fontName="Courier", fontSize=7.4, leading=9, backColor=colors.HexColor("#f2f4f6"), borderPadding=7, spaceAfter=8))
+styles.add(ParagraphStyle(name="TitleS05", parent=styles["Title"], fontName="Arial-Bold", fontSize=17, alignment=TA_CENTER, spaceAfter=10))
+styles.add(ParagraphStyle(name="BodyS05", parent=styles["BodyText"], fontName="Arial", fontSize=9.5, leading=13, spaceAfter=7))
+styles.add(ParagraphStyle(name="HeadS05", parent=styles["Heading2"], fontName="Arial-Bold", fontSize=11.5, spaceBefore=12, spaceAfter=6))
+styles.add(ParagraphStyle(name="CodeS05", fontName="Arial", fontSize=7.4, leading=9, backColor=colors.HexColor("#f2f4f6"), borderPadding=7, spaceAfter=8))
 story = []
 
 
@@ -44,18 +53,18 @@ def value(name, last=False):
 story.append(Paragraph("Laboratorio 5 · Mexi Banco con Docker Compose", styles["TitleS05"]))
 p("<b>Alumna:</b> Amy Veraza &nbsp;&nbsp; <b>Versión:</b> v05.1 &nbsp;&nbsp; <b>Fecha:</b> 21 de septiembre de 2026")
 p("<b>Fuente de evidencia:</b> ejecución automatizada de los mismos endpoints de la colección de Postman; "
-  "las respuestas completas y los estados de Compose quedaron en <font name='Courier'>resultados.json</font>. "
+  "las respuestas completas y los estados de Compose quedaron en <font name='Arial'>resultados.json</font>. "
   "El puerto 8080 del equipo estaba ocupado, por lo que publiqué el 8080 del contenedor en localhost:8081.")
 
 h("1. Clonación y arranque")
-p("Cloné la etiqueta v05.1 del repositorio oficial. Al construir, el archivo <font name='Courier'>mvnw</font> tenía "
+p("Cloné la etiqueta v05.1 del repositorio oficial. Al construir, el archivo <font name='Arial'>mvnw</font> tenía "
   "saltos CRLF, que Alpine no podía ejecutar; cambié a LF solo en la copia local. La imagen se construyó "
   "en dos etapas y Compose levantó PostgreSQL y la aplicación. La base llegó a healthy antes de arrancar la aplicación.")
 healthy = next(x["resultado"]["salida"] for x in data if x["paso"] == "compose" and
                x["resultado"].get("comando") == "docker compose ps" and
                "app" in x["resultado"]["salida"] and x["resultado"]["salida"].count("healthy") == 2)
 code("$ docker compose ps\n" + healthy.replace("â€¦", "...").strip())
-p("El endpoint <font name='Courier'>GET /actuator/health</font> devolvió HTTP 200 y estado UP.")
+p("El endpoint <font name='Arial'>GET /actuator/health</font> devolvió HTTP 200 y estado UP.")
 
 h("2. Cuentas y transferencia interna")
 p("Abrí la cuenta origen con 1000 y la destino con 500. Una transferencia de 200 dejó 800 en origen y "
@@ -65,7 +74,7 @@ code("POST /transferencias → HTTP " + str(entry("transferencia")["status"]) + 
      "\nGET origen → saldo 800\nGET destino → saldo 700")
 
 h("3. SPEI e idempotencia")
-p("Envié dos veces el mismo SPEI de 50 con <font name='Courier'>Idempotency-Key: veraza-amy-s05-001</font>. "
+p("Envié dos veces el mismo SPEI de 50 con <font name='Arial'>Idempotency-Key: veraza-amy-s05-001</font>. "
   "Ambas respuestas refieren al mismo identificador y estado ENVIADO; el saldo final fue 750. "
   "El estado de cuenta registró un solo movimiento SPEI_ENVIADO de -50.")
 code("Primer envío: HTTP 201\n" + json.dumps(value("SPEI primero"), ensure_ascii=False, indent=2) +
@@ -75,10 +84,10 @@ p("La tabla de solicitudes SPEI impone unicidad sobre la clave. El servicio rese
   "Las notificaciones y movimientos confirman un solo cobro.")
 
 h("4. Parada de app y persistencia")
-p("Detuve app con <font name='Courier'>docker compose stop app</font>. Tras 15 segundos no volvió sola y "
+p("Detuve app con <font name='Arial'>docker compose stop app</font>. Tras 15 segundos no volvió sola y "
   "la solicitud HTTP falló. La base siguió healthy. Al iniciar app otra vez, la cuenta conservó saldo 750. "
-  "También sobrevivió a <font name='Courier'>docker compose down</font> y "
-  "<font name='Courier'>docker compose up -d</font>. Después de <font name='Courier'>docker compose down -v</font> "
+  "También sobrevivió a <font name='Arial'>docker compose down</font> y "
+  "<font name='Arial'>docker compose up -d</font>. Después de <font name='Arial'>docker compose down -v</font> "
   "y un nuevo arranque, consultar esa CLABE devolvió 404: se eliminó el volumen con la base.")
 code("app detenida → conexión rechazada\n" +
      "stop/start → saldo 750\ndown/up → saldo 750\ndown -v/up → GET /cuentas/002180000000000001: HTTP " +
@@ -97,7 +106,8 @@ rows = [["Caso", "HTTP"]] + [[name, str(entry(name)["status"])] for name in
 table = Table(rows, colWidths=[10 * cm, 2.5 * cm], hAlign="LEFT")
 table.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, 0), colors.HexColor("#dce6ef")),
                            ("GRID", (0, 0), (-1, -1), 0.3, colors.grey),
-                           ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
+                           ("FONTNAME", (0, 0), (-1, 0), "Arial-Bold"),
+                           ("FONTNAME", (0, 1), (-1, -1), "Arial"),
                            ("FONTSIZE", (0, 0), (-1, -1), 8.5), ("BOTTOMPADDING", (0, 0), (-1, -1), 5)]))
 story.append(table)
 story.append(Spacer(1, 6))
@@ -114,7 +124,7 @@ p("<b>¿Qué falta al escalar app?</b> Cada réplica necesita un puerto distinto
 
 
 def footer(canvas, document):
-    canvas.setFont("Helvetica", 8)
+    canvas.setFont("Arial", 8)
     canvas.setFillColor(colors.grey)
     canvas.drawString(2 * cm, 1 * cm, "SD 2027-1 · Laboratorio S05 · Amy Veraza")
     canvas.drawRightString(19 * cm, 1 * cm, str(document.page))
