@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Práctica S02 - Docker</title>
+  <style>
+    body { font-family: sans-serif; margin: 2rem; }
+    table { border-collapse: collapse; width: 100%; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>Hola, soy Luisa María Segura Cedeño</h1>
+  <p>Esta página la sirve un contenedor que construí.</p>
+  
+  <h2>Comandos Importantes de Docker</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Comando</th>
+        <th>¿Para qué sirve?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>docker run -d -p host:cont imagen</code></td>
+        <td>Crea y corre un contenedor en segundo plano mapeando puertos de red.</td>
+      </tr>
+      <tr>
+        <td><code>docker build -t nombre .</code></td>
+        <td>Construye una imagen personalizada a partir de las instrucciones del Dockerfile.</td>
+      </tr>
+      <tr>
+        <td><code>docker exec -it nombre sh</code></td>
+        <td>Abre una terminal interactiva dentro de un contenedor activo para depuración.</td>
+      </tr>
+      <tr>
+        <td><code>docker ps / docker ps -a</code></td>
+        <td>Lista los contenedores en ejecución o el historial completo de todos los existentes.</td>
+      </tr>
+      <tr>
+        <td><code>docker logs nombre</code></td>
+        <td>Muestra la salida estándar y registros internos generados por el servicio.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p><em>Versión actualizada: v2</em></p>
+</body>
+</html>
