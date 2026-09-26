@@ -1,0 +1,523 @@
+[
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose ps",
+      "codigo": 0,
+      "salida": "NAME               IMAGE                COMMAND                  SERVICE   CREATED          STATUS                             PORTS\nmexi-banco-app-1   mexi-banco-app       \"java -jar app.jar\"      app       18 seconds ago   Up 18 seconds (health: starting)   0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp\nmexi-banco-db-1    postgres:17-alpine   \"docker-entrypoint.s…\"   db        37 seconds ago   Up 37 seconds (healthy)            5432/tcp\n"
+    }
+  },
+  {
+    "paso": "salud",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/actuator/health",
+      "status": 200,
+      "respuesta": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      }
+    }
+  },
+  {
+    "paso": "abrir origen",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/cuentas",
+      "status": 201,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 1000
+      }
+    }
+  },
+  {
+    "paso": "abrir destino",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/cuentas",
+      "status": 201,
+      "respuesta": {
+        "id": 2,
+        "clabe": "012180000000000001",
+        "titular": "Destino S05",
+        "saldo": 500
+      }
+    }
+  },
+  {
+    "paso": "cuenta 002180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 1000.0
+      }
+    }
+  },
+  {
+    "paso": "transferencia",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/transferencias",
+      "status": 201,
+      "respuesta": {
+        "id": 1,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "012180000000000001",
+        "monto": 200,
+        "fecha": "2026-09-22T02:54:26.326306894Z"
+      }
+    }
+  },
+  {
+    "paso": "cuenta 002180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 800.0
+      }
+    }
+  },
+  {
+    "paso": "cuenta 012180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/012180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 2,
+        "clabe": "012180000000000001",
+        "titular": "Destino S05",
+        "saldo": 700.0
+      }
+    }
+  },
+  {
+    "paso": "SPEI primero",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/spei",
+      "status": 201,
+      "respuesta": {
+        "id": 1,
+        "idempotencyKey": "veraza-amy-s05-001",
+        "claveOrigen": "002180000000000001",
+        "bancoDestino": "BBVA",
+        "claveDestino": "012180000000000099",
+        "monto": 50,
+        "estado": "ENVIADO"
+      }
+    }
+  },
+  {
+    "paso": "SPEI reintento",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/spei",
+      "status": 201,
+      "respuesta": {
+        "id": 1,
+        "idempotencyKey": "veraza-amy-s05-001",
+        "claveOrigen": "002180000000000001",
+        "bancoDestino": "BBVA",
+        "claveDestino": "012180000000000099",
+        "monto": 50.0,
+        "estado": "ENVIADO"
+      }
+    }
+  },
+  {
+    "paso": "cuenta 002180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 750.0
+      }
+    }
+  },
+  {
+    "paso": "movimientos",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/movimientos?clabe=002180000000000001",
+      "status": 200,
+      "respuesta": [
+        {
+          "id": 5,
+          "clabeCuenta": "002180000000000001",
+          "tipo": "SPEI_ENVIADO",
+          "monto": -50.0,
+          "saldoResultante": 750.0,
+          "fecha": "2026-09-22T02:54:26.419732Z",
+          "referencia": "BBVA · 012180000000000099"
+        },
+        {
+          "id": 3,
+          "clabeCuenta": "002180000000000001",
+          "tipo": "TRANSFERENCIA_ENVIADA",
+          "monto": -200.0,
+          "saldoResultante": 800.0,
+          "fecha": "2026-09-22T02:54:26.320334Z",
+          "referencia": "a 012180000000000001"
+        },
+        {
+          "id": 1,
+          "clabeCuenta": "002180000000000001",
+          "tipo": "DEPOSITO",
+          "monto": 1000.0,
+          "saldoResultante": 1000.0,
+          "fecha": "2026-09-22T02:54:26.142437Z",
+          "referencia": "saldo inicial"
+        }
+      ]
+    }
+  },
+  {
+    "paso": "notificaciones",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/notificaciones?clabe=002180000000000001",
+      "status": 200,
+      "respuesta": [
+        {
+          "id": 3,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "SPEI_ENVIADO por 50, saldo resultante 750.00",
+          "fecha": "2026-09-22T02:54:26.849980Z"
+        },
+        {
+          "id": 1,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 200, saldo resultante 800.00",
+          "fecha": "2026-09-22T02:54:26.331792Z"
+        }
+      ]
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose stop app",
+      "codigo": 0,
+      "salida": " Container mexi-banco-app-1  Stopping\n Container mexi-banco-app-1  Stopped\n"
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose ps",
+      "codigo": 0,
+      "salida": "NAME              IMAGE                COMMAND                  SERVICE   CREATED          STATUS                    PORTS\nmexi-banco-db-1   postgres:17-alpine   \"docker-entrypoint.s…\"   db        55 seconds ago   Up 55 seconds (healthy)   5432/tcp\n"
+    }
+  },
+  {
+    "paso": "app detenida",
+    "resultado": "La conexión falló, como se esperaba"
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose start app",
+      "codigo": 0,
+      "salida": " Container mexi-banco-db-1  Waiting\n Container mexi-banco-db-1  Healthy\n Container mexi-banco-app-1  Starting\n Container mexi-banco-app-1  Started\n"
+    }
+  },
+  {
+    "paso": "error",
+    "resultado": "RemoteDisconnected('Remote end closed connection without response')"
+  },
+  {
+    "paso": "salud",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/actuator/health",
+      "status": 200,
+      "respuesta": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      }
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose ps",
+      "codigo": 0,
+      "salida": "NAME               IMAGE                COMMAND                  SERVICE   CREATED              STATUS                        PORTS\nmexi-banco-app-1   mexi-banco-app       \"java -jar app.jar\"      app       About a minute ago   Up 30 seconds (healthy)       0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp\nmexi-banco-db-1    postgres:17-alpine   \"docker-entrypoint.s…\"   db        About a minute ago   Up About a minute (healthy)   5432/tcp\n"
+    }
+  },
+  {
+    "paso": "cuenta 002180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 750.0
+      }
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose down",
+      "codigo": 0,
+      "salida": " Container mexi-banco-app-1  Stopping\n Container mexi-banco-app-1  Stopped\n Container mexi-banco-app-1  Removing\n Container mexi-banco-app-1  Removed\n Container mexi-banco-db-1  Stopping\n Container mexi-banco-db-1  Stopped\n Container mexi-banco-db-1  Removing\n Container mexi-banco-db-1  Removed\n Network mexibanco  Removing\n Network mexibanco  Removed\n"
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose up -d",
+      "codigo": 0,
+      "salida": " Network mexibanco  Creating\n Network mexibanco  Created\n Container mexi-banco-db-1  Creating\n Container mexi-banco-db-1  Created\n Container mexi-banco-app-1  Creating\n Container mexi-banco-app-1  Created\n Container mexi-banco-db-1  Starting\n Container mexi-banco-db-1  Started\n Container mexi-banco-db-1  Waiting\n Container mexi-banco-db-1  Healthy\n Container mexi-banco-app-1  Starting\n Container mexi-banco-app-1  Started\n"
+    }
+  },
+  {
+    "paso": "salud",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/actuator/health",
+      "status": 200,
+      "respuesta": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      }
+    }
+  },
+  {
+    "paso": "cuenta 002180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 750.0
+      }
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose down -v",
+      "codigo": 0,
+      "salida": " Container mexi-banco-app-1  Stopping\n Container mexi-banco-app-1  Stopped\n Container mexi-banco-app-1  Removing\n Container mexi-banco-app-1  Removed\n Container mexi-banco-db-1  Stopping\n Container mexi-banco-db-1  Stopped\n Container mexi-banco-db-1  Removing\n Container mexi-banco-db-1  Removed\n Volume mexi-banco_mexibanco_datos  Removing\n Network mexibanco  Removing\n Volume mexi-banco_mexibanco_datos  Removed\n Network mexibanco  Removed\n"
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose up -d",
+      "codigo": 0,
+      "salida": " Network mexibanco  Creating\n Network mexibanco  Created\n Volume \"mexi-banco_mexibanco_datos\"  Creating\n Volume \"mexi-banco_mexibanco_datos\"  Created\n Container mexi-banco-db-1  Creating\n Container mexi-banco-db-1  Created\n Container mexi-banco-app-1  Creating\n Container mexi-banco-app-1  Created\n Container mexi-banco-db-1  Starting\n Container mexi-banco-db-1  Started\n Container mexi-banco-db-1  Waiting\n Container mexi-banco-db-1  Healthy\n Container mexi-banco-app-1  Starting\n Container mexi-banco-app-1  Started\n"
+    }
+  },
+  {
+    "paso": "salud",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/actuator/health",
+      "status": 200,
+      "respuesta": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      }
+    }
+  },
+  {
+    "paso": "sin volumen",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 404,
+      "respuesta": {
+        "type": "about:blank",
+        "title": "Not Found",
+        "status": 404,
+        "detail": "No existe la CLABE 002180000000000001",
+        "instance": "/cuentas/002180000000000001"
+      }
+    }
+  },
+  {
+    "paso": "compose",
+    "resultado": {
+      "comando": "docker compose ps",
+      "codigo": 0,
+      "salida": "NAME               IMAGE                COMMAND                  SERVICE   CREATED          STATUS                    PORTS\nmexi-banco-app-1   mexi-banco-app       \"java -jar app.jar\"      app       17 seconds ago   Up 11 seconds (healthy)   0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp\nmexi-banco-db-1    postgres:17-alpine   \"docker-entrypoint.s…\"   db        17 seconds ago   Up 17 seconds (healthy)   5432/tcp\n"
+    }
+  },
+  {
+    "paso": "conclusion",
+    "resultado": "Todas las comprobaciones pasaron"
+  },
+  {
+    "paso": "abrir origen tras borrar volumen",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/cuentas",
+      "status": 201,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 1000
+      }
+    }
+  },
+  {
+    "paso": "abrir destino tras borrar volumen",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/cuentas",
+      "status": 201,
+      "respuesta": {
+        "id": 2,
+        "clabe": "012180000000000001",
+        "titular": "Destino S05",
+        "saldo": 500
+      }
+    }
+  },
+  {
+    "paso": "CLABE inexistente",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/999999999999999999",
+      "status": 404,
+      "respuesta": {
+        "type": "about:blank",
+        "title": "Not Found",
+        "status": 404,
+        "detail": "No existe la CLABE 999999999999999999",
+        "instance": "/cuentas/999999999999999999"
+      }
+    }
+  },
+  {
+    "paso": "CLABE repetida",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/cuentas",
+      "status": 409,
+      "respuesta": {
+        "type": "about:blank",
+        "title": "Conflict",
+        "status": 409,
+        "detail": "Ya existe una cuenta con la CLABE 002180000000000001",
+        "instance": "/cuentas"
+      }
+    }
+  },
+  {
+    "paso": "sin CLABE",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/cuentas",
+      "status": 400,
+      "respuesta": {
+        "timestamp": "2026-09-22T02:56:26.200+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/cuentas"
+      }
+    }
+  },
+  {
+    "paso": "saldo insuficiente",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/transferencias",
+      "status": 422,
+      "respuesta": {
+        "type": "about:blank",
+        "title": "Unprocessable Entity",
+        "status": 422,
+        "detail": "Saldo insuficiente en la CLABE 002180000000000001",
+        "instance": "/transferencias"
+      }
+    }
+  },
+  {
+    "paso": "misma cuenta",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/transferencias",
+      "status": 422,
+      "respuesta": {
+        "type": "about:blank",
+        "title": "Unprocessable Entity",
+        "status": 422,
+        "detail": "La cuenta origen y la destino son la misma",
+        "instance": "/transferencias"
+      }
+    }
+  },
+  {
+    "paso": "SPEI sin clave",
+    "resultado": {
+      "metodo": "POST",
+      "ruta": "/spei",
+      "status": 400,
+      "respuesta": {
+        "timestamp": "2026-09-22T02:56:26.316+00:00",
+        "status": 400,
+        "error": "Bad Request",
+        "path": "/spei"
+      }
+    }
+  },
+  {
+    "paso": "cuenta 002180000000000001",
+    "resultado": {
+      "metodo": "GET",
+      "ruta": "/cuentas/002180000000000001",
+      "status": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Amy Veraza",
+        "saldo": 1000.0
+      }
+    }
+  },
+  {
+    "paso": "errores",
+    "resultado": "Códigos esperados y saldo sin cambios"
+  }
+]
