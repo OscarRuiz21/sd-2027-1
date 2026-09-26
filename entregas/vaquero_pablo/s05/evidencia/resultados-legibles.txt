@@ -1,0 +1,103 @@
+RESULTADOS REALES - MEXI BANCO v05.1
+Colección oficial ejecutada con Newman (Postman).
+20 peticiones, 34 aserciones aprobadas, 0 fallos.
+
+Salud de la app
+GET /actuator/health
+HTTP 200
+{"status":"UP","groups":["liveness","readiness"]}
+
+Abrir cuenta origen (1000)
+POST /cuentas
+HTTP 201
+{"id":1,"clabe":"002180790407430998","titular":"Ana","saldo":1000}
+
+Consultar cuenta origen
+GET /cuentas/002180790407430998
+HTTP 200
+{"id":1,"clabe":"002180790407430998","titular":"Ana","saldo":1000.00}
+
+Abrir cuenta destino (500)
+POST /cuentas
+HTTP 201
+{"id":2,"clabe":"012180790407430998","titular":"Beto","saldo":500}
+
+Transferir 200 de origen a destino
+POST /transferencias
+HTTP 201
+{"id":1,"claveOrigen":"002180790407430998","claveDestino":"012180790407430998","monto":200,"fecha":"2026-09-26T07:23:51.339194752Z"}
+
+Consultar origen (800)
+GET /cuentas/002180790407430998
+HTTP 200
+{"id":1,"clabe":"002180790407430998","titular":"Ana","saldo":800.00}
+
+Consultar destino (700)
+GET /cuentas/012180790407430998
+HTTP 200
+{"id":2,"clabe":"012180790407430998","titular":"Beto","saldo":700.00}
+
+Consultar la transferencia
+GET /transferencias/1
+HTTP 200
+{"id":1,"claveOrigen":"002180790407430998","claveDestino":"012180790407430998","monto":200.00,"fecha":"2026-09-26T07:23:51.339195Z"}
+
+SPEI de 50 (primer envío)
+POST /spei
+HTTP 201
+{"id":1,"idempotencyKey":"prueba-790407430998","claveOrigen":"002180790407430998","bancoDestino":"BBVA","claveDestino":"012180000000000099","monto":50,"estado":"ENVIADO"}
+
+SPEI de 50 (reintento, misma clave)
+POST /spei
+HTTP 201
+{"id":1,"idempotencyKey":"prueba-790407430998","claveOrigen":"002180790407430998","bancoDestino":"BBVA","claveDestino":"012180000000000099","monto":50.00,"estado":"ENVIADO"}
+
+Consultar origen (750, no 700)
+GET /cuentas/002180790407430998
+HTTP 200
+{"id":1,"clabe":"002180790407430998","titular":"Ana","saldo":750.00}
+
+Estado de cuenta del origen
+GET /movimientos
+HTTP 200
+[{"id":5,"clabeCuenta":"002180790407430998","tipo":"SPEI_ENVIADO","monto":-50.00,"saldoResultante":750.00,"fecha":"2026-09-26T07:23:51.479705Z","referencia":"BBVA · 012180000000000099"},{"id":3,"clabeCuenta":"002180790407430998","tipo":"TRANSFERENCIA_ENVIADA","monto":-200.00,"saldoResultante":800.00,"fecha":"2026-09-26T07:23:51.336704Z","referencia":"a 012180790407430998"},{"id":1,"clabeCuenta":"002180790407430998","tipo":"DEPOSITO","monto":1000.00,"saldoResultante":1000.00,"fecha":"2026-09-26T07:23:51.196605Z","referencia":"saldo inicial"}]
+
+Avisos del origen
+GET /notificaciones
+HTTP 200
+[{"id":3,"clabeCuenta":"002180790407430998","mensaje":"SPEI_ENVIADO por 50, saldo resultante 750.00","fecha":"2026-09-26T07:23:51.911881Z"},{"id":1,"clabeCuenta":"002180790407430998","mensaje":"TRANSFERENCIA_ENVIADA por 200, saldo resultante 800.00","fecha":"2026-09-26T07:23:51.341393Z"}]
+
+CLABE que no existe (404)
+GET /cuentas/999999999999999999
+HTTP 404
+{"type":"about:blank","title":"Not Found","status":404,"detail":"No existe la CLABE 999999999999999999","instance":"/cuentas/999999999999999999"}
+
+CLABE repetida (409)
+POST /cuentas
+HTTP 409
+{"type":"about:blank","title":"Conflict","status":409,"detail":"Ya existe una cuenta con la CLABE 002180790407430998","instance":"/cuentas"}
+
+Cuerpo sin clabe (400)
+POST /cuentas
+HTTP 400
+{"timestamp":"2026-09-26T07:23:52.138+00:00","status":400,"error":"Bad Request","path":"/cuentas"}
+
+Saldo insuficiente (422)
+POST /transferencias
+HTTP 422
+{"type":"about:blank","title":"Unprocessable Entity","status":422,"detail":"Saldo insuficiente en la CLABE 002180790407430998","instance":"/transferencias"}
+
+Transferir a la misma cuenta (422)
+POST /transferencias
+HTTP 422
+{"type":"about:blank","title":"Unprocessable Entity","status":422,"detail":"La cuenta origen y la destino son la misma","instance":"/transferencias"}
+
+SPEI sin Idempotency-Key (400)
+POST /spei
+HTTP 400
+{"timestamp":"2026-09-26T07:23:52.211+00:00","status":400,"error":"Bad Request","path":"/spei"}
+
+Los errores no movieron el saldo (750)
+GET /cuentas/002180790407430998
+HTTP 200
+{"id":1,"clabe":"002180790407430998","titular":"Ana","saldo":750.00}
