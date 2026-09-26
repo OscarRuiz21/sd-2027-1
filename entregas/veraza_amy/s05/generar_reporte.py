@@ -8,7 +8,7 @@ from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.units import cm
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Preformatted, Table, TableStyle, KeepTogether
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Preformatted, Table, TableStyle, Image
 
 HERE = Path(__file__).parent
 FONT_DIR = Path("C:/Windows/Fonts")
@@ -41,6 +41,21 @@ def code(text):
     story.append(Preformatted(text, styles["CodeS05"], maxLineLength=90, splitChars=" ,"))
 
 
+def screenshot(filename, caption):
+    path = HERE / "capturas" / filename
+    image = Image(str(path), width=17 * cm, height=17 * cm * image_ratio(path))
+    story.append(image)
+    story.append(Paragraph(caption, ParagraphStyle(name="Caption" + filename,
+                           parent=styles["BodyS05"], fontName="Arial-Italic",
+                           fontSize=8, alignment=TA_CENTER, textColor=colors.HexColor("#4b5563"))))
+
+
+def image_ratio(path):
+    from PIL import Image as PILImage
+    with PILImage.open(path) as source:
+        return source.height / source.width
+
+
 def entry(name, last=False):
     matches = [x["resultado"] for x in data if x["paso"] == name]
     return matches[-1] if last else matches[0]
@@ -65,6 +80,7 @@ healthy = next(x["resultado"]["salida"] for x in data if x["paso"] == "compose" 
                "app" in x["resultado"]["salida"] and x["resultado"]["salida"].count("healthy") == 2)
 code("$ docker compose ps\n" + healthy.replace("â€¦", "...").strip())
 p("El endpoint <font name='Arial'>GET /actuator/health</font> devolvió HTTP 200 y estado UP.")
+screenshot("01-compose-healthy.png", "Captura 1. Compose muestra app y db en estado healthy.")
 
 h("2. Cuentas y transferencia interna")
 p("Abrí la cuenta origen con 1000 y la destino con 500. Una transferencia de 200 dejó 800 en origen y "
@@ -72,6 +88,7 @@ p("Abrí la cuenta origen con 1000 y la destino con 500. Una transferencia de 20
 code("POST /transferencias → HTTP " + str(entry("transferencia")["status"]) + "\n" +
      json.dumps(value("transferencia"), ensure_ascii=False, indent=2) +
      "\nGET origen → saldo 800\nGET destino → saldo 700")
+screenshot("02-transferencia.png", "Captura 2. Transferencia de 200 y comprobación de ambos saldos.")
 
 h("3. SPEI e idempotencia")
 p("Envié dos veces el mismo SPEI de 50 con <font name='Arial'>Idempotency-Key: veraza-amy-s05-001</font>. "
@@ -79,6 +96,7 @@ p("Envié dos veces el mismo SPEI de 50 con <font name='Arial'>Idempotency-Key: 
   "El estado de cuenta registró un solo movimiento SPEI_ENVIADO de -50.")
 code("Primer envío: HTTP 201\n" + json.dumps(value("SPEI primero"), ensure_ascii=False, indent=2) +
      "\nReintento: HTTP 201\n" + json.dumps(value("SPEI reintento"), ensure_ascii=False, indent=2))
+screenshot("03-spei-idempotencia.png", "Captura 3. Los dos envíos regresan el mismo SPEI y el saldo queda en 750.")
 p("La tabla de solicitudes SPEI impone unicidad sobre la clave. El servicio reserva la clave antes de cobrar; "
   "si ya existe una solicitud terminada, devuelve la misma fila sin ejecutar de nuevo el cargo. "
   "Las notificaciones y movimientos confirman un solo cobro.")
@@ -92,6 +110,7 @@ p("Detuve app con <font name='Arial'>docker compose stop app</font>. Tras 15 seg
 code("app detenida → conexión rechazada\n" +
      "stop/start → saldo 750\ndown/up → saldo 750\ndown -v/up → GET /cuentas/002180000000000001: HTTP " +
      str(entry("sin volumen")["status"]))
+screenshot("04-persistencia.png", "Captura 4. Prueba de parada, persistencia y eliminación del volumen.")
 
 h("5. Código y configuración")
 p("El monolito tiene módulos cuenta, movimiento, transferencia, notificación y SPEI. Cada módulo separa "
