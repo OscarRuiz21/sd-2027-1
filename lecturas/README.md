@@ -19,7 +19,7 @@ discusión del sábado. El programa calificado arranca con la lectura de la S3.
 - Waldo, Wyant, Wollrath y Kendall, *A Note on Distributed Computing* (1994):
   https://github.com/papers-we-love/papers-we-love/blob/main/distributed_systems/a-note-on-distributed-computing.pdf
 - 2 preguntas + 1 hallazgo en la [Discussion #2](https://github.com/OscarRuiz21/sd-2027-1/discussions/2)
-  **antes del jueves 3 de septiembre, 23:59.**
+  **antes del jueves 3 de septiembre, 23:59** (ese fue su plazo, con la política anterior; desde la Lectura 3 el corte es el sábado 06:59).
 
 ## Lectura 3 · para la S4 (12 de septiembre)
 
@@ -30,3 +30,29 @@ discusión del sábado. El programa calificado arranca con la lectura de la S3.
   **en tiempo hasta el sábado 12-sep, 06:59 · tarde hasta el domingo 13-sep.**
 
 El calendario completo de lecturas se publica aquí conforme avanza el curso.
+
+## Lectura 4 · para la S5 (19 de septiembre)
+
+- Ongaro y Ousterhout, *In Search of an Understandable Consensus Algorithm* (**Raft**, 2014),
+  **secciones §1 a §5**: https://raft.github.io/raft.pdf
+- Opcional, para verlo animado antes de leer: https://thesecretlivesofdata.com/raft/
+- 2 preguntas + 1 hallazgo en la [Discussion #35](https://github.com/OscarRuiz21/sd-2027-1/discussions/35):
+  **en tiempo hasta el sábado 19-sep, 06:59 · tarde hasta el domingo 20-sep.**
+
+Pongan la atención en **elección de líder** (§5.1–§5.2), **replicación del log** (§5.3) y en
+**por qué siempre es mayoría y no "todos"**. El paper menciona **FLP** y **Paxos**: no se
+claven ahí, los vemos de panorama el sábado.
+
+Para repasar después de la clase: *Understand RAFT without breaking your brain*,
+https://youtu.be/IujMVjKvWP4 (un buen apoyo antes de la T02).
+
+## Lectura 5 · para la S6 (26 de septiembre)
+
+- Brewer, *CAP Twelve Years Later: How the "Rules" Have Changed* (IEEE Computer, 2012).
+  Versión libre en InfoQ: https://www.infoq.com/articles/cap-twelve-years-later-how-the-rules-have-changed/
+- 2 preguntas + 1 hallazgo en la [Discussion #40](https://github.com/OscarRuiz21/sd-2027-1/discussions/40):
+  **en tiempo hasta el sábado 26-sep, 06:59 · tarde hasta el domingo 27-sep.**
+
+Pongan la atención en **por qué "elige 2 de 3" es engañoso**, en la relación entre **partición
+y timeout**, y en qué hace un sistema **durante la partición y al recuperarse**. Léanlo con la
+mayoría de Raft en la cabeza: ¿qué sacrifica Raft cuando la red se parte?
