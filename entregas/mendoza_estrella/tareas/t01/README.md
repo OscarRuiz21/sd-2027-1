@@ -25,21 +25,37 @@ cliente que prueba ambos automáticamente.
 ## Evidencia
 
 servidor-grpc-1  | gRPC escuchando en :50051
+
 servidor-rest-1  | [20/Sep/2026 02:14:59] "GET /items/1/ HTTP/1.1" 200 66
+
 servidor-grpc-1  | Bytes gRPC: 13
+
 servidor-rest-1  | [20/Sep/2026 02:14:59] "GET /items/2/ HTTP/1.1" 200 74
+
 servidor-grpc-1  | Bytes gRPC: 21
+
 servidor-rest-1  | [20/Sep/2026 02:15:00] "GET /items/3/ HTTP/1.1" 200 71
+
 servidor-grpc-1  | Bytes gRPC: 18
+
 cliente-1        | [REST] GET /items/1/ -> 200 {'encontrado': True, 'id': '1', 'nombre': 'Makima', 'mensaje': ''}
+
 cliente-1        | [gRPC] Buscar(1) -> encontrado: true id: "1" nombre: "Makima"
+
 servidor-rest-1  | Not Found: /items/99/
+
 servidor-rest-1  | [20/Sep/2026 02:15:00] "GET /items/99/ HTTP/1.1" 404 84
+
 cliente-1        | [REST] GET /items/2/ -> 200 {'encontrado': True, 'id': '2', 'nombre': 'Mai Sakurajima', 'mensaje': ''}
+
 cliente-1        | [gRPC] Buscar(2) -> encontrado: true id: "2" nombre: "Mai Sakurajima"
+
 cliente-1        | [REST] GET /items/3/ -> 200 {'encontrado': True, 'id': '3', 'nombre': 'Rei Ayanami', 'mensaje': ''}
+
 cliente-1        | [gRPC] Buscar(3) -> encontrado: true id: "3" nombre: "Rei Ayanami"
+
 cliente-1        | [REST] GET /items/99/ -> 404 {'encontrado': False, 'id': '', 'nombre': '', 'mensaje': 'No hay datos para ese ID'}
+
 cliente-1        | [gRPC] Buscar(99) -> mensaje: "No hay datos para ese ID"
 
 ## Medición de bytes
