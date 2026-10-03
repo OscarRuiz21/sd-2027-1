@@ -1,0 +1,59 @@
+openapi: 3.0.3
+info:
+  title: Catalogo de productos
+  version: 1.0.0
+paths:
+  /products/{id}:
+    get:
+      operationId: getProduct
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+      responses:
+        '200':
+          description: Producto encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+        '400':
+          description: ID invalido
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Producto no encontrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Product:
+      type: object
+      required: [id, name, price_cents, stock]
+      properties:
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        price_cents:
+          type: integer
+          format: int32
+          description: Precio en centavos de MXN
+        stock:
+          type: integer
+          format: int32
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
