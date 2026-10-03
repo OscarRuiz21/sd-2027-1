@@ -43,6 +43,17 @@ Entregas un **reporte corto en PDF** (con el procesador de textos que quieras) c
 y capturas en `entregas/apellido_nombre/s05/`,
 **en tiempo hasta el domingo 27 de septiembre**.
 
+## Mexi Banco: directorio, gateway y balanceo · sábado 3 de octubre (S7)
+
+**[Lab S07: de un monolito a servicios que se encuentran solos](https://oscarruiz21.github.io/sd-2027-1/labs/s07-mexi-banco/Lab-S07-Mexi-Banco.html)**:
+se trabaja sobre la rama `lab/03-gateway-discovery-balanceo` de
+[mexi-banco](https://github.com/OscarRuiz21/mexi-banco). **Antes de clase**, en tu casa, sigue el
+recuadro "Antes de clase" de la guía: clonar y construir tarda de 25 a 35 minutos. En clase se
+platica la historia del monolito partido y luego, paso a paso, encienden un directorio (Eureka),
+un gateway, tres copias de cuenta, y ven qué pasa cuando una muere. Se trabaja en equipo, pero
+**cada quien entrega su propia bitácora en PDF** como `bitacora-s07.pdf` en
+`entregas/apellido_nombre/s07/`, **hasta el domingo 4 de octubre, 23:59**.
+
 ---
 
 Las **tareas** no están aquí: se apilan en el [`README.md` de entregas](../entregas/README.md),
