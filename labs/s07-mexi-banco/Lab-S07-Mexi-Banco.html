@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab S07 · Mexi Banco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16263f; --navy2:#1f3a63; --ink:#1b2433; --muted:#556274; --bg:#f4f7fb; --card:#fff;
+  --line:#dbe3ee; --naranja:#f5a524; --verde:#16794a; --verde-bg:#ecf8f1; --amar-bg:#fff8e8;
+  --amar:#a35d00; --rojo:#b42318; --rojo-bg:#fdf0ef; --code:#0f1b2d; --azul-bg:#eef3fb;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:36px 16px 30px}
+header .in,main{max-width:860px;margin:0 auto}
+.kicker{color:var(--naranja);font-weight:700;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
+h1{font-size:32px;line-height:1.2;margin:8px 0 6px;font-weight:800}
+header p{margin:0;color:#c9d6ea}
+main{padding:8px 16px 60px}
+h2{font-size:24px;margin:44px 0 6px;font-weight:800}
+h2 .num{display:inline-block;background:var(--navy);color:#fff;border-radius:8px;padding:0 10px;margin-right:8px;font-size:20px}
+h3{font-size:18px;margin:26px 0 4px}
+.min{color:var(--muted);font-size:14px;margin:0 0 10px}
+p{margin:8px 0}
+code,pre{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.88em;background:#e9eef6;padding:1px 5px;border-radius:4px}
+pre{background:var(--code);color:#e6edf7;border-radius:10px;padding:14px 16px;overflow-x:auto;margin:8px 0 12px;font:13.5px/1.55 "JetBrains Mono",ui-monospace,monospace}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre .c{color:#8ea3c0}
+pre .add{color:#7ee2a8}
+.que{font-size:14px;color:var(--muted);margin:14px 0 0}
+.que b{color:var(--ink)}
+.box{border-radius:12px;padding:12px 16px;margin:14px 0;border:1px solid}
+.box b.t{display:block;margin-bottom:2px}
+.ver{background:var(--verde-bg);border-color:#bfe5cf}
+.ver b.t{color:var(--verde)}
+.piensa{background:var(--amar-bg);border-color:#f1dcae}
+.piensa b.t{color:var(--amar)}
+.ojo{background:var(--rojo-bg);border-color:#f4c7c3}
+.ojo b.t{color:var(--rojo)}
+.casa{background:var(--azul-bg);border-color:#cbd8ee}
+.historia{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 20px 14px;margin:14px 0}
+/* diagramas con cajas */
+.dg{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin:16px 0 4px}
+.dg .k{background:var(--card);border:1.5px solid var(--navy2);border-radius:10px;padding:8px 12px;text-align:center;font-size:14px;line-height:1.3}
+.dg .k small{display:block;color:var(--muted);font-size:12px}
+.dg .k.db{border-radius:18px/10px;background:#f7f9fc}
+.dg .k.nuevo{border-color:var(--naranja);background:#fff8ea}
+.dg .k.mal{border-color:var(--rojo);background:var(--rojo-bg)}
+.dg .a{color:var(--navy2);font-size:13px;text-align:center;padding:0 2px}
+.dg .a span{display:block;font-size:20px;line-height:1}
+.dg .grupo{border:1.5px dashed #8ea3c0;border-radius:12px;padding:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
+.dg .grupo>.et{width:100%;text-align:center;font-size:12px;color:var(--muted);font-weight:600}
+.pie{text-align:center;color:var(--muted);font-size:13px;margin:0 0 12px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.dos{grid-template-columns:1fr}h1{font-size:26px}}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amar)}
+ol.pasos{padding-left:22px}
+ol.pasos li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+footer{color:var(--muted);font-size:13px;margin-top:40px}
+@media print{
+  body{font-size:11pt;background:#fff}
+  header{padding:18px 16px}
+  pre{font-size:9pt;white-space:pre-wrap;break-inside:avoid}
+  .box,.dg,.historia{break-inside:avoid}
+  h2,h3{break-after:avoid}
+}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos 2027-1 · Grupo 2 · S07 · sábado 3 de octubre</div>
+  <h1>Mexi Banco: de un monolito a servicios que se encuentran solos</h1>
+  <p>Laboratorio de 85 minutos · tarea de 20 a 30 · en equipo, bitácora individual</p>
+</div></header>
+
+<main>
+
+<div class="box piensa">
+<b class="t">Cómo se trabaja hoy</b>
+Siéntense con su <b>equipo del proyecto</b>. Apóyense: comparen pantallas, ayúdense a encontrar errores, discutan las preguntas de "Piensa". Pero <b>cada quien</b> hace los pasos en su máquina (si alguien no puede correr Docker, que lo siga en la de un compañero), toma sus propias capturas, <b>escribe su propia bitácora</b> y la sube a su carpeta.
+</div>
+
+<div class="box casa">
+<b class="t">Antes de clase, en tu casa (25 a 35 minutos)</b>
+<p>Descarga el proyecto y construye todo una vez, para que en clase no esperes. Los comandos van en la terminal (Mac/Linux, o Git Bash en Windows). Docker necesita unos 4 GB de RAM libres.</p>
+<pre><code><span class="c"># 1. Descarga la rama del lab y crea tu propia rama de trabajo</span>
+git clone --branch lab/03-gateway-discovery-balanceo https://github.com/OscarRuiz21/mexi-banco.git
+cd mexi-banco
+git switch -c trabajo-s07
+
+<span class="c"># 2. Construye y levanta los servicios de hoy (la primera vez tarda)</span>
+docker compose up --build -d
+docker compose ps        <span class="c"># espera a ver seis contenedores "healthy"</span>
+
+<span class="c"># 3. Construye de una vez las dos piezas nuevas que usaremos en clase</span>
+docker build -t mexi-banco-v06-discovery ./discovery
+docker build -t mexi-banco-v06-gateway ./gateway
+
+<span class="c"># 4. Apaga todo hasta mañana</span>
+docker compose down</code></pre>
+<p>Abre la carpeta <code>mexi-banco</code> en IntelliJ o VS Code: en clase vas a editar archivos ahí. Si algo falla, abre un Issue en el repo del grupo con el error completo.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">1</span>La historia: partimos el banco</h2>
+<p class="min">Minutos 0 a 15 · se platica en grupo; tú solo lees y miras el código.</p>
+
+<div class="historia">
+<h3>Así era: un monolito</h3>
+<p>Hasta la S05, Mexi Banco era <b>una sola aplicación con una sola base de datos</b>. Una transferencia era una llamada a método: <code>TransferenciaService</code> le pedía a <code>CuentaService</code> que cargara a una cuenta y abonara a la otra. Todo vivía dentro de un <code>@Transactional</code>: si el abono fallaba, la base deshacía también el cargo. O pasaba todo o no pasaba nada.</p>
+<pre><code><span class="c">// 01-monolito · TransferenciaService.java (resumido)</span>
+@Transactional
+public Transferencia transferir(String origen, String destino, BigDecimal monto) {
+    Cuenta o = cuentas.cargar(origen, monto);    <span class="c">// llamada a método, misma base</span>
+    Cuenta d = cuentas.abonar(destino, monto);   <span class="c">// si truena aquí, se deshace el cargo</span>
+    ...
+}</code></pre>
+
+<h3>Así quedó: cinco servicios</h3>
+<p>En la S06 lo partimos en cinco servicios: <b>cuenta, movimiento, transferencia, notificación y SPEI</b>. Cada uno es un programa aparte, en su propio contenedor y con su propia base. El código de <code>transferir</code> casi no cambió, pero <code>cuentas</code> ya no es un objeto en memoria: es un cliente que hace una <b>petición HTTP</b> a otro proceso.</p>
+<pre><code><span class="c">// 02-separacion · TransferenciaService.java (resumido)</span>
+public Transferencia transferir(String origen, String destino, BigDecimal monto) {
+    CuentaRemota o = cuentas.cargar(origen, monto);   <span class="c">// HTTP: confirmado en cuenta desde aquí</span>
+    CuentaRemota d = cuentas.abonar(destino, monto);  <span class="c">// si esto falla, el cargo NO se deshace</span>
+    ...
+}</code></pre>
+
+<div class="dos">
+  <div>
+    <div class="dg">
+      <div class="grupo"><div class="et">un proceso, un @Transactional</div>
+        <div class="k">transferencia</div><div class="a"><span>→</span>método</div><div class="k">cuenta</div>
+      </div>
+      <div class="a"><span>↓</span></div>
+      <div class="k db">una base</div>
+    </div>
+    <p class="pie">Antes: todo o nada.</p>
+  </div>
+  <div>
+    <div class="dg">
+      <div class="k">transferencia<small>su base</small></div>
+      <div class="a"><span>→</span>HTTP</div>
+      <div class="k">cuenta<small>su base</small></div>
+    </div>
+    <p class="pie">Después: cada servicio confirma solo lo suyo.</p>
+  </div>
+</div>
+
+<h3>Y aparecieron tres problemas</h3>
+<p>Abre <code>docker-compose.yml</code> y busca <code>CUENTA_URL</code>. Verás <code>http://cuenta:8080</code> <b>escrito a mano</b>. Ahí nacen los tres problemas de hoy:</p>
+<table>
+<tr><th>Problema</th><th>Hoy</th><th>Lo resolvemos con</th></tr>
+<tr><td>¿Cómo sabe transferencia <b>dónde está</b> cuenta?</td><td>Alguien escribió la dirección en el compose.</td><td><b>Paso 2 · un directorio</b> donde cada servicio se anota solo.</td></tr>
+<tr><td>El cliente ve <b>cinco puertas</b> (puertos 8081 a 8085).</td><td>Cualquiera puede llamar a los endpoints internos.</td><td><b>Paso 3 · un gateway</b>: una sola puerta, con reglas.</td></tr>
+<tr><td>Si cuenta no aguanta, ponemos <b>tres copias</b>: ¿a cuál le hablo?</td><td>No se puede: una dirección fija apunta a una sola.</td><td><b>Pasos 4 y 5 · copias y reparto</b>, y ver qué pasa si una muere.</td></tr>
+</table>
+
+<div class="dg">
+  <div class="k">cliente</div><div class="a"><span>→</span>:8080</div>
+  <div class="k nuevo">gateway<small>paso 3</small></div><div class="a"><span>→</span></div>
+  <div class="grupo"><div class="et">servicios</div>
+    <div class="k">cuenta ×3<small>paso 4</small></div><div class="k">movimiento</div><div class="k">transferencia</div><div class="k">notificación</div><div class="k">SPEI</div>
+  </div>
+  <div class="a"><span>↔</span>se anotan</div>
+  <div class="k nuevo">directorio<small>paso 2</small></div>
+</div>
+<p class="pie">A dónde vamos a llegar hoy. Lo naranja es lo que vas a construir.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">2</span>El directorio: que cada servicio se anote solo</h2>
+<p class="min">Minutos 15 a 35 · aquí empiezas a editar.</p>
+<p>Un <b>directorio</b> (<i>service discovery</i>) es una agenda viva: dice qué servicios existen y en qué dirección está cada uno. Funciona así:</p>
+<ol class="pasos">
+<li>Cada servicio, al arrancar, <b>se anota</b> con su nombre (por ejemplo, <code>cuenta</code>) y su dirección IP.</li>
+<li>Después manda un <b>heartbeat</b> cada 5 segundos: "sigo vivo".</li>
+<li>Si el directorio deja de recibir heartbeats durante un <b>plazo</b> (aquí, 15 s), lo borra de la agenda.</li>
+<li>Quien quiera llamar a <code>cuenta</code> le pregunta al directorio y recibe la lista de direcciones vigentes.</li>
+</ol>
+<p>Vamos a usar <b>Eureka</b>, el directorio de Spring Cloud. Ya está en la carpeta <code>discovery</code>, pero apagado.</p>
+
+<h3>2.0 · Antes de tocar nada: ¿cómo está hoy?</h3>
+<p>Levanta el proyecto tal como lo construiste en casa (tarda menos de un minuto):</p>
+<pre><code>docker compose up -d     <span class="c"># levanta lo que ya está construido</span>
+docker compose ps        <span class="c"># seis contenedores: la base y los cinco servicios, cada uno con su puerto</span></code></pre>
+<p>En la columna <code>PORTS</code> verás que cada servicio tiene su propia puerta en tu laptop: cuenta en 8081, movimiento en 8082, transferencia en 8083, notificación en 8084 y SPEI en 8085. Ahora abre en tu navegador:</p>
+<ul>
+<li><a href="http://localhost:8081/cuentas/000">http://localhost:8081/cuentas/000</a> → cuenta te contesta directo: "no existe la cuenta 000" (un 404 en JSON).</li>
+<li><a href="http://localhost:8761">http://localhost:8761</a> → <b>no carga</b>. Todavía no hay directorio.</li>
+</ul>
+<p>Guarda esa imagen mental. Al final de este paso, la segunda liga va a mostrar a los cinco servicios.</p>
+
+<h3>2.1 · Convierte la aplicación en directorio</h3>
+<p>La carpeta <code>discovery</code> es una aplicación de Spring Boot que ya trae la librería del servidor Eureka, pero nadie le dijo que la usara. La anotación <code>@EnableEurekaServer</code> la enciende. Abre <code>discovery/src/main/java/mx/mexibanco/DiscoveryApplication.java</code> y agrega lo que está en verde:</p>
+<pre><code>import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+<span class="add">import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;</span>
+
+@SpringBootApplication
+<span class="add">@EnableEurekaServer</span>
+public class DiscoveryApplication {</code></pre>
+
+<h3>2.2 · Que el directorio no se anote a sí mismo</h3>
+<p>Un servidor Eureka también trae el cliente. Por eso, sin más, intentaría anotarse en "otro" directorio, que sería él mismo. Como es el único, le decimos que no se registre y que no pida la lista a nadie. Abre <code>discovery/src/main/resources/application.yml</code> y, debajo de <code>client:</code>, agrega las dos líneas en verde:</p>
+<pre><code>eureka:
+  client:
+<span class="add">    register-with-eureka: false
+    fetch-registry: false</span>
+  server:</code></pre>
+<p>Si tuviéramos varios directorios para no depender de uno solo, sí se registrarían entre ellos. Hoy basta uno.</p>
+
+<h3>2.3 · Enséñale a cada servicio a anotarse</h3>
+<p>Ahora el otro lado: cada servicio necesita el <b>cliente de Eureka</b>, la librería que al arrancar lo anota y luego manda los heartbeats. Ya está escrita en cada <code>pom.xml</code>, pero comentada. Abre <b>cada uno</b> de estos archivos: <code>cuenta/pom.xml</code>, <code>movimiento/pom.xml</code>, <code>transferencia/pom.xml</code>, <code>notificacion/pom.xml</code> y <code>spei/pom.xml</code>. Busca el bloque marcado con <code>TODO H1</code> y <b>borra solo las dos líneas que abren y cierran el comentario</b> (<code>&lt;!--</code> y <code>--&gt;</code>), para que quede así:</p>
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;org.springframework.cloud&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-cloud-starter-netflix-eureka-client&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+<p>¿Y cómo sabe cada servicio <b>con qué nombre</b> anotarse y <b>dónde</b> está el directorio? Eso ya estaba listo:</p>
+<ul>
+<li>El nombre sale de <code>spring.application.name</code> en el <code>application.yml</code> de cada servicio (por ejemplo, <code>name: cuenta</code>).</li>
+<li>La dirección del directorio y los tiempos están arriba del <code>docker-compose.yml</code>, en <code>x-directorio</code>: <code>EUREKA_URL</code> (dónde está), <code>EUREKA_LATIDO_S: 5</code> (heartbeat cada 5 s) y <code>EUREKA_EXPIRA_S: 15</code> (plazo de 15 s). Spring trae 30 y 90 segundos; los bajamos para que en clase todo se vea rápido.</li>
+</ul>
+
+<h3>2.4 · Enciende el directorio en Docker</h3>
+<p>Falta decirle a Docker que levante el directorio. En <code>docker-compose.yml</code> hay dos pedazos comentados con <code>TODO H1</code>:</p>
+<ol class="pasos">
+<li>El servicio <code>discovery:</code> completo. Selecciona sus líneas y quítales el <code>#</code> (en IntelliJ y VS Code: <code>⌘/</code> en Mac, <code>Ctrl+/</code> en Windows). Fíjate que publica el puerto <b>8761</b>: es el de la liga que hace rato no cargaba.</li>
+<li>Arriba, en <code>depends_on</code>, las dos líneas <code>discovery:</code> y <code>condition: service_healthy</code>. Así los cinco servicios esperan a que el directorio esté sano antes de arrancar y se anotan al primer intento.</li>
+</ol>
+<p>Construye y levanta. Como cambiaste los cinco <code>pom.xml</code>, Docker vuelve a compilar los cinco servicios: <b>tarda unos 9 minutos</b>. Mientras, platicamos qué pasa si un servicio deja de mandar heartbeats.</p>
+<pre><code>docker compose up -d --build     <span class="c"># reconstruye lo que cambió y levanta todo</span>
+docker compose ps                <span class="c"># espera siete "healthy": la base, los cinco y el directorio</span></code></pre>
+
+<h3>2.5 · Compruébalo en el navegador</h3>
+<p>Abre otra vez <b><a href="http://localhost:8761">http://localhost:8761</a></b>. Ahora sí carga: es el <b>tablero de Eureka</b>.</p>
+<div class="box ver">
+<b class="t">Deberías ver</b>
+<ul>
+<li>En <i>Instances currently registered with Eureka</i>, cinco renglones: <b>CUENTA, MOVIMIENTO, NOTIFICACION, SPEI y TRANSFERENCIA</b>. Cada uno dice <b>UP (1)</b>: una copia viva.</li>
+<li>Junto a cada nombre, el identificador de la instancia, algo como <code>6bd55a1c1cd7:cuenta:8080</code>. El primer pedazo es el ID del contenedor (compáralo con <code>docker ps</code>).</li>
+<li>Un letrero rojo, <i>"THE SELF PRESERVATION MODE IS TURNED OFF"</i>. Es normal: lo apagamos a propósito para que Eureka borre rápido a los que dejan de mandar heartbeats.</li>
+</ul>
+Toma captura para tu bitácora.
+</div>
+<p>El tablero es para humanos. Los servicios le preguntan lo mismo al directorio por una API. Ábrela tú también en el navegador: <a href="http://localhost:8761/eureka/apps/CUENTA">http://localhost:8761/eureka/apps/CUENTA</a>. Es un XML con lo que el directorio sabe de cuenta:</p>
+<ul>
+<li><code>&lt;hostName&gt;</code>: la IP del contenedor dentro de la red de Docker.</li>
+<li><code>&lt;port&gt;</code>: 8080.</li>
+<li><code>&lt;status&gt;</code>: UP.</li>
+<li><code>&lt;renewalIntervalInSecs&gt;5</code> y <code>&lt;durationInSecs&gt;15</code>: el heartbeat y el plazo del compose.</li>
+</ul>
+
+<div class="box piensa">
+<b class="t">Experimento corto (opcional)</b>
+Apaga un servicio y míralo desaparecer del tablero. Recarga <a href="http://localhost:8761">localhost:8761</a> cada pocos segundos:
+<pre><code>docker compose stop notificacion     <span class="c"># apaga notificación</span>
+docker compose start notificacion    <span class="c"># y lo vuelve a prender</span></code></pre>
+En el ensayo tardó unos 18 segundos en desaparecer y unos 9 en volver. ¿Por qué no desaparece al instante? Pista: el plazo.
+</div>
+
+<div class="box piensa">
+<b class="t">Piensa</b>
+Los cinco ya están anotados. Pero en el compose, transferencia sigue llamando a <code>CUENTA_URL: http://cuenta:8080</code>, una dirección escrita a mano. ¿Alguien está <i>usando</i> el directorio para encontrar a cuenta? Anota tu respuesta: la retomamos en el paso 4.
+</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">3</span>El gateway: una sola puerta</h2>
+<p class="min">Minutos 35 a 50</p>
+<p>Hoy cada servicio tiene su propia puerta hacia afuera, y eso trae dos problemas:</p>
+<ul>
+<li>El cliente (una app, una página web) tiene que conocer cinco direcciones.</li>
+<li>Cualquiera puede llamar a operaciones que deberían ser internas.</li>
+</ul>
+<p>Compruébalo. Registrar un movimiento es algo que solo hacen los servicios entre ellos, y aun así:</p>
+<pre><code>curl -i -X POST http://localhost:8082/movimientos    <span class="c"># llamada directa a movimiento, desde tu laptop</span></code></pre>
+<p>Responde <b>400</b> ("te faltan datos"), no 404: el endpoint existe y está abierto a cualquiera. <code>curl -i</code> hace una petición, como el navegador, y te muestra el código de respuesta y las cabeceras.</p>
+<p>Un <b>API gateway</b> resuelve los dos problemas. Es la única entrada para los clientes, en el puerto 8080. Según la ruta de cada petición, decide a qué servicio mandarla. Lo que no tenga regla no pasa.</p>
+<table>
+<tr><th></th><th>Antes (hoy)</th><th>Después de este paso</th></tr>
+<tr><td>Consultar una cuenta</td><td><code>localhost:8081/cuentas/123</code></td><td><code>localhost:8080/api/cuentas/123</code></td></tr>
+<tr><td>Consultar movimientos</td><td><code>localhost:8082/movimientos</code></td><td><code>localhost:8080/api/movimientos</code></td></tr>
+<tr><td>Registrar un movimiento (interno)</td><td>Abierto en el 8082</td><td>El gateway contesta 404: no hay ruta</td></tr>
+</table>
+
+<h3>3.1 · Escribe las rutas</h3>
+<p>Abre <code>gateway/src/main/resources/application.yml</code>. Ya existe la ruta de cuenta, como ejemplo. Cada ruta dice tres cosas:</p>
+<ul>
+<li><b>Cuándo aplica</b> (<code>predicates</code>): <code>Path</code> es la ruta que llega y <code>Method</code> el verbo HTTP permitido.</li>
+<li><b>A dónde va</b> (<code>uri</code>): <code>lb://cuenta</code> significa "pregúntale al directorio dónde está <code>cuenta</code> y, si hay varias copias, reparte". Aquí el gateway <b>sí usa</b> el directorio.</li>
+<li><b>Qué le cambia</b> (<code>filters</code>): <code>StripPrefix=1</code> quita el primer pedazo de la ruta. <code>/api/cuentas/123</code> le llega a cuenta como <code>/cuentas/123</code>, que es lo que cuenta sabe atender.</li>
+</ul>
+<p>Debajo de la ruta de cuenta, en lugar del comentario <code>TODO H2</code>, pega las otras cuatro. Fíjate en los <code>Method</code>:</p>
+<ul>
+<li>Movimiento y notificación solo aceptan <code>GET</code>: el cliente consulta, pero no registra.</li>
+<li>SPEI solo acepta <code>POST</code>.</li>
+</ul>
+<pre><code>      routes:
+        - id: cuenta
+          ...                          <span class="c"># la que ya estaba</span>
+<span class="add">        - id: movimiento
+          uri: lb://movimiento
+          predicates:
+            - Path=/api/movimientos
+            - Method=GET
+          filters:
+            - StripPrefix=1
+        - id: transferencia
+          uri: lb://transferencia
+          predicates:
+            - Path=/api/transferencias,/api/transferencias/{id}
+          filters:
+            - StripPrefix=1
+        - id: notificacion
+          uri: lb://notificacion
+          predicates:
+            - Path=/api/notificaciones
+            - Method=GET
+          filters:
+            - StripPrefix=1
+        - id: spei
+          uri: lb://spei
+          predicates:
+            - Path=/api/spei
+            - Method=POST
+          filters:
+            - StripPrefix=1</span></code></pre>
+<p>Cuida la sangría: cada <code>- id:</code> va alineado con el de cuenta. En YAML, un espacio de más o de menos cambia el significado.</p>
+
+<h3>3.2 · Enciende el gateway</h3>
+<p>En <code>docker-compose.yml</code>, quítale el <code>#</code> al servicio <code>gateway:</code> completo (<code>TODO H2</code>). Mira lo que dice:</p>
+<ul>
+<li>Publica el <b>8080</b>: la puerta única.</li>
+<li>Recibe las variables del directorio, porque también es cliente de Eureka: para resolver <code>lb://cuenta</code> necesita preguntar.</li>
+<li>Espera a que <code>discovery</code> esté sano.</li>
+</ul>
+<pre><code>docker compose up -d --build gateway    <span class="c"># construye y levanta solo el gateway (~1 min)</span></code></pre>
+<p>Recarga <a href="http://localhost:8761">localhost:8761</a>: ahora hay un sexto renglón, <b>GATEWAY</b>. El gateway también se anota.</p>
+
+<h3>3.3 · Pruébalo</h3>
+<p>Mexi Banco agrega a cada respuesta de cuenta la cabecera <code>X-Instancia</code>, que dice <b>qué contenedor de cuenta contestó</b>. Nos sirve para saber quién respondió: cuenta o el gateway.</p>
+<pre><code><span class="c"># a) Pedir una cuenta que no existe, entrando por el gateway</span>
+curl -i http://localhost:8080/api/cuentas/000
+
+<span class="c"># b) Intentar registrar un movimiento desde afuera, ahora por la puerta</span>
+curl -i -X POST http://localhost:8080/api/movimientos</code></pre>
+<div class="box ver">
+<b class="t">Deberías ver</b>
+Los dos dan <b>404</b>, pero por razones distintas:
+<ul>
+<li>(a) trae <code>X-Instancia</code>: el gateway encontró la ruta, le preguntó al directorio, <b>la petición llegó a cuenta</b> y cuenta dijo "no existe esa cuenta".</li>
+<li>(b) no trae <code>X-Instancia</code>: <b>el gateway</b> la paró porque ninguna ruta acepta un POST a movimientos. Compáralo con el 400 que te dio el 8082 hace rato: la operación interna ya no se alcanza por la puerta.</li>
+</ul>
+</div>
+<p>Ahora crea tu propia cuenta por el gateway. La primera línea inventa una CLABE única con la hora, para que no choque con la de otra persona:</p>
+<pre><code>LAB_CLABE="S07$(date +%s)"
+curl -i -X POST http://localhost:8080/api/cuentas \
+  -H 'Content-Type: application/json' \
+  -d "{\"clabe\":\"$LAB_CLABE\",\"titular\":\"S07\",\"saldoInicial\":0}"
+
+URL="http://localhost:8080/api/cuentas/$LAB_CLABE"   <span class="c"># guardamos la dirección de tu cuenta</span>
+curl -i "$URL"
+echo "$URL"                                          <span class="c"># imprime la liga para abrirla en el navegador</span></code></pre>
+<div class="box ver"><b class="t">Deberías ver</b>El alta da <b>201</b> y la consulta <b>200</b>, con saldo 0. Copia la liga que imprimió <code>echo</code> y ábrela en el navegador: verás tu cuenta en JSON, servida por el gateway. No cierres esta terminal: <code>$URL</code> la usamos en los pasos 4 y 5.</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">4</span>Tres copias de cuenta</h2>
+<p class="min">Minutos 50 a 62</p>
+<p>Supón que cuenta es el servicio más usado y una sola copia no aguanta. La solución es <b>escalar horizontalmente</b>: levantar varias copias idénticas y repartir las peticiones entre ellas. Eso es el <b>balanceo de carga</b>.</p>
+<p>Aquí se juntan las tres piezas. Las copias <b>se anotan</b> en el directorio, el gateway <b>pregunta</b> por <code>cuenta</code> y recibe tres direcciones, y el <b>balanceador</b> del gateway reparte por turnos entre ellas.</p>
+
+<h3>4.1 · Pide tres copias</h3>
+<p>En <code>docker-compose.yml</code>, en el servicio <code>cuenta</code>, cambia las dos líneas de <code>ports</code> por <code>deploy</code> (<code>TODO H3</code>):</p>
+<div class="dos">
+<pre><code><span class="c"># antes: una copia, publicada en el 8081</span>
+    ports:
+      - "8081:8080"</code></pre>
+<pre><code><span class="c"># después: tres copias, sin puerto publicado</span>
+<span class="add">    deploy:
+      replicas: 3</span></code></pre>
+</div>
+<p>¿Por qué quitar el puerto? Tres contenedores no pueden ocupar el mismo 8081 de tu laptop, y ya no hace falta: desde afuera se entra por el gateway. Por dentro, cada copia sigue escuchando en su 8080, cada una con su propia IP. Por la misma razón, borra también los <code>ports</code> de movimiento, transferencia, notificación y SPEI. Solo el gateway (8080) y el directorio (8761) quedan publicados.</p>
+<pre><code>docker compose up -d     <span class="c"># aplica el cambio: crea las tres copias</span>
+docker ps --filter name=cuenta --format '{{.ID}}  {{.Names}}  {{.Ports}}'   <span class="c"># las tres copias, su ID y sus puertos</span></code></pre>
+<div class="box ver">
+<b class="t">Deberías ver</b>
+<ul>
+<li>En la terminal, tres contenedores: <code>mexi-banco-v06-cuenta-1</code>, <code>-2</code> y <code>-3</code>, cada uno con su ID y con <code>8080/tcp</code> sin flecha. Escuchan por dentro, pero no están publicados en tu laptop. Anota los tres ID.</li>
+<li>En <a href="http://localhost:8761">localhost:8761</a>, <b>CUENTA</b> dice <b>UP (3)</b>, con tres identificadores que empiezan con esos mismos ID. Si un rato ves cuatro, espera unos segundos: la copia vieja aún no vence su plazo.</li>
+</ul>
+Ten presente que nadie le avisó al gateway que ahora hay tres copias. Lo sabe porque las tres se anotaron en el directorio.
+</div>
+
+<h3>4.2 · Mira cómo reparte</h3>
+<p>Este ciclo consulta tu cuenta nueve veces y muestra solo la cabecera que dice qué copia contestó:</p>
+<pre><code>for i in {1..9}; do
+  curl -sS -D - -o /dev/null "$URL" | grep -i '^X-Instancia'
+done</code></pre>
+<div class="box ver"><b class="t">Deberías ver</b><b>Tres</b> valores distintos de <code>X-Instancia</code> que se turnan: A, B, C, A, B, C… Son los mismos ID que anotaste. Este reparto por turnos se llama <i>round robin</i>.</div>
+<p>Otra forma de verlo, desde el lado de cuenta. En <b>otra terminal</b> deja corriendo los logs de las tres copias y vuelve a lanzar el ciclo en la primera:</p>
+<pre><code>docker compose logs -f cuenta | grep atendida    <span class="c"># Ctrl+C para salir</span></code></pre>
+<p>Cada línea empieza con <code>cuenta-1</code>, <code>cuenta-2</code> o <code>cuenta-3</code> y dice <i>"GET /cuentas/… atendida por …"</i>: las tres copias van atendiendo una por una.</p>
+<div class="box piensa"><b class="t">Piensa</b>Esto prueba que el <b>gateway</b> reparte. ¿Y cuando <b>transferencia</b> llama a cuenta por dentro, también reparte? Mira otra vez su <code>CUENTA_URL</code> en el compose. Lo arreglas en la tarea.</div>
+
+<!-- ============================================================ -->
+<h2><span class="num">5</span>¿Y si una copia se muere?</h2>
+<p class="min">Minutos 62 a 78</p>
+<p>En un sistema distribuido las cosas fallan: un servidor se apaga, la red se corta. Vamos a matar una copia de cuenta <b>sin avisarle a nadie</b>, como si se fuera la luz de ese servidor, y a medir cuánto tarda el sistema en darse cuenta.</p>
+<p>Ojo con la diferencia. En el experimento del paso 2 usaste <code>stop</code>, que apaga el servicio con calma. Aquí usamos <code>kill</code>, que lo corta de golpe. En los dos casos el directorio solo se entera porque <b>dejan de llegar los heartbeats</b>.</p>
+<div class="box piensa"><b class="t">Antes de correrlo, predice y anótalo</b>¿Van a fallar <b>todas</b> las consultas, <b>ninguna</b> o <b>algunas</b>? ¿Durante cuánto tiempo? ¿Dejan de fallar en cuanto la copia desaparece del directorio, o antes, o después?</div>
+
+<p>Usa <b>dos terminales</b>. En la <b>terminal 1</b> (donde tienes <code>$URL</code>), deja corriendo una consulta por segundo. Cada línea muestra la hora y el código de respuesta:</p>
+<pre><code>for i in {1..60}; do
+  echo "$(date +%T)  $(curl -s -o /dev/null -w '%{http_code}' --max-time 3 "$URL")"
+  sleep 1
+done</code></pre>
+<p>En la <b>terminal 2</b>, mata una de las copias:</p>
+<pre><code>date +%T                              <span class="c"># anota la hora del apagado</span>
+docker kill mexi-banco-v06-cuenta-1   <span class="c"># la apaga de golpe, sin despedirse</span></code></pre>
+<p>Mientras tanto, recarga <a href="http://localhost:8761">localhost:8761</a> cada pocos segundos y anota <b>a qué hora</b> CUENTA pasa de <b>UP (3)</b> a <b>UP (2)</b>.</p>
+
+<div class="box ver">
+<b class="t">Deberías ver</b>
+<ul>
+<li>Casi todas las respuestas son <b>200</b>.</li>
+<li>Al principio salen algunos errores <b>500 o 503</b>, salteados: son las peticiones a las que, por turno, les tocó la copia muerta (una de cada tres). Durante unos 20 a 30 segundos aparecen y luego dejan de salir.</li>
+<li>En el ensayo del profesor hubo 7 errores en 45 consultas, y la copia salió del directorio a los ~33 segundos.</li>
+</ul>
+</div>
+
+<p><b>¿Por qué tantos segundos?</b> Porque nadie avisa. El sistema se va enterando por capas:</p>
+<table>
+<tr><th>Quién</th><th>Cómo se entera</th><th>Tiempo en el lab</th></tr>
+<tr><td>El directorio</td><td>Deja de recibir heartbeats y espera el <b>plazo</b> para no borrar a alguien que solo se tardó.</td><td>15 s de plazo, más su revisión periódica (cada 5 s)</td></tr>
+<tr><td>El gateway</td><td>No ve el directorio en vivo: guarda una copia de la lista y la renueva con un <b>refresh</b> periódico.</td><td>Refresh cada 5 s, más 5 s de caché del balanceador</td></tr>
+<tr><td>Resultado</td><td>Mientras tanto, el gateway le sigue mandando peticiones a una copia muerta.</td><td>Unos 30 s de errores intermitentes</td></tr>
+</table>
+<p>Con los valores de fábrica de Spring (heartbeat 30 s, plazo 90 s) serían <b>minutos</b>. Bajar los tiempos detecta antes, pero carga más al directorio con heartbeats.</p>
+
+<p>Revive la copia y mira cómo vuelve a <b>UP (3)</b> en el tablero:</p>
+<pre><code>docker start mexi-banco-v06-cuenta-1</code></pre>
+
+<!-- ============================================================ -->
+<h2><span class="num">6</span>Cierre</h2>
+<p class="min">Minutos 78 a 85</p>
+<p>Lo que construiste, en una tabla:</p>
+<table>
+<tr><th>Pieza</th><th>Qué problema resuelve</th><th>Dónde lo viste</th></tr>
+<tr><td>Directorio</td><td>Saber qué servicios hay y dónde están, sin escribir direcciones a mano.</td><td>El tablero de <code>localhost:8761</code></td></tr>
+<tr><td>Gateway</td><td>Una sola puerta, con reglas de qué se puede llamar desde afuera.</td><td>Los dos 404 y el 400 del 8082</td></tr>
+<tr><td>Balanceador</td><td>Repartir entre copias y dejar de mandar a las que mueren.</td><td><code>X-Instancia</code> por turnos y los errores de la caída</td></tr>
+</table>
+<p>Completa en tu bitácora, con tus palabras: <i>"El directorio resuelve ____. El gateway resuelve ____. El balanceador resuelve ____. Cuando murió una copia vi ____ porque ____."</i></p>
+<p>Al final del lab el profesor publica la solución. Para comparar tus rutas con la de referencia:</p>
+<pre><code>git fetch origin 03-gateway-discovery-balanceo                <span class="c"># baja la rama con la solución</span>
+git diff origin/03-gateway-discovery-balanceo -- gateway      <span class="c"># muestra en qué difiere tu gateway</span>
+docker compose down                                           <span class="c"># apaga todo (sin -v: conserva los datos)</span></code></pre>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2><span class="num">T</span>Tarea: que transferencia también reparta</h2>
+<p class="min">20 a 30 minutos, en casa</p>
+<p>Hoy solo reparte el gateway. Por dentro, transferencia sigue llamando a <code>http://cuenta:8080</code>. Ese nombre lo resuelve el DNS de Docker, no el directorio: transferencia no sabe cuántas copias hay ni cuáles están vivas. Vamos a hacer que le pregunte al directorio por el <b>nombre</b> <code>cuenta</code> y reparta ella misma entre las tres copias, igual que el gateway.</p>
+<table>
+<tr><th></th><th>Antes</th><th>Después</th></tr>
+<tr><td>URL que usa transferencia</td><td><code>http://cuenta:8080</code></td><td><code>http://cuenta</code> (solo el nombre)</td></tr>
+<tr><td>Quién decide a qué copia va</td><td>El DNS de Docker</td><td>El balanceador de transferencia, con la lista del directorio</td></tr>
+<tr><td>Si una copia muere</td><td>Transferencia no se entera</td><td>Sale de la lista en cuanto el directorio la borra</td></tr>
+</table>
+
+<h3>T.1 · Un cliente HTTP que sabe preguntar al directorio</h3>
+<p>Abre <code>transferencia/src/main/java/mx/mexibanco/clientes/ClientesHttp.java</code>. Agrega estos dos imports arriba, con los demás:</p>
+<pre><code><span class="add">import org.springframework.boot.autoconfigure.web.client.RestClientBuilderConfigurer;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;</span></code></pre>
+<p>Y en el lugar del comentario <code>TODO H3</code>, este método. La anotación <code>@LoadBalanced</code> hace la magia: cuando la URL diga <code>http://cuenta</code>, en cada petición cambia "cuenta" por la dirección de una de sus copias registradas.</p>
+<pre><code><span class="add">@Bean
+@LoadBalanced
+RestClient.Builder restClientBalanceado(RestClientBuilderConfigurer configurador) {
+    return configurador.configure(RestClient.builder());
+}</span></code></pre>
+
+<h3>T.2 · Llamar por nombre, sin puerto</h3>
+<p>En <code>docker-compose.yml</code>, dentro de <code>transferencia</code> → <code>environment</code>, cambia las tres URLs:</p>
+<pre><code><span class="add">      CUENTA_URL: http://cuenta
+      MOVIMIENTO_URL: http://movimiento
+      NOTIFICACION_URL: http://notificacion</span></code></pre>
+
+<h3>T.3 · Pruébalo</h3>
+<pre><code>docker compose up -d --build transferencia   <span class="c"># reconstruye solo transferencia</span>
+docker compose ps                            <span class="c"># espera a que todo esté "healthy"</span>
+./demo-v06.sh                                <span class="c"># corre una transferencia, un SPEI y casos de error</span></code></pre>
+<p>Para ver el reparto por dentro, revisa quién atendió los cargos y los abonos de la demo:</p>
+<pre><code>docker compose logs cuenta | grep -E 'cargos|abonos'   <span class="c"># qué copia atendió cada cargo y cada abono</span></code></pre>
+<p>Cada línea empieza con <code>cuenta-1</code>, <code>-2</code> o <code>-3</code>: el cargo y el abono de una misma transferencia pueden caer en copias distintas.</p>
+<div class="box ver"><b class="t">Deberías ver</b>Saldos <b>800/700</b> después de la transferencia y <b>750/700</b> después del SPEI. El SPEI repetido con el mismo ID no cobra dos veces, y los errores 404 y 422 no mueven saldos. Si la primera transferencia da <i>timeout</i>, anota los saldos, espera unos segundos y repite: ¿se movió el dinero aunque la respuesta falló? (Eso es la S08).</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2>Entrega: tu bitácora</h2>
+<p>Cada integrante documenta el lab en <b>Word</b> (o Google Docs), estilo bitácora, y entrega <b>su propio PDF</b>. Pueden haberlo hecho juntos, pero las capturas, respuestas y frases son tuyas.</p>
+<table>
+<tr><th>Sección</th><th>Qué poner</th><th>Puntos</th></tr>
+<tr><td>Paso 1 · La historia</td><td>En tus palabras: qué se rompió al pasar de llamada a método a HTTP.</td><td>2</td></tr>
+<tr><td>Paso 2 · Directorio</td><td>El tablero antes (no carga) y después (cinco servicios UP), el XML de CUENTA y tu respuesta al "Piensa".</td><td>2</td></tr>
+<tr><td>Paso 3 · Gateway</td><td>El 400 del 8082, los dos 404 por el gateway y quién produjo cada uno, el alta 201 y la consulta 200.</td><td>1</td></tr>
+<tr><td>Pasos 4 y 5 · Copias y caída</td><td>El tablero con CUENTA UP (3), las nueve <code>X-Instancia</code>, tu predicción, la hora del apagado, la de la salida del directorio, cuántos errores viste y por qué.</td><td>2</td></tr>
+<tr><td>Cierre</td><td>Tus cuatro frases.</td><td>1</td></tr>
+<tr><td>Tarea</td><td>Captura de <code>./demo-v06.sh</code> con los saldos.</td><td>2</td></tr>
+</table>
+<p>Pon en cada sección la <b>hora</b> en que lo hiciste. Las capturas valen más que el texto copiado de la terminal.</p>
+<p><b>Dónde:</b> como <code>bitacora-s07.pdf</code> en <code>entregas/apellido_nombre/s07/</code> de tu rama <code>entregas_apellido_nombre</code> del repo del grupo <code>sd-2027-1</code>. <b>Fecha:</b> domingo 4 de octubre de 2026, 23:59 (Ciudad de México). Tarde: hasta antes de la S08.</p>
+<pre><code>git switch entregas_apellido_nombre
+git add entregas/apellido_nombre/s07/bitacora-s07.pdf
+git commit -m "S07: bitácora del lab"
+git push origin entregas_apellido_nombre</code></pre>
+
+<div class="box ojo">
+<b class="t">Si algo truena</b>
+<ul>
+<li><b>Git dice que la rama no existe:</b> avísale al profesor.</li>
+<li><b>Puerto ocupado:</b> tienes otro proyecto levantado. Apágalo con <code>docker compose down</code> en <i>su</i> carpeta. No borres contenedores ajenos.</li>
+<li><b>El tablero no muestra los cinco servicios:</b> revisa la anotación, las dos líneas del YAML y los cinco <code>pom.xml</code>, y vuelve a correr <code>docker compose up -d --build</code>.</li>
+<li><b>El gateway da 500 o 503 siempre:</b> espera a que todo esté <code>healthy</code> en el tablero y revisa la sangría de tus rutas.</li>
+<li><b>Windows, <code>bad interpreter</code> al correr <code>./demo-v06.sh</code>:</b> guarda el archivo con finales de línea LF (abajo a la derecha en VS Code).</li>
+</ul>
+</div>
+
+<footer>Sistemas Distribuidos · FI-UNAM · 2027-1</footer>
+</main>
+</body>
+</html>
