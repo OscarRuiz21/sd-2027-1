@@ -52,7 +52,7 @@ recuadro "Antes de clase" de la guía: clonar y construir tarda de 25 a 35 minut
 platica la historia del monolito partido y luego, paso a paso, encienden un directorio (Eureka),
 un gateway, tres copias de cuenta, y ven qué pasa cuando una muere. Se trabaja en equipo, pero
 **cada quien entrega su propia bitácora en PDF** como `bitacora-s07.pdf` en
-`entregas/apellido_nombre/s07/`, **hasta el domingo 4 de octubre, 23:59**.
+`entregas/apellido_nombre/s07/`, **hasta el sábado 10 de octubre, antes de las 07:00** (el plazo se amplió en clase).
 
 ---
 
