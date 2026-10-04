@@ -1,0 +1,49 @@
+ Image s03-derek-verificacion-cobros Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 680B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 301B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/python:3.11-slim
+#3 DONE 0.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 88B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 20.52kB done
+#5 DONE 0.0s
+
+#6 [1/4] FROM docker.io/library/python:3.11-slim@sha256:bab1b7ef4b450c81002278d035eff85ebe394ae94df904f7a3ba14f7e16e487b
+#6 resolve docker.io/library/python:3.11-slim@sha256:bab1b7ef4b450c81002278d035eff85ebe394ae94df904f7a3ba14f7e16e487b 0.0s done
+#6 DONE 0.1s
+
+#7 [2/4] WORKDIR /app
+#7 DONE 0.0s
+
+#8 [3/4] RUN mkdir /data && chown 10001:10001 /data
+#8 DONE 0.3s
+
+#9 [4/4] COPY app.py tests.py probar_http.py ./
+#9 DONE 0.1s
+
+#10 exporting to image
+#10 exporting layers
+#10 exporting layers 0.2s done
+#10 exporting manifest sha256:132a9b29e1b1b9a9c32a4df38b3a44bb07409c9a835fcb45799ffaa6b0e67348 0.0s done
+#10 exporting config sha256:ad217b560c7f0ddfd9fcbc7fe1d149adf117d325e2d4297bf803883a43769284 0.0s done
+#10 exporting attestation manifest sha256:087fb951331c5357e9b1ee5d0120bb7fc9fe7c78332ddac5273cdb61228b3df1 0.1s done
+#10 exporting manifest list sha256:aa055802ee986a0ed76fc95411d8f80c72a6ef0f5f50e4e7f989d9cab7ae3e8e
+#10 exporting manifest list sha256:aa055802ee986a0ed76fc95411d8f80c72a6ef0f5f50e4e7f989d9cab7ae3e8e 0.0s done
+#10 naming to docker.io/library/s03-derek-verificacion-cobros:latest 0.0s done
+#10 unpacking to docker.io/library/s03-derek-verificacion-cobros:latest
+#10 unpacking to docker.io/library/s03-derek-verificacion-cobros:latest 0.2s done
+#10 DONE 0.7s
+
+#11 resolving provenance for metadata file
+#11 DONE 0.0s
+ Image s03-derek-verificacion-cobros Built 

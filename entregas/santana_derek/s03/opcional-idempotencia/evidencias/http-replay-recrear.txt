@@ -1,0 +1,4 @@
+Clave: evidencia-s03-20261004
+Reintento tras reinicio: HTTP 201, Idempotency-Replayed=true
+{"cobro_id":"e166247a-9021-404e-bf32-0532b19f894e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+OK: el resultado persistió y fue reproducido.

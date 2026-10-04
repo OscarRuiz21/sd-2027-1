@@ -1,0 +1,6 @@
+ Container s03-derek-verificacion-cobros-1 Recreate 
+ Container s03-derek-verificacion-cobros-1 Recreated 
+ Container s03-derek-verificacion-cobros-1 Starting 
+ Container s03-derek-verificacion-cobros-1 Started 
+ Container s03-derek-verificacion-cobros-1 Waiting 
+ Container s03-derek-verificacion-cobros-1 Healthy 

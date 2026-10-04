@@ -1,0 +1,7 @@
+Fecha local: 2026-10-03T21:27:57.808472-06:00
+Host: macOS-14.6.1-x86_64-i386-64bit
+Arquitectura: x86_64
+Python: 3.11.3
+SQLite: 3.40.1
+Docker cliente=29.4.1 servidor=29.4.1 arquitectura=amd64
+Docker Compose version v5.1.3

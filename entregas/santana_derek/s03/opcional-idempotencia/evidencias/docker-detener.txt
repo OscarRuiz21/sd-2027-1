@@ -1,0 +1,6 @@
+ Container s03-derek-verificacion-cobros-1 Stopping 
+ Container s03-derek-verificacion-cobros-1 Stopped 
+ Container s03-derek-verificacion-cobros-1 Removing 
+ Container s03-derek-verificacion-cobros-1 Removed 
+ Network s03-derek-verificacion_default Removing 
+ Network s03-derek-verificacion_default Removed 

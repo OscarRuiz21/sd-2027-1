@@ -1,0 +1,8 @@
+Python contenedor: 3.11.17
+SQLite contenedor: 3.46.1
+Arquitectura contenedor: x86_64
+journal_mode: wal
+Operaciones: 1
+Cobros: 1
+Registros: [('evidencia-s03-20261004', 'completada', 201, '{"cobro_id":"e166247a-9021-404e-bf32-0532b19f894e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}')]
+Integridad: ok

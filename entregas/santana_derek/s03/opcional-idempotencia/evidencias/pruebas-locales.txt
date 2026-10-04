@@ -1,0 +1,60 @@
+test_01_dos_solicitudes_http_simultaneas (__main__.Idempotencia.test_01_dos_solicitudes_http_simultaneas) ... 127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+ok
+test_02_doce_solicitudes_http_simultaneas (__main__.Idempotencia.test_02_doce_solicitudes_http_simultaneas) ... 127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:36] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:37] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:37] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:37] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:37] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:37] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:37] "POST /cobros HTTP/1.1" 201 -
+ok
+test_03_replay_exacto_despues_de_reabrir_base (__main__.Idempotencia.test_03_replay_exacto_despues_de_reabrir_base) ... 127.0.0.1 - - [03/Oct/2026 21:24:38] "POST /cobros HTTP/1.1" 201 -
+ok
+test_04_payload_distinto_no_cobra (__main__.Idempotencia.test_04_payload_distinto_no_cobra) ... 127.0.0.1 - - [03/Oct/2026 21:24:38] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:38] "POST /cobros HTTP/1.1" 409 -
+127.0.0.1 - - [03/Oct/2026 21:24:38] "POST /cobros HTTP/1.1" 201 -
+ok
+test_05_validacion_sin_reservar_claves (__main__.Idempotencia.test_05_validacion_sin_reservar_claves) ... 127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 400 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 415 -
+127.0.0.1 - - [03/Oct/2026 21:24:39] "POST /cobros HTTP/1.1" 413 -
+ok
+test_06_caida_despues_insert_hace_rollback (__main__.Idempotencia.test_06_caida_despues_insert_hace_rollback) ... 127.0.0.1 - - [03/Oct/2026 21:24:40] "POST /cobros HTTP/1.1" 201 -
+ok
+test_07_caida_despues_cobro_antes_commit_hace_rollback (__main__.Idempotencia.test_07_caida_despues_cobro_antes_commit_hace_rollback) ... 127.0.0.1 - - [03/Oct/2026 21:24:41] "POST /cobros HTTP/1.1" 201 -
+ok
+test_08_caida_despues_commit_antes_respuesta_reproduce (__main__.Idempotencia.test_08_caida_despues_commit_antes_respuesta_reproduce) ... 127.0.0.1 - - [03/Oct/2026 21:24:41] "POST /cobros HTTP/1.1" 201 -
+ok
+test_09_unique_impide_reserva_duplicada_directa (__main__.Idempotencia.test_09_unique_impide_reserva_duplicada_directa) ... 127.0.0.1 - - [03/Oct/2026 21:24:42] "POST /cobros HTTP/1.1" 201 -
+ok
+test_10_dos_procesos_comparten_base (__main__.Idempotencia.test_10_dos_procesos_comparten_base) ... ok
+test_11_claves_distintas_son_cobros_distintos (__main__.Idempotencia.test_11_claves_distintas_son_cobros_distintos) ... 127.0.0.1 - - [03/Oct/2026 21:24:44] "POST /cobros HTTP/1.1" 201 -
+127.0.0.1 - - [03/Oct/2026 21:24:44] "POST /cobros HTTP/1.1" 201 -
+ok
+test_12_base_ocupada_responde_503_y_reintento_funciona (__main__.Idempotencia.test_12_base_ocupada_responde_503_y_reintento_funciona) ... 127.0.0.1 - - [03/Oct/2026 21:24:49] "POST /cobros HTTP/1.1" 503 -
+127.0.0.1 - - [03/Oct/2026 21:24:50] "POST /cobros HTTP/1.1" 201 -
+ok
+test_13_map_ingenuo_demuestra_carrera (__main__.Idempotencia.test_13_map_ingenuo_demuestra_carrera) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 15.013s
+
+OK

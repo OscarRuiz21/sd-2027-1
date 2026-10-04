@@ -1,0 +1,10 @@
+Clave: evidencia-s03-20261004
+Solicitud simultánea 1: HTTP 201, Idempotency-Replayed=false
+{"cobro_id":"e166247a-9021-404e-bf32-0532b19f894e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+Solicitud simultánea 2: HTTP 201, Idempotency-Replayed=true
+{"cobro_id":"e166247a-9021-404e-bf32-0532b19f894e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+Reintento: HTTP 201, Idempotency-Replayed=true
+{"cobro_id":"e166247a-9021-404e-bf32-0532b19f894e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+Misma clave con otro monto: HTTP 409, Idempotency-Replayed=false
+{"error":"La clave ya fue utilizada con otros datos."}
+OK: dos solicitudes, mismo resultado; replay exacto y conflicto rechazado.

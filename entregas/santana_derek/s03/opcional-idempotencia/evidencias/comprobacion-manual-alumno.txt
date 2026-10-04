@@ -1,0 +1,24 @@
+Evidencia de la comprobación guiada realizada por Derek Santana.
+Origen: salida proporcionada por el alumno desde su checkout habitual.
+No se registró una hora exacta; esta transcripción no corresponde a una nueva ejecución del agente.
+
+Carpeta:
+/Users/derek/Documents/sd-2027-1-derek/entregas/santana_derek/s03/opcional-idempotencia
+
+Comandos ejecutados por el alumno:
+docker compose up -d --build --wait
+python3 probar_http.py
+
+El alumno reportó que Docker Compose terminó con Healthy.
+Salida exacta proporcionada de probar_http.py:
+
+Clave: demo-94ed2f6365ea4fef9d1846b9e4241aaa
+Solicitud simultánea 1: HTTP 201, Idempotency-Replayed=true
+{"cobro_id":"3e5a3fcf-7198-4f6b-a16f-8e8525fcbd9e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+Solicitud simultánea 2: HTTP 201, Idempotency-Replayed=false
+{"cobro_id":"3e5a3fcf-7198-4f6b-a16f-8e8525fcbd9e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+Reintento: HTTP 201, Idempotency-Replayed=true
+{"cobro_id":"3e5a3fcf-7198-4f6b-a16f-8e8525fcbd9e","estado":"simulado","moneda":"MXN","monto_centavos":12500,"referencia":"pedido-001"}
+Misma clave con otro monto: HTTP 409, Idempotency-Replayed=false
+{"error":"La clave ya fue utilizada con otros datos."}
+OK: dos solicitudes, mismo resultado; replay exacto y conflicto rechazado.
