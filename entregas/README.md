@@ -24,6 +24,50 @@ el final del curso (la rutina completa está en el
 Aquí se van apilando las **tareas**, la más reciente hasta arriba. Las **prácticas de
 laboratorio** no van aquí: cada una tiene su guía en [`labs/`](../labs/).
 
+### T03 · Una implementación real de sharding
+
+**Asignada en la S7 (3-oct) · entrega el sábado 10 de octubre, antes de las 07:00**
+
+En la clase vimos el sharding en abstracto: la llave de partición, por rango o por hash, el
+ruteo y el shard caliente. Esta tarea es para ver **cómo lo resuelve una tecnología de verdad**.
+
+**Qué haces.** Eliges **una tecnología que haga sharding** y escribes, con tus palabras:
+
+1. **Qué es** y para qué se usa.
+2. **Cómo reparte los datos**: ¿por rango, por hash o de otra forma? ¿Quién elige la llave?
+3. **Cómo encuentra el shard correcto** cuando llega una consulta: ¿quién guarda el mapa de qué
+   dato vive dónde?
+4. **Qué pasa cuando agregas un shard**: ¿se mueven los datos? ¿cuántos?
+5. **Qué hace con un shard caliente**, si hace algo.
+
+Al final, las fuentes que usaste. Te puedes apoyar en IA, pero lo que escribas tienes que poder
+explicarlo en clase.
+
+Algunas para elegir (no es obligatorio escoger de aquí): MongoDB, Cassandra, Vitess (MySQL),
+Citus (PostgreSQL), CockroachDB, Elasticsearch, Redis Cluster, DynamoDB.
+
+**Opcional, suma puntos:** levántala con Docker, crea una tabla o colección repartida en dos o
+más shards y muestra en qué shard quedó cada dato. Pon los comandos y la salida en tu README.
+
+**Dónde va:**
+
+```
+entregas/apellido_nombre/tareas/t03/README.md
+```
+
+```bash
+git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/tareas/t03
+# ... tu README.md ...
+git add entregas/apellido_nombre/tareas/t03
+git commit -m "T03: una implementación de sharding"
+git push
+```
+
+**No abras pull request**: el push ES la entrega. Tarde no baja puntos, pero queda registrado
+en tu tendencia (ver [`ENTREGAS.md`](../ENTREGAS.md)).
+
 ### T02 · Dos algoritmos de consenso que no son Raft
 
 **Asignada en la S5 (19-sep) · entrega el domingo 27 de septiembre, 23:59**
