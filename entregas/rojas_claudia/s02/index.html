@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mi primer contenedor</title>
+</head>
+<body style="font-family:sans-serif">
+  <h1>Hola, soy Claudia Rojas</h1>
+  <p>Esta página la sirve un contenedor que yo construí.</p>
+
+  <h2>Mis 5 comandos clave de Docker</h2>
+  <table border="1" style="border-collapse: collapse; width: 100%;">
+    <tr>
+      <th style="padding: 8px;">Comando</th>
+      <th style="padding: 8px;">¿Para qué sirve?</th>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>docker pull imagen</code></td>
+      <td style="padding: 8px;">Descarga la plantilla desde la tienda de Docker a mi computadora para tenerla lista, pero sin arrancarla.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>docker run [opciones] imagen</code></td>
+      <td style="padding: 8px;">Crea un contenedor nuevo a partir de una imagen y lo enciende al mismo tiempo. Las opciones me dejan conectarle puertos o ponerle un nombre.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>docker ps</code> / <code>-a</code></td>
+      <td style="padding: 8px;">Te muestra la lista de contenedores que están activos en este momento. Si le agregas el <code>-a</code>, te enseña absolutamente todos, incluyendo los apagados.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>docker exec -it nombre sh</code></td>
+      <td style="padding: 8px;">Abre una terminal directa hacia las entrañas del contenedor. Es como meterte "dentro" de él para buscar archivos o ver por qué falló algo.</td>
+    </tr>
+    <tr>
+      <td style="padding: 8px;"><code>docker build -t nombre .</code></td>
+      <td style="padding: 8px;">Cocina mi propia imagen empacando los archivos actuales siguiendo las instrucciones del <code>Dockerfile</code>. El <code>-t</code> le pone el nombre o etiqueta.</td>
+    </tr>
+  </table>
+</body>
+</html>
