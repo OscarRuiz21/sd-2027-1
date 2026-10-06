@@ -1,0 +1,33 @@
+{
+  "consultado_utc": "2026-10-06T14:38:12.564038+00:00",
+  "metodo": "GET de solo lectura con Python; no es captura de Postman",
+  "consultas": [
+    {
+      "url": "http://localhost:8085/actuator/health",
+      "http": 200,
+      "respuesta": {
+        "status": "UP",
+        "groups": [
+          "liveness",
+          "readiness"
+        ]
+      }
+    },
+    {
+      "url": "http://localhost:8085/cuentas/002180791238795820",
+      "http": 200,
+      "respuesta": {
+        "id": 1,
+        "clabe": "002180791238795820",
+        "titular": "Ana",
+        "saldo": 750.0
+      }
+    }
+  ],
+  "captura_intento": {
+    "archivo": "01-conservar-volver-arranque-lento.png",
+    "original": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-9aec8f49-03d2-40f9-9ca0-68a1bd47bcfb.png",
+    "sha256": "8834a5448fd489b34ae55f7ad3551eb4eb214cc78ab3f35f53503949b1525f3f",
+    "bytes_preservados": true
+  }
+}

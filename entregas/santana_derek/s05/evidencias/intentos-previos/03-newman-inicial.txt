@@ -1,0 +1,122 @@
+newman
+
+Mexi Banco v05.1
+
+❏ 1 · Arriba y respondiendo
+↳ Salud de la app
+  GET http://localhost:8085/actuator/health [200 OK, 241B, 74ms]
+  ✓  responde 200
+  ✓  status UP
+
+↳ Abrir cuenta origen (1000)
+  POST http://localhost:8085/cuentas [201 Created, 235B, 1513ms]
+  ✓  responde 201
+  ✓  saldo 1000
+
+↳ Consultar cuenta origen
+  GET http://localhost:8085/cuentas/002180791120502348 [200 OK, 233B, 78ms]
+  ✓  responde 200
+  ✓  saldo 1000
+
+❏ 2 · Transferencia interna
+↳ Abrir cuenta destino (500)
+  POST http://localhost:8085/cuentas [201 Created, 235B, 34ms]
+  ✓  responde 201
+  ✓  saldo 500
+
+↳ Transferir 200 de origen a destino
+  POST http://localhost:8085/transferencias [201 Created, 301B, 134ms]
+  ✓  responde 201
+
+↳ Consultar origen (800)
+  GET http://localhost:8085/cuentas/002180791120502348 [200 OK, 232B, 28ms]
+  ✓  responde 200
+  ✓  saldo 800
+
+↳ Consultar destino (700)
+  GET http://localhost:8085/cuentas/012180791120502348 [200 OK, 233B, 55ms]
+  ✓  responde 200
+  ✓  saldo 700
+
+↳ Consultar la transferencia
+  GET http://localhost:8085/transferencias/1 [200 OK, 296B, 109ms]
+  ✓  responde 200
+  ✓  monto 200
+
+❏ 3 · Idempotencia
+↳ SPEI de 50 (primer envío)
+  POST http://localhost:8085/spei [201 Created, 339B, 604ms]
+  ✓  responde 201
+  ✓  ENVIADO
+
+↳ SPEI de 50 (reintento, misma clave)
+  POST http://localhost:8085/spei [201 Created, 342B, 682ms]
+  ✓  responde 201
+  ✓  es el MISMO SPEI, no uno nuevo
+
+↳ Consultar origen (750, no 700)
+  GET http://localhost:8085/cuentas/002180791120502348 [200 OK, 232B, 89ms]
+  ✓  responde 200
+  ✓  saldo 750
+
+❏ 4 · El monolito por dentro
+↳ Estado de cuenta del origen
+  GET http://localhost:8085/movimientos?clabe=002180791120502348 [200 OK, 712B, 132ms]
+  ✓  responde 200
+  ✓  un solo SPEI_ENVIADO
+  ✓  los movimientos suman el saldo (750)
+
+↳ Avisos del origen
+  GET http://localhost:8085/notificaciones?clabe=002180791120502348 [200 OK, 453B, 69ms]
+  ✓  responde 200
+  ✓  un aviso por la transferencia y uno por el SPEI
+
+❏ 5 · Cuando algo sale mal
+↳ CLABE que no existe (404)
+  GET http://localhost:8085/cuentas/999999999999999999 [404 Not Found, 324B, 124ms]
+  ✓  responde 404
+
+↳ CLABE repetida (409)
+  POST http://localhost:8085/cuentas [409 Conflict, 318B, 46ms]
+  ✓  responde 409
+
+↳ Cuerpo sin clabe (400)
+  POST http://localhost:8085/cuentas [400 Bad Request, 242B, 88ms]
+  ✓  responde 400
+
+↳ Saldo insuficiente (422)
+  POST http://localhost:8085/transferencias [422 Unprocessable Entity (WebDAV) (RFC 4918), 366B, 37ms]
+  ✓  responde 422
+
+↳ Transferir a la misma cuenta (422)
+  POST http://localhost:8085/transferencias [422 Unprocessable Entity (WebDAV) (RFC 4918), 359B, 15ms]
+  ✓  responde 422
+
+↳ SPEI sin Idempotency-Key (400)
+  POST http://localhost:8085/spei [400 Bad Request, 239B, 43ms]
+  ✓  responde 400
+
+↳ Los errores no movieron el saldo (750)
+  GET http://localhost:8085/cuentas/002180791120502348 [200 OK, 232B, 39ms]
+  ✓  responde 200
+  ✓  saldo 750
+
+┌─────────────────────────┬─────────────────────┬────────────────────┐
+│                         │            executed │             failed │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              iterations │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│                requests │                  20 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│            test-scripts │                  20 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│      prerequest-scripts │                   1 │                  0 │
+├─────────────────────────┼─────────────────────┼────────────────────┤
+│              assertions │                  34 │                  0 │
+├─────────────────────────┴─────────────────────┴────────────────────┤
+│ total run duration: 4.4s                                           │
+├────────────────────────────────────────────────────────────────────┤
+│ total data received: 2.75kB (approx)                               │
+├────────────────────────────────────────────────────────────────────┤
+│ average response time: 199ms [min: 15ms, max: 1513ms, s.d.: 348ms] │
+└────────────────────────────────────────────────────────────────────┘

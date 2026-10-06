@@ -1,0 +1,91 @@
+ Image s05_santana_derek-app Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 518B done
+#1 DONE 0.0s
+
+#2 [internal] load build definition from Dockerfile
+#2 transferring dockerfile: 440B 0.0s done
+#2 DONE 0.0s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#3 ...
+
+#4 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#4 DONE 0.7s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#3 DONE 0.7s
+
+#5 [internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [internal] load build context
+#6 DONE 0.0s
+
+#7 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.1s done
+#7 DONE 0.1s
+
+#8 [builder 1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#8 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#8 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.1s done
+#8 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 3.38kB 0.0s done
+#6 DONE 0.0s
+
+#9 [builder 2/8] WORKDIR /app
+#9 CACHED
+
+#10 [builder 4/8] COPY mvnw .
+#10 CACHED
+
+#11 [builder 3/8] COPY pom.xml .
+#11 CACHED
+
+#12 [builder 5/8] COPY .mvn .mvn
+#12 CACHED
+
+#13 [builder 7/8] COPY src ./src
+#13 CACHED
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [builder 6/8] RUN ./mvnw dependency:go-offline -B
+#15 CACHED
+
+#16 [builder 8/8] RUN ./mvnw clean package -DskipTests
+#16 CACHED
+
+#17 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#17 CACHED
+
+#18 exporting to image
+#18 exporting layers 0.0s done
+#18 exporting manifest sha256:0d1b2124a69355f0198f2a4aec9b24a55126a6d0d48b01242415fd8040c38b64 done
+#18 exporting config sha256:bcf8018cd97665d2853a52752a010aa34c5a1e267888d751f8e8598ec30cb70a done
+#18 exporting attestation manifest sha256:2cd779c4cc5d87301c23a634799aa8628701593e7b70b3effe45af093fac3ea7
+#18 exporting attestation manifest sha256:2cd779c4cc5d87301c23a634799aa8628701593e7b70b3effe45af093fac3ea7 0.1s done
+#18 exporting manifest list sha256:7e8a11e40535de0361d6cf379a70df1e3a1da1288b62c6e9ed22eb4bc3c59a4f 0.0s done
+#18 naming to docker.io/library/s05_santana_derek-app:latest done
+#18 unpacking to docker.io/library/s05_santana_derek-app:latest
+#18 unpacking to docker.io/library/s05_santana_derek-app:latest 0.0s done
+#18 DONE 0.3s
+
+#19 resolving provenance for metadata file
+#19 DONE 0.1s
+ Image s05_santana_derek-app Built 
+ Container s05_santana_derek-db-1 Running 
+ Container s05_santana_derek-app-1 Recreate 
+ Container s05_santana_derek-app-1 Recreated 
+ Container s05_santana_derek-db-1 Waiting 
+ Container s05_santana_derek-db-1 Healthy 
+ Container s05_santana_derek-app-1 Starting 
+ Container s05_santana_derek-app-1 Started 
+ Container s05_santana_derek-app-1 Waiting 
+ Container s05_santana_derek-db-1 Waiting 
+ Container s05_santana_derek-db-1 Healthy 
+ Container s05_santana_derek-app-1 Healthy 

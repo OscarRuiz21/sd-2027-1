@@ -1,0 +1,23 @@
+2026-10-05T22:38:19.448762435Z 
+2026-10-05T22:38:19.448930116Z PostgreSQL Database directory appears to contain a database; Skipping initialization
+2026-10-05T22:38:19.448938958Z 
+2026-10-05T22:38:22.206557374Z 2026-10-05 22:38:22.206 UTC [1] LOG:  starting PostgreSQL 17.11 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+2026-10-05T22:38:22.215810541Z 2026-10-05 22:38:22.213 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+2026-10-05T22:38:22.219504321Z 2026-10-05 22:38:22.213 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+2026-10-05T22:38:22.245200474Z 2026-10-05 22:38:22.244 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+2026-10-05T22:38:22.349729928Z 2026-10-05 22:38:22.349 UTC [28] LOG:  database system was shut down at 2026-10-05 22:37:53 UTC
+2026-10-05T22:38:22.474697115Z 2026-10-05 22:38:22.473 UTC [1] LOG:  database system is ready to accept connections
+2026-10-05T22:43:22.420571751Z 2026-10-05 22:43:22.420 UTC [26] LOG:  checkpoint starting: time
+2026-10-05T22:43:23.049324744Z 2026-10-05 22:43:23.049 UTC [26] LOG:  checkpoint complete: wrote 9 buffers (0.1%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.616 s, sync=0.004 s, total=0.629 s; sync files=5, longest=0.002 s, average=0.001 s; distance=0 kB, estimate=0 kB; lsn=0/19A44C8, redo lsn=0/19A4470
+2026-10-06T02:01:42.673226685Z 2026-10-06 02:01:42.664 UTC [3207] LOG:  could not send data to client: Broken pipe
+2026-10-06T02:01:42.691498777Z 2026-10-06 02:01:42.681 UTC [3207] FATAL:  connection to client lost
+2026-10-06T08:37:21.140434093Z 2026-10-06 08:37:20.993 UTC [5639] LOG:  could not send data to client: Broken pipe
+2026-10-06T08:37:21.189662957Z 2026-10-06 08:37:21.155 UTC [5639] FATAL:  connection to client lost
+2026-10-06T09:22:44.828657394Z 2026-10-06 09:22:44.820 UTC [5751] FATAL:  canceling authentication due to timeout
+2026-10-06T11:57:51.944007604Z 2026-10-06 11:57:51.935 UTC [6138] LOG:  could not send data to client: Broken pipe
+2026-10-06T11:57:51.944048870Z 2026-10-06 11:57:51.935 UTC [6138] FATAL:  connection to client lost
+2026-10-06T13:58:40.172361332Z 2026-10-06 13:58:40.167 UTC [6452] LOG:  could not send data to client: Broken pipe
+2026-10-06T13:58:40.195469827Z 2026-10-06 13:58:40.180 UTC [6452] FATAL:  connection to client lost
+2026-10-06T14:11:49.842260223Z 2026-10-06 14:11:49.832 UTC [6469] LOG:  could not send data to client: Broken pipe
+2026-10-06T14:11:49.842302122Z 2026-10-06 14:11:49.832 UTC [6469] FATAL:  connection to client lost
+2026-10-06T14:20:02.565370762Z 2026-10-06 14:20:02.386 UTC [6492] FATAL:  canceling authentication due to timeout

@@ -1,0 +1,8 @@
+# Ajustes locales; se combina con el Compose original de v05.1.
+services:
+  app:
+    ports: !override
+      - "127.0.0.1:8085:8080"
+networks:
+  default:
+    name: s05_santana_derek

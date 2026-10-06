@@ -1,0 +1,299 @@
+[
+    {
+        "Id": "821df159d8cfb21ca80b16407ae09fc4d325cb26d81a386f4c320f8e5a92d5a8",
+        "Created": "2026-10-05T22:38:11.962194627Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 58939,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-05T22:38:15.063159239Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2026-10-06T14:37:47.104889387Z",
+                        "End": "2026-10-06T14:37:47.238691256Z",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2026-10-06T14:37:52.257320398Z",
+                        "End": "2026-10-06T14:37:52.490936868Z",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2026-10-06T14:37:57.491656867Z",
+                        "End": "2026-10-06T14:37:57.632948485Z",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2026-10-06T14:38:02.635520887Z",
+                        "End": "2026-10-06T14:38:02.806712032Z",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    },
+                    {
+                        "Start": "2026-10-06T14:38:07.812259327Z",
+                        "End": "2026-10-06T14:38:07.982977188Z",
+                        "ExitCode": 0,
+                        "Output": "/var/run/postgresql:5432 - accepting connections\n"
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+        "ResolvConfPath": "/var/lib/docker/containers/821df159d8cfb21ca80b16407ae09fc4d325cb26d81a386f4c320f8e5a92d5a8/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/821df159d8cfb21ca80b16407ae09fc4d325cb26d81a386f4c320f8e5a92d5a8/hostname",
+        "HostsPath": "/var/lib/docker/containers/821df159d8cfb21ca80b16407ae09fc4d325cb26d81a386f4c320f8e5a92d5a8/hosts",
+        "LogPath": "/var/lib/docker/containers/821df159d8cfb21ca80b16407ae09fc4d325cb26d81a386f4c320f8e5a92d5a8/821df159d8cfb21ca80b16407ae09fc4d325cb26d81a386f4c320f8e5a92d5a8-json.log",
+        "Name": "/s05_santana_derek-db-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": [
+                "s05_santana_derek_mexibanco_datos:/var/lib/postgresql/data:rw"
+            ],
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "s05_santana_derek",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [
+            {
+                "Type": "volume",
+                "Name": "s05_santana_derek_mexibanco_datos",
+                "Source": "/var/lib/docker/volumes/s05_santana_derek_mexibanco_datos/_data",
+                "Destination": "/var/lib/postgresql/data",
+                "Driver": "local",
+                "Mode": "rw",
+                "RW": true,
+                "Propagation": ""
+            }
+        ],
+        "Config": {
+            "Hostname": "821df159d8cf",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_USER=mexibanco",
+                "POSTGRES_PASSWORD=mexibanco",
+                "POSTGRES_DB=mexibanco",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOSU_VERSION=1.19",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=17",
+                "PG_VERSION=17.11",
+                "PG_SHA256=dd27f2b3c59e73ed14aa3324901242bf69a032a6347805f274e6260322d42979",
+                "DOCKER_PG_LLVM_DEPS=llvm21-dev \t\tclang21",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "pg_isready -U mexibanco -d mexibanco"
+                ],
+                "Interval": 5000000000,
+                "Timeout": 3000000000,
+                "Retries": 5
+            },
+            "Image": "postgres:17-alpine",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "/",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "81cda023a320590ab4009c3770141010e14023335a995f3608dbea337c098375",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "",
+                "com.docker.compose.image": "sha256:b0f9560a2de083e2cc7382e75f808c7381a32852a7ec49117deedb300e552b24",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "s05_santana_derek",
+                "com.docker.compose.project.config_files": "/tmp/mexi-banco-s05-derek/docker-compose.yml,/Users/derek/Documents/sd-2027-1-derek/entregas/santana_derek/s05/compose.s05.yaml",
+                "com.docker.compose.project.working_dir": "/tmp/mexi-banco-s05-derek",
+                "com.docker.compose.service": "db",
+                "com.docker.compose.version": "5.1.3"
+            },
+            "StopSignal": "SIGINT",
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "SandboxID": "ddfa29266a8e9b08dcc4bd084a22b4836d0922a3e67ac1124b99f3931f59396e",
+            "SandboxKey": "/var/run/docker/netns/ddfa29266a8e",
+            "Ports": {
+                "5432/tcp": null
+            },
+            "Networks": {
+                "s05_santana_derek": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "s05_santana_derek-db-1",
+                        "db"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "39b2fe94865f93d9cffae8f35bf6c215d7c0c96292e42bcd6880854639bfe167",
+                    "EndpointID": "c51ea7788548e51628c3ea0d0feb7ce2eeb3301d52ec94b401e5cc5faee3e561",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.2",
+                    "MacAddress": "a6:f9:99:54:d2:eb",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "s05_santana_derek-db-1",
+                        "db",
+                        "821df159d8cf"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:aa90e97ee862e558111d34cfb8b2c4bec768c2b039fb791341686928560263b3",
+            "size": 2866,
+            "annotations": {
+                "com.docker.official-images.bashbrew.arch": "amd64",
+                "org.opencontainers.image.base.digest": "sha256:d56c381f961d307a21b3ca004cf1e3910f106644aefb1f43e654c8a56c4fd395",
+                "org.opencontainers.image.base.name": "alpine:3.24",
+                "org.opencontainers.image.created": "2026-09-17T21:29:04Z",
+                "org.opencontainers.image.revision": "2603e26e245e558218728ee14e0a42dcb020dc7f",
+                "org.opencontainers.image.source": "https://github.com/docker-library/postgres.git#2603e26e245e558218728ee14e0a42dcb020dc7f:17/alpine3.24",
+                "org.opencontainers.image.url": "https://hub.docker.com/_/postgres",
+                "org.opencontainers.image.version": "17.11-alpine3.24"
+            },
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

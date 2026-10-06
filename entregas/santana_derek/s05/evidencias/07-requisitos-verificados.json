@@ -1,0 +1,16 @@
+{
+  "revision": "2026-10-05",
+  "main_actual": "736d00d65758cc17be7649ee60fec5bf6e0dfa55",
+  "main_inicial": "bb70d47b7ed4561aa589f9a5a2fe48118d615aef",
+  "guia_s05_sin_cambios": true,
+  "coleccion_sin_cambios": true,
+  "guia_sha256": "c8a5063fe4e7efe207afd7b125c691aa5a73b9be246f1f5aa98757842693f619",
+  "coleccion_oficial_sha256": "65f2f4ccf48afa02b10c4b7ac4bca66be0545e3929f616f5e95e896e5aa0bad6",
+  "postman_escritorio": "20 peticiones acreditadas con 21 capturas auténticas",
+  "capturas_obligatorias": "completas; conservación y borrado del volumen documentados manualmente",
+  "revision_cierre": "2026-10-06",
+  "test_results_exigidos_por_guia": false,
+  "test_results_manuales_capturados": false,
+  "seis_pasos_cubiertos": true,
+  "entrega_remota": "pendiente commit y push del alumno, sin PR"
+}

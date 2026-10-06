@@ -1,0 +1,36 @@
+{
+  "clabe": "002180791120702773",
+  "herramienta": "Python urllib para consulta complementaria; no Postman de escritorio",
+  "fecha": "2026-10-04T07:31:46.469946-06:00",
+  "antes": {
+    "url": "http://127.0.0.1:8085/cuentas/002180791120702773",
+    "status": 200,
+    "body": {
+      "id": 1,
+      "clabe": "002180791120702773",
+      "titular": "Ana",
+      "saldo": 750.0
+    }
+  },
+  "con_volumen": {
+    "url": "http://127.0.0.1:8085/cuentas/002180791120702773",
+    "status": 200,
+    "body": {
+      "id": 1,
+      "clabe": "002180791120702773",
+      "titular": "Ana",
+      "saldo": 750.0
+    }
+  },
+  "sin_volumen": {
+    "url": "http://127.0.0.1:8085/cuentas/002180791120702773",
+    "status": 404,
+    "body": {
+      "type": "about:blank",
+      "title": "Not Found",
+      "status": 404,
+      "detail": "No existe la CLABE 002180791120702773",
+      "instance": "/cuentas/002180791120702773"
+    }
+  }
+}

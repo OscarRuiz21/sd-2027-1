@@ -1,0 +1,170 @@
+[
+  {
+    "archivo": "01-salud.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-ef1ebd27-a909-440a-8a3b-af5d3e7241ba.png",
+    "sha256": "327d48ddbf9c17125a93834c7e31838df5c612ec12c23c5468f393816accba09",
+    "descripcion": "Salud de la aplicación",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "02-crear-origen.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-be529bac-854b-4ae4-b00a-d70d32425e0c.png",
+    "sha256": "03a93494918e0bf91d17f7f1e6d0d401a8a01aeb94e31c647f9efbb993b49321",
+    "descripcion": "Abrir cuenta origen: saldo 1000",
+    "http_observado": 201,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "03-consultar-origen.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-4ccc50f0-b075-4540-b4bc-c07078d085e0.png",
+    "sha256": "ba0ab5fd24221f84f0b6560abc7bbcc29a1a3b75c98648bd9c3c209096962efd",
+    "descripcion": "Consultar cuenta origen: saldo 1000",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "04-crear-destino.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-089029c0-6e11-4fc7-83a2-b3833102b787.png",
+    "sha256": "c0fba9d492b9f3d20e364511e211eeac95a0891fdb3f141ec083718363ce9523",
+    "descripcion": "Abrir cuenta destino: saldo 500",
+    "http_observado": 201,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "05-transferir.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-515ff772-eec2-40c8-bb8b-ebc0b5f323e4.png",
+    "sha256": "c07aa56b20b372a3d8f9c19161239e6d242e5be5096438bd4db5f4f443923cc5",
+    "descripcion": "Transferir 200: id 1",
+    "http_observado": 201,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "06-origen-800.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-abf0fecc-d011-4b58-a7ec-01b66e438ade.png",
+    "sha256": "9ec16cea0790edcde0d6fca0799f904130666260c6adb2938eafad94d354e25f",
+    "descripcion": "Origen después de transferir: saldo 800",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "07-destino-700.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-9cecb4f2-0fff-40d9-aafc-cfc308fc92cc.png",
+    "sha256": "09205cbf80c57482ce4ce5504682299cd98c311c66d86b1ac5ee1f6c201d68a3",
+    "descripcion": "Destino después de transferir: saldo 700",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "08-consultar-transferencia.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-faf7d976-e98c-4bda-bb71-fac46f8a33be.png",
+    "sha256": "0788ad36c24283ef85382b12f77ab9ee8b93c7968d352c85bf7274933a080c64",
+    "descripcion": "Consultar transferencia id 1: monto 200",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "09-spei-primer-envio.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-3b7e36f7-bb62-4392-ae26-77f669332925.png",
+    "sha256": "3d79c19ad2a8f708a9f6d823f1ab9ff949d63a19cd54638263d112d9eee1e689",
+    "descripcion": "Primer SPEI de 50: id 1, ENVIADO",
+    "http_observado": 201,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "10-spei-reintento.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-9ac2002e-d8a1-4129-a61c-9ab72f18ca16.png",
+    "sha256": "31c46cc0bd3e725da5403ec09d234e746b3820dcadeb4e9af3743b761f1b528a",
+    "descripcion": "Reintento SPEI: mismo id 1",
+    "http_observado": 201,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "11-origen-750.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-cc796c81-078d-44f2-8126-d486ae776914.png",
+    "sha256": "489ad461fc0e9410dd2afd695bc5e65539affdc6f139dcc92432b4bcfee09d15",
+    "descripcion": "Origen después del SPEI: saldo 750",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "12-movimientos-parte-1.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-53865a2f-29a0-4bf3-9384-8dca5027f06b.png",
+    "sha256": "5d3e0541ed013237a8f1d4d3485523eec8a034c8d736ee7dc99228bc4c3f0353",
+    "descripcion": "Movimientos del origen: primera parte",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "12-movimientos-parte-2.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-057fb042-911b-4e76-af72-5285670c2ad5.png",
+    "sha256": "ee3de1994d92889daa08190909ea2a238b8314960a8d6fb72a5412d48fc245fa",
+    "descripcion": "Movimientos del origen: segunda parte",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "13-avisos.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-8c457ab2-198d-47b7-ad95-f08cd8533fe4.png",
+    "sha256": "35b2b61b348b5ddb713005d8d5e6b60497c0fd65acaec1ce2df00d0f2393b34f",
+    "descripcion": "Avisos del origen: transferencia y SPEI",
+    "http_observado": 200,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "14-error-404.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-beb1690a-b1bf-4e46-8f85-1cd5958841fe.png",
+    "sha256": "3846107e3fbe4ba81ed128de28f5638db59adead9c90f1b531e95f87e6fc1758",
+    "descripcion": "CLABE inexistente",
+    "http_observado": 404,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "15-error-409.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-fe17f313-a594-4780-9144-ac38e5210b7c.png",
+    "sha256": "a7411ad2adbcae0671e2cae53cbdbdca4c5cf7dab79c239b2cea55c37a94307d",
+    "descripcion": "CLABE repetida",
+    "http_observado": 409,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "16-error-400-sin-clabe.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-969dbcd8-e8c1-4857-83af-79eb09887028.png",
+    "sha256": "cb0d5f9462e3b8fc368ec12e7e650377946514bfd35ca28afc2bdc6af4ad1555",
+    "descripcion": "Cuerpo sin CLABE",
+    "http_observado": 400,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "17-error-422-insuficiente.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-55cce933-5d5f-45ab-906d-a1ce053d97c3.png",
+    "sha256": "14c76692a2ec71e5dc1f5f65a2772503963a7b503c02aefe3d7c115ad3511a29",
+    "descripcion": "Saldo insuficiente",
+    "http_observado": 422,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "18-error-422-misma-cuenta.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-883c0a48-3e9d-4147-9368-d694a767b995.png",
+    "sha256": "8548a26609e2f8e126c2a7c89a139cb5ad5102048860eb367c833ac9075b034e",
+    "descripcion": "Transferencia a la misma cuenta",
+    "http_observado": 422,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "19-error-400-sin-key.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-b6dda473-f6b8-4b69-9e88-19ad8d2258af.png",
+    "sha256": "7a5b9e832f1a320a1d0ef4f8440187a11c1511b4c742d4f5635d1d9018c38643",
+    "descripcion": "SPEI sin Idempotency-Key",
+    "http_observado": 400,
+    "pixels_editados": false
+  },
+  {
+    "archivo": "20-saldo-final-750.png",
+    "origen": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-93cb9e28-651c-47a3-b7e6-ebbb6dd1d58d.png",
+    "sha256": "dbe26b53907e310aabd849e86da270c21f0b9ed6a5fa45dff5eff88a5369545e",
+    "descripcion": "Los errores no movieron el saldo: 750",
+    "http_observado": 200,
+    "pixels_editados": false
+  }
+]

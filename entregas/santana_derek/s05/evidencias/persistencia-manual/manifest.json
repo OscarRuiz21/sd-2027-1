@@ -1,0 +1,38 @@
+[
+  {
+    "archivo": "01-estado-healthy-con-volumen.png",
+    "descripcion": "Terminal: app y db healthy tras conservar el volumen",
+    "original": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-2020a3c8-9945-47f9-b83b-e5dac1fc19d6.png",
+    "sha256": "aa030f020ce4bbf4451e4e3f97c6159614b768ce46dd5e98996780b855fa7d6f",
+    "bytes_preservados": true,
+    "revision_visual": true,
+    "fecha_recepcion": "2026-10-06"
+  },
+  {
+    "archivo": "02-postman-misma-cuenta-750.png",
+    "descripcion": "Postman: misma cuenta y saldo 750 tras conservar el volumen",
+    "original": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-767c4836-e545-4632-9f03-32e22abd8cbb.png",
+    "sha256": "8c99c67f3a0de3cc62e9a3f46fa1bf5ba3bedc729db7aeba7b31327d48d02619",
+    "bytes_preservados": true,
+    "revision_visual": true,
+    "fecha_recepcion": "2026-10-06"
+  },
+  {
+    "archivo": "03-terminal-borrado-volumen-healthy.png",
+    "descripcion": "Terminal: volumen S05 eliminado y servicios recreados healthy",
+    "original": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-d4127e76-f7b7-43c0-984c-24010aaa5b2d.png",
+    "sha256": "14556db9262e0f6b271bcc315119c45fbbbb071ff8ec271350edd64531d1049c",
+    "bytes_preservados": true,
+    "revision_visual": true,
+    "fecha_recepcion": "2026-10-06"
+  },
+  {
+    "archivo": "04-postman-misma-clabe-404.png",
+    "descripcion": "Postman: misma CLABE responde 404 después de borrar el volumen",
+    "original": "/var/folders/c4/cn2h24c101n7xkxzqcg24x3r0000gn/T/codex-clipboard-a8d4dc69-a8b7-49db-bbce-f85631d78716.png",
+    "sha256": "478d1a5b8eb04196750321dcb6eda244d007d178a21dd37aea051985af097151",
+    "bytes_preservados": true,
+    "revision_visual": true,
+    "fecha_recepcion": "2026-10-06"
+  }
+]

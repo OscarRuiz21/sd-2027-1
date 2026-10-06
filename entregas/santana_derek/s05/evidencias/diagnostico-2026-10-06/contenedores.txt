@@ -1,0 +1,9 @@
+aa13b2ded89e	s05_santana_derek-app-1	Up 16 hours (healthy)
+821df159d8cf	s05_santana_derek-db-1	Up 16 hours (healthy)
+6360ee942d34	s04_santana_derek-web-1	Up 2 days
+ac2e65d50110	s04_santana_derek-db-1	Up 2 days (healthy)
+cd6c43c66200	s04_santana_derek-broker-1	Up 2 days
+3bc4a4e41e7d	s04_santana_derek-cache-1	Up 2 days
+4c23f7a760ed	opcional-idempotencia-cobros-1	Up 2 days (healthy)
+b8e00b17320e	derek-s02-sitio	Up 2 days
+c1ff3fd97a51	derek-s02-sitio2	Up 2 days

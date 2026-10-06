@@ -1,0 +1,10 @@
+{
+  "fecha": "2026-10-06",
+  "archivos_previos_s02_s03_s04_verificados": 32,
+  "archivos_previos_sin_cambios": true,
+  "contenedores_previos_mismos_ids": true,
+  "contenedores_previos_verificados": 7,
+  "alcance_escrituras": "entregas/santana_derek/s05/",
+  "commit_push_pr_realizados": false,
+  "volumen_s05_no_borrado_durante_diagnostico": true
+}

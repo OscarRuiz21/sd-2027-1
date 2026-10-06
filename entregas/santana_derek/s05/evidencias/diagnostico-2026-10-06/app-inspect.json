@@ -1,0 +1,286 @@
+[
+    {
+        "Id": "aa13b2ded89e2ca0acc716c6aa2afa58c4ab369fc1d347d0edfee109a31be8ec",
+        "Created": "2026-10-05T22:38:13.080713137Z",
+        "Path": "java",
+        "Args": [
+            "-jar",
+            "app.jar"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 59077,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-05T22:38:23.722035206Z",
+            "FinishedAt": "0001-01-01T00:00:00Z",
+            "Health": {
+                "Status": "healthy",
+                "FailingStreak": 0,
+                "Log": [
+                    {
+                        "Start": "2026-10-06T14:37:21.4587757Z",
+                        "End": "2026-10-06T14:37:21.600624984Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-06T14:37:31.604889104Z",
+                        "End": "2026-10-06T14:37:31.8691921Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-06T14:37:41.871507777Z",
+                        "End": "2026-10-06T14:37:42.226162812Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-06T14:37:52.237413722Z",
+                        "End": "2026-10-06T14:37:52.532353799Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    },
+                    {
+                        "Start": "2026-10-06T14:38:02.534744758Z",
+                        "End": "2026-10-06T14:38:02.726456905Z",
+                        "ExitCode": 0,
+                        "Output": ""
+                    }
+                ]
+            }
+        },
+        "Image": "sha256:7e8a11e40535de0361d6cf379a70df1e3a1da1288b62c6e9ed22eb4bc3c59a4f",
+        "ResolvConfPath": "/var/lib/docker/containers/aa13b2ded89e2ca0acc716c6aa2afa58c4ab369fc1d347d0edfee109a31be8ec/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/aa13b2ded89e2ca0acc716c6aa2afa58c4ab369fc1d347d0edfee109a31be8ec/hostname",
+        "HostsPath": "/var/lib/docker/containers/aa13b2ded89e2ca0acc716c6aa2afa58c4ab369fc1d347d0edfee109a31be8ec/hosts",
+        "LogPath": "/var/lib/docker/containers/aa13b2ded89e2ca0acc716c6aa2afa58c4ab369fc1d347d0edfee109a31be8ec/aa13b2ded89e2ca0acc716c6aa2afa58c4ab369fc1d347d0edfee109a31be8ec-json.log",
+        "Name": "/s05_santana_derek-app-1",
+        "RestartCount": 0,
+        "Driver": "overlayfs",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "s05_santana_derek",
+            "PortBindings": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "8085"
+                    }
+                ]
+            },
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": null,
+            "DnsSearch": null,
+            "ExtraHosts": [],
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": null,
+            "BlkioDeviceReadBps": null,
+            "BlkioDeviceWriteBps": null,
+            "BlkioDeviceReadIOps": null,
+            "BlkioDeviceWriteIOps": null,
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": null,
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "Storage": {
+            "RootFS": {
+                "Snapshot": {
+                    "Name": "overlayfs"
+                }
+            }
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "aa13b2ded89e",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "ExposedPorts": {
+                "8080/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "DB_HOST=db",
+                "DB_PORT=5432",
+                "DB_NAME=mexibanco",
+                "DB_USER=mexibanco",
+                "DB_PASSWORD=mexibanco",
+                "PATH=/opt/java/openjdk/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "JAVA_HOME=/opt/java/openjdk",
+                "LANG=en_US.UTF-8",
+                "LANGUAGE=en_US:en",
+                "LC_ALL=en_US.UTF-8",
+                "JAVA_VERSION=jdk-21.0.12.1+1"
+            ],
+            "Cmd": null,
+            "Healthcheck": {
+                "Test": [
+                    "CMD-SHELL",
+                    "wget -qO- http://localhost:8080/actuator/health | grep -q UP || exit 1"
+                ],
+                "Interval": 10000000000,
+                "Timeout": 3000000000,
+                "Retries": 5
+            },
+            "Image": "s05_santana_derek-app",
+            "Volumes": null,
+            "WorkingDir": "/app",
+            "Entrypoint": [
+                "java",
+                "-jar",
+                "app.jar"
+            ],
+            "Labels": {
+                "com.docker.compose.config-hash": "2a9049d9c6b6cf599400466a5baf6c37d2d6131236fe1cf07423ab04446c04ff",
+                "com.docker.compose.container-number": "1",
+                "com.docker.compose.depends_on": "db:service_healthy:false",
+                "com.docker.compose.image": "sha256:7e8a11e40535de0361d6cf379a70df1e3a1da1288b62c6e9ed22eb4bc3c59a4f",
+                "com.docker.compose.oneoff": "False",
+                "com.docker.compose.project": "s05_santana_derek",
+                "com.docker.compose.project.config_files": "/tmp/mexi-banco-s05-derek/docker-compose.yml,/Users/derek/Documents/sd-2027-1-derek/entregas/santana_derek/s05/compose.s05.yaml",
+                "com.docker.compose.project.working_dir": "/tmp/mexi-banco-s05-derek",
+                "com.docker.compose.service": "app",
+                "com.docker.compose.version": "5.1.3"
+            },
+            "StopTimeout": 1
+        },
+        "NetworkSettings": {
+            "SandboxID": "4e6207821bd2571ca909bd04159d93eac48c964f1a0a590a2ce35e5092960178",
+            "SandboxKey": "/var/run/docker/netns/4e6207821bd2",
+            "Ports": {
+                "8080/tcp": [
+                    {
+                        "HostIp": "127.0.0.1",
+                        "HostPort": "8085"
+                    }
+                ]
+            },
+            "Networks": {
+                "s05_santana_derek": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": [
+                        "s05_santana_derek-app-1",
+                        "app"
+                    ],
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "39b2fe94865f93d9cffae8f35bf6c215d7c0c96292e42bcd6880854639bfe167",
+                    "EndpointID": "a7e45d9ee91eb2576b9b70bc371e55dc627d7057472bdcfe4f146a5bad39e817",
+                    "Gateway": "172.20.0.1",
+                    "IPAddress": "172.20.0.3",
+                    "MacAddress": "52:2c:19:e8:8e:0d",
+                    "IPPrefixLen": 16,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "s05_santana_derek-app-1",
+                        "app",
+                        "aa13b2ded89e"
+                    ]
+                }
+            }
+        },
+        "ImageManifestDescriptor": {
+            "mediaType": "application/vnd.oci.image.manifest.v1+json",
+            "digest": "sha256:0d1b2124a69355f0198f2a4aec9b24a55126a6d0d48b01242415fd8040c38b64",
+            "size": 1624,
+            "platform": {
+                "architecture": "amd64",
+                "os": "linux"
+            }
+        }
+    }
+]

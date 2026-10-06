@@ -1,0 +1,69 @@
+
+2026-10-04T07:30:03.492209-06:00 bash s05.sh conservar
+ Container s05_santana_derek-app-1 Stopping 
+ Container s05_santana_derek-app-1 Stopped 
+ Container s05_santana_derek-app-1 Removing 
+ Container s05_santana_derek-app-1 Removed 
+ Container s05_santana_derek-db-1 Stopping 
+ Container s05_santana_derek-db-1 Stopped 
+ Container s05_santana_derek-db-1 Removing 
+ Container s05_santana_derek-db-1 Removed 
+ Network s05_santana_derek Removing 
+ Network s05_santana_derek Removed 
+
+2026-10-04T07:30:05.399056-06:00 bash s05.sh volver
+ Network s05_santana_derek Creating 
+ Network s05_santana_derek Created 
+ Container s05_santana_derek-db-1 Creating 
+ Container s05_santana_derek-db-1 Created 
+ Container s05_santana_derek-app-1 Creating 
+ Container s05_santana_derek-app-1 Created 
+ Container s05_santana_derek-db-1 Starting 
+ Container s05_santana_derek-db-1 Started 
+ Container s05_santana_derek-db-1 Waiting 
+ Container s05_santana_derek-db-1 Healthy 
+ Container s05_santana_derek-app-1 Starting 
+ Container s05_santana_derek-app-1 Started 
+ Container s05_santana_derek-app-1 Waiting 
+ Container s05_santana_derek-db-1 Waiting 
+ Container s05_santana_derek-db-1 Healthy 
+ Container s05_santana_derek-app-1 Healthy 
+
+2026-10-04T07:30:45.166266-06:00 bash s05.sh estado
+NAME                      IMAGE                   COMMAND                  SERVICE   CREATED          STATUS                    PORTS
+s05_santana_derek-app-1   s05_santana_derek-app   "java -jar app.jar"      app       39 seconds ago   Up 32 seconds (healthy)   127.0.0.1:8085->8080/tcp
+s05_santana_derek-db-1    postgres:17-alpine      "docker-entrypoint.s…"   db        39 seconds ago   Up 38 seconds (healthy)   5432/tcp
+
+2026-10-04T07:30:46.092327-06:00 bash s05.sh borrar-solo-s05
+ Container s05_santana_derek-app-1 Stopping 
+ Container s05_santana_derek-app-1 Stopped 
+ Container s05_santana_derek-app-1 Removing 
+ Container s05_santana_derek-app-1 Removed 
+ Container s05_santana_derek-db-1 Stopping 
+ Container s05_santana_derek-db-1 Stopped 
+ Container s05_santana_derek-db-1 Removing 
+ Container s05_santana_derek-db-1 Removed 
+ Volume s05_santana_derek_mexibanco_datos Removing 
+ Network s05_santana_derek Removing 
+ Volume s05_santana_derek_mexibanco_datos Removed 
+ Network s05_santana_derek Removed 
+
+2026-10-04T07:30:47.603253-06:00 bash s05.sh volver
+ Network s05_santana_derek Creating 
+ Network s05_santana_derek Created 
+ Volume s05_santana_derek_mexibanco_datos Creating 
+ Volume s05_santana_derek_mexibanco_datos Created 
+ Container s05_santana_derek-db-1 Creating 
+ Container s05_santana_derek-db-1 Created 
+ Container s05_santana_derek-app-1 Creating 
+ Container s05_santana_derek-app-1 Created 
+ Container s05_santana_derek-db-1 Starting 
+ Container s05_santana_derek-db-1 Started 
+ Container s05_santana_derek-db-1 Waiting 
+ Container s05_santana_derek-db-1 Healthy 
+ Container s05_santana_derek-app-1 Starting 
+ Container s05_santana_derek-app-1 Started 
+ Container s05_santana_derek-db-1 Waiting 
+ Container s05_santana_derek-app-1 Waiting 
+ Container s05_santana_derek-db-1 Healthy 
+container s05_santana_derek-app-1 exited (143)

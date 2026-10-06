@@ -1,0 +1,79 @@
+{
+  "fecha": "2026-10-05",
+  "herramienta": "Postman de escritorio manejado por el alumno",
+  "capturas_originales": 21,
+  "peticiones": 20,
+  "origen": "002180791238795820",
+  "destino": "012180791238795820",
+  "titulares": {
+    "origen": "Ana",
+    "destino": "Beto"
+  },
+  "saldos_iniciales": {
+    "origen": 1000,
+    "destino": 500
+  },
+  "transferencia": {
+    "id": 1,
+    "monto": 200,
+    "origen_despues": 800,
+    "destino_despues": 700
+  },
+  "spei": {
+    "id": 1,
+    "monto": 50,
+    "estado": "ENVIADO",
+    "idempotencyKey": "prueba-791238795820",
+    "reintento_mismo_id": true,
+    "saldo_origen_despues": 750
+  },
+  "movimientos": [
+    {
+      "tipo": "DEPOSITO",
+      "monto": 1000
+    },
+    {
+      "tipo": "TRANSFERENCIA_ENVIADA",
+      "monto": -200
+    },
+    {
+      "tipo": "SPEI_ENVIADO",
+      "monto": -50
+    }
+  ],
+  "avisos": 2,
+  "errores_http": [
+    404,
+    409,
+    400,
+    422,
+    422,
+    400
+  ],
+  "saldo_final_origen": 750,
+  "test_results_capturados": false,
+  "aserciones_aprobadas_en_escritorio": null,
+  "persistencia_manual": {
+    "con_volumen": {
+      "estado": "acreditada con capturas auténticas de Terminal y Postman",
+      "clabe": "002180791238795820",
+      "http": 200,
+      "id": 1,
+      "titular": "Ana",
+      "saldo": 750,
+      "app_db_healthy": true,
+      "capturas": "persistencia-manual/manifest.json"
+    },
+    "sin_volumen": {
+      "estado": "acreditada con capturas auténticas de Terminal y Postman",
+      "volumen_eliminado": "s05_santana_derek_mexibanco_datos",
+      "app_db_recreados_healthy": true,
+      "clabe": "002180791238795820",
+      "http": 404,
+      "detalle": "No existe la CLABE 002180791238795820",
+      "resultado_esperado": true
+    }
+  },
+  "capturas_revisadas_visualmente": true,
+  "imagenes_editadas": false
+}
