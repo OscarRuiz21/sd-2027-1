@@ -1,0 +1,56 @@
+services:
+
+  # -------------------------
+  # CONFIG SERVER
+  # -------------------------
+  config:
+    image: mongo:8.0
+    container_name: mongo-config
+    command: mongod --configsvr --replSet configRS --port 27019 --bind_ip_all
+    volumes:
+      - config_data:/data/db
+    ports:
+      - "27019:27019"
+
+  # -------------------------
+  # SHARD 1
+  # -------------------------
+  shard1:
+    image: mongo:8.0
+    container_name: mongo-shard1
+    command: mongod --shardsvr --replSet shard1RS --port 27018 --bind_ip_all
+    volumes:
+      - shard1_data:/data/db
+    ports:
+      - "27018:27018"
+
+  # -------------------------
+  # SHARD 2
+  # -------------------------
+  shard2:
+    image: mongo:8.0
+    container_name: mongo-shard2
+    command: mongod --shardsvr --replSet shard2RS --port 27020 --bind_ip_all
+    volumes:
+      - shard2_data:/data/db
+    ports:
+      - "27020:27020"
+
+  # -------------------------
+  # MONGOS
+  # -------------------------
+  mongos:
+    image: mongo:8.0
+    container_name: mongo-mongos
+    command: mongos --configdb configRS/config:27019 --bind_ip_all --port 27017
+    depends_on:
+      - config
+      - shard1
+      - shard2
+    ports:
+      - "27017:27017"
+
+volumes:
+  config_data:
+  shard1_data:
+  shard2_data:
