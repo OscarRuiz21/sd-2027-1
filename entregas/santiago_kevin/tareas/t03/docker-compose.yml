@@ -1,0 +1,35 @@
+name: t03-mongodb
+
+services:
+  configsvr:
+    image: mongo:7.0
+    command: ["mongod", "--configsvr", "--replSet", "configRS", "--port", "27019", "--bind_ip_all", "--wiredTigerCacheSizeGB", "0.25"]
+    volumes:
+      - config_data:/data/db
+      - config_meta:/data/configdb
+
+  shard1:
+    image: mongo:7.0
+    command: ["mongod", "--shardsvr", "--replSet", "shard1RS", "--port", "27018", "--bind_ip_all", "--wiredTigerCacheSizeGB", "0.25"]
+    volumes:
+      - shard1_data:/data/db
+
+  shard2:
+    image: mongo:7.0
+    command: ["mongod", "--shardsvr", "--replSet", "shard2RS", "--port", "27018", "--bind_ip_all", "--wiredTigerCacheSizeGB", "0.25"]
+    volumes:
+      - shard2_data:/data/db
+
+  mongos:
+    image: mongo:7.0
+    command: ["mongos", "--configdb", "configRS/configsvr:27019", "--port", "27017", "--bind_ip_all"]
+    depends_on:
+      - configsvr
+      - shard1
+      - shard2
+
+volumes:
+  config_data:
+  config_meta:
+  shard1_data:
+  shard2_data:
