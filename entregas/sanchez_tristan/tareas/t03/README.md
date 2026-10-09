@@ -31,7 +31,7 @@ docker compose up -d
 ```
 Para entrar al coordinador:
 ```bash
-docker exec -it t03_coordinador_1 psql -U postgres
+docker exec -it <nombreDeCarpeta>_coordinador_1 psql -U postgres
 ```
 
 Una vez dentro del coordinador, debemos ejecutar los siguientes comandos:
