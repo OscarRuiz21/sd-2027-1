@@ -1,0 +1,98 @@
+2026-10-09T08:01:05-06:00
+
+
+=== 3. Transferir 200 de Ana a Beto (misma puerta: POST /api/transferencias) ===
+$ curl -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' -d '{"claveOrigen":"002180009155446501","claveDestino":"002180009155446502","monto":200}'
+{
+  "id": 1,
+  "claveOrigen": "002180009155446501",
+  "claveDestino": "002180009155446502",
+  "monto": 200,
+  "fecha": "2026-10-09T14:01:11.250148636Z"
+}
+[HTTP 201]
+-> transferencia llamo a http://cuenta (un nombre, sin puerto). A que replicas fue cada llamada:
+   cuenta-3  GET /cuentas/002180009155446501 atendida por 78256663b634
+   cuenta-1  GET /cuentas/002180009155446502 atendida por 751b38af2a1d
+   cuenta-2  POST /cuentas/002180009155446501/cargos atendida por bcb71561796f
+   cuenta-3  POST /cuentas/002180009155446502/abonos atendida por 78256663b634
+-> consulta de origen y destino, cargo y abono: cada llamada la reparte el balanceador de transferencia
+
+
+
+=== 5. Saldos: el dinero no se crea ni se pierde ===
+$ curl http://localhost:8080/api/cuentas/002180009155446501
+{
+  "id": 2,
+  "clabe": "002180009155446501",
+  "titular": "Ana",
+  "saldo": 800.00
+}
+[HTTP 200]
+$ curl http://localhost:8080/api/cuentas/002180009155446502
+{
+  "id": 3,
+  "clabe": "002180009155446502",
+  "titular": "Beto",
+  "saldo": 700.00
+}
+[HTTP 200]
+-> Ana 800.00 + Beto 700.00 = 1500.00 (antes: 1000 + 500 = 1500). Esperado: 800 y 700
+
+
+
+=== 7. SPEI de 50 con Idempotency-Key, dos veces (POST /api/spei) ===
+$ curl -X POST http://localhost:8080/api/spei -H 'Content-Type: application/json' -H 'Idempotency-Key: spei-demo-91554465' -d '{"claveOrigen":"002180009155446501","bancoDestino":"BANCO-X","claveDestino":"012180000000000009","monto":50}'
+{
+  "id": 1,
+  "idempotencyKey": "spei-demo-91554465",
+  "claveOrigen": "002180009155446501",
+  "bancoDestino": "BANCO-X",
+  "claveDestino": "012180000000000009",
+  "monto": 50,
+  "estado": "ENVIADO"
+}
+[HTTP 201]
+$ curl -X POST http://localhost:8080/api/spei -H 'Content-Type: application/json' -H 'Idempotency-Key: spei-demo-91554465' -d '{"claveOrigen":"002180009155446501","bancoDestino":"BANCO-X","claveDestino":"012180000000000009","monto":50}'
+{
+  "id": 1,
+  "idempotencyKey": "spei-demo-91554465",
+  "claveOrigen": "002180009155446501",
+  "bancoDestino": "BANCO-X",
+  "claveDestino": "012180000000000009",
+  "monto": 50.00,
+  "estado": "ENVIADO"
+}
+[HTTP 201]
+-> mismo id (1 -> 1): no se cobro dos veces. Saldo de Ana: 750.00 (esperado 750)
+
+
+
+=== 10. Errores de negocio, por la puerta, con el mismo codigo que dio cuenta ===
+$ curl -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' -d '{"claveOrigen":"002180009155446501","claveDestino":"002180009155446599","monto":10}'
+{
+  "type": "about:blank",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "No existe la CLABE 002180009155446599",
+  "instance": "/transferencias",
+  "servicio": "cuenta"
+}
+[HTTP 404]
+$ curl -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' -d '{"claveOrigen":"002180009155446501","claveDestino":"002180009155446502","monto":99999}'
+{
+  "type": "about:blank",
+  "title": "Unprocessable Entity",
+  "status": 422,
+  "detail": "Saldo insuficiente en la CLABE 002180009155446501",
+  "instance": "/transferencias",
+  "servicio": "cuenta"
+}
+[HTTP 422]
+
+
+
+=== 11. Los saldos no se movieron con los errores ===
+-> Ana 750.00 (esperado 750) + Beto 700.00 (esperado 700) = 1450.00; SPEI se llevo 50 a otro banco
+
+Fin. Para ver cuanto tarda el directorio en enterarse de una caida: ./demo-v06.sh --latido

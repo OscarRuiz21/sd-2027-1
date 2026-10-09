@@ -1,0 +1,41 @@
+2026-10-09T00:12:27-06:00
+
+$ docker compose ps
+NAME                             IMAGE                          COMMAND                  SERVICE         CREATED          STATUS                    PORTS
+mexi-banco-v06-cuenta-1          mexi-banco-v06-cuenta          "java -jar app.jar"      cuenta          26 seconds ago   Up 19 seconds (healthy)   0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp
+mexi-banco-v06-db-1              postgres:17-alpine             "docker-entrypoint.s…"   db              26 seconds ago   Up 25 seconds (healthy)   5432/tcp
+mexi-banco-v06-movimiento-1      mexi-banco-v06-movimiento      "java -jar app.jar"      movimiento      26 seconds ago   Up 19 seconds (healthy)   0.0.0.0:8082->8080/tcp, [::]:8082->8080/tcp
+mexi-banco-v06-notificacion-1    mexi-banco-v06-notificacion    "java -jar app.jar"      notificacion    26 seconds ago   Up 19 seconds (healthy)   0.0.0.0:8084->8080/tcp, [::]:8084->8080/tcp
+mexi-banco-v06-spei-1            mexi-banco-v06-spei            "java -jar app.jar"      spei            26 seconds ago   Up 19 seconds (healthy)   0.0.0.0:8085->8080/tcp, [::]:8085->8080/tcp
+mexi-banco-v06-transferencia-1   mexi-banco-v06-transferencia   "java -jar app.jar"      transferencia   26 seconds ago   Up 19 seconds (healthy)   0.0.0.0:8083->8080/tcp, [::]:8083->8080/tcp
+
+
+2026-10-09T00:12:27-06:00
+GET http://localhost:8761
+HTTP 0
+<urlopen error [Errno 61] Connection refused>
+
+2026-10-09T00:12:27-06:00
+GET http://localhost:8081/cuentas/000
+HTTP 404
+X-Instancia: 112d54e56140
+Content-Type: application/problem+json
+{
+  "type": "about:blank",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "No existe la CLABE 000",
+  "instance": "/cuentas/000"
+}
+
+2026-10-09T00:12:27-06:00
+POST http://localhost:8082/movimientos
+HTTP 400
+Content-Type: application/problem+json
+{
+  "type": "about:blank",
+  "title": "Bad Request",
+  "status": 400,
+  "detail": "Failed to read request",
+  "instance": "/movimientos"
+}

@@ -1,0 +1,54 @@
+2026-10-09T00:15:41-06:00
+
+$ docker compose ps
+NAME                             IMAGE                          COMMAND                  SERVICE         CREATED          STATUS                    PORTS
+mexi-banco-v06-cuenta-1          mexi-banco-v06-cuenta          "java -jar app.jar"      cuenta          42 seconds ago   Up 35 seconds (healthy)   0.0.0.0:8081->8080/tcp, [::]:8081->8080/tcp
+mexi-banco-v06-db-1              postgres:17-alpine             "docker-entrypoint.s…"   db              3 minutes ago    Up 3 minutes (healthy)    5432/tcp
+mexi-banco-v06-discovery-1       mexi-banco-v06-discovery       "java -jar app.jar"      discovery       43 seconds ago   Up 41 seconds (healthy)   0.0.0.0:8761->8761/tcp, [::]:8761->8761/tcp
+mexi-banco-v06-movimiento-1      mexi-banco-v06-movimiento      "java -jar app.jar"      movimiento      42 seconds ago   Up 35 seconds (healthy)   0.0.0.0:8082->8080/tcp, [::]:8082->8080/tcp
+mexi-banco-v06-notificacion-1    mexi-banco-v06-notificacion    "java -jar app.jar"      notificacion    42 seconds ago   Up 35 seconds (healthy)   0.0.0.0:8084->8080/tcp, [::]:8084->8080/tcp
+mexi-banco-v06-spei-1            mexi-banco-v06-spei            "java -jar app.jar"      spei            42 seconds ago   Up 35 seconds (healthy)   0.0.0.0:8085->8080/tcp, [::]:8085->8080/tcp
+mexi-banco-v06-transferencia-1   mexi-banco-v06-transferencia   "java -jar app.jar"      transferencia   42 seconds ago   Up 35 seconds (healthy)   0.0.0.0:8083->8080/tcp, [::]:8083->8080/tcp
+
+
+2026-10-09T00:15:41-06:00
+GET http://localhost:8761/eureka/apps/CUENTA
+HTTP 200
+Content-Type: application/xml
+<application>
+  <name>CUENTA</name>
+  <instance>
+    <instanceId>f3da6c5592f0:cuenta:8080</instanceId>
+    <hostName>172.21.0.8</hostName>
+    <app>CUENTA</app>
+    <ipAddr>172.21.0.8</ipAddr>
+    <status>UP</status>
+    <overriddenstatus>UNKNOWN</overriddenstatus>
+    <port enabled="true">8080</port>
+    <securePort enabled="false">443</securePort>
+    <countryId>1</countryId>
+    <dataCenterInfo class="com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo">
+      <name>MyOwn</name>
+    </dataCenterInfo>
+    <leaseInfo>
+      <renewalIntervalInSecs>5</renewalIntervalInSecs>
+      <durationInSecs>15</durationInSecs>
+      <registrationTimestamp>1791526522822</registrationTimestamp>
+      <lastRenewalTimestamp>1791526542723</lastRenewalTimestamp>
+      <evictionTimestamp>0</evictionTimestamp>
+      <serviceUpTimestamp>1791526522183</serviceUpTimestamp>
+    </leaseInfo>
+    <metadata>
+      <management.port>8080</management.port>
+    </metadata>
+    <homePageUrl>http://172.21.0.8:8080/</homePageUrl>
+    <statusPageUrl>http://172.21.0.8:8080/actuator/info</statusPageUrl>
+    <healthCheckUrl>http://172.21.0.8:8080/actuator/health</healthCheckUrl>
+    <vipAddress>cuenta</vipAddress>
+    <secureVipAddress>cuenta</secureVipAddress>
+    <isCoordinatingDiscoveryServer>false</isCoordinatingDiscoveryServer>
+    <lastUpdatedTimestamp>1791526522822</lastUpdatedTimestamp>
+    <lastDirtyTimestamp>1791526522138</lastDirtyTimestamp>
+    <actionType>ADDED</actionType>
+  </instance>
+</application>

@@ -1,0 +1,16 @@
+Inicio: 2026-10-09T07:59:49-06:00
+Registro UP (3): 2026-10-09T07:59:59-06:00
+Tiempo: 10.58 s
+
+$ docker compose ps
+NAME                             IMAGE                          COMMAND                  SERVICE         CREATED       STATUS                             PORTS
+mexi-banco-v06-cuenta-1          mexi-banco-v06-cuenta          "java -jar app.jar"      cuenta          8 hours ago   Up 10 seconds (health: starting)   8080/tcp
+mexi-banco-v06-cuenta-2          mexi-banco-v06-cuenta          "java -jar app.jar"      cuenta          8 hours ago   Up 8 hours (healthy)               8080/tcp
+mexi-banco-v06-cuenta-3          mexi-banco-v06-cuenta          "java -jar app.jar"      cuenta          8 hours ago   Up 8 hours (healthy)               8080/tcp
+mexi-banco-v06-db-1              postgres:17-alpine             "docker-entrypoint.s…"   db              8 hours ago   Up 8 hours (healthy)               5432/tcp
+mexi-banco-v06-discovery-1       mexi-banco-v06-discovery       "java -jar app.jar"      discovery       8 hours ago   Up 8 hours (healthy)               0.0.0.0:8761->8761/tcp, [::]:8761->8761/tcp
+mexi-banco-v06-gateway-1         mexi-banco-v06-gateway         "java -jar app.jar"      gateway         8 hours ago   Up 8 hours (healthy)               0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp
+mexi-banco-v06-movimiento-1      mexi-banco-v06-movimiento      "java -jar app.jar"      movimiento      8 hours ago   Up 8 hours (healthy)               8080/tcp
+mexi-banco-v06-notificacion-1    mexi-banco-v06-notificacion    "java -jar app.jar"      notificacion    8 hours ago   Up 8 hours (healthy)               8080/tcp
+mexi-banco-v06-spei-1            mexi-banco-v06-spei            "java -jar app.jar"      spei            8 hours ago   Up 8 hours (healthy)               8080/tcp
+mexi-banco-v06-transferencia-1   mexi-banco-v06-transferencia   "java -jar app.jar"      transferencia   8 hours ago   Up 8 hours (healthy)               8080/tcp

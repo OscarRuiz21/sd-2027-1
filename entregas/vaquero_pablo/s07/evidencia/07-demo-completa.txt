@@ -1,0 +1,190 @@
+2026-10-09T08:01:05-06:00
+
+=== 0. Esperar a que el directorio conozca a todos y la puerta encuentre a cuenta ===
+-> listo en 1 s. Lo que sabe el directorio (http://localhost:8761/eureka/apps):
+   CUENTA         3 instancia(s)
+   GATEWAY        1 instancia(s)
+   MOVIMIENTO     1 instancia(s)
+   NOTIFICACION   1 instancia(s)
+   SPEI           1 instancia(s)
+   TRANSFERENCIA  1 instancia(s)
+-> 404 de cuenta (no 503 del gateway) para una CLABE que no existe: la puerta ya sabe llegar
+
+=== 1. Abrir la cuenta de Ana con 1000 (por la puerta: POST /api/cuentas) ===
+$ curl -X POST http://localhost:8080/api/cuentas -H 'Content-Type: application/json' -d '{"clabe":"002180009155446501","titular":"Ana","saldoInicial":1000}'
+{
+  "id": 2,
+  "clabe": "002180009155446501",
+  "titular": "Ana",
+  "saldo": 1000
+}
+[HTTP 201]
+-> el gateway quito /api y lo mando a lb://cuenta: a una de sus tres replicas
+
+=== 2. Abrir la cuenta de Beto con 500 (misma puerta) ===
+$ curl -X POST http://localhost:8080/api/cuentas -H 'Content-Type: application/json' -d '{"clabe":"002180009155446502","titular":"Beto","saldoInicial":500}'
+{
+  "id": 3,
+  "clabe": "002180009155446502",
+  "titular": "Beto",
+  "saldo": 500
+}
+[HTTP 201]
+
+=== 3. Transferir 200 de Ana a Beto (misma puerta: POST /api/transferencias) ===
+$ curl -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' -d '{"claveOrigen":"002180009155446501","claveDestino":"002180009155446502","monto":200}'
+{
+  "id": 1,
+  "claveOrigen": "002180009155446501",
+  "claveDestino": "002180009155446502",
+  "monto": 200,
+  "fecha": "2026-10-09T14:01:11.250148636Z"
+}
+[HTTP 201]
+-> transferencia llamo a http://cuenta (un nombre, sin puerto). A que replicas fue cada llamada:
+   cuenta-3  GET /cuentas/002180009155446501 atendida por 78256663b634
+   cuenta-1  GET /cuentas/002180009155446502 atendida por 751b38af2a1d
+   cuenta-2  POST /cuentas/002180009155446501/cargos atendida por bcb71561796f
+   cuenta-3  POST /cuentas/002180009155446502/abonos atendida por 78256663b634
+-> consulta de origen y destino, cargo y abono: cada llamada la reparte el balanceador de transferencia
+
+=== 4. Consultar esa transferencia ===
+$ curl http://localhost:8080/api/transferencias/1
+{
+  "id": 1,
+  "claveOrigen": "002180009155446501",
+  "claveDestino": "002180009155446502",
+  "monto": 200.00,
+  "fecha": "2026-10-09T14:01:11.250149Z"
+}
+[HTTP 200]
+
+=== 5. Saldos: el dinero no se crea ni se pierde ===
+$ curl http://localhost:8080/api/cuentas/002180009155446501
+{
+  "id": 2,
+  "clabe": "002180009155446501",
+  "titular": "Ana",
+  "saldo": 800.00
+}
+[HTTP 200]
+$ curl http://localhost:8080/api/cuentas/002180009155446502
+{
+  "id": 3,
+  "clabe": "002180009155446502",
+  "titular": "Beto",
+  "saldo": 700.00
+}
+[HTTP 200]
+-> Ana 800.00 + Beto 700.00 = 1500.00 (antes: 1000 + 500 = 1500). Esperado: 800 y 700
+
+=== 6. Estado de cuenta de Ana y avisos de Beto (GET /api/movimientos, GET /api/notificaciones) ===
+$ curl http://localhost:8080/api/movimientos?clabe=002180009155446501
+[
+  {
+    "id": 3,
+    "clabeCuenta": "002180009155446501",
+    "tipo": "TRANSFERENCIA_ENVIADA",
+    "monto": -200.00,
+    "saldoResultante": 800.00,
+    "fecha": "2026-10-09T14:01:11.228910Z",
+    "referencia": "a 002180009155446502"
+  },
+  {
+    "id": 1,
+    "clabeCuenta": "002180009155446501",
+    "tipo": "DEPOSITO",
+    "monto": 1000.00,
+    "saldoResultante": 1000.00,
+    "fecha": "2026-10-09T14:01:07.729015Z",
+    "referencia": "saldo inicial"
+  }
+]
+[HTTP 200]
+$ curl http://localhost:8080/api/notificaciones?clabe=002180009155446502
+[
+  {
+    "id": 2,
+    "clabeCuenta": "002180009155446502",
+    "mensaje": "TRANSFERENCIA_RECIBIDA por 200, saldo resultante 700.00",
+    "fecha": "2026-10-09T14:01:11.970520Z"
+  }
+]
+[HTTP 200]
+
+=== 7. SPEI de 50 con Idempotency-Key, dos veces (POST /api/spei) ===
+$ curl -X POST http://localhost:8080/api/spei -H 'Content-Type: application/json' -H 'Idempotency-Key: spei-demo-91554465' -d '{"claveOrigen":"002180009155446501","bancoDestino":"BANCO-X","claveDestino":"012180000000000009","monto":50}'
+{
+  "id": 1,
+  "idempotencyKey": "spei-demo-91554465",
+  "claveOrigen": "002180009155446501",
+  "bancoDestino": "BANCO-X",
+  "claveDestino": "012180000000000009",
+  "monto": 50,
+  "estado": "ENVIADO"
+}
+[HTTP 201]
+$ curl -X POST http://localhost:8080/api/spei -H 'Content-Type: application/json' -H 'Idempotency-Key: spei-demo-91554465' -d '{"claveOrigen":"002180009155446501","bancoDestino":"BANCO-X","claveDestino":"012180000000000009","monto":50}'
+{
+  "id": 1,
+  "idempotencyKey": "spei-demo-91554465",
+  "claveOrigen": "002180009155446501",
+  "bancoDestino": "BANCO-X",
+  "claveDestino": "012180000000000009",
+  "monto": 50.00,
+  "estado": "ENVIADO"
+}
+[HTTP 201]
+-> mismo id (1 -> 1): no se cobro dos veces. Saldo de Ana: 750.00 (esperado 750)
+
+=== 8. Round robin: 9 consultas seguidas a la misma cuenta, por la misma puerta ===
+   consulta 1  X-Instancia: bcb71561796f  (mexi-banco-v06-cuenta-2)
+   consulta 2  X-Instancia: 751b38af2a1d  (mexi-banco-v06-cuenta-1)
+   consulta 3  X-Instancia: 78256663b634  (mexi-banco-v06-cuenta-3)
+   consulta 4  X-Instancia: bcb71561796f  (mexi-banco-v06-cuenta-2)
+   consulta 5  X-Instancia: 751b38af2a1d  (mexi-banco-v06-cuenta-1)
+   consulta 6  X-Instancia: 78256663b634  (mexi-banco-v06-cuenta-3)
+   consulta 7  X-Instancia: bcb71561796f  (mexi-banco-v06-cuenta-2)
+   consulta 8  X-Instancia: 751b38af2a1d  (mexi-banco-v06-cuenta-1)
+   consulta 9  X-Instancia: 78256663b634  (mexi-banco-v06-cuenta-3)
+-> 3 replicas distintas en 9 consultas; 0 veces se repitio la misma dos veces seguidas
+-> el cliente no sabe cuantas replicas hay ni donde estan: solo conoce el 8080
+
+=== 9. Los endpoints internos no tienen puerta ===
+$ curl -X POST http://localhost:8080/api/cuentas/002180009155446501/abonos -H 'Content-Type: application/json' -d '{"monto":1000000}'
+{
+  "timestamp": "2026-10-09T14:01:16.264+00:00",
+  "path": "/api/cuentas/002180009155446501/abonos",
+  "status": 404,
+  "error": "Not Found",
+  "requestId": "34c5bd18-379"
+}
+[HTTP 404]
+-> 404: el gateway no tiene ruta para /cargos ni /abonos. Adentro de la red siguen abiertos (seguridad: mas adelante)
+
+=== 10. Errores de negocio, por la puerta, con el mismo codigo que dio cuenta ===
+$ curl -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' -d '{"claveOrigen":"002180009155446501","claveDestino":"002180009155446599","monto":10}'
+{
+  "type": "about:blank",
+  "title": "Not Found",
+  "status": 404,
+  "detail": "No existe la CLABE 002180009155446599",
+  "instance": "/transferencias",
+  "servicio": "cuenta"
+}
+[HTTP 404]
+$ curl -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' -d '{"claveOrigen":"002180009155446501","claveDestino":"002180009155446502","monto":99999}'
+{
+  "type": "about:blank",
+  "title": "Unprocessable Entity",
+  "status": 422,
+  "detail": "Saldo insuficiente en la CLABE 002180009155446501",
+  "instance": "/transferencias",
+  "servicio": "cuenta"
+}
+[HTTP 422]
+
+=== 11. Los saldos no se movieron con los errores ===
+-> Ana 750.00 (esperado 750) + Beto 700.00 (esperado 700) = 1450.00; SPEI se llevo 50 a otro banco
+
+Fin. Para ver cuanto tarda el directorio en enterarse de una caida: ./demo-v06.sh --latido

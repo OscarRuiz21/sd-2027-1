@@ -1,0 +1,424 @@
+diff --git a/cuenta/pom.xml b/cuenta/pom.xml
+index 2aeeb25..bde45d9 100644
+--- a/cuenta/pom.xml
++++ b/cuenta/pom.xml
+@@ -44,12 +44,10 @@
+ 		<!-- TODO H1: descomenta el bloque de abajo (borra la linea que abre el comentario y la que lo
+ 		     cierra). Es el cliente de Eureka: al arrancar, el servicio se registra en el directorio
+ 		     con su spring.application.name y manda latidos. Trae tambien el balanceador que usa H3. -->
+-		<!--
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 		</dependency>
+-		-->
+ 		<dependency>
+ 			<groupId>org.postgresql</groupId>
+ 			<artifactId>postgresql</artifactId>
+diff --git a/discovery/src/main/java/mx/mexibanco/DiscoveryApplication.java b/discovery/src/main/java/mx/mexibanco/DiscoveryApplication.java
+index 24b784b..402b0c7 100644
+--- a/discovery/src/main/java/mx/mexibanco/DiscoveryApplication.java
++++ b/discovery/src/main/java/mx/mexibanco/DiscoveryApplication.java
+@@ -1,6 +1,7 @@
+ package mx.mexibanco;
+ 
+ import org.springframework.boot.SpringApplication;
++import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
+ /**
+@@ -11,10 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
+  * Dashboard: http://localhost:8761
+  */
+ @SpringBootApplication
+-// TODO H1: esta aplicacion todavia no es un directorio. Agrega la anotacion que la convierte en
+-// servidor Eureka (paquete org.springframework.cloud.netflix.eureka.server; la dependencia ya
+-// esta en el pom). Sin ella la aplicacion ni siquiera arranca: el cliente de Eureka que trae el
+-// starter busca un servidor que no existe y truena con NullPointerException en EurekaRegistration.
++@EnableEurekaServer
+ public class DiscoveryApplication {
+ 
+ 	public static void main(String[] args) {
+diff --git a/discovery/src/main/resources/application.yml b/discovery/src/main/resources/application.yml
+index a8f0a8e..f08b760 100644
+--- a/discovery/src/main/resources/application.yml
++++ b/discovery/src/main/resources/application.yml
+@@ -7,10 +7,8 @@ spring:
+ 
+ eureka:
+   client:
+-    # TODO H1: el directorio es el unico servidor, asi que no debe registrarse en si mismo ni pedir
+-    # la lista a nadie. Agrega aqui las dos propiedades (register-with-eureka y fetch-registry)
+-    # en false. Sin ellas intenta hablar con un Eureka en localhost:8761 (el mismo) y llena el log
+-    # de errores. Con varios servidores Eureka en cluster si se registrarian entre ellos.
++    register-with-eureka: false
++    fetch-registry: false
+   server:
+     # Cada cuanto barre el registro para sacar a quien dejo de mandar latidos. Por omision 60 s.
+     eviction-interval-timer-in-ms: ${EUREKA_BARRIDO_MS:60000}
+diff --git a/discovery/src/test/java/mx/mexibanco/DiscoveryApplicationTest.java b/discovery/src/test/java/mx/mexibanco/DiscoveryApplicationTest.java
+index 205d67c..0c32438 100644
+--- a/discovery/src/test/java/mx/mexibanco/DiscoveryApplicationTest.java
++++ b/discovery/src/test/java/mx/mexibanco/DiscoveryApplicationTest.java
+@@ -1,6 +1,5 @@
+ package mx.mexibanco;
+ 
+-import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Test;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.test.context.SpringBootTest;
+@@ -19,10 +18,6 @@ import static org.assertj.core.api.Assertions.assertThat;
+  * El directorio arranca solo (sin base ni otros servicios) y responde su API REST de registro.
+  * Levanta el servidor en un puerto al azar: no choca con un Eureka que ya este corriendo.
+  */
+-// TODO H1 (comprobacion): cuando termines H1, borra @Disabled y corre ./mvnw test en discovery.
+-// Va sobre la clase y no sobre el metodo porque Spring levanta el contexto al crear la clase de
+-// prueba, y sin @EnableEurekaServer el contexto ni siquiera arranca.
+-@Disabled("Pasa cuando discovery ya es servidor Eureka (H1)")
+ @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+ class DiscoveryApplicationTest {
+ 
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 4cd5819..9b5c262 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -36,8 +36,8 @@ x-servicio: &servicio
+     # TODO H1: descomenta estas dos lineas para que los servicios esperen al directorio antes de
+     # arrancar (no es obligatorio, el cliente de Eureka reintenta solo, pero el registro sale al
+     # primer intento y el log no se llena de "Connection refused").
+-    # discovery:
+-    #   condition: service_healthy
++    discovery:
++      condition: service_healthy
+   healthcheck:
+     test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health | grep -q UP || exit 1"]
+     interval: 5s
+@@ -67,40 +67,40 @@ services:
+   # TODO H1: descomenta el servicio discovery (el directorio). Publicado en el 8761 solo para ver el
+   # dashboard. Antes completa los TODO H1 de discovery/: sin @EnableEurekaServer el contenedor
+   # se cae al arrancar.
+-  # discovery:
+-  #   build: ./discovery
+-  #   ports:
+-  #     - "8761:8761"
+-  #   environment:
+-  #     # Barrer cada 5 s (60 s por omision), refrescar lo que ven los clientes cada 5 s (30 s)
+-  #     # y sin autopreservacion (por eso el aviso rojo del dashboard; ver README).
+-  #     EUREKA_BARRIDO_MS: ${EUREKA_BARRIDO_MS:-5000}
+-  #     EUREKA_CACHE_MS: ${EUREKA_CACHE_MS:-5000}
+-  #     EUREKA_AUTOPRESERVACION: ${EUREKA_AUTOPRESERVACION:-false}
+-  #   healthcheck:
+-  #     test: ["CMD-SHELL", "wget -qO- http://localhost:8761/actuator/health | grep -q UP || exit 1"]
+-  #     interval: 5s
+-  #     timeout: 3s
+-  #     retries: 5
+-  #     start_period: 90s
++  discovery:
++    build: ./discovery
++    ports:
++      - "8761:8761"
++    environment:
++      # Barrer cada 5 s (60 s por omision), refrescar lo que ven los clientes cada 5 s (30 s)
++      # y sin autopreservacion (por eso el aviso rojo del dashboard; ver README).
++      EUREKA_BARRIDO_MS: ${EUREKA_BARRIDO_MS:-5000}
++      EUREKA_CACHE_MS: ${EUREKA_CACHE_MS:-5000}
++      EUREKA_AUTOPRESERVACION: ${EUREKA_AUTOPRESERVACION:-false}
++    healthcheck:
++      test: ["CMD-SHELL", "wget -qO- http://localhost:8761/actuator/health | grep -q UP || exit 1"]
++      interval: 5s
++      timeout: 3s
++      retries: 5
++      start_period: 90s
+ 
+   # TODO H2: descomenta el servicio gateway (la unica puerta). Antes completa las rutas en
+   # gateway/src/main/resources/application.yml.
+-  # gateway:
+-  #   build: ./gateway
+-  #   ports:
+-  #     - "8080:8080"
+-  #   environment:
+-  #     <<: *directorio
+-  #   depends_on:
+-  #     discovery:
+-  #       condition: service_healthy
+-  #   healthcheck:
+-  #     test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health | grep -q UP || exit 1"]
+-  #     interval: 5s
+-  #     timeout: 3s
+-  #     retries: 5
+-  #     start_period: 120s
++  gateway:
++    build: ./gateway
++    ports:
++      - "8080:8080"
++    environment:
++      <<: *directorio
++    depends_on:
++      discovery:
++        condition: service_healthy
++    healthcheck:
++      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health | grep -q UP || exit 1"]
++      interval: 5s
++      timeout: 3s
++      retries: 5
++      start_period: 120s
+ 
+   # Cuentas y saldos. Llama a movimiento para asentar el saldo inicial.
+   cuenta:
+@@ -111,8 +111,8 @@ services:
+     #     replicas: 3
+     # Tres contenedores no pueden publicar el mismo puerto 8081 de tu maquina, y ya no hace falta:
+     # desde afuera se llega por el gateway (H2).
+-    ports:
+-      - "8081:8080"
++    deploy:
++      replicas: 3
+     environment:
+       <<: *entorno-base
+       DB_NAME: cuenta
+@@ -122,8 +122,6 @@ services:
+   movimiento:
+     <<: *servicio
+     build: ./movimiento
+-    ports:
+-      - "8082:8080"
+     environment:
+       <<: *entorno-base
+       DB_NAME: movimiento
+@@ -132,8 +130,6 @@ services:
+   transferencia:
+     <<: *servicio
+     build: ./transferencia
+-    ports:
+-      - "8083:8080"
+     environment:
+       <<: *entorno-base
+       DB_NAME: transferencia
+@@ -141,9 +137,9 @@ services:
+       # http://notificacion. Solo funciona con el RestClient.Builder @LoadBalanced (TODO H3 en
+       # transferencia/.../clientes/ClientesHttp.java); sin el, "cuenta" se resuelve por DNS al
+       # puerto 80 y la transferencia responde 503.
+-      CUENTA_URL: http://cuenta:8080
+-      MOVIMIENTO_URL: http://movimiento:8080
+-      NOTIFICACION_URL: http://notificacion:8080
++      CUENTA_URL: http://cuenta
++      MOVIMIENTO_URL: http://movimiento
++      NOTIFICACION_URL: http://notificacion
+       # Solo para la demo de "lo que se rompio al partir" (ver README). 0 = sin pausa.
+       PAUSA_ENTRE_CARGO_Y_ABONO_MS: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:-0}
+ 
+@@ -151,8 +147,6 @@ services:
+   notificacion:
+     <<: *servicio
+     build: ./notificacion
+-    ports:
+-      - "8084:8080"
+     environment:
+       <<: *entorno-base
+       DB_NAME: notificacion
+@@ -161,8 +155,6 @@ services:
+   spei:
+     <<: *servicio
+     build: ./spei
+-    ports:
+-      - "8085:8080"
+     environment:
+       <<: *entorno-base
+       DB_NAME: spei
+diff --git a/gateway/src/main/resources/application.yml b/gateway/src/main/resources/application.yml
+index 7be63c8..aaf7a00 100644
+--- a/gateway/src/main/resources/application.yml
++++ b/gateway/src/main/resources/application.yml
+@@ -26,13 +26,33 @@ spring:
+             - Path=/api/cuentas,/api/cuentas/{clabe}
+           filters:
+             - StripPrefix=1
+-        # TODO H2: faltan cuatro rutas, una por servicio, con la misma forma que la de cuenta:
+-        #   movimiento     GET  /api/movimientos                          -> lb://movimiento
+-        #   transferencia       /api/transferencias y /api/transferencias/{id} -> lb://transferencia
+-        #   notificacion   GET  /api/notificaciones                       -> lb://notificacion
+-        #   spei           POST /api/spei                                 -> lb://spei
+-        # Para movimiento y notificacion agrega el predicado Method=GET, y para spei Method=POST:
+-        # asi los POST internos (/movimientos, /notificaciones) siguen sin puerta.
++        - id: movimiento
++          uri: lb://movimiento
++          predicates:
++            - Path=/api/movimientos
++            - Method=GET
++          filters:
++            - StripPrefix=1
++        - id: transferencia
++          uri: lb://transferencia
++          predicates:
++            - Path=/api/transferencias,/api/transferencias/{id}
++          filters:
++            - StripPrefix=1
++        - id: notificacion
++          uri: lb://notificacion
++          predicates:
++            - Path=/api/notificaciones
++            - Method=GET
++          filters:
++            - StripPrefix=1
++        - id: spei
++          uri: lb://spei
++          predicates:
++            - Path=/api/spei
++            - Method=POST
++          filters:
++            - StripPrefix=1
+     loadbalancer:
+       cache:
+         # Cuanto tiempo guarda el balanceador la lista de instancias que le dio Eureka (35 s por
+diff --git a/gateway/src/test/java/mx/mexibanco/RutasGatewayTest.java b/gateway/src/test/java/mx/mexibanco/RutasGatewayTest.java
+index 0648bc2..c4c9071 100644
+--- a/gateway/src/test/java/mx/mexibanco/RutasGatewayTest.java
++++ b/gateway/src/test/java/mx/mexibanco/RutasGatewayTest.java
+@@ -1,6 +1,5 @@
+ package mx.mexibanco;
+ 
+-import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Test;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWebTestClient;
+@@ -29,8 +28,6 @@ class RutasGatewayTest {
+ 	@Autowired
+ 	WebTestClient cliente;
+ 
+-	// TODO H2 (comprobacion): cuando termines las rutas, borra @Disabled y corre ./mvnw test en gateway.
+-	@Disabled("Pasa cuando esten las cinco rutas (H2)")
+ 	@Test
+ 	void hayUnaRutaPorServicioYTodasVanPorElDirectorio() {
+ 		List<Route> todas = rutas.getRoutes().collectList().block();
+@@ -41,8 +38,6 @@ class RutasGatewayTest {
+ 		assertThat(todas).allSatisfy(ruta -> assertThat(ruta.getUri().getHost()).isEqualTo(ruta.getId()));
+ 	}
+ 
+-	// TODO H2 (comprobacion): cuando termines las rutas, borra @Disabled y corre ./mvnw test en gateway.
+-	@Disabled("Pasa cuando esten las cinco rutas (H2)")
+ 	@Test
+ 	void losEndpointsPublicosTienenPuerta() {
+ 		cliente.get().uri("/api/cuentas/002180000000000001").exchange().expectStatus().isEqualTo(503);
+diff --git a/movimiento/pom.xml b/movimiento/pom.xml
+index 053cec2..f72cdff 100644
+--- a/movimiento/pom.xml
++++ b/movimiento/pom.xml
+@@ -44,12 +44,10 @@
+ 		<!-- TODO H1: descomenta el bloque de abajo (borra la linea que abre el comentario y la que lo
+ 		     cierra). Es el cliente de Eureka: al arrancar, el servicio se registra en el directorio
+ 		     con su spring.application.name y manda latidos. Trae tambien el balanceador que usa H3. -->
+-		<!--
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 		</dependency>
+-		-->
+ 		<dependency>
+ 			<groupId>org.postgresql</groupId>
+ 			<artifactId>postgresql</artifactId>
+diff --git a/notificacion/pom.xml b/notificacion/pom.xml
+index 8788640..5b24436 100644
+--- a/notificacion/pom.xml
++++ b/notificacion/pom.xml
+@@ -44,12 +44,10 @@
+ 		<!-- TODO H1: descomenta el bloque de abajo (borra la linea que abre el comentario y la que lo
+ 		     cierra). Es el cliente de Eureka: al arrancar, el servicio se registra en el directorio
+ 		     con su spring.application.name y manda latidos. Trae tambien el balanceador que usa H3. -->
+-		<!--
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 		</dependency>
+-		-->
+ 		<dependency>
+ 			<groupId>org.postgresql</groupId>
+ 			<artifactId>postgresql</artifactId>
+diff --git a/spei/pom.xml b/spei/pom.xml
+index 331a463..89f39ea 100644
+--- a/spei/pom.xml
++++ b/spei/pom.xml
+@@ -44,12 +44,10 @@
+ 		<!-- TODO H1: descomenta el bloque de abajo (borra la linea que abre el comentario y la que lo
+ 		     cierra). Es el cliente de Eureka: al arrancar, el servicio se registra en el directorio
+ 		     con su spring.application.name y manda latidos. Trae tambien el balanceador que usa H3. -->
+-		<!--
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 		</dependency>
+-		-->
+ 		<dependency>
+ 			<groupId>org.postgresql</groupId>
+ 			<artifactId>postgresql</artifactId>
+diff --git a/transferencia/pom.xml b/transferencia/pom.xml
+index c598f15..9bfd4af 100644
+--- a/transferencia/pom.xml
++++ b/transferencia/pom.xml
+@@ -44,12 +44,10 @@
+ 		<!-- TODO H1: descomenta el bloque de abajo (borra la linea que abre el comentario y la que lo
+ 		     cierra). Es el cliente de Eureka: al arrancar, el servicio se registra en el directorio
+ 		     con su spring.application.name y manda latidos. Trae tambien el balanceador que usa H3. -->
+-		<!--
+ 		<dependency>
+ 			<groupId>org.springframework.cloud</groupId>
+ 			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+ 		</dependency>
+-		-->
+ 		<dependency>
+ 			<groupId>org.postgresql</groupId>
+ 			<artifactId>postgresql</artifactId>
+diff --git a/transferencia/src/main/java/mx/mexibanco/clientes/ClientesHttp.java b/transferencia/src/main/java/mx/mexibanco/clientes/ClientesHttp.java
+index 22fc4f7..8251388 100644
+--- a/transferencia/src/main/java/mx/mexibanco/clientes/ClientesHttp.java
++++ b/transferencia/src/main/java/mx/mexibanco/clientes/ClientesHttp.java
+@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.JsonNode;
+ import com.fasterxml.jackson.databind.ObjectMapper;
+ import mx.mexibanco.compartido.ErrorRemotoException;
+ import org.springframework.boot.web.client.RestClientCustomizer;
++import org.springframework.boot.autoconfigure.web.client.RestClientBuilderConfigurer;
++import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+ import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Configuration;
+ import org.springframework.http.HttpStatusCode;
+@@ -41,13 +43,11 @@ public class ClientesHttp {
+ 		return builder -> builder.requestFactory(fabrica);
+ 	}
+ 
+-	// TODO H3: declara aqui el RestClient.Builder balanceado que usaran los tres clientes. Es un
+-	// metodo @Bean con la anotacion @LoadBalanced (org.springframework.cloud.client.loadbalancer),
+-	// que recibe un RestClientBuilderConfigurer (org.springframework.boot.autoconfigure.web.client)
+-	// y regresa configurador.configure(RestClient.builder()). El configurador le aplica lo mismo que
+-	// Spring Boot le pone a su builder, incluidos los tiemposMaximos de arriba.
+-	// Con @LoadBalanced, el host de la URL (http://cuenta) se toma como NOMBRE de servicio y se
+-	// cambia, en cada peticion, por la IP y el puerto de una instancia registrada en Eureka.
++	@Bean
++	@LoadBalanced
++	RestClient.Builder restClientBalanceado(RestClientBuilderConfigurer configurador) {
++		return configurador.configure(RestClient.builder());
++	}
+ 
+ 	/**
+ 	 * Un RestClient para el servicio indicado. Si el servicio contesta 4xx o 5xx, se lanza
+diff --git a/transferencia/src/test/java/mx/mexibanco/clientes/BalanceoPorNombreTest.java b/transferencia/src/test/java/mx/mexibanco/clientes/BalanceoPorNombreTest.java
+index 8ddf955..01fcbed 100644
+--- a/transferencia/src/test/java/mx/mexibanco/clientes/BalanceoPorNombreTest.java
++++ b/transferencia/src/test/java/mx/mexibanco/clientes/BalanceoPorNombreTest.java
+@@ -2,7 +2,6 @@ package mx.mexibanco.clientes;
+ 
+ import com.sun.net.httpserver.HttpServer;
+ import org.junit.jupiter.api.AfterAll;
+-import org.junit.jupiter.api.Disabled;
+ import org.junit.jupiter.api.Test;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+@@ -61,9 +60,7 @@ class BalanceoPorNombreTest {
+ 	@Autowired
+ 	CuentaCliente cuentas;
+ 
+-	// TODO H3 (comprobacion): cuando declares el builder balanceado, borra @Disabled y corre
+-	// ./mvnw test en transferencia. Sin @LoadBalanced falla con "I/O error ... http://cuenta/...".
+-	@Disabled("Pasa cuando ClientesHttp tenga el RestClient.Builder con @LoadBalanced (H3)")
++	// Verifica H3: el cliente resuelve por nombre y alterna las instancias disponibles.
+ 	@Test
+ 	void llamarPorNombreRepartePeticionesEntreLasReplicasEnRoundRobin() {
+ 		List<String> quienRespondio = new ArrayList<>();

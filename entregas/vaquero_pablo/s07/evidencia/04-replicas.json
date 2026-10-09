@@ -1,0 +1,137 @@
+[
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "751b38af2a1d",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.185
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "78256663b634",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.162
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "bcb71561796f",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.116
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "751b38af2a1d",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.01
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "78256663b634",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.009
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "bcb71561796f",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.008
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "751b38af2a1d",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.009
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "78256663b634",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.008
+  },
+  {
+    "time": "2026-10-09T00:17:15-06:00",
+    "url": "http://localhost:8080/api/cuentas/S071791526561",
+    "method": "GET",
+    "status": 200,
+    "headers": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "bcb71561796f",
+      "Content-Type": "application/json",
+      "Date": "Fri, 09 Oct 2026 06:17:14 GMT",
+      "connection": "close"
+    },
+    "body": "{\"id\":1,\"clabe\":\"S071791526561\",\"titular\":\"Pablo Vaquero S07\",\"saldo\":0.00}",
+    "seconds": 0.009
+  }
+]

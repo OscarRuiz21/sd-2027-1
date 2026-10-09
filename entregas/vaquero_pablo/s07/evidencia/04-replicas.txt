@@ -1,0 +1,17 @@
+2026-10-09T00:17:15-06:00
+
+$ docker ps --filter name=mexi-banco-v06-cuenta --format {{.ID}}  {{.Names}}  {{.Ports}}
+78256663b634  mexi-banco-v06-cuenta-3  8080/tcp
+bcb71561796f  mexi-banco-v06-cuenta-2  8080/tcp
+751b38af2a1d  mexi-banco-v06-cuenta-1  8080/tcp
+
+
+01  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: 751b38af2a1d
+02  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: 78256663b634
+03  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: bcb71561796f
+04  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: 751b38af2a1d
+05  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: 78256663b634
+06  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: bcb71561796f
+07  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: 751b38af2a1d
+08  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: 78256663b634
+09  2026-10-09T00:17:15-06:00  HTTP 200  X-Instancia: bcb71561796f

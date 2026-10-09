@@ -1,0 +1,238 @@
+{
+  "applications": {
+    "versions__delta": "1",
+    "apps__hashcode": "UP_5_",
+    "application": [
+      {
+        "name": "TRANSFERENCIA",
+        "instance": [
+          {
+            "instanceId": "5dc495b3f69f:transferencia:8080",
+            "hostName": "172.21.0.6",
+            "app": "TRANSFERENCIA",
+            "ipAddr": "172.21.0.6",
+            "status": "UP",
+            "overriddenStatus": "UNKNOWN",
+            "port": {
+              "$": 8080,
+              "@enabled": "true"
+            },
+            "securePort": {
+              "$": 443,
+              "@enabled": "false"
+            },
+            "countryId": 1,
+            "dataCenterInfo": {
+              "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+              "name": "MyOwn"
+            },
+            "leaseInfo": {
+              "renewalIntervalInSecs": 5,
+              "durationInSecs": 15,
+              "registrationTimestamp": 1791526522821,
+              "lastRenewalTimestamp": 1791526522821,
+              "evictionTimestamp": 0,
+              "serviceUpTimestamp": 1791526520830
+            },
+            "metadata": {
+              "management.port": "8080"
+            },
+            "homePageUrl": "http://172.21.0.6:8080/",
+            "statusPageUrl": "http://172.21.0.6:8080/actuator/info",
+            "healthCheckUrl": "http://172.21.0.6:8080/actuator/health",
+            "vipAddress": "transferencia",
+            "secureVipAddress": "transferencia",
+            "isCoordinatingDiscoveryServer": "false",
+            "lastUpdatedTimestamp": "1791526522821",
+            "lastDirtyTimestamp": "1791526520639",
+            "actionType": "ADDED"
+          }
+        ]
+      },
+      {
+        "name": "SPEI",
+        "instance": [
+          {
+            "instanceId": "ebc14d9a86eb:spei:8080",
+            "hostName": "172.21.0.4",
+            "app": "SPEI",
+            "ipAddr": "172.21.0.4",
+            "status": "UP",
+            "overriddenStatus": "UNKNOWN",
+            "port": {
+              "$": 8080,
+              "@enabled": "true"
+            },
+            "securePort": {
+              "$": 443,
+              "@enabled": "false"
+            },
+            "countryId": 1,
+            "dataCenterInfo": {
+              "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+              "name": "MyOwn"
+            },
+            "leaseInfo": {
+              "renewalIntervalInSecs": 5,
+              "durationInSecs": 15,
+              "registrationTimestamp": 1791526522821,
+              "lastRenewalTimestamp": 1791526522821,
+              "evictionTimestamp": 0,
+              "serviceUpTimestamp": 1791526521367
+            },
+            "metadata": {
+              "management.port": "8080"
+            },
+            "homePageUrl": "http://172.21.0.4:8080/",
+            "statusPageUrl": "http://172.21.0.4:8080/actuator/info",
+            "healthCheckUrl": "http://172.21.0.4:8080/actuator/health",
+            "vipAddress": "spei",
+            "secureVipAddress": "spei",
+            "isCoordinatingDiscoveryServer": "false",
+            "lastUpdatedTimestamp": "1791526522821",
+            "lastDirtyTimestamp": "1791526521264",
+            "actionType": "ADDED"
+          }
+        ]
+      },
+      {
+        "name": "CUENTA",
+        "instance": [
+          {
+            "instanceId": "f3da6c5592f0:cuenta:8080",
+            "hostName": "172.21.0.8",
+            "app": "CUENTA",
+            "ipAddr": "172.21.0.8",
+            "status": "UP",
+            "overriddenStatus": "UNKNOWN",
+            "port": {
+              "$": 8080,
+              "@enabled": "true"
+            },
+            "securePort": {
+              "$": 443,
+              "@enabled": "false"
+            },
+            "countryId": 1,
+            "dataCenterInfo": {
+              "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+              "name": "MyOwn"
+            },
+            "leaseInfo": {
+              "renewalIntervalInSecs": 5,
+              "durationInSecs": 15,
+              "registrationTimestamp": 1791526522822,
+              "lastRenewalTimestamp": 1791526522822,
+              "evictionTimestamp": 0,
+              "serviceUpTimestamp": 1791526522183
+            },
+            "metadata": {
+              "management.port": "8080"
+            },
+            "homePageUrl": "http://172.21.0.8:8080/",
+            "statusPageUrl": "http://172.21.0.8:8080/actuator/info",
+            "healthCheckUrl": "http://172.21.0.8:8080/actuator/health",
+            "vipAddress": "cuenta",
+            "secureVipAddress": "cuenta",
+            "isCoordinatingDiscoveryServer": "false",
+            "lastUpdatedTimestamp": "1791526522822",
+            "lastDirtyTimestamp": "1791526522138",
+            "actionType": "ADDED"
+          }
+        ]
+      },
+      {
+        "name": "NOTIFICACION",
+        "instance": [
+          {
+            "instanceId": "6cde5facb2b7:notificacion:8080",
+            "hostName": "172.21.0.5",
+            "app": "NOTIFICACION",
+            "ipAddr": "172.21.0.5",
+            "status": "UP",
+            "overriddenStatus": "UNKNOWN",
+            "port": {
+              "$": 8080,
+              "@enabled": "true"
+            },
+            "securePort": {
+              "$": 443,
+              "@enabled": "false"
+            },
+            "countryId": 1,
+            "dataCenterInfo": {
+              "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+              "name": "MyOwn"
+            },
+            "leaseInfo": {
+              "renewalIntervalInSecs": 5,
+              "durationInSecs": 15,
+              "registrationTimestamp": 1791526522820,
+              "lastRenewalTimestamp": 1791526522820,
+              "evictionTimestamp": 0,
+              "serviceUpTimestamp": 1791526520822
+            },
+            "metadata": {
+              "management.port": "8080"
+            },
+            "homePageUrl": "http://172.21.0.5:8080/",
+            "statusPageUrl": "http://172.21.0.5:8080/actuator/info",
+            "healthCheckUrl": "http://172.21.0.5:8080/actuator/health",
+            "vipAddress": "notificacion",
+            "secureVipAddress": "notificacion",
+            "isCoordinatingDiscoveryServer": "false",
+            "lastUpdatedTimestamp": "1791526522820",
+            "lastDirtyTimestamp": "1791526520522",
+            "actionType": "ADDED"
+          }
+        ]
+      },
+      {
+        "name": "MOVIMIENTO",
+        "instance": [
+          {
+            "instanceId": "fb3d52cd5678:movimiento:8080",
+            "hostName": "172.21.0.7",
+            "app": "MOVIMIENTO",
+            "ipAddr": "172.21.0.7",
+            "status": "UP",
+            "overriddenStatus": "UNKNOWN",
+            "port": {
+              "$": 8080,
+              "@enabled": "true"
+            },
+            "securePort": {
+              "$": 443,
+              "@enabled": "false"
+            },
+            "countryId": 1,
+            "dataCenterInfo": {
+              "@class": "com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo",
+              "name": "MyOwn"
+            },
+            "leaseInfo": {
+              "renewalIntervalInSecs": 5,
+              "durationInSecs": 15,
+              "registrationTimestamp": 1791526522821,
+              "lastRenewalTimestamp": 1791526522821,
+              "evictionTimestamp": 0,
+              "serviceUpTimestamp": 1791526521123
+            },
+            "metadata": {
+              "management.port": "8080"
+            },
+            "homePageUrl": "http://172.21.0.7:8080/",
+            "statusPageUrl": "http://172.21.0.7:8080/actuator/info",
+            "healthCheckUrl": "http://172.21.0.7:8080/actuator/health",
+            "vipAddress": "movimiento",
+            "secureVipAddress": "movimiento",
+            "isCoordinatingDiscoveryServer": "false",
+            "lastUpdatedTimestamp": "1791526522821",
+            "lastDirtyTimestamp": "1791526521027",
+            "actionType": "ADDED"
+          }
+        ]
+      }
+    ]
+  }
+}

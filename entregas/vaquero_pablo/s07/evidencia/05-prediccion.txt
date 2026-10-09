@@ -1,0 +1,3 @@
+2026-10-09T00:17:15-06:00
+
+Predicción: fallarán algunas consultas, aproximadamente una de cada tres mientras el gateway conserve la réplica apagada en su lista. Las otras dos seguirán atendiendo. Estimo una ventana de 20 a 40 segundos. La retirada en Eureka y la recuperación del gateway pueden ocurrir en momentos distintos por el refresh y la caché. Esta predicción se guarda antes de ejecutar docker kill.

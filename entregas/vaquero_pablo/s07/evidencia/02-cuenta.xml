@@ -1,0 +1,37 @@
+<application>
+  <name>CUENTA</name>
+  <instance>
+    <instanceId>f3da6c5592f0:cuenta:8080</instanceId>
+    <hostName>172.21.0.8</hostName>
+    <app>CUENTA</app>
+    <ipAddr>172.21.0.8</ipAddr>
+    <status>UP</status>
+    <overriddenstatus>UNKNOWN</overriddenstatus>
+    <port enabled="true">8080</port>
+    <securePort enabled="false">443</securePort>
+    <countryId>1</countryId>
+    <dataCenterInfo class="com.netflix.appinfo.InstanceInfo$DefaultDataCenterInfo">
+      <name>MyOwn</name>
+    </dataCenterInfo>
+    <leaseInfo>
+      <renewalIntervalInSecs>5</renewalIntervalInSecs>
+      <durationInSecs>15</durationInSecs>
+      <registrationTimestamp>1791526522822</registrationTimestamp>
+      <lastRenewalTimestamp>1791526542723</lastRenewalTimestamp>
+      <evictionTimestamp>0</evictionTimestamp>
+      <serviceUpTimestamp>1791526522183</serviceUpTimestamp>
+    </leaseInfo>
+    <metadata>
+      <management.port>8080</management.port>
+    </metadata>
+    <homePageUrl>http://172.21.0.8:8080/</homePageUrl>
+    <statusPageUrl>http://172.21.0.8:8080/actuator/info</statusPageUrl>
+    <healthCheckUrl>http://172.21.0.8:8080/actuator/health</healthCheckUrl>
+    <vipAddress>cuenta</vipAddress>
+    <secureVipAddress>cuenta</secureVipAddress>
+    <isCoordinatingDiscoveryServer>false</isCoordinatingDiscoveryServer>
+    <lastUpdatedTimestamp>1791526522822</lastUpdatedTimestamp>
+    <lastDirtyTimestamp>1791526522138</lastDirtyTimestamp>
+    <actionType>ADDED</actionType>
+  </instance>
+</application>
