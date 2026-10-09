@@ -1,0 +1,14 @@
+services:
+  coordinador:
+    image: citusdata/citus:12.1
+    ports: ["5432:5432"]
+    environment: &env
+      POSTGRES_PASSWORD: root
+      PGUSER: postgres
+      POSTGRES_USER: postgres
+  worker1:
+    image: citusdata/citus:12.1
+    environment: *env
+  worker2:
+    image: citusdata/citus:12.1
+    environment: *env
