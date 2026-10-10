@@ -2,10 +2,8 @@
 
 **Proyecto final — Sistemas Distribuidos**  
 **Institución:** Facultad de Ingeniería, Universidad Nacional Autónoma de México  
-**Equipo:** [Nombre del equipo]  
+**Equipo:** Los Monolitos
 **Estado:** Propuesta de requisitos y arquitectura inicial  
-**Fecha:** 9 de octubre de 2026
-
 ---
 
 ## 1. Problema y usuarios
