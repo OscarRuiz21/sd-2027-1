@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package data;
+
+service DataService {
+  rpc GetData(GetDataRequest) returns (GetDataResponse);
+}
+
+message GetDataRequest {
+  int32 id = 1;
+}
+
+message GetDataResponse {
+  bool found = 1;
+  int32 id = 2;
+  string nombre = 3;
+  string carrera = 4;
+}
