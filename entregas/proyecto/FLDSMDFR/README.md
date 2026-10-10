@@ -7,10 +7,11 @@ Repositorio de trabajo del proyecto semestral para la materia de **Sistemas Dist
 ## 👥 Equipo
 - **Nombre del equipo:** `FLDSMDFR`
 - **Integrantes:**
-  - Christian Franco Ramírez ([@ChristianFRZ](https://github.com/ChristianFRZ))
-  - *[Integrante 2]*
-  - *[Integrante 3]*
-  - *[Integrante 4]*
+    -Franco Ramírez Christian (@ChristianFRZ)
+    -Lopéz Hernández Miriam Amisadai (@AmisadaiLopez )
+    -Nava Santiago Erick (@Saiko-E )
+    -Pérez Paitán Brent Armando (@zmd-brnt )
+
 
 ---
 
