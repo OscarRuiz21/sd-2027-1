@@ -1,0 +1,437 @@
+T03 · Pablo Vaquero · inicio 2026-10-09T23:36:51.308982-06:00
+
+$ docker compose up -d --wait
+ Network vaquero-t03-citus_default  Creating
+ Network vaquero-t03-citus_default  Created
+ Volume "vaquero-t03-citus_coordinador_datos"  Creating
+ Volume "vaquero-t03-citus_coordinador_datos"  Created
+ Volume "vaquero-t03-citus_worker1_datos"  Creating
+ Volume "vaquero-t03-citus_worker1_datos"  Created
+ Volume "vaquero-t03-citus_worker2_datos"  Creating
+ Volume "vaquero-t03-citus_worker2_datos"  Created
+ Container vaquero-t03-citus-worker2-1  Creating
+ Container vaquero-t03-citus-coordinador-1  Creating
+ Container vaquero-t03-citus-worker1-1  Creating
+ Container vaquero-t03-citus-worker1-1  Created
+ Container vaquero-t03-citus-worker2-1  Created
+ Container vaquero-t03-citus-coordinador-1  Created
+ Container vaquero-t03-citus-worker2-1  Starting
+ Container vaquero-t03-citus-coordinador-1  Starting
+ Container vaquero-t03-citus-worker1-1  Starting
+ Container vaquero-t03-citus-coordinador-1  Started
+ Container vaquero-t03-citus-worker2-1  Started
+ Container vaquero-t03-citus-worker1-1  Started
+ Container vaquero-t03-citus-worker2-1  Waiting
+ Container vaquero-t03-citus-coordinador-1  Waiting
+ Container vaquero-t03-citus-worker1-1  Waiting
+ Container vaquero-t03-citus-coordinador-1  Healthy
+ Container vaquero-t03-citus-worker1-1  Healthy
+ Container vaquero-t03-citus-worker2-1  Healthy
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+SELECT version(); SELECT citus_version();
+                                                       version                                                       
+---------------------------------------------------------------------------------------------------------------------
+ PostgreSQL 17.2 (Debian 17.2-1.pgdg120+1) on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+(1 row)
+
+                                     citus_version                                      
+----------------------------------------------------------------------------------------
+ Citus 13.0.1 on x86_64-pc-linux-gnu, compiled by gcc (Debian 12.2.0-14) 12.2.0, 64-bit
+(1 row)
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+\set ON_ERROR_STOP on
+CREATE EXTENSION IF NOT EXISTS citus;
+SELECT citus_set_coordinator_host('coordinador', 5432);
+SELECT citus_add_node('worker1', 5432);
+SELECT citus_add_node('worker2', 5432);
+
+-- Un cliente puede tener varios movimientos; todos usan la misma llave de reparto.
+CREATE TABLE movimientos (
+    cliente_id integer NOT NULL,
+    movimiento_id integer NOT NULL,
+    importe numeric(10,2) NOT NULL,
+    PRIMARY KEY (cliente_id, movimiento_id)
+);
+
+SELECT create_distributed_table(
+    'movimientos', 'cliente_id',
+    colocate_with => 'none', shard_count => 6
+);
+
+INSERT INTO movimientos (cliente_id, movimiento_id, importe)
+SELECT cliente, movimiento, cliente * 10 + movimiento
+FROM generate_series(1, 12) AS cliente
+CROSS JOIN generate_series(1, 2) AS movimiento;
+NOTICE:  extension "citus" already exists, skipping
+CREATE EXTENSION
+ citus_set_coordinator_host 
+----------------------------
+ 
+(1 row)
+
+ citus_add_node 
+----------------
+              2
+(1 row)
+
+ citus_add_node 
+----------------
+              3
+(1 row)
+
+CREATE TABLE
+ create_distributed_table 
+--------------------------
+ 
+(1 row)
+
+INSERT 0 24
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+SELECT logicalrelid, partmethod FROM pg_dist_partition;
+SELECT shardid, shardminvalue, shardmaxvalue FROM pg_dist_shard
+WHERE logicalrelid = 'movimientos'::regclass ORDER BY shardid;
+ logicalrelid | partmethod 
+--------------+------------
+ movimientos  | h
+(1 row)
+
+ shardid | shardminvalue | shardmaxvalue 
+---------+---------------+---------------
+  102008 | -2147483648   | -1431655767
+  102009 | -1431655766   | -715827885
+  102010 | -715827884    | -3
+  102011 | -2            | 715827879
+  102012 | 715827880     | 1431655761
+  102013 | 1431655762    | 2147483647
+(6 rows)
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (
+        SELECT shardid, shard_name, nodename, nodeport
+        FROM citus_shards WHERE table_name = 'movimientos'::regclass
+        ORDER BY shardid
+    ) AS fila;
+[{"shardid":102008,"shard_name":"movimientos_102008","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102009,"shard_name":"movimientos_102009","nodename":"worker2","nodeport":5432}, 
+ {"shardid":102010,"shard_name":"movimientos_102010","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102011,"shard_name":"movimientos_102011","nodename":"worker2","nodeport":5432}, 
+ {"shardid":102012,"shard_name":"movimientos_102012","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102013,"shard_name":"movimientos_102013","nodename":"worker2","nodeport":5432}]
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM movimientos ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":4,"movimiento_id":1,"importe":41.00}, {"cliente_id":4,"movimiento_id":2,"importe":42.00}, {"cliente_id":5,"movimiento_id":1,"importe":51.00}, {"cliente_id":5,"movimiento_id":2,"importe":52.00}, {"cliente_id":7,"movimiento_id":1,"importe":71.00}, {"cliente_id":7,"movimiento_id":2,"importe":72.00}, {"cliente_id":1,"movimiento_id":1,"importe":11.00}, {"cliente_id":1,"movimiento_id":2,"importe":12.00}, {"cliente_id":8,"movimiento_id":1,"importe":81.00}, {"cliente_id":8,"movimiento_id":2,"importe":82.00}, {"cliente_id":10,"movimiento_id":1,"importe":101.00}, {"cliente_id":10,"movimiento_id":2,"importe":102.00}, {"cliente_id":6,"movimiento_id":1,"importe":61.00}, {"cliente_id":6,"movimiento_id":2,"importe":62.00}, {"cliente_id":3,"movimiento_id":1,"importe":31.00}, {"cliente_id":3,"movimiento_id":2,"importe":32.00}, {"cliente_id":2,"movimiento_id":1,"importe":21.00}, {"cliente_id":2,"movimiento_id":2,"importe":22.00}, {"cliente_id":9,"movimiento_id":1,"importe":91.00}, {"cliente_id":9,"movimiento_id":2,"importe":92.00}, {"cliente_id":11,"movimiento_id":1,"importe":111.00}, {"cliente_id":11,"movimiento_id":2,"importe":112.00}, {"cliente_id":12,"movimiento_id":1,"importe":121.00}, {"cliente_id":12,"movimiento_id":2,"importe":122.00}]
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (
+        SELECT cliente_id,
+               get_shard_id_for_distribution_column('movimientos', cliente_id) AS shardid
+        FROM generate_series(1, 12) AS clientes(cliente_id) ORDER BY cliente_id
+    ) AS fila;
+[{"cliente_id":1,"shardid":102008}, 
+ {"cliente_id":2,"shardid":102012}, 
+ {"cliente_id":3,"shardid":102010}, 
+ {"cliente_id":4,"shardid":102009}, 
+ {"cliente_id":5,"shardid":102009}, 
+ {"cliente_id":6,"shardid":102011}, 
+ {"cliente_id":7,"shardid":102009}, 
+ {"cliente_id":8,"shardid":102008}, 
+ {"cliente_id":9,"shardid":102013}, 
+ {"cliente_id":10,"shardid":102008}, 
+ {"cliente_id":11,"shardid":102013}, 
+ {"cliente_id":12,"shardid":102013}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102008" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":1,"movimiento_id":1,"importe":11.00}, 
+ {"cliente_id":1,"movimiento_id":2,"importe":12.00}, 
+ {"cliente_id":8,"movimiento_id":1,"importe":81.00}, 
+ {"cliente_id":8,"movimiento_id":2,"importe":82.00}, 
+ {"cliente_id":10,"movimiento_id":1,"importe":101.00}, 
+ {"cliente_id":10,"movimiento_id":2,"importe":102.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102009" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":4,"movimiento_id":1,"importe":41.00}, 
+ {"cliente_id":4,"movimiento_id":2,"importe":42.00}, 
+ {"cliente_id":5,"movimiento_id":1,"importe":51.00}, 
+ {"cliente_id":5,"movimiento_id":2,"importe":52.00}, 
+ {"cliente_id":7,"movimiento_id":1,"importe":71.00}, 
+ {"cliente_id":7,"movimiento_id":2,"importe":72.00}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102010" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":3,"movimiento_id":1,"importe":31.00}, 
+ {"cliente_id":3,"movimiento_id":2,"importe":32.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102011" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":6,"movimiento_id":1,"importe":61.00}, 
+ {"cliente_id":6,"movimiento_id":2,"importe":62.00}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102012" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":2,"movimiento_id":1,"importe":21.00}, 
+ {"cliente_id":2,"movimiento_id":2,"importe":22.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102013" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":9,"movimiento_id":1,"importe":91.00}, 
+ {"cliente_id":9,"movimiento_id":2,"importe":92.00}, 
+ {"cliente_id":11,"movimiento_id":1,"importe":111.00}, 
+ {"cliente_id":11,"movimiento_id":2,"importe":112.00}, 
+ {"cliente_id":12,"movimiento_id":1,"importe":121.00}, 
+ {"cliente_id":12,"movimiento_id":2,"importe":122.00}]
+VERIFICADO 01-dos-workers: 24 filas físicas, sin duplicados, suma 1596.00.
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+EXPLAIN (COSTS OFF) SELECT * FROM movimientos WHERE cliente_id = 7;
+                           QUERY PLAN                           
+----------------------------------------------------------------
+ Custom Scan (Citus Adaptive)
+   Task Count: 1
+   Tasks Shown: All
+   ->  Task
+         Node: host=worker2 port=5432 dbname=t03
+         ->  Bitmap Heap Scan on movimientos_102009 movimientos
+               Recheck Cond: (cliente_id = 7)
+               ->  Bitmap Index Scan on movimientos_pkey_102009
+                     Index Cond: (cliente_id = 7)
+(9 rows)
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+EXPLAIN (COSTS OFF) SELECT sum(importe) FROM movimientos;
+                             QUERY PLAN                             
+--------------------------------------------------------------------
+ Aggregate
+   ->  Custom Scan (Citus Adaptive)
+         Task Count: 6
+         Tasks Shown: One of 6
+         ->  Task
+               Node: host=worker1 port=5432 dbname=t03
+               ->  Aggregate
+                     ->  Seq Scan on movimientos_102008 movimientos
+(8 rows)
+VERIFICADO ruteo: 1 tarea con cliente_id = 7; 6 tareas para el total.
+
+$ docker compose --profile escala up -d --wait worker3
+ Volume "vaquero-t03-citus_worker3_datos"  Creating
+ Volume "vaquero-t03-citus_worker3_datos"  Created
+ Container vaquero-t03-citus-worker3-1  Creating
+ Container vaquero-t03-citus-worker3-1  Created
+ Container vaquero-t03-citus-worker3-1  Starting
+ Container vaquero-t03-citus-worker3-1  Started
+ Container vaquero-t03-citus-worker3-1  Waiting
+ Container vaquero-t03-citus-worker3-1  Healthy
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+SELECT citus_add_node('worker3', 5432);
+ citus_add_node 
+----------------
+              4
+(1 row)
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (
+        SELECT shardid, shard_name, nodename, nodeport
+        FROM citus_shards WHERE table_name = 'movimientos'::regclass
+        ORDER BY shardid
+    ) AS fila;
+[{"shardid":102008,"shard_name":"movimientos_102008","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102009,"shard_name":"movimientos_102009","nodename":"worker2","nodeport":5432}, 
+ {"shardid":102010,"shard_name":"movimientos_102010","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102011,"shard_name":"movimientos_102011","nodename":"worker2","nodeport":5432}, 
+ {"shardid":102012,"shard_name":"movimientos_102012","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102013,"shard_name":"movimientos_102013","nodename":"worker2","nodeport":5432}]
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM movimientos ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":4,"movimiento_id":1,"importe":41.00}, {"cliente_id":4,"movimiento_id":2,"importe":42.00}, {"cliente_id":5,"movimiento_id":1,"importe":51.00}, {"cliente_id":5,"movimiento_id":2,"importe":52.00}, {"cliente_id":7,"movimiento_id":1,"importe":71.00}, {"cliente_id":7,"movimiento_id":2,"importe":72.00}, {"cliente_id":6,"movimiento_id":1,"importe":61.00}, {"cliente_id":6,"movimiento_id":2,"importe":62.00}, {"cliente_id":9,"movimiento_id":1,"importe":91.00}, {"cliente_id":9,"movimiento_id":2,"importe":92.00}, {"cliente_id":11,"movimiento_id":1,"importe":111.00}, {"cliente_id":11,"movimiento_id":2,"importe":112.00}, {"cliente_id":12,"movimiento_id":1,"importe":121.00}, {"cliente_id":12,"movimiento_id":2,"importe":122.00}, {"cliente_id":1,"movimiento_id":1,"importe":11.00}, {"cliente_id":1,"movimiento_id":2,"importe":12.00}, {"cliente_id":8,"movimiento_id":1,"importe":81.00}, {"cliente_id":8,"movimiento_id":2,"importe":82.00}, {"cliente_id":10,"movimiento_id":1,"importe":101.00}, {"cliente_id":10,"movimiento_id":2,"importe":102.00}, {"cliente_id":2,"movimiento_id":1,"importe":21.00}, {"cliente_id":2,"movimiento_id":2,"importe":22.00}, {"cliente_id":3,"movimiento_id":1,"importe":31.00}, {"cliente_id":3,"movimiento_id":2,"importe":32.00}]
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (
+        SELECT cliente_id,
+               get_shard_id_for_distribution_column('movimientos', cliente_id) AS shardid
+        FROM generate_series(1, 12) AS clientes(cliente_id) ORDER BY cliente_id
+    ) AS fila;
+[{"cliente_id":1,"shardid":102008}, 
+ {"cliente_id":2,"shardid":102012}, 
+ {"cliente_id":3,"shardid":102010}, 
+ {"cliente_id":4,"shardid":102009}, 
+ {"cliente_id":5,"shardid":102009}, 
+ {"cliente_id":6,"shardid":102011}, 
+ {"cliente_id":7,"shardid":102009}, 
+ {"cliente_id":8,"shardid":102008}, 
+ {"cliente_id":9,"shardid":102013}, 
+ {"cliente_id":10,"shardid":102008}, 
+ {"cliente_id":11,"shardid":102013}, 
+ {"cliente_id":12,"shardid":102013}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102008" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":1,"movimiento_id":1,"importe":11.00}, 
+ {"cliente_id":1,"movimiento_id":2,"importe":12.00}, 
+ {"cliente_id":8,"movimiento_id":1,"importe":81.00}, 
+ {"cliente_id":8,"movimiento_id":2,"importe":82.00}, 
+ {"cliente_id":10,"movimiento_id":1,"importe":101.00}, 
+ {"cliente_id":10,"movimiento_id":2,"importe":102.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102009" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":4,"movimiento_id":1,"importe":41.00}, 
+ {"cliente_id":4,"movimiento_id":2,"importe":42.00}, 
+ {"cliente_id":5,"movimiento_id":1,"importe":51.00}, 
+ {"cliente_id":5,"movimiento_id":2,"importe":52.00}, 
+ {"cliente_id":7,"movimiento_id":1,"importe":71.00}, 
+ {"cliente_id":7,"movimiento_id":2,"importe":72.00}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102010" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":3,"movimiento_id":1,"importe":31.00}, 
+ {"cliente_id":3,"movimiento_id":2,"importe":32.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102011" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":6,"movimiento_id":1,"importe":61.00}, 
+ {"cliente_id":6,"movimiento_id":2,"importe":62.00}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102012" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":2,"movimiento_id":1,"importe":21.00}, 
+ {"cliente_id":2,"movimiento_id":2,"importe":22.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102013" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":9,"movimiento_id":1,"importe":91.00}, 
+ {"cliente_id":9,"movimiento_id":2,"importe":92.00}, 
+ {"cliente_id":11,"movimiento_id":1,"importe":111.00}, 
+ {"cliente_id":11,"movimiento_id":2,"importe":112.00}, 
+ {"cliente_id":12,"movimiento_id":1,"importe":121.00}, 
+ {"cliente_id":12,"movimiento_id":2,"importe":122.00}]
+VERIFICADO 02-nodo-agregado: 24 filas físicas, sin duplicados, suma 1596.00.
+VERIFICADO alta: worker3 registrado, cero shards recibidos todavía.
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -P pager=off
+SELECT citus_rebalance_start(rebalance_strategy := 'by_shard_count');
+SELECT citus_rebalance_wait();
+SELECT state FROM citus_rebalance_status();
+NOTICE:  Scheduled 2 moves as job 1
+DETAIL:  Rebalance scheduled as background job
+HINT:  To monitor progress, run: SELECT * FROM citus_rebalance_status();
+ citus_rebalance_start 
+-----------------------
+                     1
+(1 row)
+
+ citus_rebalance_wait 
+----------------------
+ 
+(1 row)
+
+  state   
+----------
+ finished
+(1 row)
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (
+        SELECT shardid, shard_name, nodename, nodeport
+        FROM citus_shards WHERE table_name = 'movimientos'::regclass
+        ORDER BY shardid
+    ) AS fila;
+[{"shardid":102008,"shard_name":"movimientos_102008","nodename":"worker3","nodeport":5432}, 
+ {"shardid":102009,"shard_name":"movimientos_102009","nodename":"worker3","nodeport":5432}, 
+ {"shardid":102010,"shard_name":"movimientos_102010","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102011,"shard_name":"movimientos_102011","nodename":"worker2","nodeport":5432}, 
+ {"shardid":102012,"shard_name":"movimientos_102012","nodename":"worker1","nodeport":5432}, 
+ {"shardid":102013,"shard_name":"movimientos_102013","nodename":"worker2","nodeport":5432}]
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM movimientos ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":3,"movimiento_id":1,"importe":31.00}, {"cliente_id":3,"movimiento_id":2,"importe":32.00}, {"cliente_id":2,"movimiento_id":1,"importe":21.00}, {"cliente_id":2,"movimiento_id":2,"importe":22.00}, {"cliente_id":6,"movimiento_id":1,"importe":61.00}, {"cliente_id":6,"movimiento_id":2,"importe":62.00}, {"cliente_id":9,"movimiento_id":1,"importe":91.00}, {"cliente_id":9,"movimiento_id":2,"importe":92.00}, {"cliente_id":11,"movimiento_id":1,"importe":111.00}, {"cliente_id":11,"movimiento_id":2,"importe":112.00}, {"cliente_id":12,"movimiento_id":1,"importe":121.00}, {"cliente_id":12,"movimiento_id":2,"importe":122.00}, {"cliente_id":1,"movimiento_id":1,"importe":11.00}, {"cliente_id":1,"movimiento_id":2,"importe":12.00}, {"cliente_id":8,"movimiento_id":1,"importe":81.00}, {"cliente_id":8,"movimiento_id":2,"importe":82.00}, {"cliente_id":10,"movimiento_id":1,"importe":101.00}, {"cliente_id":10,"movimiento_id":2,"importe":102.00}, {"cliente_id":4,"movimiento_id":1,"importe":41.00}, {"cliente_id":4,"movimiento_id":2,"importe":42.00}, {"cliente_id":5,"movimiento_id":1,"importe":51.00}, {"cliente_id":5,"movimiento_id":2,"importe":52.00}, {"cliente_id":7,"movimiento_id":1,"importe":71.00}, {"cliente_id":7,"movimiento_id":2,"importe":72.00}]
+
+$ docker compose exec -T coordinador psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (
+        SELECT cliente_id,
+               get_shard_id_for_distribution_column('movimientos', cliente_id) AS shardid
+        FROM generate_series(1, 12) AS clientes(cliente_id) ORDER BY cliente_id
+    ) AS fila;
+[{"cliente_id":1,"shardid":102008}, 
+ {"cliente_id":2,"shardid":102012}, 
+ {"cliente_id":3,"shardid":102010}, 
+ {"cliente_id":4,"shardid":102009}, 
+ {"cliente_id":5,"shardid":102009}, 
+ {"cliente_id":6,"shardid":102011}, 
+ {"cliente_id":7,"shardid":102009}, 
+ {"cliente_id":8,"shardid":102008}, 
+ {"cliente_id":9,"shardid":102013}, 
+ {"cliente_id":10,"shardid":102008}, 
+ {"cliente_id":11,"shardid":102013}, 
+ {"cliente_id":12,"shardid":102013}]
+
+$ docker compose exec -T worker3 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102008" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":1,"movimiento_id":1,"importe":11.00}, 
+ {"cliente_id":1,"movimiento_id":2,"importe":12.00}, 
+ {"cliente_id":8,"movimiento_id":1,"importe":81.00}, 
+ {"cliente_id":8,"movimiento_id":2,"importe":82.00}, 
+ {"cliente_id":10,"movimiento_id":1,"importe":101.00}, 
+ {"cliente_id":10,"movimiento_id":2,"importe":102.00}]
+
+$ docker compose exec -T worker3 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102009" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":4,"movimiento_id":1,"importe":41.00}, 
+ {"cliente_id":4,"movimiento_id":2,"importe":42.00}, 
+ {"cliente_id":5,"movimiento_id":1,"importe":51.00}, 
+ {"cliente_id":5,"movimiento_id":2,"importe":52.00}, 
+ {"cliente_id":7,"movimiento_id":1,"importe":71.00}, 
+ {"cliente_id":7,"movimiento_id":2,"importe":72.00}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102010" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":3,"movimiento_id":1,"importe":31.00}, 
+ {"cliente_id":3,"movimiento_id":2,"importe":32.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102011" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":6,"movimiento_id":1,"importe":61.00}, 
+ {"cliente_id":6,"movimiento_id":2,"importe":62.00}]
+
+$ docker compose exec -T worker1 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102012" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":2,"movimiento_id":1,"importe":21.00}, 
+ {"cliente_id":2,"movimiento_id":2,"importe":22.00}]
+
+$ docker compose exec -T worker2 psql -X -U postgres -d t03 -v ON_ERROR_STOP=1 -At
+SELECT COALESCE(json_agg(fila), '[]'::json) FROM (SELECT * FROM "movimientos_102013" ORDER BY cliente_id, movimiento_id) AS fila;
+[{"cliente_id":9,"movimiento_id":1,"importe":91.00}, 
+ {"cliente_id":9,"movimiento_id":2,"importe":92.00}, 
+ {"cliente_id":11,"movimiento_id":1,"importe":111.00}, 
+ {"cliente_id":11,"movimiento_id":2,"importe":112.00}, 
+ {"cliente_id":12,"movimiento_id":1,"importe":121.00}, 
+ {"cliente_id":12,"movimiento_id":2,"importe":122.00}]
+VERIFICADO 03-rebalanceado: 24 filas físicas, sin duplicados, suma 1596.00.
+VERIFICACIONES COMPLETAS
+{
+  "filas": 24,
+  "shards": 6,
+  "workers_antes": 2,
+  "workers_despues": 3,
+  "shards_movidos": [
+    102008,
+    102009
+  ],
+  "filas_movidas": 12,
+  "suma_antes_y_despues": 1596,
+  "fin": "2026-10-09T23:37:23.808979-06:00"
+}
+
+$ docker compose --profile escala ps
+NAME                              IMAGE                                                                                            COMMAND                  SERVICE       CREATED          STATUS                    PORTS
+vaquero-t03-citus-coordinador-1   citusdata/citus:13.0.1@sha256:d2474464858e7b9120b906f5e4e8901a6fc1392cab0f79ae87bdfc0424fa49bb   "docker-entrypoint.s…"   coordinador   32 seconds ago   Up 32 seconds (healthy)   5432/tcp
+vaquero-t03-citus-worker1-1       citusdata/citus:13.0.1@sha256:d2474464858e7b9120b906f5e4e8901a6fc1392cab0f79ae87bdfc0424fa49bb   "docker-entrypoint.s…"   worker1       32 seconds ago   Up 32 seconds (healthy)   5432/tcp
+vaquero-t03-citus-worker2-1       citusdata/citus:13.0.1@sha256:d2474464858e7b9120b906f5e4e8901a6fc1392cab0f79ae87bdfc0424fa49bb   "docker-entrypoint.s…"   worker2       32 seconds ago   Up 32 seconds (healthy)   5432/tcp
+vaquero-t03-citus-worker3-1       citusdata/citus:13.0.1@sha256:d2474464858e7b9120b906f5e4e8901a6fc1392cab0f79ae87bdfc0424fa49bb   "docker-entrypoint.s…"   worker3       21 seconds ago   Up 21 seconds (healthy)   5432/tcp

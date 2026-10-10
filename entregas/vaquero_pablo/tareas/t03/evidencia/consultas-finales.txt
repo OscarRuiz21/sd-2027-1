@@ -1,0 +1,21 @@
+ shardid | nodename 
+---------+----------
+  102008 | worker3
+  102009 | worker3
+  102010 | worker1
+  102011 | worker2
+  102012 | worker1
+  102013 | worker2
+(6 rows)
+
+ filas | importe_total 
+-------+---------------
+    24 |       1596.00
+(1 row)
+
+ cliente_id | movimiento_id | importe 
+------------+---------------+---------
+          7 |             1 |   71.00
+          7 |             2 |   72.00
+(2 rows)
+

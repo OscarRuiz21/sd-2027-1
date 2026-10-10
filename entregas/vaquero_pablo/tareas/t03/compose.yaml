@@ -1,0 +1,42 @@
+name: vaquero-t03-citus
+
+x-postgres: &postgres
+  image: citusdata/citus:13.0.1@sha256:d2474464858e7b9120b906f5e4e8901a6fc1392cab0f79ae87bdfc0424fa49bb
+  platform: linux/amd64
+  command: ["postgres", "-c", "wal_level=logical", "-c", "max_replication_slots=32", "-c", "max_wal_senders=32"]
+  environment:
+    POSTGRES_DB: t03
+    POSTGRES_USER: postgres
+    # Red privada de la demo, sin puertos publicados en el equipo.
+    POSTGRES_HOST_AUTH_METHOD: trust
+  healthcheck:
+    test: ["CMD-SHELL", "pg_isready -U postgres -d t03"]
+    interval: 2s
+    timeout: 3s
+    retries: 30
+    start_period: 15s
+
+services:
+  coordinador:
+    <<: *postgres
+    volumes:
+      - coordinador_datos:/var/lib/postgresql/data
+  worker1:
+    <<: *postgres
+    volumes:
+      - worker1_datos:/var/lib/postgresql/data
+  worker2:
+    <<: *postgres
+    volumes:
+      - worker2_datos:/var/lib/postgresql/data
+  worker3:
+    <<: *postgres
+    profiles: ["escala"]
+    volumes:
+      - worker3_datos:/var/lib/postgresql/data
+
+volumes:
+  coordinador_datos:
+  worker1_datos:
+  worker2_datos:
+  worker3_datos:

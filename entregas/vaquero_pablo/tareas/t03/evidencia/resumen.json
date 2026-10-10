@@ -1,0 +1,13 @@
+{
+  "filas": 24,
+  "shards": 6,
+  "workers_antes": 2,
+  "workers_despues": 3,
+  "shards_movidos": [
+    102008,
+    102009
+  ],
+  "filas_movidas": 12,
+  "suma_antes_y_despues": 1596,
+  "fin": "2026-10-09T23:37:23.808979-06:00"
+}

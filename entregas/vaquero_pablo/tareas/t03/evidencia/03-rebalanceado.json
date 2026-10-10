@@ -1,0 +1,262 @@
+{
+  "shards": [
+    {
+      "shardid": 102008,
+      "shard_name": "movimientos_102008",
+      "nodename": "worker3",
+      "nodeport": 5432
+    },
+    {
+      "shardid": 102009,
+      "shard_name": "movimientos_102009",
+      "nodename": "worker3",
+      "nodeport": 5432
+    },
+    {
+      "shardid": 102010,
+      "shard_name": "movimientos_102010",
+      "nodename": "worker1",
+      "nodeport": 5432
+    },
+    {
+      "shardid": 102011,
+      "shard_name": "movimientos_102011",
+      "nodename": "worker2",
+      "nodeport": 5432
+    },
+    {
+      "shardid": 102012,
+      "shard_name": "movimientos_102012",
+      "nodename": "worker1",
+      "nodeport": 5432
+    },
+    {
+      "shardid": 102013,
+      "shard_name": "movimientos_102013",
+      "nodename": "worker2",
+      "nodeport": 5432
+    }
+  ],
+  "filas": [
+    {
+      "cliente_id": 1,
+      "movimiento_id": 1,
+      "importe": 11.0,
+      "shardid": 102008,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 1,
+      "movimiento_id": 2,
+      "importe": 12.0,
+      "shardid": 102008,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 2,
+      "movimiento_id": 1,
+      "importe": 21.0,
+      "shardid": 102012,
+      "nodo": "worker1"
+    },
+    {
+      "cliente_id": 2,
+      "movimiento_id": 2,
+      "importe": 22.0,
+      "shardid": 102012,
+      "nodo": "worker1"
+    },
+    {
+      "cliente_id": 3,
+      "movimiento_id": 1,
+      "importe": 31.0,
+      "shardid": 102010,
+      "nodo": "worker1"
+    },
+    {
+      "cliente_id": 3,
+      "movimiento_id": 2,
+      "importe": 32.0,
+      "shardid": 102010,
+      "nodo": "worker1"
+    },
+    {
+      "cliente_id": 4,
+      "movimiento_id": 1,
+      "importe": 41.0,
+      "shardid": 102009,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 4,
+      "movimiento_id": 2,
+      "importe": 42.0,
+      "shardid": 102009,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 5,
+      "movimiento_id": 1,
+      "importe": 51.0,
+      "shardid": 102009,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 5,
+      "movimiento_id": 2,
+      "importe": 52.0,
+      "shardid": 102009,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 6,
+      "movimiento_id": 1,
+      "importe": 61.0,
+      "shardid": 102011,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 6,
+      "movimiento_id": 2,
+      "importe": 62.0,
+      "shardid": 102011,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 7,
+      "movimiento_id": 1,
+      "importe": 71.0,
+      "shardid": 102009,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 7,
+      "movimiento_id": 2,
+      "importe": 72.0,
+      "shardid": 102009,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 8,
+      "movimiento_id": 1,
+      "importe": 81.0,
+      "shardid": 102008,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 8,
+      "movimiento_id": 2,
+      "importe": 82.0,
+      "shardid": 102008,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 9,
+      "movimiento_id": 1,
+      "importe": 91.0,
+      "shardid": 102013,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 9,
+      "movimiento_id": 2,
+      "importe": 92.0,
+      "shardid": 102013,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 10,
+      "movimiento_id": 1,
+      "importe": 101.0,
+      "shardid": 102008,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 10,
+      "movimiento_id": 2,
+      "importe": 102.0,
+      "shardid": 102008,
+      "nodo": "worker3"
+    },
+    {
+      "cliente_id": 11,
+      "movimiento_id": 1,
+      "importe": 111.0,
+      "shardid": 102013,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 11,
+      "movimiento_id": 2,
+      "importe": 112.0,
+      "shardid": 102013,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 12,
+      "movimiento_id": 1,
+      "importe": 121.0,
+      "shardid": 102013,
+      "nodo": "worker2"
+    },
+    {
+      "cliente_id": 12,
+      "movimiento_id": 2,
+      "importe": 122.0,
+      "shardid": 102013,
+      "nodo": "worker2"
+    }
+  ],
+  "mapa_clientes": [
+    {
+      "cliente_id": 1,
+      "shardid": 102008
+    },
+    {
+      "cliente_id": 2,
+      "shardid": 102012
+    },
+    {
+      "cliente_id": 3,
+      "shardid": 102010
+    },
+    {
+      "cliente_id": 4,
+      "shardid": 102009
+    },
+    {
+      "cliente_id": 5,
+      "shardid": 102009
+    },
+    {
+      "cliente_id": 6,
+      "shardid": 102011
+    },
+    {
+      "cliente_id": 7,
+      "shardid": 102009
+    },
+    {
+      "cliente_id": 8,
+      "shardid": 102008
+    },
+    {
+      "cliente_id": 9,
+      "shardid": 102013
+    },
+    {
+      "cliente_id": 10,
+      "shardid": 102008
+    },
+    {
+      "cliente_id": 11,
+      "shardid": 102013
+    },
+    {
+      "cliente_id": 12,
+      "shardid": 102013
+    }
+  ],
+  "conteo": 24,
+  "suma_importes": 1596
+}
