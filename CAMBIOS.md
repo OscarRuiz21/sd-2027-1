@@ -2,6 +2,15 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-10-10
+
+- **Decks publicados**: S06 (*Copias, acuerdo y orquestación*, HTML y PDF), S07 (*Una puerta, un directorio y el reparto*, HTML y PDF) y S08 (*Transacciones: del COMMIT local a la Saga*, PDF), en `material/` y en el índice.
+- **Lab S07, plazo ampliado otra vez**: la bitácora se entrega hasta el **sábado 17 de octubre, antes de las 07:00**, porque construir el gateway colgaba algunas máquinas.
+- **Lab S08 · saga orquestada y circuit breaker**: el enunciado está en `labs/s08-saga-circuit-breaker/README.md`. Sin guía paso a paso. Base: la rama `03-gateway-discovery-balanceo` de mexi-banco, que ya es pública (la solución del lab S07). Se trabaja en equipo, pero cada quien entrega su código y su `bitacora-s08.pdf` en `entregas/apellido_nombre/s08/`, hasta el **sábado 17 de octubre, antes de las 07:00**.
+- **Proyecto · repo del equipo con su monolito**: un repo por equipo (`sd-2027-1-nombre-del-equipo`) con `main` (README y `docs/PRD.md`) y la rama `01-monolito`; OscarRuiz21 como colaborador y la liga en la Discussion #44. Hasta el **sábado 17 de octubre, antes de las 07:00**. Detalle en `proyecto/README.md`.
+- **Lectura 7** para la S09: Kreps, *The Log* (partes 1 y 2) y Richardson, *Transactional outbox*, en la [Discussion #49](https://github.com/OscarRuiz21/sd-2027-1/discussions/49); en tiempo hasta el sábado 17 a las 06:59.
+- **S09 (17 de octubre)**: mensajería. Brokers, el patrón Outbox (que no alcanzó el sábado) y la saga por coreografía, ya con mensajes.
+
 ## 2026-09-19
 
 - **Lab S05, más simple**: queda solo la guía `labs/s05-mexi-banco/Lab-S05-Mexi-Banco-Postman.html` con los pasos de la clase, y se entrega un reporte corto en PDF, hecho con cualquier procesador de textos, con observaciones y capturas. Ya no hay enunciado en Markdown ni rúbrica.
