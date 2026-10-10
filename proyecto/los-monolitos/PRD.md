@@ -347,7 +347,7 @@ Se aplicará el principio de mínimo privilegio y se protegerá la información 
 
 | Componente | Tecnología |
 |---|---|
-| Backend | Python y Flask |
+| Backend | Python y Django |
 | Frontend | HTML y tecnologías web básicas |
 | Comunicación síncrona | HTTP y API REST |
 | Comunicación asíncrona | RabbitMQ |
