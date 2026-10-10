@@ -1,0 +1,16 @@
+syntax = "proto3";
+package api;
+
+service InfoService {
+    rpc ObtenerInfo (InfoRequest) returns (InfoResponse);
+}
+
+message InfoRequest {
+    string id = 1;
+}
+
+message InfoResponse {
+    string id = 1;
+    string datos = 2;
+    string error = 3;
+}

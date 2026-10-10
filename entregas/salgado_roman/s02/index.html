@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <title>Mi primer contenedor</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 40px; 
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 { color: #063879; }
+        table { 
+            border-collapse: collapse; 
+            width: 100%; 
+            margin-top: 20px;
+        }
+        th, td { 
+            border: 1px solid #ddd; 
+            padding: 12px; 
+            text-align: left; 
+        }
+        th { 
+            background-color: #0c82ae; 
+            color: white;
+        }
+        code {
+            background-color: #eee;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-weight: bold;
+            color: #3c64db;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Hola, soy Emiliano Roman Salgado Cruz</h1>
+        <p>Esta página la sirve un contenedor que yo construí para la materia de Sistemas Distribuidos.</p>
+        
+        <h2>Mis 5 comandos más útiles de Docker</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Comando</th>
+                    <th>¿Qué hace?</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><code>docker pull nginx:alpine</code></td>
+                    <td>Este comando es básicamente el inicio de mi trabajo con los contenderes, es la imagen que me 
+                        proporciona la plantilla común para los contenedores sobre la cual se trabaja. Se usa para tener lista
+                        la plantilla para cuando se desee utilizar sin necesidad aún de iniciar ningún contenedor.  
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>docker run -d --name web1 nginx:alpine</code></td>
+                    <td>Esta instrucción se encarga de crear contenedores, -d indica que se comience a ejecutar en segundo plano
+                        para que nosotros tengamos libre la terminal, se le da el nombre con --name y nginx:alpine especifica que
+                        se emplee el programa nginx usando la distribución alpine, que es un sistema ultraligero de Linux. 
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>docker run -it --rm alpine sh</code></td>
+                    <td>Este comando me fue de utilidad y me pareció muy importante porque es en esencia el que nos permite trabajar
+                        en este sistema aislado que creamos (el contenedor), al usarlo podemos meternos dentro de él y se nos habilita 
+                        la terminal de este sistema. Desmenuzando, "-it" entiendo que indica que se inicie la terminal de forma interactiva, 
+                        manteniendo de esta manera la conexión entre mi pantalla y el interior del contenedor. Por otro lado "--rm" es un recolector
+                        de basura que funciona automáticamente, lo usamos para que al salir no quede rastro de nuestra entrada. La sección"alpine"
+                        indica solo que usamos la imagen pura del sistema operativo y "sh" solo solicita iniciar el "Shell", la línea de comandos básica de Linux. 
+                    </td>
+                </tr>
+                <tr>
+                    <td><code>docker run -d -p 8080:80 --name miweb nginx:alpine</code></td>
+                    <td>"Crea un contenedor en segundo plano llamado 'miweb' y 
+                        publica su puerto interno (80) hacia el puerto 8080 de mi máquina, 
+                        permitiéndome ver el servidor web desde mi propio navegador</td>
+                </tr>
+                <tr>
+                    <td><code>docker logs miweb</code></td>
+                    <td>Este comando me parece de suma importancia ya que permite dar un historial de lo sucedido en todo momento
+                        dentro del contenedor y de esta forma poder detectar el origen de cualquier posible error.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        
+    </div>
+</body>
+</html>
