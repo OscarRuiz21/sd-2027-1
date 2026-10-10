@@ -1,0 +1,42 @@
+services:
+  redis-1:
+    image: redis:7.4-alpine
+    command: >-
+      redis-server --port 6379 --appendonly yes
+      --cluster-enabled yes --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+    volumes:
+      - redis-1-data:/data
+    networks:
+      - redis-cluster
+
+  redis-2:
+    image: redis:7.4-alpine
+    command: >-
+      redis-server --port 6379 --appendonly yes
+      --cluster-enabled yes --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+    volumes:
+      - redis-2-data:/data
+    networks:
+      - redis-cluster
+
+  redis-3:
+    image: redis:7.4-alpine
+    command: >-
+      redis-server --port 6379 --appendonly yes
+      --cluster-enabled yes --cluster-config-file nodes.conf
+      --cluster-node-timeout 5000
+    volumes:
+      - redis-3-data:/data
+    networks:
+      - redis-cluster
+
+networks:
+  redis-cluster:
+    driver: bridge
+
+volumes:
+  redis-1-data:
+  redis-2-data:
+  redis-3-data:
