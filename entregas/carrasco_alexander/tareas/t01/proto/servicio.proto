@@ -1,0 +1,17 @@
+syntax = "proto3"; //esto indica que estamos utilizando protocol BUFFERS VERSION 3 
+
+package personas; //es una forma de organizar los elementos que definimos en nuestro contrato  
+
+service PersonaService {
+    rpc ObtenerPersona (PersonaRequest) returns (PersonaResponse);
+}
+
+message PersonaRequest { //esto define que información necesita nuestro servidor para realizar la consulta 
+    int32 id = 1;
+}
+
+message PersonaResponse { //esto representa la respuesta 
+    int32 id = 1;
+    string nombre = 2;
+    string mensaje = 3;
+}
