@@ -1,0 +1,18 @@
+﻿T01: servidor unico REST/gRPC y cliente en red Docker Compose
+Ejecucion: 2026-09-12 21:43 America/Mexico_City
+
+> docker compose run --rm --no-deps -T client python -m unittest -v test_services
+test_errors (test_services.ServicesTest.test_errors) ... ok
+test_invalid_rest_input (test_services.ServicesTest.test_invalid_rest_input) ... ok
+test_same_products (test_services.ServicesTest.test_same_products) ... ok
+test_unknown_route_and_method (test_services.ServicesTest.test_unknown_route_and_method) ... ok
+Ran 4 tests in 0.068s
+OK
+
+> docker compose logs --no-color client
+client-1  | REST HTTP 200: {"id":1,"name":"Teclado","price_cents":59900,"stock":12}
+client-1  | gRPC OK: {"id": 1, "name": "Teclado", "price_cents": 59900, "stock": 12}
+
+> docker compose run --rm --no-deps -T client python client.py 999
+REST HTTP 404: {"error":"Producto no encontrado"}
+gRPC NOT_FOUND: Producto no encontrado
