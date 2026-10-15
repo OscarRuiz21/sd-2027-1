@@ -319,7 +319,6 @@ sh.moveChunk("t03.usuarios", {id: 51}, "shard2RS")
 
 La operación devolvió ok: 1, confirmando que el movimiento se realizó correctamente.
 
-**[CAPTURA 5: comandos sh.shardCollection, sh.splitAt` y `sh.moveChunk` con sus resultados]**
 
 ### 6.7. Insertar documentos de prueba
 
