@@ -20,7 +20,7 @@ Para que este proceso funcione, el clúster se apoya en dos componentes clave:
 - **El mapa de metadatos y el catálogo (Guardado en los servidores de configuración o *Config Servers*):** MongoDB mantiene un mapa global actualizado que indica exactamente qué rango de la clave de partición vive en cuál shard. Este mapa de metadatos se almacena de forma segura en un conjunto de réplicas dedicado exclusivamente a la configuración del sistema (*Config Servers*).
 - **El enrutador de consultas (`mongos`):** Cuando una aplicación lanza una consulta, esta no va directo a las particiones de forma aleatoria, sino que entra primero a través de un proceso intermediario llamado **`mongos`**. El `mongos` actúa como un enrutador inteligente: consulta el mapa guardado en los servidores de configuración para saber en qué shard exacto se encuentra la información y redirige la petición únicamente hacia la partición correcta, la cual procesa la búsqueda utilizando sus propios índices para devolver la respuesta con rapidez.
 
-- 
+  
 ## **4. Qué pasa cuando agregas un shard: ¿se mueven los datos? ¿cuántos?**
 **Sí, los datos se redistribuyen.**
 
