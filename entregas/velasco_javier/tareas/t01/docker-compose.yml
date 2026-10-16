@@ -8,15 +8,14 @@ services:
       retries: 10
 
   cliente:
-    build: { context: ., dockerfile: client/Dockerfile }
+    build: { context: ., dockerfile: cliente/Dockerfile }
     environment:
-      SERVIDOR_HOST: servidor       # el nombre del servicio es el DNS dentro de la red
+      SERVIDOR_HOST: servidor       
     networks: [red-boings]
     depends_on:
       servidor: { condition: service_healthy }
-    profiles: ["cliente"]           # solo corre cuando lo pides con "run"
+    profiles: ["cliente"]          
 
-  # Solo para el punto extra: comparte la red del servidor y captura paquetes
   sniffer:
     image: nicolaka/netshoot
     network_mode: "service:servidor"
