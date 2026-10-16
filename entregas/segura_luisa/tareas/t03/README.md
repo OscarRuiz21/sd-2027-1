@@ -14,10 +14,13 @@ Para repartir la información, MongoDB utiliza una **Shard Key** (clave de parti
 **¿Quién elige la llave?** La elige el desarrollador o administrador al momento de fragmentar la colección mediante comandos como `sh.shardCollection()`, especificando el espacio de nombres de la colección y los campos de la clave. Se pueden usar herramientas del sistema como `analyzeShardKey` para ayudar a seleccionar una clave efectiva que distribuya bien la carga.
 
 ## **3. Cómo encuentra el shard correcto cuando llega una consulta**
-MongoDB divide los valores de la clave de partición en rangos que no se superponen (asociados a fragmentos o *chunks*), y busca mantenerlos distribuidos de forma uniforme entre las particiones.
+MongoDB divide los valores de la clave de partición en rangos que no se superponen (asociados a fragmentos o *chunks*), y busca mantenerlos distribuidos de forma uniforme entre las particiones. 
 
-Cuando llega una consulta, el sistema revisa la clave de partición que se especificó para determinar exactamente a qué partición pertenece el documento buscado. Si la consulta se diseñó aprovechando la clave de partición, la búsqueda va directo a la partición correspondiente donde cada una mantiene sus propios índices, lo que acelera el tiempo de respuesta.
+Para que este proceso funcione, el clúster se apoya en dos componentes clave:
+- **El mapa de metadatos y el catálogo (Guardado en los servidores de configuración o *Config Servers*):** MongoDB mantiene un mapa global actualizado que indica exactamente qué rango de la clave de partición vive en cuál shard. Este mapa de metadatos se almacena de forma segura en un conjunto de réplicas dedicado exclusivamente a la configuración del sistema (*Config Servers*).
+- **El enrutador de consultas (`mongos`):** Cuando una aplicación lanza una consulta, esta no va directo a las particiones de forma aleatoria, sino que entra primero a través de un proceso intermediario llamado **`mongos`**. El `mongos` actúa como un enrutador inteligente: consulta el mapa guardado en los servidores de configuración para saber en qué shard exacto se encuentra la información y redirige la petición únicamente hacia la partición correcta, la cual procesa la búsqueda utilizando sus propios índices para devolver la respuesta con rapidez.
 
+- 
 ## **4. Qué pasa cuando agregas un shard: ¿se mueven los datos? ¿cuántos?**
 **Sí, los datos se redistribuyen.**
 
