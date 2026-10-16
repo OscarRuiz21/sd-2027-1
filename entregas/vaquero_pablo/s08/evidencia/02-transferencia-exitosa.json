@@ -1,0 +1,41 @@
+{
+  "respuesta": {
+    "http": 201,
+    "ms": 191.67,
+    "body": {
+      "id": 2,
+      "claveOrigen": "002180000000008203",
+      "claveDestino": "002180000000008204",
+      "monto": 200,
+      "fecha": "2026-10-16T00:13:54.304188001Z",
+      "estado": "COMPLETADA",
+      "detalle": "Transferencia y movimientos confirmados",
+      "actualizada": "2026-10-16T00:13:54.348442126Z",
+      "historial": "2026-10-16T00:13:54.304189709Z INICIADA\n2026-10-16T00:13:54.313509418Z CARGO_EN_PROCESO\n2026-10-16T00:13:54.322418710Z CARGADA\n2026-10-16T00:13:54.324691126Z ABONO_EN_PROCESO\n2026-10-16T00:13:54.334372251Z ABONADA\n2026-10-16T00:13:54.348442126Z COMPLETADA\n"
+    }
+  },
+  "despues": [
+    {
+      "http": 200,
+      "ms": 7.63,
+      "body": {
+        "id": 5,
+        "clabe": "002180000000008203",
+        "titular": "S08 exito origen",
+        "saldo": 800.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 5.52,
+      "body": {
+        "id": 6,
+        "clabe": "002180000000008204",
+        "titular": "S08 exito destino",
+        "saldo": 700.0
+      }
+    }
+  ],
+  "tabla_transferencia": " id |   estado   | monto  |                 detalle                 |                    historial                    \n----+------------+--------+-----------------------------------------+-------------------------------------------------\n  2 | COMPLETADA | 200.00 | Transferencia y movimientos confirmados | 2026-10-16T00:13:54.304189709Z INICIADA        +\n    |            |        |                                         | 2026-10-16T00:13:54.313509418Z CARGO_EN_PROCESO+\n    |            |        |                                         | 2026-10-16T00:13:54.322418710Z CARGADA         +\n    |            |        |                                         | 2026-10-16T00:13:54.324691126Z ABONO_EN_PROCESO+\n    |            |        |                                         | 2026-10-16T00:13:54.334372251Z ABONADA         +\n    |            |        |                                         | 2026-10-16T00:13:54.348442126Z COMPLETADA      +\n    |            |        |                                         | \n(1 row)\n\n",
+  "fecha_local": "2026-10-15T18:13:54.636583-06:00"
+}

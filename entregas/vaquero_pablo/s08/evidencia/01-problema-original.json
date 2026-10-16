@@ -1,0 +1,71 @@
+{
+  "antes": [
+    {
+      "http": 200,
+      "ms": 17.18,
+      "body": {
+        "id": 1,
+        "clabe": "002180000000008101",
+        "titular": "S08 origen base",
+        "saldo": 1000.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 6.07,
+      "body": {
+        "id": 2,
+        "clabe": "002180000000008102",
+        "titular": "S08 destino base",
+        "saldo": 500.0
+      }
+    }
+  ],
+  "durante_pausa": {
+    "http": 200,
+    "ms": 27.43,
+    "body": {
+      "id": 1,
+      "clabe": "002180000000008101",
+      "titular": "S08 origen base",
+      "saldo": 800.0
+    }
+  },
+  "stop": " Container mexi-banco-s08-cuenta-1  Stopping\n Container mexi-banco-s08-cuenta-1  Stopped\n",
+  "respuesta": {
+    "http": 504,
+    "ms": 15063.94,
+    "body": {
+      "timestamp": "2026-10-16T00:10:58.262+00:00",
+      "path": "/api/transferencias",
+      "status": 504,
+      "error": "Gateway Timeout",
+      "requestId": "ae246322-25"
+    }
+  },
+  "start": " Container mexi-banco-s08-db-1  Waiting\n Container mexi-banco-s08-discovery-1  Waiting\n Container mexi-banco-s08-db-1  Healthy\n Container mexi-banco-s08-discovery-1  Healthy\n Container mexi-banco-s08-cuenta-1  Starting\n Container mexi-banco-s08-cuenta-1  Started\n",
+  "despues": [
+    {
+      "http": 200,
+      "ms": 139.74,
+      "body": {
+        "id": 1,
+        "clabe": "002180000000008101",
+        "titular": "S08 origen base",
+        "saldo": 800.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 9.1,
+      "body": {
+        "id": 2,
+        "clabe": "002180000000008102",
+        "titular": "S08 destino base",
+        "saldo": 500.0
+      }
+    }
+  ],
+  "tabla_transferencia": " id | clave_destino | clave_origen | fecha | monto \n----+---------------+--------------+-------+-------\n(0 rows)\n\n",
+  "fecha_local": "2026-10-15T18:11:07.466028-06:00"
+}

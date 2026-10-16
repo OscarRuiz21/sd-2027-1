@@ -1,0 +1,197 @@
+{
+  "cerrado": {
+    "http": 200,
+    "ms": 12.19,
+    "body": {
+      "estado": "CERRADO",
+      "fallasConsecutivas": 0,
+      "umbral": 3,
+      "esperaMs": 15000,
+      "llamadasPermitidas": 0,
+      "llamadasRechazadas": 0,
+      "cambios": []
+    }
+  },
+  "stop": " Container mexi-banco-s08-cuenta-1  Stopping\n Container mexi-banco-s08-cuenta-1  Stopped\n",
+  "fallas": [
+    {
+      "http": 503,
+      "ms": 2205.65,
+      "body": {
+        "id": 4,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:15.551839261Z",
+        "estado": "NO_DISPONIBLE",
+        "detalle": "No se envio ningun cargo. I/O error on GET request for \"http://cuenta/cuentas/002180000000008203\": Connect timed out",
+        "actualizada": "2026-10-16T00:15:17.678195429Z",
+        "historial": "2026-10-16T00:15:15.551846136Z INICIADA\n2026-10-16T00:15:17.678195429Z NO_DISPONIBLE\n"
+      }
+    },
+    {
+      "http": 503,
+      "ms": 1088.0,
+      "body": {
+        "id": 5,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:17.721704637Z",
+        "estado": "NO_DISPONIBLE",
+        "detalle": "No se envio ningun cargo. I/O error on GET request for \"http://cuenta/cuentas/002180000000008203\": Host is unreachable",
+        "actualizada": "2026-10-16T00:15:18.783733888Z",
+        "historial": "2026-10-16T00:15:17.721706471Z INICIADA\n2026-10-16T00:15:18.783733888Z NO_DISPONIBLE\n"
+      }
+    },
+    {
+      "http": 503,
+      "ms": 2036.32,
+      "body": {
+        "id": 6,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:18.812027221Z",
+        "estado": "NO_DISPONIBLE",
+        "detalle": "No se envio ningun cargo. I/O error on GET request for \"http://cuenta/cuentas/002180000000008203\": Connect timed out",
+        "actualizada": "2026-10-16T00:15:20.821832222Z",
+        "historial": "2026-10-16T00:15:18.812030055Z INICIADA\n2026-10-16T00:15:20.821832222Z NO_DISPONIBLE\n"
+      }
+    }
+  ],
+  "abierto": {
+    "http": 200,
+    "ms": 14.58,
+    "body": {
+      "estado": "ABIERTO",
+      "fallasConsecutivas": 3,
+      "umbral": 3,
+      "esperaMs": 15000,
+      "llamadasPermitidas": 3,
+      "llamadasRechazadas": 0,
+      "cambios": [
+        {
+          "fecha": "2026-10-16T00:15:20.821072014Z",
+          "desde": "CERRADO",
+          "hacia": "ABIERTO"
+        }
+      ]
+    }
+  },
+  "rechazos": [
+    {
+      "http": 503,
+      "ms": 14.71,
+      "body": {
+        "id": 7,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:20.858678125Z",
+        "estado": "NO_DISPONIBLE",
+        "detalle": "No se envio ningun cargo. El circuito de cuenta esta abierto; la llamada no se envio",
+        "actualizada": "2026-10-16T00:15:20.861771583Z",
+        "historial": "2026-10-16T00:15:20.858680791Z INICIADA\n2026-10-16T00:15:20.861771583Z NO_DISPONIBLE\n"
+      }
+    },
+    {
+      "http": 503,
+      "ms": 14.01,
+      "body": {
+        "id": 8,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:20.872264208Z",
+        "estado": "NO_DISPONIBLE",
+        "detalle": "No se envio ningun cargo. El circuito de cuenta esta abierto; la llamada no se envio",
+        "actualizada": "2026-10-16T00:15:20.875104708Z",
+        "historial": "2026-10-16T00:15:20.872266125Z INICIADA\n2026-10-16T00:15:20.875104708Z NO_DISPONIBLE\n"
+      }
+    },
+    {
+      "http": 503,
+      "ms": 10.39,
+      "body": {
+        "id": 9,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:20.885264791Z",
+        "estado": "NO_DISPONIBLE",
+        "detalle": "No se envio ningun cargo. El circuito de cuenta esta abierto; la llamada no se envio",
+        "actualizada": "2026-10-16T00:15:20.887072541Z",
+        "historial": "2026-10-16T00:15:20.885266166Z INICIADA\n2026-10-16T00:15:20.887072541Z NO_DISPONIBLE\n"
+      }
+    }
+  ],
+  "tras_rechazos": {
+    "http": 200,
+    "ms": 5.56,
+    "body": {
+      "estado": "ABIERTO",
+      "fallasConsecutivas": 3,
+      "umbral": 3,
+      "esperaMs": 15000,
+      "llamadasPermitidas": 3,
+      "llamadasRechazadas": 3,
+      "cambios": [
+        {
+          "fecha": "2026-10-16T00:15:20.821072014Z",
+          "desde": "CERRADO",
+          "hacia": "ABIERTO"
+        }
+      ]
+    }
+  },
+  "start": " Container mexi-banco-s08-discovery-1  Waiting\n Container mexi-banco-s08-db-1  Waiting\n Container mexi-banco-s08-discovery-1  Healthy\n Container mexi-banco-s08-db-1  Healthy\n Container mexi-banco-s08-cuenta-1  Starting\n Container mexi-banco-s08-cuenta-1  Started\n",
+  "pruebas_recuperacion": [
+    {
+      "http": 201,
+      "ms": 253.1,
+      "body": {
+        "id": 10,
+        "claveOrigen": "002180000000008203",
+        "claveDestino": "002180000000008204",
+        "monto": 1,
+        "fecha": "2026-10-16T00:15:43.883283635Z",
+        "estado": "COMPLETADA",
+        "detalle": "Transferencia y movimientos confirmados",
+        "actualizada": "2026-10-16T00:15:44.065993469Z",
+        "historial": "2026-10-16T00:15:43.883292927Z INICIADA\n2026-10-16T00:15:43.937666052Z CARGO_EN_PROCESO\n2026-10-16T00:15:44.004955302Z CARGADA\n2026-10-16T00:15:44.007935761Z ABONO_EN_PROCESO\n2026-10-16T00:15:44.017965677Z ABONADA\n2026-10-16T00:15:44.065993469Z COMPLETADA\n"
+      }
+    }
+  ],
+  "recuperado": {
+    "http": 200,
+    "ms": 5.23,
+    "body": {
+      "estado": "CERRADO",
+      "fallasConsecutivas": 0,
+      "umbral": 3,
+      "esperaMs": 15000,
+      "llamadasPermitidas": 7,
+      "llamadasRechazadas": 3,
+      "cambios": [
+        {
+          "fecha": "2026-10-16T00:15:20.821072014Z",
+          "desde": "CERRADO",
+          "hacia": "ABIERTO"
+        },
+        {
+          "fecha": "2026-10-16T00:15:43.897356344Z",
+          "desde": "ABIERTO",
+          "hacia": "SEMIABIERTO"
+        },
+        {
+          "fecha": "2026-10-16T00:15:43.932059011Z",
+          "desde": "SEMIABIERTO",
+          "hacia": "CERRADO"
+        }
+      ]
+    }
+  },
+  "logs": "transferencia-1  | 2026-10-16T00:15:17.707Z  INFO 1 --- [transferencia] [nio-8080-exec-5] m.m.transferencia.TransferenciaService   : SAGA 4 -> NO_DISPONIBLE: No se envio ningun cargo. I/O error on GET request for \"http://cuenta/cuentas/002180000000008203\": Connect timed out\ntransferencia-1  | 2026-10-16T00:15:18.795Z  INFO 1 --- [transferencia] [nio-8080-exec-7] m.m.transferencia.TransferenciaService   : SAGA 5 -> NO_DISPONIBLE: No se envio ningun cargo. I/O error on GET request for \"http://cuenta/cuentas/002180000000008203\": Host is unreachable\ntransferencia-1  | 2026-10-16T00:15:20.821Z  INFO 1 --- [transferencia] [nio-8080-exec-8] m.mexibanco.resiliencia.CircuitoCuenta   : CIRCUITO cuenta CERRADO -> ABIERTO\ntransferencia-1  | 2026-10-16T00:15:20.831Z  INFO 1 --- [transferencia] [nio-8080-exec-8] m.m.transferencia.TransferenciaService   : SAGA 6 -> NO_DISPONIBLE: No se envio ningun cargo. I/O error on GET request for \"http://cuenta/cuentas/002180000000008203\": Connect timed out\ntransferencia-1  | 2026-10-16T00:15:20.863Z  INFO 1 --- [transferencia] [io-8080-exec-10] m.m.transferencia.TransferenciaService   : SAGA 7 -> NO_DISPONIBLE: No se envio ningun cargo. El circuito de cuenta esta abierto; la llamada no se envio\ntransferencia-1  | 2026-10-16T00:15:20.877Z  INFO 1 --- [transferencia] [nio-8080-exec-1] m.m.transferencia.TransferenciaService   : SAGA 8 -> NO_DISPONIBLE: No se envio ningun cargo. El circuito de cuenta esta abierto; la llamada no se envio\ntransferencia-1  | 2026-10-16T00:15:20.888Z  INFO 1 --- [transferencia] [nio-8080-exec-2] m.m.transferencia.TransferenciaService   : SAGA 9 -> NO_DISPONIBLE: No se envio ningun cargo. El circuito de cuenta esta abierto; la llamada no se envio\ntransferencia-1  | 2026-10-16T00:15:43.897Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.mexibanco.resiliencia.CircuitoCuenta   : CIRCUITO cuenta ABIERTO -> SEMIABIERTO\ntransferencia-1  | 2026-10-16T00:15:43.932Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.mexibanco.resiliencia.CircuitoCuenta   : CIRCUITO cuenta SEMIABIERTO -> CERRADO\ntransferencia-1  | 2026-10-16T00:15:43.941Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.m.transferencia.TransferenciaService   : SAGA 10 -> CARGO_EN_PROCESO: Se enviara el cargo al origen\ntransferencia-1  | 2026-10-16T00:15:44.007Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.m.transferencia.TransferenciaService   : SAGA 10 -> CARGADA: Cargo confirmado; el abono todavia no ocurre\ntransferencia-1  | 2026-10-16T00:15:44.009Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.m.transferencia.TransferenciaService   : SAGA 10 -> ABONO_EN_PROCESO: Se enviara el abono al destino\ntransferencia-1  | 2026-10-16T00:15:44.020Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.m.transferencia.TransferenciaService   : SAGA 10 -> ABONADA: Cargo y abono confirmados\ntransferencia-1  | 2026-10-16T00:15:44.069Z  INFO 1 --- [transferencia] [nio-8080-exec-9] m.m.transferencia.TransferenciaService   : SAGA 10 -> COMPLETADA: Transferencia y movimientos confirmados",
+  "fecha_local": "2026-10-15T18:15:44.308226-06:00"
+}

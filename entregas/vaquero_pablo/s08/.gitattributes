@@ -1,0 +1,5 @@
+*.pdf binary
+*.png binary
+*.cmd text eol=crlf whitespace=cr-at-eol
+# Las salidas capturadas conservan los espacios originales de las herramientas.
+evidencia/** -whitespace

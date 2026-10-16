@@ -1,0 +1,8 @@
+name: mexi-banco-s08
+networks:
+  default:
+    name: mexibanco-s08
+services:
+  cuenta:
+    deploy:
+      replicas: 1

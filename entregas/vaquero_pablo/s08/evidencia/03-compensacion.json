@@ -1,0 +1,65 @@
+{
+  "variable": "FALLAR_ABONO_CLABE=002180000000008202",
+  "antes": [
+    {
+      "http": 200,
+      "ms": 6.49,
+      "body": {
+        "id": 3,
+        "clabe": "002180000000008201",
+        "titular": "S08 compensacion origen",
+        "saldo": 1000.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 6.15,
+      "body": {
+        "id": 4,
+        "clabe": "002180000000008202",
+        "titular": "S08 compensacion destino",
+        "saldo": 500.0
+      }
+    }
+  ],
+  "respuesta": {
+    "http": 409,
+    "ms": 198.94,
+    "body": {
+      "id": 1,
+      "claveOrigen": "002180000000008201",
+      "claveDestino": "002180000000008202",
+      "monto": 200,
+      "fecha": "2026-10-16T00:13:53.801308626Z",
+      "estado": "COMPENSADA",
+      "detalle": "El abono fallo y el dinero fue devuelto al origen; movimientos registrados",
+      "actualizada": "2026-10-16T00:13:53.964090459Z",
+      "historial": "2026-10-16T00:13:53.801312709Z INICIADA\n2026-10-16T00:13:53.893174001Z CARGO_EN_PROCESO\n2026-10-16T00:13:53.924021459Z CARGADA\n2026-10-16T00:13:53.926489418Z ABONO_EN_PROCESO\n2026-10-16T00:13:53.928851126Z COMPENSACION_EN_PROCESO\n2026-10-16T00:13:53.937360668Z COMPENSACION_APLICADA\n2026-10-16T00:13:53.964090459Z COMPENSADA\n"
+    }
+  },
+  "despues": [
+    {
+      "http": 200,
+      "ms": 6.84,
+      "body": {
+        "id": 3,
+        "clabe": "002180000000008201",
+        "titular": "S08 compensacion origen",
+        "saldo": 1000.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 7.96,
+      "body": {
+        "id": 4,
+        "clabe": "002180000000008202",
+        "titular": "S08 compensacion destino",
+        "saldo": 500.0
+      }
+    }
+  ],
+  "tabla_transferencia": " id |   estado   | monto  |                                  detalle                                   |                       historial                        \n----+------------+--------+----------------------------------------------------------------------------+--------------------------------------------------------\n  1 | COMPENSADA | 200.00 | El abono fallo y el dinero fue devuelto al origen; movimientos registrados | 2026-10-16T00:13:53.801312709Z INICIADA               +\n    |            |        |                                                                            | 2026-10-16T00:13:53.893174001Z CARGO_EN_PROCESO       +\n    |            |        |                                                                            | 2026-10-16T00:13:53.924021459Z CARGADA                +\n    |            |        |                                                                            | 2026-10-16T00:13:53.926489418Z ABONO_EN_PROCESO       +\n    |            |        |                                                                            | 2026-10-16T00:13:53.928851126Z COMPENSACION_EN_PROCESO+\n    |            |        |                                                                            | 2026-10-16T00:13:53.937360668Z COMPENSACION_APLICADA  +\n    |            |        |                                                                            | 2026-10-16T00:13:53.964090459Z COMPENSADA             +\n    |            |        |                                                                            | \n(1 row)\n\n",
+  "movimientos": "    clabe_cuenta    |          tipo          |  monto  | saldo_resultante |                   referencia                   \n--------------------+------------------------+---------+------------------+------------------------------------------------\n 002180000000008201 | DEPOSITO               | 1000.00 |          1000.00 | saldo inicial\n 002180000000008202 | DEPOSITO               |  500.00 |           500.00 | saldo inicial\n 002180000000008201 | TRANSFERENCIA_ENVIADA  | -200.00 |           800.00 | saga 1 a 002180000000008202\n 002180000000008201 | TRANSFERENCIA_RECIBIDA |  200.00 |          1000.00 | COMPENSACION saga 1: abono destino no aplicado\n(4 rows)\n\n",
+  "fecha_local": "2026-10-15T18:13:54.264640-06:00"
+}

@@ -1,0 +1,308 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile.tests
+#1 transferring dockerfile: 251B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 48B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#4 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 10.77kB done
+#5 DONE 0.0s
+
+#6 [5/8] COPY .mvn .mvn
+#6 CACHED
+
+#7 [2/8] WORKDIR /app
+#7 CACHED
+
+#8 [4/8] COPY mvnw .
+#8 CACHED
+
+#9 [3/8] COPY pom.xml .
+#9 CACHED
+
+#10 [6/8] RUN ./mvnw dependency:go-offline -B
+#10 CACHED
+
+#11 [7/8] COPY src ./src
+#11 DONE 0.0s
+
+#12 [8/8] RUN ./mvnw test -B
+#12 0.713 [INFO] Scanning for projects...
+#12 0.846 [INFO] 
+#12 0.846 [INFO] ---------------------< mx.mexibanco:transferencia >---------------------
+#12 0.846 [INFO] Building transferencia 0.6.0
+#12 0.847 [INFO]   from pom.xml
+#12 0.847 [INFO] --------------------------------[ jar ]---------------------------------
+#12 1.031 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.pom
+#12 1.280 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.pom (19 kB at 74 kB/s)
+#12 1.286 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/logging-parent/1.0.1.Final/logging-parent-1.0.1.Final.pom
+#12 1.317 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/logging-parent/1.0.1.Final/logging-parent-1.0.1.Final.pom (6.0 kB at 186 kB/s)
+#12 1.323 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.pom
+#12 1.358 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.pom (7.0 kB at 201 kB/s)
+#12 1.361 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.pom
+#12 1.435 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.pom (16 kB at 221 kB/s)
+#12 1.436 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.19/byte-buddy-parent-1.14.19.pom
+#12 1.504 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.19/byte-buddy-parent-1.14.19.pom (62 kB at 915 kB/s)
+#12 1.509 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.pom
+#12 1.633 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.pom (11 kB at 87 kB/s)
+#12 1.635 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.5/jaxb-runtime-parent-4.0.5.pom
+#12 1.715 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-runtime-parent/4.0.5/jaxb-runtime-parent-4.0.5.pom (1.2 kB at 15 kB/s)
+#12 1.717 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.5/jaxb-parent-4.0.5.pom
+#12 1.781 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-parent/4.0.5/jaxb-parent-4.0.5.pom (35 kB at 556 kB/s)
+#12 1.784 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.5/jaxb-bom-ext-4.0.5.pom
+#12 1.838 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/jaxb-bom-ext/4.0.5/jaxb-bom-ext-4.0.5.pom (3.5 kB at 64 kB/s)
+#12 1.846 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.pom
+#12 1.904 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.pom (3.7 kB at 64 kB/s)
+#12 1.912 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.pom
+#12 1.966 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.pom (4.0 kB at 74 kB/s)
+#12 1.968 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation-project/2.0.2/angus-activation-project-2.0.2.pom
+#12 2.031 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation-project/2.0.2/angus-activation-project-2.0.2.pom (21 kB at 331 kB/s)
+#12 2.034 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.pom
+#12 2.155 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.pom (1.8 kB at 15 kB/s)
+#12 2.157 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.5/jaxb-txw-parent-4.0.5.pom
+#12 2.198 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/xml/bind/mvn/jaxb-txw-parent/4.0.5/jaxb-txw-parent-4.0.5.pom (1.2 kB at 29 kB/s)
+#12 2.202 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom
+#12 2.276 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.pom (1.6 kB at 22 kB/s)
+#12 2.280 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom
+#12 2.339 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons/4.1.2/istack-commons-4.1.2.pom (26 kB at 454 kB/s)
+#12 2.404 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/6.3.3/spring-security-crypto-6.3.3.pom
+#12 2.451 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/6.3.3/spring-security-crypto-6.3.3.pom (1.9 kB at 40 kB/s)
+#12 2.482 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.5/httpcore5-5.2.5.pom
+#12 2.532 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.5/httpcore5-5.2.5.pom (3.9 kB at 79 kB/s)
+#12 2.534 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.5/httpcore5-parent-5.2.5.pom
+#12 2.585 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-parent/5.2.5/httpcore5-parent-5.2.5.pom (14 kB at 264 kB/s)
+#12 2.587 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.5/httpcore5-h2-5.2.5.pom
+#12 2.711 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.5/httpcore5-h2-5.2.5.pom (3.6 kB at 29 kB/s)
+#12 2.727 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-core/3.6.10/reactor-core-3.6.10.pom
+#12 2.773 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-core/3.6.10/reactor-core-3.6.10.pom (2.1 kB at 47 kB/s)
+#12 2.775 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/addons/reactor-extra/3.5.2/reactor-extra-3.5.2.pom
+#12 2.823 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/addons/reactor-extra/3.5.2/reactor-extra-3.5.2.pom (2.0 kB at 42 kB/s)
+#12 2.825 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-cache/3.3.4/spring-boot-starter-cache-3.3.4.pom
+#12 2.870 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-cache/3.3.4/spring-boot-starter-cache-3.3.4.pom (2.3 kB at 51 kB/s)
+#12 2.872 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context-support/6.1.13/spring-context-support-6.1.13.pom
+#12 2.905 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context-support/6.1.13/spring-context-support-6.1.13.pom (2.4 kB at 76 kB/s)
+#12 2.918 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.pom
+#12 2.968 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.pom (10 kB at 209 kB/s)
+#12 3.000 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar
+#12 3.043 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar (59 kB at 1.3 MB/s)
+#12 3.044 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar
+#12 3.044 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar
+#12 3.047 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar
+#12 3.047 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar
+#12 3.047 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar
+#12 3.085 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar (69 kB at 1.7 MB/s)
+#12 3.085 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar
+#12 3.204 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/txw2/4.0.5/txw2-4.0.5.jar (73 kB at 461 kB/s)
+#12 3.204 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar
+#12 3.207 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/angus/angus-activation/2.0.2/angus-activation-2.0.2.jar (27 kB at 166 kB/s)
+#12 3.207 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar
+#12 3.220 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-core/4.0.5/jaxb-core-4.0.5.jar (139 kB at 788 kB/s)
+#12 3.220 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/6.3.3/spring-security-crypto-6.3.3.jar
+#12 3.246 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/sun/istack/istack-commons-runtime/4.1.2/istack-commons-runtime-4.1.2.jar (26 kB at 128 kB/s)
+#12 3.246 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.5/httpcore5-5.2.5.jar
+#12 3.256 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar (69 kB at 329 kB/s)
+#12 3.256 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.5/httpcore5-h2-5.2.5.jar
+#12 3.292 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/security/spring-security-crypto/6.3.3/spring-security-crypto-6.3.3.jar (100 kB at 406 kB/s)
+#12 3.292 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-core/3.6.10/reactor-core-3.6.10.jar
+#12 3.319 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/glassfish/jaxb/jaxb-runtime/4.0.5/jaxb-runtime-4.0.5.jar (920 kB at 3.3 MB/s)
+#12 3.319 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/addons/reactor-extra/3.5.2/reactor-extra-3.5.2.jar
+#12 3.370 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5-h2/5.2.5/httpcore5-h2-5.2.5.jar (237 kB at 732 kB/s)
+#12 3.370 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-cache/3.3.4/spring-boot-starter-cache-3.3.4.jar
+#12 3.387 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/addons/reactor-extra/3.5.2/reactor-extra-3.5.2.jar (104 kB at 305 kB/s)
+#12 3.387 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context-support/6.1.13/spring-context-support-6.1.13.jar
+#12 3.419 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/httpcomponents/core5/httpcore5/5.2.5/httpcore5-5.2.5.jar (855 kB at 2.3 MB/s)
+#12 3.419 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar
+#12 3.426 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar (4.2 MB at 11 MB/s)
+#12 3.431 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-cache/3.3.4/spring-boot-starter-cache-3.3.4.jar (4.8 kB at 12 kB/s)
+#12 3.441 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context-support/6.1.13/spring-context-support-6.1.13.jar (173 kB at 439 kB/s)
+#12 3.463 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar (263 kB at 630 kB/s)
+#12 3.520 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/reactor-core/3.6.10/reactor-core-3.6.10.jar (1.9 MB at 3.9 MB/s)
+#12 3.529 [INFO] 
+#12 3.529 [INFO] --- resources:3.3.1:resources (default-resources) @ transferencia ---
+#12 3.573 [INFO] Copying 1 resource from src/main/resources to target/classes
+#12 3.580 [INFO] Copying 0 resource from src/main/resources to target/classes
+#12 3.580 [INFO] 
+#12 3.580 [INFO] --- compiler:3.13.0:compile (default-compile) @ transferencia ---
+#12 3.621 [INFO] Recompiling the module because of changed source code.
+#12 3.624 [INFO] Compiling 20 source files with javac [debug parameters release 21] to target/classes
+#12 4.149 [INFO] 
+#12 4.149 [INFO] --- resources:3.3.1:testResources (default-testResources) @ transferencia ---
+#12 4.156 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#12 4.156 [INFO] 
+#12 4.156 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ transferencia ---
+#12 4.160 [INFO] Recompiling the module because of changed dependency.
+#12 4.160 [INFO] Compiling 4 source files with javac [debug parameters release 21] to target/test-classes
+#12 4.484 [INFO] 
+#12 4.484 [INFO] --- surefire:3.2.5:test (default-test) @ transferencia ---
+#12 4.571 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#12 4.579 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom
+#12 4.627 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom (4.7 kB at 97 kB/s)
+#12 4.628 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom
+#12 4.669 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom (2.6 kB at 64 kB/s)
+#12 4.671 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom
+#12 4.777 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom (2.8 kB at 27 kB/s)
+#12 4.781 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom
+#12 4.838 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom (3.0 kB at 52 kB/s)
+#12 4.841 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom
+#12 4.886 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom (3.2 kB at 71 kB/s)
+#12 4.889 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+#12 4.927 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom (1.7 kB at 44 kB/s)
+#12 4.929 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom
+#12 4.966 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom (2.8 kB at 77 kB/s)
+#12 4.969 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar
+#12 5.011 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar (27 kB at 646 kB/s)
+#12 5.012 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar
+#12 5.012 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar
+#12 5.013 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar
+#12 5.013 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+#12 5.014 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar
+#12 5.073 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar (7.7 kB at 130 kB/s)
+#12 5.073 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar (18 kB at 288 kB/s)
+#12 5.073 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar (103 kB at 1.7 MB/s)
+#12 5.083 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar (189 kB at 2.7 MB/s)
+#12 5.087 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar (169 kB at 2.3 MB/s)
+#12 5.091 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.pom
+#12 5.135 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.pom (3.0 kB at 69 kB/s)
+#12 5.138 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.jar
+#12 5.188 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.jar (184 kB at 3.8 MB/s)
+#12 5.198 [INFO] 
+#12 5.198 [INFO] -------------------------------------------------------
+#12 5.198 [INFO]  T E S T S
+#12 5.198 [INFO] -------------------------------------------------------
+#12 5.476 [INFO] Running mx.mexibanco.transferencia.TransferenciaServiceTest
+#12 5.692 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#12 5.740 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+#12 5.740 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+#12 5.740 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+#12 5.740 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+#12 6.082 00:13:23.337 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.082 00:13:23.338 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.082 00:13:23.338 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.082 00:13:23.340 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> REVISION_PENDIENTE: Cargo confirmado y abono incierto. Conciliar antes de devolver o reintentar. timeout
+#12 6.093 00:13:23.370 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.093 00:13:23.370 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.093 00:13:23.370 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.093 00:13:23.371 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_EN_PROCESO: Abono no aplicado. Se devolvera al origen. abono rechazado
+#12 6.093 00:13:23.371 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_APLICADA: Dinero devuelto al origen; falta registrar movimientos
+#12 6.093 00:13:23.372 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSADA: El abono fallo y el dinero fue devuelto al origen; movimientos registrados
+#12 6.099 00:13:23.379 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.099 00:13:23.379 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.099 00:13:23.379 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.099 00:13:23.379 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONADA: Cargo y abono confirmados
+#12 6.099 00:13:23.380 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPLETADA: Transferencia y movimientos confirmados
+#12 6.105 00:13:23.384 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.105 00:13:23.385 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.105 00:13:23.385 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.105 00:13:23.385 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_EN_PROCESO: Abono no aplicado. Se devolvera al origen. abono rechazado
+#12 6.105 00:13:23.385 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_APLICADA: Dinero devuelto al origen; falta registrar movimientos
+#12 6.105 00:13:23.385 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> REGISTRO_PENDIENTE: Dinero ya devuelto. Conciliar movimientos; no repetir devolucion. ledger apagado
+#12 6.107 00:13:23.389 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.107 00:13:23.389 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> REVISION_PENDIENTE: Cargo sin confirmar; no repetir la solicitud. timeout
+#12 6.110 00:13:23.392 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> RECHAZADA: No se envio ningun cargo. no existe
+#12 6.114 00:13:23.395 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.114 00:13:23.395 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.114 00:13:23.395 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.114 00:13:23.395 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_EN_PROCESO: Abono no aplicado. Se devolvera al origen. Conexion rechazada
+#12 6.114 00:13:23.396 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_PENDIENTE: Abono destino no aplicado; devolucion sin confirmar. Conciliar antes de reintentar. Conexion rechazada
+#12 6.116 00:13:23.398 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.116 00:13:23.398 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.116 00:13:23.398 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.116 00:13:23.398 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_EN_PROCESO: Abono no aplicado. Se devolvera al origen. abono rechazado
+#12 6.117 00:13:23.399 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_PENDIENTE: Abono destino no aplicado; devolucion sin confirmar. Conciliar antes de reintentar. El circuito de cuenta esta abierto; la llamada no se envio
+#12 6.120 00:13:23.401 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.120 00:13:23.401 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.120 00:13:23.402 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.120 00:13:23.402 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONADA: Cargo y abono confirmados
+#12 6.120 00:13:23.402 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPLETADA: Transferencia y movimientos confirmados
+#12 6.120 00:13:23.402 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPLETADA: Dinero y movimientos confirmados; aviso pendiente. avisos apagados
+#12 6.123 00:13:23.404 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.123 00:13:23.405 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.123 00:13:23.405 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.123 00:13:23.405 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> REVISION_PENDIENTE: Cargo confirmado y abono incierto. Conciliar antes de devolver o reintentar. error despues de commit
+#12 6.128 00:13:23.409 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.128 00:13:23.409 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.128 00:13:23.409 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.128 00:13:23.410 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> COMPENSACION_EN_PROCESO: Abono no aplicado. Se devolvera al origen. abono rechazado
+#12 6.128 00:13:23.410 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> REVISION_PENDIENTE: Abono destino no aplicado; devolucion sin confirmar. Conciliar antes de reintentar. timeout
+#12 6.131 00:13:23.413 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.131 00:13:23.413 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> RECHAZADA: Cargo sin confirmar; no repetir la solicitud. saldo insuficiente
+#12 6.133 00:13:23.415 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGO_EN_PROCESO: Se enviara el cargo al origen
+#12 6.133 00:13:23.415 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> CARGADA: Cargo confirmado; el abono todavia no ocurre
+#12 6.133 00:13:23.415 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONO_EN_PROCESO: Se enviara el abono al destino
+#12 6.133 00:13:23.415 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> ABONADA: Cargo y abono confirmados
+#12 6.133 00:13:23.415 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- SAGA null -> REGISTRO_PENDIENTE: Dinero transferido. Conciliar movimientos; no volver a mover saldos. ledger apagado
+#12 6.154 [INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.662 s -- in mx.mexibanco.transferencia.TransferenciaServiceTest
+#12 6.155 [INFO] Running mx.mexibanco.resiliencia.CircuitoCuentaTest
+#12 6.155 00:13:23.423 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta CERRADO -> ABIERTO
+#12 6.155 00:13:23.424 [pool-2-thread-1] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta ABIERTO -> SEMIABIERTO
+#12 6.155 00:13:23.426 [pool-2-thread-1] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta SEMIABIERTO -> CERRADO
+#12 6.155 00:13:23.428 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta CERRADO -> ABIERTO
+#12 6.155 00:13:23.428 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta ABIERTO -> SEMIABIERTO
+#12 6.155 00:13:23.428 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta SEMIABIERTO -> ABIERTO
+#12 6.155 00:13:23.429 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta ABIERTO -> SEMIABIERTO
+#12 6.155 00:13:23.429 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta SEMIABIERTO -> CERRADO
+#12 6.155 00:13:23.432 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta CERRADO -> ABIERTO
+#12 6.155 00:13:23.434 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta CERRADO -> ABIERTO
+#12 6.155 00:13:23.434 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta ABIERTO -> SEMIABIERTO
+#12 6.155 00:13:23.434 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta SEMIABIERTO -> CERRADO
+#12 6.160 00:13:23.442 [main] INFO mx.mexibanco.resiliencia.CircuitoCuenta -- CIRCUITO cuenta CERRADO -> ABIERTO
+#12 6.167 [INFO] Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 s -- in mx.mexibanco.resiliencia.CircuitoCuentaTest
+#12 6.169 [INFO] Running mx.mexibanco.clientes.ClientesHttpTest
+#12 6.315 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.150 s -- in mx.mexibanco.clientes.ClientesHttpTest
+#12 6.315 [INFO] Running mx.mexibanco.clientes.BalanceoPorNombreTest
+#12 6.647 
+#12 6.647   .   ____          _            __ _ _
+#12 6.647  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+#12 6.647 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+#12 6.647  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+#12 6.647   '  |____| .__|_| |_|_| |_\__, | / / / /
+#12 6.647  =========|_|==============|___/=/_/_/_/
+#12 6.647 
+#12 6.647  :: Spring Boot ::                (v3.3.4)
+#12 6.647 
+#12 6.647 2026-10-16T00:13:23.890Z  INFO 173 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : Starting BalanceoPorNombreTest using Java 21.0.12.1 with PID 173 (started by root in /app)
+#12 6.647 2026-10-16T00:13:23.890Z  INFO 173 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : No active profile set, falling back to 1 default profile: "default"
+#12 7.054 2026-10-16T00:13:24.256Z  INFO 173 --- [transferencia] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=90050061-a44d-3673-864a-982d24289b02
+#12 7.155 2026-10-16T00:13:24.342Z  WARN 173 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+#12 7.155 2026-10-16T00:13:24.344Z  WARN 173 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+#12 7.422 2026-10-16T00:13:24.652Z  INFO 173 --- [transferencia] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+#12 7.422 2026-10-16T00:13:24.678Z  WARN 173 --- [transferencia] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+#12 7.422 2026-10-16T00:13:24.702Z  INFO 173 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : Started BalanceoPorNombreTest in 1.016 seconds (process running for 2.182)
+#12 7.605 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.288 s -- in mx.mexibanco.clientes.BalanceoPorNombreTest
+#12 7.629 [INFO] 
+#12 7.629 [INFO] Results:
+#12 7.629 [INFO] 
+#12 7.629 [INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+#12 7.629 [INFO] 
+#12 7.630 [INFO] ------------------------------------------------------------------------
+#12 7.630 [INFO] BUILD SUCCESS
+#12 7.630 [INFO] ------------------------------------------------------------------------
+#12 7.631 [INFO] Total time:  6.926 s
+#12 7.631 [INFO] Finished at: 2026-10-16T00:13:24Z
+#12 7.631 [INFO] ------------------------------------------------------------------------
+#12 DONE 7.7s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 3.4s done
+#13 exporting manifest sha256:0587982acb73d54765a90ef262ce75f680ff30839cfe7cb10125b9291fa9e2e3 done
+#13 exporting config sha256:d4b44510d61d217af61390693c868fcff1a544e84618ca6ef8489bdd6521338b done
+#13 exporting attestation manifest sha256:356a5bdd30814dd38551e42f08824ea3e3afeaeecda79c091035a6bb558431ca done
+#13 exporting manifest list sha256:fca0fe18569da7187507d63ec8a42c7d7b0ca14b26aa20b09159c07443124b54 done
+#13 naming to docker.io/library/mexi-banco-s08-tests:latest done
+#13 unpacking to docker.io/library/mexi-banco-s08-tests:latest
+#13 unpacking to docker.io/library/mexi-banco-s08-tests:latest 0.8s done
+#13 DONE 4.3s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ak1cvsva4bpgvhuts1k0asapu

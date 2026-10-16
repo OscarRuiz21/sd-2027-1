@@ -1,0 +1,91 @@
+{
+  "antes": [
+    {
+      "http": 200,
+      "ms": 7.04,
+      "body": {
+        "id": 7,
+        "clabe": "002180000000008301",
+        "titular": "S08 pendiente origen",
+        "saldo": 1000.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 7.97,
+      "body": {
+        "id": 8,
+        "clabe": "002180000000008302",
+        "titular": "S08 pendiente destino",
+        "saldo": 500.0
+      }
+    }
+  ],
+  "durante_pausa": {
+    "http": 200,
+    "ms": 23.93,
+    "body": {
+      "id": 7,
+      "clabe": "002180000000008301",
+      "titular": "S08 pendiente origen",
+      "saldo": 800.0
+    }
+  },
+  "estado_durante_pausa": " id | estado  |                   detalle                    \n----+---------+----------------------------------------------\n  3 | CARGADA | Cargo confirmado; el abono todavia no ocurre\n(1 row)\n\n",
+  "stop": " Container mexi-banco-s08-cuenta-1  Stopping\n Container mexi-banco-s08-cuenta-1  Stopped\n",
+  "respuesta": {
+    "http": 202,
+    "ms": 20236.76,
+    "body": {
+      "id": 3,
+      "claveOrigen": "002180000000008301",
+      "claveDestino": "002180000000008302",
+      "monto": 200,
+      "fecha": "2026-10-16T00:14:32.642557213Z",
+      "estado": "COMPENSACION_PENDIENTE",
+      "detalle": "Abono destino no aplicado; devolucion sin confirmar. Conciliar antes de reintentar. No instances available for cuenta",
+      "actualizada": "2026-10-16T00:14:52.829194084Z",
+      "historial": "2026-10-16T00:14:32.642561338Z INICIADA\n2026-10-16T00:14:32.742926589Z CARGO_EN_PROCESO\n2026-10-16T00:14:32.767786589Z CARGADA\n2026-10-16T00:14:52.770697625Z ABONO_EN_PROCESO\n2026-10-16T00:14:52.822668625Z COMPENSACION_EN_PROCESO\n2026-10-16T00:14:52.829194084Z COMPENSACION_PENDIENTE\n"
+    }
+  },
+  "tabla_transferencia": " id |         estado         | monto  |                                                        detalle                                                        |                       historial                        \n----+------------------------+--------+-----------------------------------------------------------------------------------------------------------------------+--------------------------------------------------------\n  3 | COMPENSACION_PENDIENTE | 200.00 | Abono destino no aplicado; devolucion sin confirmar. Conciliar antes de reintentar. No instances available for cuenta | 2026-10-16T00:14:32.642561338Z INICIADA               +\n    |                        |        |                                                                                                                       | 2026-10-16T00:14:32.742926589Z CARGO_EN_PROCESO       +\n    |                        |        |                                                                                                                       | 2026-10-16T00:14:32.767786589Z CARGADA                +\n    |                        |        |                                                                                                                       | 2026-10-16T00:14:52.770697625Z ABONO_EN_PROCESO       +\n    |                        |        |                                                                                                                       | 2026-10-16T00:14:52.822668625Z COMPENSACION_EN_PROCESO+\n    |                        |        |                                                                                                                       | 2026-10-16T00:14:52.829194084Z COMPENSACION_PENDIENTE +\n    |                        |        |                                                                                                                       | \n(1 row)\n\n",
+  "start": " Container mexi-banco-s08-db-1  Waiting\n Container mexi-banco-s08-discovery-1  Waiting\n Container mexi-banco-s08-discovery-1  Healthy\n Container mexi-banco-s08-db-1  Healthy\n Container mexi-banco-s08-cuenta-1  Starting\n Container mexi-banco-s08-cuenta-1  Started\n",
+  "despues": [
+    {
+      "http": 200,
+      "ms": 119.67,
+      "body": {
+        "id": 7,
+        "clabe": "002180000000008301",
+        "titular": "S08 pendiente origen",
+        "saldo": 800.0
+      }
+    },
+    {
+      "http": 200,
+      "ms": 13.66,
+      "body": {
+        "id": 8,
+        "clabe": "002180000000008302",
+        "titular": "S08 pendiente destino",
+        "saldo": 500.0
+      }
+    }
+  ],
+  "tras_reiniciar_transferencia": {
+    "http": 200,
+    "ms": 45.95,
+    "body": {
+      "id": 3,
+      "claveOrigen": "002180000000008301",
+      "claveDestino": "002180000000008302",
+      "monto": 200.0,
+      "fecha": "2026-10-16T00:14:32.642557Z",
+      "estado": "COMPENSACION_PENDIENTE",
+      "detalle": "Abono destino no aplicado; devolucion sin confirmar. Conciliar antes de reintentar. No instances available for cuenta",
+      "actualizada": "2026-10-16T00:14:52.829194Z",
+      "historial": "2026-10-16T00:14:32.642561338Z INICIADA\n2026-10-16T00:14:32.742926589Z CARGO_EN_PROCESO\n2026-10-16T00:14:32.767786589Z CARGADA\n2026-10-16T00:14:52.770697625Z ABONO_EN_PROCESO\n2026-10-16T00:14:52.822668625Z COMPENSACION_EN_PROCESO\n2026-10-16T00:14:52.829194084Z COMPENSACION_PENDIENTE\n"
+    }
+  },
+  "fecha_local": "2026-10-15T18:15:12.190197-06:00"
+}
