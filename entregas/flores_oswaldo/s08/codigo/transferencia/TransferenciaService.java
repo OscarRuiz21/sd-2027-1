@@ -14,14 +14,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 
-/**
- * Transferencia INTERNA, entre dos cuentas del mismo banco, como SAGA ORQUESTADA.
- *
- * Cada paso es una peticion HTTP a otro servicio y se confirma solo, asi que no hay una
- * transaccion que abarque todo. transferir() NO lleva @Transactional: en su lugar, el estado de
- * la transferencia se guarda en cada paso y, si el abono falla despues del cargo, se compensa
- * devolviendole el monto a la cuenta de origen.
- */
 @Service
 public class TransferenciaService {
 
@@ -51,16 +43,15 @@ public class TransferenciaService {
         cuentas.consultar(claveOrigen);
         cuentas.consultar(claveDestino);
 
-        // Paso 0: la transferencia existe en la base ANTES de mover dinero (estado INICIADA)
+       
         Transferencia transferencia = transferencias.save(new Transferencia(claveOrigen, claveDestino, monto));
 
-        // Paso 1: cargo al origen
+       
         CuentaRemota origen;
         try {
             origen = cuentas.cargar(claveOrigen, monto);
         } catch (RuntimeException falloCargo) {
-            // El dinero no salió: no hay nada que compensar. Se deja constancia y se
-            // relanza el error para que el cliente reciba el mismo código de siempre.
+            
             transferencia.setEstado(EstadoTransferencia.FALLIDA);
             transferencia.setDetalle(recortar("El cargo falló: " + falloCargo.getMessage()));
             transferencias.save(transferencia);
@@ -71,7 +62,6 @@ public class TransferenciaService {
 
         pausaDeDemo();
 
-        // Paso 2: abono al destino. Si falla, se compensa el cargo.
         CuentaRemota destino;
         try {
             fallaDeDemo(claveDestino);
@@ -94,11 +84,6 @@ public class TransferenciaService {
         return transferencias.save(transferencia);
     }
 
-    /**
-     * Compensación: deshace el cargo devolviéndole el monto a la cuenta de origen.
-     * Si la devolución también falla, la transferencia queda COMPENSACION_PENDIENTE
-     * para terminarla después (nunca se queda en CARGADA para siempre).
-     */
     private Transferencia compensar(Transferencia transferencia, RuntimeException causa) {
         try {
             CuentaRemota devuelta = cuentas.abonar(transferencia.getClaveOrigen(), transferencia.getMonto());
@@ -116,7 +101,7 @@ public class TransferenciaService {
         return transferencias.save(transferencia);
     }
 
-    /** La columna detalle mide 300 caracteres: si el mensaje es más largo, se corta. */
+    
     private static String recortar(String texto) {
         return texto.length() <= 300 ? texto : texto.substring(0, 300);
     }
@@ -127,10 +112,7 @@ public class TransferenciaService {
                 .orElseThrow(() -> new NoEncontradoException("No existe la transferencia " + id));
     }
 
-    /**
-     * Solo para la demo en clase: abre una ventana entre el cargo y el abono para apagar cuenta a
-     * mano y ver el dinero "en el aire". Con PAUSA_ENTRE_CARGO_Y_ABONO_MS=0 (el valor normal) no hace nada.
-     */
+    
     private void pausaDeDemo() {
         if (pausaEntreCargoYAbonoMs <= 0) {
             return;
@@ -142,7 +124,7 @@ public class TransferenciaService {
         }
     }
 
-    /** Solo para pruebas: si la CLABE destino es la configurada, simula que el abono falla. */
+    
     private void fallaDeDemo(String claveDestino) {
         if (!fallarAbonoHacia.isBlank() && fallarAbonoHacia.equals(claveDestino)) {
             throw new IllegalStateException("Falla simulada del abono hacia " + claveDestino);
