@@ -1,0 +1,19 @@
+{
+  "url": "http://localhost:18080/api/transferencias",
+  "method": "POST",
+  "body": {
+    "claveOrigen": "002187000000003081",
+    "claveDestino": "002187000000009999",
+    "monto": 200
+  },
+  "status": 404,
+  "seconds": 0.062,
+  "response": {
+    "type": "about:blank",
+    "title": "Not Found",
+    "status": 404,
+    "detail": "No existe la CLABE 002187000000009999",
+    "instance": "/transferencias",
+    "servicio": "cuenta"
+  }
+}

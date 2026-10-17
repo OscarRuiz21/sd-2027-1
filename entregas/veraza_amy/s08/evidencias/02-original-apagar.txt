@@ -1,0 +1,5 @@
+$ docker compose -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\docker-compose.yml -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\compose-evidencias.yml stop cuenta
+ Container mexi-banco-s08-cuenta-1  Stopping
+ Container mexi-banco-s08-cuenta-1  Stopped
+
+exit=0

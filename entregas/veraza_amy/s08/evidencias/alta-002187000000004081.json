@@ -1,0 +1,36 @@
+[
+  {
+    "url": "http://localhost:18080/api/cuentas",
+    "method": "POST",
+    "body": {
+      "clabe": "002187000000004081",
+      "titular": "Ana S08",
+      "saldoInicial": 1000
+    },
+    "status": 201,
+    "seconds": 0.14,
+    "response": {
+      "id": 7,
+      "clabe": "002187000000004081",
+      "titular": "Ana S08",
+      "saldo": 1000
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/cuentas",
+    "method": "POST",
+    "body": {
+      "clabe": "002187000000004082",
+      "titular": "Beto S08",
+      "saldoInicial": 500
+    },
+    "status": 201,
+    "seconds": 0.141,
+    "response": {
+      "id": 8,
+      "clabe": "002187000000004082",
+      "titular": "Beto S08",
+      "saldo": 500
+    }
+  }
+]

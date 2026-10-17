@@ -1,0 +1,19 @@
+$ docker compose -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\docker-compose.yml -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\compose-evidencias.yml exec -T db psql -U mexibanco -d movimiento -c select * from movimiento order by id;
+ id |    clabe_cuenta    |             fecha             |  monto  |      referencia       | saldo_resultante |          tipo          
+----+--------------------+-------------------------------+---------+-----------------------+------------------+------------------------
+  1 | 002180000000001081 | 2026-10-11 06:48:37.42994+00  | 1000.00 | saldo inicial         |          1000.00 | DEPOSITO
+  2 | 002180000000001082 | 2026-10-11 06:48:37.606462+00 |  500.00 | saldo inicial         |           500.00 | DEPOSITO
+  3 | 002187000000001081 | 2026-10-17 06:29:53.563813+00 | 1000.00 | saldo inicial         |          1000.00 | DEPOSITO
+  4 | 002187000000001082 | 2026-10-17 06:29:53.876176+00 |  500.00 | saldo inicial         |           500.00 | DEPOSITO
+  5 | 002187000000002081 | 2026-10-17 06:31:20.203829+00 | 1000.00 | saldo inicial         |          1000.00 | DEPOSITO
+  6 | 002187000000002082 | 2026-10-17 06:31:20.358383+00 |  500.00 | saldo inicial         |           500.00 | DEPOSITO
+  7 | 002187000000002081 | 2026-10-17 06:31:41.016158+00 | -200.00 | a 002187000000002082  |           800.00 | TRANSFERENCIA_ENVIADA
+  8 | 002187000000002082 | 2026-10-17 06:31:41.106052+00 |  200.00 | de 002187000000002081 |           700.00 | TRANSFERENCIA_RECIBIDA
+  9 | 002187000000004081 | 2026-10-17 06:33:35.514938+00 | 1000.00 | saldo inicial         |          1000.00 | DEPOSITO
+ 10 | 002187000000004082 | 2026-10-17 06:33:35.637783+00 |  500.00 | saldo inicial         |           500.00 | DEPOSITO
+ 11 | 002187000000004081 | 2026-10-17 06:33:38.760925+00 | -200.00 | Cargo saga 2          |           800.00 | TRANSFERENCIA_ENVIADA
+ 12 | 002187000000004081 | 2026-10-17 06:33:38.831146+00 |  200.00 | COMPENSACION saga 2   |          1000.00 | DEPOSITO
+(12 rows)
+
+
+exit=0
