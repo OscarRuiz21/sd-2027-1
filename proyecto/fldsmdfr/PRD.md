@@ -1,6 +1,14 @@
 # PRD · FLDSMDFR: Sistema Distribuido de Streaming Musical
 
-**Equipo:** FLDSMDFR · **Integrantes:** Christian Franco Ramírez ([@ChristianFRZ](https://github.com/ChristianFRZ)), *[Integrante 2]* ([@usuario2](https://github.com/)), *[Integrante 3]* ([@usuario3](https://github.com/)), *[Integrante 4]* ([@usuario4](https://github.com/)) · **Fecha:** Octubre 2026  
+**Equipo:** FLDSMDFR · ## 👥 Equipo
+- **Nombre del equipo:** `FLDSMDFR`
+- **Integrantes:**
+-     -Franco Ramírez Christian (@ChristianFRZ)
+      -Lopéz Hernández Miriam Amisadai (@AmisadaiLopez )
+      -Nava Santiago Erick (@Saiko-E )
+      -Pérez Paitán Brent Armando (@zmd-brnt )
+
+
 **Materia:** Sistemas Distribuidos (FI-UNAM, Semestre 2027-1)
 
 ---
