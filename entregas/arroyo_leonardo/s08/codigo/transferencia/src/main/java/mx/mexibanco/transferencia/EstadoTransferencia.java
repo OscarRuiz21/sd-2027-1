@@ -1,0 +1,18 @@
+package mx.mexibanco.transferencia;
+
+public enum EstadoTransferencia {
+    INICIADA,
+    CARGO_EN_CURSO,
+    CARGADA,
+    ABONO_EN_CURSO,
+    ABONADA,
+    COMPLETADA,
+    FALLIDA,
+    COMPENSACION_PENDIENTE,
+    DEVOLUCION_EN_CURSO,
+    DEVUELTA,
+    COMPENSADA,
+    REGISTRO_PENDIENTE,
+    NOTIFICACION_PENDIENTE,
+    REVISION_PENDIENTE
+}

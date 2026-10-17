@@ -1,0 +1,1795 @@
+{
+  "info": {
+    "name": "Mexi Banco S08 · Saga y circuit breaker",
+    "description": "Colección manual basada en el formato de S05. Usar GUIA-S08.md. Enviar peticiones una por una: entre carpetas/peticiones hay cambios de configuración y caídas de Docker. NO usar Run collection completo. Todas las URLs pasan por /api en el gateway. Tests verifican saldos/estados y guardan IDs automáticamente; no hacen peticiones adicionales. CLABEs fijas y distintas por escenario para coincidir con la guía.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api"
+    },
+    {
+      "key": "p0Origen",
+      "value": "002180000000000101"
+    },
+    {
+      "key": "p0Destino",
+      "value": "002180000000000102"
+    },
+    {
+      "key": "p0Id",
+      "value": ""
+    },
+    {
+      "key": "exitoOrigen",
+      "value": "002180000000000201"
+    },
+    {
+      "key": "exitoDestino",
+      "value": "002180000000000202"
+    },
+    {
+      "key": "exitoId",
+      "value": ""
+    },
+    {
+      "key": "compOrigen",
+      "value": "002180000000000301"
+    },
+    {
+      "key": "compDestino",
+      "value": "002180000000000302"
+    },
+    {
+      "key": "compId",
+      "value": ""
+    },
+    {
+      "key": "pendOrigen",
+      "value": "002180000000000401"
+    },
+    {
+      "key": "pendDestino",
+      "value": "002180000000000402"
+    },
+    {
+      "key": "pendId",
+      "value": ""
+    },
+    {
+      "key": "cbOrigen",
+      "value": "002180000000000501"
+    },
+    {
+      "key": "cbDestino",
+      "value": "002180000000000502"
+    },
+    {
+      "key": "cbId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "0 · Problema original",
+      "description": "Primero, con el Java original. PAUSA=20000 y caída manual. No usar Run collection. Capturas 02–04.",
+      "item": [
+        {
+          "name": "01 · Crear origen (1000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p0Origen}}\",\n  \"titular\": \"p0 Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear destino (500)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p0Destino}}\",\n  \"titular\": \"p0 Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Saldo inicial origen (1000)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{p0Origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{p0Origen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Saldo inicial destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{p0Destino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{p0Destino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Transferir 200 · detener cuenta durante la pausa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "ANTES de cambiar Java. Activa pausa de 20000 ms. Pulsa Send y, durante la espera, confirma el cargo por SQL y detén cuenta. Espera la respuesta y vuelve a encender cuenta antes de las peticiones 06 y 07.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{p0Origen}}\",\n  \"claveDestino\": \"{{p0Destino}}\",\n  \"monto\": 200\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"La operación original falló\", () => pm.expect(pm.response.code).to.be.within(400, 599));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"p0Id\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Saldo final origen (800)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{p0Origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{p0Origen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 800\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(800));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Saldo final destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{p0Destino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{p0Destino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1 · Saga exitosa",
+      "description": "Después de aplicar el código. PAUSA=0, FALLAR_ABONO_CLABE vacía. Capturas 06–07.",
+      "item": [
+        {
+          "name": "01 · Crear origen (1000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{exitoOrigen}}\",\n  \"titular\": \"exito Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear destino (500)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{exitoDestino}}\",\n  \"titular\": \"exito Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Saldo inicial origen (1000)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{exitoOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{exitoOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Saldo inicial destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{exitoDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{exitoDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Transferir 200 · éxito",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Enviar solo en el paso indicado de GUIA-S08.md. No reenviar una transferencia con resultado incierto.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{exitoOrigen}}\",\n  \"claveDestino\": \"{{exitoDestino}}\",\n  \"monto\": 200\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPLETADA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"exitoId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Saldo final origen (800)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{exitoOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{exitoOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 800\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(800));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Saldo final destino (700)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{exitoDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{exitoDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 700\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(700));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Consultar transferencia completada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias/{{exitoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias",
+                "{{exitoId}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Estado COMPLETADA persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPLETADA\"));",
+                  "pm.test(\"Mismo ID\", () => pm.expect(String(pm.response.json().id)).to.eql(pm.collectionVariables.get(\"exitoId\")));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2 · Compensación exitosa",
+      "description": "Crear cuentas primero. Configurar FALLAR_ABONO_CLABE con compDestino antes de 05. PAUSA=0 y cuenta arriba. Capturas 08–10.",
+      "item": [
+        {
+          "name": "01 · Crear origen (1000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{compOrigen}}\",\n  \"titular\": \"comp Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear destino (500)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{compDestino}}\",\n  \"titular\": \"comp Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Saldo inicial origen (1000)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{compOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{compOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Saldo inicial destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{compDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{compDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Transferir 200 · compensación",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Enviar solo en el paso indicado de GUIA-S08.md. No reenviar una transferencia con resultado incierto.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{compOrigen}}\",\n  \"claveDestino\": \"{{compDestino}}\",\n  \"monto\": 200\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 409\", () => pm.response.to.have.status(409));",
+                  "pm.test(\"Estado COMPENSADA\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPENSADA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"compId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Saldo restaurado origen (1000)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{compOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{compOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Saldo destino sin cambios (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{compDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{compDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Movimientos del origen · cargo y compensación",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/movimientos?clabe={{compOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "movimientos"
+              ],
+              "query": [
+                {
+                  "key": "clabe",
+                  "value": "{{compOrigen}}"
+                }
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "const movimientos = pm.response.json();",
+                  "const id = pm.collectionVariables.get(\"compId\");",
+                  "pm.test(\"Cargo de la saga -200\", () => pm.expect(movimientos.some(x => x.tipo === \"TRANSFERENCIA_ENVIADA\" && Number(x.monto) === -200 && String(x.referencia).startsWith(\"saga \" + id + \" a \"))).to.eql(true));",
+                  "pm.test(\"Compensación de la saga +200\", () => pm.expect(movimientos.some(x => Number(x.monto) === 200 && x.referencia === \"COMPENSACION saga \" + id)).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Consultar transferencia compensada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias/{{compId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias",
+                "{{compId}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Estado COMPENSADA persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPENSADA\"));",
+                  "pm.test(\"Mismo ID\", () => pm.expect(String(pm.response.json().id)).to.eql(pm.collectionVariables.get(\"compId\")));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3 · Compensación pendiente",
+      "description": "Pausa y caída manual. La falla simulada garantiza que no se envió el abono al destino. No hay reintentos automáticos. Capturas 11–12.",
+      "item": [
+        {
+          "name": "01 · Crear origen (1000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{pendOrigen}}\",\n  \"titular\": \"pend Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear destino (500)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{pendDestino}}\",\n  \"titular\": \"pend Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Saldo inicial origen (1000)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{pendOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{pendOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Saldo inicial destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{pendDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{pendDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Transferir 200 · detener cuenta durante la pausa",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Configura FALLAR_ABONO_CLABE=pendDestino y PAUSA=20000. Pulsa Send. Cuando los logs indiquen PAUSA/cargo confirmado, detén cuenta. Consulta el estado con 06 aunque cuenta siga apagada. Enciende cuenta antes de 07 y 08.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{pendOrigen}}\",\n  \"claveDestino\": \"{{pendDestino}}\",\n  \"monto\": 200\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 503\", () => pm.response.to.have.status(503));",
+                  "pm.test(\"Estado COMPENSACION_PENDIENTE\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPENSACION_PENDIENTE\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"pendId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Consultar compensación pendiente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias/{{pendId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias",
+                "{{pendId}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Estado COMPENSACION_PENDIENTE persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPENSACION_PENDIENTE\"));",
+                  "pm.test(\"Mismo ID\", () => pm.expect(String(pm.response.json().id)).to.eql(pm.collectionVariables.get(\"pendId\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Tras recuperar cuenta · origen (800)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{pendOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{pendOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 800\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(800));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Tras recuperar cuenta · destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{pendDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{pendDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Confirmar que sigue pendiente",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias/{{pendId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias",
+                "{{pendId}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Estado COMPENSACION_PENDIENTE persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPENSACION_PENDIENTE\"));",
+                  "pm.test(\"Mismo ID\", () => pm.expect(String(pm.response.json().id)).to.eql(pm.collectionVariables.get(\"pendId\")));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4 · Circuit breaker manual",
+      "description": "Configurar PAUSA=0 y falla vacía. 01–05 con cuenta arriba; apagar para 06–09; encender para 10–13. No reiniciar transferencia entre esos pasos. Capturas 13–16.",
+      "item": [
+        {
+          "name": "01 · Crear origen (1000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{cbOrigen}}\",\n  \"titular\": \"cb Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear destino (500)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "description": "Enviar una sola vez por cuenta nueva. Un 409 significa que ya existe; no restablece su saldo.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{cbDestino}}\",\n  \"titular\": \"cb Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Saldo inicial 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Saldo inicial origen (1000)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{cbOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{cbOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Saldo inicial destino (500)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{cbDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{cbDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Circuito cerrado · transferencia de 10",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Enviar solo en el paso indicado de GUIA-S08.md. No reenviar una transferencia con resultado incierto.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{cbOrigen}}\",\n  \"claveDestino\": \"{{cbDestino}}\",\n  \"monto\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPLETADA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"cbId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Cuenta apagada · falla 1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Detén cuenta DESPUÉS de 05. Enviar 06, 07 y 08 una vez cada una; revisar logs hasta ver CERRADO -> ABIERTO.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{cbOrigen}}\",\n  \"claveDestino\": \"{{cbDestino}}\",\n  \"monto\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 503\", () => pm.response.to.have.status(503));",
+                  "pm.test(\"Estado FALLIDA\", () => pm.expect(pm.response.json().estado).to.eql(\"FALLIDA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"cbId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Cuenta apagada · falla 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Detén cuenta DESPUÉS de 05. Enviar 06, 07 y 08 una vez cada una; revisar logs hasta ver CERRADO -> ABIERTO.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{cbOrigen}}\",\n  \"claveDestino\": \"{{cbDestino}}\",\n  \"monto\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 503\", () => pm.response.to.have.status(503));",
+                  "pm.test(\"Estado FALLIDA\", () => pm.expect(pm.response.json().estado).to.eql(\"FALLIDA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"cbId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Cuenta apagada · falla 3",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Detén cuenta DESPUÉS de 05. Enviar 06, 07 y 08 una vez cada una; revisar logs hasta ver CERRADO -> ABIERTO.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{cbOrigen}}\",\n  \"claveDestino\": \"{{cbDestino}}\",\n  \"monto\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 503\", () => pm.response.to.have.status(503));",
+                  "pm.test(\"Estado FALLIDA\", () => pm.expect(pm.response.json().estado).to.eql(\"FALLIDA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"cbId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Circuito abierto · rechazo rápido",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Enviar dentro de los 15 s desde la apertura. Capturar tiempo en Postman y RECHAZO_SIN_HTTP en logs; no basta un 503 para probar circuito abierto.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{cbOrigen}}\",\n  \"claveDestino\": \"{{cbDestino}}\",\n  \"monto\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 503\", () => pm.response.to.have.status(503));",
+                  "pm.test(\"Estado FALLIDA\", () => pm.expect(pm.response.json().estado).to.eql(\"FALLIDA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"cbId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 · Recuperación · semiabierto a cerrado",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "description": "Enciende cuenta, espera salud/registro y al menos 15 s desde la última apertura. Enviar una vez. Si falla antes del cargo, esperar y revisar estado antes de volver a enviar.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{cbOrigen}}\",\n  \"claveDestino\": \"{{cbDestino}}\",\n  \"monto\": 10\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPLETADA\"));",
+                  "pm.test(\"Respuesta explicativa\", () => pm.expect(pm.response.json().detalle).to.be.a(\"string\").and.not.empty);",
+                  "pm.test(\"ID persistido\", () => pm.expect(pm.response.json().id).to.be.a(\"number\"));",
+                  "let datos; try { datos = pm.response.json(); } catch (e) { datos = {}; }",
+                  "if (datos.id != null) pm.collectionVariables.set(\"cbId\", String(datos.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 · Consultar transferencia de recuperación",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias/{{cbId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias",
+                "{{cbId}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Estado COMPLETADA persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPLETADA\"));",
+                  "pm.test(\"Mismo ID\", () => pm.expect(String(pm.response.json().id)).to.eql(pm.collectionVariables.get(\"cbId\")));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 · Saldo tras dos éxitos · origen (980)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{cbOrigen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{cbOrigen}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 980\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(980));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13 · Saldo tras dos éxitos · destino (520)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{cbDestino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{cbDestino}}"
+              ]
+            },
+            "description": ""
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"Saldo 520\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(520));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
