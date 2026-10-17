@@ -1,4 +1,4 @@
-﻿# Lab S08 - Amy Valentina Veraza Garcia
+# Lab S08 - Amy Valentina Veraza Garcia
 
 Entrega: `bitacora-s08.pdf`, servicio completo en `codigo/transferencia/` (sin `target/`) y evidencia real en `evidencias/`.
 
@@ -10,7 +10,7 @@ Entrega: `bitacora-s08.pdf`, servicio completo en `codigo/transferencia/` (sin `
 - Circuito manual: CERRADO -> ABIERTO -> SEMIABIERTO -> CERRADO. Rechazos en abierto con HTTP 503, aproximadamente 0.03 s.
 - Limitacion observada: las primeras dos consultas sin instancias disponibles devuelven 500 antes de abrir el circuito. Se conserva la evidencia y se explica en el PDF. No se reintentan mutaciones monetarias sin idempotencia.
 
-El log de 11 pruebas Maven pertenece a la verificacion local previa; las pruebas Docker de esta entrega estan separadas. Las imagenes del PDF son visualizaciones de respuestas y logs reales; se incluyen sus archivos originales.
+El log de 11 pruebas Maven pertenece a la verificacion local previa; las pruebas Docker de esta entrega estan separadas. El PDF contiene ocho capturas directas de la ventana real de PowerShell, sin redibujar las salidas. Los archivos PNG se adjuntan en capturas-terminal/ y los JSON/logs originales en evidencias/. Las consultas actuales a API y SQL muestran los datos persistidos; las capturas 01 y 06 leen los JSON guardados durante la prueba original y lo indican en pantalla. El circuito se consulta mediante docker compose logs y se filtran sus transiciones. Los scripts consulta-0.ps1 a consulta-7.ps1 permiten revisar exactamente los comandos ejecutados. El diagrama de estados sigue siendo una figura explicativa.
 
 ## Reconstruir desde las fuentes
 
