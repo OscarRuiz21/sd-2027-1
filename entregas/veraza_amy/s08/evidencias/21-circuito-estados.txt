@@ -1,0 +1,218 @@
+$ docker compose -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\docker-compose.yml -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\compose-evidencias.yml logs --no-color transferencia
+transferencia-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m
+transferencia-1  | 
+transferencia-1  |   .   ____          _            __ _ _
+transferencia-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+transferencia-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+transferencia-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+transferencia-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+transferencia-1  |  =========|_|==============|___/=/_/_/_/
+transferencia-1  | 
+transferencia-1  |  :: Spring Boot ::                (v3.3.4)
+transferencia-1  | 
+transferencia-1  | 2026-10-17T06:35:15.566Z  INFO 1 --- [transferencia] [           main] mx.mexibanco.TransferenciaApplication    : Starting TransferenciaApplication v0.6.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+transferencia-1  | 2026-10-17T06:35:15.570Z  INFO 1 --- [transferencia] [           main] mx.mexibanco.TransferenciaApplication    : No active profile set, falling back to 1 default profile: "default"
+transferencia-1  | 2026-10-17T06:35:18.281Z  INFO 1 --- [transferencia] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+transferencia-1  | 2026-10-17T06:35:18.649Z  INFO 1 --- [transferencia] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 343 ms. Found 1 JPA repository interface.
+transferencia-1  | 2026-10-17T06:35:19.267Z  INFO 1 --- [transferencia] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=8a72318e-124d-3fe9-b0b0-624018243267
+transferencia-1  | 2026-10-17T06:35:20.041Z  WARN 1 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+transferencia-1  | 2026-10-17T06:35:20.047Z  WARN 1 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+transferencia-1  | 2026-10-17T06:35:20.627Z  INFO 1 --- [transferencia] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+transferencia-1  | 2026-10-17T06:35:20.651Z  INFO 1 --- [transferencia] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+transferencia-1  | 2026-10-17T06:35:20.652Z  INFO 1 --- [transferencia] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+transferencia-1  | 2026-10-17T06:35:20.702Z  INFO 1 --- [transferencia] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+transferencia-1  | 2026-10-17T06:35:20.704Z  INFO 1 --- [transferencia] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5047 ms
+transferencia-1  | 2026-10-17T06:35:21.296Z  INFO 1 --- [transferencia] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+transferencia-1  | 2026-10-17T06:35:21.408Z  INFO 1 --- [transferencia] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+transferencia-1  | 2026-10-17T06:35:21.476Z  INFO 1 --- [transferencia] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+transferencia-1  | 2026-10-17T06:35:22.009Z  INFO 1 --- [transferencia] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+transferencia-1  | 2026-10-17T06:35:22.048Z  INFO 1 --- [transferencia] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+transferencia-1  | 2026-10-17T06:35:22.289Z  INFO 1 --- [transferencia] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@341964d0
+transferencia-1  | 2026-10-17T06:35:22.290Z  INFO 1 --- [transferencia] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+transferencia-1  | 2026-10-17T06:35:23.581Z  INFO 1 --- [transferencia] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+transferencia-1  | 2026-10-17T06:35:23.656Z  INFO 1 --- [transferencia] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+transferencia-1  | 2026-10-17T06:35:26.217Z  INFO 1 --- [transferencia] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+transferencia-1  | 2026-10-17T06:35:26.367Z  WARN 1 --- [transferencia] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+transferencia-1  | 2026-10-17T06:35:26.394Z  INFO 1 --- [transferencia] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+transferencia-1  | 2026-10-17T06:35:26.534Z  INFO 1 --- [transferencia] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+transferencia-1  | 2026-10-17T06:35:26.584Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+transferencia-1  | 2026-10-17T06:35:26.592Z  INFO 1 --- [transferencia] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+transferencia-1  | 2026-10-17T06:35:26.609Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+transferencia-1  | 2026-10-17T06:35:26.609Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+transferencia-1  | 2026-10-17T06:35:26.609Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+transferencia-1  | 2026-10-17T06:35:26.609Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+transferencia-1  | 2026-10-17T06:35:26.609Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+transferencia-1  | 2026-10-17T06:35:26.609Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+transferencia-1  | 2026-10-17T06:35:26.610Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+transferencia-1  | 2026-10-17T06:35:27.280Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+transferencia-1  | 2026-10-17T06:35:27.284Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+transferencia-1  | 2026-10-17T06:35:27.288Z  INFO 1 --- [transferencia] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+transferencia-1  | 2026-10-17T06:35:27.291Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792218927290 with initial instances count: 5
+transferencia-1  | 2026-10-17T06:35:27.298Z  INFO 1 --- [transferencia] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application TRANSFERENCIA with eureka with status UP
+transferencia-1  | 2026-10-17T06:35:27.299Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792218927299, current=UP, previous=STARTING]
+transferencia-1  | 2026-10-17T06:35:27.303Z  INFO 1 --- [transferencia] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TRANSFERENCIA/52cbe1d7406f:transferencia:8080: registering service...
+transferencia-1  | 2026-10-17T06:35:27.326Z  INFO 1 --- [transferencia] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+transferencia-1  | 2026-10-17T06:35:27.327Z  INFO 1 --- [transferencia] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+transferencia-1  | 2026-10-17T06:35:27.351Z  INFO 1 --- [transferencia] [           main] mx.mexibanco.TransferenciaApplication    : Started TransferenciaApplication in 17.662 seconds (process running for 23.303)
+transferencia-1  | 2026-10-17T06:35:27.378Z  INFO 1 --- [transferencia] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TRANSFERENCIA/52cbe1d7406f:transferencia:8080 - registration status: 204
+transferencia-1  | 2026-10-17T06:35:29.269Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+transferencia-1  | 2026-10-17T06:35:29.270Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+transferencia-1  | 2026-10-17T06:35:29.272Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+transferencia-1  | 2026-10-17T06:35:53.748Z  WARN 1 --- [transferencia] [nio-8080-exec-3] o.s.c.l.core.RoundRobinLoadBalancer      : No servers available for service: cuenta
+transferencia-1  | 2026-10-17T06:35:54.184Z  WARN 1 --- [transferencia] [nio-8080-exec-8] o.s.c.l.core.RoundRobinLoadBalancer      : No servers available for service: cuenta
+transferencia-1  | 2026-10-17T06:35:54.194Z ERROR 1 --- [transferencia] [nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: No instances available for cuenta] with root cause
+transferencia-1  | 
+transferencia-1  | java.lang.IllegalStateException: No instances available for cuenta
+transferencia-1  | 	at org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient.execute(BlockingLoadBalancerClient.java:78) ~[spring-cloud-loadbalancer-4.1.4.jar!/:4.1.4]
+transferencia-1  | 	at org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor.intercept(LoadBalancerInterceptor.java:55) ~[spring-cloud-commons-4.1.4.jar!/:4.1.4]
+transferencia-1  | 	at org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor.intercept(DeferringLoadBalancerInterceptor.java:51) ~[spring-cloud-commons-4.1.4.jar!/:4.1.4]
+transferencia-1  | 	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:492) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.retrieve(DefaultRestClient.java:458) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at mx.mexibanco.clientes.CuentaCliente.lambda$consultar$0(CuentaCliente.java:30) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.clientes.CircuitoCuenta.ejecutar(CircuitoCuenta.java:43) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.clientes.CuentaCliente.consultar(CuentaCliente.java:30) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.transferencia.TransferenciaService.transferir(TransferenciaService.java:52) ~[!/:0.6.0]
+transferencia-1  | 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at mx.mexibanco.transferencia.TransferenciaService$$SpringCGLIB$$0.transferir(<generated>) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.transferencia.TransferenciaController.transferir(TransferenciaController.java:28) ~[!/:0.6.0]
+transferencia-1  | 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+transferencia-1  | 
+transferencia-1  | 2026-10-17T06:35:54.236Z  WARN 1 --- [transferencia] [nio-8080-exec-9] o.s.c.l.core.RoundRobinLoadBalancer      : No servers available for service: cuenta
+transferencia-1  | 2026-10-17T06:35:54.236Z  INFO 1 --- [transferencia] [nio-8080-exec-9] mx.mexibanco.clientes.CircuitoCuenta     : Circuito cuenta: CERRADO -> ABIERTO
+transferencia-1  | 2026-10-17T06:35:54.237Z ERROR 1 --- [transferencia] [nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed: java.lang.IllegalStateException: No instances available for cuenta] with root cause
+transferencia-1  | 
+transferencia-1  | java.lang.IllegalStateException: No instances available for cuenta
+transferencia-1  | 	at org.springframework.cloud.loadbalancer.blocking.client.BlockingLoadBalancerClient.execute(BlockingLoadBalancerClient.java:78) ~[spring-cloud-loadbalancer-4.1.4.jar!/:4.1.4]
+transferencia-1  | 	at org.springframework.cloud.client.loadbalancer.LoadBalancerInterceptor.intercept(LoadBalancerInterceptor.java:55) ~[spring-cloud-commons-4.1.4.jar!/:4.1.4]
+transferencia-1  | 	at org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor.intercept(DeferringLoadBalancerInterceptor.java:51) ~[spring-cloud-commons-4.1.4.jar!/:4.1.4]
+transferencia-1  | 	at org.springframework.http.client.InterceptingClientHttpRequest$InterceptingRequestExecution.execute(InterceptingClientHttpRequest.java:88) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.http.client.InterceptingClientHttpRequest.executeInternal(InterceptingClientHttpRequest.java:72) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.http.client.AbstractBufferingClientHttpRequest.executeInternal(AbstractBufferingClientHttpRequest.java:48) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.exchangeInternal(DefaultRestClient.java:492) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.client.DefaultRestClient$DefaultRequestBodyUriSpec.retrieve(DefaultRestClient.java:458) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at mx.mexibanco.clientes.CuentaCliente.lambda$consultar$0(CuentaCliente.java:30) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.clientes.CircuitoCuenta.ejecutar(CircuitoCuenta.java:43) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.clientes.CuentaCliente.consultar(CuentaCliente.java:30) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.transferencia.TransferenciaService.transferir(TransferenciaService.java:52) ~[!/:0.6.0]
+transferencia-1  | 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:355) ~[spring-aop-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:716) ~[spring-aop-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at mx.mexibanco.transferencia.TransferenciaService$$SpringCGLIB$$0.transferir(<generated>) ~[!/:0.6.0]
+transferencia-1  | 	at mx.mexibanco.transferencia.TransferenciaController.transferir(TransferenciaController.java:28) ~[!/:0.6.0]
+transferencia-1  | 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at java.base/java.lang.reflect.Method.invoke(Unknown Source) ~[na:na]
+transferencia-1  | 	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:255) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:188) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:118) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:926) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:831) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1089) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:979) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1014) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:914) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:590) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:885) ~[spring-webmvc-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:658) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:195) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51) ~[tomcat-embed-websocket-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:113) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-6.1.13.jar!/:6.1.13]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:384) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:905) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63) ~[tomcat-embed-core-10.1.30.jar!/:na]
+transferencia-1  | 	at java.base/java.lang.Thread.run(Unknown Source) ~[na:na]
+transferencia-1  | 
+transferencia-1  | 2026-10-17T06:36:26.228Z  INFO 1 --- [transferencia] [nio-8080-exec-2] mx.mexibanco.clientes.CircuitoCuenta     : Circuito cuenta: ABIERTO -> SEMIABIERTO
+transferencia-1  | 2026-10-17T06:36:26.259Z  INFO 1 --- [transferencia] [nio-8080-exec-2] mx.mexibanco.clientes.CircuitoCuenta     : Circuito cuenta: SEMIABIERTO -> CERRADO
+
+exit=0
