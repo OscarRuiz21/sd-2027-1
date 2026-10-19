@@ -44,7 +44,7 @@ Run 'docker run --help' for more information
 
 ## ¿por qué no cambió la página sin reconstruir?
 
-Esto se debe a que Docker bloquea la imagen a la que se esta apuntando, ya que aparece que se esta utiliznado la imagen es por eso que se tiene que eliminar y volver a correrlo. 
+El contenedor sigue corriendo la imagen vieja, y hasta que no reconstruyes con `docker build` no existe una imagen nueva.
 
 ## ¿qué comparten y qué no dos contenedores de la misma imagen?
 
