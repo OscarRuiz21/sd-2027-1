@@ -1,0 +1,113 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 558B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 1.3s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 1.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 48B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [builder 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#6 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#6 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.5s done
+#6 DONE 0.5s
+
+#7 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.5s done
+#7 DONE 0.6s
+
+#5 [internal] load build context
+#5 transferring context: 28.53kB 0.1s done
+#5 DONE 0.2s
+
+#8 [builder 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/7] COPY pom.xml .
+#9 DONE 0.6s
+
+#10 [builder 4/7] COPY mvnw .
+#10 DONE 0.4s
+
+#11 [builder 5/7] COPY .mvn .mvn
+#11 DONE 0.4s
+
+#12 [builder 6/7] COPY src ./src
+#12 DONE 0.3s
+
+#13 [builder 7/7] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw clean package -DskipTests
+#13 9.352 [INFO] Scanning for projects...
+#13 10.62 [INFO] 
+#13 10.62 [INFO] ---------------------< mx.mexibanco:notificacion >----------------------
+#13 10.62 [INFO] Building notificacion 0.6.0
+#13 10.62 [INFO]   from pom.xml
+#13 10.62 [INFO] --------------------------------[ jar ]---------------------------------
+#13 15.63 [INFO] 
+#13 15.63 [INFO] --- clean:3.3.2:clean (default-clean) @ notificacion ---
+#13 15.78 [INFO] 
+#13 15.78 [INFO] --- resources:3.3.1:resources (default-resources) @ notificacion ---
+#13 16.01 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 16.06 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 16.06 [INFO] 
+#13 16.06 [INFO] --- compiler:3.13.0:compile (default-compile) @ notificacion ---
+#13 16.38 [INFO] Recompiling the module because of changed source code.
+#13 16.41 [INFO] Compiling 11 source files with javac [debug parameters release 21] to target/classes
+#13 19.47 [INFO] 
+#13 19.47 [INFO] --- resources:3.3.1:testResources (default-testResources) @ notificacion ---
+#13 19.49 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 19.49 [INFO] 
+#13 19.49 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ notificacion ---
+#13 19.51 [INFO] Recompiling the module because of changed dependency.
+#13 19.51 [INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+#13 21.12 [INFO] 
+#13 21.12 [INFO] --- surefire:3.2.5:test (default-test) @ notificacion ---
+#13 22.26 [INFO] Tests are skipped.
+#13 22.26 [INFO] 
+#13 22.26 [INFO] --- jar:3.4.2:jar (default-jar) @ notificacion ---
+#13 26.03 [INFO] Building jar: /app/target/notificacion-0.6.0.jar
+#13 26.43 [INFO] 
+#13 26.43 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ notificacion ---
+#13 30.41 [INFO] Replacing main artifact /app/target/notificacion-0.6.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 30.41 [INFO] The original artifact has been renamed to /app/target/notificacion-0.6.0.jar.original
+#13 30.42 [INFO] ------------------------------------------------------------------------
+#13 30.42 [INFO] BUILD SUCCESS
+#13 30.42 [INFO] ------------------------------------------------------------------------
+#13 30.43 [INFO] Total time:  21.224 s
+#13 30.43 [INFO] Finished at: 2026-10-19T22:15:17Z
+#13 30.43 [INFO] ------------------------------------------------------------------------
+#13 DONE 30.9s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#15 DONE 0.7s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 12.3s done
+#16 exporting manifest sha256:1fa964c4a65c8bed186f3213249f48a2896f876e490053bbde2534a8220f145b
+#16 exporting manifest sha256:1fa964c4a65c8bed186f3213249f48a2896f876e490053bbde2534a8220f145b 0.1s done
+#16 exporting config sha256:b774632fef5507998f6358a8531e8296cbc1237e4b20fcace03cc1bf4bdfa467 0.1s done
+#16 exporting attestation manifest sha256:321adce702b7b5bd5221523c078129f51dd6c6a961d06942fcde852e45ed46b0
+#16 exporting attestation manifest sha256:321adce702b7b5bd5221523c078129f51dd6c6a961d06942fcde852e45ed46b0 0.3s done
+#16 exporting manifest list sha256:c22a38402eb049bbb66d1b6c759169b04d48a642f57af6b9948929a52652f02f
+#16 exporting manifest list sha256:c22a38402eb049bbb66d1b6c759169b04d48a642f57af6b9948929a52652f02f 0.2s done
+#16 naming to docker.io/library/derek-s07-notificacion:latest
+#16 naming to docker.io/library/derek-s07-notificacion:latest 0.1s done
+#16 unpacking to docker.io/library/derek-s07-notificacion:latest
+#16 unpacking to docker.io/library/derek-s07-notificacion:latest 4.1s done
+#16 DONE 17.5s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ligdvs2mlujja14jvrazwt4th

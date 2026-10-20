@@ -1,0 +1,171 @@
+{
+  "alta": {
+    "hora": "2026-10-20T16:05:41.923397-06:00",
+    "codigo": 201,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "71ba3ff2c80a",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:05:41 GMT",
+      "connection": "close"
+    },
+    "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0}",
+    "segundos": 2.15
+  },
+  "consulta": {
+    "hora": "2026-10-20T16:05:42.408064-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "1cc6e63d5433",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+      "connection": "close"
+    },
+    "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+    "segundos": 0.483
+  },
+  "404-cuenta": {
+    "hora": "2026-10-20T16:05:42.895381-06:00",
+    "codigo": 404,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "fc3490e36177",
+      "Content-Type": "application/problem+json",
+      "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+      "connection": "close"
+    },
+    "cuerpo": "{\"type\":\"about:blank\",\"title\":\"Not Found\",\"status\":404,\"detail\":\"No existe la CLABE 000\",\"instance\":\"/cuentas/000\"}",
+    "segundos": 0.489
+  },
+  "404-gateway": {
+    "hora": "2026-10-20T16:05:43.039953-06:00",
+    "codigo": 404,
+    "cabeceras": {
+      "Content-Type": "application/json",
+      "Content-Length": "130",
+      "connection": "close"
+    },
+    "cuerpo": "{\"timestamp\":\"2026-10-20T22:05:42.989+00:00\",\"path\":\"/api/movimientos\",\"status\":404,\"error\":\"Not Found\",\"requestId\":\"916f1176-13\"}",
+    "segundos": 0.14
+  },
+  "nueve": [
+    {
+      "hora": "2026-10-20T16:05:43.145234-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "71ba3ff2c80a",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:43 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.108
+    },
+    {
+      "hora": "2026-10-20T16:05:43.179837-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "1cc6e63d5433",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.034
+    },
+    {
+      "hora": "2026-10-20T16:05:43.265499-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "fc3490e36177",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.085
+    },
+    {
+      "hora": "2026-10-20T16:05:43.292648-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "71ba3ff2c80a",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:43 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.027
+    },
+    {
+      "hora": "2026-10-20T16:05:43.320583-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "1cc6e63d5433",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.03
+    },
+    {
+      "hora": "2026-10-20T16:05:43.346436-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "fc3490e36177",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.024
+    },
+    {
+      "hora": "2026-10-20T16:05:43.375136-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "71ba3ff2c80a",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:43 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.028
+    },
+    {
+      "hora": "2026-10-20T16:05:43.404337-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "1cc6e63d5433",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.029
+    },
+    {
+      "hora": "2026-10-20T16:05:43.429664-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "fc3490e36177",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:05:42 GMT",
+        "connection": "close"
+      },
+      "cuerpo": "{\"id\":1,\"clabe\":\"S071792533939\",\"titular\":\"S07 Derek\",\"saldo\":0.00}",
+      "segundos": 0.025
+    }
+  ]
+}

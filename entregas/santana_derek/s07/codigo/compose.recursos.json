@@ -1,0 +1,86 @@
+{
+  "services": {
+    "cuenta": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    },
+    "movimiento": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    },
+    "transferencia": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    },
+    "notificacion": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    },
+    "spei": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    },
+    "discovery": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    },
+    "gateway": {
+      "environment": {
+        "JAVA_TOOL_OPTIONS": "-Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC"
+      },
+      "healthcheck": {
+        "interval": "10s",
+        "timeout": "5s",
+        "retries": 10,
+        "start_period": "600s"
+      }
+    }
+  },
+  "networks": {
+    "default": {
+      "name": "derek-s07"
+    }
+  }
+}

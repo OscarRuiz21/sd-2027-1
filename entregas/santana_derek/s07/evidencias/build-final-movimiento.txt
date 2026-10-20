@@ -1,0 +1,538 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 560B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 0.6s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 0.6s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 48B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [builder 1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#6 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.1s done
+#6 DONE 0.2s
+
+#7 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.2s done
+#7 DONE 0.2s
+
+#5 [internal] load build context
+#5 transferring context: 28.94kB 0.0s done
+#5 DONE 0.1s
+
+#8 [builder 4/8] COPY mvnw .
+#8 CACHED
+
+#9 [builder 2/8] WORKDIR /app
+#9 CACHED
+
+#10 [builder 3/8] COPY pom.xml .
+#10 CACHED
+
+#11 [builder 5/8] COPY .mvn .mvn
+#11 CACHED
+
+#12 [builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#12 4.588 [INFO] Scanning for projects...
+#12 6.064 [INFO] 
+#12 6.064 [INFO] ----------------------< mx.mexibanco:movimiento >-----------------------
+#12 6.064 [INFO] Building movimiento 0.6.0
+#12 6.064 [INFO]   from pom.xml
+#12 6.064 [INFO] --------------------------------[ jar ]---------------------------------
+#12 6.081 [INFO] 
+#12 6.083 [INFO] --- dependency:3.6.1:go-offline (default-cli) @ movimiento ---
+#12 23.37 [INFO] Resolved plugin: jetty-servlet-9.4.46.v20220331.jar
+#12 23.37 [INFO] Resolved plugin: doxia-module-twiki-1.11.1.jar
+#12 23.37 [INFO] Resolved plugin: jdependency-2.8.0.jar
+#12 23.37 [INFO] Resolved plugin: spring-boot-buildpack-platform-3.3.4.jar
+#12 23.38 [INFO] Resolved plugin: velocity-tools-2.0.jar
+#12 23.38 [INFO] Resolved plugin: flexmark-ext-gfm-tasklist-0.42.14.jar
+#12 23.38 [INFO] Resolved plugin: flexmark-ext-admonition-0.42.14.jar
+#12 23.38 [INFO] Resolved plugin: jna-5.13.0.jar
+#12 23.38 [INFO] Resolved plugin: maven-core-3.2.5.jar
+#12 23.38 [INFO] Resolved plugin: flexmark-ext-footnotes-0.42.14.jar
+#12 23.38 [INFO] Resolved plugin: flexmark-ext-gfm-strikethrough-0.42.14.jar
+#12 23.38 [INFO] Resolved plugin: flexmark-ext-media-tags-0.42.14.jar
+#12 23.38 [INFO] Resolved plugin: doxia-module-xhtml-1.11.1.jar
+#12 23.38 [INFO] Resolved plugin: flexmark-util-0.42.14.jar
+#12 23.39 [INFO] Resolved plugin: flexmark-ext-anchorlink-0.42.14.jar
+#12 23.39 [INFO] Resolved plugin: asm-9.6.jar
+#12 23.39 [INFO] Resolved plugin: aether-api-1.0.0.v20140518.jar
+#12 23.39 [INFO] Resolved plugin: autolink-0.6.0.jar
+#12 23.39 [INFO] Resolved plugin: maven-filtering-3.3.1.jar
+#12 23.39 [INFO] Resolved plugin: maven-clean-plugin-3.3.2.jar
+#12 23.39 [INFO] Resolved plugin: maven-archiver-3.6.2.jar
+#12 23.39 [INFO] Resolved plugin: doxia-skin-model-1.11.1.jar
+#12 23.40 [INFO] Resolved plugin: dom4j-1.1.jar
+#12 23.40 [INFO] Resolved plugin: plexus-compiler-api-2.15.0.jar
+#12 23.40 [INFO] Resolved plugin: commons-io-2.16.1.jar
+#12 23.40 [INFO] Resolved plugin: flexmark-youtrack-converter-0.42.14.jar
+#12 23.40 [INFO] Resolved plugin: surefire-booter-3.2.5.jar
+#12 23.40 [INFO] Resolved plugin: tomlj-1.0.0.jar
+#12 23.40 [INFO] Resolved plugin: httpclient-4.5.13.jar
+#12 23.40 [INFO] Resolved plugin: flexmark-ext-toc-0.42.14.jar
+#12 23.40 [INFO] Resolved plugin: qdox-2.0.3.jar
+#12 23.40 [INFO] Resolved plugin: maven-resolver-util-1.9.18.jar
+#12 23.40 [INFO] Resolved plugin: httpclient5-5.3.1.jar
+#12 23.40 [INFO] Resolved plugin: jetty-http-9.4.46.v20220331.jar
+#12 23.41 [INFO] Resolved plugin: flexmark-jira-converter-0.42.14.jar
+#12 23.41 [INFO] Resolved plugin: maven-reporting-api-3.1.1.jar
+#12 23.41 [INFO] Resolved plugin: maven-plugin-api-3.2.5.jar
+#12 23.42 [INFO] Resolved plugin: sisu-guice-3.2.3-no_aop.jar
+#12 23.42 [INFO] Resolved plugin: spring-core-6.1.13.jar
+#12 23.42 [INFO] Resolved plugin: flexmark-ext-attributes-0.42.14.jar
+#12 23.42 [INFO] Resolved plugin: commons-lang3-3.8.1.jar
+#12 23.42 [INFO] Resolved plugin: maven-aether-provider-3.2.5.jar
+#12 23.42 [INFO] Resolved plugin: aether-util-1.0.0.v20140518.jar
+#12 23.43 [INFO] Resolved plugin: jetty-security-9.4.46.v20220331.jar
+#12 23.43 [INFO] Resolved plugin: maven-surefire-plugin-3.2.5.jar
+#12 23.43 [INFO] Resolved plugin: maven-compiler-plugin-3.13.0.jar
+#12 23.43 [INFO] Resolved plugin: org.eclipse.sisu.plexus-0.3.5.jar
+#12 23.44 [INFO] Resolved plugin: doxia-core-1.11.1.jar
+#12 23.44 [INFO] Resolved plugin: flexmark-ext-ins-0.42.14.jar
+#12 23.45 [INFO] Resolved plugin: google-collections-1.0.jar
+#12 23.45 [INFO] Resolved plugin: flexmark-ext-emoji-0.42.14.jar
+#12 23.45 [INFO] Resolved plugin: doxia-integration-tools-1.11.1.jar
+#12 23.45 [INFO] Resolved plugin: plexus-compiler-manager-2.15.0.jar
+#12 23.45 [INFO] Resolved plugin: httpcore5-5.2.4.jar
+#12 23.46 [INFO] Resolved plugin: plexus-component-annotations-1.5.5.jar
+#12 23.47 [INFO] Resolved plugin: maven-repository-metadata-3.2.5.jar
+#12 23.47 [INFO] Resolved plugin: flexmark-ext-jekyll-front-matter-0.42.14.jar
+#12 23.47 [INFO] Resolved plugin: doxia-decoration-model-1.11.1.jar
+#12 23.48 [INFO] Resolved plugin: flexmark-all-0.42.14.jar
+#12 23.48 [INFO] Resolved plugin: maven-shared-incremental-1.1.jar
+#12 23.50 [INFO] Resolved plugin: file-management-3.1.0.jar
+#12 23.50 [INFO] Resolved plugin: commons-compress-1.26.1.jar
+#12 23.50 [INFO] Resolved plugin: jetty-webapp-9.4.46.v20220331.jar
+#12 23.50 [INFO] Resolved plugin: plexus-io-3.2.0.jar
+#12 23.52 [INFO] Resolved plugin: xbean-reflect-3.7.jar
+#12 23.52 [INFO] Resolved plugin: maven-reporting-exec-1.6.0.jar
+#12 23.52 [INFO] Resolved plugin: doxia-sink-api-1.11.1.jar
+#12 23.52 [INFO] Resolved plugin: plexus-xml-3.0.0.jar
+#12 23.52 [INFO] Resolved plugin: jetty-xml-9.4.46.v20220331.jar
+#12 23.53 [INFO] Resolved plugin: plexus-velocity-1.2.jar
+#12 23.53 [INFO] Resolved plugin: plexus-container-default-2.1.0.jar
+#12 23.53 [INFO] Resolved plugin: commons-codec-1.11.jar
+#12 23.53 [INFO] Resolved plugin: spring-jcl-6.1.13.jar
+#12 23.53 [INFO] Resolved plugin: snappy-0.4.jar
+#12 23.54 [INFO] Resolved plugin: jsr305-3.0.2.jar
+#12 23.54 [INFO] Resolved plugin: maven-deploy-plugin-3.1.3.jar
+#12 23.54 [INFO] Resolved plugin: plexus-build-api-0.0.7.jar
+#12 23.54 [INFO] Resolved plugin: asm-9.5.jar
+#12 23.55 [INFO] Resolved plugin: maven-dependency-tree-3.2.1.jar
+#12 23.55 [INFO] Resolved plugin: doxia-module-fml-1.11.1.jar
+#12 23.55 [INFO] Resolved plugin: commons-digester-1.8.jar
+#12 23.55 [INFO] Resolved plugin: jetty-server-9.4.46.v20220331.jar
+#12 23.55 [INFO] Resolved plugin: maven-shared-utils-3.4.2.jar
+#12 23.55 [INFO] Resolved plugin: flexmark-ext-abbreviation-0.42.14.jar
+#12 23.55 [INFO] Resolved plugin: maven-archiver-3.5.2.jar
+#12 23.55 [INFO] Resolved plugin: httpcore5-h2-5.2.4.jar
+#12 23.55 [INFO] Resolved plugin: zstd-jni-1.5.5-11.jar
+#12 23.55 [INFO] Resolved plugin: flexmark-ext-definition-0.42.14.jar
+#12 23.55 [INFO] Resolved plugin: doxia-logging-api-1.11.1.jar
+#12 23.56 [INFO] Resolved plugin: plexus-xml-3.0.1.jar
+#12 23.56 [INFO] Resolved plugin: maven-install-plugin-3.1.3.jar
+#12 23.56 [INFO] Resolved plugin: flexmark-ext-yaml-front-matter-0.42.14.jar
+#12 23.56 [INFO] Resolved plugin: maven-shade-plugin-3.5.0.jar
+#12 23.56 [INFO] Resolved plugin: maven-site-plugin-3.12.1.jar
+#12 23.56 [INFO] Resolved plugin: flexmark-ext-superscript-0.42.14.jar
+#12 23.56 [INFO] Resolved plugin: commons-collections-3.2.2.jar
+#12 23.58 [INFO] Resolved plugin: doxia-module-markdown-1.11.1.jar
+#12 23.59 [INFO] Resolved plugin: surefire-extensions-api-3.2.5.jar
+#12 23.59 [INFO] Resolved plugin: flexmark-ext-xwiki-macros-0.42.14.jar
+#12 23.59 [INFO] Resolved plugin: commons-compress-1.20.jar
+#12 23.59 [INFO] Resolved plugin: maven-resolver-api-1.9.18.jar
+#12 23.59 [INFO] Resolved plugin: velocity-1.7.jar
+#12 23.59 [INFO] Resolved plugin: maven-resources-plugin-3.3.1.jar
+#12 23.59 [INFO] Resolved plugin: plexus-utils-3.5.1.jar
+#12 23.59 [INFO] Resolved plugin: aopalliance-1.0.jar
+#12 23.59 [INFO] Resolved plugin: aether-spi-1.0.0.v20140518.jar
+#12 23.59 [INFO] Resolved plugin: plexus-interpolation-1.26.jar
+#12 23.59 [INFO] Resolved plugin: org.eclipse.sisu.plexus-0.9.0.M2.jar
+#12 23.59 [INFO] Resolved plugin: maven-settings-builder-3.2.5.jar
+#12 23.59 [INFO] Resolved plugin: httpcore-4.4.14.jar
+#12 23.61 [INFO] Resolved plugin: commons-lang3-3.12.0.jar
+#12 23.61 [INFO] Resolved plugin: maven-artifact-3.2.5.jar
+#12 23.61 [INFO] Resolved plugin: commons-io-2.15.1.jar
+#12 23.61 [INFO] Resolved plugin: plexus-compiler-javac-2.15.0.jar
+#12 23.61 [INFO] Resolved plugin: flexmark-ext-enumerated-reference-0.42.14.jar
+#12 23.61 [INFO] Resolved plugin: plexus-component-annotations-2.1.1.jar
+#12 23.61 [INFO] Resolved plugin: spring-context-6.1.13.jar
+#12 23.61 [INFO] Resolved plugin: spring-boot-maven-plugin-3.3.4.jar
+#12 23.62 [INFO] Resolved plugin: commons-logging-1.2.jar
+#12 23.62 [INFO] Resolved plugin: flexmark-ext-escaped-character-0.42.14.jar
+#12 23.62 [INFO] Resolved plugin: jackson-annotations-2.14.2.jar
+#12 23.62 [INFO] Resolved plugin: spring-expression-6.1.13.jar
+#12 23.62 [INFO] Resolved plugin: plexus-java-1.2.0.jar
+#12 23.62 [INFO] Resolved plugin: plexus-cipher-1.4.jar
+#12 23.62 [INFO] Resolved plugin: flexmark-0.42.14.jar
+#12 23.62 [INFO] Resolved plugin: plexus-utils-3.4.2.jar
+#12 23.63 [INFO] Resolved plugin: flexmark-ext-aside-0.42.14.jar
+#12 23.63 [INFO] Resolved plugin: flexmark-ext-wikilink-0.42.14.jar
+#12 23.64 [INFO] Resolved plugin: org.eclipse.sisu.inject-0.3.5.jar
+#12 23.64 [INFO] Resolved plugin: spring-aop-6.1.13.jar
+#12 23.65 [INFO] Resolved plugin: plexus-io-3.4.2.jar
+#12 23.65 [INFO] Resolved plugin: flexmark-ext-gfm-tables-0.42.14.jar
+#12 23.65 [INFO] Resolved plugin: org.eclipse.sisu.inject-0.9.0.M2.jar
+#12 23.65 [INFO] Resolved plugin: antlr4-runtime-4.7.2.jar
+#12 23.65 [INFO] Resolved plugin: plexus-interpolation-1.27.jar
+#12 23.65 [INFO] Resolved plugin: commons-io-2.11.0.jar
+#12 23.65 [INFO] Resolved plugin: jetty-io-9.4.46.v20220331.jar
+#12 23.65 [INFO] Resolved plugin: cdi-api-1.2.jar
+#12 23.66 [INFO] Resolved plugin: commons-chain-1.1.jar
+#12 23.66 [INFO] Resolved plugin: commons-codec-1.16.1.jar
+#12 23.67 [INFO] Resolved plugin: flexmark-html-parser-0.42.14.jar
+#12 23.67 [INFO] Resolved plugin: surefire-shared-utils-3.2.5.jar
+#12 23.67 [INFO] Resolved plugin: javax.inject-1.jar
+#12 23.67 [INFO] Resolved plugin: asm-tree-9.5.jar
+#12 23.67 [INFO] Resolved plugin: maven-shared-utils-3.3.4.jar
+#12 23.67 [INFO] Resolved plugin: javax.servlet-api-3.1.0.jar
+#12 23.67 [INFO] Resolved plugin: jetty-util-ajax-9.4.46.v20220331.jar
+#12 23.70 [INFO] Resolved plugin: commons-io-2.13.0.jar
+#12 23.70 [INFO] Resolved plugin: maven-settings-3.2.5.jar
+#12 23.70 [INFO] Resolved plugin: jna-platform-5.13.0.jar
+#12 23.70 [INFO] Resolved plugin: jackson-core-2.14.2.jar
+#12 23.70 [INFO] Resolved plugin: jsoup-1.10.2.jar
+#12 23.70 [INFO] Resolved plugin: oro-2.0.8.jar
+#12 23.70 [INFO] Resolved plugin: spring-beans-6.1.13.jar
+#12 23.70 [INFO] Resolved plugin: surefire-extensions-spi-3.2.5.jar
+#12 23.70 [INFO] Resolved plugin: maven-common-artifact-filters-3.3.2.jar
+#12 23.70 [INFO] Resolved plugin: xz-1.9.jar
+#12 23.70 [INFO] Resolved plugin: aether-impl-1.0.0.v20140518.jar
+#12 23.70 [INFO] Resolved plugin: commons-text-1.3.jar
+#12 23.70 [INFO] Resolved plugin: plexus-utils-4.0.0.jar
+#12 23.70 [INFO] Resolved plugin: micrometer-commons-1.12.10.jar
+#12 23.70 [INFO] Resolved plugin: maven-surefire-common-3.2.5.jar
+#12 23.70 [INFO] Resolved plugin: commons-lang-2.4.jar
+#12 23.70 [INFO] Resolved plugin: slf4j-api-1.7.36.jar
+#12 23.70 [INFO] Resolved plugin: doxia-module-apt-1.11.1.jar
+#12 23.70 [INFO] Resolved plugin: flexmark-ext-gfm-issues-0.42.14.jar
+#12 23.70 [INFO] Resolved plugin: jetty-util-9.4.46.v20220331.jar
+#12 23.70 [INFO] Resolved plugin: maven-model-builder-3.2.5.jar
+#12 23.70 [INFO] Resolved plugin: maven-jar-plugin-3.4.2.jar
+#12 23.70 [INFO] Resolved plugin: jackson-databind-2.14.2.jar
+#12 23.70 [INFO] Resolved plugin: plexus-archiver-4.2.7.jar
+#12 23.70 [INFO] Resolved plugin: commons-io-2.6.jar
+#12 23.70 [INFO] Resolved plugin: flexmark-ext-youtube-embedded-0.42.14.jar
+#12 23.70 [INFO] Resolved plugin: flexmark-formatter-0.42.14.jar
+#12 23.70 [INFO] Resolved plugin: maven-model-3.2.5.jar
+#12 23.70 [INFO] Resolved plugin: plexus-utils-4.0.1.jar
+#12 23.70 [INFO] Resolved plugin: jdom2-2.0.6.1.jar
+#12 23.70 [INFO] Resolved plugin: flexmark-profile-pegdown-0.42.14.jar
+#12 23.70 [INFO] Resolved plugin: doxia-module-docbook-simple-1.11.1.jar
+#12 23.70 [INFO] Resolved plugin: commons-compress-1.25.0.jar
+#12 23.71 [INFO] Resolved plugin: guava-16.0.1.jar
+#12 23.72 [INFO] Resolved plugin: micrometer-observation-1.12.10.jar
+#12 23.72 [INFO] Resolved plugin: plexus-interpolation-1.21.jar
+#12 23.72 [INFO] Resolved plugin: flexmark-ext-typographic-0.42.14.jar
+#12 23.72 [INFO] Resolved plugin: flexmark-ext-autolink-0.42.14.jar
+#12 23.72 [INFO] Resolved plugin: flexmark-ext-jekyll-tag-0.42.14.jar
+#12 23.72 [INFO] Resolved plugin: flexmark-ext-gitlab-0.42.14.jar
+#12 23.73 [INFO] Resolved plugin: doxia-module-xdoc-1.11.1.jar
+#12 23.73 [INFO] Resolved plugin: spring-boot-loader-tools-3.3.4.jar
+#12 23.73 [INFO] Resolved plugin: doxia-site-renderer-1.11.1.jar
+#12 23.73 [INFO] Resolved plugin: surefire-logger-api-3.2.5.jar
+#12 23.73 [INFO] Resolved plugin: commons-beanutils-1.7.0.jar
+#12 23.73 [INFO] Resolved plugin: commons-lang3-3.14.0.jar
+#12 23.73 [INFO] Resolved plugin: plexus-classworlds-2.5.2.jar
+#12 23.73 [INFO] Resolved plugin: doxia-module-confluence-1.11.1.jar
+#12 23.73 [INFO] Resolved plugin: doxia-module-xhtml5-1.11.1.jar
+#12 23.73 [INFO] Resolved plugin: flexmark-ext-tables-0.42.14.jar
+#12 23.74 [INFO] Resolved plugin: javax.annotation-api-1.2.jar
+#12 23.74 [INFO] Resolved plugin: flexmark-ext-macros-0.42.14.jar
+#12 23.74 [INFO] Resolved plugin: plexus-sec-dispatcher-1.3.jar
+#12 23.74 [INFO] Resolved plugin: jackson-module-parameter-names-2.14.2.jar
+#12 23.74 [INFO] Resolved plugin: commons-collections4-4.4.jar
+#12 23.74 [INFO] Resolved plugin: plexus-i18n-1.0-beta-10.jar
+#12 23.74 [INFO] Resolved plugin: flexmark-ext-gfm-users-0.42.14.jar
+#12 23.74 [INFO] Resolved plugin: maven-common-artifact-filters-3.1.1.jar
+#12 23.74 [INFO] Resolved plugin: plexus-archiver-4.9.2.jar
+#12 23.74 [INFO] Resolved plugin: asm-commons-9.5.jar
+#12 23.74 [INFO] Resolved plugin: surefire-api-3.2.5.jar
+#12 23.74 [INFO] Resolved dependency: spring-boot-starter-tomcat-3.3.4.jar
+#12 23.74 [INFO] Resolved dependency: joda-time-2.3.jar
+#12 23.74 [INFO] Resolved dependency: jackson-core-2.15.4.jar
+#12 23.74 [INFO] Resolved dependency: jackson-annotations-2.15.4.jar
+#12 23.74 [INFO] Resolved dependency: stringtemplate-3.2.1.jar
+#12 23.75 [INFO] Resolved dependency: commons-math-2.2.jar
+#12 23.75 [INFO] Resolved dependency: jakarta.activation-api-2.1.0.jar
+#12 23.75 [INFO] Resolved dependency: spring-boot-starter-logging-3.2.7.jar
+#12 23.75 [INFO] Resolved dependency: json-smart-2.5.1.jar
+#12 23.75 [INFO] Resolved dependency: reactor-extra-3.5.1.jar
+#12 23.75 [INFO] Resolved dependency: jackson-databind-2.17.2.jar
+#12 23.75 [INFO] Resolved dependency: spring-jdbc-6.1.13.jar
+#12 23.75 [INFO] Resolved dependency: asm-9.6.jar
+#12 23.75 [INFO] Resolved dependency: logback-core-1.5.8.jar
+#12 23.75 [INFO] Resolved dependency: spring-boot-actuator-autoconfigure-3.3.4.jar
+#12 23.75 [INFO] Resolved dependency: jakarta.transaction-api-2.0.1.jar
+#12 23.80 [INFO] Resolved dependency: accessors-smart-2.5.1.jar
+#12 23.80 [INFO] Resolved dependency: spring-data-jpa-3.3.4.jar
+#12 23.80 [INFO] Resolved dependency: angus-activation-2.0.0.jar
+#12 23.80 [INFO] Resolved dependency: snakeyaml-2.2.jar
+#12 23.80 [INFO] Resolved dependency: assertj-core-3.25.3.jar
+#12 23.80 [INFO] Resolved dependency: commons-lang-2.6.jar
+#12 23.80 [INFO] Resolved dependency: spring-cloud-starter-loadbalancer-4.1.4.jar
+#12 23.80 [INFO] Resolved dependency: byte-buddy-agent-1.14.12.jar
+#12 23.80 [INFO] Resolved dependency: spring-core-6.1.13.jar
+#12 23.80 [INFO] Resolved dependency: spring-cloud-loadbalancer-4.1.4.jar
+#12 23.80 [INFO] Resolved dependency: slf4j-api-2.0.11.jar
+#12 23.80 [INFO] Resolved dependency: log4j-api-2.21.1.jar
+#12 23.80 [INFO] Resolved dependency: servlet-api-2.5.jar
+#12 23.80 [INFO] Resolved dependency: spring-orm-6.1.13.jar
+#12 23.80 [INFO] Resolved dependency: jakarta.xml.bind-api-4.0.0.jar
+#12 23.80 [INFO] Resolved dependency: spring-test-6.1.13.jar
+#12 23.80 [INFO] Resolved dependency: HikariCP-5.1.0.jar
+#12 23.81 [INFO] Resolved dependency: hibernate-validator-8.0.1.Final.jar
+#12 23.81 [INFO] Resolved dependency: listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+#12 23.81 [INFO] Resolved dependency: slf4j-api-2.0.2.jar
+#12 23.81 [INFO] Resolved dependency: jackson-core-2.17.2.jar
+#12 23.81 [INFO] Resolved dependency: hibernate-commons-annotations-6.0.6.Final.jar
+#12 23.81 [INFO] Resolved dependency: jackson-datatype-jdk8-2.17.2.jar
+#12 23.81 [INFO] Resolved dependency: hibernate-core-6.5.3.Final.jar
+#12 23.82 [INFO] Resolved dependency: antlr4-runtime-4.13.0.jar
+#12 23.82 [INFO] Resolved dependency: spring-boot-actuator-3.3.4.jar
+#12 23.82 [INFO] Resolved dependency: antlr-2.7.7.jar
+#12 23.82 [INFO] Resolved dependency: junit-platform-engine-1.10.2.jar
+#12 23.82 [INFO] Resolved dependency: httpcore5-5.2.4.jar
+#12 23.82 [INFO] Resolved dependency: spring-boot-autoconfigure-3.3.4.jar
+#12 23.82 [INFO] Resolved dependency: spring-expression-6.1.10.jar
+#12 23.82 [INFO] Resolved dependency: checker-qual-3.42.0.jar
+#12 23.82 [INFO] Resolved dependency: jackson-databind-2.15.4.jar
+#12 23.82 [INFO] Resolved dependency: junit-4.13.2.jar
+#12 23.82 [INFO] Resolved dependency: spring-boot-starter-logging-3.3.4.jar
+#12 23.83 [INFO] Resolved dependency: byte-buddy-1.14.11.jar
+#12 23.83 [INFO] Resolved dependency: spring-cloud-netflix-eureka-client-4.1.3.jar
+#12 23.83 [INFO] Resolved dependency: woodstox-core-6.2.1.jar
+#12 23.83 [INFO] Resolved dependency: spring-context-6.1.10.jar
+#12 23.83 [INFO] Resolved dependency: commons-jxpath-1.3.jar
+#12 23.83 [INFO] Resolved dependency: spring-context-support-6.1.10.jar
+#12 23.83 [INFO] Resolved dependency: spring-jcl-6.1.13.jar
+#12 23.83 [INFO] Resolved dependency: bcprov-jdk18on-1.78.jar
+#12 23.83 [INFO] Resolved dependency: jsr305-3.0.2.jar
+#12 23.83 [INFO] Resolved dependency: junit-platform-commons-1.10.3.jar
+#12 23.83 [INFO] Resolved dependency: junit-platform-engine-1.10.3.jar
+#12 23.83 [INFO] Resolved dependency: mockito-junit-jupiter-5.11.0.jar
+#12 23.84 [INFO] Resolved dependency: jakarta.xml.bind-api-4.0.2.jar
+#12 23.84 [INFO] Resolved dependency: mockito-core-5.11.0.jar
+#12 23.84 [INFO] Resolved dependency: spring-jcl-6.1.10.jar
+#12 23.84 [INFO] Resolved dependency: commons-configuration-1.10.jar
+#12 23.84 [INFO] Resolved dependency: jettison-1.5.4.jar
+#12 23.84 [INFO] Resolved dependency: httpcore5-h2-5.2.4.jar
+#12 23.84 [INFO] Resolved dependency: spring-boot-starter-validation-3.3.4.jar
+#12 23.84 [INFO] Resolved dependency: jakarta.annotation-api-2.1.1.jar
+#12 23.84 [INFO] Resolved dependency: spring-boot-starter-json-3.3.4.jar
+#12 23.84 [INFO] Resolved dependency: jackson-datatype-jsr310-2.17.2.jar
+#12 23.84 [INFO] Resolved dependency: spring-aop-6.1.10.jar
+#12 23.84 [INFO] Resolved dependency: jna-platform-4.5.1.jar
+#12 23.84 [INFO] Resolved dependency: gson-2.10.1.jar
+#12 23.84 [INFO] Resolved dependency: mxparser-1.2.2.jar
+#12 23.84 [INFO] Resolved dependency: spring-boot-starter-cache-3.2.7.jar
+#12 23.85 [INFO] Resolved dependency: json-path-2.9.0.jar
+#12 23.85 [INFO] Resolved dependency: tomcat-embed-websocket-10.1.30.jar
+#12 23.85 [INFO] Resolved dependency: netflix-eventbus-0.3.0.jar
+#12 23.86 [INFO] Resolved dependency: slf4j-api-1.7.25.jar
+#12 23.86 [INFO] Resolved dependency: micrometer-commons-1.12.7.jar
+#12 23.86 [INFO] Resolved dependency: spring-boot-3.3.4.jar
+#12 23.86 [INFO] Resolved dependency: reactive-streams-1.0.4.jar
+#12 23.86 [INFO] Resolved dependency: micrometer-observation-1.13.4.jar
+#12 23.86 [INFO] Resolved dependency: httpclient5-5.2.3.jar
+#12 23.86 [INFO] Resolved dependency: jul-to-slf4j-2.0.16.jar
+#12 23.86 [INFO] Resolved dependency: netflix-infix-0.3.0.jar
+#12 23.86 [INFO] Resolved dependency: spring-boot-autoconfigure-3.2.7.jar
+#12 23.86 [INFO] Resolved dependency: jaxb-core-4.0.2.jar
+#12 23.86 [INFO] Resolved dependency: log4j-to-slf4j-2.21.1.jar
+#12 23.86 [INFO] Resolved dependency: eureka-core-2.0.3.jar
+#12 23.86 [INFO] Resolved dependency: error_prone_annotations-2.23.0.jar
+#12 23.86 [INFO] Resolved dependency: spring-boot-test-3.3.4.jar
+#12 23.86 [INFO] Resolved dependency: spring-boot-starter-aop-3.3.4.jar
+#12 23.86 [INFO] Resolved dependency: log4j-to-slf4j-2.23.1.jar
+#12 23.86 [INFO] Resolved dependency: spring-context-6.1.13.jar
+#12 23.86 [INFO] Resolved dependency: dexx-collections-0.2.jar
+#12 23.86 [INFO] Resolved dependency: servo-core-0.5.3.jar
+#12 23.86 [INFO] Resolved dependency: guava-33.0.0-jre.jar
+#12 23.86 [INFO] Resolved dependency: spring-boot-starter-3.3.4.jar
+#12 23.86 [INFO] Resolved dependency: commons-logging-1.2.jar
+#12 23.86 [INFO] Resolved dependency: opentest4j-1.3.0.jar
+#12 23.86 [INFO] Resolved dependency: spring-expression-6.1.13.jar
+#12 23.86 [INFO] Resolved dependency: xmlunit-core-2.9.1.jar
+#12 23.87 [INFO] Resolved dependency: junit-platform-commons-1.10.2.jar
+#12 23.87 [INFO] Resolved dependency: jackson-module-parameter-names-2.17.2.jar
+#12 23.87 [INFO] Resolved dependency: byte-buddy-1.14.15.jar
+#12 23.87 [INFO] Resolved dependency: jna-4.5.1.jar
+#12 23.87 [INFO] Resolved dependency: micrometer-commons-1.13.4.jar
+#12 23.88 [INFO] Resolved dependency: httpclient-4.5.3.jar
+#12 23.88 [INFO] Resolved dependency: failureaccess-1.0.2.jar
+#12 23.88 [INFO] Resolved dependency: spring-aop-6.1.13.jar
+#12 23.88 [INFO] Resolved dependency: spring-cloud-context-4.1.4.jar
+#12 23.88 [INFO] Resolved dependency: commons-codec-1.16.1.jar
+#12 23.88 [INFO] Resolved dependency: txw2-4.0.2.jar
+#12 23.88 [INFO] Resolved dependency: spring-security-crypto-6.2.5.jar
+#12 23.88 [INFO] Resolved dependency: HdrHistogram-2.2.2.jar
+#12 23.89 [INFO] Resolved dependency: waffle-jna-1.9.1.jar
+#12 23.89 [INFO] Resolved dependency: spring-boot-starter-data-jpa-3.3.4.jar
+#12 23.89 [INFO] Resolved dependency: hamcrest-2.2.jar
+#12 23.89 [INFO] Resolved dependency: istack-commons-runtime-4.1.1.jar
+#12 23.89 [INFO] Resolved dependency: jboss-logging-3.5.0.Final.jar
+#12 23.89 [INFO] Resolved dependency: postgresql-42.7.4.jar
+#12 23.89 [INFO] Resolved dependency: tomcat-embed-core-10.1.30.jar
+#12 23.89 [INFO] Resolved dependency: micrometer-observation-1.12.7.jar
+#12 23.89 [INFO] Resolved dependency: tomcat-embed-el-10.1.30.jar
+#12 23.89 [INFO] Resolved dependency: classmate-1.5.1.jar
+#12 23.90 [INFO] Resolved dependency: spring-beans-6.1.13.jar
+#12 23.90 [INFO] Resolved dependency: spring-boot-3.2.7.jar
+#12 23.90 [INFO] Resolved dependency: junit-jupiter-engine-5.10.2.jar
+#12 23.90 [INFO] Resolved dependency: antlr-runtime-3.4.jar
+#12 23.90 [INFO] Resolved dependency: reactor-core-3.6.7.jar
+#12 23.90 [INFO] Resolved dependency: spring-boot-starter-actuator-3.3.4.jar
+#12 23.90 [INFO] Resolved dependency: micrometer-jakarta9-1.13.4.jar
+#12 23.90 [INFO] Resolved dependency: evictor-1.0.0.jar
+#12 23.91 [INFO] Resolved dependency: jboss-logging-3.4.3.Final.jar
+#12 23.91 [INFO] Resolved dependency: aspectjweaver-1.9.22.1.jar
+#12 23.91 [INFO] Resolved dependency: spring-cloud-starter-netflix-eureka-client-4.1.3.jar
+#12 23.91 [INFO] Resolved dependency: micrometer-commons-1.12.10.jar
+#12 23.91 [INFO] Resolved dependency: checker-qual-3.41.0.jar
+#12 23.91 [INFO] Resolved dependency: objenesis-3.3.jar
+#12 23.91 [INFO] Resolved dependency: junit-jupiter-engine-5.10.3.jar
+#12 23.91 [INFO] Resolved dependency: jackson-annotations-2.17.2.jar
+#12 23.91 [INFO] Resolved dependency: spring-security-rsa-1.1.3.jar
+#12 23.91 [INFO] Resolved dependency: jcl-over-slf4j-1.7.25.jar
+#12 23.91 [INFO] Resolved dependency: xmlpull-1.1.3.1.jar
+#12 23.92 [INFO] Resolved dependency: spring-aspects-6.1.13.jar
+#12 23.92 [INFO] Resolved dependency: log4j-api-2.23.1.jar
+#12 23.92 [INFO] Resolved dependency: caffeine-2.6.2.jar
+#12 23.93 [INFO] Resolved dependency: spectator-api-1.7.3.jar
+#12 23.93 [INFO] Resolved dependency: hamcrest-core-1.3.jar
+#12 23.93 [INFO] Resolved dependency: logback-classic-1.4.14.jar
+#12 23.93 [INFO] Resolved dependency: httpcore-4.4.16.jar
+#12 23.93 [INFO] Resolved dependency: spring-data-commons-3.3.4.jar
+#12 23.93 [INFO] Resolved dependency: jakarta.persistence-api-3.1.0.jar
+#12 23.93 [INFO] Resolved dependency: spring-boot-starter-3.2.7.jar
+#12 23.93 [INFO] Resolved dependency: jakarta.activation-api-2.1.3.jar
+#12 23.93 [INFO] Resolved dependency: spring-cloud-starter-4.1.4.jar
+#12 23.93 [INFO] Resolved dependency: spring-boot-test-autoconfigure-3.3.4.jar
+#12 23.93 [INFO] Resolved dependency: micrometer-core-1.13.4.jar
+#12 23.93 [INFO] Resolved dependency: micrometer-observation-1.12.10.jar
+#12 23.93 [INFO] Resolved dependency: jsonassert-1.5.3.jar
+#12 23.94 [INFO] Resolved dependency: jul-to-slf4j-2.0.13.jar
+#12 23.94 [INFO] Resolved dependency: xstream-1.4.20.jar
+#12 23.94 [INFO] Resolved dependency: annotations-2.0.0.jar
+#12 23.94 [INFO] Resolved dependency: spring-boot-starter-jdbc-3.3.4.jar
+#12 23.94 [INFO] Resolved dependency: jakarta.validation-api-3.0.2.jar
+#12 23.94 [INFO] Resolved dependency: slf4j-api-2.0.13.jar
+#12 23.94 [INFO] Resolved dependency: archaius-core-0.7.6.jar
+#12 23.95 [INFO] Resolved dependency: logback-classic-1.5.8.jar
+#12 23.95 [INFO] Resolved dependency: jakarta.ws.rs-api-3.1.0.jar
+#12 23.95 [INFO] Resolved dependency: spring-cloud-commons-4.1.4.jar
+#12 23.95 [INFO] Resolved dependency: spring-boot-starter-test-3.3.4.jar
+#12 23.95 [INFO] Resolved dependency: junit-jupiter-params-5.10.3.jar
+#12 23.95 [INFO] Resolved dependency: spring-core-6.1.10.jar
+#12 23.95 [INFO] Resolved dependency: jaxb-runtime-4.0.2.jar
+#12 23.95 [INFO] Resolved dependency: awaitility-4.2.2.jar
+#12 23.95 [INFO] Resolved dependency: jakarta.inject-api-2.0.1.jar
+#12 23.95 [INFO] Resolved dependency: jakarta.annotation-api-2.0.0.jar
+#12 23.95 [INFO] Resolved dependency: stax2-api-4.2.1.jar
+#12 23.95 [INFO] Resolved dependency: junit-jupiter-api-5.10.2.jar
+#12 23.95 [INFO] Resolved dependency: spring-boot-starter-web-3.3.4.jar
+#12 23.95 [INFO] Resolved dependency: javax.annotation-api-1.2.jar
+#12 23.96 [INFO] Resolved dependency: logback-core-1.4.14.jar
+#12 23.96 [INFO] Resolved dependency: j2objc-annotations-2.8.jar
+#12 23.96 [INFO] Resolved dependency: slf4j-api-2.0.15.jar
+#12 23.96 [INFO] Resolved dependency: jandex-3.1.2.jar
+#12 23.96 [INFO] Resolved dependency: spring-webmvc-6.1.13.jar
+#12 23.96 [INFO] Resolved dependency: compactmap-2.0.jar
+#12 23.96 [INFO] Resolved dependency: apiguardian-api-1.1.2.jar
+#12 23.96 [INFO] Resolved dependency: spring-beans-6.1.10.jar
+#12 23.96 [INFO] Resolved dependency: LatencyUtils-2.0.3.jar
+#12 23.96 [INFO] Resolved dependency: junit-jupiter-5.10.3.jar
+#12 23.97 [INFO] Resolved dependency: spring-web-6.1.13.jar
+#12 23.97 [INFO] Resolved dependency: eureka-client-2.0.3.jar
+#12 23.97 [INFO] Resolved dependency: android-json-0.0.20131108.vaadin1.jar
+#12 23.97 [INFO] Resolved dependency: spring-tx-6.1.13.jar
+#12 23.97 [INFO] Resolved dependency: junit-jupiter-api-5.10.3.jar
+#12 23.98 [INFO] ------------------------------------------------------------------------
+#12 23.98 [INFO] BUILD SUCCESS
+#12 23.98 [INFO] ------------------------------------------------------------------------
+#12 23.99 [INFO] Total time:  19.454 s
+#12 24.00 [INFO] Finished at: 2026-10-19T22:11:30Z
+#12 24.00 [INFO] ------------------------------------------------------------------------
+#12 DONE 24.5s
+
+#13 [builder 7/8] COPY src ./src
+#13 DONE 0.2s
+
+#14 [builder 8/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw clean package -DskipTests
+#14 40.04 [INFO] Scanning for projects...
+#14 47.96 [INFO] 
+#14 47.96 [INFO] ----------------------< mx.mexibanco:movimiento >-----------------------
+#14 47.97 [INFO] Building movimiento 0.6.0
+#14 47.98 [INFO]   from pom.xml
+#14 47.99 [INFO] --------------------------------[ jar ]---------------------------------
+#14 57.93 [INFO] 
+#14 57.96 [INFO] --- clean:3.3.2:clean (default-clean) @ movimiento ---
+#14 59.62 [INFO] 
+#14 59.62 [INFO] --- resources:3.3.1:resources (default-resources) @ movimiento ---
+#14 60.31 [INFO] Copying 1 resource from src/main/resources to target/classes
+#14 60.45 [INFO] Copying 0 resource from src/main/resources to target/classes
+#14 60.46 [INFO] 
+#14 60.47 [INFO] --- compiler:3.13.0:compile (default-compile) @ movimiento ---
+#14 61.77 [INFO] Recompiling the module because of changed source code.
+#14 61.80 [INFO] Compiling 11 source files with javac [debug parameters release 21] to target/classes
+#14 90.55 [INFO] 
+#14 90.55 [INFO] --- resources:3.3.1:testResources (default-testResources) @ movimiento ---
+#14 90.87 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#14 90.87 [INFO] 
+#14 90.87 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ movimiento ---
+#14 91.12 [INFO] Recompiling the module because of changed dependency.
+#14 91.15 [INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+#14 114.8 [INFO] 
+#14 114.8 [INFO] --- surefire:3.2.5:test (default-test) @ movimiento ---
+#14 118.8 [INFO] Tests are skipped.
+#14 118.8 [INFO] 
+#14 118.8 [INFO] --- jar:3.4.2:jar (default-jar) @ movimiento ---
+#14 123.4 [INFO] Building jar: /app/target/movimiento-0.6.0.jar
+#14 126.6 [INFO] 
+#14 126.6 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ movimiento ---
+#14 150.1 [INFO] Replacing main artifact /app/target/movimiento-0.6.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#14 150.1 [INFO] The original artifact has been renamed to /app/target/movimiento-0.6.0.jar.original
+#14 150.2 [INFO] ------------------------------------------------------------------------
+#14 150.2 [INFO] BUILD SUCCESS
+#14 150.2 [INFO] ------------------------------------------------------------------------
+#14 150.2 [INFO] Total time:  01:50 min
+#14 150.2 [INFO] Finished at: 2026-10-19T22:14:01Z
+#14 150.2 [INFO] ------------------------------------------------------------------------
+#14 DONE 151.1s
+
+#15 [stage-1 2/3] WORKDIR /app
+#15 CACHED
+
+#16 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#16 DONE 2.0s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 27.6s done
+#17 exporting manifest sha256:c3a90744bbb215aa2a698076a08ee5b0bac3fa6a1556e20f98f4e97e462d9811 0.0s done
+#17 exporting config sha256:5d6e75e994573910ff97fc40e320ed6794fbfc0cbae26c5bf2c639954371171d 0.1s done
+#17 exporting attestation manifest sha256:c42b8b9918f8ebfa9df35afc83721ca75788a0e4ce3f90d23a9f6687cb2e7cf2
+#17 exporting attestation manifest sha256:c42b8b9918f8ebfa9df35afc83721ca75788a0e4ce3f90d23a9f6687cb2e7cf2 0.1s done
+#17 exporting manifest list sha256:8b9a71066537f3cc0e88f3da467badb5e803dfc59a4b542e890f0bc29e1fdbf0 0.0s done
+#17 naming to docker.io/library/derek-s07-movimiento:latest
+#17 naming to docker.io/library/derek-s07-movimiento:latest done
+#17 unpacking to docker.io/library/derek-s07-movimiento:latest
+#17 unpacking to docker.io/library/derek-s07-movimiento:latest 2.0s done
+#17 DONE 30.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/1hd9pgvjv72rfjkv13ufaq9wb

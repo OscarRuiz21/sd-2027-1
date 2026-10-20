@@ -1,0 +1,715 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 597B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 1.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 1.0s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 48B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 ...
+
+#7 [builder 1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#7 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.1s done
+#7 DONE 0.1s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.1s done
+#6 DONE 0.2s
+
+#5 [internal] load build context
+#5 transferring context: 775B 0.0s done
+#5 DONE 0.0s
+
+#8 [builder 2/8] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/8] COPY pom.xml .
+#9 CACHED
+
+#10 [builder 4/8] COPY mvnw .
+#10 CACHED
+
+#11 [builder 5/8] COPY .mvn .mvn
+#11 CACHED
+
+#12 [builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#12 7.377 [INFO] Scanning for projects...
+#12 9.973 [INFO] 
+#12 9.974 [INFO] ------------------------< mx.mexibanco:gateway >------------------------
+#12 9.974 [INFO] Building gateway 0.6.0
+#12 9.974 [INFO]   from pom.xml
+#12 9.976 [INFO] --------------------------------[ jar ]---------------------------------
+#12 9.994 [INFO] 
+#12 9.995 [INFO] --- dependency:3.6.1:go-offline (default-cli) @ gateway ---
+#12 15.32 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-gateway/4.1.5/spring-cloud-starter-gateway-4.1.5.pom
+#12 17.20 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-gateway/4.1.5/spring-cloud-starter-gateway-4.1.5.pom (2.6 kB at 1.3 kB/s)
+#12 17.24 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway/4.1.5/spring-cloud-gateway-4.1.5.pom
+#12 17.37 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway/4.1.5/spring-cloud-gateway-4.1.5.pom (2.7 kB at 20 kB/s)
+#12 17.65 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-server/4.1.5/spring-cloud-gateway-server-4.1.5.pom
+#12 17.73 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-server/4.1.5/spring-cloud-gateway-server-4.1.5.pom (7.0 kB at 91 kB/s)
+#12 17.74 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.2.7/spring-boot-starter-validation-3.2.7.pom
+#12 17.89 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.2.7/spring-boot-starter-validation-3.2.7.pom (2.5 kB at 17 kB/s)
+#12 17.93 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.6.0/classmate-1.6.0.pom
+#12 18.01 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.6.0/classmate-1.6.0.pom (6.6 kB at 86 kB/s)
+#12 18.03 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.2.7/spring-boot-starter-webflux-3.2.7.pom
+#12 18.12 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.2.7/spring-boot-starter-webflux-3.2.7.pom (2.9 kB at 31 kB/s)
+#12 18.23 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.2.7/spring-boot-starter-reactor-netty-3.2.7.pom
+#12 18.32 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.2.7/spring-boot-starter-reactor-netty-3.2.7.pom (2.1 kB at 23 kB/s)
+#12 18.36 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.20/reactor-netty-http-1.1.20.pom
+#12 18.49 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.20/reactor-netty-http-1.1.20.pom (4.3 kB at 32 kB/s)
+#12 18.51 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.pom
+#12 18.63 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.pom (4.4 kB at 38 kB/s)
+#12 18.64 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.111.Final/netty-parent-4.1.111.Final.pom
+#12 18.78 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.111.Final/netty-parent-4.1.111.Final.pom (90 kB at 637 kB/s)
+#12 18.80 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.pom
+#12 18.98 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.pom (12 kB at 65 kB/s)
+#12 19.00 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.pom
+#12 19.11 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.pom (1.6 kB at 14 kB/s)
+#12 19.13 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.pom
+#12 19.29 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.pom (2.2 kB at 13 kB/s)
+#12 19.32 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.pom
+#12 19.46 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.pom (1.6 kB at 10 kB/s)
+#12 19.47 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.pom
+#12 19.54 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.pom (5.5 kB at 80 kB/s)
+#12 19.60 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.pom
+#12 19.69 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.pom (4.6 kB at 53 kB/s)
+#12 19.70 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.pom
+#12 19.78 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.pom (33 kB at 441 kB/s)
+#12 19.79 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.pom
+#12 19.86 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.pom (5.2 kB at 73 kB/s)
+#12 19.87 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.pom
+#12 20.05 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.pom (3.7 kB at 21 kB/s)
+#12 20.07 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.pom
+#12 20.15 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.pom (2.7 kB at 34 kB/s)
+#12 20.17 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.111.Final/netty-resolver-dns-native-macos-4.1.111.Final.pom
+#12 20.26 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.111.Final/netty-resolver-dns-native-macos-4.1.111.Final.pom (18 kB at 196 kB/s)
+#12 20.28 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.111.Final/netty-resolver-dns-classes-macos-4.1.111.Final.pom
+#12 20.35 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.111.Final/netty-resolver-dns-classes-macos-4.1.111.Final.pom (2.0 kB at 28 kB/s)
+#12 20.36 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.111.Final/netty-transport-native-epoll-4.1.111.Final.pom
+#12 20.51 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.111.Final/netty-transport-native-epoll-4.1.111.Final.pom (27 kB at 171 kB/s)
+#12 20.52 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.111.Final/netty-transport-classes-epoll-4.1.111.Final.pom
+#12 20.59 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.111.Final/netty-transport-classes-epoll-4.1.111.Final.pom (2.1 kB at 32 kB/s)
+#12 20.60 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.20/reactor-netty-core-1.1.20.pom
+#12 20.68 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.20/reactor-netty-core-1.1.20.pom (3.9 kB at 51 kB/s)
+#12 20.69 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.pom
+#12 20.76 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.pom (3.6 kB at 54 kB/s)
+#12 20.76 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.pom
+#12 20.83 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.pom (2.5 kB at 37 kB/s)
+#12 20.84 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.10/spring-webflux-6.1.10.pom
+#12 20.90 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.10/spring-webflux-6.1.10.pom (2.6 kB at 42 kB/s)
+#12 20.98 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-gateway/4.1.5/spring-cloud-starter-gateway-4.1.5.jar
+#12 21.08 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-gateway/4.1.5/spring-cloud-starter-gateway-4.1.5.jar (2.1 kB at 21 kB/s)
+#12 21.09 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-server/4.1.5/spring-cloud-gateway-server-4.1.5.jar
+#12 21.09 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.2.7/spring-boot-starter-validation-3.2.7.jar
+#12 21.10 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.6.0/classmate-1.6.0.jar
+#12 21.10 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.2.7/spring-boot-starter-webflux-3.2.7.jar
+#12 21.11 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.2.7/spring-boot-starter-reactor-netty-3.2.7.jar
+#12 21.34 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-validation/3.2.7/spring-boot-starter-validation-3.2.7.jar (4.8 kB at 19 kB/s)
+#12 21.35 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.20/reactor-netty-http-1.1.20.jar
+#12 21.44 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.2.7/spring-boot-starter-webflux-3.2.7.jar (4.8 kB at 14 kB/s)
+#12 21.45 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.jar
+#12 21.45 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.6.0/classmate-1.6.0.jar (69 kB at 190 kB/s)
+#12 21.46 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.jar
+#12 21.49 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-gateway-server/4.1.5/spring-cloud-gateway-server-4.1.5.jar (668 kB at 1.6 MB/s)
+#12 21.49 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.jar
+#12 21.57 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.2.7/spring-boot-starter-reactor-netty-3.2.7.jar (4.8 kB at 10 kB/s)
+#12 21.57 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.jar
+#12 21.70 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.111.Final/netty-buffer-4.1.111.Final.jar (336 kB at 563 kB/s)
+#12 21.70 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.jar
+#12 21.75 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.20/reactor-netty-http-1.1.20.jar (478 kB at 735 kB/s)
+#12 21.76 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.jar
+#12 21.83 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.111.Final/netty-codec-http-4.1.111.Final.jar (668 kB at 923 kB/s)
+#12 21.83 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.jar
+#12 21.84 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.111.Final/netty-codec-4.1.111.Final.jar (352 kB at 480 kB/s)
+#12 21.84 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.jar
+#12 21.89 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.111.Final/netty-transport-4.1.111.Final.jar (518 kB at 656 kB/s)
+#12 21.90 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.111.Final/netty-common-4.1.111.Final.jar (694 kB at 878 kB/s)
+#12 21.90 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.jar
+#12 21.90 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.jar
+#12 21.98 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.111.Final/netty-resolver-dns-4.1.111.Final.jar (181 kB at 207 kB/s)
+#12 21.98 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.111.Final/netty-resolver-dns-native-macos-4.1.111.Final-osx-x86_64.jar
+#12 22.08 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.111.Final/netty-handler-4.1.111.Final.jar (570 kB at 586 kB/s)
+#12 22.08 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.111.Final/netty-resolver-dns-classes-macos-4.1.111.Final.jar
+#12 22.10 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.111.Final/netty-codec-http2-4.1.111.Final.jar (490 kB at 495 kB/s)
+#12 22.10 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.111.Final/netty-transport-native-epoll-4.1.111.Final-linux-x86_64.jar
+#12 22.10 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.111.Final/netty-resolver-4.1.111.Final.jar (38 kB at 38 kB/s)
+#12 22.10 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.jar
+#12 22.11 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.111.Final/netty-codec-dns-4.1.111.Final.jar (67 kB at 67 kB/s)
+#12 22.11 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.111.Final/netty-transport-classes-epoll-4.1.111.Final.jar
+#12 22.15 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.111.Final/netty-resolver-dns-classes-macos-4.1.111.Final.jar (9.1 kB at 8.7 kB/s)
+#12 22.16 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.111.Final/netty-resolver-dns-native-macos-4.1.111.Final-osx-x86_64.jar (19 kB at 19 kB/s)
+#12 22.16 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.jar
+#12 22.16 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.20/reactor-netty-core-1.1.20.jar
+#12 22.17 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.111.Final/netty-transport-native-unix-common-4.1.111.Final.jar (44 kB at 41 kB/s)
+#12 22.17 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.jar
+#12 22.19 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.111.Final/netty-transport-native-epoll-4.1.111.Final-linux-x86_64.jar (40 kB at 37 kB/s)
+#12 22.19 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.10/spring-webflux-6.1.10.jar
+#12 22.22 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.111.Final/netty-transport-classes-epoll-4.1.111.Final.jar (147 kB at 133 kB/s)
+#12 22.24 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.111.Final/netty-handler-proxy-4.1.111.Final.jar (26 kB at 23 kB/s)
+#12 22.30 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.111.Final/netty-codec-socks-4.1.111.Final.jar (121 kB at 102 kB/s)
+#12 22.36 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.20/reactor-netty-core-1.1.20.jar (521 kB at 417 kB/s)
+#12 22.41 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.10/spring-webflux-6.1.10.jar (979 kB at 758 kB/s)
+#12 24.46 [INFO] Resolved plugin: jetty-servlet-9.4.46.v20220331.jar
+#12 24.46 [INFO] Resolved plugin: doxia-module-twiki-1.11.1.jar
+#12 24.46 [INFO] Resolved plugin: jdependency-2.8.0.jar
+#12 24.47 [INFO] Resolved plugin: spring-boot-buildpack-platform-3.3.4.jar
+#12 24.47 [INFO] Resolved plugin: velocity-tools-2.0.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-ext-gfm-tasklist-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-ext-admonition-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: jna-5.13.0.jar
+#12 24.47 [INFO] Resolved plugin: maven-core-3.2.5.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-ext-footnotes-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-ext-gfm-strikethrough-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-ext-media-tags-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: doxia-module-xhtml-1.11.1.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-util-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-ext-anchorlink-0.42.14.jar
+#12 24.47 [INFO] Resolved plugin: asm-9.6.jar
+#12 24.47 [INFO] Resolved plugin: aether-api-1.0.0.v20140518.jar
+#12 24.47 [INFO] Resolved plugin: autolink-0.6.0.jar
+#12 24.47 [INFO] Resolved plugin: maven-filtering-3.3.1.jar
+#12 24.47 [INFO] Resolved plugin: maven-clean-plugin-3.3.2.jar
+#12 24.47 [INFO] Resolved plugin: maven-archiver-3.6.2.jar
+#12 24.47 [INFO] Resolved plugin: doxia-skin-model-1.11.1.jar
+#12 24.47 [INFO] Resolved plugin: dom4j-1.1.jar
+#12 24.47 [INFO] Resolved plugin: plexus-compiler-api-2.15.0.jar
+#12 24.47 [INFO] Resolved plugin: commons-io-2.16.1.jar
+#12 24.47 [INFO] Resolved plugin: flexmark-youtrack-converter-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: surefire-booter-3.2.5.jar
+#12 24.48 [INFO] Resolved plugin: tomlj-1.0.0.jar
+#12 24.48 [INFO] Resolved plugin: httpclient-4.5.13.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-ext-toc-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: qdox-2.0.3.jar
+#12 24.48 [INFO] Resolved plugin: maven-resolver-util-1.9.18.jar
+#12 24.48 [INFO] Resolved plugin: httpclient5-5.3.1.jar
+#12 24.48 [INFO] Resolved plugin: jetty-http-9.4.46.v20220331.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-jira-converter-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: maven-reporting-api-3.1.1.jar
+#12 24.48 [INFO] Resolved plugin: maven-plugin-api-3.2.5.jar
+#12 24.48 [INFO] Resolved plugin: sisu-guice-3.2.3-no_aop.jar
+#12 24.48 [INFO] Resolved plugin: spring-core-6.1.13.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-ext-attributes-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: commons-lang3-3.8.1.jar
+#12 24.48 [INFO] Resolved plugin: maven-aether-provider-3.2.5.jar
+#12 24.48 [INFO] Resolved plugin: aether-util-1.0.0.v20140518.jar
+#12 24.48 [INFO] Resolved plugin: jetty-security-9.4.46.v20220331.jar
+#12 24.48 [INFO] Resolved plugin: maven-surefire-plugin-3.2.5.jar
+#12 24.48 [INFO] Resolved plugin: maven-compiler-plugin-3.13.0.jar
+#12 24.48 [INFO] Resolved plugin: org.eclipse.sisu.plexus-0.3.5.jar
+#12 24.48 [INFO] Resolved plugin: doxia-core-1.11.1.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-ext-ins-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: google-collections-1.0.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-ext-emoji-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: doxia-integration-tools-1.11.1.jar
+#12 24.48 [INFO] Resolved plugin: plexus-compiler-manager-2.15.0.jar
+#12 24.48 [INFO] Resolved plugin: httpcore5-5.2.4.jar
+#12 24.48 [INFO] Resolved plugin: plexus-component-annotations-1.5.5.jar
+#12 24.48 [INFO] Resolved plugin: maven-repository-metadata-3.2.5.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-ext-jekyll-front-matter-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: doxia-decoration-model-1.11.1.jar
+#12 24.48 [INFO] Resolved plugin: flexmark-all-0.42.14.jar
+#12 24.48 [INFO] Resolved plugin: maven-shared-incremental-1.1.jar
+#12 24.48 [INFO] Resolved plugin: file-management-3.1.0.jar
+#12 24.48 [INFO] Resolved plugin: commons-compress-1.26.1.jar
+#12 24.48 [INFO] Resolved plugin: jetty-webapp-9.4.46.v20220331.jar
+#12 24.48 [INFO] Resolved plugin: plexus-io-3.2.0.jar
+#12 24.48 [INFO] Resolved plugin: xbean-reflect-3.7.jar
+#12 24.48 [INFO] Resolved plugin: maven-reporting-exec-1.6.0.jar
+#12 24.48 [INFO] Resolved plugin: doxia-sink-api-1.11.1.jar
+#12 24.48 [INFO] Resolved plugin: jetty-xml-9.4.46.v20220331.jar
+#12 24.48 [INFO] Resolved plugin: plexus-xml-3.0.0.jar
+#12 24.48 [INFO] Resolved plugin: plexus-velocity-1.2.jar
+#12 24.48 [INFO] Resolved plugin: plexus-container-default-2.1.0.jar
+#12 24.49 [INFO] Resolved plugin: commons-codec-1.11.jar
+#12 24.49 [INFO] Resolved plugin: spring-jcl-6.1.13.jar
+#12 24.49 [INFO] Resolved plugin: snappy-0.4.jar
+#12 24.49 [INFO] Resolved plugin: jsr305-3.0.2.jar
+#12 24.49 [INFO] Resolved plugin: maven-deploy-plugin-3.1.3.jar
+#12 24.49 [INFO] Resolved plugin: plexus-build-api-0.0.7.jar
+#12 24.49 [INFO] Resolved plugin: asm-9.5.jar
+#12 24.49 [INFO] Resolved plugin: maven-dependency-tree-3.2.1.jar
+#12 24.49 [INFO] Resolved plugin: doxia-module-fml-1.11.1.jar
+#12 24.49 [INFO] Resolved plugin: commons-digester-1.8.jar
+#12 24.49 [INFO] Resolved plugin: jetty-server-9.4.46.v20220331.jar
+#12 24.49 [INFO] Resolved plugin: maven-shared-utils-3.4.2.jar
+#12 24.49 [INFO] Resolved plugin: flexmark-ext-abbreviation-0.42.14.jar
+#12 24.49 [INFO] Resolved plugin: maven-archiver-3.5.2.jar
+#12 24.49 [INFO] Resolved plugin: httpcore5-h2-5.2.4.jar
+#12 24.49 [INFO] Resolved plugin: flexmark-ext-definition-0.42.14.jar
+#12 24.49 [INFO] Resolved plugin: zstd-jni-1.5.5-11.jar
+#12 24.49 [INFO] Resolved plugin: doxia-logging-api-1.11.1.jar
+#12 24.49 [INFO] Resolved plugin: plexus-xml-3.0.1.jar
+#12 24.49 [INFO] Resolved plugin: maven-install-plugin-3.1.3.jar
+#12 24.49 [INFO] Resolved plugin: flexmark-ext-yaml-front-matter-0.42.14.jar
+#12 24.49 [INFO] Resolved plugin: maven-shade-plugin-3.5.0.jar
+#12 24.49 [INFO] Resolved plugin: maven-site-plugin-3.12.1.jar
+#12 24.49 [INFO] Resolved plugin: flexmark-ext-superscript-0.42.14.jar
+#12 24.49 [INFO] Resolved plugin: commons-collections-3.2.2.jar
+#12 24.49 [INFO] Resolved plugin: doxia-module-markdown-1.11.1.jar
+#12 24.49 [INFO] Resolved plugin: surefire-extensions-api-3.2.5.jar
+#12 24.49 [INFO] Resolved plugin: flexmark-ext-xwiki-macros-0.42.14.jar
+#12 24.49 [INFO] Resolved plugin: commons-compress-1.20.jar
+#12 24.49 [INFO] Resolved plugin: maven-resolver-api-1.9.18.jar
+#12 24.49 [INFO] Resolved plugin: velocity-1.7.jar
+#12 24.49 [INFO] Resolved plugin: maven-resources-plugin-3.3.1.jar
+#12 24.49 [INFO] Resolved plugin: plexus-utils-3.5.1.jar
+#12 24.49 [INFO] Resolved plugin: aopalliance-1.0.jar
+#12 24.49 [INFO] Resolved plugin: aether-spi-1.0.0.v20140518.jar
+#12 24.49 [INFO] Resolved plugin: plexus-interpolation-1.26.jar
+#12 24.49 [INFO] Resolved plugin: org.eclipse.sisu.plexus-0.9.0.M2.jar
+#12 24.49 [INFO] Resolved plugin: maven-settings-builder-3.2.5.jar
+#12 24.49 [INFO] Resolved plugin: httpcore-4.4.14.jar
+#12 24.49 [INFO] Resolved plugin: commons-lang3-3.12.0.jar
+#12 24.49 [INFO] Resolved plugin: maven-artifact-3.2.5.jar
+#12 24.49 [INFO] Resolved plugin: commons-io-2.15.1.jar
+#12 24.49 [INFO] Resolved plugin: plexus-compiler-javac-2.15.0.jar
+#12 24.49 [INFO] Resolved plugin: flexmark-ext-enumerated-reference-0.42.14.jar
+#12 24.49 [INFO] Resolved plugin: plexus-component-annotations-2.1.1.jar
+#12 24.49 [INFO] Resolved plugin: spring-context-6.1.13.jar
+#12 24.50 [INFO] Resolved plugin: spring-boot-maven-plugin-3.3.4.jar
+#12 24.50 [INFO] Resolved plugin: commons-logging-1.2.jar
+#12 24.50 [INFO] Resolved plugin: flexmark-ext-escaped-character-0.42.14.jar
+#12 24.50 [INFO] Resolved plugin: jackson-annotations-2.14.2.jar
+#12 24.50 [INFO] Resolved plugin: spring-expression-6.1.13.jar
+#12 24.51 [INFO] Resolved plugin: plexus-java-1.2.0.jar
+#12 24.51 [INFO] Resolved plugin: plexus-cipher-1.4.jar
+#12 24.51 [INFO] Resolved plugin: flexmark-0.42.14.jar
+#12 24.51 [INFO] Resolved plugin: plexus-utils-3.4.2.jar
+#12 24.51 [INFO] Resolved plugin: flexmark-ext-aside-0.42.14.jar
+#12 24.51 [INFO] Resolved plugin: flexmark-ext-wikilink-0.42.14.jar
+#12 24.51 [INFO] Resolved plugin: org.eclipse.sisu.inject-0.3.5.jar
+#12 24.51 [INFO] Resolved plugin: spring-aop-6.1.13.jar
+#12 24.51 [INFO] Resolved plugin: plexus-io-3.4.2.jar
+#12 24.51 [INFO] Resolved plugin: flexmark-ext-gfm-tables-0.42.14.jar
+#12 24.51 [INFO] Resolved plugin: org.eclipse.sisu.inject-0.9.0.M2.jar
+#12 24.51 [INFO] Resolved plugin: antlr4-runtime-4.7.2.jar
+#12 24.51 [INFO] Resolved plugin: plexus-interpolation-1.27.jar
+#12 24.51 [INFO] Resolved plugin: commons-io-2.11.0.jar
+#12 24.51 [INFO] Resolved plugin: jetty-io-9.4.46.v20220331.jar
+#12 24.51 [INFO] Resolved plugin: cdi-api-1.2.jar
+#12 24.51 [INFO] Resolved plugin: commons-chain-1.1.jar
+#12 24.51 [INFO] Resolved plugin: commons-codec-1.16.1.jar
+#12 24.51 [INFO] Resolved plugin: flexmark-html-parser-0.42.14.jar
+#12 24.51 [INFO] Resolved plugin: surefire-shared-utils-3.2.5.jar
+#12 24.51 [INFO] Resolved plugin: asm-tree-9.5.jar
+#12 24.51 [INFO] Resolved plugin: javax.inject-1.jar
+#12 24.51 [INFO] Resolved plugin: maven-shared-utils-3.3.4.jar
+#12 24.51 [INFO] Resolved plugin: javax.servlet-api-3.1.0.jar
+#12 24.51 [INFO] Resolved plugin: jetty-util-ajax-9.4.46.v20220331.jar
+#12 24.51 [INFO] Resolved plugin: commons-io-2.13.0.jar
+#12 24.51 [INFO] Resolved plugin: maven-settings-3.2.5.jar
+#12 24.51 [INFO] Resolved plugin: jna-platform-5.13.0.jar
+#12 24.51 [INFO] Resolved plugin: jackson-core-2.14.2.jar
+#12 24.51 [INFO] Resolved plugin: jsoup-1.10.2.jar
+#12 24.52 [INFO] Resolved plugin: oro-2.0.8.jar
+#12 24.52 [INFO] Resolved plugin: spring-beans-6.1.13.jar
+#12 24.52 [INFO] Resolved plugin: surefire-extensions-spi-3.2.5.jar
+#12 24.52 [INFO] Resolved plugin: maven-common-artifact-filters-3.3.2.jar
+#12 24.52 [INFO] Resolved plugin: xz-1.9.jar
+#12 24.52 [INFO] Resolved plugin: aether-impl-1.0.0.v20140518.jar
+#12 24.52 [INFO] Resolved plugin: commons-text-1.3.jar
+#12 24.52 [INFO] Resolved plugin: plexus-utils-4.0.0.jar
+#12 24.52 [INFO] Resolved plugin: micrometer-commons-1.12.10.jar
+#12 24.52 [INFO] Resolved plugin: commons-lang-2.4.jar
+#12 24.52 [INFO] Resolved plugin: maven-surefire-common-3.2.5.jar
+#12 24.52 [INFO] Resolved plugin: slf4j-api-1.7.36.jar
+#12 24.52 [INFO] Resolved plugin: doxia-module-apt-1.11.1.jar
+#12 24.52 [INFO] Resolved plugin: flexmark-ext-gfm-issues-0.42.14.jar
+#12 24.52 [INFO] Resolved plugin: jetty-util-9.4.46.v20220331.jar
+#12 24.52 [INFO] Resolved plugin: maven-model-builder-3.2.5.jar
+#12 24.52 [INFO] Resolved plugin: jackson-databind-2.14.2.jar
+#12 24.52 [INFO] Resolved plugin: plexus-archiver-4.2.7.jar
+#12 24.53 [INFO] Resolved plugin: maven-jar-plugin-3.4.2.jar
+#12 24.53 [INFO] Resolved plugin: commons-io-2.6.jar
+#12 24.53 [INFO] Resolved plugin: flexmark-ext-youtube-embedded-0.42.14.jar
+#12 24.53 [INFO] Resolved plugin: flexmark-formatter-0.42.14.jar
+#12 24.65 [INFO] Resolved plugin: maven-model-3.2.5.jar
+#12 24.65 [INFO] Resolved plugin: plexus-utils-4.0.1.jar
+#12 24.65 [INFO] Resolved plugin: jdom2-2.0.6.1.jar
+#12 24.66 [INFO] Resolved plugin: flexmark-profile-pegdown-0.42.14.jar
+#12 24.66 [INFO] Resolved plugin: doxia-module-docbook-simple-1.11.1.jar
+#12 24.66 [INFO] Resolved plugin: commons-compress-1.25.0.jar
+#12 24.66 [INFO] Resolved plugin: guava-16.0.1.jar
+#12 24.66 [INFO] Resolved plugin: micrometer-observation-1.12.10.jar
+#12 24.66 [INFO] Resolved plugin: plexus-interpolation-1.21.jar
+#12 24.66 [INFO] Resolved plugin: flexmark-ext-typographic-0.42.14.jar
+#12 24.66 [INFO] Resolved plugin: flexmark-ext-autolink-0.42.14.jar
+#12 24.66 [INFO] Resolved plugin: flexmark-ext-jekyll-tag-0.42.14.jar
+#12 24.66 [INFO] Resolved plugin: flexmark-ext-gitlab-0.42.14.jar
+#12 24.66 [INFO] Resolved plugin: doxia-module-xdoc-1.11.1.jar
+#12 24.66 [INFO] Resolved plugin: spring-boot-loader-tools-3.3.4.jar
+#12 24.66 [INFO] Resolved plugin: doxia-site-renderer-1.11.1.jar
+#12 24.66 [INFO] Resolved plugin: surefire-logger-api-3.2.5.jar
+#12 24.66 [INFO] Resolved plugin: commons-beanutils-1.7.0.jar
+#12 24.66 [INFO] Resolved plugin: commons-lang3-3.14.0.jar
+#12 24.66 [INFO] Resolved plugin: plexus-classworlds-2.5.2.jar
+#12 24.66 [INFO] Resolved plugin: doxia-module-confluence-1.11.1.jar
+#12 24.66 [INFO] Resolved plugin: doxia-module-xhtml5-1.11.1.jar
+#12 24.66 [INFO] Resolved plugin: flexmark-ext-tables-0.42.14.jar
+#12 24.67 [INFO] Resolved plugin: javax.annotation-api-1.2.jar
+#12 24.67 [INFO] Resolved plugin: flexmark-ext-macros-0.42.14.jar
+#12 24.67 [INFO] Resolved plugin: plexus-sec-dispatcher-1.3.jar
+#12 24.67 [INFO] Resolved plugin: jackson-module-parameter-names-2.14.2.jar
+#12 24.67 [INFO] Resolved plugin: commons-collections4-4.4.jar
+#12 24.67 [INFO] Resolved plugin: plexus-i18n-1.0-beta-10.jar
+#12 24.67 [INFO] Resolved plugin: flexmark-ext-gfm-users-0.42.14.jar
+#12 24.67 [INFO] Resolved plugin: maven-common-artifact-filters-3.1.1.jar
+#12 24.67 [INFO] Resolved plugin: plexus-archiver-4.9.2.jar
+#12 24.67 [INFO] Resolved plugin: asm-commons-9.5.jar
+#12 24.67 [INFO] Resolved plugin: surefire-api-3.2.5.jar
+#12 24.67 [INFO] Resolved dependency: joda-time-2.3.jar
+#12 24.67 [INFO] Resolved dependency: jackson-core-2.15.4.jar
+#12 24.67 [INFO] Resolved dependency: netty-codec-http2-4.1.111.Final.jar
+#12 24.67 [INFO] Resolved dependency: jul-to-slf4j-2.0.16.jar
+#12 24.67 [INFO] Resolved dependency: netty-common-4.1.111.Final.jar
+#12 24.67 [INFO] Resolved dependency: jackson-datatype-jdk8-2.15.4.jar
+#12 24.67 [INFO] Resolved dependency: netflix-infix-0.3.0.jar
+#12 24.67 [INFO] Resolved dependency: spring-boot-autoconfigure-3.2.7.jar
+#12 24.67 [INFO] Resolved dependency: log4j-to-slf4j-2.21.1.jar
+#12 24.67 [INFO] Resolved dependency: eureka-core-2.0.3.jar
+#12 24.67 [INFO] Resolved dependency: jackson-annotations-2.15.4.jar
+#12 24.67 [INFO] Resolved dependency: stringtemplate-3.2.1.jar
+#12 24.67 [INFO] Resolved dependency: commons-math-2.2.jar
+#12 24.67 [INFO] Resolved dependency: error_prone_annotations-2.23.0.jar
+#12 24.67 [INFO] Resolved dependency: netty-resolver-dns-native-macos-4.1.111.Final-osx-x86_64.jar
+#12 24.67 [INFO] Resolved dependency: spring-boot-test-3.3.4.jar
+#12 24.67 [INFO] Resolved dependency: spring-boot-starter-logging-3.2.7.jar
+#12 24.67 [INFO] Resolved dependency: spring-context-6.1.13.jar
+#12 24.67 [INFO] Resolved dependency: log4j-to-slf4j-2.23.1.jar
+#12 24.67 [INFO] Resolved dependency: json-smart-2.5.1.jar
+#12 24.67 [INFO] Resolved dependency: reactor-extra-3.5.1.jar
+#12 24.68 [INFO] Resolved dependency: jackson-databind-2.17.2.jar
+#12 24.68 [INFO] Resolved dependency: dexx-collections-0.2.jar
+#12 24.68 [INFO] Resolved dependency: servo-core-0.5.3.jar
+#12 24.68 [INFO] Resolved dependency: asm-9.6.jar
+#12 24.68 [INFO] Resolved dependency: spring-boot-starter-3.3.4.jar
+#12 24.68 [INFO] Resolved dependency: guava-33.0.0-jre.jar
+#12 24.68 [INFO] Resolved dependency: opentest4j-1.3.0.jar
+#12 24.68 [INFO] Resolved dependency: commons-logging-1.2.jar
+#12 24.68 [INFO] Resolved dependency: logback-core-1.5.8.jar
+#12 24.68 [INFO] Resolved dependency: spring-expression-6.1.13.jar
+#12 24.68 [INFO] Resolved dependency: xmlunit-core-2.9.1.jar
+#12 24.68 [INFO] Resolved dependency: spring-boot-actuator-autoconfigure-3.3.4.jar
+#12 24.68 [INFO] Resolved dependency: accessors-smart-2.5.1.jar
+#12 24.68 [INFO] Resolved dependency: classmate-1.6.0.jar
+#12 24.68 [INFO] Resolved dependency: netty-codec-dns-4.1.111.Final.jar
+#12 24.68 [INFO] Resolved dependency: spring-boot-starter-validation-3.2.7.jar
+#12 24.68 [INFO] Resolved dependency: netty-resolver-dns-4.1.111.Final.jar
+#12 24.68 [INFO] Resolved dependency: micrometer-commons-1.13.4.jar
+#12 24.68 [INFO] Resolved dependency: httpclient-4.5.3.jar
+#12 24.68 [INFO] Resolved dependency: failureaccess-1.0.2.jar
+#12 24.68 [INFO] Resolved dependency: spring-web-6.1.10.jar
+#12 24.68 [INFO] Resolved dependency: spring-aop-6.1.13.jar
+#12 24.68 [INFO] Resolved dependency: snakeyaml-2.2.jar
+#12 24.68 [INFO] Resolved dependency: spring-cloud-context-4.1.4.jar
+#12 24.68 [INFO] Resolved dependency: jboss-logging-3.5.3.Final.jar
+#12 24.68 [INFO] Resolved dependency: assertj-core-3.25.3.jar
+#12 24.68 [INFO] Resolved dependency: commons-lang-2.6.jar
+#12 24.68 [INFO] Resolved dependency: netty-codec-4.1.111.Final.jar
+#12 24.68 [INFO] Resolved dependency: spring-cloud-starter-loadbalancer-4.1.4.jar
+#12 24.69 [INFO] Resolved dependency: spring-boot-starter-json-3.2.7.jar
+#12 24.70 [INFO] Resolved dependency: commons-codec-1.16.1.jar
+#12 24.70 [INFO] Resolved dependency: spring-cloud-starter-gateway-4.1.5.jar
+#12 24.70 [INFO] Resolved dependency: jackson-datatype-jsr310-2.15.4.jar
+#12 24.71 [INFO] Resolved dependency: spring-security-crypto-6.2.5.jar
+#12 24.71 [INFO] Resolved dependency: spring-boot-starter-webflux-3.2.7.jar
+#12 24.72 [INFO] Resolved dependency: byte-buddy-agent-1.14.12.jar
+#12 24.75 [INFO] Resolved dependency: HdrHistogram-2.2.2.jar
+#12 24.80 [INFO] Resolved dependency: spring-core-6.1.13.jar
+#12 24.81 [INFO] Resolved dependency: hamcrest-2.2.jar
+#12 24.83 [INFO] Resolved dependency: spring-cloud-loadbalancer-4.1.4.jar
+#12 24.83 [INFO] Resolved dependency: netty-codec-http-4.1.111.Final.jar
+#12 24.83 [INFO] Resolved dependency: slf4j-api-2.0.11.jar
+#12 24.83 [INFO] Resolved dependency: log4j-api-2.21.1.jar
+#12 24.83 [INFO] Resolved dependency: micrometer-observation-1.12.7.jar
+#12 24.83 [INFO] Resolved dependency: servlet-api-2.5.jar
+#12 24.83 [INFO] Resolved dependency: netty-handler-4.1.111.Final.jar
+#12 24.83 [INFO] Resolved dependency: spring-beans-6.1.13.jar
+#12 24.83 [INFO] Resolved dependency: spring-test-6.1.13.jar
+#12 24.83 [INFO] Resolved dependency: spring-boot-3.2.7.jar
+#12 24.83 [INFO] Resolved dependency: spring-webflux-6.1.10.jar
+#12 24.83 [INFO] Resolved dependency: antlr-runtime-3.4.jar
+#12 24.83 [INFO] Resolved dependency: reactor-core-3.6.7.jar
+#12 24.83 [INFO] Resolved dependency: reactor-netty-http-1.1.20.jar
+#12 24.83 [INFO] Resolved dependency: hibernate-validator-8.0.1.Final.jar
+#12 24.83 [INFO] Resolved dependency: spring-boot-starter-actuator-3.3.4.jar
+#12 24.83 [INFO] Resolved dependency: netty-resolver-dns-classes-macos-4.1.111.Final.jar
+#12 24.83 [INFO] Resolved dependency: listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+#12 24.83 [INFO] Resolved dependency: micrometer-jakarta9-1.13.4.jar
+#12 24.83 [INFO] Resolved dependency: evictor-1.0.0.jar
+#12 24.83 [INFO] Resolved dependency: netty-buffer-4.1.111.Final.jar
+#12 24.83 [INFO] Resolved dependency: spring-cloud-starter-netflix-eureka-client-4.1.3.jar
+#12 24.83 [INFO] Resolved dependency: micrometer-commons-1.12.10.jar
+#12 24.83 [INFO] Resolved dependency: jackson-core-2.17.2.jar
+#12 24.83 [INFO] Resolved dependency: objenesis-3.3.jar
+#12 24.83 [INFO] Resolved dependency: checker-qual-3.41.0.jar
+#12 24.84 [INFO] Resolved dependency: junit-jupiter-engine-5.10.3.jar
+#12 24.84 [INFO] Resolved dependency: spring-boot-actuator-3.3.4.jar
+#12 24.85 [INFO] Resolved dependency: antlr-2.7.7.jar
+#12 24.85 [INFO] Resolved dependency: jackson-annotations-2.17.2.jar
+#12 24.85 [INFO] Resolved dependency: spring-boot-autoconfigure-3.3.4.jar
+#12 24.85 [INFO] Resolved dependency: httpcore5-5.2.4.jar
+#12 24.85 [INFO] Resolved dependency: spring-security-rsa-1.1.3.jar
+#12 24.85 [INFO] Resolved dependency: xmlpull-1.1.3.1.jar
+#12 24.86 [INFO] Resolved dependency: spring-expression-6.1.10.jar
+#12 24.86 [INFO] Resolved dependency: log4j-api-2.23.1.jar
+#12 24.86 [INFO] Resolved dependency: jackson-databind-2.15.4.jar
+#12 24.86 [INFO] Resolved dependency: spring-boot-starter-logging-3.3.4.jar
+#12 24.86 [INFO] Resolved dependency: spectator-api-1.7.3.jar
+#12 24.86 [INFO] Resolved dependency: logback-classic-1.4.14.jar
+#12 24.86 [INFO] Resolved dependency: httpcore-4.4.16.jar
+#12 24.87 [INFO] Resolved dependency: byte-buddy-1.14.11.jar
+#12 24.87 [INFO] Resolved dependency: netty-transport-native-unix-common-4.1.111.Final.jar
+#12 24.87 [INFO] Resolved dependency: spring-cloud-netflix-eureka-client-4.1.3.jar
+#12 24.89 [INFO] Resolved dependency: woodstox-core-6.2.1.jar
+#12 24.90 [INFO] Resolved dependency: spring-boot-starter-3.2.7.jar
+#12 24.90 [INFO] Resolved dependency: spring-context-6.1.10.jar
+#12 24.90 [INFO] Resolved dependency: jakarta.activation-api-2.1.3.jar
+#12 24.90 [INFO] Resolved dependency: commons-jxpath-1.3.jar
+#12 24.90 [INFO] Resolved dependency: spring-cloud-starter-4.1.4.jar
+#12 24.90 [INFO] Resolved dependency: spring-context-support-6.1.10.jar
+#12 24.90 [INFO] Resolved dependency: spring-boot-test-autoconfigure-3.3.4.jar
+#12 24.90 [INFO] Resolved dependency: micrometer-core-1.13.4.jar
+#12 24.90 [INFO] Resolved dependency: netty-codec-socks-4.1.111.Final.jar
+#12 24.90 [INFO] Resolved dependency: micrometer-observation-1.12.10.jar
+#12 24.90 [INFO] Resolved dependency: jsonassert-1.5.3.jar
+#12 24.90 [INFO] Resolved dependency: tomcat-embed-el-10.1.25.jar
+#12 24.90 [INFO] Resolved dependency: jul-to-slf4j-2.0.13.jar
+#12 24.90 [INFO] Resolved dependency: netty-resolver-4.1.111.Final.jar
+#12 24.90 [INFO] Resolved dependency: xstream-1.4.20.jar
+#12 24.90 [INFO] Resolved dependency: annotations-2.0.0.jar
+#12 24.90 [INFO] Resolved dependency: spring-jcl-6.1.13.jar
+#12 24.90 [INFO] Resolved dependency: bcprov-jdk18on-1.78.jar
+#12 24.90 [INFO] Resolved dependency: jakarta.validation-api-3.0.2.jar
+#12 24.90 [INFO] Resolved dependency: jackson-module-parameter-names-2.15.4.jar
+#12 24.90 [INFO] Resolved dependency: slf4j-api-2.0.13.jar
+#12 24.90 [INFO] Resolved dependency: netty-handler-proxy-4.1.111.Final.jar
+#12 24.90 [INFO] Resolved dependency: jsr305-3.0.2.jar
+#12 24.90 [INFO] Resolved dependency: junit-platform-commons-1.10.3.jar
+#12 24.90 [INFO] Resolved dependency: archaius-core-0.7.6.jar
+#12 24.90 [INFO] Resolved dependency: junit-platform-engine-1.10.3.jar
+#12 24.90 [INFO] Resolved dependency: mockito-junit-jupiter-5.11.0.jar
+#12 24.90 [INFO] Resolved dependency: jakarta.xml.bind-api-4.0.2.jar
+#12 24.90 [INFO] Resolved dependency: logback-classic-1.5.8.jar
+#12 24.90 [INFO] Resolved dependency: mockito-core-5.11.0.jar
+#12 24.90 [INFO] Resolved dependency: spring-jcl-6.1.10.jar
+#12 24.90 [INFO] Resolved dependency: jakarta.ws.rs-api-3.1.0.jar
+#12 24.90 [INFO] Resolved dependency: commons-configuration-1.10.jar
+#12 24.90 [INFO] Resolved dependency: spring-cloud-commons-4.1.4.jar
+#12 24.90 [INFO] Resolved dependency: jettison-1.5.4.jar
+#12 24.90 [INFO] Resolved dependency: httpcore5-h2-5.2.4.jar
+#12 24.90 [INFO] Resolved dependency: spring-boot-starter-test-3.3.4.jar
+#12 24.90 [INFO] Resolved dependency: junit-jupiter-params-5.10.3.jar
+#12 24.90 [INFO] Resolved dependency: jakarta.annotation-api-2.1.1.jar
+#12 24.90 [INFO] Resolved dependency: spring-core-6.1.10.jar
+#12 24.90 [INFO] Resolved dependency: awaitility-4.2.2.jar
+#12 24.90 [INFO] Resolved dependency: jackson-datatype-jsr310-2.17.2.jar
+#12 24.90 [INFO] Resolved dependency: netty-transport-4.1.111.Final.jar
+#12 24.90 [INFO] Resolved dependency: jakarta.inject-api-2.0.1.jar
+#12 24.90 [INFO] Resolved dependency: spring-aop-6.1.10.jar
+#12 24.90 [INFO] Resolved dependency: stax2-api-4.2.1.jar
+#12 24.90 [INFO] Resolved dependency: spring-boot-starter-reactor-netty-3.2.7.jar
+#12 24.90 [INFO] Resolved dependency: reactor-netty-core-1.1.20.jar
+#12 24.90 [INFO] Resolved dependency: netty-transport-classes-epoll-4.1.111.Final.jar
+#12 24.90 [INFO] Resolved dependency: gson-2.10.1.jar
+#12 24.90 [INFO] Resolved dependency: javax.annotation-api-1.2.jar
+#12 24.90 [INFO] Resolved dependency: logback-core-1.4.14.jar
+#12 24.90 [INFO] Resolved dependency: j2objc-annotations-2.8.jar
+#12 24.90 [INFO] Resolved dependency: netty-transport-native-epoll-4.1.111.Final-linux-x86_64.jar
+#12 24.90 [INFO] Resolved dependency: slf4j-api-2.0.15.jar
+#12 24.90 [INFO] Resolved dependency: mxparser-1.2.2.jar
+#12 24.90 [INFO] Resolved dependency: spring-boot-starter-cache-3.2.7.jar
+#12 24.90 [INFO] Resolved dependency: json-path-2.9.0.jar
+#12 24.90 [INFO] Resolved dependency: compactmap-2.0.jar
+#12 24.90 [INFO] Resolved dependency: apiguardian-api-1.1.2.jar
+#12 24.90 [INFO] Resolved dependency: spring-beans-6.1.10.jar
+#12 24.90 [INFO] Resolved dependency: LatencyUtils-2.0.3.jar
+#12 24.90 [INFO] Resolved dependency: netflix-eventbus-0.3.0.jar
+#12 24.90 [INFO] Resolved dependency: junit-jupiter-5.10.3.jar
+#12 24.90 [INFO] Resolved dependency: spring-cloud-gateway-server-4.1.5.jar
+#12 24.90 [INFO] Resolved dependency: micrometer-commons-1.12.7.jar
+#12 24.90 [INFO] Resolved dependency: spring-boot-3.3.4.jar
+#12 24.90 [INFO] Resolved dependency: eureka-client-2.0.3.jar
+#12 24.90 [INFO] Resolved dependency: android-json-0.0.20131108.vaadin1.jar
+#12 24.90 [INFO] Resolved dependency: junit-jupiter-api-5.10.3.jar
+#12 24.90 [INFO] Resolved dependency: reactive-streams-1.0.4.jar
+#12 24.90 [INFO] Resolved dependency: micrometer-observation-1.13.4.jar
+#12 24.90 [INFO] Resolved dependency: httpclient5-5.2.3.jar
+#12 24.90 [INFO] ------------------------------------------------------------------------
+#12 24.95 [INFO] BUILD SUCCESS
+#12 24.95 [INFO] ------------------------------------------------------------------------
+#12 24.98 [INFO] Total time:  17.630 s
+#12 25.08 [INFO] Finished at: 2026-10-19T22:08:49Z
+#12 25.08 [INFO] ------------------------------------------------------------------------
+#12 DONE 25.8s
+
+#13 [builder 7/8] COPY src ./src
+#13 DONE 1.0s
+
+#14 [builder 8/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw clean package -DskipTests
+#14 37.38 [INFO] Scanning for projects...
+#14 39.32 [INFO] 
+#14 39.32 [INFO] ------------------------< mx.mexibanco:gateway >------------------------
+#14 39.32 [INFO] Building gateway 0.6.0
+#14 39.32 [INFO]   from pom.xml
+#14 39.32 [INFO] --------------------------------[ jar ]---------------------------------
+#14 43.16 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.3.4/spring-boot-starter-webflux-3.3.4.pom
+#14 45.01 Progress (1): 956 BProgress (1): 1.1 kBProgress (1): 2.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.3.4/spring-boot-starter-webflux-3.3.4.pom (2.9 kB at 1.5 kB/s)
+#14 45.24 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.3.4/spring-boot-starter-reactor-netty-3.3.4.pom
+#14 45.31 Progress (1): 980 BProgress (1): 1.1 kBProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.3.4/spring-boot-starter-reactor-netty-3.3.4.pom (2.1 kB at 23 kB/s)
+#14 45.33 Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.22/reactor-netty-http-1.1.22.pom
+#14 45.42 Progress (1): 1.1 kBProgress (1): 1.4 kBProgress (1): 4.3 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.22/reactor-netty-http-1.1.22.pom (4.3 kB at 36 kB/s)
+#14 45.49 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.113.Final/netty-codec-http-4.1.113.Final.pom
+#14 45.64 Progress (1): 810 BProgress (1): 940 BProgress (1): 4.4 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.113.Final/netty-codec-http-4.1.113.Final.pom (4.4 kB at 21 kB/s)
+#14 45.75 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.113.Final/netty-parent-4.1.113.Final.pom
+#14 45.85 Progress (1): 736 BProgress (1): 802 BProgress (1): 2.3 kBProgress (1): 4.3 kBProgress (1): 6.3 kBProgress (1): 8.1 kBProgress (1): 21 kB Progress (1): 24 kBProgress (1): 26 kBProgress (1): 28 kBProgress (1): 29 kBProgress (1): 32 kBProgress (1): 35 kBProgress (1): 39 kBProgress (1): 43 kBProgress (1): 48 kBProgress (1): 49 kBProgress (1): 52 kBProgress (1): 57 kBProgress (1): 59 kBProgress (1): 61 kBProgress (1): 63 kBProgress (1): 66 kBProgress (1): 67 kBProgress (1): 70 kBProgress (1): 72 kBProgress (1): 74 kBProgress (1): 77 kBProgress (1): 79 kBProgress (1): 82 kBProgress (1): 88 kBProgress (1): 90 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-parent/4.1.113.Final/netty-parent-4.1.113.Final.pom (90 kB at 461 kB/s)
+#14 45.97 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.pom
+#14 46.10 Progress (1): 1.3 kBProgress (1): 1.5 kBProgress (1): 5.3 kBProgress (1): 11 kB Progress (1): 12 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.pom (12 kB at 74 kB/s)
+#14 46.18 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.pom
+#14 46.27 Progress (1): 885 BProgress (1): 960 BProgress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.pom (1.6 kB at 13 kB/s)
+#14 46.35 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.pom
+#14 46.42 Progress (1): 859 BProgress (1): 952 BProgress (1): 2.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.pom (2.2 kB at 25 kB/s)
+#14 46.47 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.pom
+#14 46.62 Progress (1): 885 BProgress (1): 960 BProgress (1): 1.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.pom (1.6 kB at 9.6 kB/s)
+#14 46.66 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.pom
+#14 46.73 Progress (1): 807 BProgress (1): 932 BProgress (1): 4.8 kBProgress (1): 5.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.pom (5.5 kB at 62 kB/s)
+#14 46.77 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.pom
+#14 46.85 Progress (1): 800 BProgress (1): 919 BProgress (1): 4.0 kBProgress (1): 4.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.pom (4.6 kB at 49 kB/s)
+#14 46.91 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.pom
+#14 46.99 Progress (1): 773 BProgress (1): 2.2 kBProgress (1): 4.3 kBProgress (1): 6.8 kBProgress (1): 15 kB Progress (1): 33 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.pom (33 kB at 341 kB/s)
+#14 47.03 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.113.Final/netty-codec-http2-4.1.113.Final.pom
+#14 47.19 Progress (1): 801 BProgress (1): 3.4 kBProgress (1): 5.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.113.Final/netty-codec-http2-4.1.113.Final.pom (5.2 kB at 30 kB/s)
+#14 47.23 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.113.Final/netty-resolver-dns-4.1.113.Final.pom
+#14 47.30 Progress (1): 810 BProgress (1): 3.4 kBProgress (1): 3.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.113.Final/netty-resolver-dns-4.1.113.Final.pom (3.7 kB at 40 kB/s)
+#14 47.34 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.113.Final/netty-codec-dns-4.1.113.Final.pom
+#14 47.42 Progress (1): 850 BProgress (1): 2.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.113.Final/netty-codec-dns-4.1.113.Final.pom (2.7 kB at 31 kB/s)
+#14 47.47 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.113.Final/netty-resolver-dns-native-macos-4.1.113.Final.pom
+#14 47.54 Progress (1): 767 BProgress (1): 2.1 kBProgress (1): 4.4 kBProgress (1): 6.5 kBProgress (1): 18 kB Progress (1): 18 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.113.Final/netty-resolver-dns-native-macos-4.1.113.Final.pom (18 kB at 179 kB/s)
+#14 47.60 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.113.Final/netty-resolver-dns-classes-macos-4.1.113.Final.pom
+#14 47.72 Progress (1): 859 BProgress (1): 2.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.113.Final/netty-resolver-dns-classes-macos-4.1.113.Final.pom (2.0 kB at 16 kB/s)
+#14 47.75 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.pom
+#14 47.86 Progress (1): 752 BProgress (1): 2.1 kBProgress (1): 3.4 kBProgress (1): 5.9 kBProgress (1): 8.6 kBProgress (1): 18 kB Progress (1): 25 kBProgress (1): 27 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final.pom (27 kB at 179 kB/s)
+#14 47.94 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.pom
+#14 48.02 Progress (1): 859 BProgress (1): 2.1 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.pom (2.1 kB at 23 kB/s)
+#14 48.05 Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.22/reactor-netty-core-1.1.22.pom
+#14 48.19 Progress (1): 1.2 kBProgress (1): 3.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.22/reactor-netty-core-1.1.22.pom (3.9 kB at 26 kB/s)
+#14 48.21 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.113.Final/netty-handler-proxy-4.1.113.Final.pom
+#14 48.28 Progress (1): 815 BProgress (1): 3.3 kBProgress (1): 3.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.113.Final/netty-handler-proxy-4.1.113.Final.pom (3.6 kB at 47 kB/s)
+#14 48.31 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.113.Final/netty-codec-socks-4.1.113.Final.pom
+#14 48.38 Progress (1): 850 BProgress (1): 2.5 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.113.Final/netty-codec-socks-4.1.113.Final.pom (2.5 kB at 29 kB/s)
+#14 48.44 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.13/spring-webflux-6.1.13.pom
+#14 48.52 Progress (1): 1.0 kBProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.13/spring-webflux-6.1.13.pom (2.6 kB at 30 kB/s)
+#14 49.70 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.3.4/spring-boot-starter-webflux-3.3.4.jar
+#14 49.81 Progress (1): 3.4/4.8 kBProgress (1): 4.8 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-webflux/3.3.4/spring-boot-starter-webflux-3.3.4.jar (4.8 kB at 41 kB/s)
+#14 49.82 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.3.4/spring-boot-starter-reactor-netty-3.3.4.jar
+#14 49.82 Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.22/reactor-netty-http-1.1.22.jar
+#14 49.82 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.113.Final/netty-codec-http-4.1.113.Final.jar
+#14 49.83 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.jar
+#14 49.84 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.jar
+#14 49.91 Progress (1): 3.4/4.8 kBProgress (1): 4.8 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-reactor-netty/3.3.4/spring-boot-starter-reactor-netty-3.3.4.jar (4.8 kB at 43 kB/s)
+#14 49.93 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.jar
+#14 50.01 Progress (1): 3.4/521 kBProgress (1): 7.6/521 kBProgress (1): 7.7/521 kBProgress (1): 12/521 kB Progress (1): 16/521 kBProgress (1): 20/521 kBProgress (1): 24/521 kBProgress (1): 28/521 kBProgress (1): 33/521 kBProgress (1): 37/521 kBProgress (1): 53/521 kBProgress (1): 57/521 kBProgress (2): 57/521 kB | 0.6/695 kBProgress (2): 57/521 kB | 1.9/695 kBProgress (2): 73/521 kB | 1.9/695 kBProgress (2): 73/521 kB | 3.3/695 kBProgress (2): 73/521 kB | 4.7/695 kBProgress (3): 73/521 kB | 4.7/695 kB | 0.6/480 kBProgress (3): 90/521 kB | 4.7/695 kB | 0.6/480 kBProgress (3): 90/521 kB | 6.0/695 kB | 0.6/480 kBProgress (3): 90/521 kB | 7.4/695 kB | 0.6/480 kBProgress (3): 90/521 kB | 7.4/695 kB | 1.9/480 kBProgress (3): 90/521 kB | 7.4/695 kB | 3.2/480 kBProgress (3): 90/521 kB | 8.8/695 kB | 3.2/480 kBProgress (3): 106/521 kB | 8.8/695 kB | 3.2/480 kBProgress (3): 106/521 kB | 8.8/695 kB | 4.5/480 kBProgress (3): 106/521 kB | 8.8/695 kB | 5.9/480 kBProgress (3): 106/521 kB | 8.8/695 kB | 7.3/480 kBProgress (3): 106/521 kB | 8.8/695 kB | 8.6/480 kBProgress (3): 106/521 kB | 8.8/695 kB | 10/480 kB Progress (3): 106/521 kB | 8.8/695 kB | 11/480 kBProgress (3): 122/521 kB | 8.8/695 kB | 11/480 kBProgress (3): 131/521 kB | 8.8/695 kB | 11/480 kBProgress (4): 131/521 kB | 8.8/695 kB | 11/480 kB | 0.6/668 kBProgress (4): 131/521 kB | 8.8/695 kB | 11/480 kB | 1.9/668 kBProgress (4): 131/521 kB | 10/695 kB | 11/480 kB | 1.9/668 kB Progress (4): 131/521 kB | 12/695 kB | 11/480 kB | 1.9/668 kBProgress (4): 131/521 kB | 12/695 kB | 13/480 kB | 1.9/668 kBProgress (5): 131/521 kB | 12/695 kB | 13/480 kB | 1.9/668 kB | 0.6/337 kBProgress (5): 131/521 kB | 13/695 kB | 13/480 kB | 1.9/668 kB | 0.6/337 kBProgress (5): 131/521 kB | 13/695 kB | 14/480 kB | 1.9/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 13/695 kB | 14/480 kB | 1.9/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 13/695 kB | 14/480 kB | 3.3/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 13/695 kB | 14/480 kB | 4.7/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 13/695 kB | 15/480 kB | 4.7/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 14/695 kB | 15/480 kB | 4.7/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 16/695 kB | 15/480 kB | 4.7/668 kB | 0.6/337 kBProgress (5): 147/521 kB | 16/695 kB | 15/480 kB | 4.7/668 kB | 1.9/337 kBProgress (5): 147/521 kB | 17/695 kB | 15/480 kB | 4.7/668 kB | 1.9/337 kBProgress (5): 147/521 kB | 18/695 kB | 15/480 kB | 4.7/668 kB | 1.9/337 kBProgress (5): 147/521 kB | 18/695 kB | 15/480 kB | 6.0/668 kB | 1.9/337 kBProgress (5): 147/521 kB | 18/695 kB | 15/480 kB | 7.4/668 kB | 1.9/337 kBProgress (5): 147/521 kB | 18/695 kB | 17/480 kB | 7.4/668 kB | 1.9/337 kBProgress (5): 164/521 kB | 18/695 kB | 17/480 kB | 7.4/668 kB | 1.9/337 kBProgress (5): 164/521 kB | 18/695 kB | 18/480 kB | 7.4/668 kB | 1.9/337 kBProgress (5): 164/521 kB | 20/695 kB | 18/480 kB | 7.4/668 kB | 1.9/337 kBProgress (5): 164/521 kB | 21/695 kB | 18/480 kB | 7.4/668 kB | 1.9/337 kBProgress (5): 164/521 kB | 21/695 kB | 18/480 kB | 7.4/668 kB | 3.3/337 kBProgress (5): 164/521 kB | 22/695 kB | 18/480 kB | 7.4/668 kB | 3.3/337 kBProgress (5): 164/521 kB | 24/695 kB | 18/480 kB | 7.4/668 kB | 3.3/337 kBProgress (5): 180/521 kB | 24/695 kB | 18/480 kB | 7.4/668 kB | 3.3/337 kBProgress (5): 180/521 kB | 24/695 kB | 20/480 kB | 7.4/668 kB | 3.3/337 kBProgress (5): 180/521 kB | 24/695 kB | 21/480 kB | 7.4/668 kB | 3.3/337 kBProgress (5): 180/521 kB | 24/695 kB | 21/480 kB | 7.7/668 kB | 3.3/337 kBProgress (5): 180/521 kB | 24/695 kB | 21/480 kB | 9.1/668 kB | 3.3/337 kBProgress (5): 197/521 kB | 24/695 kB | 21/480 kB | 9.1/668 kB | 3.3/337 kBProgress (5): 197/521 kB | 24/695 kB | 21/480 kB | 9.1/668 kB | 3.3/337 kBProgress (5): 197/521 kB | 25/695 kB | 21/480 kB | 9.1/668 kB | 3.3/337 kBProgress (5): 197/521 kB | 25/695 kB | 21/480 kB | 9.1/668 kB | 4.7/337 kBProgress (5): 197/521 kB | 27/695 kB | 21/480 kB | 9.1/668 kB | 4.7/337 kBProgress (5): 197/521 kB | 28/695 kB | 21/480 kB | 9.1/668 kB | 4.7/337 kBProgress (5): 197/521 kB | 30/695 kB | 21/480 kB | 9.1/668 kB | 4.7/337 kBProgress (5): 213/521 kB | 30/695 kB | 21/480 kB | 9.1/668 kB | 4.7/337 kBProgress (5): 213/521 kB | 31/695 kB | 21/480 kB | 9.1/668 kB | 4.7/337 kBProgress (5): 213/521 kB | 31/695 kB | 21/480 kB | 10/668 kB | 4.7/337 kB Progress (5): 213/521 kB | 31/695 kB | 22/480 kB | 10/668 kB | 4.7/337 kBProgress (5): 213/521 kB | 31/695 kB | 24/480 kB | 10/668 kB | 4.7/337 kBProgress (5): 229/521 kB | 31/695 kB | 24/480 kB | 10/668 kB | 4.7/337 kBProgress (5): 229/521 kB | 31/695 kB | 24/480 kB | 12/668 kB | 4.7/337 kBProgress (5): 229/521 kB | 31/695 kB | 24/480 kB | 13/668 kB | 4.7/337 kBProgress (5): 246/521 kB | 31/695 kB | 24/480 kB | 13/668 kB | 4.7/337 kBProgress (5): 246/521 kB | 32/695 kB | 24/480 kB | 13/668 kB | 4.7/337 kBProgress (5): 246/521 kB | 32/695 kB | 24/480 kB | 13/668 kB | 6.0/337 kBProgress (5): 246/521 kB | 34/695 kB | 24/480 kB | 13/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 34/695 kB | 24/480 kB | 13/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 35/695 kB | 24/480 kB | 13/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 35/695 kB | 24/480 kB | 15/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 35/695 kB | 24/480 kB | 16/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 35/695 kB | 24/480 kB | 17/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 35/695 kB | 24/480 kB | 19/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 36/695 kB | 24/480 kB | 19/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 36/695 kB | 25/480 kB | 19/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 36/695 kB | 26/480 kB | 19/668 kB | 6.0/337 kBProgress (5): 262/521 kB | 36/695 kB | 26/480 kB | 19/668 kB | 7.4/337 kBProgress (5): 262/521 kB | 36/695 kB | 26/480 kB | 19/668 kB | 7.7/337 kBProgress (5): 262/521 kB | 38/695 kB | 26/480 kB | 19/668 kB | 7.7/337 kBProgress (5): 262/521 kB | 39/695 kB | 26/480 kB | 19/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 39/695 kB | 26/480 kB | 19/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 39/695 kB | 26/480 kB | 20/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 39/695 kB | 26/480 kB | 21/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 39/695 kB | 28/480 kB | 21/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 39/695 kB | 28/480 kB | 23/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 39/695 kB | 29/480 kB | 23/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 41/695 kB | 29/480 kB | 23/668 kB | 7.7/337 kBProgress (5): 279/521 kB | 41/695 kB | 29/480 kB | 23/668 kB | 9.1/337 kBProgress (5): 279/521 kB | 41/695 kB | 29/480 kB | 23/668 kB | 10/337 kB Progress (5): 279/521 kB | 41/695 kB | 29/480 kB | 23/668 kB | 12/337 kBProgress (5): 279/521 kB | 41/695 kB | 30/480 kB | 23/668 kB | 12/337 kBProgress (5): 279/521 kB | 41/695 kB | 32/480 kB | 23/668 kB | 12/337 kBProgress (5): 295/521 kB | 41/695 kB | 32/480 kB | 23/668 kB | 12/337 kBProgress (5): 295/521 kB | 41/695 kB | 32/480 kB | 23/668 kB | 13/337 kBProgress (5): 295/521 kB | 41/695 kB | 33/480 kB | 23/668 kB | 13/337 kBProgress (5): 295/521 kB | 41/695 kB | 33/480 kB | 24/668 kB | 13/337 kBProgress (5): 295/521 kB | 41/695 kB | 35/480 kB | 24/668 kB | 13/337 kBProgress (5): 295/521 kB | 41/695 kB | 36/480 kB | 24/668 kB | 13/337 kBProgress (5): 295/521 kB | 42/695 kB | 36/480 kB | 24/668 kB | 13/337 kBProgress (5): 295/521 kB | 42/695 kB | 37/480 kB | 24/668 kB | 13/337 kBProgress (5): 311/521 kB | 42/695 kB | 37/480 kB | 24/668 kB | 13/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 24/668 kB | 13/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 25/668 kB | 13/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 27/668 kB | 13/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 28/668 kB | 13/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 28/668 kB | 15/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 28/668 kB | 16/337 kBProgress (5): 311/521 kB | 42/695 kB | 39/480 kB | 28/668 kB | 17/337 kBProgress (5): 311/521 kB | 43/695 kB | 39/480 kB | 28/668 kB | 17/337 kBProgress (5): 311/521 kB | 45/695 kB | 39/480 kB | 28/668 kB | 17/337 kBProgress (5): 311/521 kB | 45/695 kB | 39/480 kB | 30/668 kB | 17/337 kBProgress (5): 311/521 kB | 46/695 kB | 39/480 kB | 30/668 kB | 17/337 kBProgress (5): 328/521 kB | 46/695 kB | 39/480 kB | 30/668 kB | 17/337 kBProgress (5): 328/521 kB | 46/695 kB | 39/480 kB | 31/668 kB | 17/337 kBProgress (5): 328/521 kB | 46/695 kB | 40/480 kB | 31/668 kB | 17/337 kBProgress (5): 328/521 kB | 46/695 kB | 41/480 kB | 31/668 kB | 17/337 kBProgress (5): 328/521 kB | 47/695 kB | 41/480 kB | 31/668 kB | 17/337 kBProgress (5): 328/521 kB | 47/695 kB | 41/480 kB | 31/668 kB | 19/337 kBProgress (5): 344/521 kB | 47/695 kB | 41/480 kB | 31/668 kB | 19/337 kBProgress (5): 344/521 kB | 47/695 kB | 43/480 kB | 31/668 kB | 19/337 kBProgress (5): 344/521 kB | 47/695 kB | 44/480 kB | 31/668 kB | 19/337 kBProgress (5): 344/521 kB | 47/695 kB | 44/480 kB | 31/668 kB | 20/337 kBProgress (5): 344/521 kB | 47/695 kB | 44/480 kB | 31/668 kB | 21/337 kBProgress (5): 344/521 kB | 49/695 kB | 44/480 kB | 31/668 kB | 21/337 kBProgress (5): 344/521 kB | 50/695 kB | 44/480 kB | 31/668 kB | 21/337 kBProgress (5): 344/521 kB | 51/695 kB | 44/480 kB | 31/668 kB | 21/337 kBProgress (5): 344/521 kB | 53/695 kB | 44/480 kB | 31/668 kB | 21/337 kBProgress (5): 344/521 kB | 53/695 kB | 44/480 kB | 32/668 kB | 21/337 kBProgress (5): 344/521 kB | 53/695 kB | 46/480 kB | 32/668 kB | 21/337 kBProgress (5): 344/521 kB | 53/695 kB | 46/480 kB | 32/668 kB | 23/337 kBProgress (5): 344/521 kB | 53/695 kB | 46/480 kB | 32/668 kB | 24/337 kBProgress (5): 344/521 kB | 53/695 kB | 46/480 kB | 32/668 kB | 25/337 kBProgress (5): 360/521 kB | 53/695 kB | 46/480 kB | 32/668 kB | 25/337 kBProgress (5): 360/521 kB | 53/695 kB | 46/480 kB | 34/668 kB | 25/337 kBProgress (5): 360/521 kB | 53/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 377/521 kB | 53/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 377/521 kB | 54/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 377/521 kB | 57/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 377/521 kB | 61/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 393/521 kB | 61/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 410/521 kB | 61/695 kB | 46/480 kB | 35/668 kB | 25/337 kBProgress (5): 410/521 kB | 61/695 kB | 47/480 kB | 35/668 kB | 25/337 kBProgress (5): 410/521 kB | 61/695 kB | 48/480 kB | 35/668 kB | 25/337 kBProgress (5): 410/521 kB | 65/695 kB | 48/480 kB | 35/668 kB | 25/337 kBProgress (5): 410/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 25/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 25/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 27/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 28/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 30/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 31/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 32/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 35/668 kB | 34/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 36/668 kB | 34/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 38/668 kB | 34/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 39/668 kB | 34/337 kBProgress (5): 426/521 kB | 65/695 kB | 50/480 kB | 41/668 kB | 34/337 kBProgress (5): 442/521 kB | 65/695 kB | 50/480 kB | 41/668 kB | 34/337 kBProgress (5): 459/521 kB | 65/695 kB | 50/480 kB | 41/668 kB | 34/337 kBProgress (5): 459/521 kB | 70/695 kB | 50/480 kB | 41/668 kB | 34/337 kBProgress (5): 459/521 kB | 74/695 kB | 50/480 kB | 41/668 kB | 34/337 kBProgress (5): 459/521 kB | 74/695 kB | 51/480 kB | 41/668 kB | 34/337 kBProgress (5): 459/521 kB | 74/695 kB | 52/480 kB | 41/668 kB | 34/337 kBProgress (5): 459/521 kB | 74/695 kB | 52/480 kB | 42/668 kB | 34/337 kBProgress (5): 459/521 kB | 74/695 kB | 54/480 kB | 42/668 kB | 34/337 kBProgress (5): 459/521 kB | 74/695 kB | 54/480 kB | 42/668 kB | 35/337 kBProgress (5): 459/521 kB | 74/695 kB | 54/480 kB | 43/668 kB | 35/337 kBProgress (5): 459/521 kB | 74/695 kB | 54/480 kB | 45/668 kB | 35/337 kBProgress (5): 459/521 kB | 74/695 kB | 54/480 kB | 46/668 kB | 35/337 kBProgress (5): 475/521 kB | 74/695 kB | 54/480 kB | 46/668 kB | 35/337 kBProgress (5): 475/521 kB | 74/695 kB | 54/480 kB | 47/668 kB | 35/337 kBProgress (5): 475/521 kB | 74/695 kB | 54/480 kB | 49/668 kB | 35/337 kBProgress (5): 475/521 kB | 74/695 kB | 54/480 kB | 50/668 kB | 35/337 kBProgress (5): 475/521 kB | 78/695 kB | 54/480 kB | 50/668 kB | 35/337 kBProgress (5): 475/521 kB | 82/695 kB | 54/480 kB | 50/668 kB | 35/337 kBProgress (5): 492/521 kB | 82/695 kB | 54/480 kB | 50/668 kB | 35/337 kBProgress (5): 508/521 kB | 82/695 kB | 54/480 kB | 50/668 kB | 35/337 kBProgress (5): 508/521 kB | 82/695 kB | 55/480 kB | 50/668 kB | 35/337 kBProgress (5): 508/521 kB | 82/695 kB | 59/480 kB | 50/668 kB | 35/337 kBProgress (5): 508/521 kB | 82/695 kB | 59/480 kB | 50/668 kB | 36/337 kBProgress (5): 508/521 kB | 86/695 kB | 59/480 kB | 50/668 kB | 36/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 50/668 kB | 36/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 51/668 kB | 36/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 53/668 kB | 36/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 54/668 kB | 36/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 57/668 kB | 36/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 57/668 kB | 38/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 57/668 kB | 39/337 kBProgress (5): 508/521 kB | 91/695 kB | 59/480 kB | 57/668 kB | 41/337 kBProgress (5): 521 kB | 91/695 kB | 59/480 kB | 57/668 kB | 41/337 kB    Progress (5): 521 kB | 91/695 kB | 61/480 kB | 57/668 kB | 41/337 kBProgress (5): 521 kB | 91/695 kB | 65/480 kB | 57/668 kB | 41/337 kBProgress (5): 521 kB | 95/695 kB | 65/480 kB | 57/668 kB | 41/337 kBProgress (5): 521 kB | 99/695 kB | 65/480 kB | 57/668 kB | 41/337 kBProgress (5): 521 kB | 99/695 kB | 65/480 kB | 57/668 kB | 42/337 kBProgress (5): 521 kB | 99/695 kB | 65/480 kB | 57/668 kB | 43/337 kBProgress (5): 521 kB | 99/695 kB | 65/480 kB | 57/668 kB | 45/337 kBProgress (5): 521 kB | 99/695 kB | 65/480 kB | 57/668 kB | 46/337 kBProgress (5): 521 kB | 99/695 kB | 69/480 kB | 57/668 kB | 46/337 kBProgress (5): 521 kB | 99/695 kB | 73/480 kB | 57/668 kB | 46/337 kBProgress (5): 521 kB | 99/695 kB | 77/480 kB | 57/668 kB | 46/337 kB                                                                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport/4.1.113.Final/netty-transport-4.1.113.Final.jar (521 kB at 646 kB/s)
+#14 50.64 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.jar
+#14 50.64 Progress (4): 99/695 kB | 77/480 kB | 61/668 kB | 46/337 kBProgress (4): 99/695 kB | 77/480 kB | 65/668 kB | 46/337 kBProgress (4): 99/695 kB | 77/480 kB | 70/668 kB | 46/337 kBProgress (4): 99/695 kB | 77/480 kB | 74/668 kB | 46/337 kBProgress (4): 99/695 kB | 77/480 kB | 78/668 kB | 46/337 kBProgress (4): 103/695 kB | 77/480 kB | 78/668 kB | 46/337 kBProgress (4): 108/695 kB | 77/480 kB | 78/668 kB | 46/337 kBProgress (4): 108/695 kB | 82/480 kB | 78/668 kB | 46/337 kBProgress (4): 108/695 kB | 86/480 kB | 78/668 kB | 46/337 kBProgress (4): 108/695 kB | 86/480 kB | 78/668 kB | 47/337 kBProgress (4): 108/695 kB | 86/480 kB | 78/668 kB | 49/337 kBProgress (4): 108/695 kB | 86/480 kB | 82/668 kB | 49/337 kBProgress (4): 108/695 kB | 86/480 kB | 86/668 kB | 49/337 kBProgress (4): 108/695 kB | 86/480 kB | 86/668 kB | 50/337 kBProgress (4): 112/695 kB | 86/480 kB | 86/668 kB | 50/337 kBProgress (4): 116/695 kB | 86/480 kB | 86/668 kB | 50/337 kBProgress (4): 116/695 kB | 86/480 kB | 86/668 kB | 51/337 kBProgress (4): 116/695 kB | 86/480 kB | 86/668 kB | 53/337 kBProgress (4): 116/695 kB | 90/480 kB | 86/668 kB | 53/337 kBProgress (4): 116/695 kB | 94/480 kB | 86/668 kB | 53/337 kBProgress (4): 116/695 kB | 94/480 kB | 91/668 kB | 53/337 kBProgress (4): 116/695 kB | 94/480 kB | 95/668 kB | 53/337 kBProgress (4): 116/695 kB | 94/480 kB | 99/668 kB | 53/337 kBProgress (4): 116/695 kB | 94/480 kB | 103/668 kB | 53/337 kBProgress (4): 116/695 kB | 99/480 kB | 103/668 kB | 53/337 kBProgress (4): 120/695 kB | 99/480 kB | 103/668 kB | 53/337 kBProgress (4): 122/695 kB | 99/480 kB | 103/668 kB | 53/337 kBProgress (4): 122/695 kB | 99/480 kB | 103/668 kB | 54/337 kBProgress (4): 122/695 kB | 99/480 kB | 103/668 kB | 57/337 kBProgress (4): 122/695 kB | 99/480 kB | 103/668 kB | 61/337 kBProgress (4): 127/695 kB | 99/480 kB | 103/668 kB | 61/337 kBProgress (4): 131/695 kB | 99/480 kB | 103/668 kB | 61/337 kBProgress (4): 131/695 kB | 99/480 kB | 108/668 kB | 61/337 kBProgress (4): 131/695 kB | 99/480 kB | 112/668 kB | 61/337 kBProgress (4): 131/695 kB | 99/480 kB | 116/668 kB | 61/337 kBProgress (4): 131/695 kB | 103/480 kB | 116/668 kB | 61/337 kBProgress (4): 131/695 kB | 107/480 kB | 116/668 kB | 61/337 kBProgress (4): 135/695 kB | 107/480 kB | 116/668 kB | 61/337 kBProgress (4): 139/695 kB | 107/480 kB | 116/668 kB | 61/337 kBProgress (4): 144/695 kB | 107/480 kB | 116/668 kB | 61/337 kBProgress (4): 144/695 kB | 107/480 kB | 116/668 kB | 65/337 kBProgress (4): 144/695 kB | 107/480 kB | 116/668 kB | 70/337 kBProgress (4): 144/695 kB | 107/480 kB | 116/668 kB | 74/337 kBProgress (4): 148/695 kB | 107/480 kB | 116/668 kB | 74/337 kBProgress (4): 152/695 kB | 107/480 kB | 116/668 kB | 74/337 kBProgress (4): 156/695 kB | 107/480 kB | 116/668 kB | 74/337 kBProgress (4): 156/695 kB | 107/480 kB | 120/668 kB | 74/337 kBProgress (4): 156/695 kB | 107/480 kB | 122/668 kB | 74/337 kBProgress (4): 156/695 kB | 107/480 kB | 122/668 kB | 74/337 kBProgress (4): 156/695 kB | 107/480 kB | 127/668 kB | 74/337 kBProgress (4): 156/695 kB | 111/480 kB | 127/668 kB | 74/337 kBProgress (4): 156/695 kB | 115/480 kB | 127/668 kB | 74/337 kBProgress (4): 160/695 kB | 115/480 kB | 127/668 kB | 74/337 kBProgress (4): 160/695 kB | 115/480 kB | 127/668 kB | 78/337 kBProgress (4): 160/695 kB | 115/480 kB | 127/668 kB | 82/337 kBProgress (4): 160/695 kB | 115/480 kB | 127/668 kB | 86/337 kBProgress (4): 160/695 kB | 115/480 kB | 131/668 kB | 86/337 kBProgress (4): 165/695 kB | 115/480 kB | 131/668 kB | 86/337 kBProgress (4): 165/695 kB | 120/480 kB | 131/668 kB | 86/337 kBProgress (4): 165/695 kB | 120/480 kB | 135/668 kB | 86/337 kBProgress (4): 169/695 kB | 120/480 kB | 135/668 kB | 86/337 kBProgress (4): 169/695 kB | 120/480 kB | 135/668 kB | 91/337 kBProgress (4): 173/695 kB | 120/480 kB | 135/668 kB | 91/337 kBProgress (4): 177/695 kB | 120/480 kB | 135/668 kB | 91/337 kBProgress (4): 177/695 kB | 124/480 kB | 135/668 kB | 91/337 kBProgress (4): 177/695 kB | 126/480 kB | 135/668 kB | 91/337 kBProgress (4): 182/695 kB | 126/480 kB | 135/668 kB | 91/337 kBProgress (4): 186/695 kB | 126/480 kB | 135/668 kB | 91/337 kBProgress (4): 190/695 kB | 126/480 kB | 135/668 kB | 91/337 kBProgress (4): 190/695 kB | 126/480 kB | 135/668 kB | 95/337 kBProgress (4): 190/695 kB | 126/480 kB | 135/668 kB | 99/337 kBProgress (4): 190/695 kB | 126/480 kB | 139/668 kB | 99/337 kBProgress (4): 190/695 kB | 126/480 kB | 144/668 kB | 99/337 kBProgress (4): 190/695 kB | 126/480 kB | 148/668 kB | 99/337 kBProgress (4): 190/695 kB | 126/480 kB | 148/668 kB | 99/337 kBProgress (4): 190/695 kB | 126/480 kB | 148/668 kB | 103/337 kBProgress (4): 190/695 kB | 126/480 kB | 148/668 kB | 108/337 kBProgress (4): 194/695 kB | 126/480 kB | 148/668 kB | 108/337 kBProgress (4): 199/695 kB | 126/480 kB | 148/668 kB | 108/337 kBProgress (4): 203/695 kB | 126/480 kB | 148/668 kB | 108/337 kBProgress (4): 207/695 kB | 126/480 kB | 148/668 kB | 108/337 kBProgress (4): 207/695 kB | 126/480 kB | 148/668 kB | 112/337 kBProgress (4): 207/695 kB | 126/480 kB | 148/668 kB | 116/337 kBProgress (4): 207/695 kB | 126/480 kB | 148/668 kB | 120/337 kBProgress (4): 211/695 kB | 126/480 kB | 148/668 kB | 120/337 kBProgress (4): 211/695 kB | 130/480 kB | 148/668 kB | 120/337 kBProgress (4): 211/695 kB | 134/480 kB | 148/668 kB | 120/337 kBProgress (4): 211/695 kB | 139/480 kB | 148/668 kB | 120/337 kBProgress (4): 211/695 kB | 143/480 kB | 148/668 kB | 120/337 kBProgress (4): 211/695 kB | 143/480 kB | 152/668 kB | 120/337 kBProgress (4): 211/695 kB | 143/480 kB | 156/668 kB | 120/337 kBProgress (4): 211/695 kB | 143/480 kB | 160/668 kB | 120/337 kBProgress (5): 211/695 kB | 143/480 kB | 160/668 kB | 120/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 160/668 kB | 120/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 160/668 kB | 122/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 160/668 kB | 127/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 165/668 kB | 127/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 169/668 kB | 127/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 173/668 kB | 127/337 kB | 7.4/352 kBProgress (5): 215/695 kB | 143/480 kB | 173/668 kB | 127/337 kB | 16/352 kB Progress (5): 215/695 kB | 143/480 kB | 173/668 kB | 127/337 kB | 32/352 kBProgress (5): 215/695 kB | 147/480 kB | 173/668 kB | 127/337 kB | 32/352 kBProgress (5): 215/695 kB | 151/480 kB | 173/668 kB | 127/337 kB | 32/352 kBProgress (5): 215/695 kB | 151/480 kB | 177/668 kB | 127/337 kB | 32/352 kBProgress (5): 215/695 kB | 151/480 kB | 177/668 kB | 131/337 kB | 32/352 kBProgress (5): 215/695 kB | 151/480 kB | 177/668 kB | 135/337 kB | 32/352 kBProgress (5): 220/695 kB | 151/480 kB | 177/668 kB | 135/337 kB | 32/352 kBProgress (5): 220/695 kB | 156/480 kB | 177/668 kB | 135/337 kB | 32/352 kBProgress (5): 220/695 kB | 156/480 kB | 177/668 kB | 139/337 kB | 32/352 kBProgress (5): 220/695 kB | 156/480 kB | 182/668 kB | 139/337 kB | 32/352 kBProgress (5): 220/695 kB | 156/480 kB | 186/668 kB | 139/337 kB | 32/352 kBProgress (5): 220/695 kB | 156/480 kB | 186/668 kB | 139/337 kB | 48/352 kBProgress (5): 220/695 kB | 156/480 kB | 186/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 160/480 kB | 186/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 164/480 kB | 186/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 168/480 kB | 186/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 186/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 190/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 194/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 199/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 203/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 207/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 211/668 kB | 144/337 kB | 48/352 kBProgress (5): 220/695 kB | 173/480 kB | 215/668 kB | 144/337 kB | 48/352 kBProgress (5): 236/695 kB | 173/480 kB | 215/668 kB | 144/337 kB | 48/352 kBProgress (5): 252/695 kB | 173/480 kB | 215/668 kB | 144/337 kB | 48/352 kBProgress (5): 252/695 kB | 177/480 kB | 215/668 kB | 144/337 kB | 48/352 kBProgress (5): 252/695 kB | 181/480 kB | 215/668 kB | 144/337 kB | 48/352 kBProgress (5): 252/695 kB | 185/480 kB | 215/668 kB | 144/337 kB | 48/352 kBProgress (5): 252/695 kB | 185/480 kB | 232/668 kB | 144/337 kB | 48/352 kBProgress (5): 252/695 kB | 185/480 kB | 232/668 kB | 144/337 kB | 65/352 kBProgress (5): 253/695 kB | 185/480 kB | 232/668 kB | 144/337 kB | 65/352 kBProgress (5): 253/695 kB | 185/480 kB | 232/668 kB | 144/337 kB | 81/352 kBProgress (5): 253/695 kB | 185/480 kB | 232/668 kB | 148/337 kB | 81/352 kBProgress (5): 253/695 kB | 185/480 kB | 232/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 185/480 kB | 248/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 185/480 kB | 253/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 185/480 kB | 270/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 185/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 189/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 194/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 198/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 253/695 kB | 202/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 270/695 kB | 202/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 270/695 kB | 206/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 270/695 kB | 211/480 kB | 286/668 kB | 152/337 kB | 81/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 152/337 kB | 81/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 152/337 kB | 97/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 152/337 kB | 114/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 152/337 kB | 130/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 152/337 kB | 147/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 156/337 kB | 147/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 160/337 kB | 147/352 kBProgress (5): 270/695 kB | 211/480 kB | 303/668 kB | 165/337 kB | 147/352 kBProgress (5): 270/695 kB | 215/480 kB | 303/668 kB | 165/337 kB | 147/352 kBProgress (5): 270/695 kB | 215/480 kB | 319/668 kB | 165/337 kB | 147/352 kBProgress (5): 270/695 kB | 215/480 kB | 335/668 kB | 165/337 kB | 147/352 kBProgress (5): 270/695 kB | 215/480 kB | 352/668 kB | 165/337 kB | 147/352 kBProgress (5): 286/695 kB | 215/480 kB | 352/668 kB | 165/337 kB | 147/352 kBProgress (5): 286/695 kB | 215/480 kB | 352/668 kB | 165/337 kB | 163/352 kBProgress (5): 286/695 kB | 231/480 kB | 352/668 kB | 165/337 kB | 163/352 kBProgress (5): 286/695 kB | 231/480 kB | 352/668 kB | 169/337 kB | 163/352 kBProgress (5): 286/695 kB | 248/480 kB | 352/668 kB | 169/337 kB | 163/352 kBProgress (5): 303/695 kB | 248/480 kB | 352/668 kB | 169/337 kB | 163/352 kBProgress (5): 303/695 kB | 248/480 kB | 352/668 kB | 173/337 kB | 163/352 kBProgress (5): 303/695 kB | 248/480 kB | 352/668 kB | 173/337 kB | 179/352 kBProgress (5): 303/695 kB | 257/480 kB | 352/668 kB | 173/337 kB | 179/352 kBProgress (5): 303/695 kB | 257/480 kB | 352/668 kB | 177/337 kB | 179/352 kBProgress (5): 303/695 kB | 257/480 kB | 352/668 kB | 182/337 kB | 179/352 kBProgress (5): 303/695 kB | 257/480 kB | 352/668 kB | 186/337 kB | 179/352 kBProgress (5): 319/695 kB | 257/480 kB | 352/668 kB | 186/337 kB | 179/352 kBProgress (5): 319/695 kB | 257/480 kB | 368/668 kB | 186/337 kB | 179/352 kBProgress (5): 319/695 kB | 257/480 kB | 368/668 kB | 190/337 kB | 179/352 kBProgress (5): 319/695 kB | 257/480 kB | 368/668 kB | 194/337 kB | 179/352 kBProgress (5): 319/695 kB | 273/480 kB | 368/668 kB | 194/337 kB | 179/352 kBProgress (5): 319/695 kB | 290/480 kB | 368/668 kB | 194/337 kB | 179/352 kBProgress (5): 319/695 kB | 290/480 kB | 368/668 kB | 194/337 kB | 196/352 kBProgress (5): 319/695 kB | 290/480 kB | 368/668 kB | 199/337 kB | 196/352 kBProgress (5): 319/695 kB | 290/480 kB | 368/668 kB | 203/337 kB | 196/352 kBProgress (5): 319/695 kB | 290/480 kB | 368/668 kB | 207/337 kB | 196/352 kBProgress (5): 335/695 kB | 290/480 kB | 368/668 kB | 207/337 kB | 196/352 kBProgress (5): 352/695 kB | 290/480 kB | 368/668 kB | 207/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 368/668 kB | 207/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 385/668 kB | 207/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 401/668 kB | 207/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 417/668 kB | 207/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 417/668 kB | 211/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 417/668 kB | 215/337 kB | 196/352 kBProgress (5): 368/695 kB | 290/480 kB | 417/668 kB | 220/337 kB | 196/352 kBProgress (5): 368/695 kB | 306/480 kB | 417/668 kB | 220/337 kB | 196/352 kBProgress (5): 368/695 kB | 306/480 kB | 417/668 kB | 220/337 kB | 212/352 kBProgress (5): 368/695 kB | 306/480 kB | 417/668 kB | 220/337 kB | 228/352 kBProgress (5): 368/695 kB | 306/480 kB | 417/668 kB | 220/337 kB | 245/352 kBProgress (5): 385/695 kB | 306/480 kB | 417/668 kB | 220/337 kB | 245/352 kBProgress (5): 385/695 kB | 323/480 kB | 417/668 kB | 220/337 kB | 245/352 kBProgress (5): 385/695 kB | 323/480 kB | 434/668 kB | 220/337 kB | 245/352 kBProgress (5): 385/695 kB | 339/480 kB | 434/668 kB | 220/337 kB | 245/352 kBProgress (5): 385/695 kB | 339/480 kB | 434/668 kB | 236/337 kB | 245/352 kBProgress (5): 385/695 kB | 339/480 kB | 434/668 kB | 252/337 kB | 245/352 kBProgress (5): 385/695 kB | 339/480 kB | 434/668 kB | 253/337 kB | 245/352 kBProgress (5): 385/695 kB | 339/480 kB | 434/668 kB | 253/337 kB | 261/352 kBProgress (5): 385/695 kB | 339/480 kB | 434/668 kB | 253/337 kB | 278/352 kBProgress (5): 385/695 kB | 339/480 kB | 450/668 kB | 253/337 kB | 278/352 kBProgress (5): 385/695 kB | 339/480 kB | 463/668 kB | 253/337 kB | 278/352 kBProgress (5): 401/695 kB | 339/480 kB | 463/668 kB | 253/337 kB | 278/352 kBProgress (5): 417/695 kB | 339/480 kB | 463/668 kB | 253/337 kB | 278/352 kBProgress (5): 417/695 kB | 339/480 kB | 463/668 kB | 253/337 kB | 294/352 kBProgress (5): 417/695 kB | 339/480 kB | 479/668 kB | 253/337 kB | 294/352 kBProgress (5): 417/695 kB | 339/480 kB | 479/668 kB | 270/337 kB | 294/352 kBProgress (5): 417/695 kB | 339/480 kB | 479/668 kB | 270/337 kB | 310/352 kBProgress (5): 417/695 kB | 355/480 kB | 479/668 kB | 270/337 kB | 310/352 kBProgress (5): 417/695 kB | 372/480 kB | 479/668 kB | 270/337 kB | 310/352 kBProgress (5): 417/695 kB | 388/480 kB | 479/668 kB | 270/337 kB | 310/352 kBProgress (5): 434/695 kB | 388/480 kB | 479/668 kB | 270/337 kB | 310/352 kBProgress (5): 450/695 kB | 388/480 kB | 479/668 kB | 270/337 kB | 310/352 kBProgress (5): 450/695 kB | 388/480 kB | 479/668 kB | 270/337 kB | 327/352 kBProgress (5): 450/695 kB | 388/480 kB | 495/668 kB | 270/337 kB | 327/352 kBProgress (5): 450/695 kB | 388/480 kB | 495/668 kB | 286/337 kB | 327/352 kBProgress (5): 450/695 kB | 388/480 kB | 495/668 kB | 286/337 kB | 343/352 kBProgress (5): 450/695 kB | 388/480 kB | 495/668 kB | 286/337 kB | 352 kB    Progress (5): 450/695 kB | 388/480 kB | 512/668 kB | 286/337 kB | 352 kBProgress (5): 450/695 kB | 405/480 kB | 512/668 kB | 286/337 kB | 352 kBProgress (5): 450/695 kB | 421/480 kB | 512/668 kB | 286/337 kB | 352 kBProgress (5): 466/695 kB | 421/480 kB | 512/668 kB | 286/337 kB | 352 kB                                                                        Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec/4.1.113.Final/netty-codec-4.1.113.Final.jar (352 kB at 250 kB/s)
+#14 51.24 Progress (4): 466/695 kB | 421/480 kB | 512/668 kB | 303/337 kBProgress (4): 466/695 kB | 437/480 kB | 512/668 kB | 303/337 kBProgress (4): 466/695 kB | 437/480 kB | 528/668 kB | 303/337 kBProgress (4): 466/695 kB | 437/480 kB | 544/668 kB | 303/337 kBProgress (4): 466/695 kB | 437/480 kB | 561/668 kB | 303/337 kBProgress (4): 466/695 kB | 437/480 kB | 577/668 kB | 303/337 kB                                                               Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.jar
+#14 51.26 Progress (4): 483/695 kB | 437/480 kB | 577/668 kB | 303/337 kBProgress (4): 483/695 kB | 454/480 kB | 577/668 kB | 303/337 kBProgress (4): 499/695 kB | 454/480 kB | 577/668 kB | 303/337 kBProgress (4): 499/695 kB | 454/480 kB | 577/668 kB | 319/337 kBProgress (4): 499/695 kB | 470/480 kB | 577/668 kB | 319/337 kBProgress (4): 499/695 kB | 470/480 kB | 594/668 kB | 319/337 kBProgress (4): 499/695 kB | 470/480 kB | 610/668 kB | 319/337 kBProgress (4): 499/695 kB | 470/480 kB | 610/668 kB | 335/337 kBProgress (4): 499/695 kB | 470/480 kB | 626/668 kB | 335/337 kBProgress (4): 499/695 kB | 480 kB | 626/668 kB | 335/337 kB    Progress (4): 516/695 kB | 480 kB | 626/668 kB | 335/337 kBProgress (4): 516/695 kB | 480 kB | 626/668 kB | 337 kB    Progress (4): 516/695 kB | 480 kB | 643/668 kB | 337 kBProgress (4): 532/695 kB | 480 kB | 643/668 kB | 337 kB                                                       Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-http/1.1.22/reactor-netty-http-1.1.22.jar (480 kB at 321 kB/s)
+#14 51.32 Progress (3): 532/695 kB | 659/668 kB | 337 kBProgress (3): 548/695 kB | 659/668 kB | 337 kB                                              Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.113.Final/netty-codec-http2-4.1.113.Final.jar
+#14 51.32 Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-buffer/4.1.113.Final/netty-buffer-4.1.113.Final.jar (337 kB at 225 kB/s)
+#14 51.33 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.113.Final/netty-resolver-dns-4.1.113.Final.jar
+#14 51.33 Progress (2): 548/695 kB | 668 kBProgress (2): 565/695 kB | 668 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http/4.1.113.Final/netty-codec-http-4.1.113.Final.jar (668 kB at 437 kB/s)
+#14 51.35 Progress (1): 581/695 kB                        Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.jar
+#14 51.38 Progress (1): 598/695 kBProgress (1): 614/695 kBProgress (1): 630/695 kBProgress (1): 647/695 kBProgress (1): 663/695 kBProgress (2): 663/695 kB | 7.4/38 kBProgress (2): 663/695 kB | 8.2/38 kBProgress (3): 663/695 kB | 8.2/38 kB | 7.4/490 kBProgress (3): 663/695 kB | 8.2/38 kB | 8.2/490 kBProgress (3): 663/695 kB | 8.2/38 kB | 25/490 kB Progress (4): 663/695 kB | 8.2/38 kB | 25/490 kB | 7.4/571 kBProgress (4): 663/695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB Progress (5): 663/695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB | 7.4/182 kBProgress (5): 663/695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB | 8.2/182 kBProgress (5): 663/695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB | 25/182 kB Progress (5): 679/695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB | 25/182 kBProgress (5): 695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB | 25/182 kB    Progress (5): 695 kB | 25/38 kB | 25/490 kB | 7.4/571 kB | 41/182 kBProgress (5): 695 kB | 25/38 kB | 25/490 kB | 7.7/571 kB | 41/182 kBProgress (5): 695 kB | 25/38 kB | 25/490 kB | 8.2/571 kB | 41/182 kBProgress (5): 695 kB | 25/38 kB | 25/490 kB | 8.2/571 kB | 57/182 kBProgress (5): 695 kB | 38 kB | 25/490 kB | 8.2/571 kB | 57/182 kB                                                                    Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-common/4.1.113.Final/netty-common-4.1.113.Final.jar (695 kB at 373 kB/s)
+#14 51.69 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.113.Final/netty-codec-dns-4.1.113.Final.jar
+#14 51.69 Progress (4): 38 kB | 41/490 kB | 8.2/571 kB | 57/182 kBProgress (4): 38 kB | 41/490 kB | 16/571 kB | 57/182 kB Progress (4): 38 kB | 57/490 kB | 16/571 kB | 57/182 kBProgress (4): 38 kB | 57/490 kB | 16/571 kB | 74/182 kB                                                       Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver/4.1.113.Final/netty-resolver-4.1.113.Final.jar (38 kB at 20 kB/s)
+#14 51.71 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.113.Final/netty-resolver-dns-native-macos-4.1.113.Final-osx-x86_64.jar
+#14 51.71 Progress (3): 57/490 kB | 33/571 kB | 74/182 kBProgress (3): 74/490 kB | 33/571 kB | 74/182 kBProgress (3): 74/490 kB | 33/571 kB | 90/182 kBProgress (3): 74/490 kB | 49/571 kB | 90/182 kBProgress (3): 90/490 kB | 49/571 kB | 90/182 kBProgress (3): 90/490 kB | 49/571 kB | 106/182 kBProgress (3): 94/490 kB | 49/571 kB | 106/182 kBProgress (3): 94/490 kB | 66/571 kB | 106/182 kBProgress (3): 94/490 kB | 82/571 kB | 106/182 kBProgress (3): 110/490 kB | 82/571 kB | 106/182 kBProgress (3): 110/490 kB | 82/571 kB | 123/182 kBProgress (3): 127/490 kB | 82/571 kB | 123/182 kBProgress (3): 131/490 kB | 82/571 kB | 123/182 kBProgress (3): 131/490 kB | 98/571 kB | 123/182 kBProgress (3): 131/490 kB | 98/571 kB | 139/182 kBProgress (3): 131/490 kB | 98/571 kB | 156/182 kBProgress (3): 131/490 kB | 115/571 kB | 156/182 kBProgress (3): 131/490 kB | 131/571 kB | 156/182 kBProgress (3): 131/490 kB | 131/571 kB | 172/182 kBProgress (3): 131/490 kB | 147/571 kB | 172/182 kBProgress (3): 147/490 kB | 147/571 kB | 172/182 kBProgress (3): 164/490 kB | 147/571 kB | 172/182 kBProgress (3): 164/490 kB | 147/571 kB | 182 kB    Progress (3): 164/490 kB | 156/571 kB | 182 kBProgress (3): 164/490 kB | 172/571 kB | 182 kBProgress (3): 180/490 kB | 172/571 kB | 182 kB                                              Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns/4.1.113.Final/netty-resolver-dns-4.1.113.Final.jar (182 kB at 90 kB/s)
+#14 51.85 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.113.Final/netty-resolver-dns-classes-macos-4.1.113.Final.jar
+#14 51.85 Progress (2): 197/490 kB | 172/571 kBProgress (2): 197/490 kB | 180/571 kBProgress (2): 197/490 kB | 197/571 kBProgress (3): 197/490 kB | 197/571 kB | 7.4/67 kBProgress (3): 197/490 kB | 213/571 kB | 7.4/67 kBProgress (4): 197/490 kB | 213/571 kB | 7.4/67 kB | 7.4/19 kBProgress (4): 197/490 kB | 213/571 kB | 7.4/67 kB | 8.2/19 kBProgress (4): 213/490 kB | 213/571 kB | 7.4/67 kB | 8.2/19 kBProgress (4): 229/490 kB | 213/571 kB | 7.4/67 kB | 8.2/19 kBProgress (4): 229/490 kB | 213/571 kB | 16/67 kB | 8.2/19 kB Progress (4): 229/490 kB | 229/571 kB | 16/67 kB | 8.2/19 kBProgress (4): 229/490 kB | 246/571 kB | 16/67 kB | 8.2/19 kBProgress (4): 229/490 kB | 246/571 kB | 16/67 kB | 19 kB    Progress (4): 246/490 kB | 246/571 kB | 16/67 kB | 19 kBProgress (4): 262/490 kB | 246/571 kB | 16/67 kB | 19 kBProgress (4): 262/490 kB | 246/571 kB | 24/67 kB | 19 kBProgress (4): 262/490 kB | 246/571 kB | 40/67 kB | 19 kBProgress (5): 262/490 kB | 246/571 kB | 40/67 kB | 19 kB | 7.4/9.1 kBProgress (5): 262/490 kB | 246/571 kB | 40/67 kB | 19 kB | 8.2/9.1 kBProgress (5): 262/490 kB | 246/571 kB | 40/67 kB | 19 kB | 9.1 kB    Progress (5): 262/490 kB | 262/571 kB | 40/67 kB | 19 kB | 9.1 kB                                                                 Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-native-macos/4.1.113.Final/netty-resolver-dns-native-macos-4.1.113.Final-osx-x86_64.jar (19 kB at 9.0 kB/s)
+#14 51.99 Progress (4): 262/490 kB | 262/571 kB | 57/67 kB | 9.1 kB                                                         Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final-linux-x86_64.jar
+#14 52.00 Progress (4): 262/490 kB | 279/571 kB | 57/67 kB | 9.1 kBProgress (4): 279/490 kB | 279/571 kB | 57/67 kB | 9.1 kBProgress (4): 295/490 kB | 279/571 kB | 57/67 kB | 9.1 kBProgress (4): 311/490 kB | 279/571 kB | 57/67 kB | 9.1 kBProgress (4): 328/490 kB | 279/571 kB | 57/67 kB | 9.1 kBProgress (4): 328/490 kB | 279/571 kB | 67 kB | 9.1 kB   Progress (4): 344/490 kB | 279/571 kB | 67 kB | 9.1 kBProgress (4): 360/490 kB | 279/571 kB | 67 kB | 9.1 kBProgress (4): 360/490 kB | 295/571 kB | 67 kB | 9.1 kBProgress (4): 360/490 kB | 311/571 kB | 67 kB | 9.1 kB                                                      Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-resolver-dns-classes-macos/4.1.113.Final/netty-resolver-dns-classes-macos-4.1.113.Final.jar (9.1 kB at 4.1 kB/s)
+#14 52.06 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.jar
+#14 52.08 Progress (3): 377/490 kB | 311/571 kB | 67 kB                                             Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-dns/4.1.113.Final/netty-codec-dns-4.1.113.Final.jar (67 kB at 30 kB/s)
+#14 52.08 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.jar
+#14 52.10 Progress (2): 377/490 kB | 328/571 kBProgress (2): 377/490 kB | 344/571 kBProgress (2): 393/490 kB | 344/571 kBProgress (2): 393/490 kB | 360/571 kBProgress (3): 393/490 kB | 360/571 kB | 7.4/40 kBProgress (3): 393/490 kB | 360/571 kB | 7.7/40 kBProgress (3): 410/490 kB | 360/571 kB | 7.7/40 kBProgress (3): 426/490 kB | 360/571 kB | 7.7/40 kBProgress (3): 426/490 kB | 377/571 kB | 7.7/40 kBProgress (3): 426/490 kB | 393/571 kB | 7.7/40 kBProgress (3): 426/490 kB | 393/571 kB | 24/40 kB Progress (3): 426/490 kB | 393/571 kB | 40 kB   Progress (3): 442/490 kB | 393/571 kB | 40 kBProgress (3): 442/490 kB | 410/571 kB | 40 kBProgress (3): 459/490 kB | 410/571 kB | 40 kBProgress (4): 459/490 kB | 410/571 kB | 40 kB | 7.4/148 kBProgress (4): 459/490 kB | 410/571 kB | 40 kB | 16/148 kB Progress (4): 459/490 kB | 410/571 kB | 40 kB | 24/148 kBProgress (5): 459/490 kB | 410/571 kB | 40 kB | 24/148 kB | 7.4/44 kBProgress (5): 459/490 kB | 410/571 kB | 40 kB | 24/148 kB | 12/44 kB Progress (5): 459/490 kB | 410/571 kB | 40 kB | 24/148 kB | 29/44 kBProgress (5): 475/490 kB | 410/571 kB | 40 kB | 24/148 kB | 29/44 kBProgress (5): 490 kB | 410/571 kB | 40 kB | 24/148 kB | 29/44 kB    Progress (5): 490 kB | 426/571 kB | 40 kB | 24/148 kB | 29/44 kB                                                                Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-epoll/4.1.113.Final/netty-transport-native-epoll-4.1.113.Final-linux-x86_64.jar (40 kB at 17 kB/s)
+#14 52.22 Downloading from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.22/reactor-netty-core-1.1.22.jar
+#14 52.22 Progress (4): 490 kB | 442/571 kB | 24/148 kB | 29/44 kBProgress (4): 490 kB | 442/571 kB | 40/148 kB | 29/44 kBProgress (4): 490 kB | 442/571 kB | 57/148 kB | 29/44 kBProgress (4): 490 kB | 442/571 kB | 73/148 kB | 29/44 kBProgress (4): 490 kB | 442/571 kB | 90/148 kB | 29/44 kBProgress (4): 490 kB | 442/571 kB | 90/148 kB | 44 kB                                                        Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-native-unix-common/4.1.113.Final/netty-transport-native-unix-common-4.1.113.Final.jar (44 kB at 18 kB/s)
+#14 52.24 Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-http2/4.1.113.Final/netty-codec-http2-4.1.113.Final.jar (490 kB at 204 kB/s)
+#14 52.24 Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.113.Final/netty-handler-proxy-4.1.113.Final.jar
+#14 52.24 Progress (2): 459/571 kB | 90/148 kB                                    Downloading from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.113.Final/netty-codec-socks-4.1.113.Final.jar
+#14 52.24 Progress (2): 459/571 kB | 106/148 kBProgress (2): 459/571 kB | 122/148 kBProgress (2): 475/571 kB | 122/148 kBProgress (2): 492/571 kB | 122/148 kBProgress (2): 492/571 kB | 139/148 kBProgress (2): 492/571 kB | 148 kB    Progress (2): 508/571 kB | 148 kBProgress (2): 524/571 kB | 148 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-transport-classes-epoll/4.1.113.Final/netty-transport-classes-epoll-4.1.113.Final.jar (148 kB at 60 kB/s)
+#14 52.29 Progress (1): 541/571 kB                        Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.13/spring-webflux-6.1.13.jar
+#14 52.29 Progress (1): 557/571 kBProgress (1): 571 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler/4.1.113.Final/netty-handler-4.1.113.Final.jar (571 kB at 231 kB/s)
+#14 52.40 Progress (1): 7.4/521 kBProgress (1): 7.7/521 kBProgress (1): 24/521 kB Progress (1): 40/521 kBProgress (1): 57/521 kBProgress (1): 73/521 kBProgress (1): 82/521 kBProgress (1): 98/521 kBProgress (2): 98/521 kB | 7.4/26 kBProgress (2): 98/521 kB | 7.7/26 kBProgress (2): 115/521 kB | 7.7/26 kBProgress (2): 115/521 kB | 24/26 kB Progress (2): 115/521 kB | 26 kB   Progress (3): 115/521 kB | 26 kB | 7.4/121 kBProgress (3): 115/521 kB | 26 kB | 7.7/121 kBProgress (3): 115/521 kB | 26 kB | 24/121 kB Progress (3): 131/521 kB | 26 kB | 24/121 kBProgress (3): 147/521 kB | 26 kB | 24/121 kBProgress (3): 147/521 kB | 26 kB | 40/121 kBProgress (3): 164/521 kB | 26 kB | 40/121 kBProgress (3): 164/521 kB | 26 kB | 57/121 kBProgress (3): 180/521 kB | 26 kB | 57/121 kB                                            Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-handler-proxy/4.1.113.Final/netty-handler-proxy-4.1.113.Final.jar (26 kB at 9.6 kB/s)
+#14 52.52 Progress (2): 197/521 kB | 57/121 kBProgress (2): 205/521 kB | 57/121 kBProgress (2): 205/521 kB | 73/121 kBProgress (2): 205/521 kB | 90/121 kBProgress (2): 221/521 kB | 90/121 kBProgress (2): 238/521 kB | 90/121 kBProgress (2): 246/521 kB | 90/121 kBProgress (2): 246/521 kB | 106/121 kBProgress (2): 246/521 kB | 121 kB    Progress (3): 246/521 kB | 121 kB | 7.4/980 kBProgress (3): 246/521 kB | 121 kB | 16/980 kB Progress (3): 246/521 kB | 121 kB | 25/980 kBProgress (3): 254/521 kB | 121 kB | 25/980 kBProgress (3): 254/521 kB | 121 kB | 41/980 kBProgress (3): 270/521 kB | 121 kB | 41/980 kBProgress (3): 270/521 kB | 121 kB | 57/980 kB                                             Downloaded from central: https://repo.maven.apache.org/maven2/io/netty/netty-codec-socks/4.1.113.Final/netty-codec-socks-4.1.113.Final.jar (121 kB at 44 kB/s)
+#14 52.63 Progress (2): 270/521 kB | 74/980 kBProgress (2): 287/521 kB | 74/980 kBProgress (2): 295/521 kB | 74/980 kBProgress (2): 295/521 kB | 90/980 kBProgress (2): 295/521 kB | 106/980 kBProgress (2): 311/521 kB | 106/980 kBProgress (2): 328/521 kB | 106/980 kBProgress (2): 328/521 kB | 123/980 kBProgress (2): 344/521 kB | 123/980 kBProgress (2): 360/521 kB | 123/980 kBProgress (2): 360/521 kB | 139/980 kBProgress (2): 369/521 kB | 139/980 kBProgress (2): 369/521 kB | 156/980 kBProgress (2): 385/521 kB | 156/980 kBProgress (2): 401/521 kB | 156/980 kBProgress (2): 401/521 kB | 172/980 kBProgress (2): 418/521 kB | 172/980 kBProgress (2): 418/521 kB | 188/980 kBProgress (2): 434/521 kB | 188/980 kBProgress (2): 434/521 kB | 205/980 kBProgress (2): 451/521 kB | 205/980 kBProgress (2): 451/521 kB | 221/980 kBProgress (2): 451/521 kB | 238/980 kBProgress (2): 467/521 kB | 238/980 kBProgress (2): 483/521 kB | 238/980 kBProgress (2): 483/521 kB | 254/980 kBProgress (2): 483/521 kB | 270/980 kBProgress (2): 483/521 kB | 287/980 kBProgress (2): 483/521 kB | 303/980 kBProgress (2): 500/521 kB | 303/980 kBProgress (2): 516/521 kB | 303/980 kBProgress (2): 521 kB | 303/980 kB    Progress (2): 521 kB | 319/980 kBProgress (2): 521 kB | 336/980 kBProgress (2): 521 kB | 352/980 kB                                 Downloaded from central: https://repo.maven.apache.org/maven2/io/projectreactor/netty/reactor-netty-core/1.1.22/reactor-netty-core-1.1.22.jar (521 kB at 168 kB/s)
+#14 52.94 Progress (1): 369/980 kBProgress (1): 385/980 kBProgress (1): 401/980 kBProgress (1): 418/980 kBProgress (1): 434/980 kBProgress (1): 451/980 kBProgress (1): 467/980 kBProgress (1): 483/980 kBProgress (1): 500/980 kBProgress (1): 516/980 kBProgress (1): 532/980 kBProgress (1): 549/980 kBProgress (1): 565/980 kBProgress (1): 582/980 kBProgress (1): 598/980 kBProgress (1): 614/980 kBProgress (1): 631/980 kBProgress (1): 647/980 kBProgress (1): 664/980 kBProgress (1): 680/980 kBProgress (1): 696/980 kBProgress (1): 713/980 kBProgress (1): 729/980 kBProgress (1): 745/980 kBProgress (1): 762/980 kBProgress (1): 778/980 kBProgress (1): 795/980 kBProgress (1): 811/980 kBProgress (1): 827/980 kBProgress (1): 844/980 kBProgress (1): 860/980 kBProgress (1): 877/980 kBProgress (1): 893/980 kBProgress (1): 909/980 kBProgress (1): 926/980 kBProgress (1): 942/980 kBProgress (1): 958/980 kBProgress (1): 975/980 kBProgress (1): 980 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-webflux/6.1.13/spring-webflux-6.1.13.jar (980 kB at 308 kB/s)
+#14 53.10 [INFO] 
+#14 53.11 [INFO] --- clean:3.3.2:clean (default-clean) @ gateway ---
+#14 53.34 [INFO] 
+#14 53.34 [INFO] --- resources:3.3.1:resources (default-resources) @ gateway ---
+#14 53.87 [INFO] Copying 1 resource from src/main/resources to target/classes
+#14 53.97 [INFO] Copying 0 resource from src/main/resources to target/classes
+#14 53.98 [INFO] 
+#14 53.98 [INFO] --- compiler:3.13.0:compile (default-compile) @ gateway ---
+#14 54.42 [INFO] Recompiling the module because of changed source code.
+#14 54.44 [INFO] Compiling 1 source file with javac [debug parameters release 21] to target/classes
+#14 57.18 [INFO] 
+#14 57.18 [INFO] --- resources:3.3.1:testResources (default-testResources) @ gateway ---
+#14 57.20 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#14 57.20 [INFO] 
+#14 57.20 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ gateway ---
+#14 57.22 [INFO] Recompiling the module because of changed dependency.
+#14 57.22 [INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+#14 59.70 [INFO] 
+#14 59.71 [INFO] --- surefire:3.2.5:test (default-test) @ gateway ---
+#14 60.26 [INFO] Tests are skipped.
+#14 60.26 [INFO] 
+#14 60.26 [INFO] --- jar:3.4.2:jar (default-jar) @ gateway ---
+#14 61.06 [INFO] Building jar: /app/target/gateway-0.6.0.jar
+#14 61.19 [INFO] 
+#14 61.19 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ gateway ---
+#14 63.55 [INFO] Replacing main artifact /app/target/gateway-0.6.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#14 63.55 [INFO] The original artifact has been renamed to /app/target/gateway-0.6.0.jar.original
+#14 63.55 [INFO] ------------------------------------------------------------------------
+#14 63.55 [INFO] BUILD SUCCESS
+#14 63.55 [INFO] ------------------------------------------------------------------------
+#14 63.55 [INFO] Total time:  26.363 s
+#14 63.56 [INFO] Finished at: 2026-10-19T22:09:55Z
+#14 63.56 [INFO] ------------------------------------------------------------------------
+#14 DONE 63.8s
+
+#15 [stage-1 2/3] WORKDIR /app
+#15 CACHED
+
+#16 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#16 DONE 0.3s
+
+#17 exporting to image
+#17 exporting layers
+#17 exporting layers 4.2s done
+#17 exporting manifest sha256:b7eca4eb28817d54b8368109a5bb066bed88c797838c3941e58398304b6a6030 0.0s done
+#17 exporting config sha256:d05431d4dd07f20d1fece03a4e0d9c00e7bee92bef6bdec38ad736274db5c055 0.0s done
+#17 exporting attestation manifest sha256:507e566a402d18818b38d7a7249fd81c83ff74dd1053473dc5a54fb01f1cf2bb 0.0s done
+#17 exporting manifest list sha256:d55e55b5c91b908b103f406a8fd5b26033178e22aafe4c4373a7c9b5ce778e0b 0.0s done
+#17 naming to docker.io/library/derek-s07-gateway:latest done
+#17 unpacking to docker.io/library/derek-s07-gateway:latest
+#17 unpacking to docker.io/library/derek-s07-gateway:latest 0.7s done
+#17 DONE 5.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/4csu2q3ghmx5l79r3j98hnjze

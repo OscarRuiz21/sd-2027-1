@@ -1,0 +1,1 @@
+Predicción preparada antes de matar la réplica: algunas consultas fallarán, no todas. Eureka debe esperar a que expire el lease y el gateway mantiene otras cachés. La recuperación de las consultas puede ocurrir después de la salida del registro. El número exacto de errores se medirá, no se copia del ensayo docente.
