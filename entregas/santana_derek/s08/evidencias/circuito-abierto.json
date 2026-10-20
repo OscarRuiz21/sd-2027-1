@@ -1,0 +1,114 @@
+[
+  {
+    "hora": "2026-10-20T16:21:54.327926-06:00",
+    "codigo": 500,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "timestamp": "2026-10-20T22:21:54.262+00:00",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/transferencias"
+    },
+    "segundos": 0.21
+  },
+  {
+    "hora": "2026-10-20T16:21:54.451941-06:00",
+    "codigo": 503,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/problem+json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito abierto: cuenta no fue llamada",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    },
+    "segundos": 0.124
+  },
+  {
+    "hora": "2026-10-20T16:21:54.504421-06:00",
+    "codigo": 503,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/problem+json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito abierto: cuenta no fue llamada",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    },
+    "segundos": 0.052
+  },
+  {
+    "hora": "2026-10-20T16:21:54.586560-06:00",
+    "codigo": 503,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/problem+json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito abierto: cuenta no fue llamada",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    },
+    "segundos": 0.082
+  },
+  {
+    "hora": "2026-10-20T16:21:54.676189-06:00",
+    "codigo": 503,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/problem+json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito abierto: cuenta no fue llamada",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    },
+    "segundos": 0.089
+  },
+  {
+    "hora": "2026-10-20T16:21:54.794733-06:00",
+    "codigo": 503,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/problem+json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito abierto: cuenta no fue llamada",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    },
+    "segundos": 0.118
+  }
+]

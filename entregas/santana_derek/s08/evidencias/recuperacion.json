@@ -1,0 +1,60 @@
+{
+  "saldos": {
+    "origen": {
+      "hora": "2026-10-20T16:22:42.230651-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:22:41 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 3,
+        "clabe": "002180000000000001",
+        "titular": "Ana S08",
+        "saldo": 900.0
+      },
+      "segundos": 0.027
+    },
+    "destino": {
+      "hora": "2026-10-20T16:22:42.248921-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:22:41 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 4,
+        "clabe": "002180000000000002",
+        "titular": "Beto S08",
+        "saldo": 500.0
+      },
+      "segundos": 0.018
+    }
+  },
+  "sonda": {
+    "hora": "2026-10-20T16:23:03.266291-06:00",
+    "codigo": 201,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:23:03 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 4,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 1,
+      "fecha": "2026-10-20T22:22:42.283679587Z",
+      "estado": "COMPLETADA",
+      "detalle": null
+    },
+    "segundos": 21.018
+  }
+}

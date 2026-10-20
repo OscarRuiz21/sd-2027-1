@@ -1,0 +1,170 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 649B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#3 DONE 2.2s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 DONE 2.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 48B done
+#4 DONE 0.0s
+
+#5 [builder 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#5 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.0s done
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.0s done
+#6 DONE 0.0s
+
+#7 [internal] load build context
+#7 transferring context: 57.65kB 0.0s done
+#7 DONE 0.0s
+
+#8 [builder 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/7] COPY pom.xml .
+#9 CACHED
+
+#10 [builder 4/7] COPY mvnw .
+#10 CACHED
+
+#11 [builder 5/7] COPY .mvn .mvn
+#11 CACHED
+
+#12 [builder 6/7] COPY src ./src
+#12 DONE 0.0s
+
+#13 [builder 7/7] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw -B clean verify
+#13 0.321 Picked up JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -XX:ActiveProcessorCount=1
+#13 2.440 [INFO] Scanning for projects...
+#13 2.770 [INFO] 
+#13 2.770 [INFO] ---------------------< mx.mexibanco:transferencia >---------------------
+#13 2.770 [INFO] Building transferencia 0.6.0
+#13 2.770 [INFO]   from pom.xml
+#13 2.770 [INFO] --------------------------------[ jar ]---------------------------------
+#13 3.494 [INFO] 
+#13 3.496 [INFO] --- clean:3.3.2:clean (default-clean) @ transferencia ---
+#13 3.573 [INFO] 
+#13 3.573 [INFO] --- resources:3.3.1:resources (default-resources) @ transferencia ---
+#13 3.729 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 3.747 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 3.748 [INFO] 
+#13 3.748 [INFO] --- compiler:3.13.0:compile (default-compile) @ transferencia ---
+#13 3.850 [INFO] Recompiling the module because of changed source code.
+#13 3.861 [INFO] Compiling 18 source files with javac [debug parameters release 21] to target/classes
+#13 8.750 [INFO] 
+#13 8.753 [INFO] --- resources:3.3.1:testResources (default-testResources) @ transferencia ---
+#13 8.786 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 8.787 [INFO] 
+#13 8.787 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ transferencia ---
+#13 8.826 [INFO] Recompiling the module because of changed dependency.
+#13 8.830 [INFO] Compiling 4 source files with javac [debug parameters release 21] to target/test-classes
+#13 10.43 [INFO] 
+#13 10.43 [INFO] --- surefire:3.2.5:test (default-test) @ transferencia ---
+#13 10.81 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#13 10.89 [INFO] 
+#13 10.89 [INFO] -------------------------------------------------------
+#13 10.89 [INFO]  T E S T S
+#13 10.89 [INFO] -------------------------------------------------------
+#13 11.15 Picked up JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -XX:ActiveProcessorCount=1
+#13 12.60 [INFO] Running mx.mexibanco.clientes.ClientesHttpTest
+#13 14.23 [INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.440 s -- in mx.mexibanco.clientes.ClientesHttpTest
+#13 14.23 [INFO] Running mx.mexibanco.clientes.CircuitoCuentaTest
+#13 14.24 22:19:12.055 [main] WARN mx.mexibanco.clientes.CircuitoCuenta -- Circuito cuenta: CERRADO -> ABIERTO
+#13 14.24 22:19:12.074 [main] WARN mx.mexibanco.clientes.CircuitoCuenta -- Circuito cuenta: ABIERTO -> SEMIABIERTO
+#13 14.24 22:19:12.076 [main] WARN mx.mexibanco.clientes.CircuitoCuenta -- Circuito cuenta: SEMIABIERTO -> CERRADO
+#13 14.27 [INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.149 s -- in mx.mexibanco.clientes.CircuitoCuentaTest
+#13 14.27 [INFO] Running mx.mexibanco.clientes.BalanceoPorNombreTest
+#13 17.19 
+#13 17.19   .   ____          _            __ _ _
+#13 17.19  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+#13 17.19 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+#13 17.19  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+#13 17.19   '  |____| .__|_| |_|_| |_\__, | / / / /
+#13 17.19  =========|_|==============|___/=/_/_/_/
+#13 17.19 
+#13 17.29  :: Spring Boot ::                (v3.3.4)
+#13 17.30 
+#13 17.49 2026-10-20T22:19:15.285Z  INFO 139 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : Starting BalanceoPorNombreTest using Java 21.0.12.1 with PID 139 (started by root in /app)
+#13 17.49 2026-10-20T22:19:15.289Z  INFO 139 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : No active profile set, falling back to 1 default profile: "default"
+#13 20.37 2026-10-20T22:19:18.230Z  INFO 139 --- [transferencia] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=2170c40e-39ef-3844-b9a1-40ac714ad583
+#13 20.87 2026-10-20T22:19:18.719Z  WARN 139 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+#13 20.87 2026-10-20T22:19:18.724Z  WARN 139 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+#13 23.80 2026-10-20T22:19:21.592Z  INFO 139 --- [transferencia] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+#13 24.00 2026-10-20T22:19:21.840Z  WARN 139 --- [transferencia] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+#13 24.39 2026-10-20T22:19:22.242Z  INFO 139 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : Started BalanceoPorNombreTest in 9.023 seconds (process running for 13.29)
+#13 27.60 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+#13 27.60 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+#13 27.60 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+#13 27.60 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+#13 27.94 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#13 44.95 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 28.39 s -- in mx.mexibanco.clientes.BalanceoPorNombreTest
+#13 44.95 [INFO] Running mx.mexibanco.transferencia.TransferenciaServiceTest
+#13 63.91 2026-10-20T22:20:01.709Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> CARGADA
+#13 63.91 2026-10-20T22:20:01.715Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> ABONADA
+#13 63.91 2026-10-20T22:20:01.731Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPLETADA
+#13 64.10 2026-10-20T22:20:01.953Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> CARGADA
+#13 64.11 2026-10-20T22:20:01.961Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSANDO
+#13 64.11 2026-10-20T22:20:01.967Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSACION_PENDIENTE
+#13 64.34 2026-10-20T22:20:02.194Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> CARGADA
+#13 64.34 2026-10-20T22:20:02.197Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSANDO
+#13 64.34 2026-10-20T22:20:02.200Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSACION_PENDIENTE
+#13 64.45 2026-10-20T22:20:02.280Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> CARGADA
+#13 64.45 2026-10-20T22:20:02.291Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> ABONO_INCIERTO
+#13 64.57 2026-10-20T22:20:02.396Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> CARGADA
+#13 64.57 2026-10-20T22:20:02.408Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> ABONO_INCIERTO
+#13 64.82 2026-10-20T22:20:02.620Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> CARGADA
+#13 64.82 2026-10-20T22:20:02.625Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSANDO
+#13 64.82 2026-10-20T22:20:02.634Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSADA_REGISTRO_PENDIENTE
+#13 64.83 2026-10-20T22:20:02.645Z  INFO 139 --- [transferencia] [           main] m.m.transferencia.TransferenciaService   : Saga null -> COMPENSADA
+#13 66.08 [INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.45 s -- in mx.mexibanco.transferencia.TransferenciaServiceTest
+#13 67.46 [INFO] 
+#13 67.46 [INFO] Results:
+#13 67.46 [INFO] 
+#13 67.47 [INFO] Tests run: 14, Failures: 0, Errors: 0, Skipped: 0
+#13 67.47 [INFO] 
+#13 67.56 [INFO] 
+#13 67.56 [INFO] --- jar:3.4.2:jar (default-jar) @ transferencia ---
+#13 69.76 [INFO] Building jar: /app/target/transferencia-0.6.0.jar
+#13 70.11 [INFO] 
+#13 70.12 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ transferencia ---
+#13 75.95 [INFO] Replacing main artifact /app/target/transferencia-0.6.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 75.96 [INFO] The original artifact has been renamed to /app/target/transferencia-0.6.0.jar.original
+#13 75.96 [INFO] ------------------------------------------------------------------------
+#13 75.96 [INFO] BUILD SUCCESS
+#13 75.96 [INFO] ------------------------------------------------------------------------
+#13 75.97 [INFO] Total time:  01:13 min
+#13 75.97 [INFO] Finished at: 2026-10-20T22:20:13Z
+#13 75.97 [INFO] ------------------------------------------------------------------------
+#13 DONE 76.3s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#15 DONE 0.4s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 12.0s done
+#16 exporting manifest sha256:ec155c3d0dee8b4307099514345b12c8c29b28ebe47ca97debd4782e32871043
+#16 exporting manifest sha256:ec155c3d0dee8b4307099514345b12c8c29b28ebe47ca97debd4782e32871043 0.0s done
+#16 exporting config sha256:2a6fb162d15fdf5576d1f3dabf51c0a1a899ecce0de92c769354cbdb61c2668e 0.0s done
+#16 exporting attestation manifest sha256:7a541a1dbf5cd16097b95db4b252debb5e3bc61e97ee5a5f15e9f699abc3b653 0.0s done
+#16 exporting manifest list sha256:e7124de98b080c2c3154a8c600e223ec22661bd29528eb15751f18a22af018e2 0.0s done
+#16 naming to docker.io/library/derek-s08-transferencia:latest done
+#16 unpacking to docker.io/library/derek-s08-transferencia:latest
+#16 unpacking to docker.io/library/derek-s08-transferencia:latest 2.6s done
+#16 DONE 14.8s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ch9538xhxbxh9055qtvu07cz8

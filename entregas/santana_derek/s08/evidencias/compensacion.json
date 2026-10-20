@@ -1,0 +1,138 @@
+{
+  "antes": {
+    "origen": {
+      "hora": "2026-10-20T16:16:31.705965-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:16:31 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 3,
+        "clabe": "002180000000000001",
+        "titular": "Ana S08",
+        "saldo": 1000.0
+      },
+      "segundos": 0.062
+    },
+    "destino": {
+      "hora": "2026-10-20T16:16:31.760601-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:16:31 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 4,
+        "clabe": "002180000000000002",
+        "titular": "Beto S08",
+        "saldo": 500.0
+      },
+      "segundos": 0.054
+    }
+  },
+  "transferencia": {
+    "hora": "2026-10-20T16:16:32.903450-06:00",
+    "codigo": 409,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:16:32 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 1,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 50,
+      "fecha": "2026-10-20T22:16:32.379715390Z",
+      "estado": "COMPENSADA",
+      "detalle": "Falla provocada ANTES de enviar el abono"
+    },
+    "segundos": 1.143
+  },
+  "despues": {
+    "origen": {
+      "hora": "2026-10-20T16:16:32.928152-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:16:32 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 3,
+        "clabe": "002180000000000001",
+        "titular": "Ana S08",
+        "saldo": 1000.0
+      },
+      "segundos": 0.025
+    },
+    "destino": {
+      "hora": "2026-10-20T16:16:32.970769-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:16:32 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 4,
+        "clabe": "002180000000000002",
+        "titular": "Beto S08",
+        "saldo": 500.0
+      },
+      "segundos": 0.043
+    }
+  },
+  "movimientos": {
+    "hora": "2026-10-20T16:16:33.464463-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:16:32 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 6,
+        "clabeCuenta": "002180000000000001",
+        "tipo": "DEPOSITO",
+        "monto": 50.0,
+        "saldoResultante": 1000.0,
+        "fecha": "2026-10-20T22:16:32.859923Z",
+        "referencia": "DEVOLUCION saga 1"
+      },
+      {
+        "id": 5,
+        "clabeCuenta": "002180000000000001",
+        "tipo": "TRANSFERENCIA_ENVIADA",
+        "monto": -50.0,
+        "saldoResultante": 950.0,
+        "fecha": "2026-10-20T22:16:32.812553Z",
+        "referencia": "cargo saga 1"
+      },
+      {
+        "id": 3,
+        "clabeCuenta": "002180000000000001",
+        "tipo": "DEPOSITO",
+        "monto": 1000.0,
+        "saldoResultante": 1000.0,
+        "fecha": "2026-10-20T22:16:31.439448Z",
+        "referencia": "saldo inicial"
+      }
+    ],
+    "segundos": 0.493
+  }
+}
