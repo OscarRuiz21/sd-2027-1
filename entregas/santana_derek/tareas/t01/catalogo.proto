@@ -1,0 +1,11 @@
+syntax = "proto3";
+package catalogo;
+service Catalogo {
+  rpc Consultar (Consulta) returns (Producto);
+}
+message Consulta { int32 id = 1; }
+message Producto {
+  int32 id = 1;
+  string nombre = 2;
+  int32 precio_centavos = 3;
+}

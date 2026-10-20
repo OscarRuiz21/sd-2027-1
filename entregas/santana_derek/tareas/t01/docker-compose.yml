@@ -1,0 +1,20 @@
+name: derek-t01
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile.servidor
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8080/productos/1')"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliente
+    environment:
+      SERVIDOR: servidor
+    depends_on:
+      servidor:
+        condition: service_healthy
