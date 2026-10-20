@@ -1,0 +1,208 @@
+{
+  "publicacion": {
+    "hora": "2026-10-20T16:29:53.952441-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "POST, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "15",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:29:53 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "routed": true
+    },
+    "segundos": 0.018
+  },
+  "cola": {
+    "hora": "2026-10-20T16:29:55.968557-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "2090",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:29:55 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "consumer_details": [
+        {
+          "arguments": {},
+          "channel_details": {
+            "connection_name": "172.25.0.8:44428 -> 172.25.0.3:5672",
+            "name": "172.25.0.8:44428 -> 172.25.0.3:5672 (1)",
+            "node": "rabbit@f300b9a76267",
+            "number": 1,
+            "peer_host": "172.25.0.8",
+            "peer_port": 44428,
+            "user": "mexibanco"
+          },
+          "ack_required": true,
+          "active": true,
+          "activity_status": "up",
+          "consumer_tag": "amq.ctag-Q6oaMoSzbHDD8S9pzeUxgw",
+          "consumer_timeout": 1800000,
+          "exclusive": false,
+          "prefetch_count": 250,
+          "queue": {
+            "name": "notificacion.transferencias",
+            "vhost": "/"
+          }
+        }
+      ],
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 1.0,
+      "consumer_utilisation": 1.0,
+      "consumers": 1,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 18
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-10-20T22:29:50.252+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 35144,
+      "message_bytes": 0,
+      "message_bytes_persistent": 0,
+      "message_bytes_ram": 0,
+      "message_bytes_ready": 0,
+      "message_bytes_unacknowledged": 0,
+      "message_stats": {
+        "ack": 9,
+        "ack_details": {
+          "rate": 0.8
+        },
+        "deliver": 11,
+        "deliver_details": {
+          "rate": 1.2
+        },
+        "deliver_get": 11,
+        "deliver_get_details": {
+          "rate": 1.2
+        },
+        "deliver_no_ack": 0,
+        "deliver_no_ack_details": {
+          "rate": 0.0
+        },
+        "get": 0,
+        "get_details": {
+          "rate": 0.0
+        },
+        "get_empty": 0,
+        "get_empty_details": {
+          "rate": 0.0
+        },
+        "get_no_ack": 0,
+        "get_no_ack_details": {
+          "rate": 0.0
+        },
+        "publish": 10,
+        "publish_details": {
+          "rate": 1.0
+        },
+        "redeliver": 1,
+        "redeliver_details": {
+          "rate": 0.2
+        }
+      },
+      "messages": 0,
+      "messages_details": {
+        "rate": 0.0
+      },
+      "messages_persistent": 0,
+      "messages_ram": 0,
+      "messages_ready": 0,
+      "messages_ready_details": {
+        "rate": 0.0
+      },
+      "messages_ready_ram": 0,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias",
+      "node": "rabbit@f300b9a76267",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 22950,
+      "reductions_details": {
+        "rate": 293.6
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    },
+    "segundos": 0.007
+  },
+  "logs": "2026-10-20T22:29:48.208Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/c7c243e056da:notificacion:8080 - registration status: 204\n2026-10-20T22:29:48.305Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#74be992a:0/SimpleConnection@57497703 [delegate=amqp://mexibanco@172.25.0.3:5672/, localPort=44428]\n2026-10-20T22:29:48.400Z  INFO 1 --- [notificacion] [           main] mx.mexibanco.NotificacionApplication     : Started NotificacionApplication in 11.767 seconds (process running for 12.508)\n2026-10-20T22:29:51.314Z  INFO 1 --- [notificacion] [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\n2026-10-20T22:29:51.319Z  INFO 1 --- [notificacion] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\n2026-10-20T22:29:51.339Z  INFO 1 --- [notificacion] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms\n2026-10-20T22:29:52.793Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 2 aviso(s) nuevo(s); redelivered=false\n2026-10-20T22:29:53.755Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 0 aviso(s) nuevo(s); redelivered=false\n2026-10-20T22:29:53.765Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 0 aviso(s) nuevo(s); redelivered=false\n2026-10-20T22:29:53.777Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 0 aviso(s) nuevo(s); redelivered=false\n2026-10-20T22:29:53.953Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false\n2026-10-20T22:29:54.460Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false\n2026-10-20T22:29:54.965Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false\n2026-10-20T22:29:55.467Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false\n2026-10-20T22:29:55.970Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false\n2026-10-20T22:29:56.018Z  INFO 1 --- [notificacion] [ionShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application NOTIFICACION with eureka with status DOWN\n2026-10-20T22:29:56.018Z  INFO 1 --- [notificacion] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792535396018, current=DOWN, previous=UP]\n2026-10-20T22:29:56.018Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/c7c243e056da:notificacion:8080: registering service...\n2026-10-20T22:29:56.026Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/c7c243e056da:notificacion:8080 - registration status: 204\n2026-10-20T22:29:56.027Z  INFO 1 --- [notificacion] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.\n2026-10-20T22:29:56.473Z  INFO 1 --- [notificacion] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.\n2026-10-20T22:29:56.518Z  INFO 1 --- [notificacion] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'\n2026-10-20T22:29:56.521Z  INFO 1 --- [notificacion] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...\n2026-10-20T22:29:56.530Z  INFO 1 --- [notificacion] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.\n2026-10-20T22:29:56.531Z  INFO 1 --- [notificacion] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...\n",
+  "mensaje_retirado": {
+    "hora": "2026-10-20T16:29:57.243672-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "POST, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "244",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:29:57 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": [
+      {
+        "payload_bytes": 8,
+        "redelivered": true,
+        "exchange": "transferencias",
+        "routing_key": "transferencia.realizada",
+        "message_count": 0,
+        "properties": {
+          "delivery_mode": 2,
+          "content_type": "application/json"
+        },
+        "payload": "{\"hola\":",
+        "payload_encoding": "string"
+      }
+    ],
+    "segundos": 0.011
+  },
+  "eliminacion_cola_vacia": {
+    "hora": "2026-10-20T16:29:57.267900-06:00",
+    "codigo": 204,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "connection": "close",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "date": "Tue, 20 Oct 2026 22:29:57 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": "",
+    "segundos": 0.019
+  }
+}

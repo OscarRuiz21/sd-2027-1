@@ -1,0 +1,73 @@
+{
+  "transferencia": {
+    "hora": "2026-10-20T16:27:19.244476-06:00",
+    "codigo": 201,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:27:18 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 2,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 1,
+      "fecha": "2026-10-20T22:27:19.007570124Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 998.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-20T22:27:19.200391183Z"
+    },
+    "segundos": 0.534
+  },
+  "exchange": {
+    "hora": "2026-10-20T16:27:19.250780-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "187",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:27:18 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "arguments": {},
+      "auto_delete": false,
+      "durable": true,
+      "incoming": [],
+      "internal": false,
+      "name": "transferencias",
+      "outgoing": [],
+      "type": "topic",
+      "user_who_performed_action": "mexibanco",
+      "vhost": "/"
+    },
+    "segundos": 0.006
+  },
+  "cola": {
+    "hora": "2026-10-20T16:27:19.310630-06:00",
+    "codigo": 404,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "public, max-age=0, must-revalidate",
+      "connection": "close",
+      "content-length": "49",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:27:18 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "error": "Object Not Found",
+      "reason": "Not Found"
+    },
+    "segundos": 0.06
+  }
+}

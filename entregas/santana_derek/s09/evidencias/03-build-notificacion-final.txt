@@ -1,0 +1,214 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 649B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#3 DONE 1.3s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#2 DONE 1.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 32B 0.0s
+#4 transferring context: 48B 0.1s done
+#4 DONE 0.1s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 ...
+
+#7 [builder 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#7 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.3s done
+#7 DONE 0.3s
+
+#6 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#6 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.3s done
+#6 DONE 0.3s
+
+#5 [internal] load build context
+#5 transferring context: 10.72kB 0.0s done
+#5 DONE 0.1s
+
+#8 [builder 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/7] COPY pom.xml .
+#9 CACHED
+
+#10 [builder 4/7] COPY mvnw .
+#10 CACHED
+
+#11 [builder 5/7] COPY .mvn .mvn
+#11 CACHED
+
+#12 [builder 6/7] COPY src ./src
+#12 DONE 0.4s
+
+#13 [builder 7/7] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw -B clean verify
+#13 3.942 Picked up JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -XX:ActiveProcessorCount=1
+#13 23.25 [INFO] Scanning for projects...
+#13 26.53 [INFO] 
+#13 26.54 [INFO] ---------------------< mx.mexibanco:notificacion >----------------------
+#13 26.54 [INFO] Building notificacion 0.9.0
+#13 26.54 [INFO]   from pom.xml
+#13 26.55 [INFO] --------------------------------[ jar ]---------------------------------
+#13 35.84 [INFO] 
+#13 35.84 [INFO] --- clean:3.3.2:clean (default-clean) @ notificacion ---
+#13 36.24 [INFO] 
+#13 36.24 [INFO] --- resources:3.3.1:resources (default-resources) @ notificacion ---
+#13 36.80 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 36.94 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 36.96 [INFO] 
+#13 36.97 [INFO] --- compiler:3.13.0:compile (default-compile) @ notificacion ---
+#13 37.78 [INFO] Recompiling the module because of changed source code.
+#13 37.86 [INFO] Compiling 16 source files with javac [debug parameters release 21] to target/classes
+#13 49.01 [INFO] 
+#13 49.01 [INFO] --- resources:3.3.1:testResources (default-testResources) @ notificacion ---
+#13 49.06 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 49.07 [INFO] 
+#13 49.07 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ notificacion ---
+#13 49.15 [INFO] Recompiling the module because of changed dependency.
+#13 49.15 [INFO] Compiling 2 source files with javac [debug parameters release 21] to target/test-classes
+#13 54.68 [INFO] 
+#13 54.69 [INFO] --- surefire:3.2.5:test (default-test) @ notificacion ---
+#13 58.52 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+#13 58.77 [INFO] 
+#13 58.77 [INFO] -------------------------------------------------------
+#13 58.78 [INFO]  T E S T S
+#13 58.78 [INFO] -------------------------------------------------------
+#13 59.60 Picked up JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -XX:ActiveProcessorCount=1
+#13 65.80 [INFO] Running mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferenciasTest
+#13 69.30 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+#13 69.30 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+#13 69.30 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+#13 69.30 WARNING: Dynamic loading of agents will be disallowed by default in a future release
+#13 69.45 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+#13 78.52 22:04:15.247 [main] INFO mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferencias -- Evento 8a1f2c3e-5b7d-4e9a-9c0f-1d2e3f4a5b6c: 2 aviso(s) nuevo(s); redelivered=null
+#13 78.72 22:04:15.494 [main] WARN mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferencias -- Mensaje inválido: IllegalArgumentException; DLQ=true
+#13 78.80 22:04:15.577 [main] WARN mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferencias -- Mensaje inválido: JsonEOFException; DLQ=true
+#13 78.96 22:04:15.689 [main] WARN mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferencias -- Error al guardar: se reencola 8a1f2c3e-5b7d-4e9a-9c0f-1d2e3f4a5b6c
+#13 78.96 java.lang.IllegalStateException: Base caída
+#13 78.96 	at mx.mexibanco.notificacion.mensajeria.GuardarAvisos.procesar(GuardarAvisos.java:19)
+#13 78.96 	at mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferencias.recibir(ConsumidorDeTransferencias.java:31)
+#13 78.96 	at mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferenciasTest.falloTransitorioSeReencolaSinAck(ConsumidorDeTransferenciasTest.java:41)
+#13 78.96 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+#13 78.96 	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+#13 78.96 	at org.junit.platform.commons.util.ReflectionUtils.invokeMethod(ReflectionUtils.java:728)
+#13 78.96 	at org.junit.jupiter.engine.execution.MethodInvocation.proceed(MethodInvocation.java:60)
+#13 78.96 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$ValidatingInvocation.proceed(InvocationInterceptorChain.java:131)
+#13 78.96 	at org.junit.jupiter.engine.extension.TimeoutExtension.intercept(TimeoutExtension.java:156)
+#13 78.96 	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestableMethod(TimeoutExtension.java:147)
+#13 78.96 	at org.junit.jupiter.engine.extension.TimeoutExtension.interceptTestMethod(TimeoutExtension.java:86)
+#13 78.96 	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker$ReflectiveInterceptorCall.lambda$ofVoidMethod$0(InterceptingExecutableInvoker.java:103)
+#13 78.96 	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.lambda$invoke$0(InterceptingExecutableInvoker.java:93)
+#13 78.96 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain$InterceptedInvocation.proceed(InvocationInterceptorChain.java:106)
+#13 78.96 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.proceed(InvocationInterceptorChain.java:64)
+#13 78.96 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.chainAndInvoke(InvocationInterceptorChain.java:45)
+#13 78.96 	at org.junit.jupiter.engine.execution.InvocationInterceptorChain.invoke(InvocationInterceptorChain.java:37)
+#13 78.96 	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:92)
+#13 78.96 	at org.junit.jupiter.engine.execution.InterceptingExecutableInvoker.invoke(InterceptingExecutableInvoker.java:86)
+#13 78.96 	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.lambda$invokeTestMethod$7(TestMethodTestDescriptor.java:218)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.invokeTestMethod(TestMethodTestDescriptor.java:214)
+#13 78.96 	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:139)
+#13 78.96 	at org.junit.jupiter.engine.descriptor.TestMethodTestDescriptor.execute(TestMethodTestDescriptor.java:69)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:151)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+#13 78.96 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+#13 78.96 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1596)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.invokeAll(SameThreadHierarchicalTestExecutorService.java:41)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$6(NodeTestTask.java:155)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$8(NodeTestTask.java:141)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.Node.around(Node.java:137)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.lambda$executeRecursively$9(NodeTestTask.java:139)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.ThrowableCollector.execute(ThrowableCollector.java:73)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.executeRecursively(NodeTestTask.java:138)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.NodeTestTask.execute(NodeTestTask.java:95)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.SameThreadHierarchicalTestExecutorService.submit(SameThreadHierarchicalTestExecutorService.java:35)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.HierarchicalTestExecutor.execute(HierarchicalTestExecutor.java:57)
+#13 78.96 	at org.junit.platform.engine.support.hierarchical.HierarchicalTestEngine.execute(HierarchicalTestEngine.java:54)
+#13 78.96 	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:198)
+#13 78.96 	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:169)
+#13 78.96 	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:93)
+#13 78.96 	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.lambda$execute$0(EngineExecutionOrchestrator.java:58)
+#13 78.96 	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.withInterceptedStreams(EngineExecutionOrchestrator.java:141)
+#13 78.96 	at org.junit.platform.launcher.core.EngineExecutionOrchestrator.execute(EngineExecutionOrchestrator.java:57)
+#13 78.96 	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:103)
+#13 78.96 	at org.junit.platform.launcher.core.DefaultLauncher.execute(DefaultLauncher.java:85)
+#13 78.96 	at org.junit.platform.launcher.core.DelegatingLauncher.execute(DelegatingLauncher.java:47)
+#13 78.96 	at org.apache.maven.surefire.junitplatform.LazyLauncher.execute(LazyLauncher.java:56)
+#13 78.96 	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.execute(JUnitPlatformProvider.java:184)
+#13 78.96 	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invokeAllTests(JUnitPlatformProvider.java:148)
+#13 78.96 	at org.apache.maven.surefire.junitplatform.JUnitPlatformProvider.invoke(JUnitPlatformProvider.java:122)
+#13 78.96 	at org.apache.maven.surefire.booter.ForkedBooter.runSuitesInProcess(ForkedBooter.java:385)
+#13 78.96 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
+#13 78.96 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
+#13 78.96 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
+#13 79.50 [INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 13.27 s -- in mx.mexibanco.notificacion.mensajeria.ConsumidorDeTransferenciasTest
+#13 79.51 [INFO] Running mx.mexibanco.notificacion.NotificacionServiceTest
+#13 80.47 22:04:17.227 [main] INFO mx.mexibanco.notificacion.NotificacionService -- [notificacion] 002180000000000001 · TRANSFERENCIA_ENVIADA por 200, saldo resultante 800
+#13 80.91 [INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.664 s -- in mx.mexibanco.notificacion.NotificacionServiceTest
+#13 80.97 [INFO] 
+#13 80.97 [INFO] Results:
+#13 80.97 [INFO] 
+#13 80.97 [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+#13 80.97 [INFO] 
+#13 80.98 [INFO] 
+#13 80.99 [INFO] --- jar:3.4.2:jar (default-jar) @ notificacion ---
+#13 82.53 [INFO] Building jar: /app/target/notificacion-0.9.0.jar
+#13 82.77 [INFO] 
+#13 82.78 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ notificacion ---
+#13 86.76 [INFO] Replacing main artifact /app/target/notificacion-0.9.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 86.76 [INFO] The original artifact has been renamed to /app/target/notificacion-0.9.0.jar.original
+#13 86.78 [INFO] ------------------------------------------------------------------------
+#13 86.78 [INFO] BUILD SUCCESS
+#13 86.78 [INFO] ------------------------------------------------------------------------
+#13 86.80 [INFO] Total time:  01:04 min
+#13 86.80 [INFO] Finished at: 2026-10-20T22:04:23Z
+#13 86.80 [INFO] ------------------------------------------------------------------------
+#13 DONE 87.2s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#15 DONE 0.4s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 10.9s done
+#16 exporting manifest sha256:2cb425ef0f347acb98dd93fbb8a15c8e18b66b7e1b05a02f8a5490fca8c1e25c 0.0s done
+#16 exporting config sha256:3ef33873bcfa58fad96f2f52d1746aa0c35d7f5e68c7d0ed6e1267b475689740 0.0s done
+#16 exporting attestation manifest sha256:e9f0ab313d603537cf8167b009146ef9e0e273cc05167036df05013632f4ca5a 0.0s done
+#16 exporting manifest list sha256:68a6f8e259860db3ffdaa2145706159cfdf56dd6d43560090eb183dfca7b4bf5
+#16 exporting manifest list sha256:68a6f8e259860db3ffdaa2145706159cfdf56dd6d43560090eb183dfca7b4bf5 0.0s done
+#16 naming to docker.io/library/derek-s09-notificacion-final:latest done
+#16 unpacking to docker.io/library/derek-s09-notificacion-final:latest
+#16 unpacking to docker.io/library/derek-s09-notificacion-final:latest 1.4s done
+#16 DONE 12.5s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/t5ttj9zv0ir0204ws8ch1le82

@@ -1,0 +1,25 @@
+2026-10-20T22:29:48.208Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/c7c243e056da:notificacion:8080 - registration status: 204
+2026-10-20T22:29:48.305Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#74be992a:0/SimpleConnection@57497703 [delegate=amqp://mexibanco@172.25.0.3:5672/, localPort=44428]
+2026-10-20T22:29:48.400Z  INFO 1 --- [notificacion] [           main] mx.mexibanco.NotificacionApplication     : Started NotificacionApplication in 11.767 seconds (process running for 12.508)
+2026-10-20T22:29:51.314Z  INFO 1 --- [notificacion] [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-20T22:29:51.319Z  INFO 1 --- [notificacion] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-20T22:29:51.339Z  INFO 1 --- [notificacion] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 20 ms
+2026-10-20T22:29:52.793Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 2 aviso(s) nuevo(s); redelivered=false
+2026-10-20T22:29:53.755Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 0 aviso(s) nuevo(s); redelivered=false
+2026-10-20T22:29:53.765Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 0 aviso(s) nuevo(s); redelivered=false
+2026-10-20T22:29:53.777Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Evento de1df7f3-31ba-38e2-b4ff-dbfd1adc16be: 0 aviso(s) nuevo(s); redelivered=false
+2026-10-20T22:29:53.953Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false
+2026-10-20T22:29:54.460Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false
+2026-10-20T22:29:54.965Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false
+2026-10-20T22:29:55.467Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false
+2026-10-20T22:29:55.970Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje inválido: JsonEOFException; DLQ=false
+2026-10-20T22:29:56.018Z  INFO 1 --- [notificacion] [ionShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application NOTIFICACION with eureka with status DOWN
+2026-10-20T22:29:56.018Z  INFO 1 --- [notificacion] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792535396018, current=DOWN, previous=UP]
+2026-10-20T22:29:56.018Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/c7c243e056da:notificacion:8080: registering service...
+2026-10-20T22:29:56.026Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/c7c243e056da:notificacion:8080 - registration status: 204
+2026-10-20T22:29:56.027Z  INFO 1 --- [notificacion] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2026-10-20T22:29:56.473Z  INFO 1 --- [notificacion] [ntContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2026-10-20T22:29:56.518Z  INFO 1 --- [notificacion] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-20T22:29:56.521Z  INFO 1 --- [notificacion] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-20T22:29:56.530Z  INFO 1 --- [notificacion] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-20T22:29:56.531Z  INFO 1 --- [notificacion] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Shutting down DiscoveryClient ...

@@ -1,0 +1,112 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 659B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 DONE 0.8s
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#3 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 48B 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [builder 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#6 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.1s done
+#6 DONE 0.1s
+
+#7 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.1s done
+#7 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 31.14kB 0.1s done
+#5 DONE 0.1s
+
+#8 [builder 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/7] COPY pom.xml .
+#9 CACHED
+
+#10 [builder 4/7] COPY mvnw .
+#10 CACHED
+
+#11 [builder 5/7] COPY .mvn .mvn
+#11 CACHED
+
+#12 [builder 6/7] COPY src ./src
+#12 DONE 0.3s
+
+#13 [builder 7/7] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw clean package -DskipTests
+#13 0.600 Picked up JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -XX:ActiveProcessorCount=1
+#13 6.310 [INFO] Scanning for projects...
+#13 8.531 [INFO] 
+#13 8.531 [INFO] ----------------------< mx.mexibanco:movimiento >-----------------------
+#13 8.531 [INFO] Building movimiento 0.6.0
+#13 8.531 [INFO]   from pom.xml
+#13 8.534 [INFO] --------------------------------[ jar ]---------------------------------
+#13 10.17 [INFO] 
+#13 10.17 [INFO] --- clean:3.3.2:clean (default-clean) @ movimiento ---
+#13 10.30 [INFO] 
+#13 10.30 [INFO] --- resources:3.3.1:resources (default-resources) @ movimiento ---
+#13 10.75 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 10.81 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 10.81 [INFO] 
+#13 10.81 [INFO] --- compiler:3.13.0:compile (default-compile) @ movimiento ---
+#13 11.08 [INFO] Recompiling the module because of changed source code.
+#13 11.11 [INFO] Compiling 11 source files with javac [debug parameters release 21] to target/classes
+#13 15.13 [INFO] 
+#13 15.13 [INFO] --- resources:3.3.1:testResources (default-testResources) @ movimiento ---
+#13 15.15 [INFO] skip non existing resourceDirectory /app/src/test/resources
+#13 15.15 [INFO] 
+#13 15.15 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ movimiento ---
+#13 15.17 [INFO] Recompiling the module because of changed dependency.
+#13 15.18 [INFO] Compiling 1 source file with javac [debug parameters release 21] to target/test-classes
+#13 16.69 [INFO] 
+#13 16.69 [INFO] --- surefire:3.2.5:test (default-test) @ movimiento ---
+#13 17.40 [INFO] Tests are skipped.
+#13 17.40 [INFO] 
+#13 17.40 [INFO] --- jar:3.4.2:jar (default-jar) @ movimiento ---
+#13 18.47 [INFO] Building jar: /app/target/movimiento-0.6.0.jar
+#13 19.03 [INFO] 
+#13 19.03 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ movimiento ---
+#13 21.09 [INFO] Replacing main artifact /app/target/movimiento-0.6.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 21.09 [INFO] The original artifact has been renamed to /app/target/movimiento-0.6.0.jar.original
+#13 21.09 [INFO] ------------------------------------------------------------------------
+#13 21.09 [INFO] BUILD SUCCESS
+#13 21.09 [INFO] ------------------------------------------------------------------------
+#13 21.10 [INFO] Total time:  14.869 s
+#13 21.10 [INFO] Finished at: 2026-10-19T22:21:42Z
+#13 21.10 [INFO] ------------------------------------------------------------------------
+#13 DONE 21.8s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#15 DONE 0.6s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 9.4s done
+#16 exporting manifest sha256:a84a671c87c4d0d639f0170f905fceacd5b1f39d483d12f05c3c48515621b433
+#16 exporting manifest sha256:a84a671c87c4d0d639f0170f905fceacd5b1f39d483d12f05c3c48515621b433 0.0s done
+#16 exporting config sha256:76af6b2816e7ec26ab3af6cc2e13a4846b2a3ff896dabd2b45ffc9689e852616 0.1s done
+#16 exporting attestation manifest sha256:4fa72dff383f58600bd28cd1450275dc4077efa8930b4c70afe98a4619ae8d41
+#16 exporting attestation manifest sha256:4fa72dff383f58600bd28cd1450275dc4077efa8930b4c70afe98a4619ae8d41 0.1s done
+#16 exporting manifest list sha256:2107684b41e139e048a2a9f64a2ed503b5016a3c0ba1c2e425ceeaca368ebd42 0.0s done
+#16 naming to docker.io/library/derek-s09-movimiento:latest
+#16 naming to docker.io/library/derek-s09-movimiento:latest done
+#16 unpacking to docker.io/library/derek-s09-movimiento:latest
+#16 unpacking to docker.io/library/derek-s09-movimiento:latest 1.4s done
+#16 DONE 11.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/uxwcd3sm5gsv0i7kci6jemrnf
