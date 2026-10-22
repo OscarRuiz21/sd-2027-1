@@ -43,6 +43,39 @@ Entregas un **reporte corto en PDF** (con el procesador de textos que quieras) c
 y capturas en `entregas/apellido_nombre/s05/`,
 **en tiempo hasta el domingo 27 de septiembre**.
 
+## Mexi Banco: directorio, gateway y balanceo · sábado 3 de octubre (S7)
+
+**[Lab S07: de un monolito a servicios que se encuentran solos](https://oscarruiz21.github.io/sd-2027-1/labs/s07-mexi-banco/Lab-S07-Mexi-Banco.html)**:
+se trabaja sobre la rama `lab/03-gateway-discovery-balanceo` de
+[mexi-banco](https://github.com/OscarRuiz21/mexi-banco). **Antes de clase**, en tu casa, sigue el
+recuadro "Antes de clase" de la guía: clonar y construir tarda de 25 a 35 minutos. En clase se
+platica la historia del monolito partido y luego, paso a paso, encienden un directorio (Eureka),
+un gateway, tres copias de cuenta, y ven qué pasa cuando una muere. Se trabaja en equipo, pero
+**cada quien entrega su propia bitácora en PDF** como `bitacora-s07.pdf` en
+`entregas/apellido_nombre/s07/`, **hasta el sábado 17 de octubre, antes de las 07:00** (el plazo se amplió otra vez el 10 de octubre).
+
+## Saga orquestada y circuit breaker · sábado 10 de octubre (S8)
+
+**[Lab S08: que la transferencia no deje dinero en el aire](s08-saga-circuit-breaker/README.md)**:
+sobre la rama `03-gateway-discovery-balanceo` de [mexi-banco](https://github.com/OscarRuiz21/mexi-banco)
+(la solución del lab S07), conviertes la transferencia en una **saga orquestada** con su
+compensación y proteges las llamadas a `cuenta` con un **circuit breaker**. Esta vez no hay guía
+paso a paso: el enunciado dice qué debe pasar y tú investigas cómo. Se trabaja en equipo, pero
+**cada quien entrega** su código y su `bitacora-s08.pdf` en `entregas/apellido_nombre/s08/`,
+**hasta el sábado 17 de octubre, antes de las 07:00**.
+
+## Mensajería con RabbitMQ · sábado 17 de octubre (S9)
+
+**[Lab S09: que el aviso no tumbe la transferencia](https://oscarruiz21.github.io/sd-2027-1/labs/s09-mensajeria/Lab-S09-Mexi-Banco-Mensajeria.html)**:
+sobre la rama `05-mensajeria-base` de [mexi-banco](https://github.com/OscarRuiz21/mexi-banco)
+(la solución del lab S08 con RabbitMQ ya instalado), la saga deja de llamar por HTTP a
+`notificacion` y publica sus eventos en un broker. En clase se publica y se consume; de tarea
+provocas un duplicado y un mensaje envenenado y los resuelves con idempotencia y una dead letter
+queue. El reto opcional es el Outbox. **Antes de clase**, sigue el recuadro "Antes de clase" de la
+guía. El contrato y la entrega están en [`s09-mensajeria/README.md`](s09-mensajeria/README.md).
+Se trabaja en equipo, pero **cada quien entrega** su código y su `bitacora-s09.pdf` en
+`entregas/apellido_nombre/s09/`, **hasta el sábado 24 de octubre, antes de las 07:00**.
+
 ---
 
 Las **tareas** no están aquí: se apilan en el [`README.md` de entregas](../entregas/README.md),

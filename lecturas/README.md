@@ -64,3 +64,30 @@ https://youtu.be/IujMVjKvWP4 (un buen apoyo antes de la T02).
 Pongan la atención en **por qué "elige 2 de 3" es engañoso**, en la relación entre **partición
 y timeout**, y en qué hace un sistema **durante la partición y al recuperarse**. Léanlo con la
 mayoría de Raft en la cabeza: ¿qué sacrifica Raft cuando la red se parte?
+
+## Lectura 6 · para la S8 (10 de octubre)
+
+- Fowler, *CircuitBreaker*: https://martinfowler.com/bliki/CircuitBreaker.html
+- Richardson, *Pattern: Saga*: https://microservices.io/patterns/data/saga.html
+- Opcional: Garcia-Molina y Salem, *Sagas* (SIGMOD 1987), secciones 1 a 3:
+  https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf
+- 2 preguntas + 1 hallazgo en la [Discussion #46](https://github.com/OscarRuiz21/sd-2027-1/discussions/46):
+  **en tiempo hasta el sábado 10-oct, 06:59 · tarde hasta el domingo 11-oct.**
+
+Léanlas con el caso de la tarea del lab de la S7 en la cabeza: la transferencia que contestó con
+*timeout* aunque el dinero sí se movió. Pongan la atención en los **tres estados del circuit
+breaker** y en la **compensación** de una saga: si el abono falla con el cargo ya aplicado,
+¿reintentan, deshacen o esperan?
+
+## Lectura 7 · para la S9 (17 de octubre)
+
+- Kreps, *The Log: What every software engineer should know about real-time data's unifying
+  abstraction* (2013), **partes 1 y 2** (copia del Internet Archive; el blog de LinkedIn ya no la tiene):
+  https://web.archive.org/web/20240105095933/https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+- Richardson, *Pattern: Transactional outbox*: https://microservices.io/patterns/data/transactional-outbox.html
+- 2 preguntas + 1 hallazgo en la [Discussion #49](https://github.com/OscarRuiz21/sd-2027-1/discussions/49):
+  **en tiempo hasta el sábado 17-oct, 06:59 · tarde hasta el domingo 18-oct.**
+
+La S9 es de mensajería: brokers, Outbox y la saga por coreografía, ya con mensajes. Lean el log de
+Kreps con el de Raft en la cabeza, y el Outbox con esta pregunta: si un servicio guarda en su base y
+luego publica "ya cobré", ¿qué pasa si se cae justo entre las dos cosas?
