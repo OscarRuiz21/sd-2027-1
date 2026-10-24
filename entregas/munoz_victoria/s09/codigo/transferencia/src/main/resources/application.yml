@@ -8,7 +8,7 @@ spring:
     # Cada servicio apunta a SU base (transferencia). Nadie mas la lee ni la escribe.
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:transferencia}
     username: ${DB_USER:mexibanco}
-    password: ${DB_PASSWORD:mexibanco}
+    password: ${DB_PASSWORD}
     hikari:
       maximum-pool-size: 5
   jpa:
@@ -28,7 +28,7 @@ spring:
     host: ${RABBIT_HOST:localhost}
     port: ${RABBIT_PORT:5672}
     username: ${RABBIT_USER:mexibanco}
-    password: ${RABBIT_PASSWORD:mexibanco}
+    password: ${RABBIT_PASSWORD}
     connection-timeout: 2s
     publisher-confirm-type: correlated
     publisher-returns: true
