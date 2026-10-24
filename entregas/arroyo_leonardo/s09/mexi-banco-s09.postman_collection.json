@@ -1,0 +1,2743 @@
+{
+  "info": {
+    "name": "Mexi Banco S09 · RabbitMQ, idempotencia y DLQ",
+    "description": "Colección manual basada en S05/S08. Seguir GUIA-S09.md. NO ejecutar Run collection completo: hay cambios de código y caídas de Docker entre solicitudes. Negocio por gateway; administración de RabbitMQ por puerto 15672 con Basic Auth. Los scripts solo validan y guardan variables. Las cuentas deben ser nuevas; 409 no reinicia saldos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api",
+      "type": "string"
+    },
+    {
+      "key": "rabbitUrl",
+      "value": "http://localhost:15672/api",
+      "type": "string"
+    },
+    {
+      "key": "rabbitUser",
+      "value": "mexibanco",
+      "type": "string"
+    },
+    {
+      "key": "rabbitPassword",
+      "value": "mexibanco",
+      "type": "string"
+    },
+    {
+      "key": "p0Origen",
+      "value": "002180000000000911",
+      "type": "string"
+    },
+    {
+      "key": "p0Destino",
+      "value": "002180000000000912",
+      "type": "string"
+    },
+    {
+      "key": "p0Id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "p0EventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "p1Origen",
+      "value": "002180000000000921",
+      "type": "string"
+    },
+    {
+      "key": "p1Destino",
+      "value": "002180000000000922",
+      "type": "string"
+    },
+    {
+      "key": "p1Id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "p1EventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "p2Origen",
+      "value": "002180000000000931",
+      "type": "string"
+    },
+    {
+      "key": "p2Destino",
+      "value": "002180000000000932",
+      "type": "string"
+    },
+    {
+      "key": "p2Id",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "p2EventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "compOrigen",
+      "value": "002180000000000941",
+      "type": "string"
+    },
+    {
+      "key": "compDestino",
+      "value": "002180000000000942",
+      "type": "string"
+    },
+    {
+      "key": "compId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "compEventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "dupAntesOrigen",
+      "value": "002180000000000951",
+      "type": "string"
+    },
+    {
+      "key": "dupAntesDestino",
+      "value": "002180000000000952",
+      "type": "string"
+    },
+    {
+      "key": "dupAntesId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "dupAntesEventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "dupDespuesOrigen",
+      "value": "002180000000000961",
+      "type": "string"
+    },
+    {
+      "key": "dupDespuesDestino",
+      "value": "002180000000000962",
+      "type": "string"
+    },
+    {
+      "key": "dupDespuesId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "dupDespuesEventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "venenoOrigen",
+      "value": "002180000000000971",
+      "type": "string"
+    },
+    {
+      "key": "venenoDestino",
+      "value": "002180000000000972",
+      "type": "string"
+    },
+    {
+      "key": "venenoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "venenoEventoId",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "publicacionDuplicada",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "eventoDuplicadoId",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "0 · Problema original",
+      "description": "Ejecución manual. Hay pasos de Docker y cambios de código entre solicitudes; consulta GUIA-S09.md.",
+      "item": [
+        {
+          "name": "01 · Crear p0Origen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p0Origen}}\",\n  \"titular\": \"S09 p0 Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear p0Destino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p0Destino}}\",\n  \"titular\": \"S09 p0 Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Saldo p0Origen inicial",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p0Origen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Saldo p0Destino inicial",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p0Destino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Transferir p0 50",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{p0Origen}}\",\n  \"claveDestino\": \"{{p0Destino}}\",\n  \"monto\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([500, 503]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Buscar ABONADA p0",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/transferencias?estado=ABONADA",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const lista = pm.response.json();",
+                  "const t = lista.find(x => x.claveOrigen === pm.collectionVariables.get(\"p0Origen\") && x.claveDestino === pm.collectionVariables.get(\"p0Destino\"));",
+                  "pm.test(\"Transferencia ABONADA localizada\", () => pm.expect(t).to.exist);",
+                  "if (t) pm.collectionVariables.set(\"p0Id\", String(t.id));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Estado p0",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/transferencias/{{p0Id}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Estado persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"ABONADA\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Saldo p0Origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p0Origen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 950\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(950));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Saldo p0Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p0Destino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 550\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(550));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "1 · Publicar sin cola",
+      "description": "Ejecución manual. Hay pasos de Docker y cambios de código entre solicitudes; consulta GUIA-S09.md.",
+      "item": [
+        {
+          "name": "01 · Crear p1Origen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p1Origen}}\",\n  \"titular\": \"S09 p1 Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear p1Destino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p1Destino}}\",\n  \"titular\": \"S09 p1 Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Transferir p1 50",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{p1Origen}}\",\n  \"claveDestino\": \"{{p1Destino}}\",\n  \"monto\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"p1Id\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"p1EventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Estado p1",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/transferencias/{{p1Id}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Estado persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPLETADA\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Saldo p1Origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p1Origen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 950\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(950));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Saldo p1Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p1Destino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 550\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(550));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Exchange transferencias",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/exchanges/%2F/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const e=pm.response.json();",
+                  "pm.test(\"Topic durable\", () => {pm.expect(e.type).to.eql(\"topic\");pm.expect(e.durable).to.eql(true);});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Bindings del exchange",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/exchanges/%2F/transferencias/bindings/source",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Sin colas enlazadas\", () => pm.expect(pm.response.json()).to.have.lengthOf(0));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2 · Desacople y compensación",
+      "description": "Ejecución manual. Hay pasos de Docker y cambios de código entre solicitudes; consulta GUIA-S09.md.",
+      "item": [
+        {
+          "name": "01 · Crear p2Origen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p2Origen}}\",\n  \"titular\": \"S09 p2 Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear p2Destino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{p2Destino}}\",\n  \"titular\": \"S09 p2 Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Crear compOrigen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{compOrigen}}\",\n  \"titular\": \"S09 comp Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Crear compDestino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{compDestino}}\",\n  \"titular\": \"S09 comp Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Cola declarada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 0\", () => pm.expect(q.messages_ready).to.eql(0));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Transferir p2 11",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{p2Origen}}\",\n  \"claveDestino\": \"{{p2Destino}}\",\n  \"monto\": 11\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"p2Id\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"p2EventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Transferir p2 12",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{p2Origen}}\",\n  \"claveDestino\": \"{{p2Destino}}\",\n  \"monto\": 12\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"p2Id\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"p2EventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Transferir p2 13",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{p2Origen}}\",\n  \"claveDestino\": \"{{p2Destino}}\",\n  \"monto\": 13\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"p2Id\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"p2EventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Tres Ready",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 3\", () => pm.expect(q.messages_ready).to.eql(3));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 · Cola drenada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 0\", () => pm.expect(q.messages_ready).to.eql(0));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 · Avisos p2Origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{p2Origen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"3 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(3));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 · Avisos p2Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{p2Destino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"3 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(3));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13 · Saldo p2Origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p2Origen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 964\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(964));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "14 · Saldo p2Destino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{p2Destino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 536\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(536));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "15 · Transferir comp 150",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{compOrigen}}\",\n  \"claveDestino\": \"{{compDestino}}\",\n  \"monto\": 150\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([502]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPENSADA\", () => pm.expect(d.estado).to.eql(\"COMPENSADA\"));",
+                  "pm.test(\"ID de transferencia\", () => pm.expect(d.transferencia).to.be.a(\"number\"));",
+                  "if (d.transferencia != null) pm.collectionVariables.set(\"compId\", String(d.transferencia));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "16 · Estado comp",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/transferencias/{{compId}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Estado persistido\", () => pm.expect(pm.response.json().estado).to.eql(\"COMPENSADA\"));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"UUID persistido\", () => pm.expect(d.eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"compEventoId\", d.eventoId);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "17 · Saldo compOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{compOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "18 · Saldo compDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{compDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "19 · Avisos compOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{compOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"1 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "20 · Avisos compDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{compDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"0 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(0));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3A · Duplicado antes",
+      "description": "Ejecución manual. Hay pasos de Docker y cambios de código entre solicitudes; consulta GUIA-S09.md.",
+      "item": [
+        {
+          "name": "01 · Crear dupAntesOrigen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{dupAntesOrigen}}\",\n  \"titular\": \"S09 dupAntes Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear dupAntesDestino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{dupAntesDestino}}\",\n  \"titular\": \"S09 dupAntes Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Transferir dupAntes 17",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{dupAntesOrigen}}\",\n  \"claveDestino\": \"{{dupAntesDestino}}\",\n  \"monto\": 17\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"dupAntesId\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"dupAntesEventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Un Ready",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 1\", () => pm.expect(q.messages_ready).to.eql(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Leer evento y reencolar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias/get",
+            "description": "Con requeue true devuelve el mensaje a la cola y puede marcarlo redelivered. Ejecutar con notificacion detenido. Nunca es una consulta pasiva.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"count\": 1,\n  \"ackmode\": \"ack_requeue_true\",\n  \"encoding\": \"auto\",\n  \"truncate\": 50000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const a = pm.response.json();",
+                  "pm.test(\"Un evento disponible\", () => pm.expect(a).to.have.lengthOf(1));",
+                  "if (a.length === 1) {",
+                  "  const e = JSON.parse(a[0].payload);",
+                  "  pm.test(\"UUID del escenario actual\", () => pm.expect(e.eventoId).to.eql(pm.collectionVariables.get(\"dupAntesEventoId\")));",
+                  "  pm.collectionVariables.set(\"eventoDuplicadoId\", e.eventoId);",
+                  "  pm.collectionVariables.set(\"publicacionDuplicada\", JSON.stringify({properties:{content_type:\"application/json\",delivery_mode:2,message_id:e.eventoId}, routing_key:a[0].routing_key, payload:a[0].payload, payload_encoding:\"string\"}));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Republicar mismo evento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/exchanges/%2F/transferencias/publish",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{{publicacionDuplicada}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Mensaje enrutado\", () => pm.expect(pm.response.json().routed).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Dos Ready",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 2\", () => pm.expect(q.messages_ready).to.eql(2));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Cola drenada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 0\", () => pm.expect(q.messages_ready).to.eql(0));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Avisos dupAntesOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{dupAntesOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"2 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(2));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 · Avisos dupAntesDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{dupAntesDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"2 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(2));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 · Saldo dupAntesOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{dupAntesOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 983\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(983));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 · Saldo dupAntesDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{dupAntesDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 517\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(517));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3B · Duplicado después",
+      "description": "Ejecución manual. Hay pasos de Docker y cambios de código entre solicitudes; consulta GUIA-S09.md.",
+      "item": [
+        {
+          "name": "01 · Crear dupDespuesOrigen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{dupDespuesOrigen}}\",\n  \"titular\": \"S09 dupDespues Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear dupDespuesDestino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{dupDespuesDestino}}\",\n  \"titular\": \"S09 dupDespues Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Transferir dupDespues 17",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{dupDespuesOrigen}}\",\n  \"claveDestino\": \"{{dupDespuesDestino}}\",\n  \"monto\": 17\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"dupDespuesId\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"dupDespuesEventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Un Ready",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 1\", () => pm.expect(q.messages_ready).to.eql(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Leer evento y reencolar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias/get",
+            "description": "Con requeue true devuelve el mensaje a la cola y puede marcarlo redelivered. Ejecutar con notificacion detenido. Nunca es una consulta pasiva.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"count\": 1,\n  \"ackmode\": \"ack_requeue_true\",\n  \"encoding\": \"auto\",\n  \"truncate\": 50000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const a = pm.response.json();",
+                  "pm.test(\"Un evento disponible\", () => pm.expect(a).to.have.lengthOf(1));",
+                  "if (a.length === 1) {",
+                  "  const e = JSON.parse(a[0].payload);",
+                  "  pm.test(\"UUID del escenario actual\", () => pm.expect(e.eventoId).to.eql(pm.collectionVariables.get(\"dupDespuesEventoId\")));",
+                  "  pm.collectionVariables.set(\"eventoDuplicadoId\", e.eventoId);",
+                  "  pm.collectionVariables.set(\"publicacionDuplicada\", JSON.stringify({properties:{content_type:\"application/json\",delivery_mode:2,message_id:e.eventoId}, routing_key:a[0].routing_key, payload:a[0].payload, payload_encoding:\"string\"}));",
+                  "}"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Republicar mismo evento",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/exchanges/%2F/transferencias/publish",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{{publicacionDuplicada}}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Mensaje enrutado\", () => pm.expect(pm.response.json().routed).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Dos Ready",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 2\", () => pm.expect(q.messages_ready).to.eql(2));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Cola drenada",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 0\", () => pm.expect(q.messages_ready).to.eql(0));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Avisos dupDespuesOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{dupDespuesOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"1 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 · Avisos dupDespuesDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{dupDespuesDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"1 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 · Saldo dupDespuesOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{dupDespuesOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 983\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(983));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 · Saldo dupDespuesDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{dupDespuesDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 517\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(517));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4 · Mensaje envenenado",
+      "description": "Ejecución manual. Hay pasos de Docker y cambios de código entre solicitudes; consulta GUIA-S09.md.",
+      "item": [
+        {
+          "name": "01 · Crear venenoOrigen",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{venenoOrigen}}\",\n  \"titular\": \"S09 veneno Origen\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "02 · Crear venenoDestino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/cuentas",
+            "description": "Una vez por cuenta nueva. Si da 409, no se reinicia el saldo: cambia ambas CLABEs del escenario y repite la preparación, sin borrar volúmenes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{venenoDestino}}\",\n  \"titular\": \"S09 veneno Destino\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "03 · Publicar veneno antes",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/exchanges/%2F/transferencias/publish",
+            "description": "El cuerpo HTTP es JSON válido. El string payload contiene intencionalmente JSON inválido para el consumidor.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"content_type\": \"application/json\",\n    \"delivery_mode\": 2\n  },\n  \"routing_key\": \"transferencia.realizada\",\n  \"payload\": \"{\\\"hola\\\": \",\n  \"payload_encoding\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Enrutado a cola principal\", () => pm.expect(pm.response.json().routed).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "04 · Observar atasco antes",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "05 · Inspeccionar veneno antes de retirar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias/get",
+            "description": "Con requeue true devuelve el mensaje a la cola y puede marcarlo redelivered. Ejecutar con notificacion detenido. Nunca es una consulta pasiva.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"count\": 1,\n  \"ackmode\": \"ack_requeue_true\",\n  \"encoding\": \"auto\",\n  \"truncate\": 50000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "06 · Retirar único veneno de prueba",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias/get",
+            "description": "Elimina UN mensaje de la cola. Solo en parte 4, con notificacion detenido y tras confirmar que el único pendiente es el mensaje de prueba inválido; guarda antes su evidencia.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"count\": 1,\n  \"ackmode\": \"ack_requeue_false\",\n  \"encoding\": \"auto\",\n  \"truncate\": 50000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "07 · Cola vacía antes de recrear",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 0\", () => pm.expect(q.messages_ready).to.eql(0));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "08 · Eliminar cola vacía sin consumidores",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias?if-empty=true&if-unused=true",
+            "description": "Solo con notificacion detenido, 0 Ready y 0 Unacked. Elimina la cola para recrearla con DLX. Nunca usar para resolver una cola que contenga eventos válidos.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([204]).to.include(pm.response.code));",
+                  "pm.test(\"Cola eliminada vacía\", () => pm.response.to.have.status(204));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "09 · Cola con argumentos DLX",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"DLX configurado\", () => pm.expect(q.arguments[\"x-dead-letter-exchange\"]).to.eql(\"transferencias.dlx\"));",
+                  "pm.test(\"Routing DLQ\", () => pm.expect(q.arguments[\"x-dead-letter-routing-key\"]).to.eql(\"notificacion.transferencias\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "10 · Publicar veneno después",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/exchanges/%2F/transferencias/publish",
+            "description": "El cuerpo HTTP es JSON válido. El string payload contiene intencionalmente JSON inválido para el consumidor.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"properties\": {\n    \"content_type\": \"application/json\",\n    \"delivery_mode\": 2\n  },\n  \"routing_key\": \"transferencia.realizada\",\n  \"payload\": \"{\\\"hola\\\": \",\n  \"payload_encoding\": \"string\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Enrutado a cola principal\", () => pm.expect(pm.response.json().routed).to.eql(true));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "11 · DLQ con veneno",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias.dlq",
+            "description": "Métricas con actualización diferida: si aún no coinciden, espera unos segundos y repite solo esta consulta GET.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const q = pm.response.json();",
+                  "pm.test(\"Cola durable\", () => pm.expect(q.durable).to.eql(true));",
+                  "pm.test(\"Ready 1\", () => pm.expect(q.messages_ready).to.eql(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "12 · Inspeccionar x-death y reencolar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{rabbitUrl}}/queues/%2F/notificacion.transferencias.dlq/get",
+            "description": "Con requeue true devuelve el mensaje a la cola y puede marcarlo redelivered. Ejecutar con notificacion detenido. Nunca es una consulta pasiva.",
+            "auth": {
+              "type": "basic",
+              "basic": [
+                {
+                  "key": "username",
+                  "value": "{{rabbitUser}}",
+                  "type": "string"
+                },
+                {
+                  "key": "password",
+                  "value": "{{rabbitPassword}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"count\": 1,\n  \"ackmode\": \"ack_requeue_true\",\n  \"encoding\": \"auto\",\n  \"truncate\": 50000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "const a = pm.response.json();",
+                  "pm.test(\"Rechazado desde cola principal\", () => {",
+                  "  pm.expect(a).to.have.lengthOf(1);",
+                  "  pm.expect(a[0].properties.headers[\"x-death\"].some(x => x.reason === \"rejected\" && x.queue === \"notificacion.transferencias\")).to.eql(true);",
+                  "});"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "13 · Transferir veneno 19",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/transferencias",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes.",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{venenoOrigen}}\",\n  \"claveDestino\": \"{{venenoDestino}}\",\n  \"monto\": 19\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([201]).to.include(pm.response.code));",
+                  "const d = pm.response.json();",
+                  "pm.test(\"Estado COMPLETADA\", () => pm.expect(d.estado).to.eql(\"COMPLETADA\"));",
+                  "if (d.id != null) pm.collectionVariables.set(\"venenoId\", String(d.id));",
+                  "if (d.eventoId) pm.collectionVariables.set(\"venenoEventoId\", d.eventoId);",
+                  "pm.test(\"UUID persistido\", () => pm.expect(pm.response.json().eventoId).to.match(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "14 · Avisos venenoOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{venenoOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"1 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "15 · Avisos venenoDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/notificaciones?clabe={{venenoDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"1 aviso(s)\", () => pm.expect(pm.response.json()).to.be.an(\"array\").with.lengthOf(1));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "16 · Saldo venenoOrigen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{venenoOrigen}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 981\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(981));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "17 · Saldo venenoDestino",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": "{{baseUrl}}/cuentas/{{venenoDestino}}",
+            "description": "Enviar manualmente solo cuando GUIA-S09.md lo indique. Los tests no envían solicitudes."
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"HTTP esperado\", () => pm.expect([200]).to.include(pm.response.code));",
+                  "pm.test(\"Saldo 519\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(519));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
