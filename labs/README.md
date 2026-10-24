@@ -52,9 +52,6 @@ recuadro "Antes de clase" de la guía: clonar y construir tarda de 25 a 35 minut
 platica la historia del monolito partido y luego, paso a paso, encienden un directorio (Eureka),
 un gateway, tres copias de cuenta, y ven qué pasa cuando una muere. Se trabaja en equipo, pero
 **cada quien entrega su propia bitácora en PDF** como `bitacora-s07.pdf` en
-<<<<<<< HEAD
-`entregas/apellido_nombre/s07/`, **hasta el sábado 10 de octubre, antes de las 07:00** (el plazo se amplió en clase).
-=======
 `entregas/apellido_nombre/s07/`, **hasta el sábado 17 de octubre, antes de las 07:00** (el plazo se amplió otra vez el 10 de octubre).
 
 ## Saga orquestada y circuit breaker · sábado 10 de octubre (S8)
@@ -66,7 +63,6 @@ compensación y proteges las llamadas a `cuenta` con un **circuit breaker**. Est
 paso a paso: el enunciado dice qué debe pasar y tú investigas cómo. Se trabaja en equipo, pero
 **cada quien entrega** su código y su `bitacora-s08.pdf` en `entregas/apellido_nombre/s08/`,
 **hasta el sábado 17 de octubre, antes de las 07:00**.
->>>>>>> 2f198c45d883e5e33e41620f71bc9e4673876e30
 
 ## Mensajería con RabbitMQ · sábado 17 de octubre (S9)
 

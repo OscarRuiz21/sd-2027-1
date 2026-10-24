@@ -9,9 +9,6 @@ En la defensa no califico la lógica de negocio: le voy a preguntar a **cualquie
 dónde vive el gateway, el directorio, el balanceador, cómo manejan las operaciones entre
 servicios y qué pasa si algo falla.
 
-<<<<<<< HEAD
-## Esta semana: el PRD
-=======
 ## Para el sábado 17 de octubre: el repo del equipo y su monolito
 
 **Entrega por equipo · sábado 17 de octubre, antes de las 07:00**
@@ -35,7 +32,6 @@ Si su equipo no usa Java, está bien: al final van a tener que explicar cómo re
 tecnología el gateway, el directorio, el balanceo, los datos y el manejo de fallas.
 
 ## El PRD (ya entregado)
->>>>>>> 2f198c45d883e5e33e41620f71bc9e4673876e30
 
 **Entrega por equipo · sábado 10 de octubre, antes de las 07:00**
 

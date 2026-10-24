@@ -70,8 +70,6 @@ Léanlas con el caso de la tarea del lab de la S7 en la cabeza: la transferencia
 *timeout* aunque el dinero sí se movió. Pongan la atención en los **tres estados del circuit
 breaker** y en la **compensación** de una saga: si el abono falla con el cargo ya aplicado,
 ¿reintentan, deshacen o esperan?
-<<<<<<< HEAD
-=======
 
 ## Lectura 7 · para la S9 (17 de octubre)
 
@@ -85,4 +83,3 @@ breaker** y en la **compensación** de una saga: si el abono falla con el cargo 
 La S9 es de mensajería: brokers, Outbox y la saga por coreografía, ya con mensajes. Lean el log de
 Kreps con el de Raft en la cabeza, y el Outbox con esta pregunta: si un servicio guarda en su base y
 luego publica "ya cobré", ¿qué pasa si se cae justo entre las dos cosas?
->>>>>>> 2f198c45d883e5e33e41620f71bc9e4673876e30
