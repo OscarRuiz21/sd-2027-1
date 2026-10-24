@@ -2,6 +2,12 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-10-17
+
+- **Deck de la S09** (*Mensajería*, HTML y PDF) en `material/S09/` y en el índice. Las láminas marcadas VÁLVULA son opcionales.
+- **Solución del lab S08 publicada**: rama `04-saga-circuit-breaker` de mexi-banco (saga orquestada, compensación y circuit breaker).
+- **Lab S09 · que el aviso no tumbe la transferencia**: guía paso a paso en `labs/s09-mensajeria/Lab-S09-Mexi-Banco-Mensajeria.html` y enunciado con el contrato del evento en `labs/s09-mensajeria/README.md`. Base: la rama `05-mensajeria-base` de mexi-banco. Se trabaja en equipo, pero cada quien entrega su código y su `bitacora-s09.pdf` en `entregas/apellido_nombre/s09/`, hasta el **sábado 24 de octubre, antes de las 07:00**.
+
 ## 2026-10-10
 
 - **Decks publicados**: S06 (*Copias, acuerdo y orquestación*, HTML y PDF), S07 (*Una puerta, un directorio y el reparto*, HTML y PDF) y S08 (*Transacciones: del COMMIT local a la Saga*, PDF), en `material/` y en el índice.
