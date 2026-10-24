@@ -1,0 +1,108 @@
+
+server:
+  port: 8080
+
+spring:
+  application:
+    name: transferencia
+
+  datasource:
+    # Cada servicio apunta a SU base (transferencia). Nadie mas la lee ni la escribe.
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:transferencia}
+    username: ${DB_USER:mexibanco}
+    password: ${DB_PASSWORD:mexibanco}
+    hikari:
+      maximum-pool-size: 5
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+
+  cloud:
+    loadbalancer:
+      cache:
+        # Cuanto guarda el balanceador la lista de instancias que le dio Eureka.
+        ttl: ${BALANCEADOR_CACHE:35s}
+
+  # LAB S09: configuracion del broker RabbitMQ.
+  rabbitmq:
+    host: ${RABBIT_HOST:localhost}
+    port: ${RABBIT_PORT:5672}
+    username: ${RABBIT_USER:mexibanco}
+    password: ${RABBIT_PASSWORD:mexibanco}
+
+    # LAB S09: ajustes del publicador.
+    connection-timeout: 2s
+    publisher-confirm-type: correlated
+    publisher-returns: true
+    template:
+      mandatory: true
+
+  mvc:
+    # Los errores de validacion tambien salen como Problem Details.
+    problemdetails:
+      enabled: true
+
+mexibanco:
+  servicios:
+    cuenta: ${CUENTA_URL:http://cuenta}
+    movimiento: ${MOVIMIENTO_URL:http://movimiento}
+    notificacion: ${NOTIFICACION_URL:http://notificacion}
+
+  timeouts:
+    conexion-ms: ${TIMEOUT_CONEXION_MS:1000}
+    lectura-ms: ${TIMEOUT_LECTURA_MS:2000}
+
+  saga:
+    reintento-compensaciones-ms: ${REINTENTO_COMPENSACIONES_MS:10000}
+
+  demo:
+    pausa-entre-cargo-y-abono-ms: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:0}
+    fallar-abono-a-clabe: ${FALLAR_ABONO_A_CLABE:}
+
+  # LAB S09: tiempo maximo de espera para confirmar un evento.
+  mensajeria:
+    espera-confirmacion-ms: ${ESPERA_CONFIRMACION_MS:5000}
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      cuenta:
+        sliding-window-type: COUNT_BASED
+        sliding-window-size: 4
+        minimum-number-of-calls: 4
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: ${CIRCUITO_ABIERTO_S:10}s
+        automatic-transition-from-open-to-half-open-enabled: true
+        permitted-number-of-calls-in-half-open-state: 2
+        record-failure-predicate: mx.mexibanco.clientes.FallaDeCuenta
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+    registry-fetch-interval-seconds: ${EUREKA_CONSULTA_S:30}
+
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: ${EUREKA_LATIDO_S:30}
+    lease-expiration-duration-in-seconds: ${EUREKA_EXPIRA_S:90}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,circuitbreakers,circuitbreakerevents
+
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
