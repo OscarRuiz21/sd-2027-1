@@ -1,78 +1,99 @@
-# T01 · Servicio Híbrido: REST y gRPC con la misma lógica de negocio
+# T01 · Servicio híbrido: REST y gRPC con la misma lógica de negocio
 
-## 1\. Diseño y Arquitectura
+## 1. Diseño y arquitectura
 
-Este proyecto implementa un único componente de lógica de negocio (un diccionario en memoria ubicado en `database.py`) expuesto simultáneamente a través de dos interfaces de comunicación diferentes dentro de un mismo servidor (`server.py`):
+Este proyecto implementa un único componente de lógica de negocio, ubicado en `database.py`, que se expone mediante dos interfaces de comunicación dentro de un mismo servidor (`server.py`).
 
-* **REST API:** Utiliza **FastAPI** sobre HTTP/1.1 con serialización en JSON (expuesta en el puerto `8000`).
-* **gRPC:** Utiliza **Protocol Buffers** sobre HTTP/2 (expuesta en el puerto `50051`).
+- **REST API:** utiliza FastAPI sobre HTTP/1.1 y serialización JSON, expuesta en el puerto `8000`.
+- **gRPC:** utiliza Protocol Buffers sobre HTTP/2, expuesta en el puerto `50051`.
 
 ### ¿Dónde quedó la lógica y qué cambia entre los controladores?
 
-* **La lógica de negocio** reside exclusivamente en `database.py` (`get\_item\_from\_db`). Ningún controlador procesa reglas de negocio por su cuenta.
-* **El controlador REST (`server.py` bajo FastAPI):** Recibe peticiones HTTP, mapea los parámetros de la URL, valida tipos con esquemas HTTP y devuelve diccionarios de Python que FastAPI convierte automáticamente en respuestas JSON.
-* **El controlador gRPC (`server.py` bajo `service\_pb2\_grpc.ItemServiceServicer`):** Recibe mensajes tipados definidos en el contrato Protobuf (`service.proto`), procesa la solicitud binaria y responde con un objeto estructurado `ItemResponse`.
+- **Lógica de negocio:** reside exclusivamente en `database.py`, mediante la función `get_item_from_db`. Ambos controladores reutilizan esta función.
+- **Controlador REST:** recibe solicitudes HTTP, obtiene el identificador desde la URL y devuelve datos que FastAPI convierte automáticamente en JSON.
+- **Controlador gRPC:** recibe mensajes tipados definidos en `service.proto` y responde mediante objetos `ItemResponse`.
 
-\---
+Esta arquitectura evita duplicar la lógica de negocio y permite comparar dos mecanismos de comunicación sobre los mismos datos.
 
-## 2\. Estructura de Archivos
+---
 
-* `database.py`: Lógica de negocio compartida (base de datos en memoria).
-* `service.proto`: Contrato de gRPC que define los servicios y mensajes.
-* `service\_pb2.py` / `service\_pb2\_grpc.py`: Código autogenerado para el soporte de gRPC en Python.
-* `server.py`: Servidor unificado que ejecuta FastAPI y gRPC de forma concurrente.
-* `client.py`: Cliente de prueba para consumir ambas interfaces.
-* `Dockerfile`: Contenedor optimizado basado en Python slim.
-* `docker-compose.yml`: Orquestación y red de comunicación Docker.
-* `requerimientos.txt`: Dependencias del proyecto.
+## 2. Estructura de archivos
 
-\---
+- `database.py`: lógica de negocio y datos de prueba en memoria.
+- `service.proto`: contrato que define el servicio gRPC y sus mensajes.
+- `service_pb2.py` y `service_pb2_grpc.py`: código generado para utilizar gRPC en Python.
+- `server.py`: servidor que ejecuta FastAPI y gRPC.
+- `client.py`: cliente de prueba para consumir ambas interfaces y medir el tamaño de las respuestas.
+- `Dockerfile`: imagen del servidor.
+- `Dockerfile.client`: imagen independiente del cliente.
+- `docker-compose.yml`: configuración de los servicios, sus puertos, la red y la dependencia entre cliente y servidor.
+- `.gitignore`: excluye archivos generados, caché y archivos de entorno.
+- `requerimientos.txt`: dependencias de Python.
 
-## 3\. Instrucciones de Ejecución
+---
 
-### Levantar el servicio con Docker Compose
+## 3. Instrucciones de ejecución
+
+### Levantar los servicios
+
+Desde la carpeta del proyecto, ejecutar:
 
 ```bash
-docker compose up --build -d
-
+docker compose up --build
 ```
-Ejecutar el cliente de pruebas (Verificación)
-```Bash
-python client.py
 
-```
-Detener los servicios
-```Bash
+Docker Compose construye las imágenes, inicia el servidor y ejecuta el cliente cuando el servidor está saludable. El cliente se conecta al servicio mediante el nombre DNS `hybrid-service`.
+
+### Detener los servicios
+
+```bash
 docker compose down
-
 ```
-4. Evidencia de Funcionamiento
-Salida obtenida al ejecutar el cliente contra el servicio contenerizado:
 
-```
---- Probando Interfaz REST para el ID: 1 ---
-Respuesta REST exitosa: {'id': '1', 'name': 'Laptop Pro', 'description': '16GB RAM, 512GB SSD', 'price': 1200.5}
+### Consultas de prueba
 
---- Probando Interfaz gRPC para el ID: 1 ---
-Respuesta gRPC exitosa:
-  ID: 1
-  Nombre: Laptop Pro
-  Descripción: 16GB RAM, 512GB SSD
-  Precio: 1200.5
+El cliente realiza pruebas con dos identificadores:
 
---- Probando Interfaz REST para el ID: 99 ---
-Error REST (404): {'detail': 'Item no encontrado'}
+- ID `1`: verifica la respuesta exitosa.
+- ID `99`: verifica el manejo de un elemento inexistente.
 
---- Probando Interfaz gRPC para el ID: 99 ---
-Error gRPC (NOT\_FOUND): Item no encontrado
+---
 
-```
-5. Punto Extra: Medición de Bytes (REST vs gRPC)
-Se midió el tamaño real de la carga útil (payload) transmitida en la misma llamada para el ID "1" utilizando las herramientas de inspección de red y los bytes devueltos por los frameworks:
+## 4. Evidencia de funcionamiento
 
-* REST / JSON: El servidor envía un objeto JSON que incluye tanto los valores como los nombres de las claves de texto ("id", "name", "description", "price"), además de los caracteres de sintaxis ({, }, ", :, ,). Esto dio un total aproximado de 145 bytes.
-* gRPC / Protocol Buffers: El servidor serializa los datos en un formato binario compacto utilizando etiquetas numéricas (varints) en lugar de nombres de atributos largos. Esto dio un total aproximado de 48 bytes.
+Al ejecutar el cliente dentro de Docker Compose, se obtuvieron los siguientes resultados:
 
-Conclusión del análisis
-gRPC resulta significativamente más ligero (aproximadamente un 65% menos de bytes en este ejemplo) porque elimina la sobrecarga de metadatos en texto plano típica de HTTP/1.1 y JSON, lo cual optimiza el ancho de banda en arquitecturas de microservicios de alta concurrencia.
+| Interfaz | ID | Resultado | Tamaño medido |
+|---|---:|---|---:|
+| REST | `1` | HTTP 200, respuesta exitosa | 81 bytes |
+| gRPC | `1` | Respuesta exitosa | 45 bytes |
+| REST | `99` | HTTP 404, elemento no encontrado | 31 bytes |
+| gRPC | `99` | Error `NOT_FOUND` | No aplica a una respuesta exitosa |
+
+Para el ID `1`, ambas interfaces recuperaron los datos del mismo elemento: `Laptop Pro`, con descripción `16GB RAM, 512GB SSD` y precio `1200.5`.
+
+El cliente también comprobó que ambas interfaces notificaran correctamente cuando el elemento con ID `99` no existía.
+
+---
+
+## 5. Medición de bytes: REST frente a gRPC
+
+La medición se realizó desde el cliente de Python usando los siguientes métodos:
+
+- **REST:** `len(response.content)` mide la longitud, en bytes, del cuerpo de la respuesta HTTP recibida.
+- **gRPC:** `response.ByteSize()` obtiene el tamaño serializado del mensaje Protobuf recibido.
+
+Para el elemento con ID `1`, se obtuvieron estos valores:
+
+| Métrica | REST | gRPC |
+|---|---:|---:|
+| Tamaño medido | 81 bytes | 45 bytes |
+
+La diferencia es de 36 bytes. En esta prueba, el mensaje Protobuf medido fue aproximadamente un 44.4 % menor que el cuerpo HTTP medido.
+
+Es importante señalar que esta comparación corresponde al cuerpo de la respuesta HTTP frente al mensaje Protobuf serializado. No representa el tráfico total de red, ya que no incluye todos los encabezados, metadatos ni las sobrecargas de los protocolos de transporte.
+
+### Conclusión del análisis
+
+En esta prueba, gRPC presentó un mensaje serializado más pequeño que el cuerpo de la respuesta REST en JSON. Esto ilustra una ventaja potencial de Protocol Buffers cuando se busca una representación compacta de los datos. Sin embargo, los resultados corresponden a este ejemplo específico y no bastan por sí solos para determinar el rendimiento general de ambas interfaces.
 
