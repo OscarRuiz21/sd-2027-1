@@ -64,6 +64,18 @@ paso a paso: el enunciado dice qué debe pasar y tú investigas cómo. Se trabaj
 **cada quien entrega** su código y su `bitacora-s08.pdf` en `entregas/apellido_nombre/s08/`,
 **hasta el sábado 17 de octubre, antes de las 07:00**.
 
+## Mensajería con RabbitMQ · sábado 17 de octubre (S9)
+
+**[Lab S09: que el aviso no tumbe la transferencia](https://oscarruiz21.github.io/sd-2027-1/labs/s09-mensajeria/Lab-S09-Mexi-Banco-Mensajeria.html)**:
+sobre la rama `05-mensajeria-base` de [mexi-banco](https://github.com/OscarRuiz21/mexi-banco)
+(la solución del lab S08 con RabbitMQ ya instalado), la saga deja de llamar por HTTP a
+`notificacion` y publica sus eventos en un broker. En clase se publica y se consume; de tarea
+provocas un duplicado y un mensaje envenenado y los resuelves con idempotencia y una dead letter
+queue. El reto opcional es el Outbox. **Antes de clase**, sigue el recuadro "Antes de clase" de la
+guía. El contrato y la entrega están en [`s09-mensajeria/README.md`](s09-mensajeria/README.md).
+Se trabaja en equipo, pero **cada quien entrega** su código y su `bitacora-s09.pdf` en
+`entregas/apellido_nombre/s09/`, **hasta el sábado 24 de octubre, antes de las 07:00**.
+
 ---
 
 Las **tareas** no están aquí: se apilan en el [`README.md` de entregas](../entregas/README.md),
