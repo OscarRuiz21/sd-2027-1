@@ -2,6 +2,11 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-10-29
+
+- **Deck de la S10** (*Relojes físicos y lógicos*, HTML y PDF) en `material/S10/` y en el índice, para repasar lo de la clase del 24.
+- **T04 · ¿Qué reloj usan las tecnologías que conoces?**: tres tecnologías y qué tiempo usan para ordenar (físico de pared o monotónico, lógico estilo Lamport o vectorial, o híbrido). Opcional con puntos extra: un reloj de Lamport en Java con 3 servidores y de 3 a 5 mensajes. Enunciado en `entregas/README.md`; va en `entregas/apellido_nombre/tareas/t04/`, en tiempo hasta el **sábado 7 de noviembre, antes de las 07:00**.
+
 ## 2026-10-28
 
 - **Lectura 9 para la S11 (31 de octubre)**: Fowler, *Polyglot Persistence*, y Nakamoto, *Bitcoin* (secciones 1 a 6). Discussion #54, en tiempo hasta el sábado 06:59. La S11 cambia de Kafka a persistencia políglota y caché; *The Log* de Kreps ya fue la Lectura 7.
