@@ -76,6 +76,20 @@ guía. El contrato y la entrega están en [`s09-mensajeria/README.md`](s09-mensa
 Se trabaja en equipo, pero **cada quien entrega** su código y su `bitacora-s09.pdf` en
 `entregas/apellido_nombre/s09/`, **hasta el sábado 24 de octubre, antes de las 07:00**.
 
+## Persistencia políglota y caché · sábado 31 de octubre (S11)
+
+**[Lab S11: dos bases más y una caché](https://oscarruiz21.github.io/sd-2027-1/labs/s11-poliglota/Lab-S11-Mexi-Banco-Poliglota.html)**:
+sobre la rama `06-poliglota-base` de [mexi-banco](https://github.com/OscarRuiz21/mexi-banco)
+(la solución del lab S09 con Redis y MongoDB ya instalados), PostgreSQL sigue guardando la verdad
+del dinero, **Redis** guarda una copia del saldo para mostrarlo rápido y **MongoDB** guarda la
+bitácora de avisos con una forma por canal. Mides el hit ratio, provocas un evento duplicado y un
+dato viejo, y explicas qué ganaste y qué riesgo aceptaste. El reto opcional es que Redis se caiga.
+**Antes de clase**, construye la rama base (`docker compose up --build -d`): la primera vez tarda.
+El contrato y la entrega están en [`s11-poliglota/README.md`](s11-poliglota/README.md); la guía
+también está en [PDF](s11-poliglota/Lab-S11-Mexi-Banco-Poliglota.pdf).
+Se trabaja en equipo, pero **cada quien entrega** su código y su `bitacora-s11.pdf` en
+`entregas/apellido_nombre/s11/`, **hasta el sábado 7 de noviembre, antes de las 07:00**.
+
 ---
 
 Las **tareas** no están aquí: se apilan en el [`README.md` de entregas](../entregas/README.md),

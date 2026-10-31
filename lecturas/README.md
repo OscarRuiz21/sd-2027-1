@@ -83,3 +83,16 @@ breaker** y en la **compensación** de una saga: si el abono falla con el cargo 
 La S9 es de mensajería: brokers, Outbox y la saga por coreografía, ya con mensajes. Lean el log de
 Kreps con el de Raft en la cabeza, y el Outbox con esta pregunta: si un servicio guarda en su base y
 luego publica "ya cobré", ¿qué pasa si se cae justo entre las dos cosas?
+
+## Lectura 9 · para la S11 (31 de octubre)
+
+- Fowler, *Polyglot Persistence* (2011): https://martinfowler.com/bliki/PolyglotPersistence.html
+- Nakamoto, *Bitcoin: A Peer-to-Peer Electronic Cash System* (2008), **secciones 1 a 6**
+  (las 7 a 12 son opcionales): https://bitcoin.org/bitcoin.pdf
+- 2 preguntas + 1 hallazgo en la [Discussion #54](https://github.com/OscarRuiz21/sd-2027-1/discussions/54):
+  **en tiempo hasta el sábado 31-oct, 06:59 · tarde hasta el domingo 1-nov.**
+
+La S11 es de persistencia políglota y caché, con una parte corta de blockchain. Lean a Fowler con
+esta pregunta: ¿qué datos de Mexi Banco separarían de la base relacional y qué consistencia pierden
+al hacerlo? Lean a Nakamoto como paper de sistemas distribuidos: orden y acuerdo sin coordinador.
+La caché no tiene lectura: se ve en clase.
