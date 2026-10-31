@@ -2,6 +2,11 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-10-31
+
+- **Deck de la S11** (*Una verdad, varias copias*, HTML y PDF) en `material/S11/` y en el índice: persistencia políglota, SQL contra NoSQL, las familias de bases, caché y blockchain como base adicional.
+- **Lab S11 · dos bases más y una caché**: guía paso a paso en `labs/s11-poliglota/Lab-S11-Mexi-Banco-Poliglota.html` (también en PDF) y enunciado con el contrato en `labs/s11-poliglota/README.md`. Base: la rama `06-poliglota-base` de mexi-banco. Se trabaja en equipo, pero cada quien entrega su código y su `bitacora-s11.pdf` en `entregas/apellido_nombre/s11/`, hasta el **sábado 7 de noviembre, antes de las 07:00**.
+
 ## 2026-10-29
 
 - **Deck de la S10** (*Relojes físicos y lógicos*, HTML y PDF) en `material/S10/` y en el índice, para repasar lo de la clase del 24.
