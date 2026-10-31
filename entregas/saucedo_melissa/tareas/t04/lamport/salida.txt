@@ -1,0 +1,32 @@
+=== Eventos, en el orden en que ocurren en la simulacion ===
+[A | reloj= 1] arranca
+[A | reloj= 2] envia 'm1: pedido' a B
+[B | reloj= 3] recibe 'm1: pedido' de A (traia 2)
+[B | reloj= 4] guarda el pedido
+[C | reloj= 1] lee su disco
+[B | reloj= 5] envia 'm2: confirmacion' a C
+[C | reloj= 6] recibe 'm2: confirmacion' de B (traia 5)
+[C | reloj= 7] envia 'm3: aviso' a A
+[A | reloj= 8] recibe 'm3: aviso' de C (traia 7)
+[A | reloj= 9] envia 'm4: cierre' a B
+[B | reloj=10] recibe 'm4: cierre' de A (traia 9)
+[B | reloj=11] envia 'm5: recibo' a A
+[A | reloj=12] recibe 'm5: recibo' de B (traia 11)
+
+=== Los mismos eventos, ordenados por reloj de Lamport (empate: por nombre) ===
+reloj= 1  A  arranca
+reloj= 1  C  lee su disco
+reloj= 2  A  envia 'm1: pedido' a B
+reloj= 3  B  recibe 'm1: pedido' de A (traia 2)
+reloj= 4  B  guarda el pedido
+reloj= 5  B  envia 'm2: confirmacion' a C
+reloj= 6  C  recibe 'm2: confirmacion' de B (traia 5)
+reloj= 7  C  envia 'm3: aviso' a A
+reloj= 8  A  recibe 'm3: aviso' de C (traia 7)
+reloj= 9  A  envia 'm4: cierre' a B
+reloj=10  B  recibe 'm4: cierre' de A (traia 9)
+reloj=11  B  envia 'm5: recibo' a A
+reloj=12  A  recibe 'm5: recibo' de B (traia 11)
+
+Mensajes: 5. Con reloj de envio < reloj de recepcion: 5. Causalidad OK
+Relojes finales: A=12, B=11, C=7
