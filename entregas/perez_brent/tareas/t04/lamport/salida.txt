@@ -1,0 +1,58 @@
+======================================================================
+   SIMULACIÓN DE RELOJES DE LAMPORT (3 SERVIDORES, 4 MENSAJES C/U)   
+======================================================================
+
+[L= 1] [Server-A] ENVÍO        : Mensaje #9031 -> Server-B: "Actualización 1"
+[L= 1] [Server-C] ENVÍO        : Mensaje #9051 -> Server-A: "Actualización 1"
+[L= 1] [Server-B] ENVÍO        : Mensaje #9041 -> Server-A: "Actualización 1"
+[L= 2] [Server-A] RECEPCIÓN    : Mensaje #9051 <- Server-C: "Actualización 1" (Msg L=1)
+[L= 2] [Server-B] RECEPCIÓN    : Mensaje #9031 <- Server-A: "Actualización 1" (Msg L=1)
+[L= 3] [Server-A] RECEPCIÓN    : Mensaje #9041 <- Server-B: "Actualización 1" (Msg L=1)
+[L= 3] [Server-B] ENVÍO        : Mensaje #9042 -> Server-A: "Actualización 2"
+[L= 2] [Server-C] EVENTO LOCAL : Cómputo interno #1
+[L= 4] [Server-A] ENVÍO        : Mensaje #9032 -> Server-B: "Actualización 2"
+[L= 5] [Server-A] RECEPCIÓN    : Mensaje #9042 <- Server-B: "Actualización 2" (Msg L=3)
+[L= 5] [Server-B] RECEPCIÓN    : Mensaje #9032 <- Server-A: "Actualización 2" (Msg L=4)
+[L= 3] [Server-C] ENVÍO        : Mensaje #9052 -> Server-B: "Actualización 2"
+[L= 6] [Server-A] ENVÍO        : Mensaje #9033 -> Server-B: "Actualización 3"
+[L= 6] [Server-B] RECEPCIÓN    : Mensaje #9052 <- Server-C: "Actualización 2" (Msg L=3)
+[L= 7] [Server-B] EVENTO LOCAL : Cómputo interno #1
+[L= 8] [Server-B] RECEPCIÓN    : Mensaje #9033 <- Server-A: "Actualización 3" (Msg L=6)
+[L= 9] [Server-B] ENVÍO        : Mensaje #9043 -> Server-C: "Actualización 3"
+[L= 4] [Server-C] ENVÍO        : Mensaje #9053 -> Server-B: "Actualización 3"
+[L= 7] [Server-A] ENVÍO        : Mensaje #9034 -> Server-B: "Actualización 4"
+[L=10] [Server-C] RECEPCIÓN    : Mensaje #9043 <- Server-B: "Actualización 3" (Msg L=9)
+[L=10] [Server-B] RECEPCIÓN    : Mensaje #9053 <- Server-C: "Actualización 3" (Msg L=4)
+[L=11] [Server-B] RECEPCIÓN    : Mensaje #9034 <- Server-A: "Actualización 4" (Msg L=7)
+[L=11] [Server-C] ENVÍO        : Mensaje #9054 -> Server-B: "Actualización 4"
+[L=12] [Server-B] EVENTO LOCAL : Cómputo interno #2
+[L=13] [Server-B] RECEPCIÓN    : Mensaje #9054 <- Server-C: "Actualización 4" (Msg L=11)
+[L=14] [Server-B] ENVÍO        : Mensaje #9044 -> Server-A: "Actualización 4"
+[L=15] [Server-A] RECEPCIÓN    : Mensaje #9044 <- Server-B: "Actualización 4" (Msg L=14)
+
+======================================================================
+                      VERIFICACIÓN DE CAUSALIDAD                      
+======================================================================
+
+1. Verificación de Envíos vs Recepciones (Condición de Reloj de Lamport):
+   Mensaje #9041: [Server-B Envío L= 1] -> [Server-A Recepción L= 3] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9042: [Server-B Envío L= 3] -> [Server-A Recepción L= 5] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9043: [Server-B Envío L= 9] -> [Server-C Recepción L=10] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9044: [Server-B Envío L=14] -> [Server-A Recepción L=15] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9031: [Server-A Envío L= 1] -> [Server-B Recepción L= 2] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9032: [Server-A Envío L= 4] -> [Server-B Recepción L= 5] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9033: [Server-A Envío L= 6] -> [Server-B Recepción L= 8] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9034: [Server-A Envío L= 7] -> [Server-B Recepción L=11] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9051: [Server-C Envío L= 1] -> [Server-A Recepción L= 2] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9052: [Server-C Envío L= 3] -> [Server-B Recepción L= 6] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9053: [Server-C Envío L= 4] -> [Server-B Recepción L=10] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+   Mensaje #9054: [Server-C Envío L=11] -> [Server-B Recepción L=13] | ¿L_envío < L_recepción? SÍ (CORRECTO)
+
+2. Verificación de Monotonía Local por Servidor:
+   Servidor Server-A : Monotonía interna estrictamente creciente -> SÍ (CORRECTO)
+   Servidor Server-B : Monotonía interna estrictamente creciente -> SÍ (CORRECTO)
+   Servidor Server-C : Monotonía interna estrictamente creciente -> SÍ (CORRECTO)
+
+Resultado final: TODAS LAS CONDICIONES DE CAUSALIDAD DE LAMPORT SE CUMPLEN SATISFACTORIAMENTE.
+======================================================================
+
