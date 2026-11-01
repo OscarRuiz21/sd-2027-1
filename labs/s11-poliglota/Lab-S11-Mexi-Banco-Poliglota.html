@@ -1,0 +1,891 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lab S11 · Mexi Banco</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16263f; --navy2:#1f3a63; --ink:#1b2433; --muted:#556274; --bg:#f4f7fb; --card:#fff;
+  --line:#dbe3ee; --naranja:#f5a524; --verde:#16794a; --verde-bg:#ecf8f1; --amar-bg:#fff8e8;
+  --amar:#a35d00; --rojo:#b42318; --rojo-bg:#fdf0ef; --code:#0f1b2d; --azul-bg:#eef3fb;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:36px 16px 30px}
+header .in,main{max-width:860px;margin:0 auto}
+.kicker{color:var(--naranja);font-weight:700;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
+h1{font-size:32px;line-height:1.2;margin:8px 0 6px;font-weight:800}
+header p{margin:0;color:#c9d6ea}
+main{padding:8px 16px 60px}
+h2{font-size:24px;margin:44px 0 6px;font-weight:800}
+h2 .num{display:inline-block;background:var(--navy);color:#fff;border-radius:8px;padding:0 10px;margin-right:8px;font-size:20px}
+h3{font-size:18px;margin:26px 0 4px}
+.min{color:var(--muted);font-size:14px;margin:0 0 10px}
+p{margin:8px 0}
+code,pre{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.88em;background:#e9eef6;padding:1px 5px;border-radius:4px}
+pre{background:var(--code);color:#e6edf7;border-radius:10px;padding:14px 16px;overflow-x:auto;margin:8px 0 12px;font:13.5px/1.55 "JetBrains Mono",ui-monospace,monospace}
+pre code{background:none;padding:0;color:inherit;font-size:inherit}
+pre .c{color:#8ea3c0}
+pre .add{color:#7ee2a8}
+.que{font-size:14px;color:var(--muted);margin:14px 0 0}
+.que b{color:var(--ink)}
+.box{border-radius:12px;padding:12px 16px;margin:14px 0;border:1px solid}
+.box b.t{display:block;margin-bottom:2px}
+.ver{background:var(--verde-bg);border-color:#bfe5cf}
+.ver b.t{color:var(--verde)}
+.piensa{background:var(--amar-bg);border-color:#f1dcae}
+.piensa b.t{color:var(--amar)}
+.ojo{background:var(--rojo-bg);border-color:#f4c7c3}
+.ojo b.t{color:var(--rojo)}
+.casa{background:var(--azul-bg);border-color:#cbd8ee}
+.historia{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:6px 20px 14px;margin:14px 0}
+/* diagramas con cajas */
+.dg{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin:16px 0 4px}
+.dg .k{background:var(--card);border:1.5px solid var(--navy2);border-radius:10px;padding:8px 12px;text-align:center;font-size:14px;line-height:1.3}
+.dg .k small{display:block;color:var(--muted);font-size:12px}
+.dg .k.db{border-radius:18px/10px;background:#f7f9fc}
+.dg .k.nuevo{border-color:var(--naranja);background:#fff8ea}
+.dg .k.mal{border-color:var(--rojo);background:var(--rojo-bg)}
+.dg .a{color:var(--navy2);font-size:13px;text-align:center;padding:0 2px}
+.dg .a span{display:block;font-size:20px;line-height:1}
+.dg .grupo{border:1.5px dashed #8ea3c0;border-radius:12px;padding:8px;display:flex;gap:6px;flex-wrap:wrap;align-items:center;justify-content:center}
+.dg .grupo>.et{width:100%;text-align:center;font-size:12px;color:var(--muted);font-weight:600}
+.pie{text-align:center;color:var(--muted);font-size:13px;margin:0 0 12px}
+.dos{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:640px){.dos{grid-template-columns:1fr}h1{font-size:26px}}
+table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amar)}
+ol.pasos{padding-left:22px}
+ol.pasos li{margin:4px 0}
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+footer{color:var(--muted);font-size:13px;margin-top:40px}
+@media print{
+  body{font-size:11pt;background:#fff}
+  header{padding:18px 16px}
+  pre{font-size:9pt;white-space:pre-wrap;break-inside:avoid}
+  .box,.dg,.historia{break-inside:avoid}
+  h2,h3{break-after:avoid}
+}
+/* rutas largas y nombres de colas: que partan en pantallas angostas en vez de desbordar */
+code{overflow-wrap:anywhere}
+</style>
+
+<style>
+.indice{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:20px 0 6px;font-size:14px}
+.indice b{width:100%;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.indice a{color:var(--navy2);text-decoration:none;font-weight:600}
+.indice a:hover{text-decoration:underline}
+.progreso{margin-left:auto;background:var(--verde-bg);color:var(--verde);border-radius:999px;padding:2px 10px;font-weight:700;font-size:13px}
+.ruta{display:inline-block;font:13px/1.5 "JetBrains Mono",ui-monospace,monospace;background:#e9eef6;color:var(--navy2);border-left:4px solid var(--naranja);border-radius:6px;padding:4px 10px;margin:4px 0 6px;overflow-wrap:anywhere}
+.ruta b{color:var(--ink)}
+.archivos{display:grid;gap:10px;margin:10px 0}
+.arch{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 14px;position:relative}
+.arch p{margin:4px 0 0;font-size:15px}
+.arch .ruta{margin:0}
+.arch .parte{display:inline-block;margin-left:6px;vertical-align:middle;font-size:12px;font-weight:700;color:var(--amar);background:var(--amar-bg);border-radius:999px;padding:1px 9px}
+.arch.edita{border-left:4px solid var(--naranja)}
+.tag{display:inline-block;border-radius:999px;padding:0 8px;font-size:12px;font-weight:700}
+.tag.v{background:var(--verde-bg);color:var(--verde)}
+.tag.c{background:var(--azul-bg);color:var(--navy2)}
+.dg .k.verdad{border-color:var(--verde);background:var(--verde-bg)}
+.docs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.docs pre{font-size:11.5px;margin:4px 0}
+.docs pre b{color:#ffd28a;font-weight:600}
+@media (max-width:820px){.docs{grid-template-columns:1fr}}
+pre .del{color:#ff9b9b;text-decoration:line-through}
+.predice{background:#f3effb;border:1px solid #ddd1f3;border-radius:12px;padding:12px 16px;margin:14px 0}
+.predice>b{color:#5b3a99}
+details{margin:8px 0}
+details summary{cursor:pointer;font-weight:600;color:var(--navy2)}
+details.pista{background:var(--card);border:1px dashed #b9c6da;border-radius:10px;padding:8px 14px}
+details[open] summary{margin-bottom:4px}
+.hecho{display:flex;gap:10px;align-items:flex-start;background:var(--verde-bg);border:1px solid #bfe5cf;border-radius:10px;padding:10px 14px;margin:16px 0;font-weight:600;cursor:pointer}
+.hecho input{width:18px;height:18px;margin-top:3px;accent-color:var(--verde)}
+.win{background:#eef6fd;border-color:#bcd9f2}
+.win b.t{color:#0b5c99}
+.win ul{margin:6px 0;padding-left:20px}
+.chk-demo{color:var(--verde);font-weight:700}
+.box pre{margin:6px 0;white-space:pre-wrap;overflow-wrap:anywhere}
+td.f small{display:block;color:var(--muted);font-size:12px}
+td.f code{overflow-wrap:normal;white-space:nowrap}
+td>code:only-child{overflow-wrap:normal}
+@media print{details{display:block}details>*{display:block}.indice,.hecho input{display:none}}
+</style>
+</head>
+<body>
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos · Lab S11</div>
+  <h1>Mexi Banco: una verdad, varias copias</h1>
+  <p>El dinero se queda en PostgreSQL. Los avisos se van a MongoDB y el saldo que se muestra se copia en Redis.</p>
+  <p>Sábado 31 de octubre de 2026 · laboratorio de 70 minutos · en equipo, entrega individual · <b>entrega: sábado 7 de noviembre, antes de las 07:00</b></p>
+</div></header>
+
+<main>
+
+<nav class="indice">
+<b>En esta guía</b>
+<a href="#s1">1 · Por qué</a>
+<a href="#s2">2 · El mapa del código</a>
+<a href="#s3">3 · Levantar y ver el punto de partida</a>
+<a href="#s4">4 · La caché del saldo</a>
+<a href="#s5">5 · Los avisos en MongoDB</a>
+<a href="#s6">6 · Rompe algo: el evento duplicado</a>
+<a href="#s7">7 · Rompe algo: el dato viejo</a>
+<a href="#s8">8 · Reto: Redis se cae</a>
+<a href="#s9">9 · Qué entregas</a>
+<a href="#s10">10 · Si te atoras</a>
+<span class="progreso" id="progreso">0 de 0 pasos</span>
+</nav>
+
+<div class="box piensa">
+<b class="t">Cómo se trabaja hoy</b>
+Siéntense con su <b>equipo del proyecto</b>. Apóyense: repártanse la investigación, comparen pantallas, ayúdense a depurar. Pero <b>cada quien</b> hace los pasos en su máquina, toma sus propias capturas y <b>entrega lo suyo</b>: su código y su bitácora. Las casillas <span class="chk-demo">☐</span> de cada sección sirven para que lleves la cuenta; se guardan solo en tu navegador.
+</div>
+
+<div class="box casa">
+<b class="t">Antes de clase, en tu casa (15 a 25 minutos)</b>
+<p>Descarga la rama de hoy y construye todo una vez. La primera vez baja las imágenes de Redis y MongoDB y las dependencias nuevas, y tarda varios minutos. Es la <b>solución del lab S09</b> (la mensajería con RabbitMQ) más Redis y MongoDB ya instalados, pero sin usar.</p>
+<pre><code><span class="c"># 1. Descarga la rama base del lab en una carpeta nueva y crea tu propia rama de trabajo</span>
+git clone --branch 06-poliglota-base https://github.com/OscarRuiz21/mexi-banco.git mexi-banco-s11
+cd mexi-banco-s11
+git switch -c trabajo-s11
+
+<span class="c"># 2. Construye las imágenes y levanta todo en segundo plano (la primera vez tarda)</span>
+docker compose up --build -d
+docker compose ps        <span class="c"># muestra cada contenedor; espera a que todos digan "healthy"</span>
+
+<span class="c"># 3. Apaga todo hasta mañana (sin -v: conserva los datos)</span>
+docker compose down</code></pre>
+<p class="que"><b>Windows:</b> corre esto en Git Bash (ver el recuadro de abajo).</p>
+<p>Si ya tienes el repo de otro lab: <code>git fetch origin</code> (trae las ramas nuevas) y <code>git switch 06-poliglota-base</code> (cámbiate a la de hoy). Abre la carpeta en IntelliJ o VS Code: en clase vas a editar dos servicios, <code>cuenta</code> y <code>notificacion</code>.</p>
+</div>
+
+<div class="box win">
+<b class="t">¿Usas Windows? Usa Git Bash, no PowerShell</b>
+<p>Todos los comandos de esta guía son de <b>bash</b>, la terminal de Mac y Linux. En Windows, córrelos en <b>Git Bash</b>, que se instaló junto con Git (búscalo en el menú Inicio). En <b>PowerShell</b> y en <b>CMD</b> no funcionan: ahí <code>curl</code> es otro comando, las comillas del JSON se rompen y no existen <code>grep</code>, <code>awk</code> ni <code>seq</code>.</p>
+<ul>
+<li><b>Dentro del IDE:</b> en VS Code, abre la flechita junto al <b>+</b> de la terminal y elige <b>Git Bash</b>. En IntelliJ, ve a <b>Settings → Tools → Terminal</b> y en <i>Shell path</i> pon <code>C:\Program Files\Git\bin\bash.exe</code>; luego abre una terminal nueva.</li>
+<li><b>Si ya usas WSL</b> (la terminal de Ubuntu dentro de Windows), también sirve: es Linux de verdad. Revisa que en Docker Desktop esté activo <i>Settings → Resources → WSL integration</i> para tu Ubuntu.</li>
+<li><b>Docker Desktop tiene que estar abierto</b> mientras trabajas.</li>
+</ul>
+<p>Por eso todos los <code>docker compose exec</code> de la guía llevan <code>-T</code>: le dice a Docker que no abra una terminal interactiva. En Mac y Linux da igual; en Git Bash evita el error <code>the input device is not a TTY</code>.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s1"><span class="num">1</span>Por qué: ninguna base sirve para todo</h2>
+<p class="min">Minutos 0 a 10 · se platica en grupo; tú solo lees.</p>
+
+<div class="historia">
+<h3>Cómo está hoy Mexi Banco</h3>
+<p>Después de la S09, <b>todo</b> vive en PostgreSQL: las cuentas, los movimientos, las transferencias, el outbox y también los avisos que manda notificación. Funciona, pero hay dos datos a los que Postgres no les queda bien:</p>
+<ol>
+<li><b>El saldo que el cliente consulta.</b> La app lo pide cada vez que alguien abre la pantalla: muchas más veces de las que cambia. Cada consulta es una lectura a Postgres, la misma base que tiene que aguantar los cargos y los abonos.</li>
+<li><b>Los avisos.</b> Un SMS lleva teléfono y texto, un correo lleva dirección, asunto y cuerpo, un push lleva el token del celular. En una tabla eso es una columna por campo de cualquier canal, casi todas vacías, o una tabla por canal. Y nunca se actualizan: se escriben una vez y se leen enteros.</li>
+</ol>
+
+<h3>La herramienta correcta para cada dato</h3>
+<p>En clase dijimos que una base de datos es como una herramienta: el martillo sirve para clavos, no para tornillos. Hoy Mexi Banco usa <b>tres</b>:</p>
+
+<div class="dg">
+  <div class="grupo"><span class="et">cuenta (3 copias)</span>
+    <div class="k">GET saldo<small>para mostrar</small></div>
+    <div class="k">cargo · abono<small>para decidir</small></div>
+  </div>
+  <div class="a"><span>→</span>primero</div>
+  <div class="k db nuevo">Redis<small>copia del saldo, 30 s</small></div>
+  <div class="a"><span>→</span>si no está</div>
+  <div class="k db verdad">PostgreSQL<small>la verdad del dinero</small></div>
+</div>
+<p class="pie">El GET pregunta primero a Redis. Los cargos y abonos siempre leen y escriben en Postgres.</p>
+
+<div class="dg">
+  <div class="k">transferencia</div>
+  <div class="a"><span>→</span>TransferenciaRealizada</div>
+  <div class="k">RabbitMQ<small>de la S09</small></div>
+  <div class="a"><span>→</span></div>
+  <div class="k">notificacion</div>
+  <div class="a"><span>→</span>un documento por aviso</div>
+  <div class="k db nuevo">MongoDB<small>colección avisos</small></div>
+</div>
+<p class="pie">Los avisos dejan la bandeja de Postgres y se van a MongoDB. Lo naranja es lo que vas a construir.</p>
+
+<h3>Verdad contra copia</h3>
+<p>La pregunta del día no es "¿SQL o NoSQL?", sino <b>qué dato es la verdad y qué dato es una copia</b>. La verdad tiene que estar en un lugar que no la pierda ni la contradiga. Una copia se puede reconstruir, y por eso se vale guardarla en otro motor, con otra forma y hasta un poco atrasada.</p>
+<table>
+<tr><th>Dato</th><th>Dónde vive</th><th>¿Verdad o copia?</th><th>Cómo se mantiene</th></tr>
+<tr><td>Cuenta y saldo</td><td>PostgreSQL</td><td><span class="tag v">verdad</span></td><td>Transacción local con <code>@Version</code></td></tr>
+<tr><td>Movimientos</td><td>PostgreSQL</td><td><span class="tag v">verdad</span></td><td>Asientos con Idempotency-Key (S08)</td></tr>
+<tr><td>Transferencias y outbox</td><td>PostgreSQL</td><td><span class="tag v">verdad</span></td><td>Saga y Outbox (S08 y S09)</td></tr>
+<tr><td>Saldo <b>para mostrar</b></td><td><b>Redis</b></td><td><span class="tag c">copia</span> hasta 30 s atrás</td><td>Se borra al cambiar el saldo, y caduca sola</td></tr>
+<tr><td>Avisos enviados</td><td><b>MongoDB</b></td><td><span class="tag v">verdad</span> de la bitácora de avisos</td><td>Los escribe el consumidor de la S09</td></tr>
+</table>
+</div>
+
+<div class="box ojo">
+<b class="t">Las tres reglas de hoy</b>
+<ol class="pasos">
+<li><b>Nada que sea dinero cambia de motor.</b> Saldo, movimientos y transferencias se quedan en Postgres.</li>
+<li><b>La caché muestra, nunca decide.</b> El cargo que revisa si alcanza el saldo lee Postgres, siempre.</li>
+<li><b>No escribas lo mismo en dos bases.</b> Sin una transacción común, tarde o temprano una se queda sin el dato. Es el problema que vimos en la S09.</li>
+</ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s2"><span class="num">2</span>El mapa del código</h2>
+<p class="min">Antes de tocar nada, ubica los archivos. Todas las rutas son relativas a la carpeta del repo.</p>
+
+<p>Los huecos que llenas están marcados con <code>// TODO S11:</code>. Para verlos todos: en IntelliJ abre <b>View → Tool Windows → TODO</b>; en VS Code, la búsqueda en archivos (<b>Ctrl+Shift+F</b> o <b>Cmd+Shift+F</b>) con el texto <code>TODO S11</code>.</p>
+
+<h3>Lo que vas a editar</h3>
+<div class="archivos">
+<div class="arch edita">
+  <div class="ruta">cuenta/src/main/java/mx/mexibanco/cuenta/<b>ConfiguracionCache.java</b></div>
+  <p>Enciende la caché de Spring y configura la caché <code>cuentas</code>: cuánto vive cada entrada, que se guarde en JSON y que el borrado espere al commit.</p>
+  <span class="parte">Parte 1</span>
+</div>
+<div class="arch edita">
+  <div class="ruta">cuenta/src/main/java/mx/mexibanco/cuenta/<b>ConsultaDeSaldo.java</b></div>
+  <p>La consulta del saldo <b>para mostrar</b> (<code>GET /cuentas/{clabe}</code>). Es la única que puede contestar desde Redis.</p>
+  <span class="parte">Parte 1</span>
+</div>
+<div class="arch edita">
+  <div class="ruta">cuenta/src/main/java/mx/mexibanco/cuenta/<b>CuentaService.java</b></div>
+  <p>Las reglas de la cuenta: <code>cargar</code> y <code>abonar</code> cambian el saldo. Ahí se borra la copia de Redis.</p>
+  <span class="parte">Parte 1</span>
+</div>
+<div class="arch edita">
+  <div class="ruta">notificacion/src/main/java/mx/mexibanco/notificacion/avisos/<b>BitacoraDeAvisos.java</b></div>
+  <p>Guarda cada aviso como documento en MongoDB, crea el índice y lee los últimos 10 de una CLABE.</p>
+  <span class="parte">Parte 2</span>
+</div>
+<div class="arch edita">
+  <div class="ruta">notificacion/src/main/java/mx/mexibanco/notificacion/mensajeria/<b>ConsumidorDeTransferencias.java</b></div>
+  <p>El consumidor de RabbitMQ de la S09. Cambias <b>una línea</b> para que guarde en MongoDB en lugar de Postgres.</p>
+  <span class="parte">Parte 2</span>
+</div>
+</div>
+
+<h3>Lo que ya está listo (solo léelo)</h3>
+<table>
+<tr><th>Archivo</th><th>Qué hace</th></tr>
+<tr><td class="f"><code>CuentaVista.java</code><small>cuenta</small></td><td>Lo que contesta el GET del saldo: <code>clabe</code>, <code>titular</code>, <code>saldo</code> y <code>leidaEn</code>, la hora en que se leyó de Postgres. Si la respuesta sale de la caché, <code>leidaEn</code> es vieja: así ves la edad del dato sin abrir Redis.</td></tr>
+<tr><td class="f"><code>CuentaController.java</code><small>cuenta</small></td><td>Ya manda el GET a <code>ConsultaDeSaldo</code> y los cargos y abonos a <code>CuentaService</code>.</td></tr>
+<tr><td class="f"><code>application.yml</code><small>cuenta/src/main/resources</small></td><td>Dónde está Redis (<code>spring.data.redis</code>), el TTL de 30 s (<code>mexibanco.cache.ttl</code>) y <code>spring.cache.type</code>, que con <code>CACHE_TIPO=none</code> apaga la caché sin tocar código.</td></tr>
+<tr><td class="f"><code>Contacto.java</code><small>notificacion/.../avisos</small></td><td>Los tres canales: <code>Sms(telefono)</code>, <code>Correo(correo)</code> y <code>Push(token)</code>. Es una interfaz sellada: un <code>switch</code> que olvide un canal no compila.</td></tr>
+<tr><td class="f"><code>DirectorioDeContactos.java</code><small>notificacion/.../avisos</small></td><td>Quién recibe qué: Ana (<code>...001</code>) pidió SMS, Beto (<code>...002</code>) pidió correo y cualquier otra cuenta, como Carla, recibe un push.</td></tr>
+<tr><td class="f"><code>NotificacionController.java</code><small>notificacion</small></td><td>Ya expone <code>GET /notificaciones/{clabe}</code>, que llama a <code>bitacora.ultimos(clabe)</code>.</td></tr>
+<tr><td class="f"><code>docker-compose.yml</code><small>raíz del repo</small></td><td>Trae los servicios <code>redis</code> y <code>mongo</code>. Redis guarda solo en memoria, con 64 MB y desalojo <code>allkeys-lru</code>.</td></tr>
+</table>
+
+<!-- ============================================================ -->
+<h2 id="s3"><span class="num">3</span>Levantar y ver el punto de partida</h2>
+<p class="min">Minutos 10 a 15 · Parte 0 · antes de cambiar código, mide cómo está.</p>
+
+<h3>3.1 · Levanta el banco</h3>
+<pre><code>cd mexi-banco-s11
+docker compose up -d     <span class="c"># levanta lo que construiste en casa</span>
+docker compose ps        <span class="c"># trece contenedores "healthy": los de la S09 más redis y mongo</span></code></pre>
+<p>Si tu laptop sufre, este lab no usa <code>spei</code>: apágalo con <code>docker compose stop spei</code>. Deja las <b>tres</b> copias de <code>cuenta</code>: así vas a ver que la caché la comparten. Si el puerto 8080 está ocupado, levanta con <code>PUERTO_GATEWAY=18080 docker compose up -d</code> y cambia 8080 por 18080 en toda la guía.</p>
+
+<h3>3.2 · Comprueba que Redis y MongoDB contestan</h3>
+<pre><code><span class="c"># Le pregunta a Redis si está vivo</span>
+docker compose exec -T redis redis-cli ping
+<span class="c"># Abre la consola de MongoDB en la base notificacion y cuenta los avisos guardados</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.countDocuments()'</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver</b><code>PONG</code> y <code>0</code>. Redis está vivo y en Mongo todavía no hay avisos.</div>
+<p class="que"><b>Opcional:</b> si te gustan las interfaces gráficas, MongoDB Compass se conecta a <code>mongodb://localhost:27017</code> y RedisInsight a <code>localhost:6379</code>. No hacen falta: todo el lab se hace con <code>mongosh</code> y <code>redis-cli</code> dentro de los contenedores.</p>
+
+<h3>3.3 · Crea las cuentas de Ana, Beto y Carla</h3>
+<pre><code><span class="c"># Cada comando abre una cuenta por el gateway con su saldo inicial</span>
+curl -i -X POST http://localhost:8080/api/cuentas -H 'Content-Type: application/json' \
+  -d '{"clabe":"002180000000000001","titular":"Ana","saldoInicial":1000}'
+curl -i -X POST http://localhost:8080/api/cuentas -H 'Content-Type: application/json' \
+  -d '{"clabe":"002180000000000002","titular":"Beto","saldoInicial":500}'
+curl -i -X POST http://localhost:8080/api/cuentas -H 'Content-Type: application/json' \
+  -d '{"clabe":"002180000000000003","titular":"Carla","saldoInicial":300}'</code></pre>
+<p>Cada alta da <b>201</b>. Si te da <b>409</b>, la cuenta ya existía de otro lab (el volumen de Postgres se conserva). Sirve igual, solo que tus saldos serán otros.</p>
+<p>Haz ya una transferencia: es la que usarás en toda la guía, cambiando las CLABEs y el monto.</p>
+<pre><code><span class="c"># Manda 200 de Ana a Beto; responde 201 con "estado":"COMPLETADA"</span>
+curl -s -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' \
+  -d '{"claveOrigen":"002180000000000001","claveDestino":"002180000000000002","monto":200}'</code></pre>
+
+<h3>3.4 · Mide: cada consulta va a Postgres</h3>
+<pre><code><span class="c"># Pide el saldo de Ana diez veces seguidas (echo agrega un salto de línea entre respuestas)</span>
+for i in $(seq 1 10); do
+  curl -s http://localhost:8080/api/cuentas/002180000000000001; echo
+done
+
+<span class="c"># Cuenta en el log de las tres copias de cuenta la línea que sale cada vez que se lee Postgres</span>
+docker compose logs cuenta | grep -c "leida de Postgres"
+
+<span class="c"># Muestra cuántas lecturas acertó (hits) y falló (misses) Redis desde que arrancó</span>
+docker compose exec -T redis redis-cli INFO stats | grep keyspace</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver</b>
+<p>El conteo de "leida de Postgres" da <b>10 o más</b>: las diez consultas, más las lecturas de la transferencia. En Redis, <code>keyspace_hits:0</code> y <code>keyspace_misses:0</code>: nadie lo usa todavía.</p>
+<p>Fíjate en <code>leidaEn</code> de cada respuesta: cambia en las diez, porque las diez se leyeron de Postgres.</p>
+</div>
+<p class="que"><b>Para la bitácora:</b> captura el conteo. Es tu "antes".</p>
+<label class="hecho"><input type="checkbox" data-paso="p0"> Ya tengo mi "antes": diez consultas, diez lecturas a Postgres.</label>
+
+<!-- ============================================================ -->
+<h2 id="s4"><span class="num">4</span>La caché del saldo en Redis</h2>
+<p class="min">Minutos 15 a 40 · Parte 1 · guiada, en el servicio <code>cuenta</code>.</p>
+
+<div class="historia">
+<h3>La idea: cache-aside</h3>
+<p>Vas a usar el patrón más común, <b>cache-aside</b>: la app pregunta primero a la caché y, si no está, va a la base y deja una copia para la próxima vez.</p>
+<div class="dg">
+  <div class="k">GET /cuentas/{clabe}</div>
+  <div class="a"><span>→</span>GET cuentas::{clabe}</div>
+  <div class="k db nuevo">Redis</div>
+</div>
+<div class="dos">
+  <div class="box ver"><b class="t">Hit: estaba en Redis</b>Contesta Redis. El método ni corre y Postgres ni se entera.</div>
+  <div class="box piensa"><b class="t">Miss: no estaba</b>Corre el método, lee Postgres y Spring guarda la copia con <code>SET ... PX 30000</code> (vive 30 s).</div>
+</div>
+<p>Y cuando el saldo cambia (un cargo o un abono), la copia se <b>borra</b> con <code>DEL</code>. No se actualiza: se borra, y la siguiente consulta la vuelve a llenar con el saldo nuevo.</p>
+<div class="dg">
+  <div class="k">cargar · abonar</div>
+  <div class="a"><span>→</span>UPDATE</div>
+  <div class="k db verdad">PostgreSQL</div>
+  <div class="a"><span>→</span>COMMIT, y después</div>
+  <div class="k db nuevo">DEL cuentas::{clabe}</div>
+</div>
+<p class="pie">El orden importa: primero el commit, después el borrado. Lo vemos en la pregunta 4 del cierre.</p>
+<p>En Spring no escribes los <code>GET</code>, <code>SET</code> y <code>DEL</code> a mano: los hacen dos anotaciones. <code>@Cacheable</code> en el método que lee y <code>@CacheEvict</code> en los que cambian el saldo.</p>
+</div>
+
+<h3>4.1 · Enciende y configura la caché</h3>
+<div class="ruta">cuenta/src/main/java/mx/mexibanco/cuenta/<b>ConfiguracionCache.java</b></div>
+<p><b>Qué hace este archivo:</b> Spring Boot ya arma solo un <code>RedisCacheManager</code>, porque el <code>pom.xml</code> trae <code>spring-boot-starter-data-redis</code>. Aquí solo lo enciendes y le cambias tres cosas a la caché <code>cuentas</code>.</p>
+<p><b>Qué cambias:</b> agrega <code>@EnableCaching</code> arriba de la clase y el <code>@Bean</code> de abajo. Lo verde es lo nuevo.</p>
+<pre><code><span class="add">import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.cache.RedisCacheManagerBuilderCustomizer;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.context.annotation.Bean;</span>
+import org.springframework.context.annotation.Configuration;
+<span class="add">import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext.SerializationPair;
+
+import java.time.Duration;</span>
+
+<span class="c">// sin @EnableCaching, @Cacheable y @CacheEvict se ignoran sin avisar</span>
+<span class="add">@EnableCaching</span>
+@Configuration
+public class ConfiguracionCache {
+
+    public static final String CUENTAS = "cuentas";
+
+<span class="add">    @Bean
+    RedisCacheManagerBuilderCustomizer cacheDeCuentas(
+            @Value("${mexibanco.cache.ttl:30s}") Duration ttl, ObjectMapper json) {
+        RedisCacheConfiguration cuentas = RedisCacheConfiguration.defaultCacheConfig()</span>
+            <span class="c">// 1. cada entrada vive 30 s y luego Redis la borra sola</span>
+<span class="add">            .entryTtl(ttl)
+            .disableCachingNullValues()</span>
+            <span class="c">// 2. el valor se guarda como JSON de CuentaVista, legible con redis-cli</span>
+<span class="add">            .serializeValuesWith(SerializationPair.fromSerializer(
+                new Jackson2JsonRedisSerializer&lt;&gt;(json, CuentaVista.class)));
+        return builder -&gt; builder.withCacheConfiguration(CUENTAS, cuentas)</span>
+            <span class="c">// 3. el DEL de @CacheEvict espera al commit de la transacción</span>
+<span class="add">            .transactionAware();
+    }</span>
+}</code></pre>
+<table>
+<tr><th>Línea</th><th>Por qué</th></tr>
+<tr><td><code>entryTtl(ttl)</code></td><td>Sin TTL, una entrada en Redis no caduca nunca. Si alguien cambia el saldo por fuera de la app (la Parte 4), el dato viejo se quedaría para siempre.</td></tr>
+<tr><td><code>Jackson2JsonRedisSerializer</code></td><td>Por omisión Spring guarda el objeto con la serialización binaria de Java (<code>\xac\xed...</code>). En JSON lo puedes leer con <code>redis-cli GET</code>.</td></tr>
+<tr><td><code>transactionAware()</code></td><td>El <code>DEL</code> de <code>@CacheEvict</code> espera a que la transacción haga commit. Si borrara antes, otra consulta podría leer el saldo viejo en esa ventana y volver a dejarlo en la caché.</td></tr>
+</table>
+
+<h3>4.2 · Cachea la consulta que muestra</h3>
+<div class="ruta">cuenta/src/main/java/mx/mexibanco/cuenta/<b>ConsultaDeSaldo.java</b></div>
+<p><b>Qué hace este archivo:</b> contesta <code>GET /cuentas/{clabe}</code>, lo que ve el cliente en la app. Cada vez que corre, escribe en el log <code>[consulta] ... leida de Postgres</code>.</p>
+<p><b>Qué cambias:</b> una anotación arriba de <code>consultar</code>. La <code>key</code> dice con qué se arma la clave en Redis: <code>#clabe</code> es el parámetro, y la clave queda <code>cuentas::002180000000000001</code>.</p>
+<pre><code><span class="add">import org.springframework.cache.annotation.Cacheable;</span>
+...
+<span class="add">    @Cacheable(cacheNames = ConfiguracionCache.CUENTAS, key = "#clabe")</span>
+    public CuentaVista consultar(String clabe) {
+        log.info("[consulta] {} leida de Postgres", clabe);   <span class="c">// en un hit, esta línea ya no sale</span>
+        return cuentas.findByClabe(clabe)
+            .map(CuentaVista::de)
+            .orElseThrow(() -&gt; new NoEncontradoException("No existe la CLABE " + clabe));
+    }</code></pre>
+
+<h3>4.3 · Borra la copia cuando cambia el saldo</h3>
+<div class="ruta">cuenta/src/main/java/mx/mexibanco/cuenta/<b>CuentaService.java</b></div>
+<p><b>Qué hace este archivo:</b> las reglas de la cuenta. <code>cargar</code> revisa que alcance el saldo y lo resta; <code>abonar</code> lo suma. Los dos los llama la saga de transferencia por HTTP.</p>
+<p><b>Qué cambias:</b> la misma anotación arriba de <code>cargar</code> y de <code>abonar</code>, junto al <code>@Transactional</code> que ya tienen.</p>
+<pre><code><span class="add">import org.springframework.cache.annotation.CacheEvict;</span>
+...
+<span class="add">    @CacheEvict(cacheNames = ConfiguracionCache.CUENTAS, key = "#clabe")</span>
+    @Transactional
+    public SaldoAplicado cargar(String clabe, BigDecimal monto, String clave) { ... }
+
+<span class="add">    @CacheEvict(cacheNames = ConfiguracionCache.CUENTAS, key = "#clabe")</span>
+    @Transactional
+    public SaldoAplicado abonar(String clabe, BigDecimal monto, String clave) { ... }</code></pre>
+
+<div class="box ojo">
+<b class="t">Lo que NO tocas: CuentaService.consultar</b>
+<p>En el mismo archivo hay otro <code>consultar</code>. Es la lectura que usa <code>cargar</code> para <b>decidir</b> si alcanza el saldo, y siempre va a Postgres. Si la cachearas, un cargo podría aprobarse con un saldo de hace 30 s.</p>
+<p>Por eso la consulta que muestra vive en otra clase, <code>ConsultaDeSaldo</code>. Hay una segunda razón: si pones <code>@Cacheable</code> en un método y lo llamas desde su <b>misma</b> clase, la llamada no pasa por el proxy de Spring y la anotación se ignora sin avisar.</p>
+</div>
+
+<h3>4.4 · Reconstruye cuenta y comprueba</h3>
+<pre><code><span class="c"># Vuelve a construir solo la imagen de cuenta y reemplaza sus tres copias</span>
+docker compose up --build -d cuenta</code></pre>
+
+<div class="predice">
+<b>Antes de correrlo, predice:</b> vas a pedir el saldo de Ana seis veces y van a contestar distintas copias de cuenta. ¿Cuántas veces se va a leer Postgres?
+<details><summary>Ver la respuesta</summary><p><b>Una.</b> La primera consulta es un miss: lee Postgres y deja la copia en Redis. Las otras cinco son hits, aunque las conteste otra copia de cuenta, porque Redis es uno solo y lo comparten las tres. Una caché local, dentro de cada copia, habría leído Postgres tres veces.</p></details>
+</div>
+
+<pre><code><span class="c"># Pide el saldo de Ana seis veces. -D - muestra también las cabeceras;</span>
+<span class="c"># grep deja solo qué copia contestó (X-Instancia) y el cuerpo con leidaEn</span>
+for i in 1 2 3 4 5 6; do
+  curl -s -D - http://localhost:8080/api/cuentas/002180000000000001 | grep -iE 'x-instancia|leidaEn'
+done
+
+<span class="c"># Cuenta cuántas veces se leyó Postgres en los últimos 30 segundos</span>
+docker compose logs --since 30s cuenta | grep -c "leida de Postgres"
+
+<span class="c"># Muestra la copia guardada en Redis y cuántos segundos le quedan</span>
+docker compose exec -T redis redis-cli GET cuentas::002180000000000001
+docker compose exec -T redis redis-cli TTL cuentas::002180000000000001</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver</b>
+<pre><code>X-Instancia: e22ac7714e7c  {"clabe":"002180000000000001","titular":"Ana","saldo":800.00,"leidaEn":"2026-10-31T16:21:41.883Z"}
+X-Instancia: 77217fc575f4  { ... el mismo leidaEn ... }
+X-Instancia: c99a903157ed  { ... el mismo leidaEn ... }
+...
+1                                                     <span class="c">← una sola lectura a Postgres</span>
+"{\"clabe\":\"002180000000000001\",\"titular\":\"Ana\",\"saldo\":800.00,\"leidaEn\":\"2026-10-31T16:21:41.883Z\"}"
+(integer) 29</code></pre>
+<p>Tus <code>X-Instancia</code>, saldos y horas serán otros. Lo que importa: la instancia cambia, <code>leidaEn</code> no.</p>
+</div>
+
+<h3>4.5 · Comprueba que la copia se borra</h3>
+<p>Abre una <b>segunda terminal</b> y deja corriendo esto: muestra cada comando que recibe Redis, en vivo.</p>
+<pre><code><span class="c"># Terminal 2: espía de Redis (Ctrl+C para salir)</span>
+docker compose exec -T redis redis-cli MONITOR</code></pre>
+<p>En la primera terminal, transfiere 10 de Ana a Beto y revisa si la copia sigue ahí:</p>
+<pre><code><span class="c"># Transfiere 10 de Ana a Beto</span>
+curl -s -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' \
+  -d '{"claveOrigen":"002180000000000001","claveDestino":"002180000000000002","monto":10}'
+<span class="c"># ¿Existe la copia de Ana? 1 = sí, 0 = no</span>
+docker compose exec -T redis redis-cli EXISTS cuentas::002180000000000001
+<span class="c"># Vuelve a pedir el saldo: debe traer el saldo nuevo y un leidaEn nuevo</span>
+curl -s http://localhost:8080/api/cuentas/002180000000000001</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver en el MONITOR, en este orden</b>
+<pre><code>"GET" "cuentas::002180000000000001"        <span class="c">← la saga revisa que exista la cuenta</span>
+"DEL" "cuentas::002180000000000001"        <span class="c">← después del commit del cargo</span>
+"DEL" "cuentas::002180000000000002"        <span class="c">← después del commit del abono a Beto</span>
+"GET" "cuentas::002180000000000001"        <span class="c">← tu consulta: miss</span>
+"SET" "cuentas::002180000000000001" "{...\"saldo\":790.00...}" "PX" "30000"</code></pre>
+<p>Y <code>EXISTS</code> da <code>0</code>. Puede haber un <code>GET</code> y <code>SET</code> de Beto entre medio: son las comprobaciones de la saga.</p>
+</div>
+<label class="hecho"><input type="checkbox" data-paso="p1"> Las tres copias comparten la caché, veo el JSON con su TTL y la copia se borra al transferir.</label>
+
+<h3>4.6 · Mide: ¿qué compraste con la caché?</h3>
+<p><b>Hit ratio.</b> Redis cuenta sus aciertos (<code>keyspace_hits</code>) y sus fallos (<code>keyspace_misses</code>). El hit ratio es <code>hits / (hits + misses)</code>.</p>
+<pre><code><span class="c"># Pone en cero los contadores de Redis</span>
+docker compose exec -T redis redis-cli CONFIG RESETSTAT
+<span class="c"># Escenario A: cien consultas seguidas del saldo de Ana (-o /dev/null tira la respuesta)</span>
+for i in $(seq 1 100); do
+  curl -s -o /dev/null http://localhost:8080/api/cuentas/002180000000000001
+done
+<span class="c"># Muestra los contadores</span>
+docker compose exec -T redis redis-cli INFO stats | grep keyspace</code></pre>
+<p><b>Escenario B:</b> lo mismo, pero con una transferencia de 1 peso de Ana a Beto cada diez consultas. Explica por qué baja. Ojo: tus propios <code>redis-cli GET</code> también cuentan.</p>
+<div class="box ver"><b class="t">Lo que dio en la prueba del profe</b>A: 99 hits y 1 miss, <b>99 %</b>. B: 101 hits y 19 misses, <b>84 %</b>. Cada transferencia borra a Ana y a Beto, y la siguiente lectura de cada uno falla.</div>
+
+<p><b>Latencia.</b> Este comando hace 100 consultas, guarda el tiempo de cada una y calcula promedio, mediana y p95 en milisegundos:</p>
+<pre><code><span class="c"># -w '%{time_total}' imprime cuántos segundos tardó cada consulta</span>
+for i in $(seq 1 100); do
+  curl -s -o /dev/null -w '%{time_total}\n' http://localhost:8080/api/cuentas/002180000000000001
+done \
+<span class="c"># sort los ordena; awk los pasa a ms y saca promedio, mediana (el de en medio) y p95</span>
+  | sort -n \
+  | awk '{t[NR]=$1*1000; s+=$1*1000}
+         END {printf "promedio=%.2f ms mediana=%.2f ms p95=%.2f ms\n", s/NR, t[int(NR*0.5)], t[int(NR*0.95)]}'</code></pre>
+<p>Para medir <b>sin</b> caché no tocas código: <code>application.yml</code> ya lee la variable <code>CACHE_TIPO</code>.</p>
+<pre><code><span class="c"># Reinicia cuenta con la caché apagada; espera a que esté healthy con docker compose ps</span>
+CACHE_TIPO=none docker compose up -d cuenta
+<span class="c"># ... mide igual, y cuenta también las lecturas a Postgres ...</span>
+<span class="c"># Regresa cuenta con la caché encendida</span>
+docker compose up -d cuenta</code></pre>
+<div class="predice">
+<b>Predice:</b> ¿cuánto más rápida será la consulta con caché?
+<details><summary>Ver lo que pasó en la prueba</summary><p>Casi nada: mediana de 4 a 5 ms con caché y de 5 a 6 ms sin ella. En tu laptop Postgres tiene la tabla en memoria y está a un salto de red, igual que Redis. Lo que sí cambia es <b>cuántas lecturas recibe Postgres</b>: con caché, 200 consultas dentro del TTL dieron <b>0</b>; sin caché, 200. La caché compra <b>capacidad</b> más que velocidad: Postgres queda libre para los cargos y abonos.</p></details>
+</div>
+<p class="que"><b>Para la bitácora:</b> corre cada medición dos o tres veces y reporta todas, con y sin caché, junto con las lecturas a Postgres de cada caso.</p>
+<label class="hecho"><input type="checkbox" data-paso="p1m"> Tengo hit ratio de A y B, y latencia y lecturas a Postgres con y sin caché.</label>
+
+<!-- ============================================================ -->
+<h2 id="s5"><span class="num">5</span>Los avisos en MongoDB</h2>
+<p class="min">Minutos 40 a 65 · Parte 2 · en el servicio <code>notificacion</code>.</p>
+
+<div class="historia">
+<h3>La idea: un documento por aviso, con la forma de su canal</h3>
+<p>Cada transferencia genera <b>dos</b> avisos: uno para quien envía y otro para quien recibe. Cada aviso es un <b>documento</b>: campos comunes a todos, más los de su canal. Nadie hace <code>ALTER TABLE</code> para que existan: el esquema lo aplica quien lee.</p>
+<div class="docs">
+<pre><code><span class="c">// Ana · SMS</span>
+{
+  _id: "41bea4d1-...:0021...001",
+  eventoId: "41bea4d1-...",
+  transferenciaId: 1,
+  clabe: "002180000000000001",
+  tipo: "TRANSFERENCIA_ENVIADA",
+  monto: Decimal128("200"),
+  saldo: Decimal128("800.00"),
+  fecha: ISODate("2026-10-31..."),
+  <b>canal: "SMS",
+  telefono: "+52 55 5555 0101",
+  texto: "...por 200..."</b>
+}</code></pre>
+<pre><code><span class="c">// Beto · CORREO</span>
+{
+  _id: "41bea4d1-...:0021...002",
+  eventoId: "41bea4d1-...",
+  transferenciaId: 1,
+  clabe: "002180000000000002",
+  tipo: "TRANSFERENCIA_RECIBIDA",
+  monto: Decimal128("200"),
+  saldo: Decimal128("700.00"),
+  fecha: ISODate("2026-10-31..."),
+  <b>canal: "CORREO",
+  correo: "beto@correo.mx",
+  asunto: "Recibiste...",
+  cuerpo: "...por 200..."</b>
+}</code></pre>
+<pre><code><span class="c">// Carla · PUSH</span>
+{
+  _id: "efa3b04e-...:0021...003",
+  eventoId: "efa3b04e-...",
+  transferenciaId: 2,
+  clabe: "002180000000000003",
+  tipo: "TRANSFERENCIA_RECIBIDA",
+  monto: Decimal128("50"),
+  saldo: Decimal128("350.00"),
+  fecha: ISODate("2026-10-31..."),
+  <b>canal: "PUSH",
+  token: "fcm:demo-0021...003",
+  titulo: "Recibiste...",
+  cuerpo: "...por 50..."</b>
+}</code></pre>
+</div>
+<p class="pie">Lo de arriba es igual en los tres; lo de abajo, en negritas, depende del canal.</p>
+<p>Dos decisiones del contrato que vas a programar:</p>
+<ul>
+<li><b>El <code>_id</code> lo pone el banco, no Mongo:</b> <code>eventoId:clabe</code>. El mismo evento con la misma CLABE da siempre el mismo <code>_id</code>, y Mongo no deja guardar dos documentos con el mismo <code>_id</code>. Así un evento repetido no duplica el aviso (la Parte 3). No es solo el <code>eventoId</code> porque un evento genera dos avisos.</li>
+<li><b>El dinero va en <code>Decimal128</code></b>, nunca en <code>double</code>: <code>0.1 + 0.2</code> en punto flotante no da <code>0.3</code>.</li>
+</ul>
+</div>
+
+<h3>El contrato</h3>
+<p>Usa <b>exactamente</b> estos nombres. Así tus consultas de <code>mongosh</code> dan lo mismo que las de tus compañeros y así se revisa tu entrega.</p>
+<table>
+<tr><th>Pieza</th><th>Valor</th></tr>
+<tr><td>Base y colección</td><td>Base <code>notificacion</code>, colección <code>avisos</code> (constante <code>COLECCION</code>)</td></tr>
+<tr><td><code>_id</code></td><td><code>eventoId + ":" + clabe</code></td></tr>
+<tr><td>Campos de todos</td><td><code>eventoId</code>, <code>transferenciaId</code>, <code>clabe</code>, <code>tipo</code>, <code>monto</code> y <code>saldo</code> (Decimal128), <code>fecha</code> (la del evento), <code>canal</code></td></tr>
+<tr><td>Canal <code>SMS</code></td><td><code>telefono</code>, <code>texto</code></td></tr>
+<tr><td>Canal <code>CORREO</code></td><td><code>correo</code>, <code>asunto</code>, <code>cuerpo</code></td></tr>
+<tr><td>Canal <code>PUSH</code></td><td><code>token</code>, <code>titulo</code>, <code>cuerpo</code></td></tr>
+<tr><td>Índice</td><td><code>clabe_fecha</code>: <code>{ clabe: 1, fecha: -1 }</code></td></tr>
+<tr><td>Endpoint</td><td><code>GET /api/notificaciones/{clabe}</code>: los últimos 10, del más nuevo al más viejo</td></tr>
+</table>
+
+<div class="ruta">notificacion/src/main/java/mx/mexibanco/notificacion/avisos/<b>BitacoraDeAvisos.java</b></div>
+<p><b>Qué hace este archivo:</b> todo lo de MongoDB en notificación. Ya trae resuelto a quién se avisa (<code>destinatarios</code>), el texto de cada aviso (<code>texto</code>) y por qué canal (<code>DirectorioDeContactos</code>). Usa <code>MongoTemplate</code>, que es a Mongo lo que <code>JdbcTemplate</code> es a SQL. Tú llenas cuatro métodos. Agrega primero estos imports:</p>
+<pre><code><span class="add">import org.bson.types.Decimal128;
+import org.springframework.dao.DuplicateKeyException;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.index.Index;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
+import java.util.Date;</span></code></pre>
+
+<h3>5.1 · <code>documento(...)</code>: arma el aviso</h3>
+<p><b>Qué hace:</b> convierte un evento y un destinatario en un <code>org.bson.Document</code>, que es un mapa de campo a valor. Primero los campos comunes, después un <code>switch</code> sobre el <code>Contacto</code> que agrega los del canal.</p>
+<pre><code>public static Document documento(EventoTransferencia evento, Destinatario destinatario, Contacto contacto) {
+    Document aviso = new Document("_id", evento.eventoId() + ":" + destinatario.clabe())
+        .append("eventoId", evento.eventoId().toString())
+        .append("transferenciaId", evento.transferenciaId())
+        .append("clabe", destinatario.clabe())
+        .append("tipo", destinatario.tipo())
+        .append("monto", new Decimal128(evento.monto()))       <span class="c">// dinero: Decimal128, nunca double</span>
+        .append("saldo", new Decimal128(destinatario.saldo()))
+        .append("fecha", Date.from(evento.fecha()));           <span class="c">// la fecha del evento, no la de hoy</span>
+    String texto = texto(destinatario, evento);
+    switch (contacto) {
+        case Contacto.Sms sms -&gt; aviso
+            .append("canal", "SMS")
+            .append("telefono", sms.telefono())
+            .append("texto", texto);
+        <span class="c">// TU TURNO: el caso Contacto.Correo (canal, correo, asunto, cuerpo)</span>
+        <span class="c">//           y el caso Contacto.Push (canal, token, titulo, cuerpo)</span>
+    }
+    return aviso;
+}</code></pre>
+<details class="pista"><summary>Pista 1: ¿por qué no compila mi switch?</summary><p><code>Contacto</code> es una interfaz <b>sellada</b> con tres casos. Si al <code>switch</code> le falta uno, el compilador te dice que no cubre todos. Es justo lo que queremos: si mañana alguien agrega <code>WhatsApp</code>, este método se rompe en compilación y no en producción.</p></details>
+<details class="pista"><summary>Pista 2: ¿qué pongo en asunto y titulo?</summary><p>Un texto corto según el tipo, por ejemplo <code>"Recibiste una transferencia"</code> para <code>TRANSFERENCIA_RECIBIDA</code>. Puedes hacer un método <code>asunto(String tipo)</code> con otro <code>switch</code>. En <code>cuerpo</code> va el mismo <code>texto</code> del SMS.</p></details>
+<details class="pista"><summary>Ver los dos casos que faltan</summary>
+<pre><code>        case Contacto.Correo correo -&gt; aviso
+            .append("canal", "CORREO")
+            .append("correo", correo.correo())
+            .append("asunto", asunto(destinatario.tipo()))
+            .append("cuerpo", texto);
+        case Contacto.Push push -&gt; aviso
+            .append("canal", "PUSH")
+            .append("token", push.token())
+            .append("titulo", asunto(destinatario.tipo()))
+            .append("cuerpo", texto);
+    ...
+private static String asunto(String tipo) {
+    return switch (tipo) {
+        case "TRANSFERENCIA_ENVIADA" -&gt; "Enviaste una transferencia";
+        case "TRANSFERENCIA_RECIBIDA" -&gt; "Recibiste una transferencia";
+        case "DEVOLUCION_TRANSFERENCIA" -&gt; "Tu transferencia no se realizo";
+        default -&gt; tipo;
+    };
+}</code></pre></details>
+
+<h3>5.2 · <code>registrar(evento)</code>: guarda sin duplicar</h3>
+<p><b>Qué hace:</b> por cada destinatario arma su documento y lo inserta. Regresa cuántos eran <b>nuevos</b>. Si Mongo contesta que el <code>_id</code> ya existe (<code>DuplicateKeyException</code>), ese aviso ya estaba: no es un error, no se cuenta y se sigue con el siguiente.</p>
+<pre><code>public int registrar(EventoTransferencia evento) {
+    int nuevos = 0;
+    for (Destinatario destinatario : destinatarios(evento)) {
+        Document aviso = documento(evento, destinatario, contactos.de(destinatario.clabe()));
+        try {
+            mongo.insert(aviso, COLECCION);
+            nuevos++;
+        } catch (DuplicateKeyException yaEstaba) {
+            log.info("[avisos] {} ya estaba: evento repetido, no se duplica", aviso.get("_id"));
+        }
+    }
+    return nuevos;
+}</code></pre>
+<p class="que"><b>¿Por qué uno por uno y no todos juntos?</b> Un insert de varios se detiene en el primer <code>_id</code> repetido. Si el proceso se cayó después de guardar el primer aviso, la reentrega tiene que poder guardar el segundo.</p>
+
+<h3>5.3 · <code>crearIndice()</code> y <code>ultimos(clabe)</code>: leer rápido</h3>
+<p><b>Qué hacen:</b> <code>ultimos</code> busca los avisos de una CLABE, del más nuevo al más viejo, y se queda con 10. <code>crearIndice</code> corre una sola vez al arrancar (por el <code>@EventListener</code> que ya tiene) y crea el índice que sigue la forma de esa consulta: primero por <code>clabe</code> y luego por <code>fecha</code>. Sin el índice, Mongo recorre toda la colección y ordena en memoria.</p>
+<pre><code>public void crearIndice() {
+    String nombre = mongo.indexOps(COLECCION).ensureIndex(
+        new Index().on("clabe", Sort.Direction.ASC).on("fecha", Sort.Direction.DESC).named("clabe_fecha"));
+    log.info("[avisos] indice {} listo en {}", nombre, COLECCION);
+}
+
+public List&lt;Document&gt; ultimos(String clabe) {
+    <span class="c">// TU TURNO: una Query con clabe igual a la que llega, ordenada por fecha descendente y limit(ULTIMOS)</span>
+    <span class="c">//           y luego mongo.find(consulta, Document.class, COLECCION)</span>
+}</code></pre>
+<details class="pista"><summary>Pista: ¿cómo se escribe la Query?</summary><p><code>Query.query(Criteria.where("clabe").is(clabe))</code> es el <code>WHERE</code>. Le encadenas <code>.with(Sort.by(Sort.Direction.DESC, "fecha"))</code> como <code>ORDER BY</code> y <code>.limit(ULTIMOS)</code> como <code>LIMIT</code>.</p></details>
+<details class="pista"><summary>Ver el método completo</summary>
+<pre><code>public List&lt;Document&gt; ultimos(String clabe) {
+    Query consulta = Query.query(Criteria.where("clabe").is(clabe))
+        .with(Sort.by(Sort.Direction.DESC, "fecha"))
+        .limit(ULTIMOS);
+    return mongo.find(consulta, Document.class, COLECCION);   <span class="c">// Document.class: cada aviso con sus campos</span>
+}</code></pre></details>
+
+<h3>5.4 · Conecta el consumidor (una línea)</h3>
+<div class="ruta">notificacion/src/main/java/mx/mexibanco/notificacion/mensajeria/<b>ConsumidorDeTransferencias.java</b></div>
+<p><b>Qué hace este archivo:</b> es el consumidor de RabbitMQ de la S09. Recibe cada <code>TransferenciaRealizada</code>, guarda los avisos y después le confirma al broker con <code>basicAck</code>. Ya trae <code>BitacoraDeAvisos</code> inyectada en el constructor, sin usarla.</p>
+<p><b>Qué cambias:</b> busca el <code>TODO S11</code> dentro de <code>recibir</code> y cambia la línea que guarda:</p>
+<pre><code><span class="del">            nuevos = notificaciones.avisarDeTransferencia(evento).size();   // antes: bandeja de Postgres</span>
+<span class="add">            nuevos = bitacora.registrar(evento);                             // ahora: colección avisos de MongoDB</span></code></pre>
+<div class="box ojo"><b class="t">Solo en Mongo, no en los dos</b>Guardar en Postgres <b>y</b> en Mongo sería una doble escritura sin transacción común: si una falla, quedan distintas. Es el problema que resolvió el Outbox en la S09. Los avisos se <b>mudan</b>, no se copian.</div>
+
+<h3>5.5 · Reconstruye notificación y comprueba</h3>
+<pre><code><span class="c"># Vuelve a construir solo la imagen de notificacion y la reemplaza</span>
+docker compose up --build -d notificacion
+<span class="c"># Busca en su log la línea del índice</span>
+docker compose logs notificacion | grep avisos</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver</b><code>[avisos] indice clabe_fecha listo en avisos</code></div>
+
+<p><b>Las tres formas.</b> Haz una transferencia de Ana a Beto y otra de Ana a Carla (el comando de 3.3, cambiando la CLABE destino a <code>...003</code>). Luego:</p>
+<pre><code><span class="c"># Muestra todos los avisos, del más viejo al más nuevo</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.find().sort({fecha: 1})'
+<span class="c"># Muestra solo los que tienen teléfono, con tres campos: el esquema lo aplica quien lee</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.find({telefono: {$exists: true}}, {clabe: 1, canal: 1, telefono: 1})'</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver</b>Cuatro avisos con las formas de la sección 5: dos SMS de Ana, un CORREO de Beto y un PUSH de Carla. El segundo comando solo trae los dos de Ana.</div>
+
+<p><b>Los últimos 10.</b> Haz doce transferencias pequeñas de Ana a Beto (de 1 peso) y pide la bitácora de Beto:</p>
+<pre><code><span class="c"># Doce transferencias de 1 peso de Ana a Beto</span>
+for i in $(seq 1 12); do curl -s -o /dev/null -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' \
+  -d '{"claveOrigen":"002180000000000001","claveDestino":"002180000000000002","monto":1}'; done
+<span class="c"># La bitácora de avisos de Beto por el gateway</span>
+curl -s http://localhost:8080/api/notificaciones/002180000000000002</code></pre>
+<div class="box ver"><b class="t">Qué deberías ver</b>Exactamente <b>10</b> avisos, todos <code>CORREO</code>, del más reciente al más viejo.</div>
+
+<p><b>El índice trabaja.</b> <code>explain</code> le pide a Mongo que diga <b>cómo</b> resolvió la consulta, sin cambiar nada:</p>
+<pre><code><span class="c"># Lista los índices; debe aparecer clabe_fecha además de _id_</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.getIndexes()'
+<span class="c"># El plan de la consulta de ultimos(): busca la etapa IXSCAN y totalDocsExamined</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.find({clabe: "002180000000000002"}).sort({fecha: -1}).limit(10).explain("executionStats")'
+<span class="c"># Lo mismo, pero obligando a Mongo a NO usar el índice ($natural = recorrer en orden de disco)</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.find({clabe: "002180000000000002"}).sort({fecha: -1}).limit(10).hint({$natural: 1}).explain("executionStats")'</code></pre>
+<div class="box ver"><b class="t">Lo que dio en la prueba del profe, con 28 avisos</b>
+<table>
+<tr><th></th><th>Etapas</th><th>Documentos examinados</th></tr>
+<tr><td>Con índice</td><td><code>LIMIT ← FETCH ← IXSCAN</code></td><td><b>10</b></td></tr>
+<tr><td>Sin índice</td><td><code>SORT ← COLLSCAN</code></td><td><b>28</b>, todos</td></tr>
+</table>
+Con 28 avisos la diferencia es chica. Con 28 millones, es la diferencia entre leer 10 y leer 28 millones.
+</div>
+<label class="hecho"><input type="checkbox" data-paso="p2"> Veo las tres formas, el endpoint da 10 y tengo los dos explain.</label>
+
+<!-- ============================================================ -->
+<h2 id="s6"><span class="num">6</span>Rompe algo: el evento duplicado</h2>
+<p class="min">5 minutos · Parte 3 · en clase o de tarea.</p>
+<p>La mensajería de la S09 entrega <b>al menos una vez</b>: un evento puede llegar dos veces. Provócalo publicando el mismo evento dos veces desde la API del panel de RabbitMQ. Usa CLABEs inventadas (<code>...091</code> y <code>...092</code>) para no mezclarlo con tus cuentas.</p>
+<pre><code><span class="c"># Publica un evento fijo en el exchange transferencias. Córrelo DOS veces.</span>
+curl -u mexibanco:mexibanco -X POST http://localhost:15672/api/exchanges/%2F/transferencias/publish \
+  -H 'Content-Type: application/json' \
+  -d '{"properties":{"delivery_mode":2,"content_type":"application/json"},"routing_key":"transferencia.realizada","payload_encoding":"string","payload":"{\"eventoId\":\"11111111-2222-4333-8444-555555555555\",\"tipo\":\"TransferenciaRealizada\",\"transferenciaId\":9001,\"clabeOrigen\":\"002180000000000091\",\"clabeDestino\":\"002180000000000092\",\"monto\":25,\"saldoOrigen\":475,\"saldoDestino\":525,\"fecha\":\"2026-10-31T13:00:00Z\"}"}'
+
+<span class="c"># Cuenta los avisos de ese evento</span>
+docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.countDocuments({eventoId: "11111111-2222-4333-8444-555555555555"})'
+<span class="c"># Busca en el log de notificación lo que pasó con el segundo</span>
+docker compose logs notificacion | grep "ya estaba"</code></pre>
+<div class="predice"><b>Predice:</b> dos eventos iguales, dos avisos cada uno. ¿Cuántos documentos quedan?
+<details><summary>Ver la respuesta</summary><p><b>Dos, no cuatro.</b> El segundo evento arma los mismos dos <code>_id</code>; Mongo rechaza los dos inserts y <code>registrar</code> los cuenta como "ya estaba". El <code>_id</code> hace de llave única, sin tabla aparte.</p></details></div>
+<div class="box ver"><b class="t">Qué deberías ver</b>
+<pre><code>{"routed":true}
+{"routed":true}
+2
+[avisos] 11111111-...:002180000000000091 ya estaba: evento repetido, no se duplica
+[avisos] 11111111-...:002180000000000092 ya estaba: evento repetido, no se duplica</code></pre></div>
+<p class="que"><b>Otra forma, como en la S09:</b> levanta notificación con <code>PAUSA_ANTES_DEL_ACK_MS=15000 docker compose up -d notificacion</code>, haz una transferencia, mátalo durante la pausa con <code>docker compose kill notificacion</code> y vuelve a levantarlo sin pausa con <code>docker compose up -d notificacion</code>. El mensaje regresa con <code>redelivered=true</code> y no se duplica nada.</p>
+<label class="hecho"><input type="checkbox" data-paso="p3"> El mismo evento dos veces deja dos avisos y el log dice "ya estaba".</label>
+
+<!-- ============================================================ -->
+<h2 id="s7"><span class="num">7</span>Rompe algo: el dato viejo</h2>
+<p class="min">10 minutos · Parte 4 · en clase o de tarea.</p>
+<p>La caché puede mentir. Provócalo cambiando el saldo en Postgres <b>por fuera</b> de la app, como haría un script mal hecho: así no pasa por el <code>@CacheEvict</code> y nadie borra la copia.</p>
+<div class="dg">
+  <div class="k db nuevo">Redis: el saldo de antes<small>la copia, con TTL</small></div>
+  <div class="a"><span>≠</span></div>
+  <div class="k db verdad">Postgres: 5<small>la verdad</small></div>
+</div>
+<pre><code><span class="c"># 1. Consulta a Ana: su saldo queda en la caché. Anota cuánto tiene.</span>
+curl -s http://localhost:8080/api/cuentas/002180000000000001
+<span class="c"># 2. Cambia el saldo directo en Postgres (psql es la consola de Postgres)</span>
+docker compose exec -T db psql -U mexibanco -d cuenta -c "update cuenta set saldo = 5 where clabe = '002180000000000001'"
+<span class="c"># 3. Cada 5 segundos: cuánto TTL le queda a la copia y qué saldo ve el cliente</span>
+for i in $(seq 1 8); do
+  docker compose exec -T redis redis-cli TTL cuentas::002180000000000001
+  curl -s http://localhost:8080/api/cuentas/002180000000000001; echo
+  sleep 5
+done</code></pre>
+<p>En <b>otra terminal</b>, mientras el saldo viejo sigue en la caché, intenta transferir 100 de Ana a Beto:</p>
+<pre><code>curl -s -X POST http://localhost:8080/api/transferencias -H 'Content-Type: application/json' \
+  -d '{"claveOrigen":"002180000000000001","claveDestino":"002180000000000002","monto":100}'</code></pre>
+<div class="predice"><b>Predice:</b> la app todavía le muestra a Ana su saldo de antes, de cientos de pesos. ¿La transferencia de 100 pasa?
+<details><summary>Ver lo que pasó en la prueba</summary><p><b>No: responde 422, "Saldo insuficiente".</b> El cargo autoriza con <code>CuentaService.consultar</code>, que lee Postgres, y ahí hay 5. La caché engañó a la pantalla, pero no a la decisión. Es la regla 2 de hoy funcionando.</p></details></div>
+<div class="box ver"><b class="t">Lo que dio en la prueba del profe</b>
+<pre><code>TTL 29  saldo 652.00  leidaEn 21:27:04
+TTL 24  saldo 652.00
+...
+TTL 3   saldo 652.00
+TTL -2  saldo 5.00    leidaEn 21:27:36     <span class="c">← caducó, se leyó Postgres</span></code></pre>
+El cliente vio un saldo que ya no existía durante <b>32 segundos</b>.</div>
+<div class="box ojo"><b class="t">Al terminar, regresa el saldo de Ana</b>Corre otra vez el paso 2 con el saldo que tenía Ana. Este <code>UPDATE</code> rompe a propósito el cuadre entre el saldo y los movimientos.</div>
+<label class="hecho"><input type="checkbox" data-paso="p4"> Sé cuántos segundos se vio el saldo viejo y qué contestó la transferencia.</label>
+
+<!-- ============================================================ -->
+<h2 id="s8"><span class="num">8</span>Reto: Redis se cae</h2>
+<p class="min">Opcional, suma puntos · de tarea.</p>
+<pre><code><span class="c"># Apaga solo Redis; todo lo demás sigue arriba</span>
+docker compose stop redis</code></pre>
+<p>Prueba un GET del saldo y una transferencia. En tu versión, ¿qué pasa? La caché era solo una copia para mostrar: ¿debería poder tumbar algo?</p>
+<p>Haz que cuenta siga funcionando sin Redis: el GET va a Postgres (más lento) y la transferencia se completa. Antes de elegir dónde atrapar el error, piensa <b>cuándo</b> ocurre el <code>DEL</code> con <code>transactionAware()</code>, y qué le pasaría a la saga si cuenta contesta 500 a un cargo que <b>ya se confirmó</b>.</p>
+<details class="pista"><summary>Pista 1</summary><p>Spring trae <code>CacheErrorHandler</code>, que atrapa los errores de la caché. Parece la respuesta. Revisa si atrapa también el <code>DEL</code> que corre <b>después</b> del commit.</p></details>
+<details class="pista"><summary>Pista 2</summary><p>Busca en Spring Data Redis la interfaz <code>RedisCacheWriter</code>: es la pieza que de verdad habla con Redis. El builder de la sección 4.1 acepta <code>.cacheWriter(...)</code>.</p></details>
+<p><b>Terminado cuando:</b> con Redis apagado, el GET responde 200, la transferencia responde 201, los saldos cuadran y el log dice qué operación de caché falló. Al encender Redis (<code>docker compose start redis</code>), todo sigue.</p>
+
+<!-- ============================================================ -->
+<h2 id="s9"><span class="num">9</span>Qué entregas</h2>
+<p>En tu rama <code>entregas_apellido_nombre</code> del repo del grupo:</p>
+<pre><code>entregas/apellido_nombre/s11/
+├── bitacora-s11.pdf
+└── codigo/
+    ├── cuenta/               <span class="c">← la carpeta completa del servicio, SIN target/</span>
+    ├── notificacion/         <span class="c">← la carpeta completa del servicio, SIN target/</span>
+    └── docker-compose.yml    <span class="c">← solo si lo cambiaste</span></code></pre>
+<p><b>La bitácora</b>, en PDF y con capturas de cada parte:</p>
+<ol class="pasos">
+<li><b>El punto de partida:</b> diez consultas, diez lecturas a Postgres (sección 3.4).</li>
+<li><b>La caché:</b> tu código explicado con tus palabras, las tres copias compartiendo la caché, el JSON y el TTL en Redis, y la copia borrada después de una transferencia.</li>
+<li><b>Tus medidas:</b> hit ratio de A y B, latencia con y sin caché (todas las corridas) y lecturas a Postgres en cada caso.</li>
+<li><b>Los avisos:</b> las tres formas en <code>mongosh</code>, el endpoint con 10, el índice y los dos <code>explain</code>.</li>
+<li><b>El duplicado</b> y <b>el dato viejo</b>.</li>
+<li><b>Las preguntas de cierre</b> (abajo).</li>
+<li><b>Redis caído,</b> si hiciste el reto.</li>
+</ol>
+<pre><code>git checkout entregas_apellido_nombre          <span class="c"># cámbiate a tu rama de entregas</span>
+git pull origin main                            <span class="c"># trae lo último del repo del grupo</span>
+mkdir -p entregas/apellido_nombre/s11/codigo    <span class="c"># crea la carpeta de esta entrega</span>
+<span class="c"># ... copia cuenta/ y notificacion/ (sin target/) y tu bitacora-s11.pdf ...</span>
+git add entregas/apellido_nombre/s11            <span class="c"># marca la carpeta para el commit</span>
+git commit -m "Lab S11: persistencia políglota y caché"
+git push                                        <span class="c"># súbelo: el push ES la entrega</span></code></pre>
+<p><b>No abras pull request.</b> Tarde no baja puntos, pero queda registrado en tu tendencia (ver <code>ENTREGAS.md</code>).</p>
+
+<h3>Preguntas de cierre</h3>
+<p>Respóndelas en la bitácora, cortas y con tus palabras:</p>
+<ol class="pasos">
+<li>¿Por qué MongoDB para los avisos y <b>no</b> para el saldo? Usa lo que viste: la forma de cada aviso, cómo se leen y qué tendría que garantizar el saldo.</li>
+<li>¿Qué hit ratio mediste en A y en B, y por qué cambia? Con tus números de latencia y de lecturas a Postgres: ¿qué compraste con la caché, velocidad o capacidad?</li>
+<li>¿Qué pasaría si la autorización del cargo leyera el saldo de la caché? Usa lo que viste en la Parte 4.</li>
+<li>Al aplicar un movimiento, ¿por qué se hace <code>DEL</code> de la copia y no <code>SET</code> con el saldo nuevo? ¿Y por qué después del commit y no antes?</li>
+</ol>
+
+<!-- ============================================================ -->
+<h2 id="s10"><span class="num">10</span>Si te atoras</h2>
+<table>
+<tr><th>Síntoma</th><th>Causa probable y arreglo</th></tr>
+<tr><td>Cada GET sigue saliendo como "leida de Postgres"</td><td>Falta <code>@EnableCaching</code> en <code>ConfiguracionCache</code>, o pusiste <code>@Cacheable</code> en <code>CuentaService</code> en lugar de <code>ConsultaDeSaldo</code>. ¿Reconstruiste cuenta?</td></tr>
+<tr><td>En Redis el valor sale con <code>\xac\xed...</code></td><td>Falta el serializador JSON: Spring usó la serialización binaria de Java.</td></tr>
+<tr><td><code>SerializationException</code>, o el GET da 500 desde la segunda vez</td><td>Revisa que el serializador sea de <code>CuentaVista.class</code> y que uses el <code>ObjectMapper</code> que inyecta Spring (ese ya sabe escribir fechas).</td></tr>
+<tr><td>Después de transferir, <code>EXISTS</code> sigue dando 1</td><td>Falta <code>@CacheEvict</code> en <code>cargar</code> o en <code>abonar</code>, o la <code>key</code> no es <code>"#clabe"</code>.</td></tr>
+<tr><td>El índice no aparece</td><td><code>crearIndice()</code> corre al arrancar. Revisa el log: <code>docker compose logs notificacion | grep avisos</code>.</td></tr>
+<tr><td>En Mongo <code>monto</code> sale como texto o como <code>Double</code></td><td>Usa <code>new Decimal128(...)</code> con el <code>BigDecimal</code>.</td></tr>
+<tr><td><code>UnsupportedOperationException: TODO S11</code> en el log de notificación</td><td>Te falta llenar un método de <code>BitacoraDeAvisos</code>: el mensaje dice cuál.</td></tr>
+<tr><td>El build de Docker falla</td><td>Lee el primer <code>ERROR</code> del build: casi siempre es un import que falta. Si cambiaste el constructor del consumidor, regrésalo: ya trae <code>BitacoraDeAvisos</code>.</td></tr>
+<tr><td><code>./mvnw test</code> falla en <code>ConsumidorDeTransferenciasTest</code></td><td>Es esperado: esa prueba todavía revisa la bandeja de Postgres. Docker no corre las pruebas, así que no te bloquea.</td></tr>
+<tr><td><b>Windows:</b> <code>grep</code>, <code>awk</code> o <code>seq</code> "no se reconoce como comando"</td><td>Estás en PowerShell o CMD. Abre <b>Git Bash</b> (ver el recuadro del inicio).</td></tr>
+<tr><td><b>Windows:</b> <code>the input device is not a TTY</code></td><td>Le falta <code>-T</code> al <code>docker compose exec</code>. Todos los de la guía lo traen; si escribiste uno a mano, agrégalo.</td></tr>
+<tr><td><b>Windows:</b> el build falla con <code>/bin/sh^M</code> o <code>./mvnw: not found</code></td><td>El <code>mvnw</code> quedó con finales de línea de Windows. La rama ya trae un <code>.gitattributes</code> que lo evita en un clon nuevo; si clonaste antes, en Git Bash, dentro del repo, corre <code>for f in */mvnw; do sed -i 's/\r$//' "$f"; done</code>. Le quita el final de línea de Windows a los siete <code>mvnw</code> y no toca nada más.</td></tr>
+<tr><td>Quiero empezar de cero con Mongo</td><td><code>docker compose exec -T mongo mongosh notificacion --eval 'db.avisos.drop()'</code> borra la colección; el índice se crea otra vez al reiniciar notificación.</td></tr>
+</table>
+<p>Si cambias un solo servicio, reconstruye solo ese: <code>docker compose up --build -d cuenta</code> o <code>... notificacion</code>. Dudas o errores: abre un Issue en el repo del grupo con el error completo y el comando que corriste.</p>
+
+<footer>Sistemas Distribuidos · FI-UNAM · 2027-1 · Lab S11 · rama <code>06-poliglota-base</code></footer>
+</main>
+
+<script>
+(function(){
+  var cajas=[].slice.call(document.querySelectorAll('input[data-paso]'));
+  var marca=document.getElementById('progreso');
+  function guardado(){try{return JSON.parse(localStorage.getItem('lab-s11')||'{}')}catch(e){return {}}}
+  function pinta(){var n=cajas.filter(function(c){return c.checked}).length;marca.textContent=n+' de '+cajas.length+' pasos';}
+  var g=guardado();
+  cajas.forEach(function(c){
+    c.checked=!!g[c.dataset.paso];
+    c.addEventListener('change',function(){var s=guardado();s[c.dataset.paso]=c.checked;try{localStorage.setItem('lab-s11',JSON.stringify(s))}catch(e){}pinta();});
+  });
+  pinta();
+})();
+</script>
+</body>
+</html>
