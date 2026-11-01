@@ -1,0 +1,70 @@
+package mx.mexibanco.cuenta;
+
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.math.BigDecimal;
+
+/**
+ * Capa web: traduce HTTP a llamadas al servicio y nada mas. Sin reglas de negocio aqui.
+ *
+ * POST /cuentas y GET /cuentas/{clabe} son los publicos de siempre. v11: GET /cuentas/{clabe} contesta
+ * desde ConsultaDeSaldo, la consulta que se puede cachear, y devuelve una CuentaVista (con leidaEn).
+ * POST /cuentas/{clabe}/cargos y /abonos son NUEVOS en v06a y son internos: los usan transferencia
+ * y spei, que en el monolito llamaban a CuentaService.cargar/abonar como metodo. Nadie los protege
+ * todavia (cualquiera con curl puede abonarse dinero): eso lo resuelve el gateway, que no los
+ * expondra hacia afuera, y la seguridad que llega despues.
+ */
+@RestController
+@RequestMapping("/cuentas")
+public class CuentaController {
+
+	private final CuentaService cuentas;
+	private final ConsultaDeSaldo consulta;
+
+	public CuentaController(CuentaService cuentas, ConsultaDeSaldo consulta) {
+		this.cuentas = cuentas;
+		this.consulta = consulta;
+	}
+
+	public record AltaCuenta(@NotBlank String clabe, @NotBlank String titular, @NotNull @PositiveOrZero BigDecimal saldoInicial) {
+	}
+
+	public record Monto(@NotNull @Positive BigDecimal monto) {
+	}
+
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public Cuenta abrir(@Valid @RequestBody AltaCuenta datos) {
+		return cuentas.abrir(datos.clabe(), datos.titular(), datos.saldoInicial());
+	}
+
+	@GetMapping("/{clabe}")
+	public CuentaVista consultar(@PathVariable String clabe) {
+		return consulta.consultar(clabe);
+	}
+
+	/**
+	 * Interno: resta el monto. 404 si la CLABE no existe, 422 si no alcanza el saldo.
+	 * v08: Idempotency-Key opcional. Con la misma clave, un reintento no resta otra vez (ver CuentaService).
+	 */
+	@PostMapping("/{clabe}/cargos")
+	public SaldoAplicado cargar(@PathVariable String clabe,
+								@RequestHeader(name = "Idempotency-Key", required = false) String clave,
+								@Valid @RequestBody Monto cargo) {
+		return cuentas.cargar(clabe, cargo.monto(), clave);
+	}
+
+	/** Interno: suma el monto. 404 si la CLABE no existe. v08: Idempotency-Key opcional, como en cargos. */
+	@PostMapping("/{clabe}/abonos")
+	public SaldoAplicado abonar(@PathVariable String clabe,
+								@RequestHeader(name = "Idempotency-Key", required = false) String clave,
+								@Valid @RequestBody Monto abono) {
+		return cuentas.abonar(clabe, abono.monto(), clave);
+	}
+}
