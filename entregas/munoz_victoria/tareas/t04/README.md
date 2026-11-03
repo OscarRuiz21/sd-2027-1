@@ -2,8 +2,14 @@
 
 **Nombre:** Muñoz San Agustin Victoria Monserrat
 
+
+
 **Número de cuenta:** 320094187
+
+
 **Materia:** Sistemas distribuidos  
+
+
 **Fecha de entrega:** 7 de noviembre de 2026
 
 ## Introducción
