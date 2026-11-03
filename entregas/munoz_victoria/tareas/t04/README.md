@@ -1,6 +1,8 @@
 # T04 · ¿Qué reloj usan las tecnologías que conozco?
 
-**Nombre:** Vico [apellidos]  
+**Nombre:** Muñoz San Agustin Victoria Monserrat
+
+**Número de cuenta:** 320094187
 **Materia:** Sistemas distribuidos  
 **Fecha de entrega:** 7 de noviembre de 2026
 
@@ -10,7 +12,7 @@ En los sistemas distribuidos, las computadoras tienen relojes físicos independi
 
 En este trabajo analizo Apache Kafka, MongoDB y CockroachDB para explicar cómo ordenan sus operaciones y qué sucede cuando existen diferencias entre los relojes de sus servidores.
 
-## 1. Apache Kafka
+## 1\. Apache Kafka
 
 ### ¿Qué es y para qué se usa?
 
@@ -38,7 +40,7 @@ NTP puede ayudar a mantener sincronizados los relojes físicos y las marcas de t
 
 **En resumen:** Kafka utiliza offsets para ordenar mensajes dentro de cada partición, no un reloj lógico de Lamport para todos los mensajes del sistema.
 
-## 2. MongoDB
+## 2\. MongoDB
 
 ### ¿Qué es y para qué se usa?
 
@@ -48,9 +50,9 @@ MongoDB es una base de datos NoSQL orientada a documentos. Almacena información
 
 MongoDB utiliza diferentes mecanismos según la operación.
 
-- **Timestamp interno de BSON:** representa el tiempo en segundos junto con un ordinal que permite distinguir operaciones dentro del mismo segundo. Se utiliza, entre otras cosas, en el registro de operaciones de replicación (*oplog*).
-- **ObjectId:** contiene una marca de tiempo en segundos, un valor aleatorio y un contador. Permite generar identificadores que suelen quedar aproximadamente ordenados por creación, pero no garantiza un orden cronológico exacto.
-- **Tiempo lógico de operaciones:** MongoDB también utiliza marcas de tiempo lógicas, como `clusterTime`, para seguir el avance de las operaciones distribuidas y apoyar las garantías de consistencia causal.
+* **Timestamp interno de BSON:** representa el tiempo en segundos junto con un ordinal que permite distinguir operaciones dentro del mismo segundo. Se utiliza, entre otras cosas, en el registro de operaciones de replicación (*oplog*).
+* **ObjectId:** contiene una marca de tiempo en segundos, un valor aleatorio y un contador. Permite generar identificadores que suelen quedar aproximadamente ordenados por creación, pero no garantiza un orden cronológico exacto.
+* **Tiempo lógico de operaciones:** MongoDB también utiliza marcas de tiempo lógicas, como `clusterTime`, para seguir el avance de las operaciones distribuidas y apoyar las garantías de consistencia causal.
 
 Por tanto, MongoDB no depende de un único tipo de reloj para todas sus funciones.
 
@@ -72,7 +74,7 @@ NTP puede reducir las diferencias entre relojes físicos, pero no sustituye esto
 
 **En resumen:** MongoDB combina marcas de tiempo físicas, contadores y marcas de tiempo lógicas. La garantía depende de si hablamos de identificadores, replicación o consistencia causal.
 
-## 3. CockroachDB
+## 3\. CockroachDB
 
 ### ¿Qué es y para qué se usa?
 
@@ -84,8 +86,8 @@ CockroachDB utiliza **relojes lógicos híbridos**, conocidos como HLC (*Hybrid 
 
 Un HLC combina dos componentes:
 
-- **Componente físico:** se basa en la hora del sistema y se mantiene cerca del tiempo de pared.
-- **Componente lógico:** permite distinguir eventos que tienen la misma parte física y mantener el avance lógico del reloj.
+* **Componente físico:** se basa en la hora del sistema y se mantiene cerca del tiempo de pared.
+* **Componente lógico:** permite distinguir eventos que tienen la misma parte física y mantener el avance lógico del reloj.
 
 Cuando un nodo recibe una marca de tiempo de otro nodo, actualiza su propio HLC para incorporar esa información. De esta manera, puede representar relaciones causales sin depender exclusivamente de que los relojes físicos sean idénticos.
 
@@ -109,11 +111,11 @@ El componente lógico del HLC ayuda a mantener el orden de los eventos relaciona
 
 ## Comparación final
 
-| Tecnología | Mecanismo principal de orden | Alcance de la garantía | Papel del reloj físico |
-|---|---|---|---|
-| Apache Kafka | Offsets de los mensajes | Dentro de una partición | Las marcas de tiempo son útiles, pero no determinan el orden del registro |
-| MongoDB | Depende de la función: timestamps, orden de replicación y tiempo lógico | Replicación y operaciones causales, según la configuración | Puede afectar el orden aproximado de los ObjectId |
-| CockroachDB | Reloj lógico híbrido (HLC) y protocolos de transacción | Transacciones distribuidas, según las garantías de consistencia | Es una parte del HLC y debe respetar los límites de desfase configurados |
+|Tecnología|Mecanismo principal de orden|Alcance de la garantía|Papel del reloj físico|
+|-|-|-|-|
+|Apache Kafka|Offsets de los mensajes|Dentro de una partición|Las marcas de tiempo son útiles, pero no determinan el orden del registro|
+|MongoDB|Depende de la función: timestamps, orden de replicación y tiempo lógico|Replicación y operaciones causales, según la configuración|Puede afectar el orden aproximado de los ObjectId|
+|CockroachDB|Reloj lógico híbrido (HLC) y protocolos de transacción|Transacciones distribuidas, según las garantías de consistencia|Es una parte del HLC y debe respetar los límites de desfase configurados|
 
 ## Conclusión
 
@@ -129,4 +131,5 @@ La principal diferencia es el alcance de las garantías: un orden dentro de una 
 2. MongoDB, Inc. (s. f.). *BSON types*. MongoDB Manual. https://www.mongodb.com/docs/manual/reference/bson-types/
 3. MongoDB, Inc. (s. f.). *Read isolation, consistency, and recency*. MongoDB Manual. https://www.mongodb.com/docs/manual/core/read-isolation-consistency-recency/
 4. Cockroach Labs. (s. f.). *CockroachDB design documentation: Hybrid logical clock*. GitHub. https://github.com/cockroachdb/cockroach/blob/master/docs/design.md
-5. Kulkarni, S., Demirbas, M., Madappa, D., Avva, B., & Leone, M. (2014). *Logical physical clocks and consistent snapshots in globally distributed databases*. https://cse.buffalo.edu/tech-reports/2014-04.pdf
+5. Kulkarni, S., Demirbas, M., Madappa, D., Avva, B., \& Leone, M. (2014). *Logical physical clocks and consistent snapshots in globally distributed databases*. https://cse.buffalo.edu/tech-reports/2014-04.pdf
+
