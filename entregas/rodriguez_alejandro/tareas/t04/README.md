@@ -148,3 +148,12 @@ public class LamportSimulation {
 En la siguiente imagen se muestra la salida de la terminal al compilar y ejecutar la simulación, donde se puede observar claramente cómo los relojes se sincronizan y actualizan respetando la causalidad descrita:
 
 ![Evidencia de ejecución de relojes de Lamport](lamport/Evidencia_Lamport.png)
+
+
+# REFERENCIAS:
+
+[1] The Apache Software Foundation, "Cassandra Basics," *Apache Cassandra*. [En línea]. Disponible: https://cassandra.apache.org/_/cassandra-basics.html
+
+[2] Google, "Cloud Spanner," *Google Cloud*. [En línea]. Disponible: https://cloud.google.com/spanner?hl=es
+
+[3] The Apache Software Foundation, "Introduction," *Apache Kafka*. [En línea]. Disponible: https://kafka.apache.org/44/getting-started/introduction/
