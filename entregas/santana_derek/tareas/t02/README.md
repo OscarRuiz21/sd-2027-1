@@ -2,7 +2,7 @@
 
 Derek Santana Cardoso · Sistemas Distribuidos 2027-1 · 19 de octubre de 2026.
 Preparado con asistencia de IA y fuentes primarias. Lectura personal y explicación
-oral pendientes antes de entregar.
+oral pendientes; no se afirma que este repaso ya se haya realizado.
 
 ## 1. Zab: ordenar cambios en ZooKeeper
 

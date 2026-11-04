@@ -1,8 +1,8 @@
 # T01 · Un catálogo por REST y por gRPC
 
 Derek Santana Cardoso · Sistemas Distribuidos 2027-1.
-Implementación preparada con asistencia de IA; revisa el código y practica la
-explicación antes de entregarlo.
+Implementación preparada con asistencia de IA. Repaso y explicación personal
+pendientes; no se afirma dominio personal por haber ejecutado las pruebas.
 
 ## Diseño
 
@@ -44,3 +44,7 @@ los controladores.
 
 Fuente de generación y uso de stubs:
 [gRPC, Python Quickstart](https://grpc.io/docs/languages/python/quickstart/).
+
+Revalidación asistida del 3 de noviembre: el cliente Docker terminó con código 0
+y comprobó ambos productos y el caso inexistente. Registro en
+`evidencias/revalidacion-2026-11-03.txt`.
