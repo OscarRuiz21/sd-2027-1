@@ -1,0 +1,14 @@
+S1 | reloj=1 | LOCAL: Prepara una solicitud
+S2 | reloj=1 | LOCAL: Carga su configuracion
+S3 | reloj=1 | LOCAL: Revisa su estado
+S1 | reloj=2 | ENVIA M1 a S2
+S1 | reloj=3 | ENVIA M2 a S3
+S3 | reloj=4 | RECIBE M2 de S1 (marca=3)
+S3 | reloj=5 | ENVIA M3 a S2
+S2 | reloj=6 | RECIBE M3 de S3 (marca=5)
+S2 | reloj=7 | RECIBE M1 de S1 (marca=2)
+S2 | reloj=8 | ENVIA M4 a S1
+S1 | reloj=9 | RECIBE M4 de S2 (marca=8)
+S1 | reloj=10 | LOCAL: Procesa la respuesta
+S1 | reloj=11 | ENVIA M5 a S3
+S3 | reloj=12 | RECIBE M5 de S1 (marca=11)
