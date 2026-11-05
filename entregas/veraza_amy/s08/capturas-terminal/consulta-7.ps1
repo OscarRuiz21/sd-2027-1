@@ -1,0 +1,1 @@
+﻿Get-Content transferencia/src/main/java/mx/mexibanco/clientes/CircuitoCuenta.java | Select-Object -First 30
