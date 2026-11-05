@@ -1,0 +1,805 @@
+{
+  "info": {
+    "_postman_id": "42013f2a-eb8b-4070-9a49-fd85f3f21b11",
+    "name": "Mexi Banco v05.1",
+    "description": "Las peticiones del lab de la S5 contra el monolito de Mexi Banco (etiqueta v05.1), en orden. Levanta el sistema con `docker compose up --build` y córrelas de arriba a abajo, o todas de un jalón con Run collection. Cada petición trae sus pruebas.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "origen",
+      "value": "002180000000000001"
+    },
+    {
+      "key": "destino",
+      "value": "012180000000000001"
+    },
+    {
+      "key": "idempotencyKey",
+      "value": "prueba-001"
+    },
+    {
+      "key": "transferenciaId",
+      "value": ""
+    },
+    {
+      "key": "speiId",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "1 · Arriba y respondiendo",
+      "description": "Parte 1 del lab: el sistema responde y abres tu primera cuenta.",
+      "item": [
+        {
+          "name": "Salud de la app",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"status UP\", () => pm.expect(pm.response.json().status).to.eql(\"UP\"));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Abrir cuenta origen (1000)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{origen}}\",\n  \"titular\": \"Ana\",\n  \"saldoInicial\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "prerequest",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "// CLABEs y clave de idempotencia nuevas en cada corrida: así la colección se puede correr",
+                  "// muchas veces sobre la misma base sin chocar con cuentas que ya existen (409).",
+                  "const sello = String(Date.now()).slice(-12);",
+                  "pm.collectionVariables.set(\"origen\", \"002180\" + sello);",
+                  "pm.collectionVariables.set(\"destino\", \"012180\" + sello);",
+                  "pm.collectionVariables.set(\"idempotencyKey\", \"prueba-\" + sello);"
+                ]
+              }
+            },
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Consultar cuenta origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{origen}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"saldo 1000\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(1000));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "2 · Transferencia interna",
+      "description": "Parte 2 del lab: una transferencia es UNA transacción local; los saldos cuadran.",
+      "item": [
+        {
+          "name": "Abrir cuenta destino (500)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{destino}}\",\n  \"titular\": \"Beto\",\n  \"saldoInicial\": 500\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"saldo 500\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(500));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Transferir 200 de origen a destino",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{origen}}\",\n  \"claveDestino\": \"{{destino}}\",\n  \"monto\": 200\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 201\", () => pm.response.to.have.status(201));",
+                  "pm.collectionVariables.set(\"transferenciaId\", pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Consultar origen (800)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{origen}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"saldo 800\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(800));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Consultar destino (700)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{destino}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{destino}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"saldo 700\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(700));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Consultar la transferencia",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias/{{transferenciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias",
+                "{{transferenciaId}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"monto 200\", () => pm.expect(Number(pm.response.json().monto)).to.eql(200));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "3 · Idempotencia",
+      "description": "Parte 3 del lab: el mismo SPEI dos veces con la misma Idempotency-Key cobra una sola vez.",
+      "item": [
+        {
+          "name": "SPEI de 50 (primer envío)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{idempotencyKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/spei",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "spei"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{origen}}\",\n  \"bancoDestino\": \"BBVA\",\n  \"claveDestino\": \"012180000000000099\",\n  \"monto\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"ENVIADO\", () => pm.expect(pm.response.json().estado).to.eql(\"ENVIADO\"));",
+                  "pm.collectionVariables.set(\"speiId\", pm.response.json().id);"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "SPEI de 50 (reintento, misma clave)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "{{idempotencyKey}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/spei",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "spei"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{origen}}\",\n  \"bancoDestino\": \"BBVA\",\n  \"claveDestino\": \"012180000000000099\",\n  \"monto\": 50\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 201\", () => pm.response.to.have.status(201));",
+                  "pm.test(\"es el MISMO SPEI, no uno nuevo\", () => pm.expect(String(pm.response.json().id)).to.eql(String(pm.collectionVariables.get(\"speiId\"))));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Consultar origen (750, no 700)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{origen}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"saldo 750\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(750));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "4 · El monolito por dentro",
+      "description": "Estado de cuenta y avisos: lo que dejaron las operaciones en cada módulo.",
+      "item": [
+        {
+          "name": "Estado de cuenta del origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/movimientos?clabe={{origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "movimientos"
+              ],
+              "query": [
+                {
+                  "key": "clabe",
+                  "value": "{{origen}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "const m = pm.response.json();",
+                  "pm.test(\"un solo SPEI_ENVIADO\", () => pm.expect(m.filter(x => x.tipo === \"SPEI_ENVIADO\").length).to.eql(1));",
+                  "pm.test(\"los movimientos suman el saldo (750)\", () => pm.expect(m.reduce((s, x) => s + Number(x.monto), 0)).to.eql(750));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Avisos del origen",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/notificaciones?clabe={{origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "notificaciones"
+              ],
+              "query": [
+                {
+                  "key": "clabe",
+                  "value": "{{origen}}"
+                }
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"un aviso por la transferencia y uno por el SPEI\", () => pm.expect(pm.response.json().length).to.eql(2));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "5 · Cuando algo sale mal",
+      "description": "Cada error de negocio tiene su código. Ninguno debe ser 500.",
+      "item": [
+        {
+          "name": "CLABE que no existe (404)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/999999999999999999",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "999999999999999999"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 404\", () => pm.response.to.have.status(404));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "CLABE repetida (409)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clabe\": \"{{origen}}\",\n  \"titular\": \"Otra\",\n  \"saldoInicial\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 409\", () => pm.response.to.have.status(409));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Cuerpo sin clabe (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titular\": \"Sin clabe\",\n  \"saldoInicial\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 400\", () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Saldo insuficiente (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{origen}}\",\n  \"claveDestino\": \"{{destino}}\",\n  \"monto\": 999999\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 422\", () => pm.response.to.have.status(422));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Transferir a la misma cuenta (422)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/transferencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "transferencias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{origen}}\",\n  \"claveDestino\": \"{{origen}}\",\n  \"monto\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 422\", () => pm.response.to.have.status(422));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "SPEI sin Idempotency-Key (400)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/spei",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "spei"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"claveOrigen\": \"{{origen}}\",\n  \"bancoDestino\": \"BBVA\",\n  \"claveDestino\": \"012180000000000099\",\n  \"monto\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 400\", () => pm.response.to.have.status(400));"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "name": "Los errores no movieron el saldo (750)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/cuentas/{{origen}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "cuentas",
+                "{{origen}}"
+              ]
+            }
+          },
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test(\"responde 200\", () => pm.response.to.have.status(200));",
+                  "pm.test(\"saldo 750\", () => pm.expect(Number(pm.response.json().saldo)).to.eql(750));"
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
