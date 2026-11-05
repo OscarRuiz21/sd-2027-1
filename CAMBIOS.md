@@ -2,6 +2,10 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-11-04
+
+- **Corte de entregas del 4 de noviembre** en `calificaciones/P00-L10-corte-04nov.xlsx`, por número de cuenta: entran los labs S07, S08 y S09 y las lecturas 7 y 9. Si tu renglón dice **parcial**, tu pestaña dice qué falta y cómo se corrige. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, quedó como **tarde** (no baja puntos). T04, S11 y Lectura 10 siguen abiertas hasta el sábado 7 de noviembre antes de las 07:00.
+
 ## 2026-10-31
 
 - **Calendario de cierre**, como se dijo en clase: S12 (7 de noviembre) blockchain y telemetría; S13 (14 de noviembre) repaso del semestre; S14 (21 de noviembre) entrevista técnica; S15 (28 de noviembre) presentación del proyecto final, con pitch, diagrama funcional y código. Esta semana sale el examen escrito en casa, a mano, que sirve de acordeón para la entrevista.
