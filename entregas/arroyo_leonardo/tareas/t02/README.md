@@ -62,3 +62,19 @@ Otra diferencia importante aparece al resolver bifurcaciones. Bitcoin sigue la c
 Finalmente, Bitcoin ofrece una seguridad de carácter probabilístico: cuantos más bloques se agregan después de una transacción, más difícil resulta reorganizar la cadena para revertirla.
 
 Ethereum agrega además el concepto de **finalidad**. Una vez que determinados checkpoints quedan finalizados mediante el consenso de los validadores, revertirlos implicaría una violación grave de las reglas de consenso y fuertes consecuencias económicas para los validadores involucrados.
+
+## Fuentes
+
+- [Bitcoin: A Peer-to-Peer Electronic Cash System](https://bitcoin.org/bitcoin.pdf?utm_source=chatgpt.com): Proof of Work, funciones hash, nonce, creación de bloques, consenso descentralizado, bifurcaciones y seguridad basada en trabajo computacional acumulado.
+
+- [Bitcoin Developer Guide – Mining](https://developer.bitcoin.org/devguide/mining.html?utm_source=chatgpt.com): funcionamiento de la minería, construcción de bloques candidatos, búsqueda del nonce, cálculo de hashes, recompensas y participación de los mineros.
+
+- [Consensus Mechanisms – Ethereum](https://ethereum.org/es/developers/docs/consensus-mechanisms/?utm_source=chatgpt.com): fundamentos de los mecanismos de consenso, diferencias entre Proof of Work y Proof of Stake, seguridad de las redes y reglas de selección de cadenas.
+
+- [Proof-of-Stake (PoS) – Ethereum](https://ethereum.org/es/developers/docs/consensus-mechanisms/pos/?utm_source=chatgpt.com): funcionamiento de Proof of Stake, validadores, depósito de 32 ETH, staking, slots de 12 segundos, attestations, selección de bloques y seguridad económica.
+
+- [Block Proposal – Ethereum](https://ethereum.org/es/developers/docs/consensus-mechanisms/pos/block-proposal/?utm_source=chatgpt.com): creación y propuesta de bloques, selección pseudoaleatoria de validadores, funcionamiento de RANDAO y organización temporal mediante slots y epochs.
+
+- [Proof-of-Stake Rewards and Penalties – Ethereum](https://ethereum.org/developers/docs/consensus-mechanisms/pos/rewards-and-penalties/?utm_source=chatgpt.com): recompensas por participación, penalizaciones a validadores, slashing e incentivos económicos que protegen el consenso de Ethereum.
+
+- [Proof-of-Stake vs Proof-of-Work – Ethereum](https://ethereum.org/developers/docs/consensus-mechanisms/pos/pos-vs-pow/?utm_source=chatgpt.com): comparación entre PoW y PoS, diferencias en consumo energético, recursos necesarios para proteger las redes, resistencia a ataques y garantías de seguridad.
