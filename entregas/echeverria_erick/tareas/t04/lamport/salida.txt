@@ -1,0 +1,14 @@
+=== SIMULACIÓN DE RELOJES DE LAMPORT ===
+
+[Servidor-1] EVENTO LOCAL: Procesar registros iniciales | Reloj: 1
+[Servidor-1] ENVÍA a [Servidor-2]: "M1: Actualización de estado" | Reloj: 2
+[Servidor-2] RECIBE de [Servidor-1]: "M1: Actualización de estado" | Reloj: 3
+[Servidor-2] EVENTO LOCAL: Actualizar cache | Reloj: 4
+[Servidor-2] ENVÍA a [Servidor-3]: "M2: Notificación en cascada" | Reloj: 5
+[Servidor-3] RECIBE de [Servidor-2]: "M2: Notificación en cascada" | Reloj: 6
+[Servidor-3] ENVÍA a [Servidor-1]: "M3: Confirmación a S1" | Reloj: 7
+[Servidor-1] RECIBE de [Servidor-3]: "M3: Confirmación a S1" | Reloj: 8
+[Servidor-1] ENVÍA a [Servidor-3]: "M4: Cierre de hilo de ejecución" | Reloj: 9
+[Servidor-3] RECIBE de [Servidor-1]: "M4: Cierre de hilo de ejecución" | Reloj: 10
+
+=== FIN DE SIMULACIÓN ===
