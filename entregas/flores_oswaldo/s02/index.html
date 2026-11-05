@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Mi primer contenedor</title>
+</head>
+
+<body style="font-family:sans-serif">
+
+    <h1>Hola, soy Oswaldo Flores H</h1>
+
+    <p>Esta página la sirve un contenedor que yo construí.</p>
+
+    <h2>Comandos que más me sirvieron para la practica</h2>
+
+    <table border="0" cellpadding="2">
+        <tr>
+            <th>Comando</th>
+            <th>¿Para qué sirve?</th>
+        </tr>
+
+        <tr>
+            <td>docker pull nginx:alpine</td>
+            <td>Este comando nos permite descargar imagenes hacias mi maquina, sin crear algun contenedor previamente, lo que permite ver que las iamgenes sono son plantillas de lectura que se obtienen una sola vez y como apartir de ella podemos generar contenedores posteriormente</td>
+        </tr>
+
+        <tr>
+            <td>docker images</td>
+            <td>Este comando me sirvio para confirmar al correcta contruccion de mi imagen, ya que al ejecutarlo pude verla agregada a la lista de imagenes disponibles en mi maquina, junto con las que ya tenia descargadas previamente y con esto comprobamos que no solo se usan solo imagenes ajenas si no que tambien las podemos crear</td>
+        </tr>
+
+        <tr>
+            <td>docker ps -a</td>
+            <td>Este comando nos permitio listar todos los contenedores que existen dentro de mi maquina sin importar el estado en el que se encuentren. A diferencia de docker ps que solo muestra contenedores en ejecucion, la bandera -a implementada nos permite comprobar si los contenedores detenidos siguen existiendo</td>
+        </tr>
+
+        <tr>
+            <td>docker stop web1 y docker start web1</td>
+            <td>Estos comandos me premitieron comprobar que detener un contenerdor no es lo mismo que eliminarlo. Con stop el contenedor solo se detiene pero sigue existiendo y este puede ser visible con docker ps -a y a su vez con start se vuelve a habilitar en su ejecucion sin necesidad de crearlo de nuevo desde cero.</td>
+        </tr>
+
+        <tr>
+            <td>docker rm web1</td>
+            <td>Este comando nos permite eliminar de manera definitiva un contenedor anteriormente detenidoy esto nos permitio apreciar como solo podemos borrar un contenedor cuando ya no esta en ejecucion y con esto poder liberar los recursos que se usaban</td>
+        </tr>
+    </table>
+
+</body>
+
+</html>
