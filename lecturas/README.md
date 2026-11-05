@@ -96,3 +96,18 @@ La S11 es de persistencia políglota y caché, con una parte corta de blockchain
 esta pregunta: ¿qué datos de Mexi Banco separarían de la base relacional y qué consistencia pierden
 al hacerlo? Lean a Nakamoto como paper de sistemas distribuidos: orden y acuerdo sin coordinador.
 La caché no tiene lectura: se ve en clase.
+
+## Lectura 10 · para la S12 (7 de noviembre)
+
+- **Obligatoria.** OpenTelemetry, *Observability primer*: https://opentelemetry.io/docs/concepts/observability-primer/
+- Opcional. Sigelman et al., *Dapper, a Large-Scale Distributed Systems Tracing Infrastructure*
+  (Google, 2010), **secciones 1 y 2** (páginas 1 a 5):
+  https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/
+- Opcional. Nakamoto, *Bitcoin* (2008), **secciones 7 a 12**, el resto del paper de la Lectura 9:
+  https://bitcoin.org/bitcoin.pdf
+- 2 preguntas + 1 hallazgo en la [Discussion #58](https://github.com/OscarRuiz21/sd-2027-1/discussions/58):
+  **en tiempo hasta el sábado 7-nov, 06:59 · tarde hasta el domingo 8-nov.**
+
+La S12 es de telemetría y del resto de blockchain. Lean el *primer* con esta pregunta: una
+transferencia de Mexi Banco tardó 4 segundos; ¿cómo averiguan en cuál de los servicios se fue el
+tiempo, si cada uno tiene sus propios logs?
