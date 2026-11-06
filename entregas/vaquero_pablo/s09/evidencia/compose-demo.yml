@@ -1,0 +1,5 @@
+services:
+  notificacion:
+    environment:
+      SIN_IDEMPOTENCIA: ${SIN_IDEMPOTENCIA:-false}
+      REENCOLAR_INVALIDOS: ${REENCOLAR_INVALIDOS:-false}

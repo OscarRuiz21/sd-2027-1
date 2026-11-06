@@ -1,0 +1,213 @@
+{
+  "fecha": "2026-11-06T12:17:08.259871+00:00",
+  "cola": {
+    "status": 200,
+    "body": {
+      "consumer_details": [
+        {
+          "arguments": {},
+          "channel_details": {
+            "connection_name": "172.21.0.12:38144 -> 172.21.0.4:5672",
+            "name": "172.21.0.12:38144 -> 172.21.0.4:5672 (1)",
+            "node": "rabbit@bb972d3cd99f",
+            "number": 1,
+            "peer_host": "172.21.0.12",
+            "peer_port": 38144,
+            "user": "mexibanco"
+          },
+          "ack_required": true,
+          "active": true,
+          "activity_status": "up",
+          "consumer_tag": "amq.ctag-tSyhwz5vTK6-Ihq8oAX1hw",
+          "consumer_timeout": 1800000,
+          "exclusive": false,
+          "prefetch_count": 5,
+          "queue": {
+            "name": "notificacion.transferencias",
+            "vhost": "/"
+          }
+        }
+      ],
+      "arguments": {
+        "x-dead-letter-exchange": "transferencias.dlx",
+        "x-dead-letter-routing-key": "notificacion.transferencias",
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 1.0,
+      "consumer_utilisation": 1.0,
+      "consumers": 1,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 7
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-11-06T12:16:54.702+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 22368,
+      "message_bytes": 0,
+      "message_bytes_persistent": 0,
+      "message_bytes_ram": 0,
+      "message_bytes_ready": 0,
+      "message_bytes_unacknowledged": 0,
+      "message_stats": {
+        "ack": 11,
+        "ack_details": {
+          "rate": 0.0
+        },
+        "deliver": 374,
+        "deliver_details": {
+          "rate": 0.0
+        },
+        "deliver_get": 374,
+        "deliver_get_details": {
+          "rate": 0.0
+        },
+        "deliver_no_ack": 0,
+        "deliver_no_ack_details": {
+          "rate": 0.0
+        },
+        "get": 0,
+        "get_details": {
+          "rate": 0.0
+        },
+        "get_empty": 0,
+        "get_empty_details": {
+          "rate": 0.0
+        },
+        "get_no_ack": 0,
+        "get_no_ack_details": {
+          "rate": 0.0
+        },
+        "publish": 12,
+        "publish_details": {
+          "rate": 0.0
+        },
+        "redeliver": 362,
+        "redeliver_details": {
+          "rate": 0.0
+        }
+      },
+      "messages": 0,
+      "messages_details": {
+        "rate": 0.0
+      },
+      "messages_persistent": 0,
+      "messages_ram": 0,
+      "messages_ready": 0,
+      "messages_ready_details": {
+        "rate": 0.0
+      },
+      "messages_ready_ram": 0,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias",
+      "node": "rabbit@bb972d3cd99f",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 260422,
+      "reductions_details": {
+        "rate": 0.0
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    }
+  },
+  "dlq": {
+    "status": 200,
+    "body": {
+      "consumer_details": [],
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 0,
+      "consumer_utilisation": 0,
+      "consumers": 0,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 27
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-11-06T12:15:32.328+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 6184,
+      "message_bytes": 9,
+      "message_bytes_persistent": 9,
+      "message_bytes_ram": 9,
+      "message_bytes_ready": 9,
+      "message_bytes_unacknowledged": 0,
+      "messages": 1,
+      "messages_details": {
+        "rate": 0.0
+      },
+      "messages_persistent": 1,
+      "messages_ram": 1,
+      "messages_ready": 1,
+      "messages_ready_details": {
+        "rate": 0.0
+      },
+      "messages_ready_ram": 1,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias.dlq",
+      "node": "rabbit@bb972d3cd99f",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 14369,
+      "reductions_details": {
+        "rate": 0.0
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    }
+  },
+  "normal": {
+    "status": 201,
+    "body": {
+      "id": 9,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 2,
+      "fecha": "2026-11-06T12:17:07.913749881Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 982.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-11-06T12:17:08.099759923Z"
+    }
+  },
+  "logs": "notificacion-1  | 2026-11-06T12:15:30.125Z  INFO 1 --- [notificacion] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.\nnotificacion-1  | 2026-11-06T12:15:30.165Z  WARN 1 --- [notificacion] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\nnotificacion-1  | 2026-11-06T12:15:30.172Z  INFO 1 --- [notificacion] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'\nnotificacion-1  | 2026-11-06T12:15:30.233Z  INFO 1 --- [notificacion] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING\nnotificacion-1  | 2026-11-06T12:15:30.250Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1\nnotificacion-1  | 2026-11-06T12:15:30.253Z  INFO 1 --- [notificacion] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true\nnotificacion-1  | 2026-11-06T12:15:30.258Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server\nnotificacion-1  | 2026-11-06T12:15:30.503Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200\nnotificacion-1  | 2026-11-06T12:15:30.504Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5\nnotificacion-1  | 2026-11-06T12:15:30.508Z  INFO 1 --- [notificacion] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4\nnotificacion-1  | 2026-11-06T12:15:30.509Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1793967330509 with initial instances count: 6\nnotificacion-1  | 2026-11-06T12:15:30.514Z  INFO 1 --- [notificacion] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application NOTIFICACION with eureka with status UP\nnotificacion-1  | 2026-11-06T12:15:30.514Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1793967330514, current=UP, previous=STARTING]\nnotificacion-1  | 2026-11-06T12:15:30.517Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/555bee2a4d17:notificacion:8080: registering service...\nnotificacion-1  | 2026-11-06T12:15:30.526Z  INFO 1 --- [notificacion] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'\nnotificacion-1  | 2026-11-06T12:15:30.527Z  INFO 1 --- [notificacion] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080\nnotificacion-1  | 2026-11-06T12:15:30.530Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [rabbitmq:5672]\nnotificacion-1  | 2026-11-06T12:15:30.543Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/555bee2a4d17:notificacion:8080 - registration status: 204\nnotificacion-1  | 2026-11-06T12:15:30.565Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#45382749:0/SimpleConnection@56527ff2 [delegate=amqp://mexibanco@172.21.0.4:5672/, localPort=38144]\nnotificacion-1  | 2026-11-06T12:15:30.634Z  INFO 1 --- [notificacion] [           main] mx.mexibanco.NotificacionApplication     : Started NotificacionApplication in 4.671 seconds (process running for 5.184)\nnotificacion-1  | 2026-11-06T12:15:30.635Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, reencolar=false: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:15:35.629Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\nnotificacion-1  | 2026-11-06T12:15:35.630Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\nnotificacion-1  | 2026-11-06T12:15:35.637Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms\nnotificacion-1  | 2026-11-06T12:16:50.146Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.notificacion.NotificacionService     : [notificacion] 002180000000000001 · DEVOLUCION_TRANSFERENCIA por 5, saldo resultante 984.00\nnotificacion-1  | 2026-11-06T12:16:50.207Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRevertida de la transferencia 8 (evento 1c0f9f9b-632a-36db-854b-c7088803bfa5, redelivered=false): 1 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-06T12:17:08.132Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.notificacion.NotificacionService     : [notificacion] 002180000000000001 · TRANSFERENCIA_ENVIADA por 2, saldo resultante 982.00\nnotificacion-1  | 2026-11-06T12:17:08.132Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.notificacion.NotificacionService     : [notificacion] 002180000000000002 · TRANSFERENCIA_RECIBIDA por 2, saldo resultante 518.00\nnotificacion-1  | 2026-11-06T12:17:08.139Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 9 (evento 453a2682-af6e-32fb-883d-628f73a13590, redelivered=false): 2 aviso(s) nuevo(s)\n"
+}

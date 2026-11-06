@@ -1,0 +1,92 @@
+{
+  "fecha": "2026-11-06T12:07:22.610111+00:00",
+  "evento": {
+    "eventoId": "fbbe6f4e-238b-4d6a-8e2a-54c6ec2d58b8",
+    "tipo": "TransferenciaRealizada",
+    "transferenciaId": 99999,
+    "clabeOrigen": "002180000000000001",
+    "clabeDestino": "002180000000000002",
+    "monto": 27.89,
+    "saldoOrigen": 123.45,
+    "saldoDestino": 678.9,
+    "fecha": "2026-11-06T12:07:20.652866+00:00"
+  },
+  "publicaciones": [
+    {
+      "status": 200,
+      "body": {
+        "routed": true
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "routed": true
+      }
+    }
+  ],
+  "avisos_nuevos": [
+    2,
+    2
+  ],
+  "bandeja": {
+    "status": 200,
+    "body": [
+      {
+        "id": 17,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 27.89, saldo resultante 123.45",
+        "fecha": "2026-11-06T12:07:20.870915Z"
+      },
+      {
+        "id": 15,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 23.45, saldo resultante 123.45",
+        "fecha": "2026-11-06T12:05:54.911256Z"
+      },
+      {
+        "id": 13,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 23.45, saldo resultante 123.45",
+        "fecha": "2026-11-06T12:05:54.207357Z"
+      },
+      {
+        "id": 11,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 984.00",
+        "fecha": "2026-11-06T12:04:46.722915Z"
+      },
+      {
+        "id": 9,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 985.00",
+        "fecha": "2026-11-06T12:04:46.720590Z"
+      },
+      {
+        "id": 7,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 986.00",
+        "fecha": "2026-11-06T12:04:46.692040Z"
+      },
+      {
+        "id": 5,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 987.00",
+        "fecha": "2026-11-06T12:02:12.165213Z"
+      },
+      {
+        "id": 3,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 988.00",
+        "fecha": "2026-11-06T12:02:12.162540Z"
+      },
+      {
+        "id": 1,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 989.00",
+        "fecha": "2026-11-06T12:02:12.135822Z"
+      }
+    ]
+  },
+  "logs": "notificacion-1  | 2026-11-06T12:07:19.082Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1\nnotificacion-1  | 2026-11-06T12:07:19.085Z  INFO 1 --- [notificacion] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true\nnotificacion-1  | 2026-11-06T12:07:19.089Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server\nnotificacion-1  | 2026-11-06T12:07:19.275Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200\nnotificacion-1  | 2026-11-06T12:07:19.276Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5\nnotificacion-1  | 2026-11-06T12:07:19.277Z  INFO 1 --- [notificacion] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4\nnotificacion-1  | 2026-11-06T12:07:19.277Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1793966839277 with initial instances count: 7\nnotificacion-1  | 2026-11-06T12:07:19.281Z  INFO 1 --- [notificacion] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application NOTIFICACION with eureka with status UP\nnotificacion-1  | 2026-11-06T12:07:19.281Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1793966839281, current=UP, previous=STARTING]\nnotificacion-1  | 2026-11-06T12:07:19.282Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/6a4c4017b093:notificacion:8080: registering service...\nnotificacion-1  | 2026-11-06T12:07:19.289Z  INFO 1 --- [notificacion] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'\nnotificacion-1  | 2026-11-06T12:07:19.290Z  INFO 1 --- [notificacion] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080\nnotificacion-1  | 2026-11-06T12:07:19.292Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [rabbitmq:5672]\nnotificacion-1  | 2026-11-06T12:07:19.306Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/6a4c4017b093:notificacion:8080 - registration status: 204\nnotificacion-1  | 2026-11-06T12:07:19.340Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6a063931:0/SimpleConnection@56527ff2 [delegate=amqp://mexibanco@172.21.0.4:5672/, localPort=32888]\nnotificacion-1  | 2026-11-06T12:07:19.395Z  INFO 1 --- [notificacion] [           main] mx.mexibanco.NotificacionApplication     : Started NotificacionApplication in 4.054 seconds (process running for 4.397)\nnotificacion-1  | 2026-11-06T12:07:20.076Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\nnotificacion-1  | 2026-11-06T12:07:20.076Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\nnotificacion-1  | 2026-11-06T12:07:20.077Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms\nnotificacion-1  | 2026-11-06T12:07:20.870Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.notificacion.NotificacionService     : [notificacion] 002180000000000001 · TRANSFERENCIA_ENVIADA por 27.89, saldo resultante 123.45\nnotificacion-1  | 2026-11-06T12:07:20.870Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.notificacion.NotificacionService     : [notificacion] 002180000000000002 · TRANSFERENCIA_RECIBIDA por 27.89, saldo resultante 678.9\nnotificacion-1  | 2026-11-06T12:07:20.900Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 99999 (evento fbbe6f4e-238b-4d6a-8e2a-54c6ec2d58b8, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-06T12:07:21.570Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.notificacion.NotificacionService     : [notificacion] evento fbbe6f4e-238b-4d6a-8e2a-54c6ec2d58b8 de la transferencia 99999 repetido: ya se aviso, no se guarda nada\nnotificacion-1  | 2026-11-06T12:07:21.570Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 99999 (evento fbbe6f4e-238b-4d6a-8e2a-54c6ec2d58b8, redelivered=false): 0 aviso(s) nuevo(s)\n"
+}

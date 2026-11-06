@@ -1,0 +1,48 @@
+{
+  "fecha": "2026-11-06T12:17:40.539558+00:00",
+  "respuesta": {
+    "status": 504,
+    "body": {
+      "timestamp": "2026-11-06T12:17:40.027+00:00",
+      "path": "/api/transferencias",
+      "status": 504,
+      "error": "Gateway Timeout",
+      "requestId": "6f2664ed-295"
+    }
+  },
+  "estado": {
+    "status": 200,
+    "body": {
+      "id": 10,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 3.0,
+      "fecha": "2026-11-06T12:17:10.021974Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 979.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-11-06T12:17:10.092075Z"
+    }
+  },
+  "saldos": [
+    {
+      "status": 200,
+      "body": {
+        "id": 1,
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0
+      }
+    },
+    {
+      "status": 200,
+      "body": {
+        "id": 2,
+        "clabe": "002180000000000002",
+        "titular": "Beto",
+        "saldo": 521.0
+      }
+    }
+  ]
+}

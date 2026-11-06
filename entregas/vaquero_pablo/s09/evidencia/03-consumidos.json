@@ -1,0 +1,216 @@
+{
+  "fecha": "2026-11-06T12:04:51.679759+00:00",
+  "cola": {
+    "status": 200,
+    "body": {
+      "consumer_details": [
+        {
+          "arguments": {},
+          "channel_details": {
+            "connection_name": "172.21.0.12:56636 -> 172.21.0.4:5672",
+            "name": "172.21.0.12:56636 -> 172.21.0.4:5672 (1)",
+            "node": "rabbit@bb972d3cd99f",
+            "number": 1,
+            "peer_host": "172.21.0.12",
+            "peer_port": 56636,
+            "user": "mexibanco"
+          },
+          "ack_required": true,
+          "active": true,
+          "activity_status": "up",
+          "consumer_tag": "amq.ctag-MhtA1FkYQO-KGmaeaJ6HLw",
+          "consumer_timeout": 1800000,
+          "exclusive": false,
+          "prefetch_count": 5,
+          "queue": {
+            "name": "notificacion.transferencias",
+            "vhost": "/"
+          }
+        }
+      ],
+      "arguments": {
+        "x-dead-letter-exchange": "transferencias.dlx",
+        "x-dead-letter-routing-key": "notificacion.transferencias",
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 0.8737386246788467,
+      "consumer_utilisation": 0.8737387121965328,
+      "consumers": 1,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 28
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-11-06T12:04:48.116+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 6480,
+      "message_bytes": 0,
+      "message_bytes_persistent": 0,
+      "message_bytes_ram": 0,
+      "message_bytes_ready": 0,
+      "message_bytes_unacknowledged": 0,
+      "message_stats": {
+        "ack": 6,
+        "ack_details": {
+          "rate": 0.6
+        },
+        "deliver": 6,
+        "deliver_details": {
+          "rate": 0.6
+        },
+        "deliver_get": 6,
+        "deliver_get_details": {
+          "rate": 0.6
+        },
+        "deliver_no_ack": 0,
+        "deliver_no_ack_details": {
+          "rate": 0.0
+        },
+        "get": 0,
+        "get_details": {
+          "rate": 0.0
+        },
+        "get_empty": 0,
+        "get_empty_details": {
+          "rate": 0.0
+        },
+        "get_no_ack": 0,
+        "get_no_ack_details": {
+          "rate": 0.0
+        },
+        "publish": 6,
+        "publish_details": {
+          "rate": 0.0
+        },
+        "redeliver": 0,
+        "redeliver_details": {
+          "rate": 0.0
+        }
+      },
+      "messages": 0,
+      "messages_details": {
+        "rate": -0.6
+      },
+      "messages_persistent": 0,
+      "messages_ram": 0,
+      "messages_ready": 0,
+      "messages_ready_details": {
+        "rate": -0.6
+      },
+      "messages_ready_ram": 0,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias",
+      "node": "rabbit@bb972d3cd99f",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 25175,
+      "reductions_details": {
+        "rate": 667.4
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    }
+  },
+  "bandejas": [
+    {
+      "status": 200,
+      "body": [
+        {
+          "id": 11,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 984.00",
+          "fecha": "2026-11-06T12:04:46.722915Z"
+        },
+        {
+          "id": 9,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 985.00",
+          "fecha": "2026-11-06T12:04:46.720590Z"
+        },
+        {
+          "id": 7,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 986.00",
+          "fecha": "2026-11-06T12:04:46.692040Z"
+        },
+        {
+          "id": 5,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 987.00",
+          "fecha": "2026-11-06T12:02:12.165213Z"
+        },
+        {
+          "id": 3,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 988.00",
+          "fecha": "2026-11-06T12:02:12.162540Z"
+        },
+        {
+          "id": 1,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 989.00",
+          "fecha": "2026-11-06T12:02:12.135822Z"
+        }
+      ]
+    },
+    {
+      "status": 200,
+      "body": [
+        {
+          "id": 12,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 516.00",
+          "fecha": "2026-11-06T12:04:46.722947Z"
+        },
+        {
+          "id": 10,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 515.00",
+          "fecha": "2026-11-06T12:04:46.720619Z"
+        },
+        {
+          "id": 8,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 514.00",
+          "fecha": "2026-11-06T12:04:46.692099Z"
+        },
+        {
+          "id": 6,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 513.00",
+          "fecha": "2026-11-06T12:02:12.165283Z"
+        },
+        {
+          "id": 4,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 512.00",
+          "fecha": "2026-11-06T12:02:12.162563Z"
+        },
+        {
+          "id": 2,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 511.00",
+          "fecha": "2026-11-06T12:02:12.135861Z"
+        }
+      ]
+    }
+  ]
+}

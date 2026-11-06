@@ -1,0 +1,174 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ---------------------< mx.mexibanco:transferencia >---------------------
+[INFO] Building transferencia 0.9.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ transferencia ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.13.0:compile (default-compile) @ transferencia ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ transferencia ---
+[INFO] skip non existing resourceDirectory /app/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ transferencia ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 6 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] Annotation processing is enabled because one or more processors were found
+  on the class path. A future release of javac may disable annotation processing
+  unless at least one processor is specified by name (-processor), or a search
+  path is specified (--processor-path, --processor-module-path), or annotation
+  processing is enabled explicitly (-proc:only, -proc:full).
+  Use -Xlint:-options to suppress this message.
+  Use -proc:none to disable annotation processing.
+[INFO] 
+[INFO] --- surefire:3.2.5:test (default-test) @ transferencia ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom
+Progress (1): 846 BProgress (1): 935 BProgress (1): 3.8 kBProgress (1): 4.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom (4.7 kB at 3.3 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom
+Progress (1): 849 BProgress (1): 945 BProgress (1): 2.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom (2.6 kB at 75 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom
+Progress (1): 849 BProgress (1): 944 BProgress (1): 2.7 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom (2.8 kB at 94 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom
+Progress (1): 966 BProgress (1): 1.1 kBProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom (3.0 kB at 89 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom
+Progress (1): 957 BProgress (1): 1.1 kBProgress (1): 3.2 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom (3.2 kB at 76 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
+Progress (1): 1.2 kBProgress (1): 1.4 kBProgress (1): 1.7 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom (1.7 kB at 34 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom
+Progress (1): 971 BProgress (1): 1.1 kBProgress (1): 2.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom (2.8 kB at 56 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar
+Progress (1): 0.6/27 kBProgress (1): 1.9/27 kBProgress (1): 3.3/27 kBProgress (1): 4.7/27 kBProgress (1): 6.0/27 kBProgress (1): 7.4/27 kBProgress (1): 8.8/27 kBProgress (1): 10/27 kB Progress (1): 12/27 kBProgress (1): 13/27 kBProgress (1): 14/27 kBProgress (1): 16/27 kBProgress (1): 17/27 kBProgress (1): 18/27 kBProgress (1): 20/27 kBProgress (1): 21/27 kBProgress (1): 22/27 kBProgress (1): 24/27 kBProgress (1): 25/27 kBProgress (1): 27/27 kBProgress (1): 27 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar (27 kB at 662 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar
+Progress (1): 3.4/18 kBProgress (1): 7.7/18 kBProgress (1): 12/18 kB Progress (1): 16/18 kBProgress (1): 18 kB                      Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar (18 kB at 408 kB/s)
+Progress (1): 0.6/103 kBProgress (1): 1.9/103 kBProgress (1): 3.3/103 kBProgress (1): 4.7/103 kBProgress (1): 6.0/103 kBProgress (1): 7.4/103 kBProgress (1): 8.8/103 kBProgress (1): 10/103 kB Progress (1): 11/103 kBProgress (1): 13/103 kBProgress (1): 14/103 kBProgress (1): 15/103 kBProgress (1): 17/103 kBProgress (1): 18/103 kBProgress (1): 20/103 kBProgress (1): 21/103 kBProgress (1): 22/103 kBProgress (1): 24/103 kBProgress (1): 25/103 kBProgress (1): 26/103 kBProgress (1): 28/103 kBProgress (1): 29/103 kBProgress (1): 30/103 kBProgress (2): 30/103 kB | 0.6/169 kBProgress (2): 32/103 kB | 0.6/169 kBProgress (2): 32/103 kB | 1.9/169 kBProgress (2): 33/103 kB | 1.9/169 kBProgress (2): 35/103 kB | 1.9/169 kBProgress (2): 36/103 kB | 1.9/169 kBProgress (2): 37/103 kB | 1.9/169 kBProgress (2): 39/103 kB | 1.9/169 kBProgress (2): 40/103 kB | 1.9/169 kBProgress (2): 41/103 kB | 1.9/169 kBProgress (2): 43/103 kB | 1.9/169 kBProgress (2): 44/103 kB | 1.9/169 kBProgress (2): 46/103 kB | 1.9/169 kBProgress (2): 47/103 kB | 1.9/169 kBProgress (2): 48/103 kB | 1.9/169 kBProgress (2): 50/103 kB | 1.9/169 kBProgress (2): 51/103 kB | 1.9/169 kBProgress (2): 51/103 kB | 3.3/169 kBProgress (2): 51/103 kB | 4.7/169 kBProgress (2): 51/103 kB | 6.0/169 kBProgress (2): 51/103 kB | 7.4/169 kBProgress (2): 51/103 kB | 8.8/169 kBProgress (2): 51/103 kB | 10/169 kB Progress (2): 51/103 kB | 11/169 kBProgress (2): 51/103 kB | 13/169 kBProgress (2): 51/103 kB | 14/169 kBProgress (2): 51/103 kB | 15/169 kBProgress (2): 51/103 kB | 17/169 kBProgress (2): 51/103 kB | 18/169 kBProgress (2): 51/103 kB | 20/169 kBProgress (2): 51/103 kB | 21/169 kBProgress (2): 51/103 kB | 22/169 kBProgress (2): 51/103 kB | 24/169 kBProgress (2): 51/103 kB | 25/169 kBProgress (2): 51/103 kB | 26/169 kBProgress (2): 52/103 kB | 26/169 kBProgress (2): 54/103 kB | 26/169 kBProgress (2): 54/103 kB | 28/169 kBProgress (2): 55/103 kB | 28/169 kBProgress (2): 59/103 kB | 28/169 kBProgress (2): 59/103 kB | 29/169 kBProgress (2): 59/103 kB | 31/169 kBProgress (2): 59/103 kB | 32/169 kBProgress (2): 59/103 kB | 33/169 kBProgress (2): 64/103 kB | 33/169 kBProgress (2): 68/103 kB | 33/169 kBProgress (2): 68/103 kB | 35/169 kBProgress (2): 68/103 kB | 36/169 kBProgress (2): 68/103 kB | 37/169 kBProgress (2): 68/103 kB | 39/169 kBProgress (2): 68/103 kB | 40/169 kBProgress (2): 68/103 kB | 41/169 kBProgress (2): 68/103 kB | 43/169 kBProgress (2): 68/103 kB | 44/169 kBProgress (2): 68/103 kB | 46/169 kBProgress (2): 68/103 kB | 47/169 kBProgress (2): 68/103 kB | 48/169 kBProgress (2): 68/103 kB | 50/169 kBProgress (2): 68/103 kB | 51/169 kBProgress (2): 68/103 kB | 52/169 kBProgress (2): 68/103 kB | 54/169 kBProgress (2): 68/103 kB | 55/169 kBProgress (2): 68/103 kB | 59/169 kBProgress (2): 68/103 kB | 64/169 kBProgress (2): 68/103 kB | 68/169 kBProgress (2): 68/103 kB | 72/169 kBProgress (2): 68/103 kB | 76/169 kBProgress (2): 72/103 kB | 76/169 kBProgress (2): 72/103 kB | 81/169 kBProgress (2): 76/103 kB | 81/169 kBProgress (2): 76/103 kB | 85/169 kBProgress (3): 76/103 kB | 85/169 kB | 0.6/189 kBProgress (3): 76/103 kB | 89/169 kB | 0.6/189 kBProgress (4): 76/103 kB | 89/169 kB | 0.6/189 kB | 0.6/7.7 kBProgress (4): 76/103 kB | 89/169 kB | 1.9/189 kB | 0.6/7.7 kBProgress (4): 76/103 kB | 89/169 kB | 3.2/189 kB | 0.6/7.7 kBProgress (4): 76/103 kB | 89/169 kB | 4.5/189 kB | 0.6/7.7 kBProgress (4): 76/103 kB | 89/169 kB | 5.9/189 kB | 0.6/7.7 kBProgress (4): 76/103 kB | 89/169 kB | 7.3/189 kB | 0.6/7.7 kBProgress (4): 76/103 kB | 89/169 kB | 8.6/189 kB | 0.6/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 8.6/189 kB | 0.6/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 10/189 kB | 0.6/7.7 kB Progress (4): 81/103 kB | 89/169 kB | 10/189 kB | 1.9/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 10/189 kB | 3.2/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 10/189 kB | 4.5/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 10/189 kB | 5.9/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 10/189 kB | 7.3/7.7 kBProgress (4): 81/103 kB | 89/169 kB | 10/189 kB | 7.7 kB                                                            Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar (7.7 kB at 35 kB/s)
+Progress (3): 81/103 kB | 93/169 kB | 10/189 kBProgress (3): 81/103 kB | 93/169 kB | 11/189 kBProgress (3): 85/103 kB | 93/169 kB | 11/189 kBProgress (3): 85/103 kB | 97/169 kB | 11/189 kBProgress (3): 85/103 kB | 97/169 kB | 13/189 kBProgress (3): 85/103 kB | 97/169 kB | 14/189 kBProgress (3): 85/103 kB | 97/169 kB | 15/189 kBProgress (3): 85/103 kB | 97/169 kB | 17/189 kBProgress (3): 85/103 kB | 97/169 kB | 18/189 kBProgress (3): 85/103 kB | 97/169 kB | 20/189 kBProgress (3): 85/103 kB | 102/169 kB | 20/189 kBProgress (3): 85/103 kB | 102/169 kB | 21/189 kBProgress (3): 85/103 kB | 102/169 kB | 22/189 kBProgress (3): 85/103 kB | 106/169 kB | 22/189 kBProgress (3): 85/103 kB | 106/169 kB | 24/189 kBProgress (3): 85/103 kB | 110/169 kB | 24/189 kBProgress (3): 85/103 kB | 114/169 kB | 24/189 kBProgress (3): 85/103 kB | 119/169 kB | 24/189 kBProgress (3): 85/103 kB | 123/169 kB | 24/189 kBProgress (3): 85/103 kB | 126/169 kB | 24/189 kBProgress (3): 85/103 kB | 126/169 kB | 24/189 kBProgress (3): 85/103 kB | 130/169 kB | 24/189 kBProgress (3): 85/103 kB | 134/169 kB | 24/189 kBProgress (3): 85/103 kB | 139/169 kB | 24/189 kBProgress (3): 85/103 kB | 143/169 kB | 24/189 kBProgress (3): 85/103 kB | 147/169 kB | 24/189 kBProgress (3): 85/103 kB | 151/169 kB | 24/189 kBProgress (3): 89/103 kB | 151/169 kB | 24/189 kBProgress (3): 89/103 kB | 151/169 kB | 25/189 kBProgress (3): 93/103 kB | 151/169 kB | 25/189 kBProgress (3): 93/103 kB | 156/169 kB | 25/189 kBProgress (3): 93/103 kB | 156/169 kB | 25/189 kBProgress (3): 93/103 kB | 156/169 kB | 26/189 kBProgress (3): 93/103 kB | 156/169 kB | 28/189 kBProgress (3): 98/103 kB | 156/169 kB | 28/189 kBProgress (3): 98/103 kB | 160/169 kB | 28/189 kBProgress (3): 102/103 kB | 160/169 kB | 28/189 kBProgress (3): 102/103 kB | 160/169 kB | 29/189 kBProgress (3): 102/103 kB | 160/169 kB | 30/189 kBProgress (3): 102/103 kB | 160/169 kB | 32/189 kBProgress (3): 102/103 kB | 160/169 kB | 33/189 kBProgress (3): 102/103 kB | 160/169 kB | 35/189 kBProgress (3): 102/103 kB | 160/169 kB | 36/189 kBProgress (3): 102/103 kB | 164/169 kB | 36/189 kBProgress (3): 103 kB | 164/169 kB | 36/189 kB    Progress (3): 103 kB | 168/169 kB | 36/189 kBProgress (3): 103 kB | 169 kB | 36/189 kB                                             Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar (169 kB at 736 kB/s)
+Progress (2): 103 kB | 37/189 kBProgress (2): 103 kB | 39/189 kB                                Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar (103 kB at 448 kB/s)
+Progress (1): 40/189 kBProgress (1): 41/189 kBProgress (1): 43/189 kBProgress (1): 44/189 kBProgress (1): 46/189 kBProgress (1): 47/189 kBProgress (1): 48/189 kBProgress (1): 50/189 kBProgress (1): 51/189 kBProgress (1): 52/189 kBProgress (1): 54/189 kBProgress (1): 55/189 kBProgress (1): 59/189 kBProgress (1): 64/189 kBProgress (1): 68/189 kBProgress (1): 72/189 kBProgress (1): 76/189 kBProgress (1): 80/189 kBProgress (1): 85/189 kBProgress (1): 89/189 kBProgress (1): 93/189 kBProgress (1): 97/189 kBProgress (1): 102/189 kBProgress (1): 106/189 kBProgress (1): 110/189 kBProgress (1): 114/189 kBProgress (1): 119/189 kBProgress (1): 123/189 kBProgress (1): 127/189 kBProgress (1): 131/189 kBProgress (1): 135/189 kBProgress (1): 140/189 kBProgress (1): 142/189 kBProgress (1): 147/189 kBProgress (1): 151/189 kBProgress (1): 155/189 kBProgress (1): 159/189 kBProgress (1): 164/189 kBProgress (1): 168/189 kBProgress (1): 172/189 kBProgress (1): 176/189 kBProgress (1): 180/189 kBProgress (1): 185/189 kBProgress (1): 189/189 kBProgress (1): 189 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar (189 kB at 751 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.pom
+Progress (1): 967 BProgress (1): 3.0 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.pom (3.0 kB at 98 kB/s)
+Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.jar
+Progress (1): 3.4/184 kBProgress (1): 7.6/184 kBProgress (1): 8.2/184 kBProgress (1): 12/184 kB Progress (1): 17/184 kBProgress (1): 25/184 kBProgress (1): 33/184 kBProgress (1): 49/184 kBProgress (1): 66/184 kBProgress (1): 82/184 kBProgress (1): 98/184 kBProgress (1): 115/184 kBProgress (1): 131/184 kBProgress (1): 147/184 kBProgress (1): 164/184 kBProgress (1): 180/184 kBProgress (1): 184 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.3/junit-platform-launcher-1.10.3.jar (184 kB at 3.2 MB/s)
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running mx.mexibanco.transferencia.TransferenciaServiceTest
+WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+12:01:16.481 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: INICIADA
+12:01:16.520 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: CARGADA
+12:01:16.526 [main] WARN mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: el abono fallo (cuenta no contesto); se devuelve el cargo
+12:01:16.530 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: COMPENSADA
+12:01:16.715 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: INICIADA
+12:01:16.716 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: CARGADA
+12:01:16.716 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: ABONADA
+12:01:16.716 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: COMPLETADA
+12:01:16.728 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: COMPENSADA
+12:01:16.768 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: INICIADA
+12:01:16.769 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: FALLIDA
+12:01:16.774 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: INICIADA
+12:01:16.774 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: CARGADA
+12:01:16.774 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: ABONADA
+12:01:16.779 [main] ERROR mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: la devolucion tambien fallo (Connection refused); queda COMPENSACION_PENDIENTE
+12:01:16.780 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: COMPENSACION_PENDIENTE
+12:01:16.784 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: INICIADA
+12:01:16.784 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: CARGADA
+12:01:16.784 [main] WARN mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: el abono fallo (Falla provocada con FALLAR_ABONO_A_CLABE=002180000000000002); se devuelve el cargo
+12:01:16.784 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: COMPENSADA
+12:01:16.789 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: INICIADA
+12:01:16.789 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: CARGADA
+12:01:16.789 [main] WARN mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: el abono fallo (Connection refused); se devuelve el cargo
+12:01:16.790 [main] ERROR mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: la devolucion tambien fallo (Connection refused); queda COMPENSACION_PENDIENTE
+12:01:16.790 [main] INFO mx.mexibanco.transferencia.TransferenciaService -- Transferencia 12: COMPENSACION_PENDIENTE
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.150 s -- in mx.mexibanco.transferencia.TransferenciaServiceTest
+[INFO] Running mx.mexibanco.mensajeria.ConfiguracionMensajeriaTest
+12:01:17.041 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [mx.mexibanco.mensajeria.ConfiguracionMensajeriaTest]: ConfiguracionMensajeriaTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+12:01:17.241 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration mx.mexibanco.TransferenciaApplication for test class mx.mexibanco.mensajeria.ConfiguracionMensajeriaTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-11-06T12:01:18.027Z  INFO 158 --- [transferencia] [           main] m.m.m.ConfiguracionMensajeriaTest        : Starting ConfiguracionMensajeriaTest using Java 21.0.13 with PID 158 (started by root in /app)
+2026-11-06T12:01:18.028Z  INFO 158 --- [transferencia] [           main] m.m.m.ConfiguracionMensajeriaTest        : No active profile set, falling back to 1 default profile: "default"
+2026-11-06T12:01:18.833Z  INFO 158 --- [transferencia] [           main] m.m.m.ConfiguracionMensajeriaTest        : Started ConfiguracionMensajeriaTest in 1.425 seconds (process running for 5.357)
+[INFO] Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.105 s -- in mx.mexibanco.mensajeria.ConfiguracionMensajeriaTest
+[INFO] Running mx.mexibanco.mensajeria.PublicadorDeEventosTest
+[INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.464 s -- in mx.mexibanco.mensajeria.PublicadorDeEventosTest
+[INFO] Running mx.mexibanco.clientes.ClientesHttpTest
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.103 s -- in mx.mexibanco.clientes.ClientesHttpTest
+[INFO] Running mx.mexibanco.clientes.CircuitoHaciaCuentaTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-11-06T12:01:19.547Z  INFO 158 --- [transferencia] [           main] m.m.clientes.CircuitoHaciaCuentaTest     : Starting CircuitoHaciaCuentaTest using Java 21.0.13 with PID 158 (started by root in /app)
+2026-11-06T12:01:19.547Z  INFO 158 --- [transferencia] [           main] m.m.clientes.CircuitoHaciaCuentaTest     : No active profile set, falling back to 1 default profile: "default"
+2026-11-06T12:01:20.506Z  INFO 158 --- [transferencia] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=66248983-236c-3026-aff5-a95b7c5c4e2c
+2026-11-06T12:01:20.775Z  WARN 158 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-11-06T12:01:20.779Z  WARN 158 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-11-06T12:01:27.655Z  INFO 158 --- [transferencia] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-11-06T12:01:27.825Z  WARN 158 --- [transferencia] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-11-06T12:01:27.931Z  INFO 158 --- [transferencia] [           main] m.m.clientes.CircuitoHaciaCuentaTest     : Started CircuitoHaciaCuentaTest in 8.405 seconds (process running for 14.488)
+2026-11-06T12:01:29.063Z  WARN 158 --- [transferencia] [           main] mx.mexibanco.clientes.CuentaCliente      : Circuito hacia cuenta: State transition from CLOSED to OPEN
+2026-11-06T12:01:30.071Z  WARN 158 --- [transferencia] [ransitionThread] mx.mexibanco.clientes.CuentaCliente      : Circuito hacia cuenta: State transition from OPEN to HALF_OPEN
+2026-11-06T12:01:30.156Z  WARN 158 --- [transferencia] [           main] mx.mexibanco.clientes.CuentaCliente      : Circuito hacia cuenta: State transition from HALF_OPEN to CLOSED
+2026-11-06T12:01:30.491Z  WARN 158 --- [transferencia] [           main] .c.RetryAwareServiceInstanceListSupplier : No instances found after removing previously used service instance from the search (DefaultServiceInstance{instanceId='null', serviceId='cuenta', host='localhost', port=41339, secure=false, metadata={}}). Returning all found instances.
+2026-11-06T12:01:30.962Z  WARN 158 --- [transferencia] [           main] mx.mexibanco.clientes.CuentaCliente      : Circuito hacia cuenta: State transition from CLOSED to OPEN
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.49 s -- in mx.mexibanco.clientes.CircuitoHaciaCuentaTest
+[INFO] Running mx.mexibanco.clientes.BalanceoPorNombreTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-11-06T12:01:31.099Z  INFO 158 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : Starting BalanceoPorNombreTest using Java 21.0.13 with PID 158 (started by root in /app)
+2026-11-06T12:01:31.101Z  INFO 158 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : No active profile set, falling back to 1 default profile: "default"
+2026-11-06T12:01:31.531Z  INFO 158 --- [transferencia] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=97f7bd66-e2d2-350d-9f7a-22c041781447
+2026-11-06T12:01:31.576Z  WARN 158 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-11-06T12:01:31.577Z  WARN 158 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-11-06T12:01:31.963Z  WARN 158 --- [transferencia] [ransitionThread] mx.mexibanco.clientes.CuentaCliente      : Circuito hacia cuenta: State transition from OPEN to HALF_OPEN
+2026-11-06T12:01:32.688Z  INFO 158 --- [transferencia] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-11-06T12:01:32.762Z  WARN 158 --- [transferencia] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-11-06T12:01:32.784Z  INFO 158 --- [transferencia] [           main] m.m.clientes.BalanceoPorNombreTest       : Started BalanceoPorNombreTest in 1.77 seconds (process running for 19.341)
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.924 s -- in mx.mexibanco.clientes.BalanceoPorNombreTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 25, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26.570 s
+[INFO] Finished at: 2026-11-06T12:01:33Z
+[INFO] ------------------------------------------------------------------------

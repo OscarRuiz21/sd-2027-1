@@ -1,0 +1,81 @@
+{
+  "fecha": "2026-11-06T12:16:52.239938+00:00",
+  "transferencia": {
+    "status": 502,
+    "body": {
+      "type": "about:blank",
+      "title": "Transferencia no realizada",
+      "status": 502,
+      "detail": "No se pudo abonar a la CLABE 002180000000000002, asi que se devolvieron 5 a la CLABE 002180000000000001: su saldo quedo como estaba.",
+      "instance": "/transferencias",
+      "transferencia": 8,
+      "estado": "COMPENSADA",
+      "motivo": "El abono a la CLABE 002180000000000002 fallo: Falla provocada con FALLAR_ABONO_A_CLABE=002180000000000002"
+    }
+  },
+  "bandeja": {
+    "status": 200,
+    "body": [
+      {
+        "id": 19,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "DEVOLUCION_TRANSFERENCIA por 5, saldo resultante 984.00",
+        "fecha": "2026-11-06T12:16:50.147655Z"
+      },
+      {
+        "id": 17,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 27.89, saldo resultante 123.45",
+        "fecha": "2026-11-06T12:07:20.870915Z"
+      },
+      {
+        "id": 15,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 23.45, saldo resultante 123.45",
+        "fecha": "2026-11-06T12:05:54.911256Z"
+      },
+      {
+        "id": 13,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 23.45, saldo resultante 123.45",
+        "fecha": "2026-11-06T12:05:54.207357Z"
+      },
+      {
+        "id": 11,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 984.00",
+        "fecha": "2026-11-06T12:04:46.722915Z"
+      },
+      {
+        "id": 9,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 985.00",
+        "fecha": "2026-11-06T12:04:46.720590Z"
+      },
+      {
+        "id": 7,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 986.00",
+        "fecha": "2026-11-06T12:04:46.692040Z"
+      },
+      {
+        "id": 5,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 987.00",
+        "fecha": "2026-11-06T12:02:12.165213Z"
+      },
+      {
+        "id": 3,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 988.00",
+        "fecha": "2026-11-06T12:02:12.162540Z"
+      },
+      {
+        "id": 1,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 989.00",
+        "fecha": "2026-11-06T12:02:12.135822Z"
+      }
+    ]
+  }
+}

@@ -1,0 +1,197 @@
+{
+  "fecha": "2026-11-06T12:13:20.456925+00:00",
+  "cola": {
+    "status": 200,
+    "body": {
+      "consumer_details": [
+        {
+          "arguments": {},
+          "channel_details": {
+            "connection_name": "172.21.0.12:36048 -> 172.21.0.4:5672",
+            "name": "172.21.0.12:36048 -> 172.21.0.4:5672 (1)",
+            "node": "rabbit@bb972d3cd99f",
+            "number": 1,
+            "peer_host": "172.21.0.12",
+            "peer_port": 36048,
+            "user": "mexibanco"
+          },
+          "ack_required": true,
+          "active": true,
+          "activity_status": "up",
+          "consumer_tag": "amq.ctag-Q4XQ-0I1S4m9JMTIHZ1-3A",
+          "consumer_timeout": 1800000,
+          "exclusive": false,
+          "prefetch_count": 5,
+          "queue": {
+            "name": "notificacion.transferencias",
+            "vhost": "/"
+          }
+        }
+      ],
+      "arguments": {
+        "x-dead-letter-exchange": "transferencias.dlx",
+        "x-dead-letter-routing-key": "notificacion.transferencias",
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 1.0,
+      "consumer_utilisation": 1.0,
+      "consumers": 1,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 33
+      },
+      "head_message_timestamp": null,
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 55856,
+      "message_bytes": 9,
+      "message_bytes_persistent": 9,
+      "message_bytes_ram": 9,
+      "message_bytes_ready": 0,
+      "message_bytes_unacknowledged": 9,
+      "message_stats": {
+        "ack": 10,
+        "ack_details": {
+          "rate": 0.0
+        },
+        "deliver": 254,
+        "deliver_details": {
+          "rate": 1.0
+        },
+        "deliver_get": 254,
+        "deliver_get_details": {
+          "rate": 1.0
+        },
+        "deliver_no_ack": 0,
+        "deliver_no_ack_details": {
+          "rate": 0.0
+        },
+        "get": 0,
+        "get_details": {
+          "rate": 0.0
+        },
+        "get_empty": 0,
+        "get_empty_details": {
+          "rate": 0.0
+        },
+        "get_no_ack": 0,
+        "get_no_ack_details": {
+          "rate": 0.0
+        },
+        "publish": 11,
+        "publish_details": {
+          "rate": 0.0
+        },
+        "redeliver": 243,
+        "redeliver_details": {
+          "rate": 1.0
+        }
+      },
+      "messages": 1,
+      "messages_details": {
+        "rate": 0.0
+      },
+      "messages_persistent": 1,
+      "messages_ram": 1,
+      "messages_ready": 0,
+      "messages_ready_details": {
+        "rate": 0.0
+      },
+      "messages_ready_ram": 0,
+      "messages_unacknowledged": 1,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 1,
+      "name": "notificacion.transferencias",
+      "node": "rabbit@bb972d3cd99f",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 181747,
+      "reductions_details": {
+        "rate": 585.0
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    }
+  },
+  "dlq": {
+    "status": 200,
+    "body": {
+      "consumer_details": [],
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 0,
+      "consumer_utilisation": 0,
+      "consumers": 0,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 21
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-11-06T12:09:12.637+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 4408,
+      "message_bytes": 0,
+      "message_bytes_persistent": 0,
+      "message_bytes_ram": 0,
+      "message_bytes_ready": 0,
+      "message_bytes_unacknowledged": 0,
+      "messages": 0,
+      "messages_details": {
+        "rate": 0.0
+      },
+      "messages_persistent": 0,
+      "messages_ram": 0,
+      "messages_ready": 0,
+      "messages_ready_details": {
+        "rate": 0.0
+      },
+      "messages_ready_ram": 0,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias.dlq",
+      "node": "rabbit@bb972d3cd99f",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 12556,
+      "reductions_details": {
+        "rate": 0.0
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    }
+  },
+  "logs": "notificacion-1  | 2026-11-06T12:13:01.143Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:02.148Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:03.151Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:04.154Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:05.161Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:06.163Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:07.167Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:08.177Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:09.180Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:10.183Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:11.188Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:12.191Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:13.194Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:14.200Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:15.203Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:16.206Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:17.211Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:18.218Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:19.223Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \nnotificacion-1  | 2026-11-06T12:13:20.225Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] mensaje invalido, va a la DLQ: no se pudo leer el JSON (Unexpected end-of-input within/between Object entries): {\"hola\": \n"
+}
