@@ -106,3 +106,4 @@ date: Sat, 10 Oct 2026 19:42:25 GMT
 | **Cuerpo de respuesta** | JSON de dominio (`"No existe la CLABE 000"`) | Vacío (`content-length: 0`) o genérico de Gateway |
 | **Quién generó el 404** | **Microservicio `cuenta`** | **API Gateway** |
 | **Tipo de error** | **404 de Negocio / Datos:** La ruta existe, la petición llegó al servicio, pero el recurso específico no existe en la base de datos. | **404 de Infraestructura / Seguridad Perimetral:** El Gateway actuó como firewall de aplicación bloqueando un método no expuesto al público. |
+
