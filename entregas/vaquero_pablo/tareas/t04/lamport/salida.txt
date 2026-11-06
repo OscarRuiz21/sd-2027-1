@@ -1,0 +1,12 @@
+A L=1 evento local
+C L=1 evento independiente
+A L=2 envia m1 a B
+A L=3 envia m2 a C
+C L=4 recibe m2 de A (L enviado=3)
+B L=3 recibe m1 de A (L enviado=2)
+B L=4 envia m3 a C
+C L=5 recibe m3 de B (L enviado=4)
+C L=6 envia m4 a A
+A L=7 recibe m4 de C (L enviado=6)
+Verificacion de envio < recepcion: m2: 3 < 4; m1: 2 < 3; m3: 4 < 5; m4: 6 < 7
+Cuatro mensajes verificados. Marcas menores no prueban causalidad: A y C empiezan con L=1 sin comunicarse.
