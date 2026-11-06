@@ -98,6 +98,28 @@ El resultado de ejecutar esa consulta (en mi caso) es el siguiente:
 ```
 
 
-**Fuentes:**
-- Documentación oficial de Citus Data: Architecture & Concepts (citusdata.com)
-- Repositorio oficial de Citus en GitHub (github.com/citusdata/citus)
+**Fuentes (Documentación Oficial de Citus):**
+- **Conceptos y Arquitectura (Coordinador y Workers):**  
+  https://docs.citusdata.com/en/stable/get_started/concepts.html
+- **Modelado de Datos Distribuido (Elección de la columna de distribución y reparto por hash):**  
+  https://docs.citusdata.com/en/stable/sharding/data_modeling.html
+- **Referencia UDF - `create_distributed_table`:**  
+  https://docs.citusdata.com/en/stable/develop/api_udf.html#create-distributed-table
+- **Referencia UDF - `get_shard_id_for_distribution_column`:**  
+  https://docs.citusdata.com/en/stable/develop/api_udf.html#get-shard-id-for-distribution-column
+- **Tablas de Metadatos y Vistas de Shards (`citus_shards`, `pg_dist_shard`, `pg_dist_placement`):**  
+  https://docs.citusdata.com/en/stable/develop/api_metadata.html#metadata-tables
+- **Escalamiento Horizontal y Rebalanceo de Shards (`rebalance_table_shards`):**  
+  https://docs.citusdata.com/en/stable/admin_guide/cluster_management.html#scaling-out-workers
+- **Referencia UDF de Rebalanceo - `rebalance_table_shards`:**  
+  https://docs.citusdata.com/en/stable/develop/api_udf.html#rebalance-table-shards
+- **Manejo de Shards Calientes y Tenant Isolation:**  
+  https://docs.citusdata.com/en/stable/use_cases/multi_tenant.html#tenant-isolation
+- **Referencia UDF - `isolate_tenant_to_new_shard`:**  
+  https://docs.citusdata.com/en/stable/develop/api_udf.html#isolate-tenant-to-new-shard
+- **Estadísticas y Monitoreo de Tenants (`citus_stat_tenants`):**  
+  https://docs.citusdata.com/en/stable/develop/api_metadata.html#tenant-monitoring-statistics
+- **Instalación y Despliegue Multi-Nodo con Docker:**  
+  https://docs.citusdata.com/en/stable/installation/multi_node_docker.html
+- **Repositorio Oficial de Citus en GitHub:**  
+  https://github.com/citusdata/citus
