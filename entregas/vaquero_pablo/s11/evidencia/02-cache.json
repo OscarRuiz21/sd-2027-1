@@ -1,0 +1,109 @@
+{
+  "fecha": "2026-11-06T08:12:46.420990+00:00",
+  "seis": [
+    {
+      "status": 200,
+      "ms": 22.944958007428795,
+      "instancia": "1e16195db900",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0,
+        "leidaEn": "2026-11-06T08:12:45.818169959Z"
+      }
+    },
+    {
+      "status": 200,
+      "ms": 12.805624981410801,
+      "instancia": "ea5f5593fc10",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0,
+        "leidaEn": "2026-11-06T08:12:45.818169959Z"
+      }
+    },
+    {
+      "status": 200,
+      "ms": 6.461083015892655,
+      "instancia": "48c9208a5f1b",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0,
+        "leidaEn": "2026-11-06T08:12:45.818169959Z"
+      }
+    },
+    {
+      "status": 200,
+      "ms": 5.2896669949404895,
+      "instancia": "1e16195db900",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0,
+        "leidaEn": "2026-11-06T08:12:45.818169959Z"
+      }
+    },
+    {
+      "status": 200,
+      "ms": 6.497666006907821,
+      "instancia": "ea5f5593fc10",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0,
+        "leidaEn": "2026-11-06T08:12:45.818169959Z"
+      }
+    },
+    {
+      "status": 200,
+      "ms": 3.8639999693259597,
+      "instancia": "48c9208a5f1b",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 979.0,
+        "leidaEn": "2026-11-06T08:12:45.818169959Z"
+      }
+    }
+  ],
+  "lecturas_postgres": 1,
+  "redis": {
+    "clabe": "002180000000000001",
+    "titular": "Ana",
+    "saldo": 979.0,
+    "leidaEn": "2026-11-06T08:12:45.818169959Z"
+  },
+  "ttl": 30,
+  "transferencia": {
+    "status": 201,
+    "ms": 137.75558397173882,
+    "instancia": null,
+    "body": {
+      "id": 13,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 1,
+      "fecha": "2026-11-06T08:12:46.186626792Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 978.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-11-06T08:12:46.286698917Z",
+      "eventoId": "f0d16db5-093e-4952-b71b-53c8d049a00f"
+    }
+  },
+  "existe_despues": 0,
+  "nuevo": {
+    "status": 200,
+    "ms": 7.983165967743844,
+    "instancia": "1e16195db900",
+    "body": {
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 978.0,
+      "leidaEn": "2026-11-06T08:12:46.417989459Z"
+    }
+  }
+}

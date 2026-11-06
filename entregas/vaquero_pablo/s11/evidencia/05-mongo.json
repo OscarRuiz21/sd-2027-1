@@ -1,0 +1,781 @@
+{
+  "fecha": "2026-11-06T08:13:17.746900+00:00",
+  "transferencias": [
+    {
+      "status": 201,
+      "ms": 162.87708299933,
+      "instancia": null,
+      "body": {
+        "id": 24,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.302718721Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 967.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.398981388Z",
+        "eventoId": "ca071439-542c-4849-abba-47deba416187"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 65.15254196710885,
+      "instancia": null,
+      "body": {
+        "id": 25,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000003",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.423423680Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 966.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.467391971Z",
+        "eventoId": "a4808bf5-184a-44c3-9982-dd28dc4d552d"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 57.35058302525431,
+      "instancia": null,
+      "body": {
+        "id": 26,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.484115138Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 965.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.523846180Z",
+        "eventoId": "4905fc20-a18e-4dfc-bcef-cfc63805618b"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 55.025708046741784,
+      "instancia": null,
+      "body": {
+        "id": 27,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.541733805Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 964.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.580569805Z",
+        "eventoId": "e3d97de0-fd89-4e9f-b05c-ffb98b6546ea"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 50.3222499974072,
+      "instancia": null,
+      "body": {
+        "id": 28,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.596145971Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 963.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.630868263Z",
+        "eventoId": "ea3ab182-613e-4c3f-9222-9e8d2366da58"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 51.725749974139035,
+      "instancia": null,
+      "body": {
+        "id": 29,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.647692846Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 962.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.682402930Z",
+        "eventoId": "80f99323-2b4a-4666-bc84-58b9153b3540"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 54.93870796635747,
+      "instancia": null,
+      "body": {
+        "id": 30,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.698722471Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 961.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.737977722Z",
+        "eventoId": "00638290-7669-4327-9599-a79555827232"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 50.115582998842,
+      "instancia": null,
+      "body": {
+        "id": 31,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.751350972Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 960.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.787993888Z",
+        "eventoId": "a29ab6a7-3419-4a13-a643-6de61420531e"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 57.95700004091486,
+      "instancia": null,
+      "body": {
+        "id": 32,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.805199513Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 959.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.845264097Z",
+        "eventoId": "46b54702-c486-4514-b823-e1a59b3950e8"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 45.83887499757111,
+      "instancia": null,
+      "body": {
+        "id": 33,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.860171013Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 958.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.892154013Z",
+        "eventoId": "9c243c89-1e8f-475d-9d07-ac6f2f34a81c"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 46.769750013481826,
+      "instancia": null,
+      "body": {
+        "id": 34,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.906529305Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 957.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.939080472Z",
+        "eventoId": "da08bd22-1566-472f-b7bd-a3220d581529"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 59.35079196933657,
+      "instancia": null,
+      "body": {
+        "id": 35,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:12.957223347Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 956.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:12.997980638Z",
+        "eventoId": "be74c22c-1e65-48d2-8200-752055dbd1b0"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 45.94104102579877,
+      "instancia": null,
+      "body": {
+        "id": 36,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:13.011561888Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 955.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:13.044009597Z",
+        "eventoId": "9959fbb0-fe1b-4271-abbb-1a1f793f9928"
+      }
+    },
+    {
+      "status": 201,
+      "ms": 48.01608400885016,
+      "instancia": null,
+      "body": {
+        "id": 37,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-06T08:13:13.058759972Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 954.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-06T08:13:13.091596930Z",
+        "eventoId": "8e04ca43-b7f6-400b-b61c-455858c94cdd"
+      }
+    }
+  ],
+  "total": 72,
+  "formas": [
+    {
+      "_id": "SMS",
+      "ejemplo": {
+        "_id": "470d77fb-b886-4598-a2e3-f9c2fa76e8d6:002180000000000001",
+        "eventoId": "470d77fb-b886-4598-a2e3-f9c2fa76e8d6",
+        "transferenciaId": {
+          "high": 0,
+          "low": 2,
+          "unsigned": false
+        },
+        "clabe": "002180000000000001",
+        "tipo": "TRANSFERENCIA_ENVIADA",
+        "monto": {
+          "$numberDecimal": "1"
+        },
+        "saldo": {
+          "$numberDecimal": "989.00"
+        },
+        "fecha": "2026-11-06T08:12:08.401Z",
+        "canal": "SMS",
+        "telefono": "+52 55 5555 0101",
+        "texto": "TRANSFERENCIA_ENVIADA por 1, saldo resultante 989.00"
+      }
+    },
+    {
+      "_id": "CORREO",
+      "ejemplo": {
+        "_id": "470d77fb-b886-4598-a2e3-f9c2fa76e8d6:002180000000000002",
+        "eventoId": "470d77fb-b886-4598-a2e3-f9c2fa76e8d6",
+        "transferenciaId": {
+          "high": 0,
+          "low": 2,
+          "unsigned": false
+        },
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": {
+          "$numberDecimal": "1"
+        },
+        "saldo": {
+          "$numberDecimal": "511.00"
+        },
+        "fecha": "2026-11-06T08:12:08.401Z",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 511.00"
+      }
+    },
+    {
+      "_id": "PUSH",
+      "ejemplo": {
+        "_id": "a4808bf5-184a-44c3-9982-dd28dc4d552d:002180000000000003",
+        "eventoId": "a4808bf5-184a-44c3-9982-dd28dc4d552d",
+        "transferenciaId": {
+          "high": 0,
+          "low": 25,
+          "unsigned": false
+        },
+        "clabe": "002180000000000003",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": {
+          "$numberDecimal": "1"
+        },
+        "saldo": {
+          "$numberDecimal": "301.00"
+        },
+        "fecha": "2026-11-06T08:13:12.467Z",
+        "canal": "PUSH",
+        "token": "fcm:demo-002180000000000003",
+        "titulo": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 301.00"
+      }
+    }
+  ],
+  "ultimos": {
+    "status": 200,
+    "ms": 90.71987500647083,
+    "instancia": null,
+    "body": [
+      {
+        "_id": "8e04ca43-b7f6-400b-b61c-455858c94cdd:002180000000000002",
+        "eventoId": "8e04ca43-b7f6-400b-b61c-455858c94cdd",
+        "transferenciaId": 37,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 545.0,
+        "fecha": "2026-11-06T08:13:13.091+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 545.00"
+      },
+      {
+        "_id": "9959fbb0-fe1b-4271-abbb-1a1f793f9928:002180000000000002",
+        "eventoId": "9959fbb0-fe1b-4271-abbb-1a1f793f9928",
+        "transferenciaId": 36,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 544.0,
+        "fecha": "2026-11-06T08:13:13.044+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 544.00"
+      },
+      {
+        "_id": "be74c22c-1e65-48d2-8200-752055dbd1b0:002180000000000002",
+        "eventoId": "be74c22c-1e65-48d2-8200-752055dbd1b0",
+        "transferenciaId": 35,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 543.0,
+        "fecha": "2026-11-06T08:13:12.997+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 543.00"
+      },
+      {
+        "_id": "da08bd22-1566-472f-b7bd-a3220d581529:002180000000000002",
+        "eventoId": "da08bd22-1566-472f-b7bd-a3220d581529",
+        "transferenciaId": 34,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 542.0,
+        "fecha": "2026-11-06T08:13:12.939+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 542.00"
+      },
+      {
+        "_id": "9c243c89-1e8f-475d-9d07-ac6f2f34a81c:002180000000000002",
+        "eventoId": "9c243c89-1e8f-475d-9d07-ac6f2f34a81c",
+        "transferenciaId": 33,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 541.0,
+        "fecha": "2026-11-06T08:13:12.892+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 541.00"
+      },
+      {
+        "_id": "46b54702-c486-4514-b823-e1a59b3950e8:002180000000000002",
+        "eventoId": "46b54702-c486-4514-b823-e1a59b3950e8",
+        "transferenciaId": 32,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 540.0,
+        "fecha": "2026-11-06T08:13:12.845+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 540.00"
+      },
+      {
+        "_id": "a29ab6a7-3419-4a13-a643-6de61420531e:002180000000000002",
+        "eventoId": "a29ab6a7-3419-4a13-a643-6de61420531e",
+        "transferenciaId": 31,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 539.0,
+        "fecha": "2026-11-06T08:13:12.787+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 539.00"
+      },
+      {
+        "_id": "00638290-7669-4327-9599-a79555827232:002180000000000002",
+        "eventoId": "00638290-7669-4327-9599-a79555827232",
+        "transferenciaId": 30,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 538.0,
+        "fecha": "2026-11-06T08:13:12.737+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 538.00"
+      },
+      {
+        "_id": "80f99323-2b4a-4666-bc84-58b9153b3540:002180000000000002",
+        "eventoId": "80f99323-2b4a-4666-bc84-58b9153b3540",
+        "transferenciaId": 29,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 537.0,
+        "fecha": "2026-11-06T08:13:12.682+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 537.00"
+      },
+      {
+        "_id": "ea3ab182-613e-4c3f-9222-9e8d2366da58:002180000000000002",
+        "eventoId": "ea3ab182-613e-4c3f-9222-9e8d2366da58",
+        "transferenciaId": 28,
+        "clabe": "002180000000000002",
+        "tipo": "TRANSFERENCIA_RECIBIDA",
+        "monto": 1,
+        "saldo": 536.0,
+        "fecha": "2026-11-06T08:13:12.630+00:00",
+        "canal": "CORREO",
+        "correo": "beto@correo.mx",
+        "asunto": "TRANSFERENCIA_RECIBIDA",
+        "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 536.00"
+      }
+    ]
+  },
+  "indices": [
+    {
+      "v": 2,
+      "key": {
+        "_id": 1
+      },
+      "name": "_id_"
+    },
+    {
+      "v": 2,
+      "key": {
+        "clabe": 1,
+        "fecha": -1
+      },
+      "name": "clabe_fecha"
+    }
+  ],
+  "indice": {
+    "explainVersion": "1",
+    "queryPlanner": {
+      "namespace": "notificacion.avisos",
+      "parsedQuery": {
+        "clabe": {
+          "$eq": "002180000000000002"
+        }
+      },
+      "indexFilterSet": false,
+      "queryHash": "C73271DB",
+      "planCacheShapeHash": "C73271DB",
+      "planCacheKey": "501A071D",
+      "optimizationTimeMillis": 0,
+      "maxIndexedOrSolutionsReached": false,
+      "maxIndexedAndSolutionsReached": false,
+      "maxScansToExplodeReached": false,
+      "prunedSimilarIndexes": false,
+      "winningPlan": {
+        "isCached": false,
+        "stage": "LIMIT",
+        "limitAmount": 10,
+        "inputStage": {
+          "stage": "FETCH",
+          "inputStage": {
+            "stage": "IXSCAN",
+            "keyPattern": {
+              "clabe": 1,
+              "fecha": -1
+            },
+            "indexName": "clabe_fecha",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "clabe": [],
+              "fecha": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "clabe": [
+                "[\"002180000000000002\", \"002180000000000002\"]"
+              ],
+              "fecha": [
+                "[MaxKey, MinKey]"
+              ]
+            }
+          }
+        }
+      },
+      "rejectedPlans": []
+    },
+    "executionStats": {
+      "executionSuccess": true,
+      "nReturned": 10,
+      "executionTimeMillis": 0,
+      "totalKeysExamined": 10,
+      "totalDocsExamined": 10,
+      "executionStages": {
+        "isCached": false,
+        "stage": "LIMIT",
+        "nReturned": 10,
+        "executionTimeMillisEstimate": 0,
+        "works": 11,
+        "advanced": 10,
+        "needTime": 0,
+        "needYield": 0,
+        "saveState": 0,
+        "restoreState": 0,
+        "isEOF": 1,
+        "limitAmount": 10,
+        "inputStage": {
+          "stage": "FETCH",
+          "nReturned": 10,
+          "executionTimeMillisEstimate": 0,
+          "works": 10,
+          "advanced": 10,
+          "needTime": 0,
+          "needYield": 0,
+          "saveState": 0,
+          "restoreState": 0,
+          "isEOF": 0,
+          "docsExamined": 10,
+          "alreadyHasObj": 0,
+          "inputStage": {
+            "stage": "IXSCAN",
+            "nReturned": 10,
+            "executionTimeMillisEstimate": 0,
+            "works": 10,
+            "advanced": 10,
+            "needTime": 0,
+            "needYield": 0,
+            "saveState": 0,
+            "restoreState": 0,
+            "isEOF": 0,
+            "keyPattern": {
+              "clabe": 1,
+              "fecha": -1
+            },
+            "indexName": "clabe_fecha",
+            "isMultiKey": false,
+            "multiKeyPaths": {
+              "clabe": [],
+              "fecha": []
+            },
+            "isUnique": false,
+            "isSparse": false,
+            "isPartial": false,
+            "indexVersion": 2,
+            "direction": "forward",
+            "indexBounds": {
+              "clabe": [
+                "[\"002180000000000002\", \"002180000000000002\"]"
+              ],
+              "fecha": [
+                "[MaxKey, MinKey]"
+              ]
+            },
+            "keysExamined": 10,
+            "seeks": 1,
+            "dupsTested": 0,
+            "dupsDropped": 0
+          }
+        }
+      }
+    },
+    "queryShapeHash": "CA4FD8110DD5E6683EA9C6BC3C1454D21C0C63BD5B978B90E268A6EEF92E7759",
+    "command": {
+      "find": "avisos",
+      "filter": {
+        "clabe": "002180000000000002"
+      },
+      "sort": {
+        "fecha": -1
+      },
+      "limit": 10,
+      "$db": "notificacion"
+    },
+    "serverInfo": {
+      "host": "1b9c579512ec",
+      "port": 27017,
+      "version": "8.0.34",
+      "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+    },
+    "serverParameters": {
+      "internalQueryFacetBufferSizeBytes": 104857600,
+      "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+      "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+      "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+      "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+      "internalQueryProhibitBlockingMergeOnMongoS": 0,
+      "internalQueryMaxAddToSetBytes": 104857600,
+      "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+      "internalQueryFrameworkControl": "trySbeRestricted",
+      "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+    },
+    "ok": 1
+  },
+  "natural": {
+    "explainVersion": "1",
+    "queryPlanner": {
+      "namespace": "notificacion.avisos",
+      "parsedQuery": {
+        "clabe": {
+          "$eq": "002180000000000002"
+        }
+      },
+      "indexFilterSet": false,
+      "queryHash": "C73271DB",
+      "planCacheShapeHash": "C73271DB",
+      "planCacheKey": "501A071D",
+      "optimizationTimeMillis": 0,
+      "maxIndexedOrSolutionsReached": false,
+      "maxIndexedAndSolutionsReached": false,
+      "maxScansToExplodeReached": false,
+      "prunedSimilarIndexes": false,
+      "winningPlan": {
+        "isCached": false,
+        "stage": "SORT",
+        "sortPattern": {
+          "fecha": -1
+        },
+        "memLimit": 104857600,
+        "limitAmount": 10,
+        "type": "simple",
+        "inputStage": {
+          "stage": "COLLSCAN",
+          "filter": {
+            "clabe": {
+              "$eq": "002180000000000002"
+            }
+          },
+          "direction": "forward"
+        }
+      },
+      "rejectedPlans": []
+    },
+    "executionStats": {
+      "executionSuccess": true,
+      "nReturned": 10,
+      "executionTimeMillis": 1,
+      "totalKeysExamined": 0,
+      "totalDocsExamined": 72,
+      "executionStages": {
+        "isCached": false,
+        "stage": "SORT",
+        "nReturned": 10,
+        "executionTimeMillisEstimate": 0,
+        "works": 84,
+        "advanced": 10,
+        "needTime": 73,
+        "needYield": 0,
+        "saveState": 0,
+        "restoreState": 0,
+        "isEOF": 1,
+        "sortPattern": {
+          "fecha": -1
+        },
+        "memLimit": 104857600,
+        "limitAmount": 10,
+        "type": "simple",
+        "totalDataSizeSorted": 4480,
+        "usedDisk": false,
+        "spills": 0,
+        "spilledDataStorageSize": 0,
+        "inputStage": {
+          "stage": "COLLSCAN",
+          "filter": {
+            "clabe": {
+              "$eq": "002180000000000002"
+            }
+          },
+          "nReturned": 35,
+          "executionTimeMillisEstimate": 0,
+          "works": 73,
+          "advanced": 35,
+          "needTime": 37,
+          "needYield": 0,
+          "saveState": 0,
+          "restoreState": 0,
+          "isEOF": 1,
+          "direction": "forward",
+          "docsExamined": 72
+        }
+      }
+    },
+    "queryShapeHash": "CA4FD8110DD5E6683EA9C6BC3C1454D21C0C63BD5B978B90E268A6EEF92E7759",
+    "command": {
+      "find": "avisos",
+      "filter": {
+        "clabe": "002180000000000002"
+      },
+      "sort": {
+        "fecha": -1
+      },
+      "hint": {
+        "$natural": 1
+      },
+      "limit": 10,
+      "$db": "notificacion"
+    },
+    "serverInfo": {
+      "host": "1b9c579512ec",
+      "port": 27017,
+      "version": "8.0.34",
+      "gitVersion": "51db4515a6597aedcf6188ee4e48a27e65b065ae"
+    },
+    "serverParameters": {
+      "internalQueryFacetBufferSizeBytes": 104857600,
+      "internalQueryFacetMaxOutputDocSizeBytes": 104857600,
+      "internalLookupStageIntermediateDocumentMaxSizeBytes": 104857600,
+      "internalDocumentSourceGroupMaxMemoryBytes": 104857600,
+      "internalQueryMaxBlockingSortMemoryUsageBytes": 104857600,
+      "internalQueryProhibitBlockingMergeOnMongoS": 0,
+      "internalQueryMaxAddToSetBytes": 104857600,
+      "internalDocumentSourceSetWindowFieldsMaxMemoryBytes": 104857600,
+      "internalQueryFrameworkControl": "trySbeRestricted",
+      "internalQueryPlannerIgnoreIndexWithCollationForRegex": 1
+    },
+    "ok": 1
+  }
+}

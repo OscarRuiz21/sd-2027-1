@@ -1,0 +1,147 @@
+{
+  "fecha": "2026-11-06T11:45:09.070692+00:00",
+  "saldo_real_previo": 954.0,
+  "cache_inicial": {
+    "status": 200,
+    "ms": 821.0036670207046,
+    "instancia": "b5692bfc8c0b",
+    "body": {
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 954.0,
+      "leidaEn": "2026-11-06T11:44:35.922448964Z"
+    }
+  },
+  "respuesta_vieja": {
+    "status": 200,
+    "ms": 360.82708300091326,
+    "instancia": "38959979b75b",
+    "body": {
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 954.0,
+      "leidaEn": "2026-11-06T11:44:35.922448964Z"
+    }
+  },
+  "transferencia_rechazada": {
+    "status": 422,
+    "ms": 850.9376669535413,
+    "instancia": null,
+    "body": {
+      "type": "about:blank",
+      "title": "Unprocessable Entity",
+      "status": 422,
+      "detail": "Saldo insuficiente en la CLABE 002180000000000001",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    }
+  },
+  "observaciones": [
+    {
+      "segundos": 0.11952400003792718,
+      "ttl": 28,
+      "respuesta": {
+        "status": 200,
+        "ms": 11.274124961346388,
+        "instancia": "ed3f902fe03b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 954.0,
+          "leidaEn": "2026-11-06T11:44:35.922448964Z"
+        }
+      }
+    },
+    {
+      "segundos": 5.341147083032411,
+      "ttl": 23,
+      "respuesta": {
+        "status": 200,
+        "ms": 53.282624983694404,
+        "instancia": "ed3f902fe03b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 954.0,
+          "leidaEn": "2026-11-06T11:44:35.922448964Z"
+        }
+      }
+    },
+    {
+      "segundos": 10.611566375009716,
+      "ttl": 18,
+      "respuesta": {
+        "status": 200,
+        "ms": 62.9088330315426,
+        "instancia": "ed3f902fe03b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 954.0,
+          "leidaEn": "2026-11-06T11:44:35.922448964Z"
+        }
+      }
+    },
+    {
+      "segundos": 15.837940916011576,
+      "ttl": 13,
+      "respuesta": {
+        "status": 200,
+        "ms": 75.35212498623878,
+        "instancia": "b5692bfc8c0b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 954.0,
+          "leidaEn": "2026-11-06T11:44:35.922448964Z"
+        }
+      }
+    },
+    {
+      "segundos": 21.054550583008677,
+      "ttl": 7,
+      "respuesta": {
+        "status": 200,
+        "ms": 49.09220797708258,
+        "instancia": "ed3f902fe03b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 954.0,
+          "leidaEn": "2026-11-06T11:44:35.922448964Z"
+        }
+      }
+    },
+    {
+      "segundos": 26.240747791016474,
+      "ttl": 2,
+      "respuesta": {
+        "status": 200,
+        "ms": 32.61512500466779,
+        "instancia": "38959979b75b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 954.0,
+          "leidaEn": "2026-11-06T11:44:35.922448964Z"
+        }
+      }
+    },
+    {
+      "segundos": 31.606277250044513,
+      "ttl": 30,
+      "respuesta": {
+        "status": 200,
+        "ms": 208.03133299341425,
+        "instancia": "ed3f902fe03b",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-06T11:45:08.905359173Z"
+        }
+      }
+    }
+  ],
+  "segundos_hasta_refrescar": 31.606277250044513
+}
