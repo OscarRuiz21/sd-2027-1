@@ -63,3 +63,4 @@ Para garantizar que la compensación sea 100% segura e idempotente ante cualquie
    - **Respuesta idempotente:** En lugar de volver a sumar dinero al saldo de la cuenta, el servicio ignora la mutación y simplemente devuelve la respuesta previamente registrada con el saldo resultante original (`HTTP 200 OK`).
 
 De esta manera, sin importar si la red se corta, si la compensación se reintenta 1 vez o 20 veces, **el dinero únicamente se devuelve una sola vez**.
+
