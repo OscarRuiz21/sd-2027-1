@@ -1,0 +1,12 @@
+Simulacion de Lamport: 3 servidores y 4 mensajes
+[A] L=1  | LOCAL  Prepara un pedido
+[A] L=2  | ENVIA  M1 a B
+[A] L=3  | ENVIA  M2 a C
+[C] L=4  | RECIBE M2 de A (marca enviada=3)
+[C] L=5  | LOCAL  Procesa el cambio recibido
+[C] L=6  | ENVIA  M3 a B
+[B] L=7  | RECIBE M3 de C (marca enviada=6)
+[B] L=8  | RECIBE M1 de A (marca enviada=2)
+[B] L=9  | LOCAL  Revisa los mensajes
+[B] L=10 | ENVIA  M4 a A
+[A] L=11 | RECIBE M4 de B (marca enviada=10)
