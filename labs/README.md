@@ -64,6 +64,32 @@ paso a paso: el enunciado dice qué debe pasar y tú investigas cómo. Se trabaj
 **cada quien entrega** su código y su `bitacora-s08.pdf` en `entregas/apellido_nombre/s08/`,
 **hasta el sábado 17 de octubre, antes de las 07:00**.
 
+## Mensajería con RabbitMQ · sábado 17 de octubre (S9)
+
+**[Lab S09: que el aviso no tumbe la transferencia](https://oscarruiz21.github.io/sd-2027-1/labs/s09-mensajeria/Lab-S09-Mexi-Banco-Mensajeria.html)**:
+sobre la rama `05-mensajeria-base` de [mexi-banco](https://github.com/OscarRuiz21/mexi-banco)
+(la solución del lab S08 con RabbitMQ ya instalado), la saga deja de llamar por HTTP a
+`notificacion` y publica sus eventos en un broker. En clase se publica y se consume; de tarea
+provocas un duplicado y un mensaje envenenado y los resuelves con idempotencia y una dead letter
+queue. El reto opcional es el Outbox. **Antes de clase**, sigue el recuadro "Antes de clase" de la
+guía. El contrato y la entrega están en [`s09-mensajeria/README.md`](s09-mensajeria/README.md).
+Se trabaja en equipo, pero **cada quien entrega** su código y su `bitacora-s09.pdf` en
+`entregas/apellido_nombre/s09/`, **hasta el sábado 24 de octubre, antes de las 07:00**.
+
+## Persistencia políglota y caché · sábado 31 de octubre (S11)
+
+**[Lab S11: dos bases más y una caché](https://oscarruiz21.github.io/sd-2027-1/labs/s11-poliglota/Lab-S11-Mexi-Banco-Poliglota.html)**:
+sobre la rama `06-poliglota-base` de [mexi-banco](https://github.com/OscarRuiz21/mexi-banco)
+(la solución del lab S09 con Redis y MongoDB ya instalados), PostgreSQL sigue guardando la verdad
+del dinero, **Redis** guarda una copia del saldo para mostrarlo rápido y **MongoDB** guarda la
+bitácora de avisos con una forma por canal. Mides el hit ratio, provocas un evento duplicado y un
+dato viejo, y explicas qué ganaste y qué riesgo aceptaste. El reto opcional es que Redis se caiga.
+**Antes de clase**, construye la rama base (`docker compose up --build -d`): la primera vez tarda.
+El contrato y la entrega están en [`s11-poliglota/README.md`](s11-poliglota/README.md); la guía
+también está en [PDF](s11-poliglota/Lab-S11-Mexi-Banco-Poliglota.pdf).
+Se trabaja en equipo, pero **cada quien entrega** su código y su `bitacora-s11.pdf` en
+`entregas/apellido_nombre/s11/`, **hasta el sábado 7 de noviembre, antes de las 07:00**.
+
 ---
 
 Las **tareas** no están aquí: se apilan en el [`README.md` de entregas](../entregas/README.md),
