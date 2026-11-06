@@ -72,6 +72,71 @@ Estado HTTP 404 para ID inexistente:
 {"id":"999","informacion":"No se encontraron datos para el ID especificado","encontrado":false}
 ```
 
+## Pruebas del cliente unificado: respuestas gRPC y REST (`docker compose logs cliente`)
+
+A continuación se muestra la salida completa de `docker compose logs cliente`, la cual evidencia las llamadas a ambas interfaces, mostrando las respuestas deserializadas de **gRPC** (objetos JavaScript estructurados y tamaño del mensaje Protobuf binario) a la par de REST:
+
+```text
+cliente-1  | =================================================
+cliente-1  |    CLIENTE UNIFICADO DE PRUEBAS (REST vs gRPC)   
+cliente-1  | =================================================
+cliente-1  | Conectando a Servidor: servidor
+cliente-1  | REST: http://servidor:3000
+cliente-1  | gRPC: servidor:50051
+cliente-1  | -------------------------------------------------
+cliente-1  | 
+cliente-1  | >>> PROBANDO CONSULTA PARA ID: "101" <<<
+cliente-1  | [REST] HTTP Status: 200
+cliente-1  | [REST] Respuesta JSON: {"id":"101","informacion":"Laptop Dell XPS 15 - 16GB RAM, 512GB SSD","encontrado":true}
+cliente-1  | [REST] Tamaño Payload JSON: 87 bytes
+cliente-1  | [gRPC] Respuesta Obj: {
+cliente-1  |   id: '101',
+cliente-1  |   informacion: 'Laptop Dell XPS 15 - 16GB RAM, 512GB SSD',
+cliente-1  |   encontrado: true
+cliente-1  | }
+cliente-1  | [gRPC] Tamaño Payload Protobuf Binario: 49 bytes
+cliente-1  | 
+cliente-1  |   --- COMPARACIÓN DE TAMAÑO DE CARGA ÚTIL (PAYLOAD) ---
+cliente-1  |   * REST (JSON):      87 bytes
+cliente-1  |   * gRPC (Protobuf):  49 bytes (frame gRPC total: 54 bytes)
+cliente-1  |   * Diferencia net:   38 bytes menor en gRPC (43.68% más eficiente)
+cliente-1  | -------------------------------------------------
+cliente-1  | 
+cliente-1  | >>> PROBANDO CONSULTA PARA ID: "103" <<<
+cliente-1  | [REST] HTTP Status: 200
+cliente-1  | [REST] Respuesta JSON: {"id":"103","informacion":"Monitor LG UltraGear 27'' 144Hz IPS","encontrado":true}
+cliente-1  | [REST] Tamaño Payload JSON: 82 bytes
+cliente-1  | [gRPC] Respuesta Obj: {
+cliente-1  |   id: '103',
+cliente-1  |   informacion: "Monitor LG UltraGear 27'' 144Hz IPS",
+cliente-1  |   encontrado: true
+cliente-1  | }
+cliente-1  | [gRPC] Tamaño Payload Protobuf Binario: 44 bytes
+cliente-1  | 
+cliente-1  |   --- COMPARACIÓN DE TAMAÑO DE CARGA ÚTIL (PAYLOAD) ---
+cliente-1  |   * REST (JSON):      82 bytes
+cliente-1  |   * gRPC (Protobuf):  44 bytes (frame gRPC total: 49 bytes)
+cliente-1  |   * Diferencia net:   38 bytes menor en gRPC (46.34% más eficiente)
+cliente-1  | -------------------------------------------------
+cliente-1  | 
+cliente-1  | >>> PROBANDO CONSULTA PARA ID: "999" <<<
+cliente-1  | [REST] HTTP Status: 404
+cliente-1  | [REST] Respuesta JSON: {"id":"999","informacion":"No se encontraron datos para el ID especificado","encontrado":false}
+cliente-1  | [REST] Tamaño Payload JSON: 95 bytes
+cliente-1  | [gRPC] Respuesta Obj: {
+cliente-1  |   id: '999',
+cliente-1  |   informacion: 'No se encontraron datos para el ID especificado',
+cliente-1  |   encontrado: false
+cliente-1  | }
+cliente-1  | [gRPC] Tamaño Payload Protobuf Binario: 56 bytes
+cliente-1  | 
+cliente-1  |   --- COMPARACIÓN DE TAMAÑO DE CARGA ÚTIL (PAYLOAD) ---
+cliente-1  |   * REST (JSON):      95 bytes
+cliente-1  |   * gRPC (Protobuf):  56 bytes (frame gRPC total: 61 bytes)
+cliente-1  |   * Diferencia net:   39 bytes menor en gRPC (41.05% más eficiente)
+cliente-1  | -------------------------------------------------
+```
+
 ## Comparación de bytes y explicación (Punto extra)
 
 Resultados de la medición de carga útil (payload) realizada por `cliente/cliente.js`:
