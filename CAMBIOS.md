@@ -4,6 +4,7 @@ Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
 ## 2026-11-07
 
+- **Corte de entregas del 7 de noviembre** en `calificaciones/P00-L10-corte-07nov.xlsx`, por número de cuenta: se revisaron las correcciones que subiste después del corte del 4 de noviembre y varias entregas que estaban en **parcial** porque les faltaba poco pasaron a completas (lo que falta queda como detalle en tu pestaña). T04, S11 y Lectura 10 cerraron el sábado 7 a las 07:00 y se revisan en el siguiente corte.
 - **Rúbrica del proyecto final** en `proyecto/RUBRICA.md`: prototipo funcionando 30 %, reporte final en PDF con diagrama funcional 30 %, presentación estilo pitch 20 % y participación individual más defensa técnica 20 %. Presentación el **sábado 28 de noviembre**; el código y el reporte deben estar en el repo del equipo antes de las 07:00 de ese día.
 - **Deck de la S12** (*Un libro mayor sin dueño*, HTML y PDF) en `material/S12/` y en el índice: Bitcoin construido pieza por pieza como sistema distribuido, desde un libro mayor sobre Raft hasta la prueba de trabajo, los forks, la finalidad probabilística, UTXO, la comparación con Raft y PBFT, y cuándo sí hace falta un blockchain.
 
