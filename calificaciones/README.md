@@ -19,7 +19,7 @@ La hoja **Matriz** tiene un renglón por persona, con una columna por práctica,
 | **✗** | No entregada. En las lecturas, también si se comentó después del domingo |
 | **—** | No aplica todavía (la Lectura 1 era opcional; una lectura o tarea que sigue abierta) |
 
-Desde el corte del 13 de octubre se agregaron los labs **S07**, **S08** y **S09** y las lecturas **L7** y **L9**, ya revisados al cierre (no hubo Lectura 8 ni lab de la S10). En el corte del 7 de noviembre entran las correcciones que subiste después del 4 de noviembre. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, se registra como **tarde**. Las columnas **T04**, **S11** y **L10** cerraron el **sábado 7 de noviembre a las 07:00** y se revisan en el siguiente corte. La columna **Idempotency key** es la tarea **extra** de [`OPCIONALES.md`](../entregas/OPCIONALES.md): es opcional, **no afecta tu calificación** y cuenta para los puntos extra del final.
+Desde el corte del 13 de octubre se agregaron los labs **S07**, **S08** y **S09** y las lecturas **L7** y **L9**, ya revisados al cierre (no hubo Lectura 8 ni lab de la S10). En el corte del 7 de noviembre entran las correcciones que subiste después del 4 de noviembre. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, se registra como **tarde**. Las columnas **T04**, **S11** y **L10** cerraron el **sábado 7 de noviembre a las 07:00** y ya están revisadas; la T04 y la S11 todavía se reciben como **tarde** hasta el sábado 14 de noviembre a las 07:00. La columna **Idempotency key** es la tarea **extra** de [`OPCIONALES.md`](../entregas/OPCIONALES.md): es opcional, **no afecta tu calificación** y cuenta para los puntos extra del final.
 
 Si tu renglón dice **parcial**, busca abajo la pestaña con tu número de
 cuenta: ahí está el detalle en dos columnas (qué falta · cómo se corrige) y los comandos
@@ -32,4 +32,4 @@ observación— **abre un Issue** en este repositorio con tu número de cuenta y
 La causa más común es que la entrega quedó en una rama vieja o en una carpeta con otro
 nombre, y se resuelve rápido.
 
-El corte más reciente es el del **7 de noviembre** (`P00-L10-corte-07nov.xlsx`): todo lo cerrado hasta la S09 y la Lectura 9, con las correcciones que llegaron después del 4 de noviembre.
+El corte más reciente es el del **7 de noviembre** (`P00-L10-corte-07nov.xlsx`): todo lo cerrado hasta la S11, la T04 y la Lectura 10, con las correcciones que llegaron después del 4 de noviembre.
