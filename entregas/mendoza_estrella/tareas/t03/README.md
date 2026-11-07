@@ -10,6 +10,7 @@ El sharding consiste en dividir horizontalmente una colección de datos. En luga
 ## ¿Cómo reparte los datos?
 
 Utiliza una shard key que es el campo que determina como se distribuyen los documentos.
+La shard key es seleccionada por el desarrollador o administrador de la base de datos al configurar la fragmentación de una colección mediante sh.shardCollection(). MongoDB utiliza esta clave para decidir cómo distribuir los documentos entre los diferentes shards. Por ello, es importante seleccionar un campo que permita distribuir los datos de manera equilibrada y realizar consultas eficientes.
 
 Un ejemplo de ello es que en una colección de cuentas bancarias podríamos utilizar el campo clienteId como clave de partición.
 
