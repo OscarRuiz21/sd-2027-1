@@ -1,0 +1,3 @@
+﻿Write-Host 'EVIDENCIA GUARDADA: respuestas al apagar cuenta'
+$resultados=Get-Content -Raw -Encoding UTF8 evidencias-reales/16-circuito-caido.json | ConvertFrom-Json; $resultados | Select-Object status,seconds,@{Name='detalle';Expression={$_.response.detail}} | Format-Table -Wrap
+Get-Content -Raw -Encoding UTF8 evidencias-reales/19-circuito-recuperado.json | ConvertFrom-Json | Format-List status,seconds,response

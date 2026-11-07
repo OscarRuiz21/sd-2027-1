@@ -1,0 +1,38 @@
+[
+  {
+    "url": "http://localhost:18080/api/cuentas",
+    "method": "POST",
+    "body": {
+      "clabe": "002180000000001081",
+      "titular": "Ana S08",
+      "saldoInicial": 1000
+    },
+    "status": 409,
+    "seconds": 0.281,
+    "response": {
+      "type": "about:blank",
+      "title": "Conflict",
+      "status": 409,
+      "detail": "Ya existe una cuenta con la CLABE 002180000000001081",
+      "instance": "/cuentas"
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/cuentas",
+    "method": "POST",
+    "body": {
+      "clabe": "002180000000001082",
+      "titular": "Beto S08",
+      "saldoInicial": 500
+    },
+    "status": 409,
+    "seconds": 0.063,
+    "response": {
+      "type": "about:blank",
+      "title": "Conflict",
+      "status": 409,
+      "detail": "Ya existe una cuenta con la CLABE 002180000000001082",
+      "instance": "/cuentas"
+    }
+  }
+]

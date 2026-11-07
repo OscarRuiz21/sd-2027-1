@@ -1,0 +1,47 @@
+[
+  {
+    "http": 201,
+    "respuesta": {
+      "id": 5,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 11,
+      "fecha": "2026-10-23T05:22:11.719093495Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 903.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-23T05:22:11.999522782Z"
+    }
+  },
+  {
+    "http": 201,
+    "respuesta": {
+      "id": 6,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 12,
+      "fecha": "2026-10-23T05:22:12.092358288Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 891.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-23T05:22:12.187748312Z"
+    }
+  },
+  {
+    "http": 201,
+    "respuesta": {
+      "id": 7,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 13,
+      "fecha": "2026-10-23T05:22:12.262859100Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 878.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-23T05:22:12.363347198Z"
+    }
+  }
+]

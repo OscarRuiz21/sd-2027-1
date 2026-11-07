@@ -1,0 +1,9 @@
+$ docker compose -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\docker-compose.yml -f C:\Users\AmyVa\OneDrive\Documentos\Sistemas Distribuidos\mexi-banco-s08\compose-evidencias.yml exec -T db psql -U mexibanco -d transferencia -c select id,clave_origen,clave_destino,monto,estado,detalle from transferencia order by id;
+ id |    clave_origen    |   clave_destino    | monto  |   estado   |                          detalle                           
+----+--------------------+--------------------+--------+------------+------------------------------------------------------------
+  1 | 002187000000002081 | 002187000000002082 | 200.00 |            | 
+  2 | 002187000000004081 | 002187000000004082 | 200.00 | COMPENSADA | Abono rechazado; dinero devuelto y compensacion registrada
+(2 rows)
+
+
+exit=0
