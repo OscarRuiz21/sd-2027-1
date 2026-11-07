@@ -1,0 +1,13 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requerimientos.txt .
+RUN pip install --no-cache-dir -r requerimientos.txt
+
+COPY client.py .
+COPY service.proto .
+COPY service_pb2.py .
+COPY service_pb2_grpc.py .
+
+CMD ["python", "client.py"]

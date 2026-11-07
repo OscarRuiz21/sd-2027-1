@@ -1,0 +1,7 @@
+fastapi==0.110.0
+uvicorn==0.28.0
+grpcio==1.62.1
+grpcio-tools==1.62.1
+protobuf>=4.21.6,<5.0dev
+requests==2.31.0
+starlette==0.36.3
