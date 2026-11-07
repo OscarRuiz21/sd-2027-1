@@ -1,0 +1,3 @@
+# Publica en el exchange transferencias un evento fijo (CLABEs inventadas ...091 y ...092), por la API del panel
+curl -s -u mexibanco:mexibanco -X POST http://localhost:15673/api/exchanges/%2F/transferencias/publish -H 'Content-Type: application/json' -d '{"properties":{"delivery_mode":2,"content_type":"application/json"},"routing_key":"transferencia.realizada","payload_encoding":"string","payload":"{\"eventoId\":\"11111111-2222-4333-8444-555555555555\",\"tipo\":\"TransferenciaRealizada\",\"transferenciaId\":9001,\"clabeOrigen\":\"002180000000000091\",\"clabeDestino\":\"002180000000000092\",\"monto\":25,\"saldoOrigen\":475,\"saldoDestino\":525,\"fecha\":\"2026-10-31T13:00:00Z\"}"}'
+echo
