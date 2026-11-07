@@ -1,20 +1,22 @@
 # Examen y repaso pendiente
 
-Consulta: 3 de noviembre de 2026, main `d4313102df9f26a14bd668f8f67a0f550e4fa4d1`.
-El anuncio de CAMBIOS.md del 31 de octubre dice que el examen escrito en casa y
-a mano se publicaría esa semana. No se encontró enunciado ni fecha de entrega
-en el árbol de main, las coincidencias de los Markdown, la lista pública de
-Discussions ni la búsqueda de Issues por «examen». No se afirma que no exista
-en otro canal. El README conserva fechas antiguas; se usa el anuncio más reciente.
+Actualización: 7 de noviembre de 2026. El examen ya está publicado en main.
+Vence el **21 de noviembre de 2026 antes de las 06:59**. Requiere diez preguntas
+fijas y quince elegidas de al menos cinco temas, todas escritas a mano, escaneadas
+en un solo PDF y enviadas por push. La entrevista individual es ese mismo día.
 
-- 7 de noviembre: blockchain/telemetría; antes de las 07:00, T04, S11 y Lectura 10.
+Se preparó un [borrador de las 25 respuestas](examen-respuestas-borrador.md),
+con asistencia de Codex, para revisar y estudiar. No es el manuscrito ni se presenta
+como trabajo escrito personalmente por Derek. Falta su revisión, escritura y escaneo.
+
+- 7 de noviembre: T04, S11 y Lectura 10; fecha original antes de las 07:00.
 - 14 de noviembre: repaso.
-- 21 de noviembre: entrevista técnica.
+- 21 de noviembre: examen escrito e entrevista técnica.
 - 28 de noviembre: proyecto final, pitch, diagrama funcional y código.
 
-No hay examen manuscrito producido ni entregado por este trabajo. Lo siguiente
-es una guía de repaso asistida para el 4 de noviembre, no respuestas a un examen
-cuyo enunciado no está disponible.
+Fuente: [enunciado oficial](https://github.com/OscarRuiz21/sd-2027-1/blob/main/examen-escrito/README.md).
+El anuncio del 4 de noviembre permite registrar laboratorios y tareas completos
+fuera de plazo como «tarde», sin penalización de puntos.
 
 ## Recorrido de 60 minutos
 
