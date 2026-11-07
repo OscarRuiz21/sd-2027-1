@@ -1,0 +1,17 @@
+syntax = "proto3";
+package catalog;
+
+service Catalog {
+  rpc GetProduct (GetProductRequest) returns (Product);
+}
+
+message GetProductRequest {
+  int32 id = 1;
+}
+
+message Product {
+  int32 id = 1;
+  string name = 2;
+  int32 price_cents = 3;
+  int32 stock = 4;
+}
