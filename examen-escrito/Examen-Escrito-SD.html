@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Examen escrito en casa · Sistemas Distribuidos · 2027-1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#16263f; --navy2:#1f3a63; --ink:#1b2433; --muted:#556274; --bg:#f4f7fb; --card:#fff;
+  --line:#dbe3ee; --naranja:#f5a524; --verde:#16794a; --verde-bg:#ecf8f1; --amar-bg:#fff8e8;
+  --amar:#a35d00; --rojo:#b42318; --rojo-bg:#fdf0ef; --code:#0f1b2d; --azul-bg:#eef3fb;
+  --morado:#5b3a99; --morado-bg:#f3effb; --gris:#6b7686; --gris-bg:#f1f3f6;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,sans-serif}
+header{background:linear-gradient(135deg,var(--navy),var(--navy2));color:#fff;padding:36px 16px 30px}
+header .in,main{max-width:860px;margin:0 auto}
+.kicker{color:var(--naranja);font-weight:700;letter-spacing:.14em;font-size:12px;text-transform:uppercase}
+h1{font-size:32px;line-height:1.2;margin:8px 0 6px;font-weight:800}
+header p{margin:0;color:#c9d6ea}
+header p b{color:#fff}
+main{padding:8px 16px 60px}
+section{scroll-margin-top:12px}
+h2{font-size:24px;margin:44px 0 10px;font-weight:800;display:flex;align-items:baseline;gap:0}
+h2 .num{display:inline-block;background:var(--navy);color:#fff;border-radius:8px;padding:0 10px;margin-right:10px;font-size:20px;flex:none}
+h2 .arriba{margin-left:auto;padding-left:10px;font-size:16px;color:var(--muted);text-decoration:none;font-weight:600}
+h2 .arriba:hover{color:var(--navy2)}
+h3{font-size:18px;margin:26px 0 6px}
+h4{font-size:16px;margin:18px 0 4px}
+p{margin:8px 0}
+ul,ol{padding-left:22px}
+li{margin:4px 0}
+code,pre{font-variant-ligatures:none;font-feature-settings:"liga" 0,"calt" 0}
+code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.86em;background:#e9eef6;padding:1px 5px;border-radius:4px;overflow-wrap:anywhere}
+pre{background:var(--code);color:#e6edf7;border-radius:10px;padding:14px 16px;overflow-x:auto;margin:8px 0 12px;font:13.5px/1.55 "JetBrains Mono",ui-monospace,monospace;white-space:pre-wrap}
+a{color:var(--navy2)}
+.box{border-radius:12px;padding:12px 16px;margin:14px 0;border:1px solid}
+.box b.t{display:block;margin-bottom:2px}
+.box ul{margin:4px 0}
+.ojo{background:var(--rojo-bg);border-color:#f4c7c3}
+.ojo b{color:var(--rojo)}
+.casa{background:var(--azul-bg);border-color:#cbd8ee}
+
+/* índice */
+.indice{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 16px;margin:20px 0 6px;font-size:14.5px;columns:2;column-gap:28px}
+.indice .ix{padding:3px 0;break-inside:avoid}
+.indice .ix>a{display:flex;align-items:baseline}
+.ixn{flex:none}
+.indice a{color:var(--navy2);text-decoration:none;font-weight:600}
+.indice a:hover{text-decoration:underline}
+.ixn{display:inline-block;min-width:22px;text-align:center;background:var(--navy);color:#fff;border-radius:6px;font-size:12px;padding:0 5px;margin-right:8px}
+.ixsub{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0 2px 30px}
+.ixsub a{font-size:12.5px;font-weight:600;background:var(--azul-bg);border-radius:999px;padding:0 9px}
+@media (max-width:640px){.indice{columns:1}h1{font-size:26px}}
+
+/* listas de reglas */
+ul.reglas{list-style:none;padding:0}
+ul.reglas li{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--navy2);border-radius:10px;padding:8px 14px;margin:8px 0}
+
+/* tablas */
+table{border-collapse:collapse;width:100%;font-size:14px;margin:8px 0}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--amar)}
+table.grande{background:var(--card);border:1px solid var(--line);border-radius:12px;border-collapse:separate;border-spacing:0;overflow:hidden;font-size:15px;margin:12px 0}
+table.grande th{background:var(--navy);color:#fff;padding:9px 12px;font-size:12px}
+table.grande td{padding:10px 12px}
+table.grande tbody tr:nth-child(even) td{background:#f8fafd}
+table.grande tbody tr:last-child td{border-bottom:0}
+table.fijo td:first-child{white-space:nowrap}
+table.fijo td:nth-child(2){white-space:nowrap}
+table.fijo td:last-child{font-size:15.5px}
+table.moldes td:nth-child(2){color:var(--muted);font-size:14px;width:26%}
+table.moldes td:first-child{white-space:nowrap}
+table.califica td:nth-child(2){text-align:center}
+.pts{display:inline-block;font:800 24px/1 Inter,system-ui,sans-serif;color:var(--navy)}
+table.va{background:var(--card);border:1px solid var(--line);border-radius:8px;border-collapse:separate;border-spacing:0;overflow:hidden;font-size:14px}
+table.va th{color:var(--muted)}
+table.va td:first-child{font-weight:700;width:24%}
+@media (max-width:700px){
+  table.grande thead{display:none}
+  table.grande,table.grande tbody,table.grande tr,table.grande td{display:block;width:100%}
+  table.grande{border:0;background:none}
+  table.grande tr{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:8px 0;padding:8px 12px}
+  table.grande tbody tr:nth-child(even) td{background:none}
+  table.grande td{border:0;padding:3px 0;width:auto!important;white-space:normal!important}
+  table.grande td::before{content:attr(data-label);display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--amar);font-weight:700}
+}
+
+/* chips */
+.q-top{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-bottom:6px}
+.qid{display:inline-block;font:700 14px/1.5 "JetBrains Mono",ui-monospace,monospace;background:var(--navy);color:#fff;border-radius:6px;padding:1px 9px;text-decoration:none}
+a.qid:hover{background:var(--navy2)}
+.molde{display:inline-block;font-size:12.5px;font-weight:700;border:1px solid #cbd8ee;border-radius:999px;padding:1px 10px;color:var(--navy2);background:var(--azul-bg);white-space:nowrap}
+.molde.grande{font-size:14px}
+.marca{display:inline-block;font-size:12px;font-weight:700;border-radius:999px;padding:1px 10px;border:1.5px solid;letter-spacing:.02em}
+.q-top .marca{margin-left:auto}
+.marca.fija{background:var(--naranja);border-color:var(--naranja);color:var(--navy)}
+.marca.eleccion{background:#fff;border-color:var(--navy2);color:var(--navy2)}
+.marca.ejemplo{background:var(--verde);border-color:var(--verde);color:#fff}
+.marca.leer{background:var(--gris-bg);border-color:#aab3c0;border-style:dashed;color:var(--gris)}
+.marca.cond{background:var(--morado-bg);border-color:#a48ad6;border-style:dashed;color:var(--morado)}
+.leyenda{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.campo{display:inline-block;background:#fff;border:1px solid var(--line);border-radius:6px;padding:0 7px;margin:2px 4px 2px 0;font-size:13.5px;font-weight:600;color:var(--ink)}
+b.campo{font-weight:700;background:var(--amar-bg);border-color:#f1dcae;margin:1px 0}
+.lab{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-right:4px}
+
+/* tarjetas de pregunta */
+h3.bloque{display:flex;align-items:baseline;gap:10px;margin:34px 0 8px;padding-bottom:6px;border-bottom:2px solid var(--navy);font-size:18.5px}
+.bn{flex:none;font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;background:var(--navy);color:#fff;border-radius:6px;padding:2px 9px}
+.bn.cond{background:var(--morado)}
+.q{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--navy2);border-radius:12px;padding:12px 16px;margin:12px 0}
+.q.fija{border-left-color:var(--naranja);box-shadow:0 1px 0 rgba(22,38,63,.04)}
+.q.eleccion{border-left-color:var(--navy2)}
+.q.ejemplo{border-left-color:var(--verde);background:#fbfdfc}
+.q.leer{border-left-color:#aab3c0;border-left-style:dashed;background:#fafbfc}
+.q.cond{border-left-color:#a48ad6;border-left-style:dashed;background:#fcfbfe}
+.preg{font-size:16.5px;font-weight:500;margin:6px 0}
+.plant{margin:6px 0;font-size:14px}
+.nota{color:var(--muted);font-size:14px;font-style:italic;margin:6px 0}
+.nota i{font-style:normal}
+.voz{background:var(--amar-bg);border:1px solid #f1dcae;border-radius:8px;padding:6px 12px;font-size:14.5px;margin:8px 0 2px}
+.voz .lab{color:var(--amar)}
+
+/* ejemplos resueltos */
+.sec-modelos h2 .num{background:var(--verde)}
+.sec-modelos{background:var(--verde-bg);border:1px solid #bfe5cf;border-radius:16px;padding:2px 18px 14px;margin-top:44px}
+.sec-modelos h2{margin-top:18px}
+.ej{background:var(--card);border:1px solid #bfe5cf;border-left:5px solid var(--verde);border-radius:12px;padding:12px 16px;margin:14px 0}
+.hoja{background:#fffdf7;border:1px solid #ece3cc;border-left:3px solid #e9a8a3;border-radius:8px;padding:10px 14px;margin:10px 0}
+.hoja-et{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--verde);margin-bottom:4px}
+.hoja p{margin:6px 0}
+.box.porque{background:var(--verde-bg);border-color:#bfe5cf;font-size:14.5px}
+.box.porque b.t{color:var(--verde)}
+.box.porque ul{padding-left:20px}
+.e1{margin-top:18px}
+.resp{background:#fff;border:1px solid #ece3cc;border-radius:8px;padding:8px 12px;margin:10px 0}
+.resp-t{font-weight:800;color:var(--navy);margin-bottom:2px}
+.hoja-caso{padding-bottom:4px}
+
+/* diagramas de cajas */
+.dg{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:6px;margin:10px 0 8px}
+.dg .k{background:var(--card);border:1.5px solid var(--navy2);border-radius:10px;padding:6px 10px;text-align:center;font-size:13.5px;line-height:1.3;max-width:280px}
+.dg .a{color:var(--navy2);font-size:12px;text-align:center;padding:0 2px;line-height:1.2}
+.dg .a span{display:block;font-size:20px;line-height:1}
+
+/* casos */
+.caso,.pa{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--navy2);border-radius:12px;padding:14px 18px;margin:16px 0}
+.caso.fija{border-left-color:var(--naranja)}
+.caso.ejemplo{border-left-color:var(--verde)}
+.caso.cond{border-left-color:#a48ad6;border-left-style:dashed;background:#fcfbfe}
+.caso-t{margin:4px 0 6px;font-size:19px}
+.ctx{font-size:15px}
+.reqs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.req{border-radius:10px;padding:8px 12px;font-size:14.5px;border:1px solid}
+.req.qa{background:var(--azul-bg);border-color:#cbd8ee}
+.req.qa b{color:var(--navy2)}
+.req.qb{background:#fff4e2;border-color:#f6d39a}
+.req.qb b{color:var(--amar)}
+@media (max-width:640px){.reqs{grid-template-columns:1fr}}
+ol.turnos{list-style:none;counter-reset:t;padding:0;margin:10px 0 2px}
+ol.turnos li{counter-increment:t;position:relative;padding:4px 0 4px 36px;margin:4px 0;font-size:15px}
+ol.turnos li::before{content:counter(t);position:absolute;left:0;top:5px;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-weight:700;font-size:13px;line-height:24px;text-align:center}
+.rol{display:inline-block;font-weight:700;border-radius:6px;padding:0 6px;font-size:13.5px}
+.rol.ra{background:var(--azul-bg);color:var(--navy2)}
+.rol.rb{background:#fff4e2;color:var(--amar)}
+.rol.rp{background:var(--rojo-bg);color:var(--rojo)}
+
+/* práctica abierta */
+.pa{border-left-color:var(--muted)}
+.pa-sec{margin:10px 0}
+.pa-t{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amar);margin-bottom:2px}
+.pa-sec ul,.pa-sec ol{margin:4px 0}
+
+hr{border:0;border-top:1px solid var(--line);margin:36px 0}
+footer{color:var(--muted);font-size:13.5px;margin-top:40px;border-top:1px solid var(--line);padding-top:12px}
+
+@page{size:Letter;margin:13mm 13mm 14mm}
+@media print{
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  body{font-size:10.5pt;line-height:1.5;background:#fff}
+  header{padding:16px 20px;border-radius:10px}
+  header .in,main{max-width:none}
+  main{padding:0}
+  h1{font-size:24pt}
+  h2{font-size:17pt;margin:22px 0 8px}
+  h2 .arriba{display:none}
+  a{text-decoration:none}
+  .nueva-hoja{break-before:page}
+  .q,.ej,.caso,.pa,.resp,.pa-sec,.box,.req,.reqs,.dg,table,tr,.voz,.indice,ul.reglas li,.hoja{break-inside:avoid}
+  h2,h3,h4,.hoja-et,.pa-t,.lab{break-after:avoid}
+  .sec-modelos{background:none;border:0;padding:0;margin:0}
+  .q,.ej,.caso,.pa{margin:8px 0;padding:9px 13px}
+  .preg{font-size:11pt}
+  .voz,.plant,.nota,.req,ol.turnos li,.ctx,table.grande,.box.porque{font-size:9.8pt}
+  table.grande td{padding:6px 10px}
+  h3.bloque{margin:18px 0 6px}
+  .hoja-caso,.e1{break-inside:auto}
+}
+
+@media print{.inicio{break-inside:avoid}}
+@media print{.pa{font-size:9.6pt;line-height:1.42}.pa li{margin:2px 0}.pa-sec{margin:6px 0}}
+
+/* ---- versión básica ---- */
+.indice{columns:auto;display:grid;grid-template-columns:1fr 1.25fr;gap:4px 28px}
+.ix-temas{display:flex;flex-direction:column;gap:3px}
+.ix-t{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--amar);margin-bottom:2px}
+.ix-temas a{display:flex;align-items:baseline}
+.ixc{margin-left:6px;font-size:12px;color:var(--muted);font-weight:500}
+@media (max-width:640px){.indice{grid-template-columns:1fr}}
+ul.califica li{display:flex;align-items:center;gap:14px}
+ul.califica .pts{flex:none;min-width:30px;text-align:center}
+.box.casa li{margin:6px 0}
+.box.casa .qid{font-size:13px;padding:0 7px;margin:1px 1px}
+.box.regla{background:var(--amar-bg);border-color:#f1dcae;font-size:16px}
+.ej .hoja p{margin:2px 0}
+.intro{color:var(--muted)}
+.tema{margin-top:22px}
+h3.bloque .cuenta{margin-left:auto;font-size:13px;font-weight:600;color:var(--muted)}
+ol.banco{list-style:none;margin:6px 0 0;padding:0;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.qb{display:flex;gap:12px;align-items:baseline;padding:7px 14px;border-bottom:1px solid var(--line);margin:0;scroll-margin-top:12px}
+.qb:last-child{border-bottom:0}
+.qb:nth-child(even){background:#f8fafd}
+.qb .qid{flex:none;min-width:46px;text-align:center}
+.qb .qt{font-size:15.5px;line-height:1.5}
+.qb:target{background:var(--amar-bg)}
+@media print{
+  .indice{font-size:10pt}
+  .box.regla{font-size:10.5pt}
+  .tema{margin-top:8px}
+  h3.bloque{break-after:avoid;margin:10px 0 4px}
+  ol.banco{border-radius:8px;overflow:visible}
+  .qb{break-inside:avoid;padding:3px 10px}
+  .qb .qt{font-size:10pt;line-height:1.36}
+  .qb .qid{font-size:9.5pt}
+  .ej{padding:9px 13px;margin:8px 0}
+  .ej .hoja p{font-size:10.3pt}
+}
+
+</style>
+</head>
+<body>
+<header><div class="in">
+  <div class="kicker">Sistemas Distribuidos · 2027-1</div>
+  <h1>Examen escrito en casa</h1>
+  <p class="vence"><b>Vence el sábado 21 de noviembre de 2026 a las 06:59.</b> Individual, a mano, se entrega por push.</p>
+</div></header>
+<main>
+<nav class="indice" id="indice"><div class="ix-secs">
+<div class="ix"><a href="#s1"><span class="ixn">1</span>Qué es y para qué sirve</a></div>
+<div class="ix"><a href="#s2"><span class="ixn">2</span>Qué entregas</a></div>
+<div class="ix"><a href="#s3"><span class="ixn">3</span>Cómo se entrega</a></div>
+<div class="ix"><a href="#s4"><span class="ixn">4</span>Cómo contestar</a></div>
+<div class="ix"><a href="#s5"><span class="ixn">5</span>Banco de preguntas</a></div>
+</div><div class="ix-temas"><div class="ix-t">Temas del banco</div>
+<a href="#t1"><span class="ixn">1</span>Por qué distribuir <span class="ixc">9</span></a>
+<a href="#t2"><span class="ixn">2</span>Comunicación entre servicios <span class="ixc">11</span></a>
+<a href="#t3"><span class="ixn">3</span>Contenedores, gateway y reparto <span class="ixc">24</span></a>
+<a href="#t4"><span class="ixn">4</span>Copias y consistencia <span class="ixc">12</span></a>
+<a href="#t5"><span class="ixn">5</span>Transacciones y fallas <span class="ixc">14</span></a>
+<a href="#t6"><span class="ixn">6</span>Mensajería <span class="ixc">13</span></a>
+<a href="#t7"><span class="ixn">7</span>Tiempo y orden <span class="ixc">6</span></a>
+<a href="#t8"><span class="ixn">8</span>Bases de datos y caché <span class="ixc">12</span></a>
+<a href="#t9"><span class="ixn">9</span>Blockchain y telemetría <span class="ixc">5</span></a>
+</div></nav>
+<section id="s1" class="">
+<h2><span class="num">1</span>Qué es y para qué sirve<a class="arriba" href="#indice" aria-label="Índice">&uarr;</a></h2>
+<p>Es tu acordeón para la entrevista del sábado 21 de noviembre. En la entrevista pasas tú solo y el profesor sortea 4 preguntas de este banco; puedes pedir que te cambie una. Lo que escribas aquí es lo que vas a estudiar para ese día.</p>
+</section>
+<section id="s2" class="">
+<h2><span class="num">2</span>Qué entregas<a class="arriba" href="#indice" aria-label="Índice">&uarr;</a></h2>
+<div class="box casa"><ul><li>Las 10 preguntas fijas, iguales para todos: <a class="qid" href="#q-1-7">1.7</a>, <a class="qid" href="#q-2-4">2.4</a>, <a class="qid" href="#q-2-5">2.5</a>, <a class="qid" href="#q-3-6">3.6</a>, <a class="qid" href="#q-4-1">4.1</a>, <a class="qid" href="#q-5-3">5.3</a>, <a class="qid" href="#q-6-3">6.3</a>, <a class="qid" href="#q-6-4">6.4</a>, <a class="qid" href="#q-7-2">7.2</a> y <a class="qid" href="#q-8-4">8.4</a>.</li><li>15 preguntas más del banco que tú elijas, de al menos 5 temas distintos, sin repetir las fijas ni los ejemplos.</li><li>Todo a mano, con el número de cada pregunta.</li></ul></div>
+</section>
+<section id="s3" class="">
+<h2><span class="num">3</span>Cómo se entrega<a class="arriba" href="#indice" aria-label="Índice">&uarr;</a></h2>
+<p>Un solo PDF escaneado en <code>entregas/apellido_nombre/examen/examen-escrito.pdf</code> de tu rama, por push, sin PR, antes del sábado 21 de noviembre de 2026 a las 06:59.</p>
+</section>
+<section id="s4" class="sec-modelos">
+<h2><span class="num">4</span>Cómo contestar<a class="arriba" href="#indice" aria-label="Índice">&uarr;</a></h2>
+<div class="box regla">Contesta cada pregunta en 4 a 6 líneas, con tus palabras: qué es, qué ganas, qué pierdes y cuándo lo usarías. Así se ven dos respuestas buenas; estas dos no se entregan.</div>
+<article class="ej"><div class="q-top"><span class="marca ejemplo">Ejemplo 1</span></div>
+<p class="preg"><span class="lab">Pregunta.</span> ¿Qué diferencia hay entre escalar vertical y horizontalmente, y cuándo usarías cada uno?</p>
+<div class="hoja"><div class="hoja-et">Respuesta</div><p>Escalar vertical es darle más CPU, memoria o disco a la misma máquina; escalar horizontal es agregar máquinas y repartir la carga entre ellas. Vertical es simple, porque no pide código nuevo ni coordinación, pero tiene techo y una sola máquina es punto único de falla. Horizontal casi no tiene techo y una copia caída no tumba el servicio, pero pide servidores sin estado y un balanceador, y trae fallas parciales. Escalaría horizontal la capa web sin estado, porque clonarla detrás de un balanceador es barato, aunque pierdo simplicidad de operación. La base la crecería vertical mientras alcance, porque partirla cuesta mucho más.</p></div>
+</article>
+<article class="ej"><div class="q-top"><span class="marca ejemplo">Ejemplo 2</span></div>
+<p class="preg"><span class="lab">Pregunta.</span> ¿Cuándo elegirías una base SQL y cuándo una NoSQL?</p>
+<div class="hoja"><div class="hoja-et">Respuesta</div><p>Una base relacional (SQL) guarda tablas con esquema, joins y transacciones de todo o nada sobre varias filas; una NoSQL guarda, por ejemplo, documentos o pares llave y valor, pensada para un acceso simple y conocido. Elegiría NoSQL cuando leo por llave o el documento completo, los datos cambian de forma o las escrituras ya no caben en una máquina: el catálogo de una tienda, que se lee entero y trae atributos distintos por producto. Elegiría SQL cuando hay reglas entre filas y operaciones de todo o nada sobre varias cosas, como pedido y pago, o consultas que todavía no conozco. Con NoSQL gano escala y flexibilidad, pero el esquema no desaparece: lo revisa mi código. Por eso uso relacional por defecto y NoSQL solo cuando puedo nombrar el acceso o la carga que la relacional no aguanta.</p></div>
+</article>
+</section>
+<section id="s5" class="nueva-hoja">
+<h2><span class="num">5</span>Banco de preguntas<a class="arriba" href="#indice" aria-label="Índice">&uarr;</a></h2>
+<p class="intro">Nueve temas. Escribe el número de la pregunta junto a cada respuesta.</p>
+<div class="tema" id="t1">
+<h3 class="bloque"><span class="bn">Tema 1</span>Por qué distribuir<span class="cuenta">9</span></h3>
+<ol class="banco">
+<li class="qb" id="q-1-1"><span class="qid">1.1</span><span class="qt">¿Cuándo distribuirías un sistema en varias máquinas, y cuándo lo dejarías en una sola?</span></li>
+<li class="qb" id="q-1-2"><span class="qid">1.2</span><span class="qt">¿Un sistema es más confiable o menos por estar distribuido en varias máquinas?</span></li>
+<li class="qb" id="q-1-3"><span class="qid">1.3</span><span class="qt">Explica qué es la elasticidad y en qué se distingue de la escalabilidad.</span></li>
+<li class="qb" id="q-1-4"><span class="qid">1.4</span><span class="qt">¿Qué necesita un servicio para poder agregarle y quitarle copias en minutos?</span></li>
+<li class="qb" id="q-1-5"><span class="qid">1.5</span><span class="qt">Explica qué es una falla parcial y por qué un programa que corre en una sola máquina normalmente no la tiene.</span></li>
+<li class="qb" id="q-1-6"><span class="qid">1.6</span><span class="qt">¿Qué diferencia hay entre un monolito modular y una arquitectura basada en servicios, y cuándo elegirías cada uno?</span></li>
+<li class="qb" id="q-1-7"><span class="qid">1.7</span><span class="qt">¿Qué diferencia hay entre un monolito y microservicios, y cuándo usarías cada uno?</span></li>
+<li class="qb" id="q-1-8"><span class="qid">1.8</span><span class="qt">Si un monolito sin estado puede correr en diez copias, ¿qué ganan de verdad los microservicios al escalar?</span></li>
+<li class="qb" id="q-1-9"><span class="qid">1.9</span><span class="qt">¿Qué se rompe primero si varios servicios comparten la misma base de datos?</span></li>
+</ol></div>
+<div class="tema" id="t2">
+<h3 class="bloque"><span class="bn">Tema 2</span>Comunicación entre servicios<span class="cuenta">11</span></h3>
+<ol class="banco">
+<li class="qb" id="q-2-1"><span class="qid">2.1</span><span class="qt">¿Qué diferencia hay entre REST y gRPC, y cuándo elegirías gRPC?</span></li>
+<li class="qb" id="q-2-2"><span class="qid">2.2</span><span class="qt">¿Por qué no expondrías gRPC a clientes que no controlas?</span></li>
+<li class="qb" id="q-2-3"><span class="qid">2.3</span><span class="qt">¿Qué tiene de mal esta afirmación de una guía de entrevista: "gRPC es entre cinco y diez veces más rápido que REST"?</span></li>
+<li class="qb" id="q-2-4"><span class="qid">2.4</span><span class="qt">¿Qué significa que una operación sea idempotente, y cómo harías que reintentar un cobro no cobre dos veces?</span></li>
+<li class="qb" id="q-2-5"><span class="qid">2.5</span><span class="qt">¿Qué pasa si la llamada de tu servicio a una pasarela de cobro vence su timeout? ¿Qué sabes y qué no sabes en ese momento?</span></li>
+<li class="qb" id="q-2-6"><span class="qid">2.6</span><span class="qt">Llegan al mismo tiempo dos peticiones de cobro con la misma llave de idempotencia: ¿qué hace el servidor?</span></li>
+<li class="qb" id="q-2-7"><span class="qid">2.7</span><span class="qt">En una cadena de tres servicios, ¿cómo evitas que el último siga trabajando cuando el primero ya se rindió?</span></li>
+<li class="qb" id="q-2-8"><span class="qid">2.8</span><span class="qt">Explica el modelo de madurez de Richardson y qué gana una API cuando usa los verbos y códigos HTTP según su significado.</span></li>
+<li class="qb" id="q-2-9"><span class="qid">2.9</span><span class="qt">En el modelo de madurez de Richardson, ¿cuándo valdría la pena llegar al nivel 3?</span></li>
+<li class="qb" id="q-2-10"><span class="qid">2.10</span><span class="qt">¿Qué diferencia hay entre que dos servicios se comuniquen de forma síncrona o asíncrona, y cuándo elegirías cada una?</span></li>
+<li class="qb" id="q-2-11"><span class="qid">2.11</span><span class="qt">¿Cómo se entera el usuario de que su pedido, procesado de forma asíncrona, ya quedó?</span></li>
+</ol></div>
+<div class="tema" id="t3">
+<h3 class="bloque"><span class="bn">Tema 3</span>Contenedores, gateway y reparto<span class="cuenta">24</span></h3>
+<ol class="banco">
+<li class="qb" id="q-3-1"><span class="qid">3.1</span><span class="qt">¿Qué pasa con los archivos que un contenedor escribió dentro de sí cuando lo borras y levantas otro con la misma imagen?</span></li>
+<li class="qb" id="q-3-2"><span class="qid">3.2</span><span class="qt">¿Por qué conviene que la imagen de un contenedor sea inmutable, si eso te obliga a reconstruirla por cada cambio?</span></li>
+<li class="qb" id="q-3-3"><span class="qid">3.3</span><span class="qt">¿Cuándo te basta un orquestador de un solo host, como Docker Compose, y cuándo necesitas uno de clúster, como Kubernetes?</span></li>
+<li class="qb" id="q-3-4"><span class="qid">3.4</span><span class="qt">En Kubernetes, si muere uno de los tres Pods de un Deployment, ¿quién lo repone y cómo lo siguen encontrando sus clientes?</span></li>
+<li class="qb" id="q-3-5"><span class="qid">3.5</span><span class="qt">Explica qué cuenta como configuración en una aplicación de doce factores y dónde debe vivir.</span></li>
+<li class="qb" id="q-3-6"><span class="qid">3.6</span><span class="qt">¿Qué diferencia hay entre un API gateway y un balanceador de carga, y cuándo pondrías cada uno?</span></li>
+<li class="qb" id="q-3-7"><span class="qid">3.7</span><span class="qt">¿Pondrías en el API gateway la lógica de negocio o las llamadas entre tus servicios internos?</span></li>
+<li class="qb" id="q-3-8"><span class="qid">3.8</span><span class="qt">¿Qué pasa si una instancia de un servicio muere de golpe, sin avisar al registro de servicios?</span></li>
+<li class="qb" id="q-3-9"><span class="qid">3.9</span><span class="qt">Cuando muere una instancia, ¿por qué no basta con que el registro de servicios reaccione rápido, si cada cliente guarda su propia copia de la lista?</span></li>
+<li class="qb" id="q-3-10"><span class="qid">3.10</span><span class="qt">¿Qué diferencia hay entre repartir carga por turnos (round robin) y por menos conexiones, y cuándo elegirías cada uno?</span></li>
+<li class="qb" id="q-3-11"><span class="qid">3.11</span><span class="qt">Los servidores detrás de tu balanceador son de distinto tamaño: ¿qué cambias en el reparto?</span></li>
+<li class="qb" id="q-3-12"><span class="qid">3.12</span><span class="qt">¿Cuándo aceptarías sticky sessions, que atan a cada usuario a un mismo servidor, y cuándo no?</span></li>
+<li class="qb" id="q-3-13"><span class="qid">3.13</span><span class="qt">El balanceador ata a cada usuario a un servidor según su IP, y muchos llegan desde la misma red de oficina: ¿qué le pasa al reparto?</span></li>
+<li class="qb" id="q-3-14"><span class="qid">3.14</span><span class="qt">¿Qué diferencia hay entre replicar y particionar los datos, y cuándo usarías cada uno?</span></li>
+<li class="qb" id="q-3-15"><span class="qid">3.15</span><span class="qt">Si el cuello de botella de tu base son las escrituras, ¿te ayudan las réplicas?</span></li>
+<li class="qb" id="q-3-16"><span class="qid">3.16</span><span class="qt">¿Qué tiene de mal esta afirmación: "partir una base en shards le agrega redundancia"?</span></li>
+<li class="qb" id="q-3-17"><span class="qid">3.17</span><span class="qt">Si partes una base en shards, ¿qué sí gana el sistema en cuanto a fallas?</span></li>
+<li class="qb" id="q-3-18"><span class="qid">3.18</span><span class="qt">¿Qué diferencia hay entre particionar por rangos de la clave y por hash de la clave, y cuándo elegirías cada uno?</span></li>
+<li class="qb" id="q-3-19"><span class="qid">3.19</span><span class="qt">Particionas una tabla por fecha de creación: ¿qué shard recibe las escrituras de hoy?</span></li>
+<li class="qb" id="q-3-20"><span class="qid">3.20</span><span class="qt">¿Qué pasa si una sola clave, como la cuenta de una celebridad, recibe muchísimo más tráfico que las demás en una base particionada?</span></li>
+<li class="qb" id="q-3-21"><span class="qid">3.21</span><span class="qt">En una base particionada, ¿cómo te enteras de que tienes una clave caliente antes de que se caiga su shard?</span></li>
+<li class="qb" id="q-3-22"><span class="qid">3.22</span><span class="qt">Explica cómo llega una petición al shard correcto cuando los datos están repartidos en varios shards.</span></li>
+<li class="qb" id="q-3-23"><span class="qid">3.23</span><span class="qt">En una base partida en shards, ¿qué pasa si quien guarda el mapa de qué clave vive en qué shard se cae o tiene una versión vieja?</span></li>
+<li class="qb" id="q-3-24"><span class="qid">3.24</span><span class="qt">¿Qué diferencia hay entre un contenedor y una máquina virtual, y cuándo usarías cada uno?</span></li>
+</ol></div>
+<div class="tema" id="t4">
+<h3 class="bloque"><span class="bn">Tema 4</span>Copias y consistencia<span class="cuenta">12</span></h3>
+<ol class="banco">
+<li class="qb" id="q-4-1"><span class="qid">4.1</span><span class="qt">Explica el teorema CAP y qué implica para el diseño de un sistema con datos replicados.</span></li>
+<li class="qb" id="q-4-2"><span class="qid">4.2</span><span class="qt">En un sistema con datos replicados, cuando la red está sana, ¿te cuesta algo pedir consistencia fuerte?</span></li>
+<li class="qb" id="q-4-3"><span class="qid">4.3</span><span class="qt">¿Qué diferencia hay entre consistencia fuerte (linealizable) y consistencia eventual, y cuándo elegirías cada una?</span></li>
+<li class="qb" id="q-4-4"><span class="qid">4.4</span><span class="qt">Con consistencia eventual, ¿cuánto tarda una réplica en ponerse al día, y quién te lo garantiza?</span></li>
+<li class="qb" id="q-4-5"><span class="qid">4.5</span><span class="qt">¿Qué diferencia hay entre replicación síncrona y asíncrona, y cuándo elegirías cada una?</span></li>
+<li class="qb" id="q-4-6"><span class="qid">4.6</span><span class="qt">¿Qué tiene de mal esta afirmación: "si el servidor primario falla, una de las réplicas toma su lugar automáticamente como nuevo primario, sin perder nada"?</span></li>
+<li class="qb" id="q-4-7"><span class="qid">4.7</span><span class="qt">Para detectar que el servidor primario cayó, ¿por qué un timeout muy corto puede ser peor que uno largo?</span></li>
+<li class="qb" id="q-4-8"><span class="qid">4.8</span><span class="qt">¿Qué pasa si alguien borra por error una tabla en producción y tu base solo tiene réplicas, sin respaldos?</span></li>
+<li class="qb" id="q-4-9"><span class="qid">4.9</span><span class="qt">Si tienes que restaurar tu base desde un respaldo, ¿cuántos datos aceptas perder y cuánto tiempo aceptas estar caído?</span></li>
+<li class="qb" id="q-4-10"><span class="qid">4.10</span><span class="qt">¿Cómo elige Raft a un líder, y por qué no puede haber dos líderes en el mismo término?</span></li>
+<li class="qb" id="q-4-11"><span class="qid">4.11</span><span class="qt">En Raft, ¿para qué sirve que cada nodo espere un tiempo distinto antes de postularse?</span></li>
+<li class="qb" id="q-4-12"><span class="qid">4.12</span><span class="qt">¿Raft tolera más fallas que Paxos o es más rápido? ¿Qué gana entonces?</span></li>
+</ol></div>
+<div class="tema" id="t5">
+<h3 class="bloque"><span class="bn">Tema 5</span>Transacciones y fallas<span class="cuenta">14</span></h3>
+<ol class="banco">
+<li class="qb" id="q-5-1"><span class="qid">5.1</span><span class="qt">Explica qué garantiza una transacción ACID y por qué esa garantía se pierde cuando una operación cruza varios servicios, cada uno con su base.</span></li>
+<li class="qb" id="q-5-2"><span class="qid">5.2</span><span class="qt">¿Qué nivel de aislamiento usa por omisión una base relacional como PostgreSQL, y qué anomalía deja pasar?</span></li>
+<li class="qb" id="q-5-3"><span class="qid">5.3</span><span class="qt">¿Qué diferencia hay entre una saga y el commit en dos fases, y cuándo elegirías cada uno para una operación que cruza varias bases?</span></li>
+<li class="qb" id="q-5-4"><span class="qid">5.4</span><span class="qt">En una saga, el pago pasó y el inventario falló, y la compensación del pago también falla: ¿qué hace tu sistema?</span></li>
+<li class="qb" id="q-5-5"><span class="qid">5.5</span><span class="qt">En un commit en dos fases, ¿qué pasa si el coordinador se cae después de que los participantes votaron que sí y antes de comunicarles la decisión?</span></li>
+<li class="qb" id="q-5-6"><span class="qid">5.6</span><span class="qt">¿Por qué el commit en dos fases no es un algoritmo de consenso, si los dos buscan que todos decidan lo mismo?</span></li>
+<li class="qb" id="q-5-7"><span class="qid">5.7</span><span class="qt">¿Qué tiene de mal esta afirmación: "consistencia significa que los datos del sistema son iguales en todos los componentes, en todos los casos"?</span></li>
+<li class="qb" id="q-5-8"><span class="qid">5.8</span><span class="qt">Mientras una saga va a medias, ¿qué consistencia pierde el sistema y cuál conserva?</span></li>
+<li class="qb" id="q-5-9"><span class="qid">5.9</span><span class="qt">Explica el patrón circuit breaker: qué problema evita y cómo se comporta en cada uno de sus estados.</span></li>
+<li class="qb" id="q-5-10"><span class="qid">5.10</span><span class="qt">En un circuit breaker, ¿qué errores deben abrir el circuito y cuáles no?</span></li>
+<li class="qb" id="q-5-11"><span class="qid">5.11</span><span class="qt">¿Cuándo reintentarías una llamada que falló hacia otro servicio, y cuándo no?</span></li>
+<li class="qb" id="q-5-12"><span class="qid">5.12</span><span class="qt">Si cada capa de tu sistema reintenta por su cuenta, ¿qué le pasa a la base cuando ya está saturada?</span></li>
+<li class="qb" id="q-5-13"><span class="qid">5.13</span><span class="qt">¿Qué pasa con tu servicio si un proveedor externo del que dependes no se cae, sino que empieza a tardar treinta segundos en cada respuesta?</span></li>
+<li class="qb" id="q-5-14"><span class="qid">5.14</span><span class="qt">Si se cae el proveedor de pagos, ¿qué funciones de una tienda en línea pueden seguir y cuáles deben rechazarse?</span></li>
+</ol></div>
+<div class="tema" id="t6">
+<h3 class="bloque"><span class="bn">Tema 6</span>Mensajería<span class="cuenta">13</span></h3>
+<ol class="banco">
+<li class="qb" id="q-6-1"><span class="qid">6.1</span><span class="qt">¿Cuándo pondrías una cola de mensajes entre dos servicios, y cuándo no?</span></li>
+<li class="qb" id="q-6-2"><span class="qid">6.2</span><span class="qt">¿Qué haces si una cola de mensajes crece sin parar?</span></li>
+<li class="qb" id="q-6-3"><span class="qid">6.3</span><span class="qt">Cola punto a punto, pub/sub o log: ¿qué diferencia hay entre los tres y cuándo elegirías cada uno?</span></li>
+<li class="qb" id="q-6-4"><span class="qid">6.4</span><span class="qt">Explica por qué un broker no puede prometerte que cada mensaje se entregue exactamente una vez, y qué puedes prometer en su lugar.</span></li>
+<li class="qb" id="q-6-5"><span class="qid">6.5</span><span class="qt">Un servicio nuevo necesita los eventos de la semana pasada: ¿qué usas?</span></li>
+<li class="qb" id="q-6-6"><span class="qid">6.6</span><span class="qt">Quieres que el efecto de cada mensaje ocurra una sola vez, pero el efecto es un cobro en un sistema externo que no controlas: ¿qué haces?</span></li>
+<li class="qb" id="q-6-7"><span class="qid">6.7</span><span class="qt">¿Qué diferencia hay entre un evento y un comando, y cuándo usarías cada uno?</span></li>
+<li class="qb" id="q-6-8"><span class="qid">6.8</span><span class="qt">Si nadie consume un evento, ¿es un error?</span></li>
+<li class="qb" id="q-6-9"><span class="qid">6.9</span><span class="qt">¿Qué diferencia hay entre publicar un evento justo después del commit y usar el patrón outbox, y cuándo elegirías cada uno?</span></li>
+<li class="qb" id="q-6-10"><span class="qid">6.10</span><span class="qt">Si usas el patrón outbox, ¿por qué el consumidor tiene que seguir siendo idempotente?</span></li>
+<li class="qb" id="q-6-11"><span class="qid">6.11</span><span class="qt">¿Qué tiene de mal esta afirmación de una guía de entrevista: "lo asíncrono es excelente para el rendimiento y la tolerancia a fallas, solo que es más complicado"?</span></li>
+<li class="qb" id="q-6-12"><span class="qid">6.12</span><span class="qt">Si publicar en el broker también es una llamada remota, ¿qué cambia y qué no cuando pasas de una llamada directa a una cola?</span></li>
+<li class="qb" id="q-6-13"><span class="qid">6.13</span><span class="qt">¿Qué pasa si un consumidor se cae a mitad de procesar un mensaje, y para qué sirve una cola de mensajes muertos (DLQ)?</span></li>
+</ol></div>
+<div class="tema" id="t7">
+<h3 class="bloque"><span class="bn">Tema 7</span>Tiempo y orden<span class="cuenta">6</span></h3>
+<ol class="banco">
+<li class="qb" id="q-7-1"><span class="qid">7.1</span><span class="qt">¿Qué pasa si un sistema decide el orden de dos eventos ocurridos en máquinas distintas comparando la hora que marcó el reloj de cada una?</span></li>
+<li class="qb" id="q-7-2"><span class="qid">7.2</span><span class="qt">Explica la relación "sucedió antes" y cómo la respeta un reloj de Lamport.</span></li>
+<li class="qb" id="q-7-3"><span class="qid">7.3</span><span class="qt">¿Qué reloj usas para medir cuánto tardó una llamada?</span></li>
+<li class="qb" id="q-7-4"><span class="qid">7.4</span><span class="qt">Con relojes de Lamport, si dos eventos de procesos distintos tienen el mismo número, ¿cómo sacas un orden que todos compartan?</span></li>
+<li class="qb" id="q-7-5"><span class="qid">7.5</span><span class="qt">¿Qué diferencia hay entre un reloj de Lamport y uno vectorial, y cuándo pagarías el costo del vectorial?</span></li>
+<li class="qb" id="q-7-6"><span class="qid">7.6</span><span class="qt">En un chat de tres personas, ¿por qué la entrega FIFO no basta para que nadie vea la respuesta antes que la pregunta?</span></li>
+</ol></div>
+<div class="tema" id="t8">
+<h3 class="bloque"><span class="bn">Tema 8</span>Bases de datos y caché<span class="cuenta">12</span></h3>
+<ol class="banco">
+<li class="qb" id="q-8-1"><span class="qid">8.1</span><span class="qt">¿Qué diferencia hay entre normalizar y desnormalizar, y cuándo duplicarías datos a propósito?</span></li>
+<li class="qb" id="q-8-2"><span class="qid">8.2</span><span class="qt">Si duplicas un dato a propósito, ¿quién actualiza la copia cuando cambia el original, y qué pasa si falla a la mitad?</span></li>
+<li class="qb" id="q-8-3"><span class="qid">8.3</span><span class="qt">Explica qué es la persistencia políglota y qué te cuesta usar varias bases de datos a la vez.</span></li>
+<li class="qb" id="q-8-4"><span class="qid">8.4</span><span class="qt">¿Cuándo pondrías una caché frente a tu base de datos, y qué no cachearías nunca?</span></li>
+<li class="qb" id="q-8-5"><span class="qid">8.5</span><span class="qt">¿Qué le pasa a tu base de datos si la caché se cae en la hora pico?</span></li>
+<li class="qb" id="q-8-6"><span class="qid">8.6</span><span class="qt">Explica qué es invalidar una caché y por qué es difícil hacerlo bien.</span></li>
+<li class="qb" id="q-8-7"><span class="qid">8.7</span><span class="qt">¿Por qué borrar la llave de la caché antes del commit también puede dejar un valor viejo?</span></li>
+<li class="qb" id="q-8-8"><span class="qid">8.8</span><span class="qt">¿Qué pasa cuando expira una entrada de caché muy popular? ¿Y si una sola llave concentra casi todo el tráfico?</span></li>
+<li class="qb" id="q-8-9"><span class="qid">8.9</span><span class="qt">Mientras se reconstruye una entrada de caché muy popular, ¿qué ven los usuarios que esperan?</span></li>
+<li class="qb" id="q-8-10"><span class="qid">8.10</span><span class="qt">¿Qué tiene de mal esta afirmación de una guía de entrevista: "con write-through, los datos de la caché nunca están viejos"?</span></li>
+<li class="qb" id="q-8-11"><span class="qid">8.11</span><span class="qt">Con una caché write-through, ¿qué pasa si alguien corrige un precio directo en la base?</span></li>
+<li class="qb" id="q-8-12"><span class="qid">8.12</span><span class="qt">¿Cuántos motores de bases de datos distintos puede operar bien un equipo de tres personas, y cómo lo decides?</span></li>
+</ol></div>
+<div class="tema" id="t9">
+<h3 class="bloque"><span class="bn">Tema 9</span>Blockchain y telemetría<span class="cuenta">5</span></h3>
+<ol class="banco">
+<li class="qb" id="q-9-1"><span class="qid">9.1</span><span class="qt">¿Cuándo necesitas una blockchain y cuándo te basta una base de datos?</span></li>
+<li class="qb" id="q-9-2"><span class="qid">9.2</span><span class="qt">¿En qué se diferencia el consenso de Bitcoin del de Raft, y por qué Raft no sirve en una red abierta?</span></li>
+<li class="qb" id="q-9-3"><span class="qid">9.3</span><span class="qt">¿Qué diferencia hay entre un consenso que tolera nodos que se caen, como Raft, y uno que tolera nodos que mienten, y cuándo usarías cada uno?</span></li>
+<li class="qb" id="q-9-4"><span class="qid">9.4</span><span class="qt">Explica qué pregunta responde cada señal de observabilidad: logs, métricas y trazas.</span></li>
+<li class="qb" id="q-9-5"><span class="qid">9.5</span><span class="qt">¿Cómo sigues con trazas una petición cuando cruza una cola entre dos servicios?</span></li>
+</ol></div>
+</section>
+<footer><p>Preguntas sobre la guía: en el canal del curso.</p></footer>
+</main>
+</body>
+</html>

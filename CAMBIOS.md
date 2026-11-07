@@ -2,6 +2,10 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-11-05
+
+- **Examen escrito en casa** en `examen-escrito/` (HTML y PDF para imprimir): un banco de preguntas generales por tema, como las de una entrevista técnica. Entregas a mano las 10 preguntas fijas y 15 más que tú elijas, de al menos 5 temas distintos, en un solo PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf`, por push, antes del **sábado 21 de noviembre a las 06:59**. Es tu acordeón para la entrevista de ese día: pasas tú solo y se sortean 4 preguntas de este mismo banco.
+
 ## 2026-11-04
 
 - **Corte de entregas del 4 de noviembre** en `calificaciones/P00-L10-corte-04nov.xlsx`, por número de cuenta: entran los labs S07, S08 y S09 y las lecturas 7 y 9. Si tu renglón dice **parcial**, tu pestaña dice qué falta y cómo se corrige. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, quedó como **tarde** (no baja puntos). T04, S11 y Lectura 10 siguen abiertas hasta el sábado 7 de noviembre antes de las 07:00.
