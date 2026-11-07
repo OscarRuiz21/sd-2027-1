@@ -1,0 +1,26 @@
+{
+  "cola": {
+    "name": "notificacion.transferencias",
+    "durable": true,
+    "arguments": {
+      "x-dead-letter-exchange": "transferencias.dlx",
+      "x-dead-letter-routing-key": "notificacion.transferencias",
+      "x-queue-type": "classic"
+    },
+    "messages": 0,
+    "messages_ready": 0,
+    "messages_unacknowledged": 0,
+    "consumers": 1
+  },
+  "dlq": {
+    "name": "notificacion.transferencias.dlq",
+    "durable": true,
+    "arguments": {
+      "x-queue-type": "classic"
+    },
+    "messages": 2,
+    "messages_ready": 2,
+    "messages_unacknowledged": 0,
+    "consumers": 0
+  }
+}

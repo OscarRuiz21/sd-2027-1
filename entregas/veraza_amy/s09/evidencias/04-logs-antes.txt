@@ -1,0 +1,65 @@
+notificacion-1  | 2026-10-23T05:19:39.034Z  INFO 1 --- [notificacion] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+notificacion-1  | 2026-10-23T05:19:39.124Z  INFO 1 --- [notificacion] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+notificacion-1  | 2026-10-23T05:19:39.127Z  INFO 1 --- [notificacion] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6878 ms
+notificacion-1  | 2026-10-23T05:19:40.127Z  INFO 1 --- [notificacion] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+notificacion-1  | 2026-10-23T05:19:40.265Z  INFO 1 --- [notificacion] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+notificacion-1  | 2026-10-23T05:19:40.366Z  INFO 1 --- [notificacion] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+notificacion-1  | 2026-10-23T05:19:41.276Z  INFO 1 --- [notificacion] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+notificacion-1  | 2026-10-23T05:19:41.377Z  INFO 1 --- [notificacion] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+notificacion-1  | 2026-10-23T05:19:41.982Z  INFO 1 --- [notificacion] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@63636de0
+notificacion-1  | 2026-10-23T05:19:41.990Z  INFO 1 --- [notificacion] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+notificacion-1  | 2026-10-23T05:19:44.415Z  INFO 1 --- [notificacion] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+notificacion-1  | 2026-10-23T05:19:44.509Z  INFO 1 --- [notificacion] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+notificacion-1  | 2026-10-23T05:19:45.355Z  INFO 1 --- [notificacion] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+notificacion-1  | 2026-10-23T05:19:50.981Z  INFO 1 --- [notificacion] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+notificacion-1  | 2026-10-23T05:19:51.229Z  WARN 1 --- [notificacion] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+notificacion-1  | 2026-10-23T05:19:51.260Z  INFO 1 --- [notificacion] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+notificacion-1  | 2026-10-23T05:19:51.612Z  INFO 1 --- [notificacion] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+notificacion-1  | 2026-10-23T05:19:51.693Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+notificacion-1  | 2026-10-23T05:19:51.705Z  INFO 1 --- [notificacion] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+notificacion-1  | 2026-10-23T05:19:51.735Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+notificacion-1  | 2026-10-23T05:19:51.735Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+notificacion-1  | 2026-10-23T05:19:51.736Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+notificacion-1  | 2026-10-23T05:19:51.736Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+notificacion-1  | 2026-10-23T05:19:51.736Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+notificacion-1  | 2026-10-23T05:19:51.736Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+notificacion-1  | 2026-10-23T05:19:51.736Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+notificacion-1  | 2026-10-23T05:19:53.614Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+notificacion-1  | 2026-10-23T05:19:53.629Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+notificacion-1  | 2026-10-23T05:19:53.636Z  INFO 1 --- [notificacion] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+notificacion-1  | 2026-10-23T05:19:53.640Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792732793639 with initial instances count: 4
+notificacion-1  | 2026-10-23T05:19:53.669Z  INFO 1 --- [notificacion] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application NOTIFICACION with eureka with status UP
+notificacion-1  | 2026-10-23T05:19:53.671Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792732793671, current=UP, previous=STARTING]
+notificacion-1  | 2026-10-23T05:19:53.680Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/9b73d3906661:notificacion:8080: registering service...
+notificacion-1  | 2026-10-23T05:19:53.746Z  INFO 1 --- [notificacion] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+notificacion-1  | 2026-10-23T05:19:53.755Z  INFO 1 --- [notificacion] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+notificacion-1  | 2026-10-23T05:19:53.771Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [rabbitmq:5672]
+notificacion-1  | 2026-10-23T05:19:53.828Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/9b73d3906661:notificacion:8080 - registration status: 204
+notificacion-1  | 2026-10-23T05:19:54.031Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7d90d4c6:0/SimpleConnection@7d5e165 [delegate=amqp://mexibanco@172.25.0.4:5672/, localPort=49548]
+notificacion-1  | 2026-10-23T05:19:54.348Z  INFO 1 --- [notificacion] [           main] mx.mexibanco.NotificacionApplication     : Started NotificacionApplication in 23.642 seconds (process running for 25.909)
+notificacion-1  | 2026-10-23T05:19:54.544Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+notificacion-1  | 2026-10-23T05:19:54.546Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+notificacion-1  | 2026-10-23T05:19:54.556Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+notificacion-1  | 2026-10-23T05:19:54.764Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 2 (706e6e35-6079-3c8d-bf61-f274ccb36dbf, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:19:54.798Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 3 (a5e8986f-adf2-358a-bc12-ae9aea599485, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:19:54.816Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 4 (a25f3db0-1157-3342-9ee6-da7152978c88, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:20:20.211Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 9001 (0c4d9095-e37b-4ecf-bccb-c821344a240a, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:20:20.240Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 9001 (0c4d9095-e37b-4ecf-bccb-c821344a240a, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:20:24.966Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:25.472Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:25.975Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:26.481Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:26.984Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:27.487Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:27.990Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:28.492Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]
+notificacion-1  | 2026-10-23T05:20:28.996Z  WARN 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : Mensaje invalido a DLQ: Unexpected end-of-input within/between Object entries
+notificacion-1  |  at [Source: REDACTED (`StreamReadFeature.INCLUDE_SOURCE_IN_LOCATION` disabled); line: 1, column: 10]

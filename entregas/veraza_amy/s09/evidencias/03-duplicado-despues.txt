@@ -1,0 +1,137 @@
+{
+  "evento": {
+    "eventoId": "2af753ec-41e0-448f-9f1d-ddbe4d21c81f",
+    "tipo": "TransferenciaRealizada",
+    "transferenciaId": 9002,
+    "clabeOrigen": "002180000000000001",
+    "clabeDestino": "002180000000000002",
+    "monto": 22,
+    "saldoOrigen": 914,
+    "saldoDestino": 586,
+    "fecha": "2026-10-22T12:00:00Z"
+  },
+  "avisos_nuevos_por_cuenta": {
+    "002180000000000001": 1,
+    "002180000000000002": 1
+  },
+  "bandejas": {
+    "002180000000000001": {
+      "http": 200,
+      "respuesta": [
+        {
+          "id": 17,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 22, saldo resultante 914",
+          "fecha": "2026-10-23T05:24:11.725441Z"
+        },
+        {
+          "id": 15,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 13, saldo resultante 878.00",
+          "fecha": "2026-10-23T05:23:13.922953Z"
+        },
+        {
+          "id": 13,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 12, saldo resultante 891.00",
+          "fecha": "2026-10-23T05:23:13.900612Z"
+        },
+        {
+          "id": 11,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 11, saldo resultante 903.00",
+          "fecha": "2026-10-23T05:23:13.625995Z"
+        },
+        {
+          "id": 9,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 21, saldo resultante 914",
+          "fecha": "2026-10-23T05:20:20.224999Z"
+        },
+        {
+          "id": 7,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 21, saldo resultante 914",
+          "fecha": "2026-10-23T05:20:20.185471Z"
+        },
+        {
+          "id": 5,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 13, saldo resultante 914.00",
+          "fecha": "2026-10-23T05:19:54.805008Z"
+        },
+        {
+          "id": 3,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 12, saldo resultante 927.00",
+          "fecha": "2026-10-23T05:19:54.775108Z"
+        },
+        {
+          "id": 1,
+          "clabeCuenta": "002180000000000001",
+          "mensaje": "TRANSFERENCIA_ENVIADA por 11, saldo resultante 939.00",
+          "fecha": "2026-10-23T05:19:54.397902Z"
+        }
+      ]
+    },
+    "002180000000000002": {
+      "http": 200,
+      "respuesta": [
+        {
+          "id": 18,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 22, saldo resultante 586",
+          "fecha": "2026-10-23T05:24:11.725486Z"
+        },
+        {
+          "id": 16,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 13, saldo resultante 622.00",
+          "fecha": "2026-10-23T05:23:13.922956Z"
+        },
+        {
+          "id": 14,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 12, saldo resultante 609.00",
+          "fecha": "2026-10-23T05:23:13.900624Z"
+        },
+        {
+          "id": 12,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 11, saldo resultante 597.00",
+          "fecha": "2026-10-23T05:23:13.626188Z"
+        },
+        {
+          "id": 10,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 21, saldo resultante 586",
+          "fecha": "2026-10-23T05:20:20.225004Z"
+        },
+        {
+          "id": 8,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 21, saldo resultante 586",
+          "fecha": "2026-10-23T05:20:20.185474Z"
+        },
+        {
+          "id": 6,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 13, saldo resultante 586.00",
+          "fecha": "2026-10-23T05:19:54.805022Z"
+        },
+        {
+          "id": 4,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 12, saldo resultante 573.00",
+          "fecha": "2026-10-23T05:19:54.775113Z"
+        },
+        {
+          "id": 2,
+          "clabeCuenta": "002180000000000002",
+          "mensaje": "TRANSFERENCIA_RECIBIDA por 11, saldo resultante 561.00",
+          "fecha": "2026-10-23T05:19:54.398240Z"
+        }
+      ]
+    }
+  }
+}

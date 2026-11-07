@@ -1,0 +1,9 @@
+{
+  "http": 500,
+  "respuesta": {
+    "timestamp": "2026-10-23T05:17:24.462+00:00",
+    "status": 500,
+    "error": "Internal Server Error",
+    "path": "/transferencias"
+  }
+}

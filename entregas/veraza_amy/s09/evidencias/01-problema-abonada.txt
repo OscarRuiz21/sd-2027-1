@@ -1,0 +1,17 @@
+{
+  "http": 200,
+  "respuesta": [
+    {
+      "id": 1,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 50.0,
+      "fecha": "2026-10-23T05:17:23.885186Z",
+      "estado": "ABONADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 950.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-23T05:17:24.253841Z"
+    }
+  ]
+}
