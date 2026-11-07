@@ -32,6 +32,11 @@ spring:
     problemdetails:
       enabled: true
 
+# Solo para el experimento del duplicado (S09, tarea 5): milisegundos entre guardar los avisos y el ack.
+mexibanco:
+  demo:
+    pausa-antes-del-ack-ms: ${PAUSA_ANTES_DEL_ACK_MS:0}
+
 # El directorio (v06). Al arrancar, este servicio se registra en Eureka con su nombre
 # (spring.application.name) y su IP, y manda un latido cada EUREKA_LATIDO_S segundos. Si Eureka no
 # recibe latido en EUREKA_EXPIRA_S segundos, lo saca del registro. Los valores por omision son los

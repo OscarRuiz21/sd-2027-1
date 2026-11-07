@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -22,9 +23,14 @@ public class ConsumidorDeTransferencias {
     private final NotificacionService notificaciones;
     private final ObjectMapper json;
 
-    public ConsumidorDeTransferencias(NotificacionService notificaciones, ObjectMapper json) {
+    /** Solo para el experimento del duplicado: espera entre guardar los avisos y hacer el ack. 0 = sin pausa. */
+    private final long pausaAntesDelAckMs;
+
+    public ConsumidorDeTransferencias(NotificacionService notificaciones, ObjectMapper json,
+                                      @Value("${mexibanco.demo.pausa-antes-del-ack-ms:0}") long pausaAntesDelAckMs) {
         this.notificaciones = notificaciones;
         this.json = json;
+        this.pausaAntesDelAckMs = pausaAntesDelAckMs;
     }
 
     @RabbitListener(queues = ConfiguracionMensajeria.COLA)
@@ -46,6 +52,16 @@ public class ConsumidorDeTransferencias {
 
         log.info("[consumidor] {} de la transferencia {} (evento {}, redelivered={}): {} aviso(s) nuevo(s)",
             evento.tipo(), evento.transferenciaId(), evento.eventoId(), reentregado, avisos.size());
+
+        if (pausaAntesDelAckMs > 0) {
+            // Los avisos ya estan guardados y el broker todavia no lo sabe: si me matan aqui, lo reentrega.
+            log.info("[consumidor] avisos guardados, espero {} ms antes del ack", pausaAntesDelAckMs);
+            try {
+                Thread.sleep(pausaAntesDelAckMs);
+            } catch (InterruptedException interrumpido) {
+                Thread.currentThread().interrupt();
+            }
+        }
 
         canal.basicAck(etiqueta, false);   // DESPUES de guardar: "ya lo tengo, borralo"
     }
