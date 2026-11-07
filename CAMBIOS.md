@@ -2,6 +2,10 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-11-07
+
+- **Deck de la S12** (*Un libro mayor sin dueño*, HTML y PDF) en `material/S12/` y en el índice: Bitcoin construido pieza por pieza como sistema distribuido, desde un libro mayor sobre Raft hasta la prueba de trabajo, los forks, la finalidad probabilística, UTXO, la comparación con Raft y PBFT, y cuándo sí hace falta un blockchain.
+
 ## 2026-11-05
 
 - **Examen escrito en casa** en `examen-escrito/` (HTML y PDF para imprimir): un banco de preguntas generales por tema, como las de una entrevista técnica. Entregas a mano las 10 preguntas fijas y 15 más que tú elijas, de al menos 5 temas distintos, en un solo PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf`, por push, antes del **sábado 21 de noviembre a las 06:59**. Es tu acordeón para la entrevista de ese día: pasas tú solo y se sortean 4 preguntas de este mismo banco.
