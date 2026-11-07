@@ -5,6 +5,8 @@ casos están en la [Discussion #44](https://github.com/OscarRuiz21/sd-2027-1/dis
 Igual que Mexi Banco, empieza como un monolito sencillo y se va partiendo por ramas
 (`01-monolito`, `02-separacion`, `03-...`) conforme avanzamos en el curso.
 
+**Cómo se califica:** ver la [rúbrica del proyecto final](RUBRICA.md) (prototipo 30 %, reporte 30 %, pitch 20 % y participación y defensa individual 20 %). La presentación es el sábado 28 de noviembre.
+
 En la defensa no califico la lógica de negocio: le voy a preguntar a **cualquiera** del equipo
 dónde vive el gateway, el directorio, el balanceador, cómo manejan las operaciones entre
 servicios y qué pasa si algo falla.
