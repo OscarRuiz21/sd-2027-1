@@ -34,8 +34,8 @@ Es la que se presentó en la **clase 1, el 22 de agosto**, y no cambia.
   y se entrega como PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf` antes del
   **sábado 21 de noviembre a las 06:59**. Es tu acordeón para la entrevista.
 - **Entrevista técnica**: el **sábado 21 de noviembre**, con cámara encendida. Pasan uno por uno y
-  contestan 4 preguntas como en una entrevista: casi todas salen del banco del examen escrito y
-  alguna no, para que razonen con lo que saben. Pueden pedir que les cambien una.
+  contestan 4 preguntas como en una entrevista, del banco del examen escrito; a lo mejor una viene
+  distinta, para que razonen con lo que saben. Pueden pedir que les cambien una.
 - **Proyecto final**: se presenta el **sábado 28 de noviembre**, en formato pitch con demo y con
   cámara encendida. Se califica con la [rúbrica](proyecto/RUBRICA.md).
 - **Lecturas**: suben **2 preguntas + 1 hallazgo** en

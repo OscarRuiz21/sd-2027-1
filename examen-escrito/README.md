@@ -9,4 +9,4 @@
 
 **Cómo se entrega.** Un solo PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf` de tu rama, por push, sin PR.
 
-**Para qué sirve.** Es tu acordeón para la entrevista del sábado 21 de noviembre, donde el profesor sortea 4 preguntas de este banco.
+**Para qué sirve.** Es tu acordeón para la entrevista del sábado 21 de noviembre, donde el profesor te hace 4 preguntas de este banco (a lo mejor una viene distinta, para que razones con lo que sabes).
