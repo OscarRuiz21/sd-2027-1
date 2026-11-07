@@ -1,0 +1,15 @@
+Servidor A | reloj=1  | inicia una solicitud
+Servidor A | reloj=2  | ENVÍA a Servidor B: M1: solicitud
+Servidor B | reloj=3  | RECIBE de Servidor A: M1: solicitud
+Servidor B | reloj=4  | ENVÍA a Servidor C: M2: solicitud recibida y reenviada
+Servidor C | reloj=5  | RECIBE de Servidor B: M2: solicitud recibida y reenviada
+Servidor C | reloj=6  | registra la solicitud
+Servidor C | reloj=7  | ENVÍA a Servidor A: M3: confirmación
+Servidor A | reloj=8  | RECIBE de Servidor C: M3: confirmación
+Servidor A | reloj=9  | ENVÍA a Servidor C: M4: consulta de estado
+Servidor C | reloj=10 | RECIBE de Servidor A: M4: consulta de estado
+Servidor B | reloj=5  | ENVÍA a Servidor A: M5: aviso independiente
+Servidor A | reloj=10 | RECIBE de Servidor B: M5: aviso independiente
+
+...Program finished with exit code 0
+Press ENTER to exit console.
