@@ -1,0 +1,7 @@
+services:
+  lamport:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: t04-lamport
+    container_name: t04-lamport

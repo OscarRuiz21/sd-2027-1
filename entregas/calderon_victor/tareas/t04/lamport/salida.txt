@@ -1,0 +1,46 @@
+=== Eventos en el orden en que ocurrieron (cambia en cada corrida) ===
+ 1. [S3] L=1  LOCAL  atiende consulta 1
+ 2. [S1] L=1  LOCAL  valida la transferencia
+ 3. [S1] L=2  ENVIA  m1 a S2 (lleva L=2)
+ 4. [S2] L=3  RECIBE m1 de S1 (traia L=2, yo iba en 0 -> max(0,2)+1)
+ 5. [S3] L=2  LOCAL  atiende consulta 2
+ 6. [S2] L=4  LOCAL  aplica el cargo
+ 7. [S1] L=3  LOCAL  escribe en su bitacora
+ 8. [S3] L=3  LOCAL  atiende consulta 3
+ 9. [S2] L=5  ENVIA  m3 a S3 (lleva L=5)
+10. [S3] L=4  LOCAL  atiende consulta 4
+11. [S1] L=4  ENVIA  m2 a S3 (lleva L=4)
+12. [S3] L=5  LOCAL  atiende consulta 5
+13. [S3] L=6  RECIBE m2 de S1 (traia L=4, yo iba en 5 -> max(5,4)+1)
+14. [S3] L=7  RECIBE m3 de S2 (traia L=5, yo iba en 6 -> max(6,5)+1)
+15. [S3] L=8  ENVIA  m4 a S1 (lleva L=8)
+16. [S1] L=9  RECIBE m4 de S3 (traia L=8, yo iba en 4 -> max(4,8)+1)
+
+=== Orden total de Lamport: por L y, si empatan, por nombre del servidor ===
+L=1  [S1] LOCAL  valida la transferencia
+L=1  [S3] LOCAL  atiende consulta 1
+L=2  [S1] ENVIA  m1 a S2 (lleva L=2)
+L=2  [S3] LOCAL  atiende consulta 2
+L=3  [S1] LOCAL  escribe en su bitacora
+L=3  [S2] RECIBE m1 de S1 (traia L=2, yo iba en 0 -> max(0,2)+1)
+L=3  [S3] LOCAL  atiende consulta 3
+L=4  [S1] ENVIA  m2 a S3 (lleva L=4)
+L=4  [S2] LOCAL  aplica el cargo
+L=4  [S3] LOCAL  atiende consulta 4
+L=5  [S2] ENVIA  m3 a S3 (lleva L=5)
+L=5  [S3] LOCAL  atiende consulta 5
+L=6  [S3] RECIBE m2 de S1 (traia L=4, yo iba en 5 -> max(5,4)+1)
+L=7  [S3] RECIBE m3 de S2 (traia L=5, yo iba en 6 -> max(6,5)+1)
+L=8  [S3] ENVIA  m4 a S1 (lleva L=8)
+L=9  [S1] RECIBE m4 de S3 (traia L=8, yo iba en 4 -> max(4,8)+1)
+
+=== Causalidad: cada mensaje se recibe con un reloj mayor al del envio ===
+m1: envio S1 L=2  <  recepcion S2 L=3   OK
+m3: envio S2 L=5  <  recepcion S3 L=7   OK
+m2: envio S1 L=4  <  recepcion S3 L=6   OK
+m4: envio S3 L=8  <  recepcion S1 L=9   OK
+
+=== Reloj final de cada servidor ===
+S1: L=9
+S2: L=5
+S3: L=8
