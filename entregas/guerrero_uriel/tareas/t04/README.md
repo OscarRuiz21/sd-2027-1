@@ -165,4 +165,3 @@ La idea central de Lamport sigue vigente: lo que importa es la causalidad (qué 
 5. Lamport, L. (1978). Time, Clocks, and the Ordering of Events in a Distributed System. Communications of the ACM, 21(7).
 6. Apuntes de la clase S10 (relojes físicos, NTP, Lamport y relojes vectoriales).
 
-Nota: usé IA como apoyo para organizar y redactar; revisé el contenido contra las fuentes y puedo explicarlo en clase.
