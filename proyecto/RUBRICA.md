@@ -5,7 +5,7 @@ El proyecto final vale **30 %** de la calificación del curso. Esos 30 puntos se
 | Rubro | % del proyecto | Quién |
 |---|---|---|
 | Prototipo funcionando | 30 | Equipo |
-| Reporte final | 30 | Equipo |
+| Reporte final (PDF) | 30 | Equipo |
 | Presentación estilo pitch | 20 | Equipo |
 | Participación y defensa técnica | 20 | Individual |
 
@@ -19,12 +19,17 @@ Un monolito modular bien construido vale lo mismo que microservicios: se calific
 
 ## 2. Reporte final · 30 %
 
-Formato libre (Markdown en el repo, PDF o lo que prefieran). Lo que debe dejar claro:
+Un reporte en **PDF**, bien presentado, en `docs/reporte-final.pdf` del repo del equipo. Lo mínimo que debe traer:
 
-- Qué problema resuelve el sistema y para quién.
-- Su arquitectura, con al menos un diagrama.
-- Las decisiones importantes que tomaron, **qué dejaron atrás** en cada una y qué alternativa descartaron.
-- Qué falta o qué harían distinto.
+1. **Portada**: nombre del equipo, integrantes y liga al repo.
+2. **El problema**: qué resuelve el sistema y para quién.
+3. **Diagrama funcional**: los flujos principales de punta a punta, qué hace el usuario y qué partes del sistema intervienen en cada paso.
+4. **Diagrama de arquitectura**: los componentes o servicios, sus bases de datos y cómo se comunican.
+5. **Decisiones**: al menos tres decisiones importantes, cada una con **qué dejaron atrás** y qué alternativa descartaron.
+6. **Manejo de fallas**: qué pasa cuando se cae una parte del sistema y cómo lo resolvieron.
+7. **Cómo levantarlo y probarlo**: los pasos para correrlo.
+8. **Qué falta y qué harían distinto.**
+9. **Quién hizo qué**: lo que aportó cada integrante.
 
 ## 3. Presentación estilo pitch · 20 %
 
