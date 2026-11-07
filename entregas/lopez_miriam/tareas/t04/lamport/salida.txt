@@ -1,0 +1,10 @@
+Servidor A | reloj=1 | evento local: prepara una transferencia
+Servidor A | reloj=2 | envia mensaje a Servidor B
+Servidor B | reloj=3 | recibe mensaje de Servidor A (marca=2)
+Servidor B | reloj=4 | evento local: valida la transferencia
+Servidor B | reloj=5 | envia mensaje a Servidor C
+Servidor C | reloj=6 | recibe mensaje de Servidor B (marca=5)
+Servidor C | reloj=7 | envia mensaje a Servidor A
+Servidor A | reloj=8 | recibe mensaje de Servidor C (marca=7)
+Servidor A | reloj=9 | envia mensaje a Servidor B
+Servidor B | reloj=10 | recibe mensaje de Servidor A (marca=9)
