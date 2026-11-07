@@ -1,0 +1,28 @@
+srv | evento   | detalle                        | reloj
+----+----------+--------------------------------+---------
+S1  | LOCAL    | valida la sesion               | reloj = 1
+S3  | LOCAL    | limpia cache                   | reloj = 1
+S2  | LOCAL    | arranca                        | reloj = 1
+S1  | LOCAL    | lee la cuenta                  | reloj = 2
+S3  | LOCAL    | rota logs                      | reloj = 2
+S1  | LOCAL    | calcula comision               | reloj = 3
+S3  | LOCAL    | revisa salud                   | reloj = 3
+S3  | LOCAL    | compacta                       | reloj = 4
+S1  | ENVIO    | m1 -> S2                       | reloj = 4
+S2  | RECIBO   | m1 <- S1 max(1,4)+1            | reloj = 5
+S3  | LOCAL    | escribe metricas               | reloj = 5
+S2  | ENVIO    | m2 -> S3                       | reloj = 6
+S3  | LOCAL    | respalda                       | reloj = 6
+S3  | RECIBO   | m2 <- S2 max(6,6)+1            | reloj = 7
+S3  | ENVIO    | m3 -> S1                       | reloj = 8
+S1  | RECIBO   | m3 <- S3 max(4,8)+1            | reloj = 9
+S1  | ENVIO    | m4 -> S2                       | reloj = 10
+S2  | RECIBO   | m4 <- S1 max(6,10)+1           | reloj = 11
+
+Revision de causalidad (envio -> recepcion):
+  m1: envio S1 con reloj 4 -> recibio S2 con reloj 5  OK
+  m2: envio S2 con reloj 6 -> recibio S3 con reloj 7  OK
+  m3: envio S3 con reloj 8 -> recibio S1 con reloj 9  OK
+  m4: envio S1 con reloj 10 -> recibio S2 con reloj 11  OK
+Todos los mensajes se recibieron con un reloj mayor al del envio.
+Relojes finales: S1=10, S2=11, S3=8
