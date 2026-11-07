@@ -4,7 +4,7 @@ Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
 ## 2026-11-07
 
-- **Rúbrica del proyecto final** en `proyecto/RUBRICA.md`: prototipo funcionando 30 %, reporte final en formato libre 30 %, presentación estilo pitch 20 % y participación individual más defensa técnica 20 %. Presentación el **sábado 28 de noviembre**; el código y el reporte deben estar en el repo del equipo antes de las 07:00 de ese día.
+- **Rúbrica del proyecto final** en `proyecto/RUBRICA.md`: prototipo funcionando 30 %, reporte final en PDF con diagrama funcional 30 %, presentación estilo pitch 20 % y participación individual más defensa técnica 20 %. Presentación el **sábado 28 de noviembre**; el código y el reporte deben estar en el repo del equipo antes de las 07:00 de ese día.
 - **Deck de la S12** (*Un libro mayor sin dueño*, HTML y PDF) en `material/S12/` y en el índice: Bitcoin construido pieza por pieza como sistema distribuido, desde un libro mayor sobre Raft hasta la prueba de trabajo, los forks, la finalidad probabilística, UTXO, la comparación con Raft y PBFT, y cuándo sí hace falta un blockchain.
 
 ## 2026-11-05
