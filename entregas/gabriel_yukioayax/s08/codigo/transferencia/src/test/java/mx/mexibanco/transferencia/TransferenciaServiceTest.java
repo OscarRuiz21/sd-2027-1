@@ -49,7 +49,7 @@ class TransferenciaServiceTest {
 
 	@BeforeEach
 	void armar() {
-		servicio = new TransferenciaService(transferencias, cuentas, movimientos, notificaciones, 0);
+		servicio = new TransferenciaService(transferencias, cuentas, movimientos, notificaciones, 0, "", 3, 15000);
 	}
 
 	@Test

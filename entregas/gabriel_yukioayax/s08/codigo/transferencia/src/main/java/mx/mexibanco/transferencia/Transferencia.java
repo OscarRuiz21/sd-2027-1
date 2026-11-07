@@ -6,6 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.Transient;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
@@ -25,6 +26,10 @@ public class Transferencia {
 
     @Enumerated(EnumType.STRING)
     private EstadoTransferencia estado;
+
+    // Solo para la respuesta: explica al cliente que paso. No se guarda en la tabla.
+    @Transient
+    private String detalle;
 
     public Transferencia() {
     }
@@ -55,4 +60,7 @@ public class Transferencia {
 
     public EstadoTransferencia getEstado() { return estado; }
     public void setEstado(EstadoTransferencia estado) { this.estado = estado; }
+
+    public String getDetalle() { return detalle; }
+    public void setDetalle(String detalle) { this.detalle = detalle; }
 }

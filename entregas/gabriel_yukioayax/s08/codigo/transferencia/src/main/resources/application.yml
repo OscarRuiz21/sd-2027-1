@@ -38,6 +38,13 @@ mexibanco:
     # Solo para la demo de "lo que se rompio": milisegundos de espera entre el cargo y el abono.
     # En 0 no hace nada. Ver README.
     pausa-entre-cargo-y-abono-ms: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:0}
+    # Para probar la compensacion con cuenta arriba: el abono hacia esta CLABE falla a proposito.
+    # Vacio no hace nada. Ejemplo: FALLAR_ABONO_A_CLABE=012180000000000001 docker compose up -d transferencia
+    fallar-abono-a-clabe: ${FALLAR_ABONO_A_CLABE:}
+  # El circuit breaker hecho a mano (MiCircuitBreaker) de las llamadas a cuenta.
+  circuit-breaker:
+    umbral: ${CB_UMBRAL:3}          # fallas seguidas para abrirse
+    espera-ms: ${CB_ESPERA_MS:15000} # cuanto se queda abierto antes de probar (semiabierto)
 
 # El directorio (v06). Al arrancar, este servicio se registra en Eureka con su nombre
 # (spring.application.name) y su IP, y manda un latido cada EUREKA_LATIDO_S segundos. Si Eureka no

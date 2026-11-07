@@ -140,6 +140,10 @@ services:
       NOTIFICACION_URL: http://notificacion
       # Solo para la demo de "lo que se rompio al partir" (ver README de v06a). 0 = sin pausa.
       PAUSA_ENTRE_CARGO_Y_ABONO_MS: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:-0}
+      # Falla provocada del abono hacia esta CLABE (vacio = no falla). Ver bitacora S08.
+      FALLAR_ABONO_A_CLABE: ${FALLAR_ABONO_A_CLABE:-}
+      CB_UMBRAL: ${CB_UMBRAL:-3}
+      CB_ESPERA_MS: ${CB_ESPERA_MS:-15000}
 
   # Avisos al cliente. No llama a nadie.
   notificacion:
