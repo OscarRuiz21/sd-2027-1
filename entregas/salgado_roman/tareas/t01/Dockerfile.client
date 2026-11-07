@@ -1,0 +1,10 @@
+FROM python:3.10
+WORKDIR /app
+# Instalar tcpdump para el punto extra
+RUN apt-get update && apt-get install -y tcpdump && rm -rf /var/lib/apt/lists/*
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
+RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. servicio.proto
+# Mantiene el contenedor vivo para poder entrar con exec
+CMD ["tail", "-f", "/dev/null"]
