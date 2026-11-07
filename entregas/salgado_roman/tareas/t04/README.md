@@ -35,7 +35,7 @@ Para cada sistema se responde: qué es y para qué se usa, qué tiempo usa para 
 - **Qué pasa cuando los relojes no coinciden:** Si los relojes físicos (por NTP) se desvían un poco, el componente lógico del HLC entra en acción. Cuando un nodo recibe un mensaje con un reloj lógico híbrido mayor al suyo, adelanta su propio reloj para que coincida. Esto compensa los desfases del reloj de pared y mantiene la causalidad intacta sin necesidad de que el NTP esté perfectamente sincronizado en todo momento.
 ---
  
-## Referencias (formato APA 7)
+## Referencias
  
 Corbett, J. C., Dean, J., Epstein, M., Fikes, A., Frost, C., Furman, J. J., ... & Woodford, D. (2012). Spanner: Google's globally-distributed database. *Proceedings of the 10th USENIX Symposium on Operating Systems Design and Implementation (OSDI 12)*, 251-264. https://www.usenix.org/system/files/conference/osdi12/osdi12-final-16.pdf
  
