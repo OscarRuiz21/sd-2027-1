@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package catalogo;
+
+service Catalogo {
+  rpc Consultar (PeticionArticulo) returns (Articulo);
+  rpc Listar (PeticionVacia) returns (ListaIds);
+}
+
+message PeticionArticulo {
+  string id = 1;
+}
+
+message Articulo {
+  string id          = 1;
+  string nombre      = 2;
+  string categoria   = 3;
+  double precio      = 4;
+  int32  existencias = 5;
+}
+
+message PeticionVacia {}
+
+message ListaIds {
+  repeated string ids = 1;
+}
