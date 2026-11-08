@@ -1,3 +1,4 @@
+# Segura Cedeño Luisa María
 # Tarea 02: Análisis Comparativo de Algoritmos de Consenso
 
 ## 1. Algoritmo 1: Practical Byzantine Fault Tolerance (PBFT) y sus Variantes de Autenticación
