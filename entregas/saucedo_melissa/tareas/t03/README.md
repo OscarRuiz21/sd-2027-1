@@ -2,8 +2,7 @@
 
 **Alejandra Melissa Saucedo Serralde · Sistemas Distribuidos 2027-1 · Grupo 2**
 
-Elegí **Citus**, una extensión de PostgreSQL que reparte tablas entre varios servidores. La escogí porque en Mexi Banco ya usamos Postgres y me interesaba ver cómo se le agrega sharding a una base que ya conozco. Respondo las cinco preguntas de la tarea, y al final van las fuentes.
-
+Elegí **Citus**, una extensión de PostgreSQL que reparte tablas entre varios servidores. La escogí porque en Mexi Banco ya usamos Postgres y me interesaba ver cómo se le agrega sharding a una base que ya conozco. 
 ---
 
 ## 1. ¿Qué es y para qué se usa?
@@ -319,4 +318,4 @@ Para apagar todo sin dejar basura: `docker compose down -v` (aquí sí se puede 
 - [Citus FAQ, 12.1 (llave de distribución, nodos nuevos, metadatos)](https://github.com/citusdata/citus_docs/blob/v12.1/faq/faq.rst)
 - [Citus 11 goes fully open source (metadatos en todos los nodos, rebalanceo sin bloqueo)](https://www.citusdata.com/blog/2022/06/17/citus-11-goes-fully-open-source/)
 
-Me apoyé en IA para buscar las páginas y armar el borrador, y revisé cada afirmación contra las fuentes de arriba.
+
