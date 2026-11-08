@@ -319,3 +319,4 @@ Para apagar todo sin dejar basura: `docker compose down -v` (aquí sí se puede 
 - [Citus 11 goes fully open source (metadatos en todos los nodos, rebalanceo sin bloqueo)](https://www.citusdata.com/blog/2022/06/17/citus-11-goes-fully-open-source/)
 
 
+
