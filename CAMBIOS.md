@@ -2,6 +2,27 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-11-07
+
+- **Corte de entregas del 7 de noviembre** en `calificaciones/P00-L10-corte-07nov.xlsx`, por número de cuenta: se revisaron las correcciones que subiste después del corte del 4 de noviembre y varias entregas que estaban en **parcial** porque les faltaba poco pasaron a completas (lo que falta queda como detalle en tu pestaña). Ya entran revisadas la T04, la S11 y la Lectura 10, que cerraron el sábado 7 a las 07:00; la T04 y la S11 todavía se reciben como **tarde** hasta el sábado 14 de noviembre a las 07:00.
+- **Rúbrica del proyecto final** en `proyecto/RUBRICA.md`: prototipo funcionando 30 %, reporte final en PDF con diagrama funcional 30 %, presentación estilo pitch 20 % y participación individual más defensa técnica 20 %. Presentación el **sábado 28 de noviembre**; el código y el reporte deben estar en el repo del equipo antes de las 07:00 de ese día.
+- **Deck de la S12** (*Un libro mayor sin dueño*, HTML y PDF) en `material/S12/` y en el índice: Bitcoin construido pieza por pieza como sistema distribuido, desde un libro mayor sobre Raft hasta la prueba de trabajo, los forks, la finalidad probabilística, UTXO, la comparación con Raft y PBFT, y cuándo sí hace falta un blockchain.
+
+## 2026-11-05
+
+- **Examen escrito en casa** en `examen-escrito/` (HTML y PDF para imprimir): un banco de preguntas generales por tema, como las de una entrevista técnica. Entregas a mano las 10 preguntas fijas y 15 más que tú elijas, de al menos 5 temas distintos, en un solo PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf`, por push, antes del **sábado 21 de noviembre a las 06:59**. Es tu acordeón para la entrevista de ese día: pasas tú solo y se sortean 4 preguntas de este mismo banco.
+
+## 2026-11-04
+
+- **Corte de entregas del 4 de noviembre** en `calificaciones/P00-L10-corte-04nov.xlsx`, por número de cuenta: entran los labs S07, S08 y S09 y las lecturas 7 y 9. Si tu renglón dice **parcial**, tu pestaña dice qué falta y cómo se corrige. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, quedó como **tarde** (no baja puntos). T04, S11 y Lectura 10 siguen abiertas hasta el sábado 7 de noviembre antes de las 07:00.
+
+## 2026-10-31
+
+- **Calendario de cierre**, como se dijo en clase: S12 (7 de noviembre) blockchain y telemetría; S13 (14 de noviembre) repaso del semestre; S14 (21 de noviembre) entrevista técnica; S15 (28 de noviembre) presentación del proyecto final, con pitch, diagrama funcional y código. Esta semana sale el examen escrito en casa, a mano, que sirve de acordeón para la entrevista.
+- **Lectura 10 para la S12 (7 de noviembre)**: obligatoria, el *Observability primer* de OpenTelemetry; opcionales, Dapper (Google, 2010, secciones 1 y 2) y Bitcoin, secciones 7 a 12. Discussion #58, en tiempo hasta el sábado 06:59.
+- **Deck de la S11** (*Una verdad, varias copias*, HTML y PDF) en `material/S11/` y en el índice: persistencia políglota, SQL contra NoSQL, las familias de bases, caché y blockchain como base adicional.
+- **Lab S11 · dos bases más y una caché**: guía paso a paso en `labs/s11-poliglota/Lab-S11-Mexi-Banco-Poliglota.html` (también en PDF) y enunciado con el contrato en `labs/s11-poliglota/README.md`. Base: la rama `06-poliglota-base` de mexi-banco. Se trabaja en equipo, pero cada quien entrega su código y su `bitacora-s11.pdf` en `entregas/apellido_nombre/s11/`, hasta el **sábado 7 de noviembre, antes de las 07:00**.
+
 ## 2026-10-29
 
 - **Deck de la S10** (*Relojes físicos y lógicos*, HTML y PDF) en `material/S10/` y en el índice, para repasar lo de la clase del 24.
