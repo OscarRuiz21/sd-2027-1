@@ -1,0 +1,670 @@
+{
+  "fase": "mongo",
+  "fecha_utc": "2026-11-08T01:40:03.141307+00:00",
+  "ejecutor": "Codex, ejecución asistida local",
+  "registros": [
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:03 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 13,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000003",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:03.268478257Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 988.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:03.536523973Z",
+          "eventoId": "c499344f-a0b0-4355-99b9-de39efce3769"
+        },
+        "ms": 414.78625500167254
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:03 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 14,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:03.625306515Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 987.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:03.854284576Z",
+          "eventoId": "57bacdef-558b-4dd6-8822-aeb9aa625533"
+        },
+        "ms": 378.7528180000663
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:03 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 15,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:04.054605549Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 986.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:04.347443990Z",
+          "eventoId": "d5a4be3f-8fcd-4793-825a-f5e393b8fc1a"
+        },
+        "ms": 451.7696879993309
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:04 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 16,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:04.570860892Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 985.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:04.819184746Z",
+          "eventoId": "7cc5c6e2-80ed-4115-b887-119123bfc626"
+        },
+        "ms": 460.7905049997498
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:04 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 17,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:04.947199525Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 984.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:05.161131964Z",
+          "eventoId": "30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2"
+        },
+        "ms": 346.2945089995628
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:04 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 18,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:05.249821814Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 983.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:05.424001195Z",
+          "eventoId": "d171407d-f4bb-462d-87d1-c38de921f0c9"
+        },
+        "ms": 260.2182000009634
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:04 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 19,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:05.524369433Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 982.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:05.786117135Z",
+          "eventoId": "e5a22807-7ede-4c18-be06-ce57bb399cde"
+        },
+        "ms": 358.4040259993344
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:06 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 20,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:05.913421635Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 981.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:06.233343120Z",
+          "eventoId": "880dbbb0-f685-4de7-8b2f-0b786f7be340"
+        },
+        "ms": 456.9142139989708
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:06 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 21,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:06.341269962Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 980.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:06.612340365Z",
+          "eventoId": "b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5"
+        },
+        "ms": 378.58478899943293
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:06 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 22,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:06.747694316Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 979.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:07.031822851Z",
+          "eventoId": "762f9374-af9c-4e00-ac9c-56a2202da532"
+        },
+        "ms": 417.4799239990534
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:07 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 23,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:07.194099516Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 978.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:07.478739868Z",
+          "eventoId": "8bd6b643-58e7-41d7-a327-d3f9aef1049f"
+        },
+        "ms": 560.900707001565
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:09 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 24,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:07.930027210Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 977.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:08.980307230Z",
+          "eventoId": "af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec"
+        },
+        "ms": 1448.40777400168
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:10 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 25,
+          "claveOrigen": "002180000000000001",
+          "claveDestino": "002180000000000002",
+          "monto": 1,
+          "fecha": "2026-11-08T01:40:09.250132128Z",
+          "estado": "COMPLETADA",
+          "motivo": null,
+          "saldoOrigenTrasCargo": 976.0,
+          "intentosDeCompensacion": 0,
+          "actualizada": "2026-11-08T01:40:10.344407066Z",
+          "eventoId": "e5be1dbc-4463-445d-8490-53ad44257310"
+        },
+        "ms": 1362.4094690021593
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "EJSON.stringify(db.avisos.find().sort({fecha:1}).toArray())"
+        ],
+        "stdout": "[{\"_id\":\"da2833a5-c35f-4079-9592-052546f9c577:002180000000000002\",\"eventoId\":\"da2833a5-c35f-4079-9592-052546f9c577\",\"transferenciaId\":2,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"501.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:14.134Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 501.00\"},{\"_id\":\"da2833a5-c35f-4079-9592-052546f9c577:002180000000000001\",\"eventoId\":\"da2833a5-c35f-4079-9592-052546f9c577\",\"transferenciaId\":2,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"999.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:14.134Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 999.00\"},{\"_id\":\"d1721bc0-72e4-4798-8c0d-b6126cd8f3af:002180000000000002\",\"eventoId\":\"d1721bc0-72e4-4798-8c0d-b6126cd8f3af\",\"transferenciaId\":3,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"502.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:29.108Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 502.00\"},{\"_id\":\"d1721bc0-72e4-4798-8c0d-b6126cd8f3af:002180000000000001\",\"eventoId\":\"d1721bc0-72e4-4798-8c0d-b6126cd8f3af\",\"transferenciaId\":3,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"998.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:29.108Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 998.00\"},{\"_id\":\"72d7657c-9544-4231-9a9e-c94c1f1d6974:002180000000000001\",\"eventoId\":\"72d7657c-9544-4231-9a9e-c94c1f1d6974\",\"transferenciaId\":4,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"997.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:29.767Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 997.00\"},{\"_id\":\"72d7657c-9544-4231-9a9e-c94c1f1d6974:002180000000000002\",\"eventoId\":\"72d7657c-9544-4231-9a9e-c94c1f1d6974\",\"transferenciaId\":4,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"503.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:29.767Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 503.00\"},{\"_id\":\"0f57451c-459a-4bf8-8719-8c6e7698edd1:002180000000000001\",\"eventoId\":\"0f57451c-459a-4bf8-8719-8c6e7698edd1\",\"transferenciaId\":5,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"996.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:30.556Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 996.00\"},{\"_id\":\"0f57451c-459a-4bf8-8719-8c6e7698edd1:002180000000000002\",\"eventoId\":\"0f57451c-459a-4bf8-8719-8c6e7698edd1\",\"transferenciaId\":5,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"504.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:30.556Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 504.00\"},{\"_id\":\"e2b2d3fd-2501-4faa-bc51-2a9440f4248a:002180000000000001\",\"eventoId\":\"e2b2d3fd-2501-4faa-bc51-2a9440f4248a\",\"transferenciaId\":6,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"995.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:31.277Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 995.00\"},{\"_id\":\"e2b2d3fd-2501-4faa-bc51-2a9440f4248a:002180000000000002\",\"eventoId\":\"e2b2d3fd-2501-4faa-bc51-2a9440f4248a\",\"transferenciaId\":6,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"505.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:31.277Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 505.00\"},{\"_id\":\"261f6e29-28e5-499d-90bb-642107b988dc:002180000000000001\",\"eventoId\":\"261f6e29-28e5-499d-90bb-642107b988dc\",\"transferenciaId\":7,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"994.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:32.072Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 994.00\"},{\"_id\":\"261f6e29-28e5-499d-90bb-642107b988dc:002180000000000002\",\"eventoId\":\"261f6e29-28e5-499d-90bb-642107b988dc\",\"transferenciaId\":7,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"506.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:32.072Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 506.00\"},{\"_id\":\"5236bab5-100f-4987-af73-11eb5e40b4ba:002180000000000002\",\"eventoId\":\"5236bab5-100f-4987-af73-11eb5e40b4ba\",\"transferenciaId\":8,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"507.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:33.600Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 507.00\"},{\"_id\":\"5236bab5-100f-4987-af73-11eb5e40b4ba:002180000000000001\",\"eventoId\":\"5236bab5-100f-4987-af73-11eb5e40b4ba\",\"transferenciaId\":8,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"993.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:33.600Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 993.00\"},{\"_id\":\"c786308b-344a-47f0-b9dc-883dd09d4109:002180000000000001\",\"eventoId\":\"c786308b-344a-47f0-b9dc-883dd09d4109\",\"transferenciaId\":9,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"992.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:35.558Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 992.00\"},{\"_id\":\"c786308b-344a-47f0-b9dc-883dd09d4109:002180000000000002\",\"eventoId\":\"c786308b-344a-47f0-b9dc-883dd09d4109\",\"transferenciaId\":9,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"508.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:35.558Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 508.00\"},{\"_id\":\"d096bf16-3e0f-4fc3-8f31-4e6c9348b48d:002180000000000001\",\"eventoId\":\"d096bf16-3e0f-4fc3-8f31-4e6c9348b48d\",\"transferenciaId\":10,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"991.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:36.235Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 991.00\"},{\"_id\":\"d096bf16-3e0f-4fc3-8f31-4e6c9348b48d:002180000000000002\",\"eventoId\":\"d096bf16-3e0f-4fc3-8f31-4e6c9348b48d\",\"transferenciaId\":10,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"509.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:36.235Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 509.00\"},{\"_id\":\"de9f1d86-4968-48dc-bd97-4ec1ddf52ccc:002180000000000001\",\"eventoId\":\"de9f1d86-4968-48dc-bd97-4ec1ddf52ccc\",\"transferenciaId\":11,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"990.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:36.957Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 990.00\"},{\"_id\":\"de9f1d86-4968-48dc-bd97-4ec1ddf52ccc:002180000000000002\",\"eventoId\":\"de9f1d86-4968-48dc-bd97-4ec1ddf52ccc\",\"transferenciaId\":11,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"510.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:36.957Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 510.00\"},{\"_id\":\"3c321e14-b36d-47ae-8cb5-80647368f28b:002180000000000001\",\"eventoId\":\"3c321e14-b36d-47ae-8cb5-80647368f28b\",\"transferenciaId\":12,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"989.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:37.932Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 989.00\"},{\"_id\":\"3c321e14-b36d-47ae-8cb5-80647368f28b:002180000000000002\",\"eventoId\":\"3c321e14-b36d-47ae-8cb5-80647368f28b\",\"transferenciaId\":12,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"511.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:39:37.932Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 511.00\"},{\"_id\":\"c499344f-a0b0-4355-99b9-de39efce3769:002180000000000001\",\"eventoId\":\"c499344f-a0b0-4355-99b9-de39efce3769\",\"transferenciaId\":13,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"988.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:03.536Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 988.00\"},{\"_id\":\"c499344f-a0b0-4355-99b9-de39efce3769:002180000000000003\",\"eventoId\":\"c499344f-a0b0-4355-99b9-de39efce3769\",\"transferenciaId\":13,\"clabe\":\"002180000000000003\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"301.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:03.536Z\"},\"canal\":\"PUSH\",\"token\":\"fcm:demo-002180000000000003\",\"titulo\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 301.00\"},{\"_id\":\"57bacdef-558b-4dd6-8822-aeb9aa625533:002180000000000001\",\"eventoId\":\"57bacdef-558b-4dd6-8822-aeb9aa625533\",\"transferenciaId\":14,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"987.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:03.854Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 987.00\"},{\"_id\":\"57bacdef-558b-4dd6-8822-aeb9aa625533:002180000000000002\",\"eventoId\":\"57bacdef-558b-4dd6-8822-aeb9aa625533\",\"transferenciaId\":14,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"512.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:03.854Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 512.00\"},{\"_id\":\"d5a4be3f-8fcd-4793-825a-f5e393b8fc1a:002180000000000001\",\"eventoId\":\"d5a4be3f-8fcd-4793-825a-f5e393b8fc1a\",\"transferenciaId\":15,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"986.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:04.347Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 986.00\"},{\"_id\":\"d5a4be3f-8fcd-4793-825a-f5e393b8fc1a:002180000000000002\",\"eventoId\":\"d5a4be3f-8fcd-4793-825a-f5e393b8fc1a\",\"transferenciaId\":15,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"513.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:04.347Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 513.00\"},{\"_id\":\"7cc5c6e2-80ed-4115-b887-119123bfc626:002180000000000001\",\"eventoId\":\"7cc5c6e2-80ed-4115-b887-119123bfc626\",\"transferenciaId\":16,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"985.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:04.819Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 985.00\"},{\"_id\":\"7cc5c6e2-80ed-4115-b887-119123bfc626:002180000000000002\",\"eventoId\":\"7cc5c6e2-80ed-4115-b887-119123bfc626\",\"transferenciaId\":16,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"514.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:04.819Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 514.00\"},{\"_id\":\"30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2:002180000000000001\",\"eventoId\":\"30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2\",\"transferenciaId\":17,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"984.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:05.161Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 984.00\"},{\"_id\":\"30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2:002180000000000002\",\"eventoId\":\"30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2\",\"transferenciaId\":17,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"515.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:05.161Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 515.00\"},{\"_id\":\"d171407d-f4bb-462d-87d1-c38de921f0c9:002180000000000001\",\"eventoId\":\"d171407d-f4bb-462d-87d1-c38de921f0c9\",\"transferenciaId\":18,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"983.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:05.424Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 983.00\"},{\"_id\":\"d171407d-f4bb-462d-87d1-c38de921f0c9:002180000000000002\",\"eventoId\":\"d171407d-f4bb-462d-87d1-c38de921f0c9\",\"transferenciaId\":18,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"516.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:05.424Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 516.00\"},{\"_id\":\"e5a22807-7ede-4c18-be06-ce57bb399cde:002180000000000001\",\"eventoId\":\"e5a22807-7ede-4c18-be06-ce57bb399cde\",\"transferenciaId\":19,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"982.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:05.786Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 982.00\"},{\"_id\":\"e5a22807-7ede-4c18-be06-ce57bb399cde:002180000000000002\",\"eventoId\":\"e5a22807-7ede-4c18-be06-ce57bb399cde\",\"transferenciaId\":19,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"517.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:05.786Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 517.00\"},{\"_id\":\"880dbbb0-f685-4de7-8b2f-0b786f7be340:002180000000000001\",\"eventoId\":\"880dbbb0-f685-4de7-8b2f-0b786f7be340\",\"transferenciaId\":20,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"981.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:06.233Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 981.00\"},{\"_id\":\"880dbbb0-f685-4de7-8b2f-0b786f7be340:002180000000000002\",\"eventoId\":\"880dbbb0-f685-4de7-8b2f-0b786f7be340\",\"transferenciaId\":20,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"518.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:06.233Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 518.00\"},{\"_id\":\"b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5:002180000000000001\",\"eventoId\":\"b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5\",\"transferenciaId\":21,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"980.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:06.612Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 980.00\"},{\"_id\":\"b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5:002180000000000002\",\"eventoId\":\"b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5\",\"transferenciaId\":21,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"519.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:06.612Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 519.00\"},{\"_id\":\"762f9374-af9c-4e00-ac9c-56a2202da532:002180000000000001\",\"eventoId\":\"762f9374-af9c-4e00-ac9c-56a2202da532\",\"transferenciaId\":22,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"979.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:07.031Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 979.00\"},{\"_id\":\"762f9374-af9c-4e00-ac9c-56a2202da532:002180000000000002\",\"eventoId\":\"762f9374-af9c-4e00-ac9c-56a2202da532\",\"transferenciaId\":22,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"520.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:07.031Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 520.00\"},{\"_id\":\"8bd6b643-58e7-41d7-a327-d3f9aef1049f:002180000000000001\",\"eventoId\":\"8bd6b643-58e7-41d7-a327-d3f9aef1049f\",\"transferenciaId\":23,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"978.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:07.478Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 978.00\"},{\"_id\":\"8bd6b643-58e7-41d7-a327-d3f9aef1049f:002180000000000002\",\"eventoId\":\"8bd6b643-58e7-41d7-a327-d3f9aef1049f\",\"transferenciaId\":23,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"521.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:07.478Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 521.00\"},{\"_id\":\"af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec:002180000000000001\",\"eventoId\":\"af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec\",\"transferenciaId\":24,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"977.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:08.980Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 977.00\"},{\"_id\":\"af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec:002180000000000002\",\"eventoId\":\"af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec\",\"transferenciaId\":24,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"522.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:08.980Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 522.00\"},{\"_id\":\"e5be1dbc-4463-445d-8490-53ad44257310:002180000000000001\",\"eventoId\":\"e5be1dbc-4463-445d-8490-53ad44257310\",\"transferenciaId\":25,\"clabe\":\"002180000000000001\",\"tipo\":\"TRANSFERENCIA_ENVIADA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"976.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:10.344Z\"},\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\",\"texto\":\"TRANSFERENCIA_ENVIADA por 1, saldo resultante 976.00\"},{\"_id\":\"e5be1dbc-4463-445d-8490-53ad44257310:002180000000000002\",\"eventoId\":\"e5be1dbc-4463-445d-8490-53ad44257310\",\"transferenciaId\":25,\"clabe\":\"002180000000000002\",\"tipo\":\"TRANSFERENCIA_RECIBIDA\",\"monto\":{\"$numberDecimal\":\"1\"},\"saldo\":{\"$numberDecimal\":\"523.00\"},\"fecha\":{\"$date\":\"2026-11-08T01:40:10.344Z\"},\"canal\":\"CORREO\",\"correo\":\"beto@correo.mx\",\"asunto\":\"TRANSFERENCIA_RECIBIDA\",\"cuerpo\":\"TRANSFERENCIA_RECIBIDA por 1, saldo resultante 523.00\"}]\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "EJSON.stringify(db.avisos.find({telefono:{$exists:true}},{clabe:1,canal:1,telefono:1}).toArray())"
+        ],
+        "stdout": "[{\"_id\":\"da2833a5-c35f-4079-9592-052546f9c577:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"d1721bc0-72e4-4798-8c0d-b6126cd8f3af:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"72d7657c-9544-4231-9a9e-c94c1f1d6974:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"0f57451c-459a-4bf8-8719-8c6e7698edd1:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"e2b2d3fd-2501-4faa-bc51-2a9440f4248a:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"261f6e29-28e5-499d-90bb-642107b988dc:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"5236bab5-100f-4987-af73-11eb5e40b4ba:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"c786308b-344a-47f0-b9dc-883dd09d4109:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"d096bf16-3e0f-4fc3-8f31-4e6c9348b48d:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"de9f1d86-4968-48dc-bd97-4ec1ddf52ccc:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"3c321e14-b36d-47ae-8cb5-80647368f28b:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"c499344f-a0b0-4355-99b9-de39efce3769:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"57bacdef-558b-4dd6-8822-aeb9aa625533:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"d5a4be3f-8fcd-4793-825a-f5e393b8fc1a:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"7cc5c6e2-80ed-4115-b887-119123bfc626:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"d171407d-f4bb-462d-87d1-c38de921f0c9:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"e5a22807-7ede-4c18-be06-ce57bb399cde:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"880dbbb0-f685-4de7-8b2f-0b786f7be340:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"762f9374-af9c-4e00-ac9c-56a2202da532:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"8bd6b643-58e7-41d7-a327-d3f9aef1049f:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"},{\"_id\":\"e5be1dbc-4463-445d-8490-53ad44257310:002180000000000001\",\"clabe\":\"002180000000000001\",\"canal\":\"SMS\",\"telefono\":\"+52 55 5555 0101\"}]\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:20 GMT",
+          "connection": "close"
+        },
+        "body": [
+          {
+            "_id": "e5be1dbc-4463-445d-8490-53ad44257310:002180000000000002",
+            "eventoId": "e5be1dbc-4463-445d-8490-53ad44257310",
+            "transferenciaId": 25,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 523.0,
+            "fecha": "2026-11-08T01:40:10.344+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 523.00"
+          },
+          {
+            "_id": "af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec:002180000000000002",
+            "eventoId": "af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec",
+            "transferenciaId": 24,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 522.0,
+            "fecha": "2026-11-08T01:40:08.980+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 522.00"
+          },
+          {
+            "_id": "8bd6b643-58e7-41d7-a327-d3f9aef1049f:002180000000000002",
+            "eventoId": "8bd6b643-58e7-41d7-a327-d3f9aef1049f",
+            "transferenciaId": 23,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 521.0,
+            "fecha": "2026-11-08T01:40:07.478+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 521.00"
+          },
+          {
+            "_id": "762f9374-af9c-4e00-ac9c-56a2202da532:002180000000000002",
+            "eventoId": "762f9374-af9c-4e00-ac9c-56a2202da532",
+            "transferenciaId": 22,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 520.0,
+            "fecha": "2026-11-08T01:40:07.031+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 520.00"
+          },
+          {
+            "_id": "b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5:002180000000000002",
+            "eventoId": "b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5",
+            "transferenciaId": 21,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 519.0,
+            "fecha": "2026-11-08T01:40:06.612+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 519.00"
+          },
+          {
+            "_id": "880dbbb0-f685-4de7-8b2f-0b786f7be340:002180000000000002",
+            "eventoId": "880dbbb0-f685-4de7-8b2f-0b786f7be340",
+            "transferenciaId": 20,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 518.0,
+            "fecha": "2026-11-08T01:40:06.233+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 518.00"
+          },
+          {
+            "_id": "e5a22807-7ede-4c18-be06-ce57bb399cde:002180000000000002",
+            "eventoId": "e5a22807-7ede-4c18-be06-ce57bb399cde",
+            "transferenciaId": 19,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 517.0,
+            "fecha": "2026-11-08T01:40:05.786+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 517.00"
+          },
+          {
+            "_id": "d171407d-f4bb-462d-87d1-c38de921f0c9:002180000000000002",
+            "eventoId": "d171407d-f4bb-462d-87d1-c38de921f0c9",
+            "transferenciaId": 18,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 516.0,
+            "fecha": "2026-11-08T01:40:05.424+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 516.00"
+          },
+          {
+            "_id": "30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2:002180000000000002",
+            "eventoId": "30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2",
+            "transferenciaId": 17,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 515.0,
+            "fecha": "2026-11-08T01:40:05.161+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 515.00"
+          },
+          {
+            "_id": "7cc5c6e2-80ed-4115-b887-119123bfc626:002180000000000002",
+            "eventoId": "7cc5c6e2-80ed-4115-b887-119123bfc626",
+            "transferenciaId": 16,
+            "clabe": "002180000000000002",
+            "tipo": "TRANSFERENCIA_RECIBIDA",
+            "monto": 1,
+            "saldo": 514.0,
+            "fecha": "2026-11-08T01:40:04.819+00:00",
+            "canal": "CORREO",
+            "correo": "beto@correo.mx",
+            "asunto": "TRANSFERENCIA_RECIBIDA",
+            "cuerpo": "TRANSFERENCIA_RECIBIDA por 1, saldo resultante 514.00"
+          }
+        ],
+        "ms": 639.5617609996407
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "EJSON.stringify(db.avisos.getIndexes())"
+        ],
+        "stdout": "[{\"v\":2,\"key\":{\"_id\":1},\"name\":\"_id_\"},{\"v\":2,\"key\":{\"clabe\":1,\"fecha\":-1},\"name\":\"clabe_fecha\"}]\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "EJSON.stringify(db.avisos.find({clabe:\"002180000000000002\"}).sort({fecha:-1}).limit(10).explain(\"executionStats\"))"
+        ],
+        "stdout": "{\"explainVersion\":\"1\",\"queryPlanner\":{\"namespace\":\"notificacion.avisos\",\"parsedQuery\":{\"clabe\":{\"$eq\":\"002180000000000002\"}},\"indexFilterSet\":false,\"queryHash\":\"C73271DB\",\"planCacheShapeHash\":\"C73271DB\",\"planCacheKey\":\"501A071D\",\"optimizationTimeMillis\":0,\"maxIndexedOrSolutionsReached\":false,\"maxIndexedAndSolutionsReached\":false,\"maxScansToExplodeReached\":false,\"prunedSimilarIndexes\":false,\"winningPlan\":{\"isCached\":false,\"stage\":\"LIMIT\",\"limitAmount\":10,\"inputStage\":{\"stage\":\"FETCH\",\"inputStage\":{\"stage\":\"IXSCAN\",\"keyPattern\":{\"clabe\":1,\"fecha\":-1},\"indexName\":\"clabe_fecha\",\"isMultiKey\":false,\"multiKeyPaths\":{\"clabe\":[],\"fecha\":[]},\"isUnique\":false,\"isSparse\":false,\"isPartial\":false,\"indexVersion\":2,\"direction\":\"forward\",\"indexBounds\":{\"clabe\":[\"[\\\"002180000000000002\\\", \\\"002180000000000002\\\"]\"],\"fecha\":[\"[MaxKey, MinKey]\"]}}}},\"rejectedPlans\":[]},\"executionStats\":{\"executionSuccess\":true,\"nReturned\":10,\"executionTimeMillis\":4,\"totalKeysExamined\":10,\"totalDocsExamined\":10,\"executionStages\":{\"isCached\":false,\"stage\":\"LIMIT\",\"nReturned\":10,\"executionTimeMillisEstimate\":0,\"works\":11,\"advanced\":10,\"needTime\":0,\"needYield\":0,\"saveState\":0,\"restoreState\":0,\"isEOF\":1,\"limitAmount\":10,\"inputStage\":{\"stage\":\"FETCH\",\"nReturned\":10,\"executionTimeMillisEstimate\":0,\"works\":10,\"advanced\":10,\"needTime\":0,\"needYield\":0,\"saveState\":0,\"restoreState\":0,\"isEOF\":0,\"docsExamined\":10,\"alreadyHasObj\":0,\"inputStage\":{\"stage\":\"IXSCAN\",\"nReturned\":10,\"executionTimeMillisEstimate\":0,\"works\":10,\"advanced\":10,\"needTime\":0,\"needYield\":0,\"saveState\":0,\"restoreState\":0,\"isEOF\":0,\"keyPattern\":{\"clabe\":1,\"fecha\":-1},\"indexName\":\"clabe_fecha\",\"isMultiKey\":false,\"multiKeyPaths\":{\"clabe\":[],\"fecha\":[]},\"isUnique\":false,\"isSparse\":false,\"isPartial\":false,\"indexVersion\":2,\"direction\":\"forward\",\"indexBounds\":{\"clabe\":[\"[\\\"002180000000000002\\\", \\\"002180000000000002\\\"]\"],\"fecha\":[\"[MaxKey, MinKey]\"]},\"keysExamined\":10,\"seeks\":1,\"dupsTested\":0,\"dupsDropped\":0}}}},\"queryShapeHash\":\"CA4FD8110DD5E6683EA9C6BC3C1454D21C0C63BD5B978B90E268A6EEF92E7759\",\"command\":{\"find\":\"avisos\",\"filter\":{\"clabe\":\"002180000000000002\"},\"sort\":{\"fecha\":-1},\"limit\":10,\"$db\":\"notificacion\"},\"serverInfo\":{\"host\":\"72ecca6f4f8a\",\"port\":27017,\"version\":\"8.0.34\",\"gitVersion\":\"51db4515a6597aedcf6188ee4e48a27e65b065ae\"},\"serverParameters\":{\"internalQueryFacetBufferSizeBytes\":104857600,\"internalQueryFacetMaxOutputDocSizeBytes\":104857600,\"internalLookupStageIntermediateDocumentMaxSizeBytes\":104857600,\"internalDocumentSourceGroupMaxMemoryBytes\":104857600,\"internalQueryMaxBlockingSortMemoryUsageBytes\":104857600,\"internalQueryProhibitBlockingMergeOnMongoS\":0,\"internalQueryMaxAddToSetBytes\":104857600,\"internalDocumentSourceSetWindowFieldsMaxMemoryBytes\":104857600,\"internalQueryFrameworkControl\":\"trySbeRestricted\",\"internalQueryPlannerIgnoreIndexWithCollationForRegex\":1},\"ok\":1}\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "EJSON.stringify(db.avisos.find({clabe:\"002180000000000002\"}).sort({fecha:-1}).limit(10).hint({$natural:1}).explain(\"executionStats\"))"
+        ],
+        "stdout": "{\"explainVersion\":\"1\",\"queryPlanner\":{\"namespace\":\"notificacion.avisos\",\"parsedQuery\":{\"clabe\":{\"$eq\":\"002180000000000002\"}},\"indexFilterSet\":false,\"queryHash\":\"C73271DB\",\"planCacheShapeHash\":\"C73271DB\",\"planCacheKey\":\"501A071D\",\"optimizationTimeMillis\":0,\"maxIndexedOrSolutionsReached\":false,\"maxIndexedAndSolutionsReached\":false,\"maxScansToExplodeReached\":false,\"prunedSimilarIndexes\":false,\"winningPlan\":{\"isCached\":false,\"stage\":\"SORT\",\"sortPattern\":{\"fecha\":-1},\"memLimit\":104857600,\"limitAmount\":10,\"type\":\"simple\",\"inputStage\":{\"stage\":\"COLLSCAN\",\"filter\":{\"clabe\":{\"$eq\":\"002180000000000002\"}},\"direction\":\"forward\"}},\"rejectedPlans\":[]},\"executionStats\":{\"executionSuccess\":true,\"nReturned\":10,\"executionTimeMillis\":9,\"totalKeysExamined\":0,\"totalDocsExamined\":48,\"executionStages\":{\"isCached\":false,\"stage\":\"SORT\",\"nReturned\":10,\"executionTimeMillisEstimate\":2,\"works\":60,\"advanced\":10,\"needTime\":49,\"needYield\":0,\"saveState\":0,\"restoreState\":0,\"isEOF\":1,\"sortPattern\":{\"fecha\":-1},\"memLimit\":104857600,\"limitAmount\":10,\"type\":\"simple\",\"totalDataSizeSorted\":4480,\"usedDisk\":false,\"spills\":0,\"spilledDataStorageSize\":0,\"inputStage\":{\"stage\":\"COLLSCAN\",\"filter\":{\"clabe\":{\"$eq\":\"002180000000000002\"}},\"nReturned\":23,\"executionTimeMillisEstimate\":0,\"works\":49,\"advanced\":23,\"needTime\":25,\"needYield\":0,\"saveState\":0,\"restoreState\":0,\"isEOF\":1,\"direction\":\"forward\",\"docsExamined\":48}}},\"queryShapeHash\":\"CA4FD8110DD5E6683EA9C6BC3C1454D21C0C63BD5B978B90E268A6EEF92E7759\",\"command\":{\"find\":\"avisos\",\"filter\":{\"clabe\":\"002180000000000002\"},\"sort\":{\"fecha\":-1},\"hint\":{\"$natural\":1},\"limit\":10,\"$db\":\"notificacion\"},\"serverInfo\":{\"host\":\"72ecca6f4f8a\",\"port\":27017,\"version\":\"8.0.34\",\"gitVersion\":\"51db4515a6597aedcf6188ee4e48a27e65b065ae\"},\"serverParameters\":{\"internalQueryFacetBufferSizeBytes\":104857600,\"internalQueryFacetMaxOutputDocSizeBytes\":104857600,\"internalLookupStageIntermediateDocumentMaxSizeBytes\":104857600,\"internalDocumentSourceGroupMaxMemoryBytes\":104857600,\"internalQueryMaxBlockingSortMemoryUsageBytes\":104857600,\"internalQueryProhibitBlockingMergeOnMongoS\":0,\"internalQueryMaxAddToSetBytes\":104857600,\"internalDocumentSourceSetWindowFieldsMaxMemoryBytes\":104857600,\"internalQueryFrameworkControl\":\"trySbeRestricted\",\"internalQueryPlannerIgnoreIndexWithCollationForRegex\":1},\"ok\":1}\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "allow": "POST, OPTIONS",
+          "cache-control": "no-cache",
+          "connection": "close",
+          "content-length": "15",
+          "content-security-policy": "script-src 'self'; object-src 'self'; base-uri 'none'",
+          "content-type": "application/json",
+          "date": "Sun, 08 Nov 2026 01:40:26 GMT",
+          "server": "Cowboy",
+          "vary": "accept, accept-encoding, origin"
+        },
+        "body": {
+          "routed": true
+        },
+        "ms": 464.9166390008759
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "allow": "POST, OPTIONS",
+          "cache-control": "no-cache",
+          "connection": "close",
+          "content-length": "15",
+          "content-security-policy": "script-src 'self'; object-src 'self'; base-uri 'none'",
+          "content-type": "application/json",
+          "date": "Sun, 08 Nov 2026 01:40:26 GMT",
+          "server": "Cowboy",
+          "vary": "accept, accept-encoding, origin"
+        },
+        "body": {
+          "routed": true
+        },
+        "ms": 14.235859001928475
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "db.avisos.countDocuments({eventoId:\"11111111-2222-4333-8444-555555555555\"})"
+        ],
+        "stdout": "2\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "logs",
+          "--no-color",
+          "--tail",
+          "60",
+          "notificacion"
+        ],
+        "stdout": "notificacion-1  | \tat java.base/java.util.concurrent.FutureTask.run(Unknown Source)\nnotificacion-1  | \tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)\nnotificacion-1  | \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)\nnotificacion-1  | \tat java.base/java.lang.Thread.run(Unknown Source)\nnotificacion-1  | \nnotificacion-1  | 2026-11-08T01:02:55.749Z  WARN 1 --- [notificacion] [beatExecutor-%d] c.n.d.s.t.d.RetryableEurekaHttpClient    : Request execution failed with message: null\nnotificacion-1  | 2026-11-08T01:02:55.749Z ERROR 1 --- [notificacion] [beatExecutor-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/63f52a2f735e:notificacion:8080 - was unable to send heartbeat!\nnotificacion-1  | \nnotificacion-1  | com.netflix.discovery.shared.transport.TransportException: Cannot execute request on any known server\nnotificacion-1  | \tat com.netflix.discovery.shared.transport.decorator.RetryableEurekaHttpClient.execute(RetryableEurekaHttpClient.java:112) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator$3.execute(EurekaHttpClientDecorator.java:92) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat com.netflix.discovery.shared.transport.decorator.SessionedEurekaHttpClient.execute(SessionedEurekaHttpClient.java:76) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat com.netflix.discovery.shared.transport.decorator.EurekaHttpClientDecorator.sendHeartBeat(EurekaHttpClientDecorator.java:89) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat com.netflix.discovery.DiscoveryClient.renew(DiscoveryClient.java:845) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat com.netflix.discovery.DiscoveryClient$HeartbeatThread.run(DiscoveryClient.java:1402) ~[eureka-client-2.0.3.jar!/:2.0.3]\nnotificacion-1  | \tat java.base/java.util.concurrent.Executors$RunnableAdapter.call(Unknown Source) ~[na:na]\nnotificacion-1  | \tat java.base/java.util.concurrent.FutureTask.run(Unknown Source) ~[na:na]\nnotificacion-1  | \tat java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source) ~[na:na]\nnotificacion-1  | \tat java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source) ~[na:na]\nnotificacion-1  | \tat java.base/java.lang.Thread.run(Unknown Source) ~[na:na]\nnotificacion-1  | \nnotificacion-1  | 2026-11-08T01:03:34.320Z  INFO 1 --- [notificacion] [beatExecutor-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/63f52a2f735e:notificacion:8080 - Re-registering apps/NOTIFICACION\nnotificacion-1  | 2026-11-08T01:03:34.320Z  INFO 1 --- [notificacion] [beatExecutor-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/63f52a2f735e:notificacion:8080: registering service...\nnotificacion-1  | 2026-11-08T01:03:34.341Z  INFO 1 --- [notificacion] [beatExecutor-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/63f52a2f735e:notificacion:8080 - registration status: 204\nnotificacion-1  | 2026-11-08T01:07:47.729Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:12:47.738Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:17:47.761Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:22:47.772Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:27:47.784Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:32:47.792Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:37:47.782Z  INFO 1 --- [notificacion] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\nnotificacion-1  | 2026-11-08T01:39:22.356Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 2 (evento da2833a5-c35f-4079-9592-052546f9c577, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:29.997Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 3 (evento d1721bc0-72e4-4798-8c0d-b6126cd8f3af, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:30.040Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 4 (evento 72d7657c-9544-4231-9a9e-c94c1f1d6974, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:31.048Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 5 (evento 0f57451c-459a-4bf8-8719-8c6e7698edd1, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:32.107Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 6 (evento e2b2d3fd-2501-4faa-bc51-2a9440f4248a, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:33.252Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 7 (evento 261f6e29-28e5-499d-90bb-642107b988dc, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:34.371Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 8 (evento 5236bab5-100f-4987-af73-11eb5e40b4ba, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:36.518Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 9 (evento c786308b-344a-47f0-b9dc-883dd09d4109, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:36.541Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 10 (evento d096bf16-3e0f-4fc3-8f31-4e6c9348b48d, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:37.590Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 11 (evento de9f1d86-4968-48dc-bd97-4ec1ddf52ccc, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:39:38.703Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 12 (evento 3c321e14-b36d-47ae-8cb5-80647368f28b, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:03.874Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 13 (evento c499344f-a0b0-4355-99b9-de39efce3769, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:04.912Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 14 (evento 57bacdef-558b-4dd6-8822-aeb9aa625533, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:04.930Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 15 (evento d5a4be3f-8fcd-4793-825a-f5e393b8fc1a, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:04.957Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 16 (evento 7cc5c6e2-80ed-4115-b887-119123bfc626, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:06.073Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 17 (evento 30cb5a04-b99a-4915-9a0f-8d6e7efbd6b2, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:06.122Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 18 (evento d171407d-f4bb-462d-87d1-c38de921f0c9, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:06.155Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 19 (evento e5a22807-7ede-4c18-be06-ce57bb399cde, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:07.189Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 20 (evento 880dbbb0-f685-4de7-8b2f-0b786f7be340, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:07.241Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 21 (evento b1bb3f19-fcb6-425c-9c07-101cf8c2d9b5, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:07.256Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 22 (evento 762f9374-af9c-4e00-ac9c-56a2202da532, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:08.352Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 23 (evento 8bd6b643-58e7-41d7-a327-d3f9aef1049f, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:09.435Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 24 (evento af95fdfd-f1f5-4274-b1ed-7b3d7f24cfec, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:11.479Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 25 (evento e5be1dbc-4463-445d-8490-53ad44257310, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:27.227Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 9001 (evento 11111111-2222-4333-8444-555555555555, redelivered=false): 2 aviso(s) nuevo(s)\nnotificacion-1  | 2026-11-08T01:40:27.287Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.avisos.BitacoraDeAvisos            : [avisos] 11111111-2222-4333-8444-555555555555:002180000000000091 ya estaba\nnotificacion-1  | 2026-11-08T01:40:27.291Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.avisos.BitacoraDeAvisos            : [avisos] 11111111-2222-4333-8444-555555555555:002180000000000092 ya estaba\nnotificacion-1  | 2026-11-08T01:40:27.292Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : [consumidor] TransferenciaRealizada de la transferencia 9001 (evento 11111111-2222-4333-8444-555555555555, redelivered=false): 0 aviso(s) nuevo(s)\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    }
+  ],
+  "resultado": "OK",
+  "fin_utc": "2026-11-08T01:40:32.742297+00:00",
+  "duracion_wall_s": 29.601068019866943,
+  "duracion_monotona_s": 29.60027831700063,
+  "posible_suspension": false
+}

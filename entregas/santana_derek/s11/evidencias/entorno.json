@@ -1,0 +1,52 @@
+{
+  "fecha_utc": "2026-11-07T14:20:43.568894+00:00",
+  "base_docente": "9d10c2cdfce2d8d6d171d655bc680b6d2a1e23be",
+  "comandos": [
+    {
+      "comando": [
+        "docker",
+        "version",
+        "--format",
+        "{{.Server.Version}}"
+      ],
+      "codigo": 0,
+      "salida": "29.4.1\n",
+      "error": ""
+    },
+    {
+      "comando": [
+        "docker",
+        "compose",
+        "version"
+      ],
+      "codigo": 0,
+      "salida": "Docker Compose version v5.1.3\n",
+      "error": ""
+    },
+    {
+      "comando": [
+        "docker",
+        "info",
+        "--format",
+        "{{.NCPU}} CPU; {{.MemTotal}} bytes RAM"
+      ],
+      "codigo": 0,
+      "salida": "2 CPU; 4626694144 bytes RAM\n",
+      "error": ""
+    },
+    {
+      "comando": [
+        "docker",
+        "image",
+        "inspect",
+        "derek-s11-cuenta",
+        "derek-s11-notificacion",
+        "--format",
+        "{{.Id}} {{.Created}} {{.RepoTags}}"
+      ],
+      "codigo": 0,
+      "salida": "sha256:6c5f9634684924451d3356e3a81c12ec7576b9a1c4dc5e194fcf341c3cdc03bf 2026-11-04T05:55:43.441777864Z [derek-s11-cuenta:latest]\nsha256:aff0a34608b02f4db13f7f7810511af108768c82824c157e89684b32e95f33ba 2026-11-04T05:57:58.267455832Z [derek-s11-notificacion:latest]\n",
+      "error": ""
+    }
+  ]
+}

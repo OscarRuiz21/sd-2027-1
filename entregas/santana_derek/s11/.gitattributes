@@ -1,0 +1,3 @@
+*.pdf binary
+evidencias/*.log -whitespace
+*.cmd whitespace=cr-at-eol
