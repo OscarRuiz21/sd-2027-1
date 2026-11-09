@@ -1,4 +1,3 @@
-version: '3.8'
 services:
   server:
     build: 
@@ -7,10 +6,17 @@ services:
     ports:
       - "8080:8080" # REST
       - "9090:9090" # gRPC
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:8080/api/medicamentos/1').then(r => r.ok ? process.exit(0) : process.exit(1)).catch(() => process.exit(1))"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 2s
 
   client:
     build: 
       context: .
       dockerfile: client/Dockerfile
     depends_on:
-      - server
+      server:
+        condition: service_healthy

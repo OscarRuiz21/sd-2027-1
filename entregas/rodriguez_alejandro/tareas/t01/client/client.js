@@ -41,9 +41,16 @@ function llamarGRPC(id) {
     });
 }
 
-console.log("Esperando");
-setTimeout(() => {
-    llamarREST("1");  // paracetamol
-    llamarGRPC("2");  // loratadina
-    llamarREST("99"); // no existe el id 99, es para ver el manejo de errores
-}, 3000);
+// EJECUCIÓN CORREGIDA
+async function ejecutar() {
+    console.log("Iniciando pruebas de cliente...");
+    await llamarREST("1");  // REST - ID Existente
+    llamarGRPC("1");        // gRPC - ID Existente (mismo ID)
+    
+    // Pequeña asincronía visual
+    setTimeout(() => {
+        llamarGRPC("99");   // gRPC - ID Inexistente
+    }, 500);
+}
+
+ejecutar();
