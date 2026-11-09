@@ -14,10 +14,12 @@ Esta instrucción iniciará el servidor y aguardará hasta que se encuentre comp
 
 La salida de la terminal presentada a continuación demuestra que ambas interfaces operan correctamente compartiendo la misma lógica de negocio, logrando procesar el identificador 1 de manera exitosa y gestionando adecuadamente un identificador inexistente:
 
+### Evidencia de ejecución en terminal (primera versión sin corregir)
 ![Evidencia de ejecución en terminal (primera versión sin corregit)](evidencia.png)
 
 
 
+### Evidencia de ejecución en terminal (versión corregida)
 ![Evidencia de ejecución en terminal (versión corregida)](evidencia2.png)
 
 ## 2. Lógica
