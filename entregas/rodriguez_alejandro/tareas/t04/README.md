@@ -152,8 +152,14 @@ En la siguiente imagen se muestra la salida de la terminal al compilar y ejecuta
 
 # REFERENCIAS:
 
-[1] The Apache Software Foundation, "Cassandra Basics," *Apache Cassandra*. [En línea]. Disponible: https://cassandra.apache.org/_/cassandra-basics.html
+[1] Datastax, "Understanding how Cassandra handles concurrent writes," Datastax Documentation. [En línea]. Disponible: https://docs.datastax.com/en/cassandra-oss/3.x/cassandra/dml/dmlHowDataWritten.html
 
-[2] Google, "Cloud Spanner," *Google Cloud*. [En línea]. Disponible: https://cloud.google.com/spanner?hl=es
+[2] J. C. Corbett et al., "Spanner: Google’s Globally-Distributed Database," OSDI '12: Proceedings of the 10th USENIX Symposium on Operating Systems Design and Implementation, pp. 251-264, 2012. [En línea]. Disponible: https://static.googleusercontent.com/media/research.google.com/en//archive/spanner-osdi2012.pdf
 
-[3] The Apache Software Foundation, "Introduction," *Apache Kafka*. [En línea]. Disponible: https://kafka.apache.org/44/getting-started/introduction/
+[3] The Apache Software Foundation, "Message Ordering," Apache Kafka Documentation. [En línea]. Disponible: https://kafka.apache.org/documentation/#intro_guarantees
+
+[4] The Apache Software Foundation, "Cassandra Basics," *Apache Cassandra*. [En línea]. Disponible: https://cassandra.apache.org/_/cassandra-basics.html
+
+[5] Google, "Cloud Spanner," *Google Cloud*. [En línea]. Disponible: https://cloud.google.com/spanner?hl=es
+
+[6] The Apache Software Foundation, "Introduction," *Apache Kafka*. [En línea]. Disponible: https://kafka.apache.org/44/getting-started/introduction/
