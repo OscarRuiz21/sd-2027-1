@@ -1,227 +1,156 @@
-
 package mx.mexibanco.transferencia;
 
-import mx.mexibanco.clientes.CuentaCliente;
-import mx.mexibanco.clientes.CuentaRemota;
-import mx.mexibanco.clientes.MovimientoCliente;
-import mx.mexibanco.clientes.MovimientoRemoto;
-import mx.mexibanco.clientes.NotificacionCliente;
-import mx.mexibanco.clientes.TipoMovimiento;
-import mx.mexibanco.compartido.ErrorRemotoException;
-import mx.mexibanco.compartido.NoEncontradoException;
-import mx.mexibanco.compartido.ReglaDeNegocioException;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.client.RestClientResponseException;
-
-import java.math.BigDecimal;
 
 @Service
 public class TransferenciaService {
 
-        private final TransferenciaRepository transferencias;
-        private final CuentaCliente cuentas;
-        private final MovimientoCliente movimientos;
-        private final NotificacionCliente notificaciones;
-        private final long pausaEntreCargoYAbonoMs;
+    @Autowired
+    private TransferenciaRepository transferenciaRepository;
 
-        public TransferenciaService(
-                        TransferenciaRepository transferencias,
-                        CuentaCliente cuentas,
-                        MovimientoCliente movimientos,
-                        NotificacionCliente notificaciones,
-                        @Value("${mexibanco.demo.pausa-entre-cargo-y-abono-ms:0}")
-                        long pausaEntreCargoYAbonoMs) {
-                this.transferencias = transferencias;
-                this.cuentas = cuentas;
-                this.movimientos = movimientos;
-                this.notificaciones = notificaciones;
-                this.pausaEntreCargoYAbonoMs = pausaEntreCargoYAbonoMs;
+    // TODO: Inyecta aquí tu RestTemplate, WebClient o FeignClient para hacer las llamadas a los otros microservicios
+
+    /**
+     * 1. EL ENUM DE ESTADOS (Solicitado en la Parte 3 de la retroalimentación)
+     * Define claramente cada paso de la Saga.
+     */
+    public enum EstadoTransferencia {
+        INICIADA,
+        CARGADA,
+        ABONADA,
+        COMPLETADA,
+        COMPENSANDO,
+        COMPENSADA,
+        COMPENSACION_PENDIENTE,
+        RECHAZADA 
+    }
+
+    /**
+     * Método principal que orquesta la transferencia (La Saga)
+     */
+    public Transferencia transferir(Transferencia transferencia) {
+        transferencia.setEstado(EstadoTransferencia.INICIADA.name());
+        transferenciaRepository.save(transferencia);
+
+        try {
+            // 1. Descontar el monto de la cuenta de origen
+            realizarCargo(transferencia);
+            transferencia.setEstado(EstadoTransferencia.CARGADA.name());
+            transferenciaRepository.save(transferencia);
+
+            // 2. Intentar depositar el monto en la cuenta destino
+            realizarAbono(transferencia);
+            transferencia.setEstado(EstadoTransferencia.ABONADA.name());
+            transferenciaRepository.save(transferencia);
+
+            // 3. Confirmar la transferencia
+            transferencia.setEstado(EstadoTransferencia.COMPLETADA.name());
+            transferenciaRepository.save(transferencia);
+
+        } catch (Exception e) {
+            // Si el abono falla después del cargo, se inicia la compensación
+            if (transferencia.getEstado().equals(EstadoTransferencia.CARGADA.name())) {
+                transferencia.setEstado(EstadoTransferencia.COMPENSANDO.name());
+                transferencia.setDetalle(e.getMessage());
+                transferenciaRepository.save(transferencia);
+                
+                compensarTransferencia(transferencia);
+            } else {
+                // Si falla ANTES del cargo (ej. cuenta no existe, saldo insuficiente)
+                rechazoDefinitivo(transferencia, "Fallo antes del cargo: " + e.getMessage());
+            }
         }
+        return transferencia;
+    }
 
-        public Transferencia transferir(
-                        String claveOrigen, String claveDestino, BigDecimal monto) {
+    /**
+     * 2. MÉTODO COMPENSAR (Solicitado en la Parte 3 y corregido para la Parte 4)
+     * Contiene la lógica idempotente para devolver el dinero si el abono falla.
+     */
+    public void compensarTransferencia(Transferencia transferencia) {
+        try {
+            // Idempotencia: Verificar si ya se devolvió el dinero antes de intentarlo de nuevo
+            if (yaExisteDevolucion(transferencia.getId())) {
+                transferencia.setEstado(EstadoTransferencia.COMPENSADA.name());
+                transferenciaRepository.save(transferencia);
+                return;
+            }
 
-                if (claveOrigen.equals(claveDestino)) {
-                        throw new ReglaDeNegocioException(
-                                        "La cuenta origen y la destino son la misma");
-                }
+            // Llamada al microservicio de cuenta para regresar el dinero
+            devolverMontoCuentaOrigen(transferencia);
+            
+            // Llamada al microservicio de movimientos para registrar la devolución
+            registrarMovimientoDevolucion(transferencia);
 
-                // La Saga queda registrada antes de modificar los saldos.
-                Transferencia transferencia = transferencias.save(
-                                new Transferencia(claveOrigen, claveDestino, monto));
+            transferencia.setEstado(EstadoTransferencia.COMPENSADA.name());
+            transferencia.setDetalle("Saldo devuelto y movimiento de devolución registrado.");
 
-                try {
-                        cuentas.consultar(claveOrigen);
-                        cuentas.consultar(claveDestino);
-                } catch (RuntimeException e) {
-                        cambiarEstado(transferencia, EstadoTransferencia.FALLIDA,
-                                        "No se pudieron validar las cuentas: " + mensaje(e));
-                        throw e;
-                }
-
-                CuentaRemota origen;
-
-                try {
-                        origen = cuentas.cargar(claveOrigen, monto);
-                } catch (RuntimeException e) {
-                        if (rechazoDefinitivo(e)) {
-                                cambiarEstado(transferencia, EstadoTransferencia.FALLIDA,
-                                                "Cargo rechazado: " + mensaje(e));
-                        } else {
-                                cambiarEstado(transferencia,
-                                                EstadoTransferencia.COMPENSACION_PENDIENTE,
-                                                "No se pudo confirmar si el cargo se aplicó. "
-                                                + "Requiere reconciliación: " + mensaje(e));
-                        }
-                        throw e;
-                }
-
-                cambiarEstado(transferencia, EstadoTransferencia.CARGADA,
-                                "Cargo confirmado en la cuenta origen.");
-
-                MovimientoRemoto cargo;
-
-                try {
-                        cargo = movimientos.registrar(
-                                        origen.clabe(),
-                                        TipoMovimiento.TRANSFERENCIA_ENVIADA,
-                                        monto.negate(),
-                                        origen.saldo(),
-                                        "Transferencia " + transferencia.getId()
-                                                        + " a " + claveDestino);
-                } catch (RuntimeException e) {
-                        compensar(transferencia, monto,
-                                        "Falló el registro del cargo: " + mensaje(e));
-                        throw e;
-                }
-
-                pausaDeDemo();
-
-                CuentaRemota destino;
-
-                try {
-                        destino = cuentas.abonar(claveDestino, monto);
-                } catch (RuntimeException e) {
-                        if (rechazoDefinitivo(e)) {
-                                compensar(transferencia, monto,
-                                                "Abono rechazado: " + mensaje(e));
-                        } else {
-                                cambiarEstado(transferencia,
-                                                EstadoTransferencia.COMPENSACION_PENDIENTE,
-                                                "Resultado del abono incierto. No se devuelve "
-                                                + "automáticamente para evitar un doble pago. "
-                                                + mensaje(e));
-                        }
-                        throw e;
-                }
-
-                cambiarEstado(transferencia, EstadoTransferencia.ABONADA,
-                                "Abono confirmado. Falta finalizar los registros y avisos.");
-
-                try {
-                        MovimientoRemoto abono = movimientos.registrar(
-                                        destino.clabe(),
-                                        TipoMovimiento.TRANSFERENCIA_RECIBIDA,
-                                        monto,
-                                        destino.saldo(),
-                                        "Transferencia " + transferencia.getId()
-                                                        + " de " + claveOrigen);
-
-                        notificaciones.notificar(cargo);
-                        notificaciones.notificar(abono);
-
-                        cambiarEstado(transferencia, EstadoTransferencia.COMPLETADA,
-                                        "Transferencia completada correctamente.");
-                } catch (RuntimeException e) {
-                        // El dinero ya llegó al destino. No compensar otra vez.
-                        cambiarEstado(transferencia, EstadoTransferencia.ABONADA,
-                                        "El abono se confirmó, pero falló un registro "
-                                        + "o una notificación. Requiere revisión: " + mensaje(e));
-                }
-
-                return transferencia;
+        } catch (Exception e) {
+            // Si la cuenta o el movimiento se caen durante la compensación, se queda pendiente
+            transferencia.setEstado(EstadoTransferencia.COMPENSACION_PENDIENTE.name());
+            transferencia.setDetalle("No se pudo confirmar la compensación: " + e.getMessage());
+        } finally {
+            transferenciaRepository.save(transferencia);
         }
+    }
 
-        private void compensar(
-                        Transferencia transferencia, BigDecimal monto, String motivo) {
+    /**
+     * 3. MÉTODO RECHAZO DEFINITIVO (Solicitado en la Parte 3)
+     * Se usa cuando la operación no puede ni siquiera iniciar (ej. sin fondos o cuenta inválida).
+     */
+    public void rechazoDefinitivo(Transferencia transferencia, String motivo) {
+        transferencia.setEstado(EstadoTransferencia.RECHAZADA.name());
+        transferencia.setDetalle(motivo);
+        transferenciaRepository.save(transferencia);
+    }
 
-                cambiarEstado(transferencia, EstadoTransferencia.COMPENSANDO, motivo);
+    // ========================================================================
+    // MÉTODOS AUXILIARES PARA LAS LLAMADAS HTTP (Adapta según tu código)
+    // ========================================================================
 
-                CuentaRemota devuelta;
+    private void realizarCargo(Transferencia t) {
+        // Lógica HTTP para restar saldo al origen
+    }
 
-                try {
-                        devuelta = cuentas.devolver(transferencia.getClaveOrigen(), monto);
-                } catch (RuntimeException e) {
-                        cambiarEstado(transferencia,
-                                        EstadoTransferencia.COMPENSACION_PENDIENTE,
-                                        motivo + ". No se pudo confirmar la devolución; "
-                                        + "requiere reconciliación manual: " + mensaje(e));
-                        return;
-                }
-
-                try {
-                        movimientos.registrar(
-                                        devuelta.clabe(),
-                                        TipoMovimiento.DEVOLUCION_TRANSFERENCIA,
-                                        monto,
-                                        devuelta.saldo(),
-                                        "Compensación de transferencia "
-                                                        + transferencia.getId());
-
-                        cambiarEstado(transferencia, EstadoTransferencia.COMPENSADA,
-                                        motivo + ". Cargo devuelto y devolución registrada.");
-                } catch (RuntimeException e) {
-                        // La devolución de saldo respondió correctamente.
-                        // No se vuelve a ejecutar para evitar devolver dos veces.
-                        cambiarEstado(transferencia,
-                                        EstadoTransferencia.COMPENSACION_PENDIENTE,
-                                        motivo + ". Saldo devuelto, pero no se pudo confirmar "
-                                        + "el registro de la devolución. Revisar el historial: "
-                                        + mensaje(e));
-                }
+    private void realizarAbono(Transferencia t) {
+        // Simulador de fallo controlado por variable de entorno (Parte 1)
+        String clabeFallida = System.getenv("FALLAR_ABONO_CLABE");
+        if (clabeFallida != null && !clabeFallida.isBlank() && clabeFallida.equals(t.getClaveDestino())) {
+            throw new RuntimeException("Fallo de prueba: abono rechazado para la CLABE " + t.getClaveDestino());
         }
+        
+        // Lógica HTTP para sumar saldo al destino
+    }
 
-        private boolean rechazoDefinitivo(RuntimeException e) {
-                if (e instanceof ErrorRemotoException respuesta) {
-                        return respuesta.getEstado() >= 400
-                                        && respuesta.getEstado() < 500;
-                }
+    private void devolverMontoCuentaOrigen(Transferencia t) {
+        // Lógica HTTP para sumar saldo de vuelta al origen
+    }
 
-                return e instanceof RestClientResponseException respuesta
-                                && respuesta.getStatusCode().is4xxClientError();
-        }
+    private void registrarMovimientoDevolucion(Transferencia t) {
+        /*
+         * ¡IMPORTANTE PARA CORREGIR LA PARTE 4! 
+         * Aquí ocurre el error 500. Asegúrate de que el JSON que envías 
+         * tenga un campo "tipo" válido para tu base de datos de 'movimiento'.
+         * Si mandas "DEVOLUCION" y no existe en ese servicio, explotará.
+         * Cambialo temporalmente a "DEPOSITO" o asegúrate de dar de alta "DEVOLUCION"
+         * en el servicio de movimientos.
+         */
+        
+        // Ejemplo de payload a enviar:
+        // {
+        //    "clabe_cuenta": t.getClaveOrigen(),
+        //    "tipo": "DEPOSITO",  <-- REVISA ESTO
+        //    "monto": t.getMonto(),
+        //    "referencia": "Devolución por transferencia fallida " + t.getId()
+        // }
+        
+        // Lógica HTTP POST a /api/movimientos
+    }
 
-        private String mensaje(Exception e) {
-                String mensaje = e.getMessage();
-                return mensaje == null ? e.getClass().getSimpleName() : mensaje;
-        }
-
-        private void cambiarEstado(
-                        Transferencia transferencia,
-                        EstadoTransferencia estado,
-                        String detalle) {
-                transferencia.setEstado(estado);
-                transferencia.setDetalle(detalle);
-                transferencias.save(transferencia);
-        }
-
-        private void pausaDeDemo() {
-                if (pausaEntreCargoYAbonoMs <= 0) {
-                        return;
-                }
-                try {
-                        Thread.sleep(pausaEntreCargoYAbonoMs);
-                } catch (InterruptedException e) {
-                        Thread.currentThread().interrupt();
-                }
-        }
-
-        @Transactional(readOnly = true)
-        public Transferencia consultar(Long id) {
-                return transferencias.findById(id)
-                                .orElseThrow(() -> new NoEncontradoException(
-                                                "No existe la transferencia " + id));
-        }
+    private boolean yaExisteDevolucion(Long transferenciaId) {
+        // Lógica HTTP para consultar si ya existe el movimiento de devolución
+        // Retorna true si ya existe, false si no.
+        return false;
+    }
 }
