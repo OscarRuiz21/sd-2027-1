@@ -40,6 +40,14 @@ public class CuentaCliente {
 				.retrieve().body(CuentaRemota.class));
 	}
 
+	/** Compensacion idempotente: siempre se reenvia exactamente la misma llave. */
+	public CuentaRemota compensar(String clabe, BigDecimal monto, String llave) {
+		return circuito.executeSupplier(() ->
+			http.post().uri("/cuentas/{clabe}/compensaciones", clabe)
+				.header("Idempotency-Key", llave).body(Map.of("monto", monto))
+				.retrieve().body(CuentaRemota.class));
+	}
+
 	public CuentaRemota abonar(String clabe, BigDecimal monto) {
 		return circuito.executeSupplier(() ->
 			http.post().uri("/cuentas/{clabe}/abonos", clabe).body(Map.of("monto", monto))

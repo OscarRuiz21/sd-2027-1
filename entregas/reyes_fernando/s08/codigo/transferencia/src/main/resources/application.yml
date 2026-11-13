@@ -38,6 +38,10 @@ mexibanco:
     # Solo para la demo de "lo que se rompio": milisegundos de espera entre el cargo y el abono.
     # En 0 no hace nada. Ver README.
     pausa-entre-cargo-y-abono-ms: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:0}
+  compensacion:
+    # Desactivado hasta probar cuenta y transferencia juntos con una BD de prueba.
+    automatica: ${COMPENSACION_AUTOMATICA:false}
+    revision-ms: ${COMPENSACION_REVISION_MS:5000}
 
 # El directorio (v06). Al arrancar, este servicio se registra en Eureka con su nombre
 # (spring.application.name) y su IP, y manda un latido cada EUREKA_LATIDO_S segundos. Si Eureka no

@@ -141,6 +141,9 @@ services:
       # Solo para la demo de "lo que se rompio al partir" (ver README de v06a). 0 = sin pausa.
       PAUSA_ENTRE_CARGO_Y_ABONO_MS: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:-0}
       FALLAR_ABONO_CLABE: ${FALLAR_ABONO_CLABE:-}
+      # Activar solo despues de validar el endpoint idempotente de cuenta.
+      COMPENSACION_AUTOMATICA: ${COMPENSACION_AUTOMATICA:-false}
+      COMPENSACION_REVISION_MS: ${COMPENSACION_REVISION_MS:-5000}
 
 
   # Avisos al cliente. No llama a nadie.

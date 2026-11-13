@@ -5,10 +5,7 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.Instant;
 
-/**
- * La operacion completa, una fila por transferencia. Los dos asientos (cargo y abono) viven en
- * movimiento; aqui queda el registro de que la operacion ocurrio, con su propio id.
- */
+/** Una fila por transferencia. Los saldos y asientos viven en sus propios servicios. */
 @Entity
 public class Transferencia {
 
@@ -31,6 +28,14 @@ public class Transferencia {
 
 	@Column(nullable = false)
 	private Instant fecha;
+
+	// NULO en transferencias antiguas: no reintentarlas sin conocer su historial.
+	@Column(length = 120)
+	private String llaveCompensacion;
+
+	private Integer intentosCompensacion;
+
+	private Instant proximoReintento;
 
 	protected Transferencia() {
 	}
@@ -67,7 +72,37 @@ public class Transferencia {
 		return estado;
 	}
 
+	public String getLlaveCompensacion() {
+		return llaveCompensacion;
+	}
+
+	public Integer getIntentosCompensacion() {
+		return intentosCompensacion;
+	}
+
+	public Instant getProximoReintento() {
+		return proximoReintento;
+	}
+
 	public void cambiarEstado(EstadoTransferencia nuevoEstado) {
 		this.estado = nuevoEstado;
+	}
+
+	/** La misma llave se conserva en todos los reintentos, incluso tras un reinicio. */
+	public void prepararCompensacion(String llave, Instant ahora) {
+		if (llaveCompensacion == null) {
+			this.llaveCompensacion = llave;
+			this.intentosCompensacion = 0;
+		}
+		// Si el proceso cae durante la llamada, se puede recuperar tras un margen seguro.
+		this.proximoReintento = ahora.plusSeconds(60);
+	}
+
+	/** 10, 20, 40, 80, 160, 300... segundos; nunca se reintenta a ciegas. */
+	public long programarReintento(Instant ahora) {
+		this.intentosCompensacion = (intentosCompensacion == null ? 0 : intentosCompensacion) + 1;
+		long segundos = Math.min(300L, 10L << Math.min(intentosCompensacion - 1, 5));
+		this.proximoReintento = ahora.plusSeconds(segundos);
+		return segundos;
 	}
 }

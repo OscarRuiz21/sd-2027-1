@@ -21,6 +21,8 @@ import java.math.BigDecimal;
 import java.net.ConnectException;
 import java.net.NoRouteToHostException;
 import java.net.UnknownHostException;
+import java.time.Instant;
+import java.util.UUID;
 
 /** Orquesta los pasos de una transferencia y su compensacion, sin transaccion distribuida. */
 @Service
@@ -124,30 +126,58 @@ public class TransferenciaService {
 		return t;
 	}
 
+	/** Nunca reintenta a partir de un estado antiguo sin llave idempotente. */
+	public void reintentarCompensacion(Long id) {
+		Transferencia t = transferencias.findById(id).orElse(null);
+		if (t == null || t.getLlaveCompensacion() == null || t.getProximoReintento() == null
+				|| t.getProximoReintento().isAfter(Instant.now())
+				|| (t.getEstado() != EstadoTransferencia.COMPENSACION_PENDIENTE
+					&& t.getEstado() != EstadoTransferencia.COMPENSANDO)) {
+			return;
+		}
+		log.info("Transferencia {}: reintento automatico #{}", t.getId(),
+			(t.getIntentosCompensacion() == null ? 0 : t.getIntentosCompensacion()) + 1);
+		intentarCompensacion(t);
+	}
+
 	private Transferencia compensar(Transferencia t, String claveOrigen, BigDecimal monto) {
+		// Persistir la llave ANTES de enviar el primer abono de compensacion.
+		t.prepararCompensacion("compensacion-" + UUID.randomUUID(), Instant.now());
+		return intentarCompensacion(t);
+	}
+
+	private Transferencia intentarCompensacion(Transferencia t) {
+		// Dejar una ventana de recuperacion si el proceso cae durante la llamada HTTP.
+		t.prepararCompensacion(t.getLlaveCompensacion(), Instant.now());
 		guardarEstado(t, EstadoTransferencia.COMPENSANDO);
+
 		CuentaRemota origenDevuelto;
 		try {
-			origenDevuelto = cuentas.abonar(claveOrigen, monto);
+			origenDevuelto = cuentas.compensar(t.getClaveOrigen(), t.getMonto(), t.getLlaveCompensacion());
 		} catch (RuntimeException errorDevolucion) {
-			// Sin confirmacion de devolucion, nunca afirmar que el dinero regreso.
+			long espera = t.programarReintento(Instant.now());
 			guardarEstado(t, EstadoTransferencia.COMPENSACION_PENDIENTE);
-			log.warn("Transferencia {}: compensacion pendiente de resolver", t.getId(), errorDevolucion);
+			log.warn("Transferencia {}: compensacion pendiente, proximo intento en {} segundos",
+				t.getId(), espera, errorDevolucion);
 			return t;
 		}
 
+		// El saldo ya regreso (o el servicio confirmo la misma llave previamente).
+		// El asiento en movimiento NO es idempotente, por eso se separa su estado:
+		// si algo falla ahi, no repetimos el asiento automaticamente.
+		guardarEstado(t, EstadoTransferencia.REGISTRO_COMPENSACION_PENDIENTE);
 		try {
-			movimientos.registrar(claveOrigen, TipoMovimiento.DEPOSITO, monto,
+			movimientos.registrar(t.getClaveOrigen(), TipoMovimiento.DEPOSITO, t.getMonto(),
 				origenDevuelto.saldo(), "Compensacion transferencia " + t.getId());
 		} catch (RuntimeException errorMovimiento) {
-			// Saldo devuelto, pero falta confirmar el asiento del historial.
-			guardarEstado(t, EstadoTransferencia.REGISTRO_COMPENSACION_PENDIENTE);
-			log.warn("Transferencia {}: dinero devuelto, registro pendiente", t.getId(), errorMovimiento);
+			log.warn("Transferencia {}: saldo recuperado, pero asiento requiere conciliacion",
+					t.getId(), errorMovimiento);
 			return t;
 		}
 
 		guardarEstado(t, EstadoTransferencia.COMPENSADA);
-		log.info("Transferencia {} COMPENSADA: se devolvieron {} a {}", t.getId(), monto, claveOrigen);
+		log.info("Transferencia {} COMPENSADA: se devolvieron {} a {}",
+			t.getId(), t.getMonto(), t.getClaveOrigen());
 		return t;
 	}
 
