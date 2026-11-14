@@ -2,6 +2,14 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-11-14
+
+- **Deck de la S13** (*Observabilidad y del requisito al diseño*, HTML y PDF) en `material/S13/` y en el índice. Primera parte: monitoreo contra observabilidad, la falla silenciosa, percentiles, trazas, las tres señales, propagación de contexto y cómo se implementa con el agente de OpenTelemetry. Segunda parte: un método de seis fases para diseñar un sistema que nunca has visto, aplicado fase por fase a una venta relámpago. Las láminas 44 a 52 no alcanzaron en clase y quedan para que las revises: el cambio de requerimiento a media respuesta, la rúbrica de un diseño y un caso para practicar, *La puerta del estadio*.
+- **Recursos que se mencionaron en clase**: el método viene del *Interview Playbook* de [System Design Atlas](https://systemdesignatlas.dev/docs/11-interview-playbook) (la guía completa es de paga; lo que necesitas ya está en el deck). Libros: *System Design Interview*, de Alex Xu (volúmenes 1 y 2; las estimaciones están en el capítulo 2 del primero), y *Designing Data-Intensive Applications*, de Martin Kleppmann.
+- **Práctica opcional · trazas en Mexi Banco**: quien quiera puede instrumentar Mexi Banco con el agente de OpenTelemetry y Jaeger (láminas 15 a 20 del deck) y subirlo a su rama de entregas como práctica extra; cuenta como puntos extra sobre los laboratorios. Primero el examen: no le quites tiempo de estudio.
+- **Entrevista técnica del sábado 21 de noviembre**: el grupo se divide en salas por equipo y el profesor pasa de sala en sala; cada quien contesta sus 4 preguntas. La cámara encendida es obligatoria y, conforme termina tu equipo, te puedes salir. El examen escrito a mano se entrega antes de las 06:59 de ese mismo día.
+- **Proyecto final**: se presenta el **sábado 28 de noviembre**, como el pitch de una startup: el problema, la solución y las decisiones técnicas. Habrá preguntas como las de un CTO (por qué ese patrón, qué pasa si la carga crece), a partir del PRD y del repo de tu equipo.
+
 ## 2026-11-07
 
 - **Corte de entregas del 7 de noviembre** en `calificaciones/P00-L10-corte-07nov.xlsx`, por número de cuenta: se revisaron las correcciones que subiste después del corte del 4 de noviembre y varias entregas que estaban en **parcial** porque les faltaba poco pasaron a completas (lo que falta queda como detalle en tu pestaña). Ya entran revisadas la T04, la S11 y la Lectura 10, que cerraron el sábado 7 a las 07:00; la T04 y la S11 todavía se reciben como **tarde** hasta el sábado 14 de noviembre a las 07:00.
