@@ -32,4 +32,4 @@ observación— **abre un Issue** en este repositorio con tu número de cuenta y
 La causa más común es que la entrega quedó en una rama vieja o en una carpeta con otro
 nombre, y se resuelve rápido.
 
-El corte más reciente es el del **7 de noviembre** (`P00-L10-corte-07nov.xlsx`): todo lo cerrado hasta la S11, la T04 y la Lectura 10, con las correcciones que llegaron después del 4 de noviembre.
+El corte más reciente es el del **14 de noviembre** (`P00-L10-corte-14nov.xlsx`): todo lo cerrado hasta la S11, la T04 y la Lectura 10, con las entregas y correcciones que llegaron entre el 7 y el 14 de noviembre.
