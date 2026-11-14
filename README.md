@@ -33,8 +33,9 @@ Es la que se presentó en la **clase 1, el 22 de agosto**, y no cambia.
 - **Examen escrito**: el banco de preguntas está en [`examen-escrito/`](examen-escrito/). Va a mano
   y se entrega como PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf` antes del
   **sábado 21 de noviembre a las 06:59**. Es tu acordeón para la entrevista.
-- **Entrevista técnica**: el **sábado 21 de noviembre**, con cámara encendida. Pasan uno por uno y
-  contestan 4 preguntas como en una entrevista, del banco del examen escrito; a lo mejor una viene
+- **Entrevista técnica**: el **sábado 21 de noviembre**, con cámara encendida (obligatoria). El grupo
+  se divide en salas por equipo y el profesor pasa de sala en sala: cada quien contesta 4 preguntas
+  como en una entrevista, del banco del examen escrito; a lo mejor una viene
   distinta, para que razonen con lo que saben. Pueden pedir que les cambien una.
 - **Proyecto final**: se presenta el **sábado 28 de noviembre**, en formato pitch con demo y con
   cámara encendida. Se califica con la [rúbrica](proyecto/RUBRICA.md).
