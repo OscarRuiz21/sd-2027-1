@@ -13,7 +13,7 @@ La hoja **Matriz** tiene un renglón por persona, con una columna por práctica,
 | Símbolo | Qué significa |
 |---|---|
 | **✓** | Completa |
-| **parcial** | Entregada, pero le falta algo — **tienes una hoja aparte** con el detalle |
+| **parcial** | Entregada, pero le falta algo |
 | **tarde** | Fuera de tiempo. **No baja puntos**, solo queda registrado (ver [`ENTREGAS.md`](../ENTREGAS.md)) |
 | **subida** | Ya está en tu rama, pero su plazo sigue abierto: el contenido se revisa al cierre |
 | **✗** | No entregada. En las lecturas, también si se comentó después del domingo |
@@ -21,14 +21,13 @@ La hoja **Matriz** tiene un renglón por persona, con una columna por práctica,
 
 Desde el corte del 13 de octubre se agregaron los labs **S07**, **S08** y **S09** y las lecturas **L7** y **L9**, ya revisados al cierre (no hubo Lectura 8 ni lab de la S10). En el corte del 7 de noviembre entran las correcciones que subiste después del 4 de noviembre. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, se registra como **tarde**. Las columnas **T04**, **S11** y **L10** cerraron el **sábado 7 de noviembre a las 07:00** y ya están revisadas; la T04 y la S11 todavía se reciben como **tarde** hasta el sábado 14 de noviembre a las 07:00. La columna **Idempotency key** es la tarea **extra** de [`OPCIONALES.md`](../entregas/OPCIONALES.md): es opcional, **no afecta tu calificación** y cuenta para los puntos extra del final.
 
-Si tu renglón dice **parcial**, busca abajo la pestaña con tu número de
-cuenta: ahí está el detalle en dos columnas (qué falta · cómo se corrige) y los comandos
-para subirlo.
+El corte del 14 de noviembre trae solo la hoja **Matriz**, sin observaciones ni pestañas por
+cuenta. Si tu renglón dice **parcial** y quieres saber qué falta, pregunta al profesor.
 
 ## Si algo no coincide
 
-Si crees que hay un error —entregaste algo que aparece como ✗, o no reconoces una
-observación— **abre un Issue** en este repositorio con tu número de cuenta y qué esperabas.
+Si crees que hay un error —entregaste algo que aparece como ✗, o no reconoces un
+valor— **abre un Issue** en este repositorio con tu número de cuenta y qué esperabas.
 La causa más común es que la entrega quedó en una rama vieja o en una carpeta con otro
 nombre, y se resuelve rápido.
 
