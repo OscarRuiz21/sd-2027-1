@@ -10,7 +10,8 @@ entregas/
     ├── s02/
     ├── s03/ … s12/     ← los labs de cada sesion
     └── tareas/         ← las tareas van aparte, aqui
-        └── t01/
+        ├── t01/
+        └── t02/
 ```
 
 Todo se entrega con **push a tu rama** `entregas_apellido_nombre` — sin pull request hasta
@@ -22,6 +23,138 @@ el final del curso (la rutina completa está en el
 
 Aquí se van apilando las **tareas**, la más reciente hasta arriba. Las **prácticas de
 laboratorio** no van aquí: cada una tiene su guía en [`labs/`](../labs/).
+
+### T04 · ¿Qué reloj usan las tecnologías que conoces?
+
+**Asignada en la S10 (24-oct) · entrega el sábado 7 de noviembre, antes de las 07:00**
+
+En la clase vimos que el reloj de pared no sirve para ordenar: NTP acerca los relojes pero nunca
+los iguala, y por eso aparecieron Lamport y los relojes vectoriales. En la práctica casi nadie
+implementa esto a mano: ya viene metido en las tecnologías que usamos. Esta tarea es para ver
+**qué trae cada una por detrás**.
+
+**Qué haces.** Eliges **tres tecnologías** que te gusten o que hayas usado y escribes, para cada
+una y con tus palabras:
+
+1. **Qué es** y para qué se usa.
+2. **Qué tiempo usa para ordenar**: ¿reloj físico (de pared o monotónico), reloj lógico (estilo
+   Lamport o vectorial), un híbrido, o un número de secuencia que asigna alguien?
+3. **Qué orden te garantiza** y hasta dónde: ¿dentro de una partición, de una llave, de un
+   proceso, en todo el sistema?
+4. **Qué pasa cuando los relojes no coinciden**: ¿sincroniza con NTP, espera, desempata, lo
+   ignora?
+
+Al final, las fuentes que usaste. Te puedes apoyar en IA, pero lo que escribas tienes que poder
+explicarlo en clase.
+
+Algunas para elegir (no es obligatorio escoger de aquí): DynamoDB, SQS, SNS, Kafka, MongoDB,
+Cassandra, CockroachDB, Spanner (TrueTime), Redis, PostgreSQL, Chrony en Linux,
+OpenTelemetry.
+
+**Opcional, suma puntos extra · un reloj de Lamport en Java.** Simula 3 servidores que se mandan
+entre **3 y 5 mensajes**; cada uno lleva su reloj de Lamport (un `AtomicLong` basta: +1 en cada
+evento local y en cada envío, y al recibir `max(local, recibido) + 1`). Imprime cada evento con
+el servidor y su reloj, y explica en tu README por qué la salida respeta la causalidad. Va en
+la misma carpeta, en `lamport/`, con el código y la salida.
+
+**Dónde va:**
+
+```
+entregas/apellido_nombre/tareas/t04/README.md
+entregas/apellido_nombre/tareas/t04/lamport/      ← solo si haces el opcional
+```
+
+```bash
+git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/tareas/t04
+# ... tu README.md (y lamport/ si haces el opcional) ...
+git add entregas/apellido_nombre/tareas/t04
+git commit -m "T04: qué reloj usan tres tecnologías"
+git push
+```
+
+**No abras pull request**: el push ES la entrega. Tarde no baja puntos, pero queda registrado
+en tu tendencia (ver [`ENTREGAS.md`](../ENTREGAS.md)).
+
+### T03 · Una implementación real de sharding
+
+**Asignada en la S7 (3-oct) · entrega el sábado 10 de octubre, antes de las 07:00**
+
+En la clase vimos el sharding en abstracto: la llave de partición, por rango o por hash, el
+ruteo y el shard caliente. Esta tarea es para ver **cómo lo resuelve una tecnología de verdad**.
+
+**Qué haces.** Eliges **una tecnología que haga sharding** y escribes, con tus palabras:
+
+1. **Qué es** y para qué se usa.
+2. **Cómo reparte los datos**: ¿por rango, por hash o de otra forma? ¿Quién elige la llave?
+3. **Cómo encuentra el shard correcto** cuando llega una consulta: ¿quién guarda el mapa de qué
+   dato vive dónde?
+4. **Qué pasa cuando agregas un shard**: ¿se mueven los datos? ¿cuántos?
+5. **Qué hace con un shard caliente**, si hace algo.
+
+Al final, las fuentes que usaste. Te puedes apoyar en IA, pero lo que escribas tienes que poder
+explicarlo en clase.
+
+Algunas para elegir (no es obligatorio escoger de aquí): MongoDB, Cassandra, Vitess (MySQL),
+Citus (PostgreSQL), CockroachDB, Elasticsearch, Redis Cluster, DynamoDB.
+
+**Opcional, suma puntos:** levántala con Docker, crea una tabla o colección repartida en dos o
+más shards y muestra en qué shard quedó cada dato. Pon los comandos y la salida en tu README.
+
+**Dónde va:**
+
+```
+entregas/apellido_nombre/tareas/t03/README.md
+```
+
+```bash
+git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/tareas/t03
+# ... tu README.md ...
+git add entregas/apellido_nombre/tareas/t03
+git commit -m "T03: una implementación de sharding"
+git push
+```
+
+**No abras pull request**: el push ES la entrega. Tarde no baja puntos, pero queda registrado
+en tu tendencia (ver [`ENTREGAS.md`](../ENTREGAS.md)).
+
+### T02 · Dos algoritmos de consenso que no son Raft
+
+**Asignada en la S5 (19-sep) · entrega el domingo 27 de septiembre, 23:59**
+
+En la clase vimos cómo Raft pone de acuerdo a varios nodos con un líder, latidos y mayoría. Hay
+otros algoritmos que resuelven el mismo problema de otra forma.
+
+**Qué haces.** Eliges **dos algoritmos o protocolos de consenso que no sean Raft ni Paxos** y
+escribes, para cada uno, **un resumen de cómo funciona**, con tus palabras. Al final, las fuentes
+que usaste.
+
+Algunos para elegir (no es obligatorio escoger de aquí): Zab (ZooKeeper), Viewstamped
+Replication, PBFT, Tendermint, HotStuff, Proof of Work (Bitcoin), Proof of Stake (Ethereum).
+
+Si Raft se te quedó a medias, empieza por este video: https://youtu.be/IujMVjKvWP4
+
+**Dónde va:**
+
+```
+entregas/apellido_nombre/tareas/t02/README.md
+```
+
+```bash
+git checkout entregas_apellido_nombre
+git pull origin main
+mkdir -p entregas/apellido_nombre/tareas/t02
+# ... tu README.md ...
+git add entregas/apellido_nombre/tareas/t02
+git commit -m "T02: dos algoritmos de consenso"
+git push
+```
+
+**No abras pull request**: el push ES la entrega. Tarde no baja puntos, pero queda registrado
+en tu tendencia (ver [`ENTREGAS.md`](../ENTREGAS.md)).
 
 ### T01 · El mismo servicio, por REST y por gRPC
 
