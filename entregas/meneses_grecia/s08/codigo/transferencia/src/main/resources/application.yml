@@ -1,0 +1,92 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: transferencia
+  datasource:
+    # Cada servicio apunta a SU base (transferencia). Nadie mas la lee ni la escribe.
+    url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:transferencia}
+    username: ${DB_USER:mexibanco}
+    password: ${DB_PASSWORD:mexibanco}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  cloud:
+    loadbalancer:
+      cache:
+        # Cuanto guarda el balanceador la lista de instancias que le dio Eureka (35 s por omision).
+        # Es una copia mas que puede ir atras del directorio. Ver README.
+        ttl: ${BALANCEADOR_CACHE:35s}
+  mvc:
+    # Los 400 de validacion (campo faltante, cabecera faltante) tambien salen como Problem Details.
+    problemdetails:
+      enabled: true
+
+# A quien llama este servicio: por NOMBRE en el directorio, sin host ni puerto. El RestClient
+# balanceado (ClientesHttp) cambia "cuenta" por la IP y el puerto de una instancia registrada.
+# Siguen siendo variables de entorno (factor III), pero ya no dicen donde esta nadie.
+mexibanco:
+  servicios:
+    cuenta: ${CUENTA_URL:http://cuenta}
+    movimiento: ${MOVIMIENTO_URL:http://movimiento}
+    notificacion: ${NOTIFICACION_URL:http://notificacion}
+  demo:
+    # Solo para la demo de "lo que se rompio": milisegundos de espera entre el cargo y el abono.
+    # En 0 no hace nada. Ver README.
+    pausa-entre-cargo-y-abono-ms: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:0}
+    # S08: el abono hacia esta CLABE falla a proposito (503 simulado) para probar la compensacion
+    # con cuenta arriba. Vacio = sin falla.
+    falla-abono-clabe: ${FALLA_ABONO_CLABE:}
+  # S08: la saga y su recuperador.
+  saga:
+    recuperacion-ms: ${SAGA_RECUPERACION_MS:5000}          # cada cuanto revisa la tabla el recuperador
+    abandonada-ms: ${SAGA_ABANDONADA_MS:60000}             # INICIADA/CARGADA/ABONADA sin moverse este tiempo = abandonada
+    reintento-base-ms: ${SAGA_REINTENTO_BASE_MS:2000}      # primera espera; luego 2x, 4x, 8x...
+    reintento-maximo-ms: ${SAGA_REINTENTO_MAXIMO_MS:60000} # tope de la espera
+    max-intentos-compensacion: ${SAGA_MAX_INTENTOS:12}     # despues: COMPENSACION_FALLIDA (revision manual)
+  # S08: timeout explicito solo para las llamadas a cuenta (las demas siguen con 2 s / 5 s).
+  cuenta:
+    timeout-conexion-ms: ${CUENTA_TIMEOUT_CONEXION_MS:1000}
+    timeout-lectura-ms: ${CUENTA_TIMEOUT_LECTURA_MS:3000}
+  # S08: circuit breaker hecho a mano hacia cuenta (mx.mexibanco.resiliencia.CircuitBreaker).
+  circuito:
+    cuenta:
+      umbral-fallas: ${CB_UMBRAL_FALLAS:3}                 # fallas SEGUIDAS para abrir
+      espera-ms: ${CB_ESPERA_MS:15000}                     # tiempo abierto antes de pasar a semiabierto
+      pruebas-para-cerrar: ${CB_PRUEBAS_PARA_CERRAR:2}     # llamadas de prueba exitosas para cerrar
+
+# El directorio (v06). Al arrancar, este servicio se registra en Eureka con su nombre
+# (spring.application.name) y su IP, y manda un latido cada EUREKA_LATIDO_S segundos. Si Eureka no
+# recibe latido en EUREKA_EXPIRA_S segundos, lo saca del registro. Los valores por omision son los
+# de Spring Cloud (30 y 90); docker-compose.yml los baja para que en clase se vea en segundos.
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka/}
+    # Cada cuanto este servicio pide la lista completa al directorio (la usa el balanceador).
+    registry-fetch-interval-seconds: ${EUREKA_CONSULTA_S:30}
+  instance:
+    # Registrarse con la IP del contenedor y no con su hostname (el ID del contenedor).
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: ${EUREKA_LATIDO_S:30}
+    lease-expiration-duration-in-seconds: ${EUREKA_EXPIRA_S:90}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-details: never
+  health:
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
