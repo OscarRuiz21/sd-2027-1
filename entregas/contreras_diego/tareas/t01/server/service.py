@@ -1,6 +1,6 @@
 USERS_DB = {
-    1: {"id": 1, "name": "Diego Contreras", "email": "dieg7074@gmail.com"},
-    2: {"id": 2, "name": "Adrian Contreras", "email": "diegocontrras.fi@gmail.com"}
+    1: {"id": 1, "name": "Usuario Uno", "email": "usuario1@example.com"},
+    2: {"id": 2, "name": "Usuario Dos", "email": "usuario2@example.com"}
 }
 
 def find_user_by_id(user_id: int):

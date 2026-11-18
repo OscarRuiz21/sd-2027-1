@@ -18,7 +18,15 @@ def call_grpc(user_id):
         print(f"[gRPC] Status: OK | Payload respuesta: {payload_size} bytes | Encontrado: {res.found}, Nombre: {res.name}")
 
 if __name__ == "__main__":
-    time.sleep(2) # pausa para que elservidor se levante
+    # Espera a que el servidor esté listo
+    print("Esperando a que el servidor esté listo...")
+    for _ in range(15):
+        try:
+            requests.get("http://server:8000/users/1", timeout=1)
+            break
+        except Exception:
+            time.sleep(1)
+
     print("=== PROBANDO REST ===")
     call_rest(1)
     call_rest(99) # ID inexistente
