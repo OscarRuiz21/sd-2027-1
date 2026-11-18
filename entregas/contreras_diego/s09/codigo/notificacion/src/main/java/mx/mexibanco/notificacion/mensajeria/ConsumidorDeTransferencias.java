@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.Message;
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -21,10 +22,15 @@ public class ConsumidorDeTransferencias {
 
     private final NotificacionService notificaciones;
     private final ObjectMapper json;
+    private final long pausaAntesDelAckMs;
 
-    public ConsumidorDeTransferencias(NotificacionService notificaciones, ObjectMapper json) {
+    public ConsumidorDeTransferencias(
+            NotificacionService notificaciones,
+            ObjectMapper json,
+            @Value("${mexibanco.pausa-antes-del-ack-ms:0}") long pausaAntesDelAckMs) {
         this.notificaciones = notificaciones;
         this.json = json;
+        this.pausaAntesDelAckMs = pausaAntesDelAckMs;
     }
 
     @RabbitListener(queues = ConfiguracionMensajeria.COLA)
@@ -32,11 +38,29 @@ public class ConsumidorDeTransferencias {
         long etiqueta = mensaje.getMessageProperties().getDeliveryTag();
         boolean reentregado = Boolean.TRUE.equals(mensaje.getMessageProperties().getRedelivered());
 
-        EventoTransferencia evento = json.readValue(mensaje.getBody(), EventoTransferencia.class);
-        List<Notificacion> avisos = notificaciones.avisarDeTransferencia(evento);   // aquí hace commit
+        EventoTransferencia evento;
+        try {
+            evento = json.readValue(mensaje.getBody(), EventoTransferencia.class);
+        } catch (Exception e) {
+            log.error("[consumidor] Mensaje envenenado (JSON no legible). Rechazando con basicNack sin reencolar hacia DLQ. Causa: {}", e.getMessage());
+            // requeue = false para que RabbitMQ lo encamine hacia transferencias.dlx -> notificacion.transferencias.dlq
+            canal.basicNack(etiqueta, false, false);
+            return;
+        }
+
+        List<Notificacion> avisos = notificaciones.avisarDeTransferencia(evento);
         log.info("[consumidor] {} de la transferencia {} (evento {}, redelivered={}): {} aviso(s) nuevo(s)",
             evento.tipo(), evento.transferenciaId(), evento.eventoId(), reentregado, avisos.size());
 
-        canal.basicAck(etiqueta, false);   // DESPUÉS de guardar: "ya lo tengo, bórralo"
+        if (pausaAntesDelAckMs > 0) {
+            try {
+                log.info("[consumidor] Pausando {} ms antes del ack para prueba de fallo en vuelo...", pausaAntesDelAckMs);
+                Thread.sleep(pausaAntesDelAckMs);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+        }
+
+        canal.basicAck(etiqueta, false);   // DESPUÉS de guardar: "ya lo tengo en BD, bórralo de la cola"
     }
 }

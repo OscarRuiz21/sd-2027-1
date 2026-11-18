@@ -8,26 +8,19 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * Cuarto concepto de Mexi Banco. Guarda el aviso en su base y lo escribe en el log. En el monolito
- * esto ocurria dentro de la misma transaccion que el movimiento; en v06a es una llamada HTTP aparte
- * y ya no hay transaccion que las una.
- *
- * LAB S09: este servicio tambien guardara los avisos que lleguen por RabbitMQ (ver
- * mensajeria.ConsumidorDeTransferencias).
- */
 @Service
 public class NotificacionService {
 
 	private static final Logger log = LoggerFactory.getLogger(NotificacionService.class);
 
 	private final NotificacionRepository notificaciones;
+	private final EventoProcesadoRepository procesados;
 
-	public NotificacionService(NotificacionRepository notificaciones) {
+	public NotificacionService(NotificacionRepository notificaciones, EventoProcesadoRepository procesados) {
 		this.notificaciones = notificaciones;
+		this.procesados = procesados;
 	}
 
-	// El original: lo sigue usando NotificacionController (y spei, por HTTP).
 	@Transactional
 	public Notificacion notificar(AvisoDeMovimiento movimiento) {
 		String mensaje = movimiento.tipo() + " por " + movimiento.monto().abs() + ", saldo resultante " + movimiento.saldoResultante();
@@ -35,9 +28,14 @@ public class NotificacionService {
 		return notificaciones.save(new Notificacion(movimiento.clabeCuenta(), mensaje));
 	}
 
-	// Lo nuevo de la S09: los avisos que llegan por RabbitMQ.
 	@Transactional
 	public List<Notificacion> avisarDeTransferencia(EventoTransferencia evento) {
+		// Idempotencia: si el evento ya fue registrado en la base de datos, no generar avisos duplicados
+		if (evento.eventoId() != null && procesados.marcarSiEsNuevo(evento.eventoId(), evento.tipo(), evento.transferenciaId()) == 0) {
+			log.info("[notificacion] Evento {} ya fue procesado previamente. Descartando duplicado (idempotencia garantizada).", evento.eventoId());
+			return List.of();
+		}
+
 		List<Notificacion> avisos = switch (evento.tipo()) {
 			case EventoTransferencia.REALIZADA -> List.of(
 				aviso(evento.clabeOrigen(), "TRANSFERENCIA_ENVIADA", evento.monto(), evento.saldoOrigen()),
