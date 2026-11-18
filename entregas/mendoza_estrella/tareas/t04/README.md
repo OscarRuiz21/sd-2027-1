@@ -20,9 +20,11 @@ Sin embargo, ese orden no significa que todas las consultas se ejecuten una desp
 
 **¿Qué pasa cuando los relojes no coinciden?**
 
-PostgreSQL no necesita que los relojes de dos servidores marquen exactamente la misma hora para ordenar los registros WAL. Utiliza sus posiciones LSN y los mecanismos de las transacciones.
+PostgreSQL no necesita que los relojes de sus servidores marquen exactamente la misma hora para mantener el orden de los registros WAL, ya que utiliza posiciones LSN para identificar la secuencia de los cambios.
 
-Las fechas pueden servir para registrar cuándo ocurrió una operación, pero no sustituyen estos mecanismos de ordenamiento.
+Por ejemplo, si una réplica tiene su reloj adelantado cinco minutos, esto no cambia el orden en que debe reproducir los registros recibidos desde el servidor principal. Sin embargo, las fechas registradas en los logs podrían no coincidir y dificultar la identificación del momento real en que ocurrió una operación.
+
+Por ello, aunque el orden del WAL no depende directamente de los relojes, mantenerlos sincronizados facilita la supervisión y el análisis de errores.
 
 ## 2. RabbitMQ
 
@@ -44,9 +46,12 @@ Sin embargo, esto no significa que todos los mensajes del sistema tengan un orde
 
 **¿Qué pasa cuando los relojes no coinciden?**
 
-RabbitMQ no depende de NTP para conservar el orden de entrada de los mensajes. El broker administra la cola según el orden en que recibe las publicaciones.
+RabbitMQ no utiliza las marcas de tiempo de los servidores para establecer el orden de los mensajes dentro de una cola. En condiciones normales, utiliza el orden de entrada FIFO.
 
-Aunque los servidores tengan horas diferentes, el orden de la cola no se determina comparando esas horas.
+Por ejemplo, si el productor A tiene su reloj adelantado y el productor B tiene su reloj atrasado, RabbitMQ no ordena sus mensajes comparando esas horas, sino según el orden en que ingresan a la cola.
+
+Sin embargo, las diferencias entre relojes pueden dificultar la interpretación de registros y marcas de tiempo. Además, cuando existen varios consumidores o mensajes que deben reintentarse, el orden en que terminan de procesarse puede ser diferente al de entrada.
+
 
 ## 3. Apache Kafka
 
@@ -70,9 +75,15 @@ En cambio, si los mensajes están repartidos entre varias particiones, Kafka no 
 
 **¿Qué pasa cuando los relojes no coinciden?**
 
-Kafka no necesita que los relojes estén sincronizados para mantener el orden de los mensajes dentro de una partición.
+Kafka mantiene el orden de los mensajes mediante sus offsets dentro de cada partición, independientemente de las diferencias entre los relojes.
 
-Aunque los mensajes pueden tener marcas de tiempo, el orden de lectura se basa en sus offsets. Por eso, una diferencia entre los relojes no cambia las posiciones que ya fueron asignadas.
+Sin embargo, también maneja dos tipos de marcas de tiempo: CreateTime, que corresponde al tiempo asignado por el productor, y LogAppendTime, que corresponde al momento en que el broker almacena el mensaje.
+
+Si el reloj del productor está adelantado o atrasado, CreateTime puede representar una hora incorrecta. Cuando se utiliza LogAppendTime, Kafka asigna la marca de tiempo utilizando el reloj del broker.
+
+Por ejemplo, si un mensaje tiene CreateTime de las 10:00, llega al broker a las 10:02 y un consumidor lo procesa hasta las 10:07, su posición dentro de la partición no cambia. El retraso del consumidor tampoco modifica la marca de tiempo almacenada.
+
+Por ello, aunque Kafka garantiza el orden mediante offsets, las diferencias entre relojes pueden afectar los análisis que utilizan marcas de tiempo para agrupar eventos o determinar cuándo ocurrieron.
 
 ## Conclusión
 
