@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi primer contenedor</title>
+  <style>
+    body {
+      min-height: calc(100vh - 2rem);
+      margin: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: sans-serif;
+    }
+    h1, h2, p { text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>Hola, soy Josué Hernández</h1>
+  <p>Esta página corre en un contenedor con nginx.</p>
+
+  <h2>Los cinco comandos que usé</h2>
+  <table border="1" cellpadding="8">
+    <tr><th>Comando</th><th>Para qué lo usé</th></tr>
+    <tr><td><code>docker run</code></td><td>Para levantar la página en un contenedor.</td></tr>
+    <tr><td><code>docker ps</code></td><td>Para ver si los dos contenedores estaban activos.</td></tr>
+    <tr><td><code>docker exec</code></td><td>Para ver los archivos de nginx dentro del contenedor.</td></tr>
+    <tr><td><code>docker logs</code></td><td>Para revisar si nginx recibió la petición de la página.</td></tr>
+    <tr><td><code>docker build</code></td><td>Para crear la imagen con el HTML que había guardado.</td></tr>
+  </table>
+  <p><strong>Esta es la versión 2 de mi página.</strong></p>
+</body>
+</html>
