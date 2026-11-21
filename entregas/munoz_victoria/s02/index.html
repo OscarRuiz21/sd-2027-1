@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>S02 · Mi primer contenedor</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 2rem;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    th, td {
+      border: 1px solid #000000;
+      padding: 0.6rem;
+      text-align: left;
+    }
+    code {
+      font-family: Consolas, monospace;
+      font-weight: bold;
+    }
+    .v2 {
+      font-weight: bold;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Hola, soy Victoria Muñoz</h1>
+  <p>Esta página es un contenedor construido desde mi propia imagen.</p>
+  <p class="v2">Actualización v2: Imagen reconstruida con nueva capa.</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Comando</th>
+        <th>Qué hace (con mis palabras)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><code>docker run -d -p</code></td>
+        <td>Crea y arranca un contenedor en segundo plano enlazando un puerto local con uno interno.</td>
+      </tr>
+      <tr>
+        <td><code>docker ps -a</code></td>
+        <td>Muestra todos los contenedores en mi equipo, tanto activos como apagados.</td>
+      </tr>
+      <tr>
+        <td><code>docker exec -it [nombre] sh</code></td>
+        <td>Abre una terminal dentro de un contenedor en ejecución para explorar su interior.</td>
+      </tr>
+      <tr>
+        <td><code>docker logs [nombre]</code></td>
+        <td>Consulta el registro de actividad y peticiones HTTP recibidas por el servicio.</td>
+      </tr>
+      <tr>
+        <td><code>docker build -t [nombre] .</code></td>
+        <td>Lee el Dockerfile y empaqueta la aplicación en una imagen nueva e inmutable.</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

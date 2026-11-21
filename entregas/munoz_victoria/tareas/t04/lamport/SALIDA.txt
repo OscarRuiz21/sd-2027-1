@@ -1,0 +1,16 @@
+=== RELOJES DE LAMPORT ===
+
+Servidor A | EVENTO LOCAL | Inicia el proceso | Reloj: 1
+Servidor A | ENVÍA a Servidor B | Solicitud de información | Reloj: 2
+Servidor B | RECIBE de Servidor A | Solicitud de información | Reloj recibido: 2 | Reloj actualizado: 3
+Servidor B | ENVÍA a Servidor C | Reenvía la solicitud | Reloj: 4
+Servidor C | RECIBE de Servidor B | Reenvía la solicitud | Reloj recibido: 4 | Reloj actualizado: 5
+Servidor C | ENVÍA a Servidor A | Respuesta del servidor C | Reloj: 6
+Servidor A | RECIBE de Servidor C | Respuesta del servidor C | Reloj recibido: 6 | Reloj actualizado: 7
+Servidor A | ENVÍA a Servidor C | Confirmación de respuesta | Reloj: 8
+Servidor C | RECIBE de Servidor A | Confirmación de respuesta | Reloj recibido: 8 | Reloj actualizado: 9
+
+=== ESTADO FINAL DE LOS RELOJES ===
+Servidor A: 8
+Servidor B: 4
+Servidor C: 9

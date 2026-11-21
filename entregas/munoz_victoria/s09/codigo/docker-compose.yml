@@ -1,0 +1,237 @@
+# Con un solo comando: docker compose up --build -d
+# Mexi Banco v06: el banco partido de v06a vuelve a hablar, por una puerta y con un directorio.
+# Lo que van a ver correr:
+#   - discovery (Eureka, puerto 8761): el directorio. Cada servicio se registra al arrancar con su
+#     nombre logico y su IP, y manda un latido. Dashboard en http://localhost:8761
+#   - gateway (Spring Cloud Gateway, puerto 8080): la UNICA puerta hacia afuera. El cliente pide
+#     /api/cuentas, /api/transferencias, ... y el gateway las manda a lb://<servicio>, es decir, a
+#     una de las instancias que el directorio conoce, en round robin.
+#   - Los cinco servicios de v06a sin puertos publicados: desde tu maquina solo se llega por el
+#     gateway. Adentro de la red siguen escuchando en el 8080.
+#   - cuenta con TRES replicas (deploy.replicas). Cada respuesta dice cual contesto (X-Instancia).
+#   - transferencia llama a cuenta por nombre (http://cuenta) con un RestClient @LoadBalanced: el
+#     cargo puede ir a una replica y el abono a otra.
+#
+# v08 (rama 04-saga-circuit-breaker), lo nuevo esta en el servicio transferencia:
+#   - la transferencia es una SAGA orquestada con estado guardado en cada paso; si el abono falla,
+#     se le devuelve el cargo a origen (COMPENSADA) o se reintenta solo (COMPENSACION_PENDIENTE);
+#   - las llamadas a cuenta pasan por un circuit breaker (Resilience4j);
+#   - cuenta y movimiento aceptan la cabecera Idempotency-Key, para que reintentar no duplique.
+#
+# v09 base (rama 05-mensajeria-base), llega el broker:
+#   - rabbitmq (RabbitMQ 4 con su panel): AMQP en el 5672 y panel web en http://localhost:15672
+#     (usuario y contrasena mexibanco). transferencia y notificacion esperan a que este sano y ya
+#     traen el cliente de RabbitMQ, pero TODAVIA NO LO USAN: transferencia sigue avisando a
+#     notificacion por HTTP. Conectarlos por el broker es el lab S09.
+#   - Si tu laptop sufre con tantas JVM, levanta una sola copia de cuenta y apaga spei:
+#       docker compose up --build -d --scale cuenta=1 && docker compose stop spei
+#
+# Nombre de proyecto propio para no pisar los contenedores, la red ni el volumen de v06a o v05.1.
+name: mexi-banco-v06
+
+# Donde esta el directorio y que tan seguido se habla con el. Los valores de Spring Cloud son
+# latido 30 s, expiracion 90 s, consulta 30 s, barrido 60 s, cache del directorio 30 s y cache del
+# balanceador 35 s: una replica apagada tarda varios minutos en salir del registro (medido en el
+# README). Para que en clase se vea en segundos los bajamos aqui. Cada uno se puede cambiar desde
+# la terminal sin tocar este archivo, por ejemplo: EUREKA_LATIDO_S=30 docker compose up -d
+x-directorio: &directorio
+  EUREKA_URL: http://discovery:8761/eureka/
+  EUREKA_LATIDO_S: ${EUREKA_LATIDO_S:-5}
+  EUREKA_EXPIRA_S: ${EUREKA_EXPIRA_S:-15}
+  EUREKA_CONSULTA_S: ${EUREKA_CONSULTA_S:-5}
+  BALANCEADOR_CACHE: ${BALANCEADOR_CACHE:-5s}
+
+# v09: como llegar al broker. Lo usan transferencia y notificacion (los dos lados del lab S09).
+x-broker: &broker
+  RABBIT_HOST: rabbitmq
+  RABBIT_PORT: "5672"
+  RABBIT_USER: ${RABBIT_USER:-mexibanco}
+  RABBIT_PASSWORD: ${RABBIT_PASSWORD:-mexibanco}
+
+# Lo que repiten los cinco servicios. Un ancla de YAML (&) y su uso (<<: *) evitan copiar y pegar.
+x-servicio: &servicio
+  environment: &entorno-base
+    <<: *directorio
+    DB_HOST: db
+    DB_PORT: "5432"
+    DB_USER: mexibanco
+    DB_PASSWORD: mexibanco
+  depends_on:
+    db:
+      condition: service_healthy
+    # Esperar al directorio no es obligatorio (el cliente de Eureka reintenta solo), pero asi el
+    # registro ocurre en el primer intento y el log no se llena de "Connection refused".
+    discovery:
+      condition: service_healthy
+  # Cada servicio espera a `db` y a `discovery`, no a los otros servicios: si arranca antes que su
+  # vecino, la primera llamada falla con 503 y la siguiente funciona.
+  healthcheck:
+    test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health | grep -q UP || exit 1"]
+    interval: 5s
+    timeout: 3s
+    retries: 5
+    # Varias JVM arrancando a la vez en una laptop tardan; los fallos dentro de esta ventana no cuentan.
+    start_period: 120s
+
+services:
+  # UN solo Postgres con UNA base por servicio (las crea db/init/01-crear-bases.sql).
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: mexibanco
+      POSTGRES_PASSWORD: mexibanco
+    volumes:
+      - datos:/var/lib/postgresql/data
+      - ./db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # Por TCP (-h 127.0.0.1) y no por socket: mientras corre el script de init, Postgres solo
+      # escucha en el socket local. Asi `db` no se declara sano antes de que existan las cinco bases.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U mexibanco -d spei"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # v09: el broker de mensajes. La imagen -management trae el panel web (puerto 15672), donde se ven
+  # exchanges, colas y mensajes en espera. Los datos viven dentro del contenedor (sin volumen): si lo
+  # borras con `down`, se pierden las colas y sus mensajes; con `stop` y `start`, no.
+  # Si tus puertos estan ocupados: PUERTO_RABBIT=15673 PUERTO_RABBIT_PANEL=15674 docker compose up -d
+  rabbitmq:
+    image: rabbitmq:4-management
+    ports:
+      - "${PUERTO_RABBIT:-5672}:5672"
+      - "${PUERTO_RABBIT_PANEL:-15672}:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBIT_USER:-mexibanco}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD:-mexibanco}
+    healthcheck:
+      # ping contesta en cuanto el nodo arranco; RabbitMQ tarda unos 10 a 20 s.
+      test: ["CMD", "rabbitmq-diagnostics", "-q", "ping"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 20s
+
+  # El directorio. Publicado en el 8761 solo para ver el dashboard; los clientes no lo usan.
+  discovery:
+    build: ./discovery
+    ports:
+      - "8761:8761"
+    environment:
+      # Del lado del servidor: barrer cada 5 s (60 s por omision), refrescar lo que ven los clientes
+      # cada 5 s (30 s) y sin autopreservacion (ver README: por eso el aviso rojo del dashboard).
+      EUREKA_BARRIDO_MS: ${EUREKA_BARRIDO_MS:-5000}
+      EUREKA_CACHE_MS: ${EUREKA_CACHE_MS:-5000}
+      EUREKA_AUTOPRESERVACION: ${EUREKA_AUTOPRESERVACION:-false}
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8761/actuator/health | grep -q UP || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 90s
+
+  # La unica puerta. El cliente solo necesita saberse http://localhost:8080/api/...
+  gateway:
+    build: ./gateway
+    ports:
+      # v08: si el 8080 de tu maquina ya esta ocupado: PUERTO_GATEWAY=18080 docker compose up -d
+      - "${PUERTO_GATEWAY:-8080}:8080"
+    environment:
+      <<: *directorio
+      # Cuanto espera la puerta a un servicio (15 s por omision en el gateway). Mas que la pausa de la
+      # demo de transferencia (20 s), para que el cliente reciba la respuesta de la saga y no un 504.
+      GATEWAY_TIEMPO_RESPUESTA: ${GATEWAY_TIEMPO_RESPUESTA:-30s}
+    depends_on:
+      discovery:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://localhost:8080/actuator/health | grep -q UP || exit 1"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+      start_period: 120s
+
+  # Cuentas y saldos, en tres replicas. Sin `ports`: tres contenedores no pueden publicar el mismo
+  # puerto de tu maquina, y ademas ya no hace falta, porque se llega por el gateway.
+  # Para cambiar el numero de replicas: docker compose up -d --scale cuenta=2
+  cuenta:
+    <<: *servicio
+    build: ./cuenta
+    deploy:
+      replicas: 3
+    environment:
+      <<: *entorno-base
+      DB_NAME: cuenta
+      # cuenta y spei siguen llamando por el DNS de Compose (ver README).
+      MOVIMIENTO_URL: http://movimiento:8080
+
+  # El ledger. No llama a nadie.
+  movimiento:
+    <<: *servicio
+    build: ./movimiento
+    environment:
+      <<: *entorno-base
+      DB_NAME: movimiento
+
+  # Transferencias internas. Llama a cuenta, movimiento y notificacion POR NOMBRE, sin puerto:
+  # el RestClient balanceado le pregunta al directorio que instancias hay.
+  transferencia:
+    <<: *servicio
+    build: ./transferencia
+    # v09: ademas de db y discovery, espera al broker. Este depends_on reemplaza ENTERO al del ancla
+    # (el merge de YAML no combina mapas anidados), por eso se repiten db y discovery.
+    depends_on: &depende-del-broker
+      db:
+        condition: service_healthy
+      discovery:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      <<: [*entorno-base, *broker]
+      DB_NAME: transferencia
+      CUENTA_URL: http://cuenta
+      MOVIMIENTO_URL: http://movimiento
+      NOTIFICACION_URL: http://notificacion
+      # Solo para la demo en clase: espera entre el cargo y el abono, para apagar cuenta en medio
+      # (Parte 0 del lab S08). 0 = sin pausa. Ejemplo:
+      #   PAUSA_ENTRE_CARGO_Y_ABONO_MS=20000 docker compose up -d transferencia
+      PAUSA_ENTRE_CARGO_Y_ABONO_MS: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:-0}
+      # v08, solo para la demo: el abono hacia ESTA CLABE falla a proposito (sin llamar a cuenta) y la
+      # saga compensa, con todo arriba. Vacia = nunca falla. Ejemplo:
+      #   FALLAR_ABONO_A_CLABE=002180000000000002 docker compose up -d transferencia
+      FALLAR_ABONO_A_CLABE: ${FALLAR_ABONO_A_CLABE:-}
+      # v08: cada cuanto el reintento programado busca compensaciones pendientes.
+      REINTENTO_COMPENSACIONES_MS: ${REINTENTO_COMPENSACIONES_MS:-10000}
+      # v08: segundos que el circuit breaker hacia cuenta se queda abierto antes de semiabrir.
+      CIRCUITO_ABIERTO_S: ${CIRCUITO_ABIERTO_S:-10}
+      # v08: timeout explicito de las llamadas salientes (cuenta incluida), en milisegundos.
+      TIMEOUT_CONEXION_MS: ${TIMEOUT_CONEXION_MS:-1000}
+      TIMEOUT_LECTURA_MS: ${TIMEOUT_LECTURA_MS:-2000}
+
+  # Avisos al cliente. No llama a nadie. LAB S09: aqui vivira el consumidor de la cola.
+  notificacion:
+    <<: *servicio
+    build: ./notificacion
+    depends_on: *depende-del-broker
+    environment:
+      <<: [*entorno-base, *broker]
+      DB_NAME: notificacion
+      PAUSA_ANTES_DEL_ACK_MS: ${PAUSA_ANTES_DEL_ACK_MS:-0}
+
+  # Transferencia a otro banco con Idempotency-Key. Llama a cuenta, movimiento y notificacion.
+  spei:
+    <<: *servicio
+    build: ./spei
+    environment:
+      <<: *entorno-base
+      DB_NAME: spei
+      CUENTA_URL: http://cuenta:8080
+      MOVIMIENTO_URL: http://movimiento:8080
+      NOTIFICACION_URL: http://notificacion:8080
+
+networks:
+  default:
+    name: mexibanco-v06
+
+volumes:
+  datos:

@@ -1,0 +1,39 @@
+
+services:
+  hybrid-service:
+    build: .
+    container_name: t01_service
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    networks:
+      - t01-network
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/items/1')"
+      interval: 5s
+      timeout: 3s
+      retries: 10
+      start_period: 5s
+
+  client:
+    build:
+      context: .
+      dockerfile: Dockerfile.client
+    container_name: t01_client
+    environment:
+      SERVICE_HOST: hybrid-service
+      REST_PORT: "8000"
+      GRPC_PORT: "50051"
+    depends_on:
+      hybrid-service:
+        condition: service_healthy
+    networks:
+      - t01-network
+
+networks:
+  t01-network:
+    driver: bridge
