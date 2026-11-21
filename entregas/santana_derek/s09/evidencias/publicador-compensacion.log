@@ -1,0 +1,66 @@
+Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.4)
+
+2026-10-20T22:31:17.597Z  INFO 1 --- [transferencia] [           main] mx.mexibanco.TransferenciaApplication    : Starting TransferenciaApplication v0.9.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+2026-10-20T22:31:17.601Z  INFO 1 --- [transferencia] [           main] mx.mexibanco.TransferenciaApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T22:31:19.801Z  INFO 1 --- [transferencia] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-20T22:31:20.132Z  INFO 1 --- [transferencia] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 320 ms. Found 1 JPA repository interface.
+2026-10-20T22:31:20.842Z  INFO 1 --- [transferencia] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=ffdf7d9e-3c9c-360d-bfec-bc6b1b3039ba
+2026-10-20T22:31:21.400Z  WARN 1 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+2026-10-20T22:31:21.410Z  WARN 1 --- [transferencia] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+2026-10-20T22:31:21.896Z  INFO 1 --- [transferencia] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-10-20T22:31:21.914Z  INFO 1 --- [transferencia] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-20T22:31:21.915Z  INFO 1 --- [transferencia] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+2026-10-20T22:31:21.988Z  INFO 1 --- [transferencia] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-10-20T22:31:21.989Z  INFO 1 --- [transferencia] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 4314 ms
+2026-10-20T22:31:22.966Z  INFO 1 --- [transferencia] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-10-20T22:31:23.107Z  INFO 1 --- [transferencia] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-10-20T22:31:23.183Z  INFO 1 --- [transferencia] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-10-20T22:31:23.695Z  INFO 1 --- [transferencia] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-20T22:31:23.745Z  INFO 1 --- [transferencia] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-20T22:31:24.097Z  INFO 1 --- [transferencia] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3c468360
+2026-10-20T22:31:24.099Z  INFO 1 --- [transferencia] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-20T22:31:26.040Z  INFO 1 --- [transferencia] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-20T22:31:26.160Z  INFO 1 --- [transferencia] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-20T22:31:30.845Z  INFO 1 --- [transferencia] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+2026-10-20T22:31:31.161Z  WARN 1 --- [transferencia] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+2026-10-20T22:31:31.190Z  INFO 1 --- [transferencia] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2026-10-20T22:31:31.383Z  INFO 1 --- [transferencia] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+2026-10-20T22:31:31.436Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+2026-10-20T22:31:31.445Z  INFO 1 --- [transferencia] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+2026-10-20T22:31:31.463Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+2026-10-20T22:31:32.044Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+2026-10-20T22:31:32.047Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+2026-10-20T22:31:32.050Z  INFO 1 --- [transferencia] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+2026-10-20T22:31:32.052Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792535492052 with initial instances count: 5
+2026-10-20T22:31:32.069Z  INFO 1 --- [transferencia] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application TRANSFERENCIA with eureka with status UP
+2026-10-20T22:31:32.070Z  INFO 1 --- [transferencia] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792535492070, current=UP, previous=STARTING]
+2026-10-20T22:31:32.073Z  INFO 1 --- [transferencia] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TRANSFERENCIA/5e40f24e4eb7:transferencia:8080: registering service...
+2026-10-20T22:31:32.099Z  INFO 1 --- [transferencia] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-10-20T22:31:32.100Z  INFO 1 --- [transferencia] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+2026-10-20T22:31:32.140Z  INFO 1 --- [transferencia] [           main] mx.mexibanco.TransferenciaApplication    : Started TransferenciaApplication in 15.29 seconds (process running for 16.042)
+2026-10-20T22:31:32.145Z  INFO 1 --- [transferencia] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_TRANSFERENCIA/5e40f24e4eb7:transferencia:8080 - registration status: 204
+2026-10-20T22:31:36.488Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-20T22:31:36.488Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-20T22:31:36.490Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-10-20T22:31:36.546Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [rabbitmq:5672]
+2026-10-20T22:31:36.693Z  INFO 1 --- [transferencia] [nio-8080-exec-1] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#655e3f4c:0/SimpleConnection@252de0da [delegate=amqp://mexibanco@172.25.0.3:5672/, localPort=35716]
+2026-10-20T22:31:37.882Z  INFO 1 --- [transferencia] [nio-8080-exec-2] m.m.transferencia.TransferenciaService   : Transferencia 9: INICIADA
+2026-10-20T22:31:37.921Z  INFO 1 --- [transferencia] [nio-8080-exec-2] m.m.transferencia.TransferenciaService   : Transferencia 9: CARGADA
+2026-10-20T22:31:37.921Z  WARN 1 --- [transferencia] [nio-8080-exec-2] m.m.transferencia.TransferenciaService   : Transferencia 9: el abono fallo (Falla provocada con FALLAR_ABONO_A_CLABE=002180000000000002); se devuelve el cargo
+2026-10-20T22:31:38.007Z  INFO 1 --- [transferencia] [nio-8080-exec-2] m.m.transferencia.TransferenciaService   : Transferencia 9: COMPENSADA
+2026-10-20T22:31:38.032Z  INFO 1 --- [transferencia] [nio-8080-exec-2] m.m.t.mensajeria.PublicadorDeEventos     : Evento aabbb805-c2ee-33f8-a9f3-e06edc2a8743 TransferenciaRevertida confirmado por broker

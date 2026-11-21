@@ -1,0 +1,157 @@
+{
+  "transferencias": [
+    {
+      "hora": "2026-10-20T16:28:16.992474-06:00",
+      "codigo": 201,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:28:16 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 3,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-10-20T22:28:16.707337206Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 997.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-10-20T22:28:16.976397302Z"
+      },
+      "segundos": 0.485
+    },
+    {
+      "hora": "2026-10-20T16:28:17.169229-06:00",
+      "codigo": 201,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:28:16 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 4,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-10-20T22:28:17.029015409Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 996.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-10-20T22:28:17.153168869Z"
+      },
+      "segundos": 0.177
+    },
+    {
+      "hora": "2026-10-20T16:28:17.297661-06:00",
+      "codigo": 201,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:28:16 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 5,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-10-20T22:28:17.205433767Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 995.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-10-20T22:28:17.285982031Z"
+      },
+      "segundos": 0.128
+    }
+  ],
+  "cola": {
+    "hora": "2026-10-20T16:28:25.387566-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "1251",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:28:24 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "consumer_details": [],
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 0,
+      "consumer_utilisation": 0,
+      "consumers": 0,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 0
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-10-20T22:28:19.576+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 6376,
+      "message_bytes": 804,
+      "message_bytes_persistent": 804,
+      "message_bytes_ram": 268,
+      "message_bytes_ready": 804,
+      "message_bytes_unacknowledged": 0,
+      "message_stats": {
+        "publish": 3,
+        "publish_details": {
+          "rate": 0.0
+        }
+      },
+      "messages": 3,
+      "messages_details": {
+        "rate": 0.6
+      },
+      "messages_persistent": 3,
+      "messages_ram": 1,
+      "messages_ready": 3,
+      "messages_ready_details": {
+        "rate": 0.6
+      },
+      "messages_ready_ram": 1,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias",
+      "node": "rabbit@f300b9a76267",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 13550,
+      "reductions_details": {
+        "rate": 635.2
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    },
+    "segundos": 0.004
+  }
+}

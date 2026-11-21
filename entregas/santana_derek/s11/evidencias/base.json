@@ -1,0 +1,336 @@
+{
+  "fase": "base",
+  "fecha_utc": "2026-11-07T23:14:00.032659+00:00",
+  "ejecutor": "Codex, ejecución asistida local",
+  "registros": [
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:01 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 1,
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000
+        },
+        "ms": 1853.667717999997
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:01 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 2,
+          "clabe": "002180000000000002",
+          "titular": "Beto",
+          "saldo": 500
+        },
+        "ms": 108.70532999979332
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 201,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:01 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "id": 3,
+          "clabe": "002180000000000003",
+          "titular": "Carla",
+          "saldo": 300
+        },
+        "ms": 67.49996799953806
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "logs",
+          "--no-color",
+          "cuenta"
+        ],
+        "stdout": "cuenta-3  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-2  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | \ncuenta-1  |   .   ____          _            __ _ _\ncuenta-1  |  /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\ncuenta-1  | ( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\\ncuenta-1  |  \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )\ncuenta-1  |   '  |____| .__|_| |_|_| |_\\__, | / / / /\ncuenta-1  |  =========|_|==============|___/=/_/_/_/\ncuenta-1  | \ncuenta-1  |  :: Spring Boot ::                (v3.3.4)\ncuenta-1  | \ncuenta-1  | 2026-11-07T23:12:32.202Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.13 with PID 1 (/app/app.jar started by root in /app)\ncuenta-1  | 2026-11-07T23:12:32.228Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: \"default\"\ncuenta-1  | 2026-11-07T23:12:42.778Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\ncuenta-1  | 2026-11-07T23:12:42.786Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.\ncuenta-1  | 2026-11-07T23:12:43.726Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 888 ms. Found 2 JPA repository interfaces.\ncuenta-1  | 2026-11-07T23:12:43.837Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\ncuenta-1  | 2026-11-07T23:12:43.844Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\ncuenta-1  | 2026-11-07T23:12:43.904Z  INFO 1 --- [cuenta] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface mx.mexibanco.cuenta.CuentaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository\ncuenta-1  | 2026-11-07T23:12:43.905Z  INFO 1 --- [cuenta] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface mx.mexibanco.cuenta.OperacionAplicadaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository\ncuenta-1  | 2026-11-07T23:12:43.907Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.\ncuenta-1  | 2026-11-07T23:12:46.191Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6b30317a-4186-3eca-b4ca-29232edcffeb\ncuenta-1  | 2026-11-07T23:12:52.288Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.\ncuenta-1  | 2026-11-07T23:12:52.347Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.\ncuenta-1  | 2026-11-07T23:12:54.974Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)\ncuenta-1  | 2026-11-07T23:12:55.042Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\ncuenta-1  | 2026-11-07T23:12:55.043Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]\ncuenta-1  | 2026-11-07T23:12:55.309Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\ncuenta-1  | 2026-11-07T23:12:55.313Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 22546 ms\ncuenta-1  | 2026-11-07T23:12:57.345Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]\ncuenta-1  | 2026-11-07T23:12:57.910Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final\ncuenta-1  | 2026-11-07T23:12:58.041Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled\ncuenta-1  | 2026-11-07T23:12:59.766Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer\ncuenta-1  | 2026-11-07T23:12:59.943Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...\ncuenta-1  | 2026-11-07T23:13:03.570Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@cda144a\ncuenta-1  | 2026-11-07T23:13:03.580Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.\ncuenta-1  | 2026-11-07T23:13:10.509Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)\ncuenta-1  | 2026-11-07T23:13:11.175Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000\ncuenta-1  | 2026-11-07T23:13:11.176Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint \"uk6v9ul92u0pat25dufsipeupwl\" of relation \"cuenta\" does not exist, skipping\ncuenta-1  | 2026-11-07T23:13:11.187Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000\ncuenta-1  | 2026-11-07T23:13:11.187Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint \"ukldcwepxom4ktpnr2v96aamnu3\" of relation \"operacion_aplicada\" does not exist, skipping\ncuenta-1  | 2026-11-07T23:13:11.199Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'\ncuenta-1  | 2026-11-07T23:13:28.402Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.\ncuenta-1  | 2026-11-07T23:13:28.809Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\ncuenta-1  | 2026-11-07T23:13:28.890Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'\ncuenta-1  | 2026-11-07T23:13:29.448Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING\ncuenta-1  | 2026-11-07T23:13:29.663Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1\ncuenta-1  | 2026-11-07T23:13:29.692Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\ncuenta-1  | 2026-11-07T23:13:29.768Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false\ncuenta-1  | 2026-11-07T23:13:29.768Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null\ncuenta-1  | 2026-11-07T23:13:29.768Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false\ncuenta-1  | 2026-11-07T23:13:29.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false\ncuenta-1  | 2026-11-07T23:13:29.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true\ncuenta-1  | 2026-11-07T23:13:29.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true\ncuenta-1  | 2026-11-07T23:13:29.770Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server\ncuenta-1  | 2026-11-07T23:13:33.628Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200\ncuenta-1  | 2026-11-07T23:13:33.642Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5\ncuenta-1  | 2026-11-07T23:13:33.779Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4\ncuenta-1  | 2026-11-07T23:13:33.786Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1794093213783 with initial instances count: 2\ncuenta-1  | 2026-11-07T23:13:33.896Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP\ncuenta-1  | 2026-11-07T23:13:33.899Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1794093213899, current=UP, previous=STARTING]\ncuenta-1  | 2026-11-07T23:13:33.925Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/d9f579c6073c:cuenta:8080: registering service...\ncuenta-1  | 2026-11-07T23:13:34.293Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'\ncuenta-1  | 2026-11-07T23:13:34.297Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080\ncuenta-1  | 2026-11-07T23:13:34.390Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 67.609 seconds (process running for 75.567)\ncuenta-1  | 2026-11-07T23:13:34.552Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/d9f579c6073c:cuenta:8080 - registration status: 204\ncuenta-1  | 2026-11-07T23:13:39.362Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\ncuenta-1  | 2026-11-07T23:13:39.364Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\ncuenta-1  | 2026-11-07T23:13:39.370Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms\ncuenta-1  | 2026-11-07T23:13:51.755Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:13:51.781Z  WARN 1 --- [cuenta] [nio-8080-exec-2] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported\ncuenta-1  | 2026-11-07T23:14:00.076Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:01.923Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:02.013Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por d9f579c6073c\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:02.895387273Z"
+        },
+        "ms": 284.8920979995455
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:02.956075579Z"
+        },
+        "ms": 53.21214800096641
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.031558434Z"
+        },
+        "ms": 74.56932599961874
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.067795115Z"
+        },
+        "ms": 31.32307200030482
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.129039506Z"
+        },
+        "ms": 64.24312699891743
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.171059870Z"
+        },
+        "ms": 41.55587400055083
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.212464982Z"
+        },
+        "ms": 43.76829400098359
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.273907436Z"
+        },
+        "ms": 57.23117399975308
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.309968239Z"
+        },
+        "ms": 36.235882000255515
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "d9f579c6073c",
+          "Content-Type": "application/json",
+          "Date": "Sat, 07 Nov 2026 23:14:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 1000.0,
+          "leidaEn": "2026-11-07T23:14:03.342744925Z"
+        },
+        "ms": 32.26291200007836
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "logs",
+          "--no-color",
+          "cuenta"
+        ],
+        "stdout": "cuenta-3  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | \ncuenta-1  |   .   ____          _            __ _ _\ncuenta-1  |  /\\\\ / ___'_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\ncuenta-1  | ( ( )\\___ | '_ | '_| | '_ \\/ _` | \\ \\ \\ \\\ncuenta-1  |  \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )\ncuenta-1  |   '  |____| .__|_| |_|_| |_\\__, | / / / /\ncuenta-1  |  =========|_|==============|___/=/_/_/_/\ncuenta-1  | \ncuenta-1  |  :: Spring Boot ::                (v3.3.4)\ncuenta-1  | \ncuenta-1  | 2026-11-07T23:12:32.202Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.13 with PID 1 (/app/app.jar started by root in /app)\ncuenta-1  | 2026-11-07T23:12:32.228Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: \"default\"\ncuenta-1  | 2026-11-07T23:12:42.778Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\ncuenta-1  | 2026-11-07T23:12:42.786Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.\ncuenta-1  | 2026-11-07T23:12:43.726Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 888 ms. Found 2 JPA repository interfaces.\ncuenta-1  | 2026-11-07T23:12:43.837Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode\ncuenta-1  | 2026-11-07T23:12:43.844Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.\ncuenta-1  | 2026-11-07T23:12:43.904Z  INFO 1 --- [cuenta] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface mx.mexibanco.cuenta.CuentaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository\ncuenta-2  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m\ncuenta-1  | 2026-11-07T23:12:43.905Z  INFO 1 --- [cuenta] [           main] .RepositoryConfigurationExtensionSupport : Spring Data Redis - Could not safely identify store assignment for repository candidate interface mx.mexibanco.cuenta.OperacionAplicadaRepository; If you want this repository to be a Redis repository, consider annotating your entities with one of these annotations: org.springframework.data.redis.core.RedisHash (preferred), or consider extending one of the following types with your repository: org.springframework.data.keyvalue.repository.KeyValueRepository\ncuenta-1  | 2026-11-07T23:12:43.907Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 0 Redis repository interfaces.\ncuenta-1  | 2026-11-07T23:12:46.191Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=6b30317a-4186-3eca-b4ca-29232edcffeb\ncuenta-1  | 2026-11-07T23:12:52.288Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.\ncuenta-1  | 2026-11-07T23:12:52.347Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.\ncuenta-1  | 2026-11-07T23:12:54.974Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)\ncuenta-1  | 2026-11-07T23:12:55.042Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]\ncuenta-1  | 2026-11-07T23:12:55.043Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]\ncuenta-1  | 2026-11-07T23:12:55.309Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext\ncuenta-1  | 2026-11-07T23:12:55.313Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 22546 ms\ncuenta-1  | 2026-11-07T23:12:57.345Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]\ncuenta-1  | 2026-11-07T23:12:57.910Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final\ncuenta-1  | 2026-11-07T23:12:58.041Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled\ncuenta-1  | 2026-11-07T23:12:59.766Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer\ncuenta-1  | 2026-11-07T23:12:59.943Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...\ncuenta-1  | 2026-11-07T23:13:03.570Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@cda144a\ncuenta-1  | 2026-11-07T23:13:03.580Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.\ncuenta-1  | 2026-11-07T23:13:10.509Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)\ncuenta-1  | 2026-11-07T23:13:11.175Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000\ncuenta-1  | 2026-11-07T23:13:11.176Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint \"uk6v9ul92u0pat25dufsipeupwl\" of relation \"cuenta\" does not exist, skipping\ncuenta-1  | 2026-11-07T23:13:11.187Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000\ncuenta-1  | 2026-11-07T23:13:11.187Z  WARN 1 --- [cuenta] [           main] o.h.engine.jdbc.spi.SqlExceptionHelper   : constraint \"ukldcwepxom4ktpnr2v96aamnu3\" of relation \"operacion_aplicada\" does not exist, skipping\ncuenta-1  | 2026-11-07T23:13:11.199Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'\ncuenta-1  | 2026-11-07T23:13:28.402Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.\ncuenta-1  | 2026-11-07T23:13:28.809Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.\ncuenta-1  | 2026-11-07T23:13:28.890Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'\ncuenta-1  | 2026-11-07T23:13:29.448Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING\ncuenta-1  | 2026-11-07T23:13:29.663Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1\ncuenta-1  | 2026-11-07T23:13:29.692Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration\ncuenta-1  | 2026-11-07T23:13:29.768Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false\ncuenta-1  | 2026-11-07T23:13:29.768Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null\ncuenta-1  | 2026-11-07T23:13:29.768Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false\ncuenta-1  | 2026-11-07T23:13:29.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false\ncuenta-1  | 2026-11-07T23:13:29.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true\ncuenta-1  | 2026-11-07T23:13:29.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true\ncuenta-1  | 2026-11-07T23:13:29.770Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server\ncuenta-1  | 2026-11-07T23:13:33.628Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200\ncuenta-1  | 2026-11-07T23:13:33.642Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5\ncuenta-1  | 2026-11-07T23:13:33.779Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4\ncuenta-1  | 2026-11-07T23:13:33.786Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1794093213783 with initial instances count: 2\ncuenta-1  | 2026-11-07T23:13:33.896Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP\ncuenta-1  | 2026-11-07T23:13:33.899Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1794093213899, current=UP, previous=STARTING]\ncuenta-1  | 2026-11-07T23:13:33.925Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/d9f579c6073c:cuenta:8080: registering service...\ncuenta-1  | 2026-11-07T23:13:34.293Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'\ncuenta-1  | 2026-11-07T23:13:34.297Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080\ncuenta-1  | 2026-11-07T23:13:34.390Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 67.609 seconds (process running for 75.567)\ncuenta-1  | 2026-11-07T23:13:34.552Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/d9f579c6073c:cuenta:8080 - registration status: 204\ncuenta-1  | 2026-11-07T23:13:39.362Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'\ncuenta-1  | 2026-11-07T23:13:39.364Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'\ncuenta-1  | 2026-11-07T23:13:39.370Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms\ncuenta-1  | 2026-11-07T23:13:51.755Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:13:51.781Z  WARN 1 --- [cuenta] [nio-8080-exec-2] o.s.web.servlet.PageNotFound             : Request method 'GET' is not supported\ncuenta-1  | 2026-11-07T23:14:00.076Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:01.923Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:02.013Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:02.647Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:02.752Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:02.943Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:02.947Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.015Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.018Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.059Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.061Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.113Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.118Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.156Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.159Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.202Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.204Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.258Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.266Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.300Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.303Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\ncuenta-1  | 2026-11-07T23:14:03.331Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180000000000001 atendida por d9f579c6073c\ncuenta-1  | 2026-11-07T23:14:03.334Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.ConsultaDeSaldo      : [consulta] 002180000000000001 leida de Postgres\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "lecturas_postgres",
+      "datos": 10
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "INFO",
+          "stats"
+        ],
+        "stdout": "# Stats\ntotal_connections_received:40\ntotal_commands_processed:47\ninstantaneous_ops_per_sec:0\ntotal_net_input_bytes:571\ntotal_net_output_bytes:273\ntotal_net_repl_input_bytes:0\ntotal_net_repl_output_bytes:0\ninstantaneous_input_kbps:0.00\ninstantaneous_output_kbps:0.00\ninstantaneous_input_repl_kbps:0.00\ninstantaneous_output_repl_kbps:0.00\nrejected_connections:0\nsync_full:0\nsync_partial_ok:0\nsync_partial_err:0\nexpired_subkeys:0\nexpired_subkeys_active:0\nexpired_keys:0\nexpired_keys_active:0\nexpired_stale_perc:0.00\nexpired_time_cap_reached_count:0\nexpire_cycle_cpu_milliseconds:346\nevicted_keys:0\nevicted_clients:0\nevicted_scripts:0\ntotal_eviction_exceeded_time:0\ncurrent_eviction_exceeded_time:0\nkeyspace_hits:0\nkeyspace_misses:0\npubsub_channels:0\npubsub_patterns:0\npubsubshard_channels:0\nlatest_fork_usec:0\ntotal_forks:0\nmigrate_cached_sockets:0\nslave_expires_tracked_keys:0\nactive_defrag_hits:0\nactive_defrag_misses:0\nactive_defrag_key_hits:0\nactive_defrag_key_misses:0\ntotal_active_defrag_time:0\ncurrent_active_defrag_time:0\ntracking_total_keys:0\ntracking_total_items:0\ntracking_total_prefixes:0\nunexpected_error_replies:0\ntotal_error_replies:0\ndump_payload_sanitizations:0\ntotal_reads_processed:79\ntotal_writes_processed:39\nio_threaded_reads_processed:0\nio_threaded_writes_processed:0\nio_threaded_total_prefetch_batches:0\nio_threaded_total_prefetch_entries:0\nclient_query_buffer_limit_disconnections:0\nclient_output_buffer_limit_disconnections:0\nreply_buffer_shrinks:2\nreply_buffer_expands:0\neventloop_cycles:9138\neventloop_duration_sum:4625974033\neventloop_duration_cmd_sum:81\ninstantaneous_eventloop_cycles_per_sec:9\ninstantaneous_eventloop_duration_usec:432\neventloop_cycles_with_clients_processing:39\ntotal_client_processing_events:40\navg_pipeline_length_sum:40\navg_pipeline_length_cnt:40\navg_pipeline_length:1.00\nslowlog_commands_count:0\nslowlog_commands_time_ms_max:0.00\nslowlog_commands_time_ms_sum:0.00\nhash_templates:0\nhash_template_keys:0\nacl_access_denied_auth:0\nacl_access_denied_cmd:0\nacl_access_denied_key:0\nacl_access_denied_channel:0\nacl_access_denied_tls_cert:0\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "mongo",
+          "mongosh",
+          "notificacion",
+          "--quiet",
+          "--eval",
+          "db.avisos.countDocuments()"
+        ],
+        "stdout": "0\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    }
+  ],
+  "resultado": "OK",
+  "fin_utc": "2026-11-07T23:14:06.633922+00:00",
+  "duracion_wall_s": 6.601387023925781,
+  "duracion_monotona_s": 6.60159936799937,
+  "posible_suspension": false
+}
