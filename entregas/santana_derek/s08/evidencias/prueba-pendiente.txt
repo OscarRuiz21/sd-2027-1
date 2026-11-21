@@ -1,0 +1,3 @@
+compensacion-pendiente.json
+circuito-abierto.json
+Cuenta reiniciada. Esperar salud y registro antes de la recuperación.

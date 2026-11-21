@@ -1,0 +1,114 @@
+{
+  "antes": {
+    "origen": {
+      "hora": "2026-10-20T16:14:31.490151-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:14:30 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 1,
+        "clabe": "002180000000000007",
+        "titular": "Antes de saga S08",
+        "saldo": 1000.0
+      },
+      "segundos": 0.185
+    },
+    "destino": {
+      "hora": "2026-10-20T16:14:31.678252-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:14:30 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 2,
+        "clabe": "002180000000000008",
+        "titular": "Antes de saga S08",
+        "saldo": 500.0
+      },
+      "segundos": 0.188
+    }
+  },
+  "cargo_observado": {
+    "hora": "2026-10-20T16:14:35.561656-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "X-Instancia": "c8858d526ddb",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:14:34 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 1,
+      "clabe": "002180000000000007",
+      "titular": "Antes de saga S08",
+      "saldo": 950.0
+    },
+    "segundos": 1.055
+  },
+  "apagado": "2026-10-20T16:14:35.561739-06:00",
+  "transferencia": {
+    "hora": "2026-10-20T16:14:46.736730-06:00",
+    "codigo": 504,
+    "cabeceras": {
+      "Content-Type": "application/json",
+      "Content-Length": "139",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "timestamp": "2026-10-20T22:14:46.728+00:00",
+      "path": "/api/transferencias",
+      "status": 504,
+      "error": "Gateway Timeout",
+      "requestId": "bac37a1e-33"
+    },
+    "segundos": 15.04
+  },
+  "despues": {
+    "origen": {
+      "hora": "2026-10-20T16:15:19.573506-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:15:19 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 1,
+        "clabe": "002180000000000007",
+        "titular": "Antes de saga S08",
+        "saldo": 950.0
+      },
+      "segundos": 1.093
+    },
+    "destino": {
+      "hora": "2026-10-20T16:15:19.604298-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:15:19 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 2,
+        "clabe": "002180000000000008",
+        "titular": "Antes de saga S08",
+        "saldo": 500.0
+      },
+      "segundos": 0.031
+    }
+  }
+}

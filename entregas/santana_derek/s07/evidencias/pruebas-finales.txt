@@ -1,0 +1,3 @@
+gateway-y-balanceo.json
+caida-medida.json
+Réplica reiniciada; esperar a UP (3) antes de la demo.

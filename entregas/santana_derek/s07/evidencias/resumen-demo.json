@@ -1,0 +1,17 @@
+{
+  "saldos": {
+    "Ana": {
+      "id": 2,
+      "clabe": "002180009253403701",
+      "titular": "Ana",
+      "saldo": 750.0
+    },
+    "Beto": {
+      "id": 3,
+      "clabe": "002180009253403702",
+      "titular": "Beto",
+      "saldo": 700.0
+    }
+  },
+  "extracto": "-> Ana 800.00 + Beto 700.00 = 1500.00 (antes: 1000 + 500 = 1500). Esperado: 800 y 700\n-> mismo id (1 -> 1): no se cobro dos veces. Saldo de Ana: 750.00 (esperado 750)\n-> 3 replicas distintas en 9 consultas; 0 veces se repitio la misma dos veces seguidas\n-> 404: el gateway no tiene ruta para /cargos ni /abonos. Adentro de la red siguen abiertos (seguridad: mas adelante)\n-> Ana 750.00 (esperado 750) + Beto 700.00 (esperado 700) = 1450.00; SPEI se llevo 50 a otro banco"
+}

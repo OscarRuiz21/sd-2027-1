@@ -1,0 +1,82 @@
+{
+  "inicio": "2026-10-20T16:21:30.493055-06:00",
+  "antes": {
+    "origen": {
+      "hora": "2026-10-20T16:21:31.295032-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:21:31 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 3,
+        "clabe": "002180000000000001",
+        "titular": "Ana S08",
+        "saldo": 950.0
+      },
+      "segundos": 0.802
+    },
+    "destino": {
+      "hora": "2026-10-20T16:21:31.422142-06:00",
+      "codigo": 200,
+      "cabeceras": {
+        "transfer-encoding": "chunked",
+        "X-Instancia": "c8858d526ddb",
+        "Content-Type": "application/json",
+        "Date": "Tue, 20 Oct 2026 22:21:31 GMT",
+        "connection": "close"
+      },
+      "cuerpo": {
+        "id": 4,
+        "clabe": "002180000000000002",
+        "titular": "Beto S08",
+        "saldo": 500.0
+      },
+      "segundos": 0.127
+    }
+  },
+  "cargada": {
+    "hora": "2026-10-20T16:21:34.257982-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:21:34 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 3,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 50.0,
+      "fecha": "2026-10-20T22:21:33.596112Z",
+      "estado": "CARGADA",
+      "detalle": null
+    },
+    "segundos": 0.05
+  },
+  "apagado": "2026-10-20T16:21:34.258047-06:00",
+  "transferencia": {
+    "hora": "2026-10-20T16:21:54.114787-06:00",
+    "codigo": 202,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:21:54 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 3,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 50,
+      "fecha": "2026-10-20T22:21:33.596112448Z",
+      "estado": "COMPENSACION_PENDIENTE",
+      "detalle": "No instances available for cuenta; conciliar antes de reintentar devolución: No instances available for cuenta"
+    },
+    "segundos": 22.683
+  }
+}
