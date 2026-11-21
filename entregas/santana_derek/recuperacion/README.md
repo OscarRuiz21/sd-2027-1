@@ -1,6 +1,6 @@
 # Recuperación de actividades · Derek
 
-Trabajo iniciado el 19 de octubre y actualizado el 8 de noviembre de 2026,
+Trabajo iniciado el 19 de octubre y actualizado el 20 de noviembre de 2026,
 con asistencia de Codex. Estado local; la publicación se comprueba por separado.
 
 ## Proyecto de la tienda
@@ -36,8 +36,9 @@ Los borradores y resultados asistidos requieren revisión personal. No se presen
 experimentos como realizados por Derek en clase ni se inventan capturas u horarios.
 
 T04, S11 y Lectura 10 vencieron el 7 de noviembre antes de las 07:00.
-La actualización oficial del 4 de noviembre indica que los labs y tareas completos
-fuera de plazo se registran como «tarde», sin bajar puntos. El examen vence el
+ATENCIÓN: CAMBIOS.md actualizado el 14 de noviembre indica que T04 y S11
+cerraron su recepción tardía ese día a las 07:00. Aunque están completos localmente,
+no se puede asegurar aceptación posterior; requiere aclaración del profesor. El examen vence el
 21 de noviembre antes de las 06:59 y el proyecto final se presenta el 28.
 
 ## Qué falta para que cuente como entrega
@@ -61,3 +62,24 @@ Este repaso no confirma la entrega del examen a mano ni los comentarios de lectu
 - S09: dibuja guardar, commit y ack. Explica qué ocurre si el consumidor cae entre commit y ack y qué hueco deja no implementar Outbox.
 
 Fuentes de organización: [guías de labs](https://github.com/OscarRuiz21/sd-2027-1/blob/main/labs/README.md), [tareas](https://github.com/OscarRuiz21/sd-2027-1/blob/main/entregas/README.md) y [política de entregas](https://github.com/OscarRuiz21/sd-2027-1/blob/main/ENTREGAS.md).
+
+## Prioridades verificadas el 20 de noviembre
+
+Se consultó origin/main en 0af68ee. No hay nuevos labs obligatorios; S12 y S13
+son material de estudio. OpenTelemetry/Jaeger es una práctica opcional.
+
+1. Examen: revisar las 25 respuestas, escribirlas a mano, escanearlas en un solo
+   PDF y subirlo antes del 21 de noviembre a las 06:59. Destino:
+   `entregas/santana_derek/examen/examen-escrito.pdf`. El borrador no sustituye esto.
+2. Entrevista del 21: cuatro preguntas, posiblemente reformuladas, cámara
+   encendida y salas por equipo. Practicar razones, alternativas y fallas.
+3. Publicar las entregas locales cuando haya acceso; no confundir commit con push.
+   T04/S11 ya tienen cierre explícito; consultar su aceptación sin asumir puntos.
+4. Proyecto: antes del 28 a las 07:00, código y `docs/reporte-final.pdf` en repo
+   de equipo. PDF: portada, problema, diagramas funcional y de arquitectura,
+   tres decisiones con alternativas descartadas, fallas, ejecución, pendientes
+   y aportaciones reales. Pitch el 28 con participación de todos.
+5. Lecturas: borradores pendientes de revisión personal y publicación autorizada.
+
+Fuente actualizada: [avisos oficiales](https://github.com/OscarRuiz21/sd-2027-1/blob/main/CAMBIOS.md)
+y [rúbrica](https://github.com/OscarRuiz21/sd-2027-1/blob/main/proyecto/RUBRICA.md).
