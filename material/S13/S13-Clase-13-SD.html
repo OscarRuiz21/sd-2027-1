@@ -1,0 +1,937 @@
+<!doctype html>
+<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Observabilidad y escenarios · Sistemas Distribuidos</title>
+<style>
+:root{--paper:#f7f6f1;--ink:#202b33;--muted:#59666c;--line:#d6dbd8;--blue:#165bb5;--bluef:#e8eff9;--violet:#7546b3;--violetf:#eee7f7;--amber:#986008;--amberf:#f8e7bf;--green:#217448;--greenf:#e3f1e8;--red:#bc3433;--redf:#fceceb}
+*{box-sizing:border-box}
+body{margin:0;background:#e3e5e1;color:var(--ink);font-family:Arial,Helvetica,sans-serif;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1600px;height:900px;transform:translate(-50%,-50%) scale(var(--scale,1));transform-origin:center}
+section{display:none;width:1600px;height:900px;background:var(--paper);position:relative;padding:0 64px;flex-direction:column;overflow:hidden}
+section.active{display:flex}
+.top{height:82px;flex:none;border-bottom:2px solid var(--line);display:flex;align-items:center;justify-content:space-between}
+.tag{font-size:22px;letter-spacing:1.6px;text-transform:uppercase}
+.right{display:flex;align-items:center;gap:18px}
+.dots{display:flex;gap:8px}
+.dots i{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);font:700 20px Arial;display:flex;align-items:center;justify-content:center;color:#a3acad;background:#fff;font-style:normal}
+.dots i.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.dots i.done{border-color:var(--muted);color:var(--muted)}
+.kind{font-size:22px;font-weight:700;border-radius:8px;padding:6px 14px;border:2px solid var(--ink);background:#fff}
+.kind.caso{border-color:var(--blue);color:var(--blue);background:var(--bluef)}
+.kind.giro{border-color:var(--red);color:var(--red);background:var(--redf)}
+.kind.obs{border-color:var(--violet);color:var(--violet);background:var(--violetf)}
+.kind.turno{border-color:var(--green);color:var(--green);background:var(--greenf)}
+h1{font-size:78px;letter-spacing:-3px;margin:22px 0 0;line-height:1.05;flex:none}
+.q{font-size:36px;color:var(--muted);margin:6px 0 0;flex:none}
+.def{font-size:30px;margin:14px 0 0;flex:none}
+.body{flex:1;min-height:0;margin:26px 0 22px;display:flex;flex-direction:column;justify-content:center;gap:20px}
+.pie{flex:none;height:64px;background:#fff;border:2px solid var(--line);border-radius:12px;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:32px;font-weight:700;white-space:nowrap}
+.pie b{flex:none;width:44px;height:44px;border-radius:50%;background:var(--bluef);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:24px}
+.firma{flex:none;height:50px;font-size:20px;color:var(--muted);display:flex;align-items:center;letter-spacing:.3px}
+.row{display:flex;gap:22px;align-items:stretch}
+.row>*{flex:1}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:#fff;border:2px solid var(--line);border-radius:14px;padding:20px 24px}
+.card h3{font-size:32px;margin:0 0 8px}
+.card p{font-size:28px;line-height:1.3;margin:0;color:var(--muted)}
+.card p+p{margin-top:8px}
+.card .n{display:inline-flex;width:40px;height:40px;border-radius:50%;background:var(--ink);color:#fff;font:700 22px Arial;align-items:center;justify-content:center;margin-bottom:10px}
+.lab{font-size:22px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;margin:0 0 10px}
+.cb{border-color:var(--blue)}.cb .lab,.cb h3{color:var(--blue)}
+.ca{border-color:var(--amber)}.ca .lab,.ca h3{color:var(--amber)}
+.cv{border-color:var(--violet)}.cv .lab,.cv h3{color:var(--violet)}
+.cg{border-color:var(--green)}.cg .lab,.cg h3{color:var(--green)}
+.cr{border-color:var(--red)}.cr .lab,.cr h3{color:var(--red)}
+.fb{background:var(--bluef)}.fa{background:var(--amberf)}.fv{background:var(--violetf)}.fg{background:var(--greenf)}.fr{background:var(--redf)}
+.tb{color:var(--blue)}.ta{color:var(--amber)}.tv{color:var(--violet)}.tg{color:var(--green)}.tr{color:var(--red)}.tm{color:var(--muted)}
+ul.l{margin:0;padding:0;list-style:none;font-size:29px;line-height:1.3}
+ul.l li{padding:5px 0}
+table.t{width:100%;border-collapse:collapse;font-size:28px;background:#fff;border:2px solid var(--line);border-radius:14px;overflow:hidden}
+table.t th{font-size:22px;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);text-align:left;padding:12px 20px;border-bottom:2px solid var(--line)}
+table.t td{padding:13px 20px;border-bottom:1px solid var(--line);vertical-align:middle;line-height:1.25}
+table.t tr:last-child td{border-bottom:0}
+pre{margin:0;font:24px/1.42 Menlo,Consolas,monospace;background:#fff;border:2px solid var(--line);border-radius:14px;padding:20px 24px;white-space:pre}
+code{font-family:Menlo,Consolas,monospace;font-size:.9em}
+.note{align-self:center;background:#fff;border:2px solid var(--ink);border-radius:8px;padding:8px 26px;font-size:24px}
+.arrow{flex:none!important;align-self:center;font-size:44px;color:var(--muted);width:auto}
+.big{font-size:84px;font-weight:700;letter-spacing:-3px;line-height:1}
+.mid{font-size:30px;line-height:1.3}
+.cover{justify-content:center}
+.cover h1{font-size:120px;letter-spacing:-5px}
+.cover .q{font-size:44px;margin-top:18px}
+svg text{font-family:Arial,Helvetica,sans-serif;fill:var(--ink)}
+.bx{fill:#fff;stroke:var(--ink);stroke-width:2.5}
+.dim .rd, .dimw .wr{opacity:.22}
+nav{position:absolute;right:54px;bottom:10px;display:flex;gap:8px}
+nav button{background:transparent;border:1px solid #aab3b3;border-radius:5px;padding:4px 12px;font-size:20px;color:var(--ink);cursor:pointer}
+@page{size:1600px 900px;margin:0}
+@media print{body{background:#fff;overflow:visible}#stage{position:static;transform:none;height:auto}section,section.active{display:flex;break-after:page;page-break-after:always}section:last-of-type{break-after:auto}nav{display:none!important}*{print-color-adjust:exact;-webkit-print-color-adjust:exact}}
+</style>
+<div id="stage">
+
+<section class="cover" data-tag="S13 · Observabilidad" data-bare>
+<h1>Observabilidad</h1>
+<p class="q">Todo está en verde y los usuarios se quejan.</p>
+<p class="firma" style="margin-top:40px">Basado en «Introduction to Observability», Tech Tutorials with Piyush</p>
+</section>
+
+<section data-kind="obs" data-tag="Monitoreo">
+<h1>Monitoreo</h1>
+<p class="q">¿Cómo me entero de que algo anda mal?</p>
+<div class="body">
+<div class="row">
+<div class="card"><p class="lab">Señal</p><h3>Uso de CPU</h3><p>La eliges antes de que algo falle.</p></div>
+<div class="arrow">›</div>
+<div class="card ca"><p class="lab">Umbral</p><h3>Más de 80 %</h3><p>El límite que decides vigilar.</p></div>
+<div class="arrow">›</div>
+<div class="card cr"><p class="lab">Alerta</p><h3>Suena el teléfono</h3><p>En la industria se le dice «page».</p></div>
+</div>
+<div class="note">Otras señales típicas: memoria, disco, errores HTTP 500 por minuto</div>
+</div>
+<div class="pie"><b>→</b>Monitorear es vigilar señales que elegiste antes de que fallara.</div>
+</section>
+
+<section data-kind="obs" data-tag="Monitoreo">
+<h1>Todo en verde</h1>
+<p class="q">¿Qué hago si el tablero está sano y la gente no puede pagar?</p>
+<div class="body">
+<div class="row">
+<div class="card cg fg"><p class="lab">CPU</p><div class="big tg" style="font-size:64px">41 % ✓</div></div>
+<div class="card cg fg"><p class="lab">Memoria</p><div class="big tg" style="font-size:64px">58 % ✓</div></div>
+<div class="card cg fg"><p class="lab">Errores</p><div class="big tg" style="font-size:64px">0.2 % ✓</div></div>
+<div class="card cr fr"><p class="lab">Usuarios</p><h3>«No puedo pagar»</h3></div>
+</div>
+</div>
+<div class="pie"><b>→</b>El monitoreo dice cuándo algo anda mal; no dice por qué.</div>
+</section>
+
+<section data-kind="obs" data-tag="Monitoreo">
+<h1>Diez fallas contra miles</h1>
+<p class="q">¿Por qué ya no alcanza con vigilar el servidor?</p>
+<div class="body">
+<div class="row">
+<div class="card"><p class="lab">Monolito</p>
+<svg viewBox="0 0 600 220" style="width:100%;height:220px"><rect class="bx" x="200" y="50" width="200" height="120" rx="14"/><text x="300" y="120" font-size="28" font-weight="700" text-anchor="middle">Servidor</text></svg>
+<p style="color:var(--ink)">Unas diez cosas pueden fallar. Se pueden vigilar todas.</p></div>
+<div class="card cr"><p class="lab">Sistema distribuido</p>
+<svg viewBox="0 0 600 220" style="width:100%;height:220px"><g stroke="#59666c" stroke-width="2.5"><path d="M90,50 L230,110 L90,170 M230,110 L370,50 L510,110 L370,170 L230,110 M370,50 L370,170 M90,50 L370,50 M90,170 L370,170" fill="none"/></g><g fill="#fff" stroke="#202b33" stroke-width="2.5"><circle cx="90" cy="50" r="24"/><circle cx="90" cy="170" r="24"/><circle cx="230" cy="110" r="24"/><circle cx="370" cy="50" r="24"/><circle cx="370" cy="170" r="24"/><circle cx="510" cy="110" r="24"/></g></svg>
+<p style="color:var(--ink)">Miles de combinaciones, y cada una falla de un modo que nadie ha visto.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>No se puede escribir una alerta para una falla que todavía no conoces.</div>
+</section>
+
+<section data-kind="obs" data-tag="El hueco">
+<h1>La falla silenciosa</h1>
+<p class="q">¿Qué alerta suena si un servicio no se cae, solo se vuelve lento?</p>
+<div class="body">
+<div class="row">
+<div class="card cg"><h3>Front ✓</h3></div>
+<div class="arrow">›</div>
+<div class="card cg"><h3>Gateway ✓</h3></div>
+<div class="arrow">›</div>
+<div class="card cg"><h3>Pedidos ✓</h3></div>
+<div class="arrow">›</div>
+<div class="card ca fa"><h3>Pagos ✓</h3><p style="color:var(--ink);white-space:nowrap"><b>800 ms</b></p></div>
+<div class="arrow">›</div>
+<div class="card cg"><h3>BD ✓</h3></div>
+</div>
+<div class="note">Pagos debía tardar 80 ms. Ningún servicio devuelve error; las peticiones vencen por tiempo.</div>
+</div>
+<div class="pie"><b>→</b>Vigilar la tasa de errores no ve a un servicio que solo está lento.</div>
+</section>
+
+<section data-kind="obs" data-tag="El hueco">
+<h1>El promedio esconde</h1>
+<p class="q">1,000 peticiones: 980 tardan 80 ms y 20 tardan 2,000 ms. ¿Cómo va el servicio?</p>
+<div class="body">
+<table class="t">
+<tr><th>Medida</th><th>Valor</th><th>Lo que dice</th></tr>
+<tr><td><b>Promedio</b></td><td>118 ms</td><td class="tm">«Parece sano»</td></tr>
+<tr><td><b>p50</b> · la mitad fue más rápida</td><td>80 ms</td><td class="tm">La experiencia típica</td></tr>
+<tr><td><b>p95</b> · 95 de cada 100 fueron más rápidas</td><td>80 ms</td><td class="tm">Tampoco lo ve</td></tr>
+<tr><td><b>p99</b> · 99 de cada 100 fueron más rápidas</td><td class="tr"><b>2,000 ms</b></td><td class="tr"><b>Aquí están los que se quejan</b></td></tr>
+</table>
+<div class="note">Percentiles: S02</div>
+</div>
+<div class="pie"><b>→</b>La latencia se vigila por percentiles, no por promedio.</div>
+</section>
+
+<section data-kind="obs" data-tag="El hueco">
+<h1>Lo que sé y lo que no</h1>
+<p class="q">¿Qué preguntas alcanza a contestar el monitoreo?</p>
+<div class="body">
+<div class="grid2">
+<div class="card cb"><p class="lab">Sé que lo sé</p><p style="color:var(--ink)">Lo entiendo y lo vigilo: si va lento, reviso CPU y memoria.</p></div>
+<div class="card cb"><p class="lab">Sé que no lo sé</p><p style="color:var(--ink)">Preguntas decididas de antemano: ¿cuánto CPU?, ¿cuántos errores?</p></div>
+<div class="card" style="border-style:dashed"><p class="lab tm">No sé que lo sé</p><p style="color:var(--ink)">Tengo el dato y nadie lo mira.</p></div>
+<div class="card cr"><p class="lab">No sé que no lo sé</p><p style="color:var(--ink)">La falla que nadie anticipó: a una tabla le falta un índice.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>El monitoreo cubre la fila de arriba; la de abajo es el hueco.</div>
+</section>
+
+<section data-kind="obs" data-tag="La idea">
+<h1>Observabilidad</h1>
+<p class="q">¿Puedo saber qué pasa adentro sin abrir el sistema?</p>
+<p class="def">Un sistema es observable si su estado interno se entiende solo con lo que emite.</p>
+<div class="body">
+<div class="row">
+<div class="card"><p class="lab tm">Monitoreo pregunta</p><h3>¿Está roto?</h3></div>
+<div class="card cv fv"><p class="lab">Observabilidad pregunta</p><h3>¿Por qué está roto?</h3><p style="color:var(--ink)">Aunque sea una falla que nunca habías visto.</p></div>
+</div>
+<div class="note">El término viene de la teoría de control · Rudolf Kálmán, 1960</div>
+</div>
+<div class="pie"><b>→</b>Observar es poder preguntar algo nuevo sin tener que tocar el sistema.</div>
+</section>
+
+<section data-kind="obs" data-tag="La idea">
+<h1>La traza</h1>
+<p class="q">La respuesta tardó 820 ms. ¿En qué tramo se fue el tiempo?</p>
+<div class="body">
+<svg viewBox="0 0 1472 300" style="width:100%;height:300px">
+<g font-size="28" font-weight="700"><text x="20" y="48">Gateway</text><text x="20" y="118">Pedidos</text><text x="20" y="188">Pagos</text><text x="20" y="258">BD de pagos</text></g>
+<rect x="260" y="20" width="1000" height="44" rx="8" fill="#e8eff9" stroke="#165bb5" stroke-width="2.5"/>
+<rect x="263" y="90" width="994" height="44" rx="8" fill="#e8eff9" stroke="#165bb5" stroke-width="2.5"/>
+<rect x="266" y="160" width="990" height="44" rx="8" fill="#f8e7bf" stroke="#986008" stroke-width="2.5"/>
+<rect x="285" y="230" width="951" height="44" rx="8" fill="#fceceb" stroke="#bc3433" stroke-width="2.5"/>
+<g font-size="28" font-weight="700"><text x="1290" y="52">820 ms</text><text x="1290" y="122">815 ms</text><text x="1290" y="192" style="fill:#986008">812 ms</text><text x="1290" y="262" style="fill:#bc3433">780 ms ✗</text></g>
+</svg>
+<div class="note">Causa: a la base de pagos le faltaba un índice. Nadie tuvo que entrar a los servidores a buscar.</div>
+</div>
+<div class="pie"><b>→</b>Ya no se adivina: la traza dice en qué tramo se fue el tiempo.</div>
+</section>
+
+<section data-kind="obs" data-tag="Las señales">
+<h1>Tres señales</h1>
+<p class="q">¿Qué emite un servicio para que lo pueda observar?</p>
+<div class="body">
+<div class="row">
+<div class="card cb"><p class="lab">Métricas</p><h3>¿Cuánto?</h3><p>Números agregados en el tiempo: p99, errores por minuto.</p></div>
+<div class="card ca"><p class="lab">Logs</p><h3>¿Qué pasó?</h3><p>Eventos con su detalle: quién, qué error, a qué hora.</p></div>
+<div class="card cv"><p class="lab">Trazas</p><h3>¿Dónde?</h3><p>El camino de una petición por todos los servicios.</p></div>
+</div>
+<div class="note">OpenTelemetry: un estándar para emitir las tres con el mismo formato</div>
+</div>
+<div class="pie"><b>→</b>La métrica avisa, la traza ubica y el log explica.</div>
+</section>
+
+<section data-kind="obs" data-tag="Las señales">
+<h1>Propagar el contexto</h1>
+<p class="q">¿Cómo sabe cada servicio que atiende la misma petición?</p>
+<div class="body">
+<div class="row">
+<div class="card"><h3>Gateway</h3><p class="tv"><code>trace 4bf9…4736</code></p><p><code>tramo a1</code></p></div>
+<div class="arrow">›</div>
+<div class="card"><h3>Pedidos</h3><p class="tv"><code>trace 4bf9…4736</code></p><p><code>tramo b2</code></p></div>
+<div class="arrow">›</div>
+<div class="card"><h3>Pagos</h3><p class="tv"><code>trace 4bf9…4736</code></p><p><code>tramo c3</code></p></div>
+</div>
+<div class="note">El encabezado <code>traceparent</code> lleva el trace id de una llamada a la siguiente</div>
+</div>
+<div class="pie"><b>→</b>Sin el mismo trace id, cada servicio cuenta su propia historia.</div>
+</section>
+
+<section data-kind="obs" data-tag="Los datos">
+<h1>Tres propiedades</h1>
+<p class="q">¿Qué datos hacen falta para diagnosticar una falla nueva?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>Cardinalidad alta</h3><p>Llegar hasta una petición concreta.</p></div>
+<div class="card"><span class="n">2</span><h3>Muchas dimensiones</h3><p>Filtrar por región, servicio, versión, tipo de usuario.</p></div>
+<div class="card"><span class="n">3</span><h3>Explorar sin hipótesis</h3><p>Hacer una pregunta nueva sin redesplegar.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>Si faltan, el diagnóstico es una suposición.</div>
+</section>
+
+<section data-kind="obs" data-tag="Los datos">
+<h1>Un conteo contra un evento</h1>
+<p class="q">Un usuario reporta que falló su pago. ¿Encuentro su petición?</p>
+<div class="body">
+<div class="row" style="align-items:center">
+<div class="card"><p class="lab tm">Cardinalidad baja</p><pre style="border:0;padding:0">HTTP 500    132 veces</pre><p style="margin-top:14px">Sé cuántas fallaron. No sé cuál es la suya.</p></div>
+<div class="card cg"><p class="lab">Cardinalidad alta</p><pre style="border:0;padding:0">trace_id   4bf9…4736
+user_id    u-20481
+ruta       POST /pagos
+error      timeout en BD de pagos
+duracion   812 ms
+region     mx-centro</pre></div>
+</div>
+</div>
+<div class="pie"><b>→</b>Cada atributo que guardas es una pregunta que podrás hacer después.</div>
+</section>
+
+<section data-kind="obs" data-tag="Resumen">
+<h1>Monitoreo y observabilidad</h1>
+<p class="q">¿En qué se distinguen?</p>
+<div class="body">
+<table class="t">
+<tr><th></th><th>Monitoreo</th><th>Observabilidad</th></tr>
+<tr><td><b>Pregunta</b></td><td>¿Está roto?</td><td class="tv"><b>¿Por qué está roto?</b></td></tr>
+<tr><td><b>Cubre</b></td><td>Las fallas que ya preveías</td><td class="tv"><b>Las que nadie anticipó</b></td></tr>
+<tr><td><b>Datos</b></td><td>Promedios y conteos</td><td class="tv"><b>Eventos con todo su contexto</b></td></tr>
+<tr><td><b>Ante algo nuevo</b></td><td>Agregar una métrica y redesplegar</td><td class="tv"><b>Consultar lo que ya tienes</b></td></tr>
+</table>
+</div>
+<div class="pie"><b>→</b>Se necesitan las dos: una avisa y la otra explica.</div>
+</section>
+
+<section data-kind="obs" data-tag="Resumen">
+<h1>¿Dónde estás?</h1>
+<p class="q">Tres señales de que un equipo sigue solo monitoreando.</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><p style="color:var(--ink)">Cuando alguien reporta una falla, encuentras el conteo de errores, no su petición.</p></div>
+<div class="card"><span class="n">2</span><p style="color:var(--ink)">Cuando suena una alerta, hay que entrar al servidor a buscar en los logs.</p></div>
+<div class="card"><span class="n">3</span><p style="color:var(--ink)">Después de un incidente agregas la métrica que te hizo falta.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>La diferencia no es la herramienta: son los datos que hay debajo.</div>
+</section>
+
+<section data-kind="obs" data-tag="Cómo se implementa">
+<h1>Sin tocar el código</h1>
+<p class="q">¿Cómo instrumento siete servicios que ya existen?</p>
+<div class="body">
+<div class="row">
+<div class="card cv"><span class="n" style="background:var(--violet)">1</span><h3>Un agente en cada servicio</h3><p>Mide las llamadas por ti.</p></div>
+<div class="arrow">›</div>
+<div class="card cb"><span class="n" style="background:var(--blue)">2</span><h3>El trace id en cada llamada</h3><p>Pasa de un servicio al siguiente.</p></div>
+<div class="arrow">›</div>
+<div class="card cg"><span class="n" style="background:var(--green)">3</span><h3>Un lugar que las junta</h3><p>Jaeger recibe los tramos y arma la traza.</p></div>
+</div>
+<div class="note">El agente y el formato son de OpenTelemetry; Jaeger es solo una de las herramientas que lo entienden</div>
+</div>
+<div class="pie"><b>→</b>Tres piezas: quien mide, lo que viaja y quien arma el dibujo.</div>
+</section>
+
+<section data-kind="obs" data-tag="Cómo se implementa">
+<h1>El agente</h1>
+<p class="q">¿Cómo mide una llamada sin que yo cambie mi código?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>Arranca antes que tu <code>main</code></h3><p><code>-javaagent:…agent.jar</code></p></div>
+<div class="arrow">›</div>
+<div class="card"><span class="n">2</span><h3>Reconoce las librerías</h3><p>Servidor web, cliente HTTP, JDBC, RabbitMQ.</p></div>
+<div class="arrow">›</div>
+<div class="card cv fv"><span class="n" style="background:var(--violet)">3</span><h3>Las envuelve al cargarlas</h3><p style="color:var(--ink)">Antes: abre un tramo y anota la hora. Después: lo cierra.</p></div>
+</div>
+<div class="note">La JVM deja que un agente modifique cada clase en el momento en que se carga</div>
+</div>
+<div class="pie"><b>→</b>Tu .jar no cambia; cambia la copia de esas clases que vive en memoria.</div>
+</section>
+
+<section data-kind="obs" data-tag="Cómo se implementa">
+<h1>Una transferencia, una traza</h1>
+<p class="q">¿Qué hace el agente de cada servicio de Mexi Banco?</p>
+<div class="body">
+<div class="row">
+<div class="card cb"><h3>Gateway</h3><p>No trae id: genera el trace id.</p></div>
+<div class="arrow">›</div>
+<div class="card"><h3>Transferencia</h3><p>Lee <code>traceparent</code> y abre un tramo hijo.</p></div>
+<div class="arrow">›</div>
+<div class="card"><h3>Cuenta</h3><p>Cada llamada y cada consulta SQL es un tramo.</p></div>
+<div class="arrow">›</div>
+<div class="card cv"><h3>RabbitMQ</h3><p>El id viaja en el mensaje.</p></div>
+<div class="arrow">›</div>
+<div class="card"><h3>Notificación</h3><p>Lo lee al consumir.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>El primero genera el id; todos los demás lo leen, lo usan y lo pasan.</div>
+</section>
+
+<section data-kind="obs" data-tag="Cómo se implementa">
+<h1>A dónde van los tramos</h1>
+<p class="q">¿Quién junta lo que midió cada servicio?</p>
+<div class="body">
+<div class="row">
+<div class="card cv"><p class="lab">Cada agente</p><p style="color:var(--ink)">Junta los tramos terminados y los manda por lotes, en un hilo aparte.</p></div>
+<div class="arrow">›</div>
+<div class="card cg"><p class="lab">Jaeger</p><p style="color:var(--ink)">Los agrupa por trace id y los ordena por quién llamó a quién.</p></div>
+<div class="arrow">›</div>
+<div class="card"><p class="lab">Tú</p><p style="color:var(--ink)">Ves la cascada de barras en el navegador.</p></div>
+</div>
+<div class="note">Si Jaeger se cae, la transferencia no se entera</div>
+</div>
+<div class="pie"><b>→</b>Los servicios emiten tramos sueltos; la traza se arma afuera.</div>
+</section>
+
+<section data-kind="obs" data-tag="Cómo se implementa">
+<h1>Lo que el agente no ve</h1>
+<p class="q">¿Qué queda fuera si nadie escribe una línea?</p>
+<div class="body">
+<div class="row">
+<div class="card ca"><h3>Tu lógica</h3><p>Solo conoce librerías. Un método tuyo lento se ve como un hueco dentro de un tramo.</p></div>
+<div class="card cv"><h3>Lo que pasa después</h3><p>El relevo del outbox publica más tarde. ¿Sigue en la misma traza?</p></div>
+<div class="card cr"><h3>El costo</h3><p>Cada servicio arranca más lento y usa más memoria.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>El agente da el mapa de las llamadas; el detalle del negocio lo agregas tú.</div>
+</section>
+
+<section data-kind="obs" data-tag="Opcional · Mexi Banco">
+<h1>Mexi Banco con trazas</h1>
+<p class="q">Opcional: ¿en qué tramo se va el tiempo de una transferencia?</p>
+<div class="body">
+<div class="row" style="align-items:center">
+<pre style="flex:1.6;font-size:21px"># docker-compose.yml: un contenedor de Jaeger
+# y, en el entorno de cada servicio:
+JAVA_TOOL_OPTIONS: -javaagent:/app/opentelemetry-javaagent.jar
+OTEL_SERVICE_NAME: transferencia
+OTEL_EXPORTER_OTLP_ENDPOINT: http://jaeger:4318
+OTEL_METRICS_EXPORTER: none
+OTEL_LOGS_EXPORTER: none</pre>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div class="card"><h3>1 · Ver una traza</h3><p>Del gateway a la notificación.</p></div>
+<div class="card ca"><h3>2 · La falla silenciosa</h3><p><code>PAUSA_ENTRE_CARGO_Y_ABONO_MS=3000</code></p></div>
+<div class="card cr"><h3>3 · Una compensación</h3><p><code>FALLAR_ABONO_A_CLABE</code>: la saga de la S08.</p></div>
+</div>
+</div>
+</div>
+<div class="pie"><b>→</b>Se entrega una captura por nivel y dos renglones: dónde se fue el tiempo.</div>
+</section>
+
+<section class="cover" data-tag="S13 · Escenarios de integración" data-bare>
+<h1>Del requisito<br>al diseño</h1>
+<p class="q">Un método en seis fases y un caso completo: la venta relámpago.</p>
+</section>
+
+<section data-tag="El método">
+<h1>Seis fases</h1>
+<p class="q">¿En qué orden se resuelve un diseño que nunca has visto?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>Aclarar</h3><p>Requisitos y lo que queda fuera</p><p class="tb"><b>5 min</b></p></div>
+<div class="card"><span class="n">2</span><h3>Estimar</h3><p>Un número que cambia el diseño</p><p class="tb"><b>2 min</b></p></div>
+<div class="card"><span class="n">3</span><h3>Contrato y datos</h3><p>Endpoints y tablas con su llave</p><p class="tb"><b>3 min</b></p></div>
+<div class="card"><span class="n">4</span><h3>Alto nivel</h3><p>Cajas, flechas y dos flujos</p><p class="tb"><b>7 min</b></p></div>
+<div class="card"><span class="n">5</span><h3>Profundizar</h3><p>Lo difícil, con su costo</p><p class="tb"><b>10 min</b></p></div>
+<div class="card"><span class="n">6</span><h3>Cuellos y cierre</h3><p>Qué truena primero y qué dejé atrás</p><p class="tb"><b>3 min</b></p></div>
+</div>
+<div class="note">Los minutos son para una sala de 30. En una entrevista de 45 la proporción es la misma: un tercio se va en profundizar. Método adaptado del Interview Playbook de System Design Atlas (systemdesignatlas.dev).</div>
+</div>
+<div class="pie"><b>→</b>El método es el mismo para cualquier sistema; lo que cambia es el caso.</div>
+</section>
+
+<section data-tag="El caso" data-kind="caso">
+<h1>MercaRayo, 00:00</h1>
+<p class="q">10,000 consolas a mitad de precio y 2 millones de personas en 5 minutos.</p>
+<div class="body">
+<div class="grid3">
+<div class="card"><span class="n">1</span><p>Nunca se venden más de 10,000.</p></div>
+<div class="card"><span class="n">2</span><p>Quien consigue una la tiene apartada 10 minutos para pagar.</p></div>
+<div class="card"><span class="n">3</span><p>La página y el contador «quedan N» responden en menos de medio segundo.</p></div>
+<div class="card"><span class="n">4</span><p>El cobro es externo, tarda de 1 a 5 s y a veces no contesta. Nunca cobra doble.</p></div>
+<div class="card"><span class="n">5</span><p>Cada compra pagada genera una orden al almacén y un correo. Ninguno se pierde.</p></div>
+<div class="card"><span class="n">6</span><p>Entra primero quien llegó primero, no el bot más rápido.</p></div>
+</div>
+</div>
+<div class="pie"><b>→</b>Fíjense en el orden en que se resuelve, no solo en la respuesta.</div>
+</section>
+
+<section data-f="1" data-tag="Fase 1 · Aclarar">
+<h1>Aclarar</h1>
+<p class="q">¿Qué necesito saber antes de dibujar la primera caja?</p>
+<div class="body">
+<div class="row">
+<div class="card"><h3>Alcance</h3><p>¿Qué funciones entran y cuáles dejo fuera?</p></div>
+<div class="card"><h3>Escala</h3><p>¿Cuánta gente, cuántas operaciones, cuántas lecturas por escritura?</p></div>
+<div class="card"><h3>Prioridades</h3><p>¿Qué es peor: tardar, mostrar un dato viejo o equivocarse?</p></div>
+<div class="card"><h3>Restricciones</h3><p>¿Qué ya existe? ¿Qué es de otra empresa?</p></div>
+</div>
+<div class="note">Termina cuando los requisitos están escritos a la vista, con lo que queda fuera.</div>
+</div>
+<div class="pie"><b>1</b>Diseñar perfecto el sistema equivocado vale cero.</div>
+</section>
+
+<section data-f="1" data-kind="caso" data-tag="Fase 1 · Aclarar">
+<h1>Cuatro preguntas al cliente</h1>
+<p class="q">¿Cuáles cambian el diseño?</p>
+<div class="body">
+<table class="t">
+<tr><th>Pregunta</th><th>Respuesta del cliente</th><th>Lo que cambia</th></tr>
+<tr><td>¿Qué es peor: vender de más o dejar a alguien sin consola?</td><td>Vender de más</td><td class="ta"><b>La compra no se equivoca, aunque tarde</b></td></tr>
+<tr><td>¿El contador tiene que ser exacto?</td><td>No. Unos segundos atrás está bien</td><td class="tb"><b>La lectura puede salir de caché</b></td></tr>
+<tr><td>¿El procesador acepta una clave y avisa después?</td><td>Sí: clave por cobro y webhook</td><td class="tv"><b>Dos caminos para saber si cobró</b></td></tr>
+<tr><td>¿Cuántas puede comprar cada persona?</td><td>Una por cuenta</td><td><b>Revisar por cuenta; aparecen los bots</b></td></tr>
+</table>
+</div>
+<div class="pie"><b>1</b>«¿Qué es peor?» es CAP dicho en lenguaje de negocio.</div>
+</section>
+
+<section data-f="1" data-kind="caso" data-tag="Fase 1 · Aclarar">
+<h1>Lo que queda escrito</h1>
+<p class="q">¿Qué tiene que defender todo lo que dibuje después?</p>
+<div class="body">
+<div class="row">
+<div class="card"><p class="lab">Lo que hace</p><ul class="l"><li>Ver el producto</li><li>Apartar</li><li>Pagar</li><li>Avisar al almacén</li><li>Mandar el correo</li></ul></div>
+<div class="card cr"><p class="lab">No se puede romper</p><ul class="l"><li>No vender de más</li><li>No cobrar dos veces</li><li>No perder órdenes</li><li>Leer en menos de 0.5 s</li><li>Entrar en orden de llegada</li></ul></div>
+<div class="card" style="border-style:dashed"><p class="lab tm">Fuera de alcance</p><ul class="l tm"><li>Catálogo y cuentas: ya existen</li><li>Otros productos</li><li>Otros países</li></ul></div>
+</div>
+</div>
+<div class="pie"><b>1</b>La lista de en medio manda: cada caja va a defender uno de esos renglones.</div>
+</section>
+
+<section data-f="2" data-tag="Fase 2 · Estimar">
+<h1>Estimar</h1>
+<p class="q">¿Qué número cambia lo que voy a dibujar?</p>
+<div class="body">
+<table class="t">
+<tr><th>Cuando el número dice…</th><th>…compra esta conclusión</th></tr>
+<tr><td>Pocos miles de escrituras por segundo</td><td><b>Una sola base principal aguanta</b></td></tr>
+<tr><td>Diez o más lecturas por cada escritura</td><td class="tb"><b>La lectura es un problema de caché</b></td></tr>
+<tr><td>Todos quieren las mismas pocas filas</td><td class="ta"><b>No es escala, es contención: se controla la entrada</b></td></tr>
+</table>
+<div class="note">Termina cuando un número cambió una decisión, dicho en voz alta.</div>
+</div>
+<div class="pie"><b>2</b>Un número sirve si termina en «por eso hago X».</div>
+</section>
+
+<section data-f="2" data-kind="caso" data-tag="Fase 2 · Estimar">
+<h1>Dos números, dos problemas</h1>
+<p class="q">¿Qué es lo caro aquí: leer o escribir?</p>
+<div class="body">
+<div class="row">
+<div class="card cb fb"><p class="lab">Leer</p><div class="big tb">6,700 / s</div><p class="mid" style="color:var(--ink);margin-top:14px">2,000,000 personas ÷ 300 s, en promedio. El pico es varias veces mayor.</p></div>
+<div class="card ca fa"><p class="lab">Escribir</p><div class="big ta">10,000</div><p class="mid" style="color:var(--ink);margin-top:14px">compras como máximo, lleguen 2 millones o 20.</p></div>
+</div>
+<div class="note">200 personas mirando por cada consola</div>
+</div>
+<div class="pie"><b>2</b>Leer es masivo y tolera atraso; escribir es poco y no tolera errores.</div>
+</section>
+
+<section data-f="3" data-tag="Fase 3 · Contrato y datos · Válvula">
+<h1>Contrato y datos</h1>
+<p class="q">¿Qué se le pide al sistema y qué guarda?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>Los endpoints del flujo principal</h3><p>Dos o tres bastan. Lo demás sale al profundizar.</p></div>
+<div class="card"><span class="n">2</span><h3>Una clave en cada escritura que cobra o crea</h3><p>Para que un reintento no la repita.</p></div>
+<div class="card"><span class="n">3</span><h3>Cada tabla con su llave</h3><p>Y la consulta que esa llave sirve.</p></div>
+</div>
+<div class="note">Termina cuando cada tabla tiene llave y cada llave tiene una razón.</div>
+</div>
+<div class="pie"><b>3</b>El contrato dice dónde puede repetirse algo; ahí va la clave de idempotencia.</div>
+</section>
+
+<section data-f="3" data-kind="caso" data-tag="Fase 3 · Contrato y datos · Válvula">
+<h1>El contrato de la venta</h1>
+<p class="q">¿Qué endpoints necesita el flujo de compra?</p>
+<div class="body">
+<table class="t">
+<tr><td><code>GET /consola</code></td><td>La página y «quedan N»</td><td class="tb"><b>desde caché</b></td></tr>
+<tr><td><code>POST /turnos</code></td><td>Tu lugar en la fila virtual</td><td></td></tr>
+<tr><td><code>POST /apartados</code></td><td>201 apartado · 409 se agotaron</td><td class="ta"><b>Idempotency-Key</b></td></tr>
+<tr><td><code>POST /apartados/{id}/pago</code></td><td>202 cobrando</td><td class="ta"><b>Idempotency-Key</b></td></tr>
+<tr><td><code>POST /webhooks/pagos</code></td><td>El aviso del procesador</td><td class="tv"><b>puede repetirse</b></td></tr>
+</table>
+<div class="note">Tablas: <code>inventario</code> (producto) · <code>apartados</code> (id; una por cuenta) · <code>outbox</code> (id_mensaje)</div>
+</div>
+<div class="pie"><b>3</b>Las dos escrituras que cobran o crean llevan clave.</div>
+</section>
+
+<section data-f="4" data-tag="Fase 4 · Alto nivel">
+<h1>Diseño de alto nivel</h1>
+<p class="q">¿Cómo viaja una petición de punta a punta?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>Dibuja las cajas</h3><p>Y di en una frase el trabajo de cada una.</p></div>
+<div class="arrow">›</div>
+<div class="card"><span class="n">2</span><h3>Traza dos flujos</h3><p>Primero el que más tráfico lleva; luego el otro.</p></div>
+<div class="arrow">›</div>
+<div class="card"><span class="n">3</span><h3>Marca la caja difícil</h3><p>«A esta regreso después». Es tu propuesta para profundizar.</p></div>
+</div>
+<div class="note">Termina cuando la lectura y la escritura llegan a su almacén y regresan.</div>
+</div>
+<div class="pie"><b>4</b>Empieza simple: la complejidad se agrega al profundizar, no antes.</div>
+</section>
+
+<section data-f="4" data-kind="caso" data-tag="Fase 4 · Alto nivel" data-arq="dimw">
+<h1>La ruta de lectura</h1>
+<p class="q">¿Cómo ven 2 millones de personas la página sin tocar la base?</p>
+<div class="body"><div class="arq"></div></div>
+<div class="pie"><b>4</b>La lectura elige disponibilidad: siempre contesta, aunque vaya 2 segundos atrás.</div>
+</section>
+
+<section data-f="4" data-kind="caso" data-tag="Fase 4 · Alto nivel" data-arq="dim">
+<h1>La ruta de escritura</h1>
+<p class="q">¿Por dónde pasa una compra hasta llegar al almacén?</p>
+<div class="body"><div class="arq"></div></div>
+<div class="pie"><b>4</b>La escritura elige consistencia: una sola verdad, aunque haya que esperar.</div>
+</section>
+
+<section data-f="5" data-tag="Fase 5 · Profundizar">
+<h1>Profundizar</h1>
+<p class="q">¿Qué forma tiene una buena profundización?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>El problema</h3><p>En una frase, con un número.</p></div>
+<div class="card"><span class="n">2</span><h3>Lo obvio</h3><p>Y dónde truena.</p></div>
+<div class="card cg"><span class="n" style="background:var(--green)">3</span><h3>Lo mejor</h3><p>Con detalle para construirlo.</p></div>
+<div class="card ca"><span class="n" style="background:var(--amber)">4</span><h3>Lo que cuesta</h3><p>Qué cediste a cambio.</p></div>
+<div class="card"><span class="n">5</span><h3>Cómo lo sabes</h3><p>La métrica que lo muestra.</p></div>
+</div>
+<div class="note">Termina cuando dijiste qué cediste para que lo difícil funcione.</div>
+</div>
+<div class="pie"><b>5</b>Mostrar lo obvio y por qué lo descartaste vale más que saltárselo.</div>
+</section>
+
+<section data-f="5" data-tag="Fase 5 · Profundizar">
+<h1>Tres niveles de profundidad</h1>
+<p class="q">¿Qué tanto sabes de la caja que dibujaste?</p>
+<div class="body">
+<div class="row">
+<div class="card"><p class="lab tm">Nivel 1 · existe</p><p class="mid" style="color:var(--ink)">«Ponemos una caché para el contador.»</p></div>
+<div class="card cb"><p class="lab">Nivel 2 · la configuras</p><p class="mid" style="color:var(--ink)">«Caduca en 2 segundos. Un proceso lee el inventario una vez por segundo y publica el número.»</p></div>
+<div class="card cg"><p class="lab">Nivel 3 · cómo falla</p><p class="mid" style="color:var(--ink)">«Si la caché se reinicia a las 00:01, la página no cae sobre la base: solo ese proceso la lee.»</p></div>
+</div>
+</div>
+<div class="pie"><b>5</b>Profundizar es contestar la siguiente pregunta antes de que te la hagan.</div>
+</section>
+
+<section data-f="5" data-kind="caso" data-tag="Fase 5 · Apartar">
+<h1>Lo obvio: leer y luego restar</h1>
+<p class="q">¿Qué pasa si dos personas llegan juntas por la última consola?</p>
+<div class="body">
+<table class="t">
+<tr><th>Momento</th><th>Persona A</th><th>Persona B</th></tr>
+<tr><td>1</td><td>lee: queda 1</td><td></td></tr>
+<tr><td>2</td><td></td><td>lee: queda 1</td></tr>
+<tr><td>3</td><td>escribe 0 y aparta</td><td></td></tr>
+<tr><td>4</td><td></td><td class="tr"><b>escribe 0 y aparta ✗</b></td></tr>
+</table>
+<div class="note">Es la carrera de la S03</div>
+</div>
+<div class="pie"><b>5</b>Leer y escribir son dos pasos, y entre los dos cabe otra persona.</div>
+</section>
+
+<section data-f="5" data-kind="caso" data-tag="Fase 5 · Apartar">
+<h1>Restar con condición</h1>
+<p class="q">¿Cómo resto uno sin vender la 10,001?</p>
+<div class="body">
+<div class="row" style="align-items:center">
+<pre style="flex:1.7">BEGIN;
+UPDATE inventario
+   SET disponibles = disponibles - 1
+ WHERE producto = 'consola' AND disponibles > 0;
+-- 0 filas: ROLLBACK y responder «se agotaron»
+-- 1 fila: guardar el apartado
+INSERT INTO apartados (id, cuenta, estado, vence_en)
+VALUES (:id, :cuenta, 'apartado',
+        now() + interval '10 minutes');
+COMMIT;</pre>
+<div style="display:flex;flex-direction:column;gap:18px">
+<div class="card cg"><h3>✓ 1 fila</h3><p>Apartaste, con hora de vencimiento.</p></div>
+<div class="card cr"><h3>✗ 0 filas</h3><p>Se agotaron. Nadie bajó de cero.</p></div>
+</div>
+</div>
+</div>
+<div class="pie"><b>5</b>Revisar y restar en un solo paso: la base de datos hace de árbitro.</div>
+</section>
+
+<section data-f="5" data-kind="caso" data-tag="Fase 5 · Apartar">
+<h1>La fila virtual</h1>
+<p class="q">¿Qué le pasa a una fila de la base si 2 millones la quieren a la vez?</p>
+<div class="body">
+<div class="row">
+<div class="card cr fr"><p class="lab">Llegan</p><div class="big tr" style="font-size:64px">2,000,000</div><p style="color:var(--ink);margin-top:10px">todos por la misma fila del inventario</p></div>
+<div class="arrow">›</div>
+<div class="card cv fv"><p class="lab">Fila virtual</p><h3>Turno por orden de llegada</h3><p style="color:var(--ink)">Deja pasar por lotes, con un pase firmado que vence.</p></div>
+<div class="arrow">›</div>
+<div class="card cg fg"><p class="lab">Inventario</p><h3>Al ritmo que aguanta</h3><p style="color:var(--ink)">La resta con condición ya no se forma detrás de millones.</p></div>
+</div>
+<div class="note">Si hace falta abrir más la llave: 10 cubetas de 1,000 consolas (sharding, S07)</div>
+</div>
+<div class="pie"><b>5</b>No es un problema de escala, es de contención: se controla la entrada.</div>
+</section>
+
+<section data-f="5" data-kind="caso" data-tag="Fase 5 · Pagar">
+<h1>La compra es una saga</h1>
+<p class="q">¿Qué hago cuando falla un paso que vive en otro sistema?</p>
+<div class="body">
+<div class="row">
+<div class="card"><span class="n">1</span><h3>Apartar</h3><p class="tm">Si falla:</p><p style="color:var(--ink)">nada que deshacer.</p></div>
+<div class="arrow">›</div>
+<div class="card ca"><span class="n" style="background:var(--amber)">2</span><h3>Cobrar</h3><p class="tm">Si falla:</p><p style="color:var(--ink)"><b>se compensa</b>: la consola regresa a la venta.</p></div>
+<div class="arrow">›</div>
+<div class="card cg"><span class="n" style="background:var(--green)">3</span><h3>Confirmar y avisar</h3><p class="tm">Si falla:</p><p style="color:var(--ink)"><b>se reintenta</b>: ya cobraste, la consola no se libera.</p></div>
+</div>
+<div class="note">Saga orquestada: el servicio de compra sabe en qué paso va cada una · S08</div>
+</div>
+<div class="pie"><b>5</b>Unas fallas se compensan y otras se reintentan; decir cuál es el diseño.</div>
+</section>
+
+<section data-f="5" data-kind="caso" data-tag="Fase 5 · Pagar">
+<h1>La clave de idempotencia</h1>
+<p class="q">¿Qué pasa si el cliente le pica dos veces a «pagar»?</p>
+<div class="body">
+<div class="row" style="align-items:center">
+<div style="display:flex;flex-direction:column;gap:18px">
+<div class="card cv fv"><p class="mid" style="color:var(--ink)"><code>pagar · clave K-81</code></p></div>
+<div class="card cv fv" style="border-style:dashed"><p class="mid" style="color:var(--ink)"><code>pagar · clave K-81</code> &nbsp;(segundo clic)</p></div>
+</div>
+<div class="arrow">›</div>
+<div class="card"><p class="lab">Servidor y procesador</p><p class="mid" style="color:var(--ink)">Guardan <code>clave → resultado</code>.</p><p class="mid tg"><b>✓ La misma clave devuelve el mismo resultado: un solo cobro.</b></p></div>
+</div>
+<div class="note">Hacia el procesador: timeout de 5 s, reintento con la misma clave y circuit breaker · S03 y S08</div>
+</div>
+<div class="pie"><b>5</b>Reintentar con la misma clave es seguro; sin clave puede cobrar doble.</div>
+</section>
+
+<section data-f="5" data-kind="caso" data-tag="Fase 5 · Avisar">
+<h1>Outbox</h1>
+<p class="q">Se cayó el broker justo después de pagar. ¿Se perdió la orden?</p>
+<div class="body">
+<div class="row" style="align-items:center">
+<pre style="flex:1.5">BEGIN;
+UPDATE compras SET estado = 'pagada'
+ WHERE id = :id
+   AND estado IN ('cobrando', 'en duda');
+INSERT INTO outbox (id_mensaje, tipo, datos)
+VALUES (:id_mensaje, 'compra_pagada', :datos);
+COMMIT;</pre>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div class="card cv"><h3>Relé</h3><p>Lee el outbox y publica cuando el broker vuelve.</p></div>
+<div class="card cg"><h3>Almacén y correo</h3><p>Idempotentes: el repetido no hace nada. Lo que falla mucho va a la DLQ.</p></div>
+</div>
+</div>
+</div>
+<div class="pie"><b>5</b>La compra y su mensaje se guardan juntos: o quedan los dos o ninguno.</div>
+</section>
+
+<section data-f="6" data-tag="Fase 6 · Cuellos y cierre">
+<h1>Cuellos y cierre</h1>
+<p class="q">¿Qué le dices de tu propio diseño a quien lo va a operar?</p>
+<div class="body">
+<div class="grid2">
+<div class="card"><h3>¿Qué truena primero con 10 veces más?</h3><p>Y por qué esa pieza y no otra.</p></div>
+<div class="card"><h3>¿Qué pasa si se cae cada caja?</h3><p>Qué ve el usuario mientras tanto.</p></div>
+<div class="card"><h3>¿Qué métrica lo muestra?</h3><p>Una por parte difícil, con su umbral.</p></div>
+<div class="card ca"><h3>¿Qué dejé atrás?</h3><p>Lo que pagué para que funcione.</p></div>
+</div>
+</div>
+<div class="pie"><b>6</b>Nombrar los límites de tu diseño suena a experiencia; decir que no tiene, a lo contrario.</div>
+</section>
+
+<section data-f="6" data-kind="caso" data-tag="Fase 6 · Cuellos y cierre">
+<h1>Lo que pagué y lo que vigilo</h1>
+<p class="q">¿Cómo me entero a las 00:03 de que algo anda mal?</p>
+<div class="body">
+<div class="row">
+<div class="card ca"><p class="lab">Lo que dejé atrás</p><ul class="l"><li>El contador miente unos segundos</li><li>La fila es justa, pero lenta</li><li>Muchas piezas que cuidar</li></ul></div>
+<div class="card cb"><p class="lab">Lo que vigilo</p><ul class="l"><li>Cobros con timeout: más de 5 % en un minuto</li><li>Compras «en duda»: cualquier número que crece</li><li>Rezago del outbox y mensajes en la DLQ</li></ul></div>
+</div>
+<div class="note">¿Y un monolito con una sola base? Para 10,000 consolas probablemente basta; la saga y el outbox siguen.</div>
+</div>
+<div class="pie"><b>6</b>Se alarma sobre lo que siente el cliente, no sobre el CPU de un servidor.</div>
+</section>
+
+<section data-kind="giro" data-tag="El giro">
+<h1>El giro</h1>
+<p class="q">Cambia un requisito a la mitad. ¿Qué hago con mi diagrama?</p>
+<div class="body">
+<div class="row">
+<div class="card cr"><span class="n" style="background:var(--red)">1</span><h3>¿Qué se rompe?</h3><p>El renglón de «no se puede romper» que queda en riesgo.</p></div>
+<div class="arrow">›</div>
+<div class="card"><span class="n">2</span><h3>¿Qué caja se mueve?</h3><p>Una o dos. Las demás se quedan como están.</p></div>
+<div class="arrow">›</div>
+<div class="card ca"><span class="n" style="background:var(--amber)">3</span><h3>¿Qué cuesta?</h3><p>Lo que sacrificas con el cambio.</p></div>
+</div>
+<div class="note">Si te preguntan lo mismo dos veces, no es curiosidad: hay un hueco en el diseño.</div>
+</div>
+<div class="pie" ><b style="background:var(--redf);color:var(--red)">!</b>En un giro no se borra el diagrama: se dice qué caja se mueve.</div>
+</section>
+
+<section data-kind="giro" data-tag="El giro · MercaRayo">
+<h1>00:03: el procesador no contesta</h1>
+<p class="q">El 30 % de los cobros vence a los 5 segundos. ¿Cobraste o no?</p>
+<div class="body">
+<div class="row">
+<div class="card cr fr"><p class="lab">Lo que tienta</p><h3>«No cobró»</h3><p style="color:var(--ink)">Libero la consola. Si el cobro sí pasó, vendí la misma dos veces.</p></div>
+<div class="card cg fg"><p class="lab">Lo correcto</p><h3>Estado «en duda»</h3><p style="color:var(--ink)">No se libera ni se cobra otra vez a ciegas. Se consulta con la misma clave y al final del día se concilia.</p></div>
+</div>
+<div class="note">Es el dilema del timeout de la S03</div>
+</div>
+<div class="pie"><b style="background:var(--redf);color:var(--red)">!</b>Un timeout no dice «no cobró»; dice «no sé».</div>
+</section>
+
+<section data-kind="giro" data-tag="El giro · MercaRayo">
+<h1>Estados que solo avanzan</h1>
+<p class="q">Llega «pagado» y después «falló» del mismo cobro. ¿Qué hago?</p>
+<div class="body">
+<svg viewBox="0 0 1472 300" style="width:100%;height:300px">
+<defs><marker id="ar" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#202b33"/></marker></defs>
+<g font-size="30" font-weight="700" text-anchor="middle">
+<rect class="bx" x="20" y="50" width="230" height="70" rx="12"/><text x="135" y="95">apartado</text>
+<rect class="bx" x="390" y="50" width="230" height="70" rx="12"/><text x="505" y="95">cobrando</text>
+<rect x="760" y="50" width="230" height="70" rx="12" fill="#f8e7bf" stroke="#986008" stroke-width="2.5"/><text x="875" y="95" style="fill:#986008">en duda</text>
+<rect x="1200" y="50" width="250" height="70" rx="12" fill="#e3f1e8" stroke="#217448" stroke-width="2.5"/><text x="1325" y="95" style="fill:#217448">pagada ✓</text>
+<rect x="390" y="210" width="230" height="70" rx="12" fill="#fff" stroke="#59666c" stroke-width="2.5" stroke-dasharray="8 6"/><text x="505" y="255" style="fill:#59666c">vencido</text>
+<rect x="1200" y="210" width="250" height="70" rx="12" fill="#fceceb" stroke="#bc3433" stroke-width="2.5"/><text x="1325" y="255" style="fill:#bc3433">falló ✗</text>
+</g>
+<g stroke="#202b33" stroke-width="3" fill="none" marker-end="url(#ar)">
+<path d="M250,85 H384"/><path d="M620,85 H754"/><path d="M990,85 H1194"/>
+<path d="M505,50 C505,-10 1325,-10 1325,44"/>
+<path d="M135,120 V245 H384"/>
+<path d="M875,120 V245 H1194"/>
+</g>
+<text x="1040" y="232" font-size="22" text-anchor="middle" style="fill:#59666c">tras consultar o conciliar</text>
+</svg>
+<div class="note"><code>UPDATE compras SET estado = 'pagada' WHERE id = :id AND estado IN ('cobrando', 'en duda')</code></div>
+</div>
+<div class="pie"><b style="background:var(--redf);color:var(--red)">!</b>Un aviso tardío o repetido no encuentra fila que cambiar.</div>
+</section>
+
+<section data-kind="giro" data-tag="El giro · MercaRayo">
+<h1>Solo se movieron tres piezas</h1>
+<p class="q">¿Qué cambió en el diagrama y qué se quedó igual?</p>
+<div class="body">
+<div class="row">
+<div class="card ca"><h3>Estado «en duda»</h3><p>Nuevo. Mientras dure, el apartado no vence.</p></div>
+<div class="card cr"><h3>Breaker abierto, fila en pausa</h3><p>No tiene caso dejar pasar a quien no va a poder pagar. Eso es contrapresión (S09).</p></div>
+<div class="card cv"><h3>Webhooks idempotentes</h3><p>Por id de cobro: el repetido no hace nada y el desordenado se ignora (S10).</p></div>
+</div>
+<div class="note">Caché, inventario, saga y outbox se quedaron como estaban.</div>
+</div>
+<div class="pie"><b style="background:var(--redf);color:var(--red)">!</b>Qué se rompe, qué caja se mueve y qué cuesta: eso es absorber un giro.</div>
+</section>
+
+<section data-tag="Cómo se dice · Válvula">
+<h1>Débil contra fuerte</h1>
+<p class="q">¿Qué le falta a una respuesta que solo nombra una tecnología?</p>
+<div class="body">
+<table class="t">
+<tr><th>Débil</th><th>Fuerte</th></tr>
+<tr><td class="tm">«Usamos Kafka.»</td><td>«Una cola para el almacén y el correo: pueden tardar minutos, pero no perderse.»</td></tr>
+<tr><td class="tm">«Tiene que ser rápido.»</td><td>«La página responde en menos de medio segundo porque sale de caché.»</td></tr>
+<tr><td class="tm">«Le ponemos caché.»</td><td>«Caché de 2 segundos solo para el contador; la compra nunca pasa por caché.»</td></tr>
+<tr><td class="tm">«Si hay timeout, no cobró.»</td><td>«No sé si cobró: queda en duda y consulto con la misma clave.»</td></tr>
+</table>
+</div>
+<div class="pie"><b>→</b>La respuesta fuerte agrega la razón, el número o la falla que resuelve.</div>
+</section>
+
+<section data-tag="Cómo se califica">
+<h1>La rúbrica</h1>
+<p class="q">¿Qué se anota mientras hablas? Cinco renglones, de 0 a 2 puntos cada uno.</p>
+<div class="body">
+<table class="t">
+<tr><th>Renglón</th><th>Para sacar 2</th></tr>
+<tr><td><b>Navegación</b></td><td>Pregunta, fija los requisitos y un orden de magnitud antes de diseñar</td></tr>
+<tr><td><b>Diseño</b></td><td>Componentes y flujo que cumplen los requisitos duros</td></tr>
+<tr><td><b>Corrección distribuida</b></td><td>El mecanismo del curso y qué pasa cuando falla</td></tr>
+<tr><td><b>Comunicación</b></td><td>Claro y breve, con un trade-off y su costo</td></tr>
+<tr><td><b>Adaptación al cambio</b></td><td>Dice qué parte se mueve y qué sacrifica</td></tr>
+</table>
+</div>
+<div class="pie"><b>→</b>Es la misma rúbrica de la entrevista del sábado 21.</div>
+</section>
+
+<section data-kind="turno" data-tag="Su turno">
+<h1>La puerta del estadio</h1>
+<p class="q">Concierto con 65,000 asistentes, 120 lectores de QR en 12 puertas y el wifi saturado.</p>
+<div class="body">
+<div class="grid3">
+<div class="card"><span class="n">1</span><p>Cada lector valida un boleto en menos de 0.3 s, aunque no tenga red.</p></div>
+<div class="card"><span class="n">2</span><p>Un boleto no entra dos veces, ni por dos puertas distintas.</p></div>
+<div class="card"><span class="n">3</span><p>Un lector que pierde la red 10 minutos sincroniza al volver sin perder entradas.</p></div>
+<div class="card"><span class="n">4</span><p>Un QR inventado se rechaza sin consultar al servidor.</p></div>
+<div class="card"><span class="n">5</span><p>Al día siguiente se entrega la lista exacta: quién entró, por qué puerta y a qué hora.</p></div>
+<div class="card cg fg"><h3>30 minutos por equipo</h3><p style="color:var(--ink)">Yo soy el cliente: lo que no pregunten, no lo digo.</p></div>
+</div>
+</div>
+<div class="pie"><b style="background:var(--greenf);color:var(--green)">→</b>El mismo método, otro sistema. A la mitad les llega un giro.</div>
+</section>
+
+<section data-kind="turno" data-tag="Su turno">
+<h1>Su ficha, en 30 minutos</h1>
+<p class="q">¿Qué queda escrito en el tablero de cada sala? La fase 3 no se pide.</p>
+<div class="body">
+<div class="grid3">
+<div class="card"><span class="n">1</span><h3>Aclarar · 5 min</h3><p>Lo que hace, lo que no se rompe y lo que queda fuera.</p></div>
+<div class="card"><span class="n">2</span><h3>Estimar · 2 min</h3><p>Un número y su «por eso hago X».</p></div>
+<div class="card"><span class="n">4</span><h3>Alto nivel · 8 min</h3><p>Cajas y dos flujos trazados.</p></div>
+<div class="card"><span class="n">5</span><h3>Profundizar · 10 min</h3><p>La parte difícil: lo obvio, lo mejor y lo que cuesta.</p></div>
+<div class="card"><span class="n">6</span><h3>Cierre · 2 min</h3><p>Qué truena primero y qué dejaron atrás.</p></div>
+<div class="card cr"><span class="n" style="background:var(--red)">!</span><h3>Giro · 3 min</h3><p>Qué se rompe, qué caja se mueve y qué cuesta.</p></div>
+</div>
+</div>
+<div class="pie"><b style="background:var(--greenf);color:var(--green)">→</b>Exponen en 3 minutos: el requisito que más pesó, el diagrama y un trade-off.</div>
+</section>
+
+<section data-tag="El sábado 21">
+<h1>Una respuesta de un minuto</h1>
+<p class="q">¿Cómo cabe el método en cinco minutos y cuatro preguntas?</p>
+<div class="body">
+<div class="row">
+<div class="card cb"><p class="lab">Decisión</p><p class="mid" style="color:var(--ink)">«Uso una clave de idempotencia.»</p></div>
+<div class="arrow">›</div>
+<div class="card cg"><p class="lab">Mecanismo</p><p class="mid" style="color:var(--ink)">«El servidor guarda el resultado por clave y lo devuelve en el reintento.»</p></div>
+<div class="arrow">›</div>
+<div class="card ca"><p class="lab">Costo</p><p class="mid" style="color:var(--ink)">«Hay que guardar las claves y decidir cuándo borrarlas.»</p></div>
+</div>
+<div class="note">Y cuando llegue el cambio: qué se rompe, qué se mueve y qué cuesta.</div>
+</div>
+<div class="pie"><b>→</b>No hace falta saber Kafka a fondo: hace falta saber qué pasa cuando algo falla.</div>
+</section>
+
+<nav aria-label="Controles"><button id="prev">←</button><button id="next">→</button><button id="print">PDF</button></nav>
+</div>
+
+<template id="arq">
+<svg viewBox="0 0 1472 430" style="width:100%;height:430px">
+<defs>
+<marker id="mb" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#165bb5"/></marker>
+<marker id="ma" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#986008"/></marker>
+<marker id="mv" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#7546b3"/></marker>
+</defs>
+<g font-size="26" font-weight="700" text-anchor="middle">
+<rect class="bx" x="10" y="20" width="200" height="64" rx="12"/><text x="110" y="61">Usuarios</text>
+<g class="rd">
+<rect x="330" y="20" width="250" height="64" rx="12" fill="#e8eff9" stroke="#165bb5" stroke-width="2.5"/><text x="455" y="61" style="fill:#165bb5">CDN y caché</text>
+<rect x="700" y="20" width="360" height="64" rx="12" fill="#e8eff9" stroke="#165bb5" stroke-width="2.5"/><text x="880" y="61" style="fill:#165bb5">Página y «quedan N»</text>
+<g stroke="#165bb5" stroke-width="3" fill="none" marker-end="url(#mb)"><path d="M210,52 H324"/><path d="M580,52 H694"/></g>
+<text x="1270" y="48" font-size="22" style="fill:#165bb5">LECTURA</text>
+<text x="1270" y="76" font-size="22" font-weight="400" style="fill:#165bb5">puede ir 2 s atrás</text>
+</g>
+<g class="wr">
+<rect x="10" y="180" width="200" height="64" rx="12" fill="#eee7f7" stroke="#7546b3" stroke-width="2.5"/><text x="110" y="221" style="fill:#7546b3">Fila virtual</text>
+<rect class="bx" x="330" y="180" width="250" height="64" rx="12"/><text x="455" y="221">Servicio de compra</text>
+<rect x="700" y="140" width="360" height="64" rx="12" fill="#f8e7bf" stroke="#986008" stroke-width="2.5"/><text x="880" y="181" style="fill:#986008">Inventario ★</text>
+<rect x="700" y="226" width="360" height="64" rx="12" fill="#fff" stroke="#986008" stroke-width="2.5" stroke-dasharray="8 6"/><text x="880" y="267" style="fill:#986008">Procesador de pagos ★</text>
+<rect x="300" y="346" width="310" height="64" rx="12" fill="#f8e7bf" stroke="#986008" stroke-width="2.5"/><text x="455" y="387" style="fill:#986008">Compras + outbox ★</text>
+<rect x="700" y="346" width="160" height="64" rx="12" fill="#eee7f7" stroke="#7546b3" stroke-width="2.5"/><text x="780" y="387" style="fill:#7546b3">Cola</text>
+<rect class="bx" x="960" y="330" width="170" height="44" rx="10"/><text x="1045" y="361" font-size="24">Almacén</text>
+<rect class="bx" x="960" y="386" width="170" height="44" rx="10"/><text x="1045" y="417" font-size="24">Correo</text>
+<g stroke="#986008" stroke-width="3" fill="none" marker-end="url(#ma)"><path d="M110,84 V174"/><path d="M210,212 H324"/><path d="M580,200 H640 V172 H694"/><path d="M580,224 H640 V258 H694"/><path d="M455,244 V340"/></g>
+<g stroke="#7546b3" stroke-width="3" fill="none" marker-end="url(#mv)"><path d="M610,378 H694"/><path d="M860,366 H954 V352" marker-end="none"/><path d="M860,378 H910 V352 H954"/><path d="M860,390 H910 V408 H954"/></g>
+<text x="1270" y="188" font-size="22" style="fill:#986008">ESCRITURA</text>
+<text x="1270" y="216" font-size="22" font-weight="400" style="fill:#986008">una sola verdad</text>
+<text x="1270" y="262" font-size="22" font-weight="400" style="fill:#59666c">★ lo difícil: fase 5</text>
+</g>
+</g>
+</svg>
+</template>
+
+<script>
+const slides=[...document.querySelectorAll('section')];let current=0;
+slides.forEach((s,i)=>{
+  const f=+s.dataset.f||0,k=s.dataset.kind||'metodo';
+  if(!s.hasAttribute('data-bare')){
+    const kinds={metodo:['MÉTODO',''],caso:['CASO · MERCARAYO','caso'],giro:['GIRO','giro'],turno:['SU TURNO','turno'],obs:['OBSERVABILIDAD','obs']};
+    let dots='';if(f){dots='<div class="dots">'+[1,2,3,4,5,6].map(n=>'<i class="'+(n===f?'on':n<f?'done':'')+'">'+n+'</i>').join('')+'</div>'}
+    const top=document.createElement('div');top.className='top';
+    top.innerHTML='<div class="tag">'+String(i).padStart(2,'0')+' / '+s.dataset.tag+'</div><div class="right">'+dots+'<span class="kind '+kinds[k][1]+'">'+kinds[k][0]+'</span></div>';
+    s.prepend(top);
+    const fi=document.createElement('div');fi.className='firma';fi.textContent='SISTEMAS DISTRIBUIDOS · FI-UNAM';s.append(fi);
+  }
+  const a=s.querySelector('.arq');if(a){const c=document.createElement('div');c.innerHTML=document.getElementById('arq').innerHTML.replace(/(mb|ma|mv)\b/g,'$1'+i);a.append(c.firstElementChild);a.querySelector('svg').classList.add(s.dataset.arq)}
+});
+function resize(){document.documentElement.style.setProperty('--scale',Math.min(innerWidth/1600,innerHeight/900))}
+function show(n){current=Math.max(0,Math.min(slides.length-1,n));slides.forEach((s,i)=>s.classList.toggle('active',i===current));history.replaceState(null,'','#'+current)}
+document.querySelector('#prev').onclick=()=>show(current-1);document.querySelector('#next').onclick=()=>show(current+1);document.querySelector('#print').onclick=()=>window.print();
+document.addEventListener('keydown',e=>{if(['ArrowRight',' ','PageDown'].includes(e.key)){e.preventDefault();show(current+1)}if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();show(current-1)}if(e.key==='Home')show(0);if(e.key==='End')show(slides.length-1)});
+window.addEventListener('resize',resize);window.addEventListener('hashchange',()=>show(Number(location.hash.slice(1))||0));resize();show(Number(location.hash.slice(1))||0);
+if(location.search.includes('check')){const r=[];slides.forEach((s,i)=>{s.classList.add('active');const b=s.querySelector('.body'),p=s.querySelector('.pie');if(b&&b.scrollHeight>b.clientHeight+1)r.push(i+':body+'+(b.scrollHeight-b.clientHeight));if(p&&p.scrollWidth>p.clientWidth+1)r.push(i+':pie+'+(p.scrollWidth-p.clientWidth));if(s.scrollHeight>901)r.push(i+':sec+'+(s.scrollHeight-900));s.querySelectorAll('.card,td,pre,.note').forEach(e=>{if(e.scrollWidth>e.clientWidth+2)r.push(i+':ancho '+e.className)});if(i!==current)s.classList.remove('active')});document.title='CHECK '+(r.join(' | ')||'OK')+' N='+slides.length}
+</script></html>
