@@ -1,0 +1,124 @@
+{
+  "transferencia": {
+    "hora": "2026-10-20T16:29:00.852687-06:00",
+    "codigo": 201,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:28:59 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 6,
+      "claveOrigen": "002180000000000003",
+      "claveDestino": "002180000000000004",
+      "monto": 1,
+      "fecha": "2026-10-20T22:29:00.756878576Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 99.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-20T22:29:00.838551411Z"
+    },
+    "segundos": 0.127
+  },
+  "evento_republicado": {
+    "eventoId": "915682fe-f098-31ba-bf4a-b090dc55d88b",
+    "tipo": "TransferenciaRealizada",
+    "transferenciaId": 6,
+    "clabeOrigen": "002180000000000003",
+    "clabeDestino": "002180000000000004",
+    "monto": 1,
+    "saldoOrigen": 99.0,
+    "saldoDestino": 101.0,
+    "fecha": "2026-10-20T22:29:00.838551411Z"
+  },
+  "primera": {
+    "hora": "2026-10-20T16:29:00.871755-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 7,
+        "clabeCuenta": "002180000000000003",
+        "mensaje": "Transferencia 6 enviada por 1; saldo 99.00",
+        "fecha": "2026-10-20T22:29:00.847695Z"
+      }
+    ],
+    "segundos": 0.019
+  },
+  "publicacion": {
+    "hora": "2026-10-20T16:29:00.959889-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "POST, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "15",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "routed": true
+    },
+    "segundos": 0.076
+  },
+  "final_origen": {
+    "hora": "2026-10-20T16:29:00.976612-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 9,
+        "clabeCuenta": "002180000000000003",
+        "mensaje": "Transferencia 6 enviada por 1; saldo 99.0",
+        "fecha": "2026-10-20T22:29:00.954871Z"
+      },
+      {
+        "id": 7,
+        "clabeCuenta": "002180000000000003",
+        "mensaje": "Transferencia 6 enviada por 1; saldo 99.00",
+        "fecha": "2026-10-20T22:29:00.847695Z"
+      }
+    ],
+    "segundos": 0.017
+  },
+  "final_destino": {
+    "hora": "2026-10-20T16:29:00.988654-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 10,
+        "clabeCuenta": "002180000000000004",
+        "mensaje": "Transferencia 6 recibida por 1; saldo 101.0",
+        "fecha": "2026-10-20T22:29:00.957690Z"
+      },
+      {
+        "id": 8,
+        "clabeCuenta": "002180000000000004",
+        "mensaje": "Transferencia 6 recibida por 1; saldo 101.00",
+        "fecha": "2026-10-20T22:29:00.851168Z"
+      }
+    ],
+    "segundos": 0.012
+  }
+}

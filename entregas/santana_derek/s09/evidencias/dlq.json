@@ -1,0 +1,210 @@
+{
+  "publicacion": {
+    "hora": "2026-10-20T16:30:48.333924-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "POST, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "15",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:30:48 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "routed": true
+    },
+    "segundos": 0.017
+  },
+  "dlq": {
+    "hora": "2026-10-20T16:30:55.422632-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "1187",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:30:55 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "consumer_details": [],
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 0,
+      "consumer_utilisation": 0,
+      "consumers": 0,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 22
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-10-20T22:30:51.010+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 6152,
+      "message_bytes": 8,
+      "message_bytes_persistent": 8,
+      "message_bytes_ram": 8,
+      "message_bytes_ready": 8,
+      "message_bytes_unacknowledged": 0,
+      "messages": 1,
+      "messages_details": {
+        "rate": 0.2
+      },
+      "messages_persistent": 1,
+      "messages_ram": 1,
+      "messages_ready": 1,
+      "messages_ready_details": {
+        "rate": 0.2
+      },
+      "messages_ready_ram": 1,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias.dlq",
+      "node": "rabbit@f300b9a76267",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 12317,
+      "reductions_details": {
+        "rate": 339.6
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    },
+    "segundos": 0.007
+  },
+  "mensaje": {
+    "hora": "2026-10-20T16:30:55.432444-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "POST, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "689",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:30:55 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": [
+      {
+        "payload_bytes": 8,
+        "redelivered": false,
+        "exchange": "transferencias.dlx",
+        "routing_key": "notificacion.transferencias",
+        "message_count": 0,
+        "properties": {
+          "delivery_mode": 2,
+          "headers": {
+            "x-death": [
+              {
+                "count": 1,
+                "exchange": "transferencias",
+                "queue": "notificacion.transferencias",
+                "reason": "rejected",
+                "routing-keys": [
+                  "transferencia.realizada"
+                ],
+                "time": 1792535448
+              }
+            ],
+            "x-first-death-exchange": "transferencias",
+            "x-first-death-queue": "notificacion.transferencias",
+            "x-first-death-reason": "rejected",
+            "x-last-death-exchange": "transferencias",
+            "x-last-death-queue": "notificacion.transferencias",
+            "x-last-death-reason": "rejected"
+          },
+          "content_type": "application/json"
+        },
+        "payload": "{\"hola\":",
+        "payload_encoding": "string"
+      }
+    ],
+    "segundos": 0.01
+  },
+  "transferencia_normal": {
+    "hora": "2026-10-20T16:30:55.580832-06:00",
+    "codigo": 201,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:30:55 GMT",
+      "connection": "close"
+    },
+    "cuerpo": {
+      "id": 8,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 1,
+      "fecha": "2026-10-20T22:30:55.481429813Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 994.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-10-20T22:30:55.563590270Z"
+    },
+    "segundos": 0.121
+  },
+  "bandeja_normal": {
+    "hora": "2026-10-20T16:30:56.629027-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:30:56 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 13,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 8 enviada por 1; saldo 994.00",
+        "fecha": "2026-10-20T22:30:55.590395Z"
+      },
+      {
+        "id": 5,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 5 enviada por 1; saldo 995.00",
+        "fecha": "2026-10-20T22:28:55.146128Z"
+      },
+      {
+        "id": 3,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 4 enviada por 1; saldo 996.00",
+        "fecha": "2026-10-20T22:28:55.137990Z"
+      },
+      {
+        "id": 1,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 3 enviada por 1; saldo 997.00",
+        "fecha": "2026-10-20T22:28:54.800812Z"
+      }
+    ],
+    "segundos": 0.02
+  }
+}

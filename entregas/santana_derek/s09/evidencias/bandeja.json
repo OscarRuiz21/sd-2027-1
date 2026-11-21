@@ -1,0 +1,204 @@
+{
+  "cola": {
+    "hora": "2026-10-20T16:29:00.321430-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "allow": "HEAD, GET, PUT, DELETE, OPTIONS",
+      "cache-control": "no-cache",
+      "connection": "close",
+      "content-length": "2117",
+      "content-security-policy": "script-src 'self'; object-src 'self'",
+      "content-type": "application/json",
+      "date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "server": "Cowboy",
+      "vary": "accept, accept-encoding, origin"
+    },
+    "cuerpo": {
+      "consumer_details": [
+        {
+          "arguments": {},
+          "channel_details": {
+            "connection_name": "172.25.0.8:37594 -> 172.25.0.3:5672",
+            "name": "172.25.0.8:37594 -> 172.25.0.3:5672 (1)",
+            "node": "rabbit@f300b9a76267",
+            "number": 1,
+            "peer_host": "172.25.0.8",
+            "peer_port": 37594,
+            "user": "mexibanco"
+          },
+          "ack_required": true,
+          "active": true,
+          "activity_status": "up",
+          "consumer_tag": "amq.ctag-b7LlSOiaeMe1G--Lu85lGg",
+          "consumer_timeout": 1800000,
+          "exclusive": false,
+          "prefetch_count": 250,
+          "queue": {
+            "name": "notificacion.transferencias",
+            "vhost": "/"
+          }
+        }
+      ],
+      "arguments": {
+        "x-queue-type": "classic"
+      },
+      "auto_delete": false,
+      "consumer_capacity": 0.8050519712800153,
+      "consumer_utilisation": 0.8050522415351808,
+      "consumers": 1,
+      "deliveries": [],
+      "durable": true,
+      "effective_policy_definition": {},
+      "exclusive": false,
+      "exclusive_consumer_tag": null,
+      "garbage_collection": {
+        "fullsweep_after": 65535,
+        "max_heap_size": 0,
+        "min_bin_vheap_size": 46422,
+        "min_heap_size": 233,
+        "minor_gcs": 6
+      },
+      "head_message_timestamp": null,
+      "idle_since": "2026-10-20T22:28:56.851+00:00",
+      "incoming": [],
+      "internal": false,
+      "internal_owner": false,
+      "memory": 6112,
+      "message_bytes": 0,
+      "message_bytes_persistent": 0,
+      "message_bytes_ram": 0,
+      "message_bytes_ready": 0,
+      "message_bytes_unacknowledged": 0,
+      "message_stats": {
+        "ack": 3,
+        "ack_details": {
+          "rate": 0.0
+        },
+        "deliver": 3,
+        "deliver_details": {
+          "rate": 0.0
+        },
+        "deliver_get": 3,
+        "deliver_get_details": {
+          "rate": 0.0
+        },
+        "deliver_no_ack": 0,
+        "deliver_no_ack_details": {
+          "rate": 0.0
+        },
+        "get": 0,
+        "get_details": {
+          "rate": 0.0
+        },
+        "get_empty": 0,
+        "get_empty_details": {
+          "rate": 0.0
+        },
+        "get_no_ack": 0,
+        "get_no_ack_details": {
+          "rate": 0.0
+        },
+        "publish": 3,
+        "publish_details": {
+          "rate": 0.0
+        },
+        "redeliver": 0,
+        "redeliver_details": {
+          "rate": 0.0
+        }
+      },
+      "messages": 0,
+      "messages_details": {
+        "rate": -0.6
+      },
+      "messages_persistent": 0,
+      "messages_ram": 0,
+      "messages_ready": 0,
+      "messages_ready_details": {
+        "rate": -0.6
+      },
+      "messages_ready_ram": 0,
+      "messages_unacknowledged": 0,
+      "messages_unacknowledged_details": {
+        "rate": 0.0
+      },
+      "messages_unacknowledged_ram": 0,
+      "name": "notificacion.transferencias",
+      "node": "rabbit@f300b9a76267",
+      "operator_policy": null,
+      "policy": null,
+      "reductions": 16849,
+      "reductions_details": {
+        "rate": 659.8
+      },
+      "single_active_consumer_tag": null,
+      "state": "running",
+      "storage_version": 2,
+      "type": "classic",
+      "vhost": "/"
+    },
+    "segundos": 0.004
+  },
+  "origen": {
+    "hora": "2026-10-20T16:29:00.479334-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 5,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 5 enviada por 1; saldo 995.00",
+        "fecha": "2026-10-20T22:28:55.146128Z"
+      },
+      {
+        "id": 3,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 4 enviada por 1; saldo 996.00",
+        "fecha": "2026-10-20T22:28:55.137990Z"
+      },
+      {
+        "id": 1,
+        "clabeCuenta": "002180000000000001",
+        "mensaje": "Transferencia 3 enviada por 1; saldo 997.00",
+        "fecha": "2026-10-20T22:28:54.800812Z"
+      }
+    ],
+    "segundos": 0.158
+  },
+  "destino": {
+    "hora": "2026-10-20T16:29:00.496614-06:00",
+    "codigo": 200,
+    "cabeceras": {
+      "transfer-encoding": "chunked",
+      "Content-Type": "application/json",
+      "Date": "Tue, 20 Oct 2026 22:29:00 GMT",
+      "connection": "close"
+    },
+    "cuerpo": [
+      {
+        "id": 6,
+        "clabeCuenta": "002180000000000002",
+        "mensaje": "Transferencia 5 recibida por 1; saldo 505.00",
+        "fecha": "2026-10-20T22:28:55.150590Z"
+      },
+      {
+        "id": 4,
+        "clabeCuenta": "002180000000000002",
+        "mensaje": "Transferencia 4 recibida por 1; saldo 504.00",
+        "fecha": "2026-10-20T22:28:55.140399Z"
+      },
+      {
+        "id": 2,
+        "clabeCuenta": "002180000000000002",
+        "mensaje": "Transferencia 3 recibida por 1; saldo 503.00",
+        "fecha": "2026-10-20T22:28:55.104523Z"
+      }
+    ],
+    "segundos": 0.017
+  }
+}

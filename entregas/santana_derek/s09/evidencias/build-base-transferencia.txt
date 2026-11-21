@@ -1,0 +1,138 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 670B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 ...
+
+#3 [internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#3 DONE 0.7s
+
+#2 [internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#2 DONE 0.8s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 48B done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 DONE 0.0s
+
+#6 [builder 1/7] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#6 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.1s done
+#6 DONE 0.1s
+
+#7 [stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#7 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.1s done
+#7 DONE 0.1s
+
+#5 [internal] load build context
+#5 transferring context: 89.61kB 0.0s done
+#5 DONE 0.0s
+
+#8 [builder 2/7] WORKDIR /app
+#8 CACHED
+
+#9 [builder 3/7] COPY pom.xml .
+#9 CACHED
+
+#10 [builder 4/7] COPY mvnw .
+#10 CACHED
+
+#11 [builder 5/7] COPY .mvn .mvn
+#11 CACHED
+
+#12 [builder 6/7] COPY src ./src
+#12 DONE 0.3s
+
+#13 [builder 7/7] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw clean package -Dmaven.test.skip=true
+#13 0.986 Picked up JAVA_TOOL_OPTIONS: -Xmx256m -XX:TieredStopAtLevel=1 -XX:+UseSerialGC -XX:ActiveProcessorCount=1
+#13 4.388 [INFO] Scanning for projects...
+#13 5.018 [INFO] 
+#13 5.022 [INFO] ---------------------< mx.mexibanco:transferencia >---------------------
+#13 5.034 [INFO] Building transferencia 0.9.0
+#13 5.034 [INFO]   from pom.xml
+#13 5.034 [INFO] --------------------------------[ jar ]---------------------------------
+#13 7.564 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.3.4/spring-boot-configuration-processor-3.3.4.pom
+#13 8.647 Progress (1): 1.0 kBProgress (1): 1.2 kBProgress (1): 1.9 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.3.4/spring-boot-configuration-processor-3.3.4.pom (1.9 kB at 1.5 kB/s)
+#13 8.726 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.9/spring-retry-2.0.9.pom
+#13 8.894 Progress (1): 822 BProgress (1): 952 BProgress (1): 3.4 kBProgress (1): 7.0 kBProgress (1): 8.8 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.9/spring-retry-2.0.9.pom (8.8 kB at 46 kB/s)
+#13 8.932 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.24.0/log4j-bom-2.24.0.pom
+#13 9.128 Progress (1): 792 BProgress (1): 873 BProgress (1): 2.5 kBProgress (1): 5.9 kBProgress (1): 9.3 kBProgress (1): 12 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/log4j/log4j-bom/2.24.0/log4j-bom-2.24.0.pom (12 kB at 60 kB/s)
+#13 9.143 Downloading from central: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/11.2.0/logging-parent-11.2.0.pom
+#13 9.263 Progress (1): 730 BProgress (1): 806 BProgress (1): 2.3 kBProgress (1): 4.8 kBProgress (1): 6.1 kBProgress (1): 8.3 kBProgress (1): 13 kB Progress (1): 15 kBProgress (1): 19 kBProgress (1): 24 kBProgress (1): 27 kBProgress (1): 29 kBProgress (1): 30 kBProgress (1): 31 kBProgress (1): 35 kBProgress (1): 37 kBProgress (1): 39 kBProgress (1): 41 kBProgress (1): 44 kBProgress (1): 48 kBProgress (1): 53 kBProgress (1): 53 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/logging/logging-parent/11.2.0/logging-parent-11.2.0.pom (53 kB at 332 kB/s)
+#13 9.323 Downloading from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.0/junit-bom-5.11.0.pom
+#13 9.482 Progress (1): 912 BProgress (1): 1.0 kBProgress (1): 5.3 kBProgress (1): 5.6 kB                    Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/junit-bom/5.11.0/junit-bom-5.11.0.pom (5.6 kB at 35 kB/s)
+#13 9.492 Downloading from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.21.0/amqp-client-5.21.0.pom
+#13 9.722 Progress (1): 1.1 kBProgress (1): 1.2 kBProgress (1): 3.0 kBProgress (1): 4.9 kBProgress (1): 6.2 kBProgress (1): 8.0 kBProgress (1): 9.8 kBProgress (1): 13 kB Progress (1): 17 kBProgress (1): 20 kBProgress (1): 25 kBProgress (1): 29 kBProgress (1): 32 kBProgress (1): 34 kBProgress (1): 38 kBProgress (1): 41 kBProgress (1): 41 kB                   Downloaded from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.21.0/amqp-client-5.21.0.pom (41 kB at 165 kB/s)
+#13 10.01 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.3.4/spring-boot-configuration-processor-3.3.4.jar
+#13 10.16 Progress (1): 0.6/130 kBProgress (1): 1.9/130 kBProgress (1): 3.3/130 kBProgress (1): 4.7/130 kBProgress (1): 6.0/130 kBProgress (1): 7.4/130 kBProgress (1): 8.2/130 kBProgress (1): 9.6/130 kBProgress (1): 11/130 kB Progress (1): 12/130 kBProgress (1): 14/130 kBProgress (1): 15/130 kBProgress (1): 19/130 kBProgress (1): 23/130 kBProgress (1): 28/130 kBProgress (1): 32/130 kBProgress (1): 36/130 kBProgress (1): 40/130 kBProgress (1): 45/130 kBProgress (1): 49/130 kBProgress (1): 53/130 kBProgress (1): 57/130 kBProgress (1): 57/130 kBProgress (1): 62/130 kBProgress (1): 66/130 kBProgress (1): 70/130 kBProgress (1): 74/130 kBProgress (1): 78/130 kBProgress (1): 83/130 kBProgress (1): 87/130 kBProgress (1): 91/130 kBProgress (1): 95/130 kBProgress (1): 100/130 kBProgress (1): 104/130 kBProgress (1): 108/130 kBProgress (1): 112/130 kBProgress (1): 117/130 kBProgress (1): 121/130 kBProgress (1): 125/130 kBProgress (1): 129/130 kBProgress (1): 130 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.3.4/spring-boot-configuration-processor-3.3.4.jar (130 kB at 161 kB/s)
+#13 10.83 Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.9/spring-retry-2.0.9.jar
+#13 10.83 Downloading from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.21.0/amqp-client-5.21.0.jar
+#13 11.31 Progress (1): 3.4/156 kBProgress (1): 7.6/156 kBProgress (1): 11/156 kB Progress (1): 16/156 kBProgress (1): 20/156 kBProgress (1): 24/156 kBProgress (1): 28/156 kBProgress (1): 32/156 kBProgress (1): 36/156 kBProgress (1): 40/156 kBProgress (1): 45/156 kBProgress (1): 61/156 kBProgress (1): 77/156 kBProgress (1): 93/156 kBProgress (1): 110/156 kBProgress (1): 126/156 kBProgress (1): 126/156 kBProgress (1): 142/156 kBProgress (1): 156 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.9/spring-retry-2.0.9.jar (156 kB at 235 kB/s)
+#13 11.74 Progress (1): 0.6/697 kBProgress (1): 1.9/697 kBProgress (1): 3.3/697 kBProgress (1): 4.7/697 kBProgress (1): 6.0/697 kBProgress (1): 7.4/697 kBProgress (1): 8.8/697 kBProgress (1): 10/697 kB Progress (1): 12/697 kBProgress (1): 12/697 kBProgress (1): 14/697 kBProgress (1): 15/697 kBProgress (1): 16/697 kBProgress (1): 18/697 kBProgress (1): 19/697 kBProgress (1): 21/697 kBProgress (1): 22/697 kBProgress (1): 23/697 kBProgress (1): 25/697 kBProgress (1): 26/697 kBProgress (1): 27/697 kBProgress (1): 29/697 kBProgress (1): 30/697 kBProgress (1): 31/697 kBProgress (1): 33/697 kBProgress (1): 34/697 kBProgress (1): 36/697 kBProgress (1): 37/697 kBProgress (1): 38/697 kBProgress (1): 40/697 kBProgress (1): 41/697 kBProgress (1): 42/697 kBProgress (1): 44/697 kBProgress (1): 45/697 kBProgress (1): 46/697 kBProgress (1): 48/697 kBProgress (1): 49/697 kBProgress (1): 51/697 kBProgress (1): 52/697 kBProgress (1): 53/697 kBProgress (1): 55/697 kBProgress (1): 59/697 kBProgress (1): 61/697 kBProgress (1): 66/697 kBProgress (1): 70/697 kBProgress (1): 74/697 kBProgress (1): 78/697 kBProgress (1): 83/697 kBProgress (1): 87/697 kBProgress (1): 91/697 kBProgress (1): 95/697 kBProgress (1): 100/697 kBProgress (1): 104/697 kBProgress (1): 108/697 kBProgress (1): 112/697 kBProgress (1): 116/697 kBProgress (1): 121/697 kBProgress (1): 125/697 kBProgress (1): 127/697 kBProgress (1): 131/697 kBProgress (1): 135/697 kBProgress (1): 140/697 kBProgress (1): 144/697 kBProgress (1): 148/697 kBProgress (1): 152/697 kBProgress (1): 157/697 kBProgress (1): 161/697 kBProgress (1): 165/697 kBProgress (1): 169/697 kBProgress (1): 173/697 kBProgress (1): 178/697 kBProgress (1): 182/697 kBProgress (1): 186/697 kBProgress (1): 190/697 kBProgress (1): 195/697 kBProgress (1): 199/697 kBProgress (1): 203/697 kBProgress (1): 207/697 kBProgress (1): 212/697 kBProgress (1): 216/697 kBProgress (1): 220/697 kBProgress (1): 236/697 kBProgress (1): 253/697 kBProgress (1): 258/697 kBProgress (1): 274/697 kBProgress (1): 291/697 kBProgress (1): 307/697 kBProgress (1): 324/697 kBProgress (1): 340/697 kBProgress (1): 356/697 kBProgress (1): 373/697 kBProgress (1): 389/697 kBProgress (1): 406/697 kBProgress (1): 422/697 kBProgress (1): 438/697 kBProgress (1): 455/697 kBProgress (1): 471/697 kBProgress (1): 487/697 kBProgress (1): 504/697 kBProgress (1): 520/697 kBProgress (1): 537/697 kBProgress (1): 553/697 kBProgress (1): 569/697 kBProgress (1): 586/697 kBProgress (1): 602/697 kBProgress (1): 618/697 kBProgress (1): 635/697 kBProgress (1): 651/697 kBProgress (1): 668/697 kBProgress (1): 684/697 kBProgress (1): 697 kB                        Downloaded from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.21.0/amqp-client-5.21.0.jar (697 kB at 418 kB/s)
+#13 12.51 [INFO] 
+#13 12.52 [INFO] --- clean:3.3.2:clean (default-clean) @ transferencia ---
+#13 12.62 [INFO] 
+#13 12.62 [INFO] --- resources:3.3.1:resources (default-resources) @ transferencia ---
+#13 12.87 [INFO] Copying 1 resource from src/main/resources to target/classes
+#13 12.95 [INFO] Copying 0 resource from src/main/resources to target/classes
+#13 12.96 [INFO] 
+#13 12.96 [INFO] --- compiler:3.13.0:compile (default-compile) @ transferencia ---
+#13 13.27 [INFO] Recompiling the module because of changed source code.
+#13 13.29 [INFO] Compiling 20 source files with javac [debug parameters release 21] to target/classes
+#13 18.65 [INFO] Annotation processing is enabled because one or more processors were found
+#13 18.65   on the class path. A future release of javac may disable annotation processing
+#13 18.65   unless at least one processor is specified by name (-processor), or a search
+#13 18.65   path is specified (--processor-path, --processor-module-path), or annotation
+#13 18.65   processing is enabled explicitly (-proc:only, -proc:full).
+#13 18.65   Use -Xlint:-options to suppress this message.
+#13 18.65   Use -proc:none to disable annotation processing.
+#13 18.65 [INFO] 
+#13 18.65 [INFO] --- resources:3.3.1:testResources (default-testResources) @ transferencia ---
+#13 18.66 [INFO] Not copying test resources
+#13 18.66 [INFO] 
+#13 18.66 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ transferencia ---
+#13 18.67 [INFO] Not compiling test sources
+#13 18.67 [INFO] 
+#13 18.67 [INFO] --- surefire:3.2.5:test (default-test) @ transferencia ---
+#13 19.57 [INFO] Tests are skipped.
+#13 19.57 [INFO] 
+#13 19.57 [INFO] --- jar:3.4.2:jar (default-jar) @ transferencia ---
+#13 20.12 [INFO] Building jar: /app/target/transferencia-0.9.0.jar
+#13 20.52 [INFO] 
+#13 20.52 [INFO] --- spring-boot:3.3.4:repackage (repackage) @ transferencia ---
+#13 22.10 [INFO] Replacing main artifact /app/target/transferencia-0.9.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+#13 22.10 [INFO] The original artifact has been renamed to /app/target/transferencia-0.9.0.jar.original
+#13 22.10 [INFO] ------------------------------------------------------------------------
+#13 22.10 [INFO] BUILD SUCCESS
+#13 22.10 [INFO] ------------------------------------------------------------------------
+#13 22.10 [INFO] Total time:  17.778 s
+#13 22.10 [INFO] Finished at: 2026-10-19T22:22:20Z
+#13 22.11 [INFO] ------------------------------------------------------------------------
+#13 DONE 22.4s
+
+#14 [stage-1 2/3] WORKDIR /app
+#14 CACHED
+
+#15 [stage-1 3/3] COPY --from=builder /app/target/*.jar app.jar
+#15 DONE 0.3s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 7.3s done
+#16 exporting manifest sha256:8cb54a92200e4051919d1f8b2f86660cd35e9dcf93cf88b46afbc3ff4c127477
+#16 exporting manifest sha256:8cb54a92200e4051919d1f8b2f86660cd35e9dcf93cf88b46afbc3ff4c127477 0.0s done
+#16 exporting config sha256:0cd3a548e3d04bc3656604090e635be126e192cff52b30fedde815e98e179dde 0.0s done
+#16 exporting attestation manifest sha256:f8cf2bfe127b6f07c7ec981b0f9fc662a774d1e61606a2556e148546460f1e41 0.0s done
+#16 exporting manifest list sha256:d90c4bb65e5dc7448550992c2b034712873869ba804860d165adb219047154df 0.0s done
+#16 naming to docker.io/library/derek-s09-transferencia:latest
+#16 naming to docker.io/library/derek-s09-transferencia:latest done
+#16 unpacking to docker.io/library/derek-s09-transferencia:latest
+#16 unpacking to docker.io/library/derek-s09-transferencia:latest 1.5s done
+#16 DONE 9.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/ccny0evdyturotlog7rwgdm2e

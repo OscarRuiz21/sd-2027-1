@@ -1,0 +1,762 @@
+ Image derek-s09-cuenta Building 
+ Image derek-s09-discovery Building 
+ Image derek-s09-notificacion Building 
+ Image derek-s09-movimiento Building 
+ Image derek-s09-transferencia Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 2.53kB done
+#1 DONE 0.0s
+
+#2 [movimiento internal] load build definition from Dockerfile
+#2 transferring dockerfile: 560B 0.1s done
+#2 DONE 0.1s
+
+#3 [notificacion internal] load build definition from Dockerfile
+#3 transferring dockerfile: 511B 0.1s done
+#3 DONE 0.1s
+
+#4 [cuenta internal] load build definition from Dockerfile
+#4 transferring dockerfile: 560B 0.1s done
+#4 DONE 0.1s
+
+#5 [transferencia internal] load build definition from Dockerfile
+#5 transferring dockerfile: 511B 0.0s done
+#5 DONE 0.2s
+
+#6 [transferencia internal] load metadata for docker.io/library/eclipse-temurin:21-jdk-alpine
+#6 DONE 0.8s
+
+#7 [notificacion internal] load metadata for docker.io/library/eclipse-temurin:21-jre-alpine
+#7 DONE 0.8s
+
+#8 [notificacion internal] load .dockerignore
+#8 transferring context: 48B 0.0s done
+#8 DONE 0.1s
+
+#9 [notificacion builder 1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#9 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.4s done
+#9 DONE 0.4s
+
+#10 [notificacion stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#10 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.4s done
+#10 DONE 0.4s
+
+#11 [notificacion builder 2/8] WORKDIR /app
+#11 CACHED
+
+#12 [movimiento internal] load .dockerignore
+#12 transferring context: 48B 0.0s done
+#12 DONE 0.2s
+
+#13 [notificacion internal] load build context
+#13 ...
+
+#9 [movimiento builder 1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#9 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.4s done
+#9 DONE 0.4s
+
+#10 [movimiento stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#10 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.4s done
+#10 DONE 0.4s
+
+#11 [movimiento builder 2/8] WORKDIR /app
+#11 CACHED
+
+#14 [cuenta internal] load .dockerignore
+#14 transferring context: 48B 0.1s done
+#14 DONE 0.2s
+
+#15 [transferencia internal] load .dockerignore
+#15 transferring context: 48B 0.0s done
+#15 DONE 0.2s
+
+#13 [notificacion internal] load build context
+#13 transferring context: 30.39kB 0.1s done
+#13 DONE 0.1s
+
+#9 [transferencia builder 1/8] FROM docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159
+#9 resolve docker.io/library/eclipse-temurin:21-jdk-alpine@sha256:0bfc69a4758a86710e5c474032d28400a8bd00874766f9e8b1642ac2fd293159 0.4s done
+#9 DONE 0.4s
+
+#10 [transferencia stage-1 1/3] FROM docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555
+#10 resolve docker.io/library/eclipse-temurin:21-jre-alpine@sha256:51ab5e3302e7141ce665ca3ea85e8b5cd648eafbc3c0c90dd79d6537684e4555 0.4s done
+#10 DONE 0.5s
+
+#11 [transferencia builder 2/8] WORKDIR /app
+#11 CACHED
+
+#16 [notificacion builder 3/8] COPY pom.xml .
+#16 ...
+
+#17 [movimiento internal] load build context
+#17 transferring context: 31.14kB 0.1s done
+#17 DONE 0.2s
+
+#18 [cuenta internal] load build context
+#18 transferring context: 47.89kB 0.1s done
+#18 DONE 0.3s
+
+#19 [transferencia internal] load build context
+#19 transferring context: 89.61kB 0.2s done
+#19 DONE 0.4s
+
+#16 [notificacion builder 3/8] COPY pom.xml .
+#16 DONE 0.4s
+
+#20 [movimiento builder 3/8] COPY pom.xml .
+#20 DONE 0.3s
+
+#21 [cuenta builder 3/8] COPY pom.xml .
+#21 DONE 0.2s
+
+#22 [cuenta builder 4/8] COPY mvnw .
+#22 ...
+
+#23 [transferencia builder 3/8] COPY pom.xml .
+#23 DONE 0.3s
+
+#24 [notificacion builder 4/8] COPY mvnw .
+#24 DONE 0.3s
+
+#22 [cuenta builder 4/8] COPY mvnw .
+#22 DONE 0.3s
+
+#25 [movimiento builder 4/8] COPY mvnw .
+#25 DONE 0.4s
+
+#26 [cuenta builder 5/8] COPY .mvn .mvn
+#26 ...
+
+#27 [transferencia builder 4/8] COPY mvnw .
+#27 DONE 0.4s
+
+#28 [notificacion builder 5/8] COPY .mvn .mvn
+#28 DONE 0.4s
+
+#26 [cuenta builder 5/8] COPY .mvn .mvn
+#26 DONE 0.4s
+
+#29 [cuenta builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#29 ...
+
+#30 [movimiento builder 5/8] COPY .mvn .mvn
+#30 DONE 0.4s
+
+#31 [movimiento builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#31 ...
+
+#32 [transferencia builder 5/8] COPY .mvn .mvn
+#32 DONE 0.5s
+
+#33 [transferencia builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#33 ...
+
+#34 [notificacion builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#34 ...
+
+#33 [transferencia builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#33 30.56 [INFO] Scanning for projects...
+#33 36.09 [INFO] 
+#33 36.09 [INFO] ---------------------< mx.mexibanco:transferencia >---------------------
+#33 36.09 [INFO] Building transferencia 0.9.0
+#33 36.09 [INFO]   from pom.xml
+#33 36.10 [INFO] --------------------------------[ jar ]---------------------------------
+#33 36.15 [INFO] 
+#33 36.16 [INFO] --- dependency:3.6.1:go-offline (default-cli) @ transferencia ---
+#33 64.14 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-netflix-eureka-client/4.1.3/spring-cloud-starter-netflix-eureka-client-4.1.3.pom
+#33 66.36 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-netflix-eureka-client/4.1.3/spring-cloud-starter-netflix-eureka-client-4.1.3.pom (7.2 kB at 3.2 kB/s)
+#33 68.62 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-netflix-eureka-client/4.1.3/spring-cloud-starter-netflix-eureka-client-4.1.3.jar
+#33 68.81 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-netflix-eureka-client/4.1.3/spring-cloud-starter-netflix-eureka-client-4.1.3.jar (2.9 kB at 16 kB/s)
+#33 68.82 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.7.6/archaius-core-0.7.6.jar
+#33 68.82 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/vlsi/compactmap/compactmap/2.0/compactmap-2.0.jar
+#33 68.83 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/andrewoma/dexx/dexx-collections/0.2/dexx-collections-0.2.jar
+#33 68.84 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.jar
+#33 68.85 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar
+#33 69.25 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/netflix/archaius/archaius-core/0.7.6/archaius-core-0.7.6.jar (140 kB at 315 kB/s)
+#33 69.26 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/annotations/2.0.0/annotations-2.0.0.jar
+#33 69.69 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/code/findbugs/annotations/2.0.0/annotations-2.0.0.jar (74 kB at 88 kB/s)
+#33 69.69 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/6.2.1/woodstox-core-6.2.1.jar
+#33 70.38 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/vlsi/compactmap/compactmap/2.0/compactmap-2.0.jar (24 kB at 15 kB/s)
+#33 71.62 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar (105 kB at 38 kB/s)
+#33 74.91 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/andrewoma/dexx/dexx-collections/0.2/dexx-collections-0.2.jar (165 kB at 28 kB/s)
+#33 76.11 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/joda-time/joda-time/2.3/joda-time-2.3.jar (582 kB at 80 kB/s)
+#33 76.41 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/woodstox/woodstox-core/6.2.1/woodstox-core-6.2.1.jar (1.6 MB at 209 kB/s)
+#33 77.01 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-circuitbreaker-resilience4j/3.1.2/spring-cloud-starter-circuitbreaker-resilience4j-3.1.2.pom
+#33 77.20 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-circuitbreaker-resilience4j/3.1.2/spring-cloud-starter-circuitbreaker-resilience4j-3.1.2.pom (4.9 kB at 27 kB/s)
+#33 77.22 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-circuitbreaker/3.1.2/spring-cloud-starter-circuitbreaker-3.1.2.pom
+#33 77.31 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-circuitbreaker/3.1.2/spring-cloud-starter-circuitbreaker-3.1.2.pom (3.9 kB at 42 kB/s)
+#33 77.32 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-circuitbreaker/3.1.2/spring-cloud-circuitbreaker-3.1.2.pom
+#33 77.39 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-circuitbreaker/3.1.2/spring-cloud-circuitbreaker-3.1.2.pom (4.7 kB at 60 kB/s)
+#33 77.44 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-circuitbreaker-resilience4j/3.1.2/spring-cloud-circuitbreaker-resilience4j-3.1.2.pom
+#33 77.56 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-circuitbreaker-resilience4j/3.1.2/spring-cloud-circuitbreaker-resilience4j-3.1.2.pom (6.7 kB at 53 kB/s)
+#33 77.59 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circuitbreaker/2.1.0/resilience4j-circuitbreaker-2.1.0.pom
+#33 77.77 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circuitbreaker/2.1.0/resilience4j-circuitbreaker-2.1.0.pom (2.3 kB at 13 kB/s)
+#33 77.78 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-core/2.1.0/resilience4j-core-2.1.0.pom
+#33 77.87 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-core/2.1.0/resilience4j-core-2.1.0.pom (2.1 kB at 24 kB/s)
+#33 77.89 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-timelimiter/2.1.0/resilience4j-timelimiter-2.1.0.pom
+#33 77.97 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-timelimiter/2.1.0/resilience4j-timelimiter-2.1.0.pom (2.3 kB at 30 kB/s)
+#33 77.98 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring-boot3/2.1.0/resilience4j-spring-boot3-2.1.0.pom
+#33 78.08 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring-boot3/2.1.0/resilience4j-spring-boot3-2.1.0.pom (2.6 kB at 27 kB/s)
+#33 78.08 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring6/2.1.0/resilience4j-spring6-2.1.0.pom
+#33 78.25 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring6/2.1.0/resilience4j-spring6-2.1.0.pom (2.8 kB at 17 kB/s)
+#33 78.26 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-annotations/2.1.0/resilience4j-annotations-2.1.0.pom
+#33 78.36 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-annotations/2.1.0/resilience4j-annotations-2.1.0.pom (2.1 kB at 23 kB/s)
+#33 78.37 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-consumer/2.1.0/resilience4j-consumer-2.1.0.pom
+#33 78.45 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-consumer/2.1.0/resilience4j-consumer-2.1.0.pom (2.5 kB at 34 kB/s)
+#33 78.46 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circularbuffer/2.1.0/resilience4j-circularbuffer-2.1.0.pom
+#33 78.55 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circularbuffer/2.1.0/resilience4j-circularbuffer-2.1.0.pom (2.1 kB at 24 kB/s)
+#33 78.56 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-framework-common/2.1.0/resilience4j-framework-common-2.1.0.pom
+#33 78.63 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-framework-common/2.1.0/resilience4j-framework-common-2.1.0.pom (3.2 kB at 42 kB/s)
+#33 78.64 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-ratelimiter/2.1.0/resilience4j-ratelimiter-2.1.0.pom
+#33 78.81 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-ratelimiter/2.1.0/resilience4j-ratelimiter-2.1.0.pom (2.3 kB at 14 kB/s)
+#33 78.82 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-retry/2.1.0/resilience4j-retry-2.1.0.pom
+#33 78.89 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-retry/2.1.0/resilience4j-retry-2.1.0.pom (2.3 kB at 30 kB/s)
+#33 78.90 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-micrometer/2.1.0/resilience4j-micrometer-2.1.0.pom
+#33 78.97 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-micrometer/2.1.0/resilience4j-micrometer-2.1.0.pom (3.5 kB at 54 kB/s)
+#33 78.99 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.2.7/spring-boot-configuration-processor-3.2.7.pom
+#33 79.07 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.2.7/spring-boot-configuration-processor-3.2.7.pom (1.9 kB at 23 kB/s)
+#33 79.14 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-circuitbreaker-resilience4j/3.1.2/spring-cloud-starter-circuitbreaker-resilience4j-3.1.2.jar
+#33 79.29 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-starter-circuitbreaker-resilience4j/3.1.2/spring-cloud-starter-circuitbreaker-resilience4j-3.1.2.jar (2.9 kB at 20 kB/s)
+#33 79.29 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-circuitbreaker-resilience4j/3.1.2/spring-cloud-circuitbreaker-resilience4j-3.1.2.jar
+#33 79.31 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring6/2.1.0/resilience4j-spring6-2.1.0.jar
+#33 79.32 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-annotations/2.1.0/resilience4j-annotations-2.1.0.jar
+#33 79.33 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-consumer/2.1.0/resilience4j-consumer-2.1.0.jar
+#33 79.33 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring-boot3/2.1.0/resilience4j-spring-boot3-2.1.0.jar
+#33 79.42 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-consumer/2.1.0/resilience4j-consumer-2.1.0.jar (8.3 kB at 81 kB/s)
+#33 79.42 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circularbuffer/2.1.0/resilience4j-circularbuffer-2.1.0.jar
+#33 79.43 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-annotations/2.1.0/resilience4j-annotations-2.1.0.jar (10 kB at 87 kB/s)
+#33 79.43 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-framework-common/2.1.0/resilience4j-framework-common-2.1.0.jar
+#33 79.45 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/cloud/spring-cloud-circuitbreaker-resilience4j/3.1.2/spring-cloud-circuitbreaker-resilience4j-3.1.2.jar (39 kB at 238 kB/s)
+#33 79.45 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-micrometer/2.1.0/resilience4j-micrometer-2.1.0.jar
+#33 79.46 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring6/2.1.0/resilience4j-spring6-2.1.0.jar (110 kB at 732 kB/s)
+#33 79.47 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-retry/2.1.0/resilience4j-retry-2.1.0.jar
+#33 79.51 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-spring-boot3/2.1.0/resilience4j-spring-boot3-2.1.0.jar (96 kB at 440 kB/s)
+#33 79.51 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-ratelimiter/2.1.0/resilience4j-ratelimiter-2.1.0.jar
+#33 79.53 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circularbuffer/2.1.0/resilience4j-circularbuffer-2.1.0.jar (12 kB at 58 kB/s)
+#33 79.53 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.2.7/spring-boot-configuration-processor-3.2.7.jar
+#33 79.56 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-micrometer/2.1.0/resilience4j-micrometer-2.1.0.jar (55 kB at 244 kB/s)
+#33 79.57 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circuitbreaker/2.1.0/resilience4j-circuitbreaker-2.1.0.jar
+#33 79.58 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-retry/2.1.0/resilience4j-retry-2.1.0.jar (49 kB at 197 kB/s)
+#33 79.59 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-core/2.1.0/resilience4j-core-2.1.0.jar
+#33 79.59 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-framework-common/2.1.0/resilience4j-framework-common-2.1.0.jar (87 kB at 323 kB/s)
+#33 79.60 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-timelimiter/2.1.0/resilience4j-timelimiter-2.1.0.jar
+#33 79.62 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-ratelimiter/2.1.0/resilience4j-ratelimiter-2.1.0.jar (43 kB at 150 kB/s)
+#33 79.69 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-configuration-processor/3.2.7/spring-boot-configuration-processor-3.2.7.jar (122 kB at 343 kB/s)
+#33 79.70 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-circuitbreaker/2.1.0/resilience4j-circuitbreaker-2.1.0.jar (83 kB at 229 kB/s)
+#33 79.71 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-timelimiter/2.1.0/resilience4j-timelimiter-2.1.0.jar (27 kB at 74 kB/s)
+#33 79.72 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/resilience4j/resilience4j-core/2.1.0/resilience4j-core-2.1.0.jar (77 kB at 202 kB/s)
+#33 80.08 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-amqp/3.3.4/spring-boot-starter-amqp-3.3.4.pom
+#33 80.16 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-amqp/3.3.4/spring-boot-starter-amqp-3.3.4.pom (2.5 kB at 32 kB/s)
+#33 80.20 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.1.13/spring-messaging-6.1.13.pom
+#33 80.34 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.1.13/spring-messaging-6.1.13.pom (2.2 kB at 16 kB/s)
+#33 80.36 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-rabbit/3.1.7/spring-rabbit-3.1.7.pom
+#33 80.45 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-rabbit/3.1.7/spring-rabbit-3.1.7.pom (7.0 kB at 78 kB/s)
+#33 80.48 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp/3.1.7/spring-amqp-3.1.7.pom
+#33 80.59 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp/3.1.7/spring-amqp-3.1.7.pom (7.1 kB at 65 kB/s)
+#33 80.63 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.1.12/spring-core-6.1.12.pom
+#33 80.72 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-core/6.1.12/spring-core-6.1.12.pom (2.0 kB at 25 kB/s)
+#33 80.73 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.1.12/spring-jcl-6.1.12.pom
+#33 80.89 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-jcl/6.1.12/spring-jcl-6.1.12.pom (1.8 kB at 12 kB/s)
+#33 80.91 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.8/spring-retry-2.0.8.pom
+#33 81.01 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.8/spring-retry-2.0.8.pom (9.1 kB at 88 kB/s)
+#33 81.06 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.0.23/spring-framework-bom-6.0.23.pom
+#33 81.14 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-framework-bom/6.0.23/spring-framework-bom-6.0.23.pom (5.8 kB at 63 kB/s)
+#33 81.15 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.19.0/amqp-client-5.19.0.pom
+#33 81.24 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.19.0/amqp-client-5.19.0.pom (41 kB at 454 kB/s)
+#33 81.27 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.12/spring-context-6.1.12.pom
+#33 81.42 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.12/spring-context-6.1.12.pom (2.8 kB at 18 kB/s)
+#33 81.45 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.12/spring-aop-6.1.12.pom
+#33 81.52 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.12/spring-aop-6.1.12.pom (2.2 kB at 30 kB/s)
+#33 81.53 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.pom
+#33 81.61 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-beans/6.1.12/spring-beans-6.1.12.pom (2.0 kB at 24 kB/s)
+#33 81.62 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.12/spring-expression-6.1.12.pom
+#33 81.69 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.12/spring-expression-6.1.12.pom (2.1 kB at 30 kB/s)
+#33 81.71 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.9/micrometer-observation-1.12.9.pom
+#33 81.80 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.9/micrometer-observation-1.12.9.pom (3.8 kB at 43 kB/s)
+#33 81.82 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.9/micrometer-commons-1.12.9.pom
+#33 81.90 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.9/micrometer-commons-1.12.9.pom (3.4 kB at 42 kB/s)
+#33 81.92 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.1.12/spring-messaging-6.1.12.pom
+#33 82.01 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.1.12/spring-messaging-6.1.12.pom (2.2 kB at 24 kB/s)
+#33 82.02 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.1.12/spring-tx-6.1.12.pom
+#33 82.14 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.1.12/spring-tx-6.1.12.pom (2.2 kB at 20 kB/s)
+#33 82.23 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-amqp/3.3.4/spring-boot-starter-amqp-3.3.4.jar
+#33 82.34 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/spring-boot-starter-amqp/3.3.4/spring-boot-starter-amqp-3.3.4.jar (4.8 kB at 44 kB/s)
+#33 82.34 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.1.13/spring-messaging-6.1.13.jar
+#33 82.36 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-rabbit/3.1.7/spring-rabbit-3.1.7.jar
+#33 82.36 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp/3.1.7/spring-amqp-3.1.7.jar
+#33 82.38 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.8/spring-retry-2.0.8.jar
+#33 82.39 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.19.0/amqp-client-5.19.0.jar
+#33 82.60 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/retry/spring-retry/2.0.8/spring-retry-2.0.8.jar (156 kB at 629 kB/s)
+#33 82.61 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.12/spring-context-6.1.12.jar
+#33 82.63 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-amqp/3.1.7/spring-amqp-3.1.7.jar (159 kB at 575 kB/s)
+#33 82.63 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.12/spring-aop-6.1.12.jar
+#33 82.67 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/amqp/spring-rabbit/3.1.7/spring-rabbit-3.1.7.jar (620 kB at 1.9 MB/s)
+#33 82.67 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.12/spring-expression-6.1.12.jar
+#33 82.72 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-messaging/6.1.13/spring-messaging-6.1.13.jar (615 kB at 1.6 MB/s)
+#33 82.73 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.1.12/spring-tx-6.1.12.jar
+#33 82.78 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/rabbitmq/amqp-client/5.19.0/amqp-client-5.19.0.jar (697 kB at 1.8 MB/s)
+#33 82.79 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.9/micrometer-observation-1.12.9.jar
+#33 82.84 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-expression/6.1.12/spring-expression-6.1.12.jar (304 kB at 666 kB/s)
+#33 82.85 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.9/micrometer-commons-1.12.9.jar
+#33 82.93 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-aop/6.1.12/spring-aop-6.1.12.jar (417 kB at 775 kB/s)
+#33 82.93 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.12.9/micrometer-observation-1.12.9.jar (72 kB at 132 kB/s)
+#33 82.96 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.12.9/micrometer-commons-1.12.9.jar (47 kB at 84 kB/s)
+#33 82.97 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-tx/6.1.12/spring-tx-6.1.12.jar (282 kB at 485 kB/s)
+#33 83.03 [INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/spring-context/6.1.12/spring-context-6.1.12.jar (1.3 MB at 2.0 MB/s)
+#33 83.30 [INFO] Resolved plugin: jetty-servlet-9.4.46.v20220331.jar
+#33 83.30 [INFO] Resolved plugin: doxia-module-twiki-1.11.1.jar
+#33 83.31 [INFO] Resolved plugin: jdependency-2.8.0.jar
+#33 83.31 [INFO] Resolved plugin: spring-boot-buildpack-platform-3.3.4.jar
+#33 83.31 [INFO] Resolved plugin: velocity-tools-2.0.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-ext-gfm-tasklist-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-ext-admonition-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: jna-5.13.0.jar
+#33 83.31 [INFO] Resolved plugin: maven-core-3.2.5.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-ext-footnotes-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-ext-gfm-strikethrough-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-ext-media-tags-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: doxia-module-xhtml-1.11.1.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-util-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: flexmark-ext-anchorlink-0.42.14.jar
+#33 83.31 [INFO] Resolved plugin: asm-9.6.jar
+#33 83.31 [INFO] Resolved plugin: aether-api-1.0.0.v20140518.jar
+#33 83.31 [INFO] Resolved plugin: autolink-0.6.0.jar
+#33 83.31 [INFO] Resolved plugin: maven-filtering-3.3.1.jar
+#33 83.31 [INFO] Resolved plugin: maven-clean-plugin-3.3.2.jar
+#33 83.32 [INFO] Resolved plugin: maven-archiver-3.6.2.jar
+#33 83.32 [INFO] Resolved plugin: doxia-skin-model-1.11.1.jar
+#33 83.32 [INFO] Resolved plugin: dom4j-1.1.jar
+#33 83.32 [INFO] Resolved plugin: plexus-compiler-api-2.15.0.jar
+#33 83.32 [INFO] Resolved plugin: commons-io-2.16.1.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-youtrack-converter-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: surefire-booter-3.2.5.jar
+#33 83.33 [INFO] Resolved plugin: tomlj-1.0.0.jar
+#33 83.33 [INFO] Resolved plugin: httpclient-4.5.13.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-ext-toc-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: qdox-2.0.3.jar
+#33 83.33 [INFO] Resolved plugin: maven-resolver-util-1.9.18.jar
+#33 83.33 [INFO] Resolved plugin: httpclient5-5.3.1.jar
+#33 83.33 [INFO] Resolved plugin: jetty-http-9.4.46.v20220331.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-jira-converter-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: maven-reporting-api-3.1.1.jar
+#33 83.33 [INFO] Resolved plugin: maven-plugin-api-3.2.5.jar
+#33 83.33 [INFO] Resolved plugin: sisu-guice-3.2.3-no_aop.jar
+#33 83.33 [INFO] Resolved plugin: spring-core-6.1.13.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-ext-attributes-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: commons-lang3-3.8.1.jar
+#33 83.33 [INFO] Resolved plugin: maven-aether-provider-3.2.5.jar
+#33 83.33 [INFO] Resolved plugin: aether-util-1.0.0.v20140518.jar
+#33 83.33 [INFO] Resolved plugin: jetty-security-9.4.46.v20220331.jar
+#33 83.33 [INFO] Resolved plugin: maven-surefire-plugin-3.2.5.jar
+#33 83.33 [INFO] Resolved plugin: maven-compiler-plugin-3.13.0.jar
+#33 83.33 [INFO] Resolved plugin: org.eclipse.sisu.plexus-0.3.5.jar
+#33 83.33 [INFO] Resolved plugin: doxia-core-1.11.1.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-ext-ins-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: google-collections-1.0.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-ext-emoji-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: doxia-integration-tools-1.11.1.jar
+#33 83.33 [INFO] Resolved plugin: plexus-compiler-manager-2.15.0.jar
+#33 83.33 [INFO] Resolved plugin: httpcore5-5.2.4.jar
+#33 83.33 [INFO] Resolved plugin: plexus-component-annotations-1.5.5.jar
+#33 83.33 [INFO] Resolved plugin: maven-repository-metadata-3.2.5.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-ext-jekyll-front-matter-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: doxia-decoration-model-1.11.1.jar
+#33 83.33 [INFO] Resolved plugin: flexmark-all-0.42.14.jar
+#33 83.33 [INFO] Resolved plugin: maven-shared-incremental-1.1.jar
+#33 83.33 [INFO] Resolved plugin: file-management-3.1.0.jar
+#33 83.33 [INFO] Resolved plugin: commons-compress-1.26.1.jar
+#33 83.33 [INFO] Resolved plugin: jetty-webapp-9.4.46.v20220331.jar
+#33 83.33 [INFO] Resolved plugin: plexus-io-3.2.0.jar
+#33 83.33 [INFO] Resolved plugin: xbean-reflect-3.7.jar
+#33 83.33 [INFO] Resolved plugin: maven-reporting-exec-1.6.0.jar
+#33 83.33 [INFO] Resolved plugin: doxia-sink-api-1.11.1.jar
+#33 83.33 [INFO] Resolved plugin: plexus-xml-3.0.0.jar
+#33 83.33 [INFO] Resolved plugin: jetty-xml-9.4.46.v20220331.jar
+#33 83.33 [INFO] Resolved plugin: plexus-velocity-1.2.jar
+#33 83.33 [INFO] Resolved plugin: plexus-container-default-2.1.0.jar
+#33 83.33 [INFO] Resolved plugin: commons-codec-1.11.jar
+#33 83.33 [INFO] Resolved plugin: spring-jcl-6.1.13.jar
+#33 83.33 [INFO] Resolved plugin: snappy-0.4.jar
+#33 83.33 [INFO] Resolved plugin: jsr305-3.0.2.jar
+#33 83.33 [INFO] Resolved plugin: maven-deploy-plugin-3.1.3.jar
+#33 83.33 [INFO] Resolved plugin: plexus-build-api-0.0.7.jar
+#33 83.34 [INFO] Resolved plugin: asm-9.5.jar
+#33 83.34 [INFO] Resolved plugin: maven-dependency-tree-3.2.1.jar
+#33 83.34 [INFO] Resolved plugin: doxia-module-fml-1.11.1.jar
+#33 83.34 [INFO] Resolved plugin: commons-digester-1.8.jar
+#33 83.35 [INFO] Resolved plugin: jetty-server-9.4.46.v20220331.jar
+#33 83.35 [INFO] Resolved plugin: maven-shared-utils-3.4.2.jar
+#33 83.35 [INFO] Resolved plugin: flexmark-ext-abbreviation-0.42.14.jar
+#33 83.35 [INFO] Resolved plugin: maven-archiver-3.5.2.jar
+#33 83.35 [INFO] Resolved plugin: httpcore5-h2-5.2.4.jar
+#33 83.35 [INFO] Resolved plugin: zstd-jni-1.5.5-11.jar
+#33 83.35 [INFO] Resolved plugin: flexmark-ext-definition-0.42.14.jar
+#33 83.35 [INFO] Resolved plugin: doxia-logging-api-1.11.1.jar
+#33 83.35 [INFO] Resolved plugin: plexus-xml-3.0.1.jar
+#33 83.35 [INFO] Resolved plugin: maven-install-plugin-3.1.3.jar
+#33 83.35 [INFO] Resolved plugin: flexmark-ext-yaml-front-matter-0.42.14.jar
+#33 83.35 [INFO] Resolved plugin: maven-shade-plugin-3.5.0.jar
+#33 83.35 [INFO] Resolved plugin: maven-site-plugin-3.12.1.jar
+#33 83.35 [INFO] Resolved plugin: flexmark-ext-superscript-0.42.14.jar
+#33 83.35 [INFO] Resolved plugin: commons-collections-3.2.2.jar
+#33 83.35 [INFO] Resolved plugin: doxia-module-markdown-1.11.1.jar
+#33 83.35 [INFO] Resolved plugin: surefire-extensions-api-3.2.5.jar
+#33 83.36 [INFO] Resolved plugin: flexmark-ext-xwiki-macros-0.42.14.jar
+#33 83.36 [INFO] Resolved plugin: commons-compress-1.20.jar
+#33 83.36 [INFO] Resolved plugin: maven-resolver-api-1.9.18.jar
+#33 83.36 [INFO] Resolved plugin: velocity-1.7.jar
+#33 83.36 [INFO] Resolved plugin: maven-resources-plugin-3.3.1.jar
+#33 83.36 [INFO] Resolved plugin: plexus-utils-3.5.1.jar
+#33 83.37 [INFO] Resolved plugin: aopalliance-1.0.jar
+#33 83.37 [INFO] Resolved plugin: aether-spi-1.0.0.v20140518.jar
+#33 83.37 [INFO] Resolved plugin: plexus-interpolation-1.26.jar
+#33 83.37 [INFO] Resolved plugin: org.eclipse.sisu.plexus-0.9.0.M2.jar
+#33 83.37 [INFO] Resolved plugin: maven-settings-builder-3.2.5.jar
+#33 83.37 [INFO] Resolved plugin: httpcore-4.4.14.jar
+#33 83.37 [INFO] Resolved plugin: commons-lang3-3.12.0.jar
+#33 83.37 [INFO] Resolved plugin: maven-artifact-3.2.5.jar
+#33 83.38 [INFO] Resolved plugin: commons-io-2.15.1.jar
+#33 83.40 [INFO] Resolved plugin: plexus-compiler-javac-2.15.0.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-ext-enumerated-reference-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: plexus-component-annotations-2.1.1.jar
+#33 83.40 [INFO] Resolved plugin: spring-context-6.1.13.jar
+#33 83.40 [INFO] Resolved plugin: spring-boot-maven-plugin-3.3.4.jar
+#33 83.40 [INFO] Resolved plugin: commons-logging-1.2.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-ext-escaped-character-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: jackson-annotations-2.14.2.jar
+#33 83.40 [INFO] Resolved plugin: spring-expression-6.1.13.jar
+#33 83.40 [INFO] Resolved plugin: plexus-java-1.2.0.jar
+#33 83.40 [INFO] Resolved plugin: plexus-cipher-1.4.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: plexus-utils-3.4.2.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-ext-aside-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-ext-wikilink-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: org.eclipse.sisu.inject-0.3.5.jar
+#33 83.40 [INFO] Resolved plugin: spring-aop-6.1.13.jar
+#33 83.40 [INFO] Resolved plugin: plexus-io-3.4.2.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-ext-gfm-tables-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: org.eclipse.sisu.inject-0.9.0.M2.jar
+#33 83.40 [INFO] Resolved plugin: antlr4-runtime-4.7.2.jar
+#33 83.40 [INFO] Resolved plugin: plexus-interpolation-1.27.jar
+#33 83.40 [INFO] Resolved plugin: commons-io-2.11.0.jar
+#33 83.40 [INFO] Resolved plugin: jetty-io-9.4.46.v20220331.jar
+#33 83.40 [INFO] Resolved plugin: cdi-api-1.2.jar
+#33 83.40 [INFO] Resolved plugin: commons-chain-1.1.jar
+#33 83.40 [INFO] Resolved plugin: commons-codec-1.16.1.jar
+#33 83.40 [INFO] Resolved plugin: flexmark-html-parser-0.42.14.jar
+#33 83.40 [INFO] Resolved plugin: surefire-shared-utils-3.2.5.jar
+#33 83.40 [INFO] Resolved plugin: javax.inject-1.jar
+#33 83.42 [INFO] Resolved plugin: asm-tree-9.5.jar
+#33 83.42 [INFO] Resolved plugin: maven-shared-utils-3.3.4.jar
+#33 83.42 [INFO] Resolved plugin: javax.servlet-api-3.1.0.jar
+#33 83.42 [INFO] Resolved plugin: jetty-util-ajax-9.4.46.v20220331.jar
+#33 83.42 [INFO] Resolved plugin: commons-io-2.13.0.jar
+#33 83.42 [INFO] Resolved plugin: maven-settings-3.2.5.jar
+#33 83.42 [INFO] Resolved plugin: jna-platform-5.13.0.jar
+#33 83.43 [INFO] Resolved plugin: jackson-core-2.14.2.jar
+#33 83.43 [INFO] Resolved plugin: jsoup-1.10.2.jar
+#33 83.43 [INFO] Resolved plugin: oro-2.0.8.jar
+#33 83.43 [INFO] Resolved plugin: spring-beans-6.1.13.jar
+#33 83.44 [INFO] Resolved plugin: surefire-extensions-spi-3.2.5.jar
+#33 83.44 [INFO] Resolved plugin: maven-common-artifact-filters-3.3.2.jar
+#33 83.44 [INFO] Resolved plugin: xz-1.9.jar
+#33 83.44 [INFO] Resolved plugin: aether-impl-1.0.0.v20140518.jar
+#33 83.44 [INFO] Resolved plugin: commons-text-1.3.jar
+#33 83.44 [INFO] Resolved plugin: plexus-utils-4.0.0.jar
+#33 83.44 [INFO] Resolved plugin: micrometer-commons-1.12.10.jar
+#33 83.44 [INFO] Resolved plugin: maven-surefire-common-3.2.5.jar
+#33 83.44 [INFO] Resolved plugin: commons-lang-2.4.jar
+#33 83.44 [INFO] Resolved plugin: slf4j-api-1.7.36.jar
+#33 83.45 [INFO] Resolved plugin: doxia-module-apt-1.11.1.jar
+#33 83.46 [INFO] Resolved plugin: flexmark-ext-gfm-issues-0.42.14.jar
+#33 83.46 [INFO] Resolved plugin: jetty-util-9.4.46.v20220331.jar
+#33 83.46 [INFO] Resolved plugin: maven-model-builder-3.2.5.jar
+#33 83.46 [INFO] Resolved plugin: maven-jar-plugin-3.4.2.jar
+#33 83.46 [INFO] Resolved plugin: jackson-databind-2.14.2.jar
+#33 83.46 [INFO] Resolved plugin: plexus-archiver-4.2.7.jar
+#33 83.46 [INFO] Resolved plugin: commons-io-2.6.jar
+#33 83.47 [INFO] Resolved plugin: flexmark-ext-youtube-embedded-0.42.14.jar
+#33 83.47 [INFO] Resolved plugin: flexmark-formatter-0.42.14.jar
+#33 83.47 [INFO] Resolved plugin: maven-model-3.2.5.jar
+#33 83.47 [INFO] Resolved plugin: plexus-utils-4.0.1.jar
+#33 83.47 [INFO] Resolved plugin: jdom2-2.0.6.1.jar
+#33 83.47 [INFO] Resolved plugin: flexmark-profile-pegdown-0.42.14.jar
+#33 83.47 [INFO] Resolved plugin: doxia-module-docbook-simple-1.11.1.jar
+#33 83.48 [INFO] Resolved plugin: commons-compress-1.25.0.jar
+#33 83.48 [INFO] Resolved plugin: guava-16.0.1.jar
+#33 83.48 [INFO] Resolved plugin: micrometer-observation-1.12.10.jar
+#33 83.48 [INFO] Resolved plugin: plexus-interpolation-1.21.jar
+#33 83.48 [INFO] Resolved plugin: flexmark-ext-typographic-0.42.14.jar
+#33 83.48 [INFO] Resolved plugin: flexmark-ext-autolink-0.42.14.jar
+#33 83.48 [INFO] Resolved plugin: flexmark-ext-jekyll-tag-0.42.14.jar
+#33 83.48 [INFO] Resolved plugin: flexmark-ext-gitlab-0.42.14.jar
+#33 83.49 [INFO] Resolved plugin: doxia-module-xdoc-1.11.1.jar
+#33 83.49 [INFO] Resolved plugin: spring-boot-loader-tools-3.3.4.jar
+#33 83.50 [INFO] Resolved plugin: doxia-site-renderer-1.11.1.jar
+#33 83.50 [INFO] Resolved plugin: surefire-logger-api-3.2.5.jar
+#33 83.51 [INFO] Resolved plugin: commons-beanutils-1.7.0.jar
+#33 83.51 [INFO] Resolved plugin: commons-lang3-3.14.0.jar
+#33 83.51 [INFO] Resolved plugin: plexus-classworlds-2.5.2.jar
+#33 83.51 [INFO] Resolved plugin: doxia-module-confluence-1.11.1.jar
+#33 83.51 [INFO] Resolved plugin: doxia-module-xhtml5-1.11.1.jar
+#33 83.52 [INFO] Resolved plugin: flexmark-ext-tables-0.42.14.jar
+#33 83.52 [INFO] Resolved plugin: javax.annotation-api-1.2.jar
+#33 83.52 [INFO] Resolved plugin: flexmark-ext-macros-0.42.14.jar
+#33 83.52 [INFO] Resolved plugin: plexus-sec-dispatcher-1.3.jar
+#33 83.52 [INFO] Resolved plugin: jackson-module-parameter-names-2.14.2.jar
+#33 83.52 [INFO] Resolved plugin: commons-collections4-4.4.jar
+#33 83.52 [INFO] Resolved plugin: plexus-i18n-1.0-beta-10.jar
+#33 83.52 [INFO] Resolved plugin: flexmark-ext-gfm-users-0.42.14.jar
+#33 83.52 [INFO] Resolved plugin: maven-common-artifact-filters-3.1.1.jar
+#33 83.52 [INFO] Resolved plugin: plexus-archiver-4.9.2.jar
+#33 83.52 [INFO] Resolved plugin: asm-commons-9.5.jar
+#33 83.52 [INFO] Resolved plugin: surefire-api-3.2.5.jar
+#33 83.52 [INFO] Resolved dependency: resilience4j-spring6-2.1.0.jar
+#33 83.52 [INFO] Resolved dependency: spring-boot-starter-tomcat-3.3.4.jar
+#33 83.53 [INFO] Resolved dependency: joda-time-2.3.jar
+#33 83.53 [INFO] Resolved dependency: jackson-core-2.15.4.jar
+#33 83.53 [INFO] Resolved dependency: jackson-annotations-2.15.4.jar
+#33 83.53 [INFO] Resolved dependency: stringtemplate-3.2.1.jar
+#33 83.53 [INFO] Resolved dependency: commons-math-2.2.jar
+#33 83.53 [INFO] Resolved dependency: jakarta.activation-api-2.1.0.jar
+#33 83.53 [INFO] Resolved dependency: spring-boot-starter-logging-3.2.7.jar
+#33 83.54 [INFO] Resolved dependency: json-smart-2.5.1.jar
+#33 83.54 [INFO] Resolved dependency: reactor-extra-3.5.1.jar
+#33 83.54 [INFO] Resolved dependency: jackson-databind-2.17.2.jar
+#33 83.54 [INFO] Resolved dependency: spring-jdbc-6.1.13.jar
+#33 83.54 [INFO] Resolved dependency: asm-9.6.jar
+#33 83.54 [INFO] Resolved dependency: micrometer-core-1.12.7.jar
+#33 83.54 [INFO] Resolved dependency: logback-core-1.5.8.jar
+#33 83.54 [INFO] Resolved dependency: spring-messaging-6.1.13.jar
+#33 83.54 [INFO] Resolved dependency: spring-boot-actuator-autoconfigure-3.3.4.jar
+#33 83.54 [INFO] Resolved dependency: jakarta.transaction-api-2.0.1.jar
+#33 83.55 [INFO] Resolved dependency: accessors-smart-2.5.1.jar
+#33 83.55 [INFO] Resolved dependency: spring-data-jpa-3.3.4.jar
+#33 83.55 [INFO] Resolved dependency: angus-activation-2.0.0.jar
+#33 83.55 [INFO] Resolved dependency: snakeyaml-2.2.jar
+#33 83.55 [INFO] Resolved dependency: spring-cloud-circuitbreaker-resilience4j-3.1.2.jar
+#33 83.55 [INFO] Resolved dependency: assertj-core-3.25.3.jar
+#33 83.55 [INFO] Resolved dependency: commons-lang-2.6.jar
+#33 83.55 [INFO] Resolved dependency: spring-cloud-starter-loadbalancer-4.1.4.jar
+#33 83.55 [INFO] Resolved dependency: resilience4j-framework-common-2.1.0.jar
+#33 83.56 [INFO] Resolved dependency: byte-buddy-agent-1.14.12.jar
+#33 83.56 [INFO] Resolved dependency: spring-core-6.1.13.jar
+#33 83.56 [INFO] Resolved dependency: spring-cloud-loadbalancer-4.1.4.jar
+#33 83.56 [INFO] Resolved dependency: slf4j-api-2.0.11.jar
+#33 83.56 [INFO] Resolved dependency: log4j-api-2.21.1.jar
+#33 83.56 [INFO] Resolved dependency: servlet-api-2.5.jar
+#33 83.56 [INFO] Resolved dependency: spring-orm-6.1.13.jar
+#33 83.56 [INFO] Resolved dependency: spring-amqp-3.1.7.jar
+#33 83.56 [INFO] Resolved dependency: jakarta.xml.bind-api-4.0.0.jar
+#33 83.56 [INFO] Resolved dependency: spring-test-6.1.13.jar
+#33 83.56 [INFO] Resolved dependency: HikariCP-5.1.0.jar
+#33 83.56 [INFO] Resolved dependency: hibernate-validator-8.0.1.Final.jar
+#33 83.56 [INFO] Resolved dependency: listenablefuture-9999.0-empty-to-avoid-conflict-with-guava.jar
+#33 83.56 [INFO] Resolved dependency: slf4j-api-2.0.2.jar
+#33 83.56 [INFO] Resolved dependency: jackson-core-2.17.2.jar
+#33 83.56 [INFO] Resolved dependency: hibernate-commons-annotations-6.0.6.Final.jar
+#33 83.56 [INFO] Resolved dependency: jackson-datatype-jdk8-2.17.2.jar
+#33 83.56 [INFO] Resolved dependency: hibernate-core-6.5.3.Final.jar
+#33 83.57 [INFO] Resolved dependency: antlr4-runtime-4.13.0.jar
+#33 83.57 [INFO] Resolved dependency: resilience4j-spring-boot3-2.1.0.jar
+#33 83.57 [INFO] Resolved dependency: spring-boot-actuator-3.3.4.jar
+#33 83.57 [INFO] Resolved dependency: antlr-2.7.7.jar
+#33 83.57 [INFO] Resolved dependency: junit-platform-engine-1.10.2.jar
+#33 83.57 [INFO] Resolved dependency: httpcore5-5.2.4.jar
+#33 83.57 [INFO] Resolved dependency: spring-boot-autoconfigure-3.3.4.jar
+#33 83.57 [INFO] Resolved dependency: spring-expression-6.1.10.jar
+#33 83.57 [INFO] Resolved dependency: checker-qual-3.42.0.jar
+#33 83.57 [INFO] Resolved dependency: jackson-databind-2.15.4.jar
+#33 83.57 [INFO] Resolved dependency: junit-4.13.2.jar
+#33 83.57 [INFO] Resolved dependency: spring-boot-starter-logging-3.3.4.jar
+#33 83.57 [INFO] Resolved dependency: byte-buddy-1.14.11.jar
+#33 83.57 [INFO] Resolved dependency: spring-cloud-netflix-eureka-client-4.1.3.jar
+#33 83.57 [INFO] Resolved dependency: woodstox-core-6.2.1.jar
+#33 83.57 [INFO] Resolved dependency: spring-aop-6.1.12.jar
+#33 83.57 [INFO] Resolved dependency: spring-context-6.1.10.jar
+#33 83.57 [INFO] Resolved dependency: commons-jxpath-1.3.jar
+#33 83.57 [INFO] Resolved dependency: spring-rabbit-3.1.7.jar
+#33 83.57 [INFO] Resolved dependency: spring-context-support-6.1.10.jar
+#33 83.57 [INFO] Resolved dependency: spring-jcl-6.1.13.jar
+#33 83.57 [INFO] Resolved dependency: bcprov-jdk18on-1.78.jar
+#33 83.57 [INFO] Resolved dependency: jsr305-3.0.2.jar
+#33 83.57 [INFO] Resolved dependency: resilience4j-circuitbreaker-2.1.0.jar
+#33 83.57 [INFO] Resolved dependency: junit-platform-commons-1.10.3.jar
+#33 83.58 [INFO] Resolved dependency: junit-platform-engine-1.10.3.jar
+#33 83.58 [INFO] Resolved dependency: mockito-junit-jupiter-5.11.0.jar
+#33 83.58 [INFO] Resolved dependency: jakarta.xml.bind-api-4.0.2.jar
+#33 83.58 [INFO] Resolved dependency: mockito-core-5.11.0.jar
+#33 83.58 [INFO] Resolved dependency: spring-jcl-6.1.10.jar
+#33 83.58 [INFO] Resolved dependency: commons-configuration-1.10.jar
+#33 83.58 [INFO] Resolved dependency: jettison-1.5.4.jar
+#33 83.58 [INFO] Resolved dependency: httpcore5-h2-5.2.4.jar
+#33 83.58 [INFO] Resolved dependency: spring-boot-starter-validation-3.3.4.jar
+#33 83.58 [INFO] Resolved dependency: jakarta.annotation-api-2.1.1.jar
+#33 83.58 [INFO] Resolved dependency: spring-boot-starter-json-3.3.4.jar
+#33 83.58 [INFO] Resolved dependency: jackson-datatype-jsr310-2.17.2.jar
+#33 83.58 [INFO] Resolved dependency: spring-aop-6.1.10.jar
+#33 83.58 [INFO] Resolved dependency: spring-boot-starter-amqp-3.3.4.jar
+#33 83.60 [INFO] Resolved dependency: spring-expression-6.1.12.jar
+#33 83.60 [INFO] Resolved dependency: jna-platform-4.5.1.jar
+#33 83.60 [INFO] Resolved dependency: gson-2.10.1.jar
+#33 83.60 [INFO] Resolved dependency: amqp-client-5.19.0.jar
+#33 83.60 [INFO] Resolved dependency: mxparser-1.2.2.jar
+#33 83.60 [INFO] Resolved dependency: spring-boot-starter-cache-3.2.7.jar
+#33 83.60 [INFO] Resolved dependency: json-path-2.9.0.jar
+#33 83.61 [INFO] Resolved dependency: tomcat-embed-websocket-10.1.30.jar
+#33 83.61 [INFO] Resolved dependency: netflix-eventbus-0.3.0.jar
+#33 83.61 [INFO] Resolved dependency: slf4j-api-1.7.25.jar
+#33 83.61 [INFO] Resolved dependency: HdrHistogram-2.1.12.jar
+#33 83.61 [INFO] Resolved dependency: micrometer-commons-1.12.7.jar
+#33 83.61 [INFO] Resolved dependency: spring-retry-2.0.8.jar
+#33 83.61 [INFO] Resolved dependency: spring-boot-3.3.4.jar
+#33 83.61 [INFO] Resolved dependency: reactive-streams-1.0.4.jar
+#33 83.61 [INFO] Resolved dependency: resilience4j-timelimiter-2.1.0.jar
+#33 83.61 [INFO] Resolved dependency: micrometer-observation-1.13.4.jar
+#33 83.61 [INFO] Resolved dependency: httpclient5-5.2.3.jar
+#33 83.61 [INFO] Resolved dependency: spring-context-6.1.12.jar
+#33 83.61 [INFO] Resolved dependency: micrometer-observation-1.12.9.jar
+#33 83.61 [INFO] Resolved dependency: jul-to-slf4j-2.0.16.jar
+#33 83.61 [INFO] Resolved dependency: netflix-infix-0.3.0.jar
+#33 83.61 [INFO] Resolved dependency: spring-boot-autoconfigure-3.2.7.jar
+#33 83.61 [INFO] Resolved dependency: jaxb-core-4.0.2.jar
+#33 83.61 [INFO] Resolved dependency: log4j-to-slf4j-2.21.1.jar
+#33 83.61 [INFO] Resolved dependency: eureka-core-2.0.3.jar
+#33 83.61 [INFO] Resolved dependency: error_prone_annotations-2.23.0.jar
+#33 83.61 [INFO] Resolved dependency: spring-boot-test-3.3.4.jar
+#33 83.62 [INFO] Resolved dependency: spring-boot-starter-aop-3.3.4.jar
+#33 83.62 [INFO] Resolved dependency: log4j-to-slf4j-2.23.1.jar
+#33 83.62 [INFO] Resolved dependency: spring-context-6.1.13.jar
+#33 83.62 [INFO] Resolved dependency: dexx-collections-0.2.jar
+#33 83.62 [INFO] Resolved dependency: servo-core-0.5.3.jar
+#33 83.62 [INFO] Resolved dependency: micrometer-commons-1.12.9.jar
+#33 83.62 [INFO] Resolved dependency: guava-33.0.0-jre.jar
+#33 83.62 [INFO] Resolved dependency: spring-boot-starter-3.3.4.jar
+#33 83.62 [INFO] Resolved dependency: commons-logging-1.2.jar
+#33 83.62 [INFO] Resolved dependency: opentest4j-1.3.0.jar
+#33 83.62 [INFO] Resolved dependency: spring-boot-configuration-processor-3.2.7.jar
+#33 83.63 [INFO] Resolved dependency: spring-expression-6.1.13.jar
+#33 83.63 [INFO] Resolved dependency: xmlunit-core-2.9.1.jar
+#33 83.63 [INFO] Resolved dependency: resilience4j-retry-2.1.0.jar
+#33 83.63 [INFO] Resolved dependency: junit-platform-commons-1.10.2.jar
+#33 83.63 [INFO] Resolved dependency: spring-cloud-starter-circuitbreaker-resilience4j-3.1.2.jar
+#33 83.63 [INFO] Resolved dependency: resilience4j-core-2.1.0.jar
+#33 83.63 [INFO] Resolved dependency: jackson-module-parameter-names-2.17.2.jar
+#33 83.63 [INFO] Resolved dependency: jna-4.5.1.jar
+#33 83.64 [INFO] Resolved dependency: byte-buddy-1.14.15.jar
+#33 83.64 [INFO] Resolved dependency: micrometer-commons-1.13.4.jar
+#33 83.64 [INFO] Resolved dependency: httpclient-4.5.3.jar
+#33 83.65 [INFO] Resolved dependency: failureaccess-1.0.2.jar
+#33 83.65 [INFO] Resolved dependency: spring-aop-6.1.13.jar
+#33 83.65 [INFO] Resolved dependency: spring-cloud-context-4.1.4.jar
+#33 83.65 [INFO] Resolved dependency: resilience4j-consumer-2.1.0.jar
+#33 83.65 [INFO] Resolved dependency: commons-codec-1.16.1.jar
+#33 83.65 [INFO] Resolved dependency: resilience4j-ratelimiter-2.1.0.jar
+#33 83.65 [INFO] Resolved dependency: txw2-4.0.2.jar
+#33 83.65 [INFO] Resolved dependency: spring-security-crypto-6.2.5.jar
+#33 83.66 [INFO] Resolved dependency: HdrHistogram-2.2.2.jar
+#33 83.66 [INFO] Resolved dependency: waffle-jna-1.9.1.jar
+#33 83.67 [INFO] Resolved dependency: spring-boot-starter-data-jpa-3.3.4.jar
+#33 83.67 [INFO] Resolved dependency: hamcrest-2.2.jar
+#33 83.67 [INFO] Resolved dependency: istack-commons-runtime-4.1.1.jar
+#33 83.67 [INFO] Resolved dependency: jboss-logging-3.5.0.Final.jar
+#33 83.67 [INFO] Resolved dependency: postgresql-42.7.4.jar
+#33 83.67 [INFO] Resolved dependency: resilience4j-micrometer-2.1.0.jar
+#33 83.67 [INFO] Resolved dependency: tomcat-embed-core-10.1.30.jar
+#33 83.67 [INFO] Resolved dependency: micrometer-observation-1.12.7.jar
+#33 83.67 [INFO] Resolved dependency: tomcat-embed-el-10.1.30.jar
+#33 83.67 [INFO] Resolved dependency: classmate-1.5.1.jar
+#33 83.67 [INFO] Resolved dependency: spring-beans-6.1.13.jar
+#33 83.68 [INFO] Resolved dependency: spring-boot-3.2.7.jar
+#33 83.68 [INFO] Resolved dependency: junit-jupiter-engine-5.10.2.jar
+#33 83.68 [INFO] Resolved dependency: antlr-runtime-3.4.jar
+#33 83.68 [INFO] Resolved dependency: reactor-core-3.6.7.jar
+#33 83.68 [INFO] Resolved dependency: spring-boot-starter-actuator-3.3.4.jar
+#33 83.68 [INFO] Resolved dependency: micrometer-jakarta9-1.13.4.jar
+#33 83.68 [INFO] Resolved dependency: evictor-1.0.0.jar
+#33 83.69 [INFO] Resolved dependency: jboss-logging-3.4.3.Final.jar
+#33 83.69 [INFO] Resolved dependency: aspectjweaver-1.9.22.1.jar
+#33 83.69 [INFO] Resolved dependency: spring-cloud-starter-netflix-eureka-client-4.1.3.jar
+#33 83.69 [INFO] Resolved dependency: micrometer-commons-1.12.10.jar
+#33 83.69 [INFO] Resolved dependency: checker-qual-3.41.0.jar
+#33 83.69 [INFO] Resolved dependency: objenesis-3.3.jar
+#33 83.69 [INFO] Resolved dependency: slf4j-api-1.7.36.jar
+#33 83.69 [INFO] Resolved dependency: junit-jupiter-engine-5.10.3.jar
+#33 83.69 [INFO] Resolved dependency: jackson-annotations-2.17.2.jar
+#33 83.69 [INFO] Resolved dependency: spring-security-rsa-1.1.3.jar
+#33 83.70 [INFO] Resolved dependency: spring-tx-6.1.12.jar
+#33 83.70 [INFO] Resolved dependency: jcl-over-slf4j-1.7.25.jar
+#33 83.70 [INFO] Resolved dependency: resilience4j-annotations-2.1.0.jar
+#33 83.70 [INFO] Resolved dependency: xmlpull-1.1.3.1.jar
+#33 83.71 [INFO] Resolved dependency: spring-aspects-6.1.13.jar
+#33 83.72 [INFO] Resolved dependency: caffeine-2.6.2.jar
+#33 83.72 [INFO] Resolved dependency: log4j-api-2.23.1.jar
+#33 83.72 [INFO] Resolved dependency: spectator-api-1.7.3.jar
+#33 83.72 [INFO] Resolved dependency: hamcrest-core-1.3.jar
+#33 83.72 [INFO] Resolved dependency: logback-classic-1.4.14.jar
+#33 83.72 [INFO] Resolved dependency: httpcore-4.4.16.jar
+#33 83.72 [INFO] Resolved dependency: spring-data-commons-3.3.4.jar
+#33 83.72 [INFO] Resolved dependency: jakarta.persistence-api-3.1.0.jar
+#33 83.72 [INFO] Resolved dependency: spring-boot-starter-3.2.7.jar
+#33 83.72 [INFO] Resolved dependency: jakarta.activation-api-2.1.3.jar
+#33 83.72 [INFO] Resolved dependency: spring-cloud-starter-4.1.4.jar
+#33 83.72 [INFO] Resolved dependency: micrometer-core-1.13.4.jar
+#33 83.72 [INFO] Resolved dependency: spring-boot-test-autoconfigure-3.3.4.jar
+#33 83.72 [INFO] Resolved dependency: micrometer-observation-1.12.10.jar
+#33 83.72 [INFO] Resolved dependency: jsonassert-1.5.3.jar
+#33 83.72 [INFO] Resolved dependency: jul-to-slf4j-2.0.13.jar
+#33 83.72 [INFO] Resolved dependency: xstream-1.4.20.jar
+#33 83.72 [INFO] Resolved dependency: annotations-2.0.0.jar
+#33 83.72 [INFO] Resolved dependency: spring-boot-starter-jdbc-3.3.4.jar
+#33 83.72 [INFO] Resolved dependency: jakarta.validation-api-3.0.2.jar
+#33 83.72 [INFO] Resolved dependency: slf4j-api-2.0.13.jar
+#33 83.72 [INFO] Resolved dependency: archaius-core-0.7.6.jar
+#33 83.72 [INFO] Resolved dependency: logback-classic-1.5.8.jar
+#33 83.72 [INFO] Resolved dependency: jakarta.ws.rs-api-3.1.0.jar
+#33 83.72 [INFO] Resolved dependency: spring-cloud-commons-4.1.4.jar
+#33 83.72 [INFO] Resolved dependency: resilience4j-circularbuffer-2.1.0.jar
+#33 83.72 [INFO] Resolved dependency: spring-boot-starter-test-3.3.4.jar
+#33 83.72 [INFO] Resolved dependency: junit-jupiter-params-5.10.3.jar
+#33 83.72 [INFO] Resolved dependency: spring-core-6.1.10.jar
+#33 83.72 [INFO] Resolved dependency: jaxb-runtime-4.0.2.jar
+#33 83.72 [INFO] Resolved dependency: awaitility-4.2.2.jar
+#33 83.72 [INFO] Resolved dependency: jakarta.inject-api-2.0.1.jar
+#33 83.72 [INFO] Resolved dependency: jakarta.annotation-api-2.0.0.jar
+#33 83.72 [INFO] Resolved dependency: stax2-api-4.2.1.jar
+#33 83.72 [INFO] Resolved dependency: junit-jupiter-api-5.10.2.jar
+#33 83.72 [INFO] Resolved dependency: spring-boot-starter-web-3.3.4.jar
+#33 83.72 [INFO] Resolved dependency: javax.annotation-api-1.2.jar
+#33 83.72 [INFO] Resolved dependency: logback-core-1.4.14.jar
+#33 83.73 [INFO] Resolved dependency: j2objc-annotations-2.8.jar
+#33 83.73 [INFO] Resolved dependency: slf4j-api-2.0.15.jar
+#33 83.73 [INFO] Resolved dependency: jandex-3.1.2.jar
+#33 83.73 [INFO] Resolved dependency: spring-webmvc-6.1.13.jar
+#33 83.73 [INFO] Resolved dependency: compactmap-2.0.jar
+#33 83.73 [INFO] Resolved dependency: apiguardian-api-1.1.2.jar
+#33 83.73 [INFO] Resolved dependency: spring-beans-6.1.10.jar
+#33 83.73 [INFO] Resolved dependency: LatencyUtils-2.0.3.jar
+#33 83.73 [INFO] Resolved dependency: junit-jupiter-5.10.3.jar
+#33 83.73 [INFO] Resolved dependency: spring-web-6.1.13.jar
+#33 83.73 [INFO] Resolved dependency: eureka-client-2.0.3.jar
+#33 83.73 [INFO] Resolved dependency: android-json-0.0.20131108.vaadin1.jar
+#33 83.73 [INFO] Resolved dependency: spring-tx-6.1.13.jar
+#33 83.73 [INFO] Resolved dependency: junit-jupiter-api-5.10.3.jar
+#33 83.74 [INFO] ------------------------------------------------------------------------
+#33 83.74 [INFO] BUILD SUCCESS
+#33 83.75 [INFO] ------------------------------------------------------------------------
+#33 83.76 [INFO] Total time:  53.457 s
+#33 83.76 [INFO] Finished at: 2026-10-19T22:06:52Z
+#33 83.77 [INFO] ------------------------------------------------------------------------
+#33 DONE 84.0s
+
+#29 [cuenta builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#29 ...
+
+#35 [transferencia builder 7/8] COPY src ./src
+#35 DONE 0.2s
+
+#29 [cuenta builder 6/8] RUN --mount=type=cache,id=sd-m2,target=/root/.m2,sharing=locked ./mvnw dependency:go-offline -B
+#29 ...
+
+#36 [transferencia builder 8/8] RUN ./mvnw clean package -Dmaven.test.skip=true
+

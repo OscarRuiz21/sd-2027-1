@@ -1,0 +1,18 @@
+[
+  {
+    "contenedor": "/derek-s09-transferencia-1",
+    "salud": "healthy",
+    "configuracion": [
+      "PAUSA_ENTRE_CARGO_Y_ABONO_MS=0",
+      "FALLAR_ABONO_A_CLABE="
+    ]
+  },
+  {
+    "contenedor": "/derek-s09-notificacion-1",
+    "salud": "healthy",
+    "configuracion": [
+      "DLQ_ACTIVA=true",
+      "IDEMPOTENCIA_ACTIVA=true"
+    ]
+  }
+]
