@@ -1,0 +1,1 @@
+﻿docker compose logs --no-color transferencia 2>&1 | Select-String 'Circuito cuenta:' | ForEach-Object { ($_.ToString() -split 'Circuito cuenta: ')[-1] }

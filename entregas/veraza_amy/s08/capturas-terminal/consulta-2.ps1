@@ -1,0 +1,2 @@
+﻿docker compose exec -T db psql -U mexibanco -d transferencia -c "select id,estado,detalle from transferencia where id in (2,3);"
+docker compose exec -T db psql -U mexibanco -d movimiento -c "select monto,tipo,referencia,saldo_resultante from movimiento where referencia like '%saga 2%';"

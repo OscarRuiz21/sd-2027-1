@@ -1,0 +1,158 @@
+{
+  "cache_inicial": {
+    "ms": 36.3227000052575,
+    "status": 200,
+    "instancia": "eca0c9d72691",
+    "body": {
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 773.0,
+      "leidaEn": "2026-11-07T07:11:29.638058278Z"
+    }
+  },
+  "transferencia": {
+    "status": 422,
+    "body": {
+      "type": "about:blank",
+      "title": "Unprocessable Entity",
+      "status": 422,
+      "detail": "Saldo insuficiente en la CLABE 002180000000000001",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    }
+  },
+  "muestras": [
+    {
+      "segundos": 0.5799625999934506,
+      "ttl": "28",
+      "consulta": {
+        "ms": 13.52999999653548,
+        "status": 200,
+        "instancia": "8fe38ed61025",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 773.0,
+          "leidaEn": "2026-11-07T07:11:29.638058278Z"
+        }
+      }
+    },
+    {
+      "segundos": 6.067960999993375,
+      "ttl": "23",
+      "consulta": {
+        "ms": 16.60900001297705,
+        "status": 200,
+        "instancia": "235926d95155",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 773.0,
+          "leidaEn": "2026-11-07T07:11:29.638058278Z"
+        }
+      }
+    },
+    {
+      "segundos": 11.560859299992444,
+      "ttl": "18",
+      "consulta": {
+        "ms": 16.149799979757518,
+        "status": 200,
+        "instancia": "235926d95155",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 773.0,
+          "leidaEn": "2026-11-07T07:11:29.638058278Z"
+        }
+      }
+    },
+    {
+      "segundos": 16.95582179998746,
+      "ttl": "10",
+      "consulta": {
+        "ms": 13.922099984483793,
+        "status": 200,
+        "instancia": "eca0c9d72691",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 773.0,
+          "leidaEn": "2026-11-07T07:11:29.638058278Z"
+        }
+      }
+    },
+    {
+      "segundos": 24.32318419998046,
+      "ttl": "5",
+      "consulta": {
+        "ms": 13.495499995769933,
+        "status": 200,
+        "instancia": "8fe38ed61025",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 773.0,
+          "leidaEn": "2026-11-07T07:11:29.638058278Z"
+        }
+      }
+    },
+    {
+      "segundos": 29.715707600000314,
+      "ttl": "-2",
+      "consulta": {
+        "ms": 19.944900006521493,
+        "status": 200,
+        "instancia": "235926d95155",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-07T07:12:03.056726161Z"
+        }
+      }
+    },
+    {
+      "segundos": 37.82885209997767,
+      "ttl": "24",
+      "consulta": {
+        "ms": 13.372299988986924,
+        "status": 200,
+        "instancia": "235926d95155",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-07T07:12:03.056726161Z"
+        }
+      }
+    },
+    {
+      "segundos": 44.216559399996186,
+      "ttl": "18",
+      "consulta": {
+        "ms": 13.763900002231821,
+        "status": 200,
+        "instancia": "235926d95155",
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-07T07:12:03.056726161Z"
+        }
+      }
+    }
+  ],
+  "saldo_restaurado": {
+    "ms": 25.18880000570789,
+    "status": 200,
+    "instancia": "eca0c9d72691",
+    "body": {
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 773.0,
+      "leidaEn": "2026-11-07T07:12:18.957038083Z"
+    }
+  },
+  "nota": "UPDATE solo en la base aislada del lab; saldo original restaurado al terminar."
+}

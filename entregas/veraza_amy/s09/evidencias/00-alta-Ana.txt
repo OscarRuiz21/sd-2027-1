@@ -1,0 +1,9 @@
+{
+  "http": 201,
+  "respuesta": {
+    "id": 1,
+    "clabe": "002180000000000001",
+    "titular": "Ana",
+    "saldo": 1000
+  }
+}

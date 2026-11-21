@@ -1,0 +1,49 @@
+<html><meta charset="utf-8"><style>body{font:17px Segoe UI;margin:28px;color:#172b42;background:#f2f5f8}pre{background:white;border:1px solid #ccd4df;padding:20px;font:14px Consolas;white-space:pre-wrap;overflow-wrap:anywhere}h1{font-size:26px}</style><h1>Lab S11 · 04-medidas</h1><p>Vista de resultados reales guardados en evidencias/. No es una terminal.</p><pre>{
+  &quot;A&quot;: {
+    &quot;redis&quot;: {
+      &quot;keyspace_hits&quot;: 99,
+      &quot;keyspace_misses&quot;: 1
+    },
+    &quot;ratio&quot;: 0.99,
+    &quot;lecturas_postgres&quot;: 1
+  },
+  &quot;B&quot;: {
+    &quot;redis&quot;: {
+      &quot;keyspace_hits&quot;: 100,
+      &quot;keyspace_misses&quot;: 20
+    },
+    &quot;ratio&quot;: 0.8333333333333334,
+    &quot;lecturas_postgres&quot;: 20
+  },
+  &quot;latencias_sin_cache&quot;: [
+    {
+      &quot;promedio_ms&quot;: 19.136247000133153,
+      &quot;mediana_ms&quot;: 18.195999989984557,
+      &quot;p95_ms&quot;: 27.04059999086894,
+      &quot;lecturas_postgres&quot;: 100
+    },
+    {
+      &quot;promedio_ms&quot;: 16.0324710002169,
+      &quot;mediana_ms&quot;: 14.827899998635985,
+      &quot;p95_ms&quot;: 24.901800003135577,
+      &quot;lecturas_postgres&quot;: 100
+    },
+    {
+      &quot;promedio_ms&quot;: 16.003470000287052,
+      &quot;mediana_ms&quot;: 14.372550009284168,
+      &quot;p95_ms&quot;: 27.530399995157495,
+      &quot;lecturas_postgres&quot;: 100
+    }
+  ],
+  &quot;latencias_cache&quot;: [
+    {
+      &quot;promedio_ms&quot;: 11.41852999891853,
+      &quot;mediana_ms&quot;: 10.318100001313724,
+      &quot;p95_ms&quot;: 17.911500006448478,
+      &quot;lecturas_postgres&quot;: 1
+    },
+    {
+      &quot;promedio_ms&quot;: 13.566108999366406,
+      &quot;mediana_ms&quot;: 11.27344999986235,
+      &quot;p95_ms&quot;: 26.738999993540347,
+[Vista parcial; salida completa en los archivos JSON adjuntos.]</pre></html>

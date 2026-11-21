@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Practica S02 - Amy Veraza</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    .contenedor {
+      max-width: 760px;
+      margin: 20px auto;
+      background: #fff;
+      border: 1px solid #d7d7d7;
+      padding: 20px;
+    }
+
+    h1, h2 {
+      color: #1d3557;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 28px;
+    }
+
+    p {
+      line-height: 1.5;
+      margin: 10px 0;
+    }
+
+    .sub {
+      margin-top: 0;
+      color: #555;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    th, td {
+      border: 1px solid #cfcfcf;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #e8f1f8;
+    }
+
+    code {
+      font-family: sans-serif;
+      background: transparent;
+      padding: 0;
+    }
+
+    .nota {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f7f7f7;
+      border: 1px solid #d7d7d7;
+    }
+
+    .evidencia {
+      margin-top: 18px;
+      padding: 12px;
+      border: 1px solid #d7d7d7;
+      background: #fafafa;
+    }
+
+    .evidencia p {
+      margin: 0 0 8px;
+    }
+
+    .placeholder {
+      padding: 16px;
+      border: 1px dashed #bdbdbd;
+      background: #fff;
+      color: #666;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border: 1px solid #cfcfcf;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Hola, soy Amy Veraza</h1>
+    <p class="sub">
+      Esta pagina forma parte de mi practica de la sesion 02 de Sistemas
+      Distribuidos. La estoy sirviendo desde un contenedor construido con Docker.
+    </p>
+
+    <h2>Comandos que mas me ayudaron</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Comando</th>
+          <th>Que hace</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>docker pull nginx:alpine</code></td>
+          <td>Descarga la imagen base que use para levantar el servicio web.</td>
+        </tr>
+        <tr>
+          <td><code>docker build -t mi-sitio .</code></td>
+          <td>Construye mi imagen usando el <code>Dockerfile</code> y el archivo HTML.</td>
+        </tr>
+        <tr>
+          <td><code>docker run -d -p 9090:80 --name sitio mi-sitio</code></td>
+          <td>Inicia un contenedor y publica el puerto para verlo desde el navegador.</td>
+        </tr>
+        <tr>
+          <td><code>docker ps</code></td>
+          <td>Muestra que contenedores estan corriendo en ese momento.</td>
+        </tr>
+        <tr>
+          <td><code>docker exec -it sitio sh</code></td>
+          <td>Permite entrar al contenedor para revisar archivos o comandos desde dentro.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="nota">
+      <p>
+        Version 2: agregue esta nota despues del primer build para comprobar que
+        los cambios no aparecen en el contenedor hasta reconstruir la imagen.
+      </p>
+    </div>
+
+    <h2>Evidencias</h2>
+    <p>
+      Aqui voy a colocar las capturas que muestran la construccion y ejecucion de
+      los contenedores.
+    </p>
+
+    <div class="evidencia">
+      <p><strong>Captura 1.</strong> Verificacion de Docker.</p>
+      <img src="imagenes/version%20docker.png" alt="Captura de docker version">
+    </div>
+
+    <div class="evidencia">
+      <p><strong>Captura 2.</strong> Contenedores corriendo en puertos 9090 y 9091.</p>
+      <img src="imagenes/Contenerdor.png" alt="Captura de contenedores corriendo">
+    </div>
+
+    <div class="evidencia">
+      <p><strong>Captura 3.</strong> Informacion general del contenedor.</p>
+      <img src="imagenes/INFO.png" alt="Captura con informacion del contenedor">
+    </div>
+
+    <div class="evidencia">
+      <p><strong>Captura 4.</strong> Levantamiento del sitio.</p>
+      <img src="imagenes/Levantamiento.png" alt="Captura del levantamiento del sitio">
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+[
+  {
+    "http": 200,
+    "respuesta": {
+      "id": 1,
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 1000.0
+    }
+  },
+  {
+    "http": 200,
+    "respuesta": {
+      "id": 2,
+      "clabe": "002180000000000002",
+      "titular": "Beto",
+      "saldo": 500.0
+    }
+  }
+]

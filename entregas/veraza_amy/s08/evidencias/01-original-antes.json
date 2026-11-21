@@ -1,0 +1,28 @@
+[
+  {
+    "url": "http://localhost:18080/api/cuentas/002187000000001081",
+    "method": "GET",
+    "body": null,
+    "status": 200,
+    "seconds": 0.063,
+    "response": {
+      "id": 3,
+      "clabe": "002187000000001081",
+      "titular": "Ana S08",
+      "saldo": 1000.0
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/cuentas/002187000000001082",
+    "method": "GET",
+    "body": null,
+    "status": 200,
+    "seconds": 0.031,
+    "response": {
+      "id": 4,
+      "clabe": "002187000000001082",
+      "titular": "Beto S08",
+      "saldo": 500.0
+    }
+  }
+]

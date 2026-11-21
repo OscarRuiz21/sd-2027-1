@@ -1,0 +1,93 @@
+[
+  {
+    "url": "http://localhost:18080/api/transferencias",
+    "method": "POST",
+    "body": {
+      "claveOrigen": "002187000000003081",
+      "claveDestino": "002187000000003082",
+      "monto": 200
+    },
+    "status": 500,
+    "seconds": 0.094,
+    "response": {
+      "timestamp": "2026-10-17T06:35:54.215+00:00",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/transferencias"
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/transferencias",
+    "method": "POST",
+    "body": {
+      "claveOrigen": "002187000000003081",
+      "claveDestino": "002187000000003082",
+      "monto": 200
+    },
+    "status": 500,
+    "seconds": 0.015,
+    "response": {
+      "timestamp": "2026-10-17T06:35:54.239+00:00",
+      "status": 500,
+      "error": "Internal Server Error",
+      "path": "/transferencias"
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/transferencias",
+    "method": "POST",
+    "body": {
+      "claveOrigen": "002187000000003081",
+      "claveDestino": "002187000000003082",
+      "monto": 200
+    },
+    "status": 503,
+    "seconds": 0.047,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito ABIERTO: cuenta temporalmente indisponible",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/transferencias",
+    "method": "POST",
+    "body": {
+      "claveOrigen": "002187000000003081",
+      "claveDestino": "002187000000003082",
+      "monto": 200
+    },
+    "status": 503,
+    "seconds": 0.031,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito ABIERTO: cuenta temporalmente indisponible",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    }
+  },
+  {
+    "url": "http://localhost:18080/api/transferencias",
+    "method": "POST",
+    "body": {
+      "claveOrigen": "002187000000003081",
+      "claveDestino": "002187000000003082",
+      "monto": 200
+    },
+    "status": 503,
+    "seconds": 0.032,
+    "response": {
+      "type": "about:blank",
+      "title": "Service Unavailable",
+      "status": 503,
+      "detail": "Circuito ABIERTO: cuenta temporalmente indisponible",
+      "instance": "/transferencias",
+      "servicio": "cuenta"
+    }
+  }
+]

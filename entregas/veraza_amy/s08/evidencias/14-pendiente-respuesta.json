@@ -1,0 +1,20 @@
+{
+  "url": "http://localhost:18080/api/transferencias",
+  "method": "POST",
+  "body": {
+    "claveOrigen": "002187000000003081",
+    "claveDestino": "002187000000003082",
+    "monto": 200
+  },
+  "status": 201,
+  "seconds": 20.437,
+  "response": {
+    "estado": "COMPENSACION_PENDIENTE",
+    "detalle": "Devolucion sin confirmar: No instances available for cuenta",
+    "id": 3,
+    "claveOrigen": "002187000000003081",
+    "claveDestino": "002187000000003082",
+    "monto": 200,
+    "fecha": "2026-10-17T06:35:33.627842436Z"
+  }
+}

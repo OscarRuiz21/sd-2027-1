@@ -1,0 +1,22 @@
+{
+  "002180000000000001": {
+    "http": 503,
+    "respuesta": {
+      "timestamp": "2026-10-23T05:23:18.363+00:00",
+      "path": "/api/notificaciones",
+      "status": 503,
+      "error": "Service Unavailable",
+      "requestId": "fd38ea5c-232"
+    }
+  },
+  "002180000000000002": {
+    "http": 503,
+    "respuesta": {
+      "timestamp": "2026-10-23T05:23:18.379+00:00",
+      "path": "/api/notificaciones",
+      "status": 503,
+      "error": "Service Unavailable",
+      "requestId": "68d5c085-233"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "http": 200,
+  "respuesta": {
+    "id": 9,
+    "claveOrigen": "002180000000000001",
+    "claveDestino": "002180000000000002",
+    "monto": 150.0,
+    "fecha": "2026-10-23T13:29:09.764529Z",
+    "estado": "COMPENSADA",
+    "motivo": "El abono a la CLABE 002180000000000002 fallo: Falla provocada con FALLAR_ABONO_A_CLABE=002180000000000002",
+    "saldoOrigenTrasCargo": 727.0,
+    "intentosDeCompensacion": 33,
+    "actualizada": "2026-10-23T13:40:13.918968Z"
+  }
+}

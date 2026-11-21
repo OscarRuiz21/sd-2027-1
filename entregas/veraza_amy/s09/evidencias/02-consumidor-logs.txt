@@ -1,0 +1,45 @@
+notificacion-1  | 2026-10-23T05:22:48.379Z  INFO 1 --- [notificacion] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+notificacion-1  | 2026-10-23T05:22:48.494Z  INFO 1 --- [notificacion] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+notificacion-1  | 2026-10-23T05:22:48.497Z  INFO 1 --- [notificacion] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 8951 ms
+notificacion-1  | 2026-10-23T05:22:51.447Z  INFO 1 --- [notificacion] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+notificacion-1  | 2026-10-23T05:22:52.187Z  INFO 1 --- [notificacion] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+notificacion-1  | 2026-10-23T05:22:52.606Z  INFO 1 --- [notificacion] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+notificacion-1  | 2026-10-23T05:22:56.426Z  INFO 1 --- [notificacion] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+notificacion-1  | 2026-10-23T05:22:56.554Z  INFO 1 --- [notificacion] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+notificacion-1  | 2026-10-23T05:22:57.420Z  INFO 1 --- [notificacion] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@62c6db99
+notificacion-1  | 2026-10-23T05:22:57.426Z  INFO 1 --- [notificacion] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+notificacion-1  | 2026-10-23T05:23:00.488Z  INFO 1 --- [notificacion] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+notificacion-1  | 2026-10-23T05:23:00.782Z  INFO 1 --- [notificacion] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+notificacion-1  | 2026-10-23T05:23:02.090Z  INFO 1 --- [notificacion] [           main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+notificacion-1  | 2026-10-23T05:23:10.093Z  INFO 1 --- [notificacion] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+notificacion-1  | 2026-10-23T05:23:10.517Z  WARN 1 --- [notificacion] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+notificacion-1  | 2026-10-23T05:23:10.578Z  INFO 1 --- [notificacion] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+notificacion-1  | 2026-10-23T05:23:11.080Z  INFO 1 --- [notificacion] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+notificacion-1  | 2026-10-23T05:23:11.233Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+notificacion-1  | 2026-10-23T05:23:11.244Z  INFO 1 --- [notificacion] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+notificacion-1  | 2026-10-23T05:23:11.271Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+notificacion-1  | 2026-10-23T05:23:11.271Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+notificacion-1  | 2026-10-23T05:23:11.272Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+notificacion-1  | 2026-10-23T05:23:11.272Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+notificacion-1  | 2026-10-23T05:23:11.272Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+notificacion-1  | 2026-10-23T05:23:11.272Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+notificacion-1  | 2026-10-23T05:23:11.272Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+notificacion-1  | 2026-10-23T05:23:12.566Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+notificacion-1  | 2026-10-23T05:23:12.577Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+notificacion-1  | 2026-10-23T05:23:12.584Z  INFO 1 --- [notificacion] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+notificacion-1  | 2026-10-23T05:23:12.589Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792732992588 with initial instances count: 4
+notificacion-1  | 2026-10-23T05:23:12.615Z  INFO 1 --- [notificacion] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application NOTIFICACION with eureka with status UP
+notificacion-1  | 2026-10-23T05:23:12.619Z  INFO 1 --- [notificacion] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792732992619, current=UP, previous=STARTING]
+notificacion-1  | 2026-10-23T05:23:12.624Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/4cafde163f6a:notificacion:8080: registering service...
+notificacion-1  | 2026-10-23T05:23:12.707Z  INFO 1 --- [notificacion] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+notificacion-1  | 2026-10-23T05:23:12.710Z  INFO 1 --- [notificacion] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+notificacion-1  | 2026-10-23T05:23:12.729Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [rabbitmq:5672]
+notificacion-1  | 2026-10-23T05:23:12.795Z  INFO 1 --- [notificacion] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_NOTIFICACION/4cafde163f6a:notificacion:8080 - registration status: 204
+notificacion-1  | 2026-10-23T05:23:12.942Z  INFO 1 --- [notificacion] [           main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6da6c10e:0/SimpleConnection@6a2b30b9 [delegate=amqp://mexibanco@172.25.0.4:5672/, localPort=32882]
+notificacion-1  | 2026-10-23T05:23:13.261Z  INFO 1 --- [notificacion] [           main] mx.mexibanco.NotificacionApplication     : Started NotificacionApplication in 35.829 seconds (process running for 38.492)
+notificacion-1  | 2026-10-23T05:23:13.884Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 5 (fc09fcd1-63e0-3d75-b327-7d40e9b8eef5, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:23:13.912Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 6 (915682fe-f098-31ba-bf4a-b090dc55d88b, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:23:13.938Z  INFO 1 --- [notificacion] [ntContainer#0-1] m.m.n.m.ConsumidorDeTransferencias       : TransferenciaRealizada de transferencia 7 (de1df7f3-31ba-38e2-b4ff-dbfd1adc16be, redelivered=false): 2 aviso(s) nuevo(s)
+notificacion-1  | 2026-10-23T05:23:17.269Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+notificacion-1  | 2026-10-23T05:23:17.269Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+notificacion-1  | 2026-10-23T05:23:17.272Z  INFO 1 --- [notificacion] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms

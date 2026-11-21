@@ -1,0 +1,30 @@
+{
+  "transferencia": {
+    "status": 201,
+    "body": {
+      "id": 1,
+      "claveOrigen": "002180000000000001",
+      "claveDestino": "002180000000000002",
+      "monto": 200,
+      "fecha": "2026-11-07T07:10:11.960769192Z",
+      "estado": "COMPLETADA",
+      "motivo": null,
+      "saldoOrigenTrasCargo": 800.0,
+      "intentosDeCompensacion": 0,
+      "actualizada": "2026-11-07T07:10:12.833464903Z",
+      "eventoId": "a181fe3b-b6b5-4ae8-b9e9-1af974c41446"
+    }
+  },
+  "existe_despues": "0",
+  "siguiente_get": {
+    "ms": 18.476299999747425,
+    "status": 200,
+    "instancia": "eca0c9d72691",
+    "body": {
+      "clabe": "002180000000000001",
+      "titular": "Ana",
+      "saldo": 800.0,
+      "leidaEn": "2026-11-07T07:10:13.261842310Z"
+    }
+  }
+}

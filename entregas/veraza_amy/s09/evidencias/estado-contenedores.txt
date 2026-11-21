@@ -1,0 +1,9 @@
+NAME                             IMAGE                          COMMAND                  SERVICE         CREATED              STATUS                        PORTS
+mexi-banco-s09-cuenta-1          mexi-banco-s09-cuenta          "java -jar app.jar"      cuenta          About a minute ago   Up About a minute (healthy)   
+mexi-banco-s09-db-1              postgres:17-alpine             "docker-entrypoint.s…"   db              8 hours ago          Up 8 hours (healthy)          5432/tcp
+mexi-banco-s09-discovery-1       mexi-banco-s09-discovery       "java -jar app.jar"      discovery       8 hours ago          Up 8 hours (healthy)          0.0.0.0:8761->8761/tcp, [::]:8761->8761/tcp
+mexi-banco-s09-gateway-1         mexi-banco-s09-gateway         "java -jar app.jar"      gateway         8 hours ago          Up 8 hours (healthy)          0.0.0.0:18090->8080/tcp, [::]:18090->8080/tcp
+mexi-banco-s09-movimiento-1      mexi-banco-s09-movimiento      "java -jar app.jar"      movimiento      3 minutes ago        Up 3 minutes (healthy)        
+mexi-banco-s09-notificacion-1    mexi-banco-s09-notificacion    "java -jar app.jar"      notificacion    8 hours ago          Up 8 hours (healthy)          
+mexi-banco-s09-rabbitmq-1        rabbitmq:4-management          "docker-entrypoint.s…"   rabbitmq        8 hours ago          Up 8 hours (healthy)          0.0.0.0:5672->5672/tcp, [::]:5672->5672/tcp, 0.0.0.0:15672->15672/tcp, [::]:15672->15672/tcp
+mexi-banco-s09-transferencia-1   mexi-banco-s09-transferencia   "java -jar app.jar"      transferencia   26 seconds ago       Up 21 seconds (healthy)       

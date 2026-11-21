@@ -1,0 +1,31 @@
+services:
+  discovery:
+    image: mexi-banco-v06-discovery
+    environment:
+      JAVA_TOOL_OPTIONS: -Xmx192m
+  gateway:
+    ports: !override ["18080:8080"]
+    image: mexi-banco-v06-gateway
+    environment:
+      SPRING_CLOUD_GATEWAY_HTTPCLIENT_RESPONSE_TIMEOUT: 45s
+      JAVA_TOOL_OPTIONS: -Xmx192m
+  cuenta:
+    image: mexi-banco-v06-cuenta
+    environment:
+      JAVA_TOOL_OPTIONS: -Xmx192m
+  movimiento:
+    image: mexi-banco-v06-movimiento
+    environment:
+      JAVA_TOOL_OPTIONS: -Xmx192m
+  notificacion:
+    image: mexi-banco-v06-notificacion
+    environment:
+      JAVA_TOOL_OPTIONS: -Xmx192m
+  spei:
+    image: mexi-banco-v06-spei
+    environment:
+      JAVA_TOOL_OPTIONS: -Xmx192m
+  transferencia:
+    image: ${S08_IMAGE:-mexi-banco-v06-transferencia}
+    environment:
+      JAVA_TOOL_OPTIONS: -Xmx192m

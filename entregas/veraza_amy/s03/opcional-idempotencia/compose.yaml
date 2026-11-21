@@ -1,0 +1,17 @@
+services:
+  cobros:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      DB_PATH: /datos/cobros.db
+    volumes:
+      - cobros_datos:/datos
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8080/health"]
+      interval: 3s
+      timeout: 2s
+      retries: 5
+
+volumes:
+  cobros_datos:

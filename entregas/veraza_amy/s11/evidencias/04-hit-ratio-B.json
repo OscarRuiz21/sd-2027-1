@@ -1,0 +1,1272 @@
+{
+  "redis": {
+    "keyspace_hits": 100,
+    "keyspace_misses": 20
+  },
+  "ratio": 0.8333333333333334,
+  "lecturas_postgres": 20,
+  "consultas": [
+    {
+      "ms": 15.578899998217821,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 8.417600009124726,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 9.398599999258295,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 10.922699992079288,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 11.362899997038767,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 25.58590000262484,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 21.045800007414073,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 17.863999994006008,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 16.229099972406402,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 13.796100014587864,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 800.0,
+        "leidaEn": "2026-11-07T07:10:23.155838940Z"
+      }
+    },
+    {
+      "ms": 19.132899993564934,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 13.945899991085753,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 27.474400005303323,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 17.097200005082414,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 11.725799995474517,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 10.847699973965064,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 9.655300003942102,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 10.585299984086305,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 15.997100010281429,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 14.890399994328618,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 799.0,
+        "leidaEn": "2026-11-07T07:10:23.668852893Z"
+      }
+    },
+    {
+      "ms": 21.08609999413602,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 17.308599984971806,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 17.624499974772334,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 24.312000023201108,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 20.10380002320744,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 16.861000010976568,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 12.871499988250434,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 12.979099992662668,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 12.56840000860393,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 11.912399990251288,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 798.0,
+        "leidaEn": "2026-11-07T07:10:24.033066961Z"
+      }
+    },
+    {
+      "ms": 19.87290001125075,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 21.301700006006286,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 15.917999990051612,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 12.416899990057573,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 16.093800019007176,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 17.797900014556944,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 30.997500027297065,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 20.687200012616813,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 17.58970000082627,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 11.562600004253909,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 797.0,
+        "leidaEn": "2026-11-07T07:10:24.359249104Z"
+      }
+    },
+    {
+      "ms": 42.72019999916665,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 16.12300000851974,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 11.275600001681596,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 9.793800010811538,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 13.749999983701855,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 11.35059999069199,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 15.434900007676333,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 10.18610000028275,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 11.029399989638478,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 10.186600004089996,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 796.0,
+        "leidaEn": "2026-11-07T07:10:24.726182977Z"
+      }
+    },
+    {
+      "ms": 21.371699986048043,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 9.89410001784563,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 9.690700011560693,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 11.125499993795529,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 19.21049997326918,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 14.585600001737475,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 26.33130000322126,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 13.966599974082783,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 14.234600006602705,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 10.322600021027029,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 795.0,
+        "leidaEn": "2026-11-07T07:10:25.057509658Z"
+      }
+    },
+    {
+      "ms": 14.742800005478784,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 11.197599989827722,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 11.323300015646964,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 12.350300006801262,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 12.681799998972565,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 12.342100002570078,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 10.873999999603257,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 11.414000007789582,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 12.745799991535023,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 11.765200004447252,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 794.0,
+        "leidaEn": "2026-11-07T07:10:25.378855497Z"
+      }
+    },
+    {
+      "ms": 13.480000023264438,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 13.669700012542307,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 9.563400002662092,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 11.679799994453788,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 11.830400006147102,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 20.864399994025007,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 19.84930000617169,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 16.692600009264424,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 10.99350000731647,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 13.680000003660098,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 793.0,
+        "leidaEn": "2026-11-07T07:10:25.727781289Z"
+      }
+    },
+    {
+      "ms": 17.535799997858703,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 11.142900009872392,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 15.086900006281212,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 16.426300018792972,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 20.0798999867402,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 13.463899987982586,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 14.48860001983121,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 13.656199997058138,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 20.46989998780191,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 16.934500017669052,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 792.0,
+        "leidaEn": "2026-11-07T07:10:26.061951135Z"
+      }
+    },
+    {
+      "ms": 15.474499989068136,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 16.16859997739084,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 10.90309998835437,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 24.241300008725375,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 19.88760000676848,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 15.240499982610345,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 10.059099993668497,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 10.32080000732094,
+      "status": 200,
+      "instancia": "eca0c9d72691",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 13.81449998007156,
+      "status": 200,
+      "instancia": "235926d95155",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    },
+    {
+      "ms": 33.36870000930503,
+      "status": 200,
+      "instancia": "8fe38ed61025",
+      "body": {
+        "clabe": "002180000000000001",
+        "titular": "Ana",
+        "saldo": 791.0,
+        "leidaEn": "2026-11-07T07:10:26.409589622Z"
+      }
+    }
+  ],
+  "transferencias": [
+    {
+      "status": 201,
+      "body": {
+        "id": 2,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:23.364103028Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 799.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:23.640817842Z",
+        "eventoId": "fb9a62f3-6ed0-4ad9-ae33-55eced0627eb"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 3,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:23.887214630Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 798.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:23.999902609Z",
+        "eventoId": "1708d40a-53c5-4154-a116-35c843c2c2b8"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 4,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:24.250865203Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 797.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:24.333658552Z",
+        "eventoId": "aeec010c-7430-4686-b598-9ef8ce8e458f"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 5,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:24.592460084Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 796.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:24.680413648Z",
+        "eventoId": "e91db5ae-a134-44af-864d-d396130c8e9b"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 6,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:24.944643663Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 795.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:25.027858008Z",
+        "eventoId": "071329cc-276f-4cc7-8c42-288f5a686274"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 7,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:25.263463440Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 794.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:25.356948098Z",
+        "eventoId": "2f128fb5-75c3-4b10-ad51-5145b3f89374"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 8,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:25.604239038Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 793.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:25.704837251Z",
+        "eventoId": "29b4ad01-a92d-405b-9202-d8e22fbd39b6"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 9,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:25.941607542Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 792.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:26.035833938Z",
+        "eventoId": "f82a8e83-e20b-463c-884c-8706479fa688"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 10,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:26.296799901Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 791.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:26.388353344Z",
+        "eventoId": "06d1e857-f24a-4480-99be-07dd08ea9f95"
+      }
+    },
+    {
+      "status": 201,
+      "body": {
+        "id": 11,
+        "claveOrigen": "002180000000000001",
+        "claveDestino": "002180000000000002",
+        "monto": 1,
+        "fecha": "2026-11-07T07:10:26.658216606Z",
+        "estado": "COMPLETADA",
+        "motivo": null,
+        "saldoOrigenTrasCargo": 790.0,
+        "intentosDeCompensacion": 0,
+        "actualizada": "2026-11-07T07:10:26.749895825Z",
+        "eventoId": "708d67d5-708d-4b75-a91a-58664dfb02d1"
+      }
+    }
+  ]
+}
