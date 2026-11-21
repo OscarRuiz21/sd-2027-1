@@ -1,0 +1,6 @@
+ID 1: REST 200 {'id': 1, 'nombre': 'Cuaderno', 'precio_centavos': 4500}; gRPC OK {'id': 1, 'nombre': 'Cuaderno', 'precio_centavos': 4500}
+Cuerpos serializados: JSON 51 bytes; Protobuf 15 bytes (NO incluye red ni cabeceras)
+ID 2: REST 200 {'id': 2, 'nombre': 'Mochila', 'precio_centavos': 39900}; gRPC OK {'id': 2, 'nombre': 'Mochila', 'precio_centavos': 39900}
+Cuerpos serializados: JSON 51 bytes; Protobuf 15 bytes (NO incluye red ni cabeceras)
+ID 999: REST 404; gRPC NOT_FOUND; mismo caso sin datos
+PASS: dos interfaces, mismos resultados y mismo error de negocio

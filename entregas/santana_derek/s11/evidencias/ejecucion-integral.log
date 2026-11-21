@@ -1,0 +1,73 @@
+cache OK
+medidas OK
+mongo OK
+viejo OK
+ Container derek-s11-redis-1 Running 
+ Container derek-s11-db-1 Running 
+ Container derek-s11-discovery-1 Running 
+ Container derek-s11-cuenta-3 Recreate 
+ Container derek-s11-cuenta-2 Recreate 
+ Container derek-s11-cuenta-1 Recreate 
+ Container derek-s11-cuenta-3 Recreated 
+ Container derek-s11-cuenta-1 Recreated 
+ Container derek-s11-cuenta-2 Recreated 
+ Container derek-s11-redis-1 Waiting 
+ Container derek-s11-db-1 Waiting 
+ Container derek-s11-discovery-1 Waiting 
+ Container derek-s11-discovery-1 Healthy 
+ Container derek-s11-db-1 Healthy 
+ Container derek-s11-redis-1 Healthy 
+ Container derek-s11-cuenta-3 Starting 
+ Container derek-s11-cuenta-3 Started 
+ Container derek-s11-cuenta-1 Starting 
+ Container derek-s11-cuenta-1 Started 
+ Container derek-s11-cuenta-2 Starting 
+ Container derek-s11-cuenta-2 Started 
+ Container derek-s11-redis-1 Waiting 
+ Container derek-s11-db-1 Waiting 
+ Container derek-s11-discovery-1 Waiting 
+ Container derek-s11-cuenta-3 Waiting 
+ Container derek-s11-cuenta-1 Waiting 
+ Container derek-s11-cuenta-2 Waiting 
+ Container derek-s11-db-1 Healthy 
+ Container derek-s11-redis-1 Healthy 
+ Container derek-s11-discovery-1 Healthy 
+ Container derek-s11-cuenta-3 Healthy 
+ Container derek-s11-cuenta-1 Healthy 
+ Container derek-s11-cuenta-2 Healthy 
+medidas OK
+Visores generados desde resultados OK
+ Container derek-s11-db-1 Running 
+ Container derek-s11-redis-1 Running 
+ Container derek-s11-discovery-1 Running 
+ Container derek-s11-cuenta-2 Recreate 
+ Container derek-s11-cuenta-3 Recreate 
+ Container derek-s11-cuenta-1 Recreate 
+ Container derek-s11-cuenta-2 Recreated 
+ Container derek-s11-cuenta-3 Recreated 
+ Container derek-s11-cuenta-1 Recreated 
+ Container derek-s11-db-1 Waiting 
+ Container derek-s11-discovery-1 Waiting 
+ Container derek-s11-redis-1 Waiting 
+ Container derek-s11-db-1 Healthy 
+ Container derek-s11-discovery-1 Healthy 
+ Container derek-s11-redis-1 Healthy 
+ Container derek-s11-cuenta-3 Starting 
+ Container derek-s11-cuenta-3 Started 
+ Container derek-s11-cuenta-2 Starting 
+ Container derek-s11-cuenta-2 Started 
+ Container derek-s11-cuenta-1 Starting 
+ Container derek-s11-cuenta-1 Started 
+ Container derek-s11-db-1 Waiting 
+ Container derek-s11-discovery-1 Waiting 
+ Container derek-s11-cuenta-3 Waiting 
+ Container derek-s11-cuenta-2 Waiting 
+ Container derek-s11-cuenta-1 Waiting 
+ Container derek-s11-redis-1 Waiting 
+ Container derek-s11-discovery-1 Healthy 
+ Container derek-s11-redis-1 Healthy 
+ Container derek-s11-db-1 Healthy 
+ Container derek-s11-cuenta-3 Healthy 
+ Container derek-s11-cuenta-2 Healthy 
+ Container derek-s11-cuenta-1 Healthy 
+TODAS LAS FASES S11 OK; CACHE RESTAURADA

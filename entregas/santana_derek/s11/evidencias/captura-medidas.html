@@ -1,0 +1,23 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>S11 · Evidencia de ejecución</title><style>
+*{box-sizing:border-box}body{margin:0;background:#eef3f6;color:#183447;font:19px/1.5 system-ui,sans-serif}main{max-width:1000px;margin:24px auto;background:white;border:1px solid #d4e0e7;padding:32px}h1{font-size:30px;line-height:1.2;margin:8px 0 12px}h2{font-size:20px;color:#087985;margin:22px 0 8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:17px/1.5 monospace;background:#f1f5f7;padding:18px;border-left:4px solid #087985;margin:0}.meta{font-size:15px;color:#496472}.ok{color:#08714d;font-weight:bold}footer{font-size:15px;border-top:1px solid #d4e0e7;margin-top:24px;padding-top:14px}</style><main><div class="meta">Derek Santana · S11 · Visor de registros locales</div><h1>Hit ratio y latencia: todas las corridas</h1><div class="ok">Ejecución comprobada: OK</div><div class="meta">Fuente: medidas-redis.json<br>Inicio UTC: 2026-11-08T01:39:15.421285+00:00</div><h2>Cien lecturas por escenario</h2><pre>[
+  {
+    &quot;keyspace_hits&quot;: 99,
+    &quot;keyspace_misses&quot;: 1,
+    &quot;escenario&quot;: &quot;A&quot;,
+    &quot;ratio&quot;: 0.99,
+    &quot;lecturas_postgres&quot;: 1
+  },
+  {
+    &quot;keyspace_hits&quot;: 100,
+    &quot;keyspace_misses&quot;: 20,
+    &quot;escenario&quot;: &quot;B&quot;,
+    &quot;ratio&quot;: 0.8333333333333334,
+    &quot;lecturas_postgres&quot;: 20
+  }
+]</pre><h2>Cien lecturas por corrida; p95 por rango más próximo</h2><pre>tipo    corrida   media ms   mediana ms   p95 ms   lecturas SQL
+redis       1      53.47        38.08   114.41        1
+redis       2      94.67        80.80   188.62        0
+redis       3      48.23        33.59   108.80        0
+none        1      93.27        43.11   179.73      100
+none        2      50.09        40.73   100.44      100
+none        3      44.61        30.42   121.23      100</pre><footer>Vista construida desde respuestas y comandos reales. Ejecución asistida con Codex; no es una sesión de Terminal ni evidencia de asistencia a clase.</footer></main></html>

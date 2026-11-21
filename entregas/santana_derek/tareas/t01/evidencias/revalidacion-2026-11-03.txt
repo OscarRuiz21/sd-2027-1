@@ -1,0 +1,26 @@
+Attaching to cliente-1, servidor-1
+ Container derek-t01-servidor-1 Starting 
+ Container derek-t01-servidor-1 Started 
+ Container derek-t01-servidor-1 Waiting 
+servidor-1  | Un proceso; REST :8080 y gRPC :50051; una sola lógica
+servidor-1  | 127.0.0.1 - - [04/Nov/2026 05:42:57] "GET /productos/1 HTTP/1.1" 200 -
+ Container derek-t01-servidor-1 Healthy 
+ Container derek-t01-cliente-1 Starting 
+ Container derek-t01-cliente-1 Started 
+servidor-1  | 172.22.0.3 - - [04/Nov/2026 05:43:00] "GET /productos/1 HTTP/1.1" 200 -
+cliente-1   | ID 1: REST 200 {'id': 1, 'nombre': 'Cuaderno', 'precio_centavos': 4500}; gRPC OK {'id': 1, 'nombre': 'Cuaderno', 'precio_centavos': 4500}
+cliente-1   | Cuerpos serializados: JSON 51 bytes; Protobuf 15 bytes (NO incluye red ni cabeceras)
+servidor-1  | 172.22.0.3 - - [04/Nov/2026 05:43:00] "GET /productos/2 HTTP/1.1" 200 -
+cliente-1   | ID 2: REST 200 {'id': 2, 'nombre': 'Mochila', 'precio_centavos': 39900}; gRPC OK {'id': 2, 'nombre': 'Mochila', 'precio_centavos': 39900}
+cliente-1   | Cuerpos serializados: JSON 51 bytes; Protobuf 15 bytes (NO incluye red ni cabeceras)
+servidor-1  | 172.22.0.3 - - [04/Nov/2026 05:43:00] "GET /productos/999 HTTP/1.1" 404 -
+cliente-1   | ID 999: REST 404; gRPC NOT_FOUND; mismo caso sin datos
+cliente-1   | PASS: dos interfaces, mismos resultados y mismo error de negocio
+[Kcliente-1 exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container derek-t01-cliente-1 Stopping 
+ Container derek-t01-cliente-1 Stopped 
+ Container derek-t01-servidor-1 Stopping 
+servidor-1  | 127.0.0.1 - - [04/Nov/2026 05:43:01] "GET /productos/1 HTTP/1.1" 200 -
+ Container derek-t01-servidor-1 Stopped 
+[Kservidor-1 exited with code 137

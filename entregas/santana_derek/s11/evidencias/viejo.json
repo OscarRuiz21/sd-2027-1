@@ -1,0 +1,686 @@
+{
+  "fase": "viejo",
+  "fecha_utc": "2026-11-08T01:40:33.078752+00:00",
+  "ejecutor": "Codex, ejecución asistida local",
+  "registros": [
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "DEL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "0\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "b9f1e6bade72",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:33 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 87.57484899979318
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "db",
+          "psql",
+          "-U",
+          "mexibanco",
+          "-d",
+          "cuenta",
+          "-c",
+          "update cuenta set saldo=5 where clabe='002180000000000001'"
+        ],
+        "stdout": "UPDATE 1\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 422,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/problem+json",
+          "Date": "Sun, 08 Nov 2026 01:40:34 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "type": "about:blank",
+          "title": "Unprocessable Entity",
+          "status": 422,
+          "detail": "Saldo insuficiente en la CLABE 002180000000000001",
+          "instance": "/transferencias",
+          "servicio": "cuenta"
+        },
+        "ms": 233.77035500016063
+      }
+    },
+    {
+      "tipo": "rechazo_saldo_real",
+      "datos": {
+        "status": 422,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "Content-Type": "application/problem+json",
+          "Date": "Sun, 08 Nov 2026 01:40:34 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "type": "about:blank",
+          "title": "Unprocessable Entity",
+          "status": 422,
+          "detail": "Saldo insuficiente en la CLABE 002180000000000001",
+          "instance": "/transferencias",
+          "servicio": "cuenta"
+        },
+        "ms": 233.77035500016063
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "29\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "90c811ee2ab2",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:34 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 36.21997200025362
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 0.743705716002296,
+        "ttl": "29",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "90c811ee2ab2",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:40:34 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 976.0,
+            "leidaEn": "2026-11-08T01:40:33.600571894Z"
+          },
+          "ms": 36.21997200025362
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "23\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "b9f1e6bade72",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:40 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 23.55444400018314
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 6.235293103000004,
+        "ttl": "23",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "b9f1e6bade72",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:40:40 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 976.0,
+            "leidaEn": "2026-11-08T01:40:33.600571894Z"
+          },
+          "ms": 23.55444400018314
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "18\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "b9f1e6bade72",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:45 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 26.308858999982476
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 11.70258979999926,
+        "ttl": "18",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "b9f1e6bade72",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:40:45 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 976.0,
+            "leidaEn": "2026-11-08T01:40:33.600571894Z"
+          },
+          "ms": 26.308858999982476
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "12\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "b9f1e6bade72",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:51 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 226.45082999952137
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 17.167504265999014,
+        "ttl": "12",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "b9f1e6bade72",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:40:51 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 976.0,
+            "leidaEn": "2026-11-08T01:40:33.600571894Z"
+          },
+          "ms": 226.45082999952137
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "7\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "90c811ee2ab2",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:40:57 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 24.002914997254265
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 23.081061616001534,
+        "ttl": "7",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "90c811ee2ab2",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:40:57 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 976.0,
+            "leidaEn": "2026-11-08T01:40:33.600571894Z"
+          },
+          "ms": 24.002914997254265
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "1\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "69394e2b46b9",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:41:02 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 976.0,
+          "leidaEn": "2026-11-08T01:40:33.600571894Z"
+        },
+        "ms": 35.97063000052003
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 28.546921871999075,
+        "ttl": "1",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "69394e2b46b9",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:41:02 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 976.0,
+            "leidaEn": "2026-11-08T01:40:33.600571894Z"
+          },
+          "ms": 35.97063000052003
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "-2\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "69394e2b46b9",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:41:08 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-08T01:41:08.442311623Z"
+        },
+        "ms": 92.7285239995399
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 34.04636038700119,
+        "ttl": "-2",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "69394e2b46b9",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:41:08 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 5.0,
+            "leidaEn": "2026-11-08T01:41:08.442311623Z"
+          },
+          "ms": 92.7285239995399
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "25\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "69394e2b46b9",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:41:13 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-08T01:41:08.442311623Z"
+        },
+        "ms": 34.7051319986349
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 39.8560990900005,
+        "ttl": "25",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "69394e2b46b9",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:41:13 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 5.0,
+            "leidaEn": "2026-11-08T01:41:08.442311623Z"
+          },
+          "ms": 34.7051319986349
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "TTL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "19\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "http",
+      "datos": {
+        "status": 200,
+        "headers": {
+          "transfer-encoding": "chunked",
+          "X-Instancia": "69394e2b46b9",
+          "Content-Type": "application/json",
+          "Date": "Sun, 08 Nov 2026 01:41:19 GMT",
+          "connection": "close"
+        },
+        "body": {
+          "clabe": "002180000000000001",
+          "titular": "Ana",
+          "saldo": 5.0,
+          "leidaEn": "2026-11-08T01:41:08.442311623Z"
+        },
+        "ms": 31.175584001175594
+      }
+    },
+    {
+      "tipo": "dato_viejo",
+      "datos": {
+        "segundos": 45.312679562000994,
+        "ttl": "19",
+        "respuesta": {
+          "status": 200,
+          "headers": {
+            "transfer-encoding": "chunked",
+            "X-Instancia": "69394e2b46b9",
+            "Content-Type": "application/json",
+            "Date": "Sun, 08 Nov 2026 01:41:19 GMT",
+            "connection": "close"
+          },
+          "body": {
+            "clabe": "002180000000000001",
+            "titular": "Ana",
+            "saldo": 5.0,
+            "leidaEn": "2026-11-08T01:41:08.442311623Z"
+          },
+          "ms": 31.175584001175594
+        }
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "db",
+          "psql",
+          "-U",
+          "mexibanco",
+          "-d",
+          "cuenta",
+          "-c",
+          "update cuenta set saldo=976.0 where clabe='002180000000000001'"
+        ],
+        "stdout": "UPDATE 1\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    },
+    {
+      "tipo": "comando",
+      "datos": {
+        "args": [
+          "exec",
+          "-T",
+          "redis",
+          "redis-cli",
+          "DEL",
+          "cuentas::002180000000000001"
+        ],
+        "stdout": "1\n",
+        "stderr": "",
+        "codigo": 0
+      }
+    }
+  ],
+  "resultado": "OK",
+  "fin_utc": "2026-11-08T01:41:20.310092+00:00",
+  "duracion_wall_s": 47.231422901153564,
+  "duracion_monotona_s": 47.23016549900058,
+  "posible_suspension": false
+}

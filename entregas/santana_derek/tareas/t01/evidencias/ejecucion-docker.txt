@@ -1,0 +1,151 @@
+ Image derek-t01-cliente Building 
+ Image derek-t01-servidor Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 1.14kB done
+#1 DONE 0.0s
+
+#2 [cliente internal] load build definition from Dockerfile.cliente
+#2 transferring dockerfile: 311B 0.0s done
+#2 DONE 0.1s
+
+#3 [servidor internal] load build definition from Dockerfile.servidor
+#3 transferring dockerfile: 342B 0.0s done
+#3 DONE 0.1s
+
+#4 [cliente internal] load metadata for docker.io/library/python:3.11-slim
+#4 DONE 0.0s
+
+#5 [cliente internal] load .dockerignore
+#5 transferring context: 2B done
+#5 DONE 0.0s
+
+#6 [cliente internal] load build context
+#6 DONE 0.0s
+
+#7 [servidor internal] load build context
+#7 DONE 0.0s
+
+#8 [cliente 1/6] FROM docker.io/library/python:3.11-slim@sha256:bab1b7ef4b450c81002278d035eff85ebe394ae94df904f7a3ba14f7e16e487b
+#8 resolve docker.io/library/python:3.11-slim@sha256:bab1b7ef4b450c81002278d035eff85ebe394ae94df904f7a3ba14f7e16e487b 0.1s done
+#8 resolve docker.io/library/python:3.11-slim@sha256:bab1b7ef4b450c81002278d035eff85ebe394ae94df904f7a3ba14f7e16e487b 0.1s done
+#8 DONE 0.1s
+
+#7 [servidor internal] load build context
+#7 transferring context: 2.48kB 0.0s done
+#7 DONE 0.1s
+
+#6 [cliente internal] load build context
+#6 transferring context: 1.84kB 0.0s done
+#6 DONE 0.1s
+
+#9 [cliente 2/6] WORKDIR /app
+#9 CACHED
+
+#10 [cliente 3/6] COPY requirements.txt .
+#10 DONE 0.2s
+
+#11 [servidor 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#11 8.961 Collecting grpcio==1.76.0 (from -r requirements.txt (line 1))
+#11 9.218   Downloading grpcio-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (3.7 kB)
+#11 13.23 Collecting grpcio-tools==1.76.0 (from -r requirements.txt (line 2))
+#11 13.35   Downloading grpcio_tools-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (5.3 kB)
+#11 14.17 Collecting protobuf==6.33.0 (from -r requirements.txt (line 3))
+#11 14.21   Downloading protobuf-6.33.0-cp39-abi3-manylinux2014_x86_64.whl.metadata (593 bytes)
+#11 14.34 Collecting typing-extensions~=4.12 (from grpcio==1.76.0->-r requirements.txt (line 1))
+#11 14.40   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+#11 14.55 Requirement already satisfied: setuptools in /usr/local/lib/python3.11/site-packages (from grpcio-tools==1.76.0->-r requirements.txt (line 2)) (79.0.1)
+#11 14.83 Downloading grpcio-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (6.6 MB)
+#11 15.57    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.6/6.6 MB 9.9 MB/s eta 0:00:00
+#11 15.60 Downloading grpcio_tools-1.76.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.7 MB)
+#11 15.97    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.7/2.7 MB 7.3 MB/s eta 0:00:00
+#11 16.05 Downloading protobuf-6.33.0-cp39-abi3-manylinux2014_x86_64.whl (323 kB)
+#11 16.09    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 323.2/323.2 kB 13.0 MB/s eta 0:00:00
+#11 16.12 Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+#11 16.13    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 107.0 MB/s eta 0:00:00
+#11 16.35 Installing collected packages: typing-extensions, protobuf, grpcio, grpcio-tools
+#11 17.37 Successfully installed grpcio-1.76.0 grpcio-tools-1.76.0 protobuf-6.33.0 typing-extensions-4.16.0
+#11 17.37 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+#11 17.72 
+#11 17.72 [notice] A new release of pip is available: 24.0 -> 26.2.1
+#11 17.72 [notice] To update, run: pip install --upgrade pip
+#11 DONE 18.6s
+
+#12 [cliente 3/6] COPY requirements.txt .
+#12 CACHED
+
+#13 [cliente 4/6] RUN pip install --no-cache-dir -r requirements.txt
+#13 CACHED
+
+#14 [servidor 5/6] COPY catalogo.proto logica.py servidor.py .
+#14 DONE 0.1s
+
+#15 [cliente 5/6] COPY catalogo.proto cliente.py .
+#15 DONE 0.1s
+
+#16 [cliente 6/6] RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. catalogo.proto
+#16 DONE 0.6s
+
+#17 [servidor 6/6] RUN python -m grpc_tools.protoc -I. --python_out=. --grpc_python_out=. catalogo.proto
+#17 DONE 0.6s
+
+#18 [servidor] exporting to image
+#18 exporting layers
+#18 exporting layers 5.1s done
+#18 exporting manifest sha256:69eb181e53a6dfcc583fc3e508ed2346fcc08bdaf750a654f890d60d9a3b8d8c 0.0s done
+#18 exporting config sha256:1e9d297e8da006ba414224a208e1a69ef23911201971e0db676541cf907b4e59 0.0s done
+#18 exporting attestation manifest sha256:e085260d00595194415248c7bcf13a8e20a9fd21826e84e8f5da1e396796b246
+#18 exporting attestation manifest sha256:e085260d00595194415248c7bcf13a8e20a9fd21826e84e8f5da1e396796b246 0.0s done
+#18 exporting manifest list sha256:c70754794c12a275810a81629f63df35d9984f22d81418473f3aec539219b7b6 0.0s done
+#18 naming to docker.io/library/derek-t01-servidor:latest done
+#18 unpacking to docker.io/library/derek-t01-servidor:latest
+#18 unpacking to docker.io/library/derek-t01-servidor:latest 2.0s done
+#18 DONE 7.4s
+
+#19 [cliente] exporting to image
+#19 exporting layers 5.1s done
+#19 exporting manifest sha256:04eb89f30ef0058d2f817f6f8f23b0d35e3cfcbadb3d3e2de6ca9456d8e6475b 0.0s done
+#19 exporting config sha256:a2fc4686c12682669c2defd8e1dd4f81e6b9a24d3bbc00b1b322fb5feab6f663 0.0s done
+#19 exporting attestation manifest sha256:a0414e6f908f294ad42e4f4e6c49c143b6aba3451ab04f4c9370e800b0a46aef 0.0s done
+#19 exporting manifest list sha256:0e37d0634d5c809ece409d65e1bab160ecc232a80902928f40070241b01f312c 0.0s done
+#19 naming to docker.io/library/derek-t01-cliente:latest done
+#19 unpacking to docker.io/library/derek-t01-cliente:latest 2.0s done
+#19 DONE 7.5s
+
+#20 [servidor] resolving provenance for metadata file
+#20 DONE 0.0s
+
+#21 [cliente] resolving provenance for metadata file
+#21 DONE 0.0s
+ Image derek-t01-servidor Built 
+ Image derek-t01-cliente Built 
+ Network derek-t01_default Creating 
+ Network derek-t01_default Created 
+ Container derek-t01-servidor-1 Creating 
+ Container derek-t01-servidor-1 Created 
+ Container derek-t01-cliente-1 Creating 
+ Container derek-t01-cliente-1 Created 
+Attaching to cliente-1, servidor-1
+ Container derek-t01-servidor-1 Starting 
+ Container derek-t01-servidor-1 Started 
+ Container derek-t01-servidor-1 Waiting 
+servidor-1  | Un proceso; REST :8080 y gRPC :50051; una sola lógica
+servidor-1  | 127.0.0.1 - - [19/Oct/2026 21:55:48] "GET /productos/1 HTTP/1.1" 200 -
+ Container derek-t01-servidor-1 Healthy 
+ Container derek-t01-cliente-1 Starting 
+ Container derek-t01-cliente-1 Started 
+servidor-1  | 172.22.0.3 - - [19/Oct/2026 21:55:49] "GET /productos/1 HTTP/1.1" 200 -
+cliente-1   | ID 1: REST 200 {'id': 1, 'nombre': 'Cuaderno', 'precio_centavos': 4500}; gRPC OK {'id': 1, 'nombre': 'Cuaderno', 'precio_centavos': 4500}
+cliente-1   | Cuerpos serializados: JSON 51 bytes; Protobuf 15 bytes (NO incluye red ni cabeceras)
+servidor-1  | 172.22.0.3 - - [19/Oct/2026 21:55:49] "GET /productos/2 HTTP/1.1" 200 -
+cliente-1   | ID 2: REST 200 {'id': 2, 'nombre': 'Mochila', 'precio_centavos': 39900}; gRPC OK {'id': 2, 'nombre': 'Mochila', 'precio_centavos': 39900}
+cliente-1   | Cuerpos serializados: JSON 51 bytes; Protobuf 15 bytes (NO incluye red ni cabeceras)
+servidor-1  | 172.22.0.3 - - [19/Oct/2026 21:55:49] "GET /productos/999 HTTP/1.1" 404 -
+cliente-1   | ID 999: REST 404; gRPC NOT_FOUND; mismo caso sin datos
+cliente-1   | PASS: dos interfaces, mismos resultados y mismo error de negocio
+[Kcliente-1 exited with code 0
+ Compose Stopping Aborting on container exit...
+ Container derek-t01-cliente-1 Stopping 
+ Container derek-t01-cliente-1 Stopped 
+ Container derek-t01-servidor-1 Stopping 
+ Container derek-t01-servidor-1 Stopped 
+[Kservidor-1 exited with code 137

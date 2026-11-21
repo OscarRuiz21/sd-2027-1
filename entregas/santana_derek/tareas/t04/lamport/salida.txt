@@ -1,0 +1,11 @@
+A local L=1
+C local L=1
+A envia m1 a B L=2
+C envia m2 a B L=2
+B recibe m1 de A L=3 (enviado L=2)
+B recibe m2 de C L=4 (enviado L=2)
+B envia m3 a C L=5
+C recibe m3 de B L=6 (enviado L=5)
+C envia m4 a A L=7
+A recibe m4 de C L=8 (enviado L=7)
+OK: 4 mensajes; todas las recepciones superan envio y reloj local anterior.

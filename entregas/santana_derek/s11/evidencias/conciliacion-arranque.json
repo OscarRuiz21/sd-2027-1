@@ -1,0 +1,38 @@
+{
+  "fecha_utc": "2026-11-08T01:36:35.976112+00:00",
+  "motivo": "Cargo de 1 confirmado pese a timeout; devolución manual idempotente solo en datos de laboratorio",
+  "registros": [
+    {
+      "args": [
+        "exec",
+        "-T",
+        "cuenta",
+        "wget",
+        "-qO-",
+        "--header=Content-Type: application/json",
+        "--header=Idempotency-Key: transferencia-1-devolucion-manual-lab",
+        "--post-data={\"monto\":1}",
+        "http://localhost:8080/cuentas/002180000000000001/abonos"
+      ],
+      "salida": "{\"clabe\":\"002180000000000001\",\"titular\":\"Ana\",\"saldo\":1000.00}",
+      "error": "",
+      "codigo": 0
+    },
+    {
+      "args": [
+        "exec",
+        "-T",
+        "db",
+        "psql",
+        "-U",
+        "mexibanco",
+        "-d",
+        "cuenta",
+        "-c",
+        "select clabe,saldo from cuenta order by clabe"
+      ],
+      "salida": "       clabe        |  saldo  \n--------------------+---------\n 002180000000000001 | 1000.00\n 002180000000000002 |  500.00\n 002180000000000003 |  300.00\n(3 rows)\n\n",
+      "codigo": 0
+    }
+  ]
+}

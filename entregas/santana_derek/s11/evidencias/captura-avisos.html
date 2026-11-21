@@ -1,0 +1,58 @@
+<!doctype html><html lang="es"><meta charset="utf-8"><title>S11 · Evidencia de ejecución</title><style>
+*{box-sizing:border-box}body{margin:0;background:#eef3f6;color:#183447;font:19px/1.5 system-ui,sans-serif}main{max-width:1000px;margin:24px auto;background:white;border:1px solid #d4e0e7;padding:32px}h1{font-size:30px;line-height:1.2;margin:8px 0 12px}h2{font-size:20px;color:#087985;margin:22px 0 8px}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:17px/1.5 monospace;background:#f1f5f7;padding:18px;border-left:4px solid #087985;margin:0}.meta{font-size:15px;color:#496472}.ok{color:#08714d;font-weight:bold}footer{font-size:15px;border-top:1px solid #d4e0e7;margin-top:24px;padding-top:14px}</style><main><div class="meta">Derek Santana · S11 · Visor de registros locales</div><h1>Tres formas de aviso en MongoDB</h1><div class="ok">Ejecución comprobada: OK</div><div class="meta">Fuente: mongo.json<br>Inicio UTC: 2026-11-08T01:40:03.141307+00:00</div><h2>SMS</h2><pre>{
+  &quot;_id&quot;: &quot;e5be1dbc-4463-445d-8490-53ad44257310:002180000000000001&quot;,
+  &quot;eventoId&quot;: &quot;e5be1dbc-4463-445d-8490-53ad44257310&quot;,
+  &quot;transferenciaId&quot;: 25,
+  &quot;clabe&quot;: &quot;002180000000000001&quot;,
+  &quot;tipo&quot;: &quot;TRANSFERENCIA_ENVIADA&quot;,
+  &quot;monto&quot;: {
+    &quot;$numberDecimal&quot;: &quot;1&quot;
+  },
+  &quot;saldo&quot;: {
+    &quot;$numberDecimal&quot;: &quot;976.00&quot;
+  },
+  &quot;fecha&quot;: {
+    &quot;$date&quot;: &quot;2026-11-08T01:40:10.344Z&quot;
+  },
+  &quot;canal&quot;: &quot;SMS&quot;,
+  &quot;telefono&quot;: &quot;+52 55 5555 0101&quot;,
+  &quot;texto&quot;: &quot;TRANSFERENCIA_ENVIADA por 1, saldo resultante 976.00&quot;
+}</pre><h2>CORREO</h2><pre>{
+  &quot;_id&quot;: &quot;e5be1dbc-4463-445d-8490-53ad44257310:002180000000000002&quot;,
+  &quot;eventoId&quot;: &quot;e5be1dbc-4463-445d-8490-53ad44257310&quot;,
+  &quot;transferenciaId&quot;: 25,
+  &quot;clabe&quot;: &quot;002180000000000002&quot;,
+  &quot;tipo&quot;: &quot;TRANSFERENCIA_RECIBIDA&quot;,
+  &quot;monto&quot;: {
+    &quot;$numberDecimal&quot;: &quot;1&quot;
+  },
+  &quot;saldo&quot;: {
+    &quot;$numberDecimal&quot;: &quot;523.00&quot;
+  },
+  &quot;fecha&quot;: {
+    &quot;$date&quot;: &quot;2026-11-08T01:40:10.344Z&quot;
+  },
+  &quot;canal&quot;: &quot;CORREO&quot;,
+  &quot;correo&quot;: &quot;beto@correo.mx&quot;,
+  &quot;asunto&quot;: &quot;TRANSFERENCIA_RECIBIDA&quot;,
+  &quot;cuerpo&quot;: &quot;TRANSFERENCIA_RECIBIDA por 1, saldo resultante 523.00&quot;
+}</pre><h2>PUSH</h2><pre>{
+  &quot;_id&quot;: &quot;c499344f-a0b0-4355-99b9-de39efce3769:002180000000000003&quot;,
+  &quot;eventoId&quot;: &quot;c499344f-a0b0-4355-99b9-de39efce3769&quot;,
+  &quot;transferenciaId&quot;: 13,
+  &quot;clabe&quot;: &quot;002180000000000003&quot;,
+  &quot;tipo&quot;: &quot;TRANSFERENCIA_RECIBIDA&quot;,
+  &quot;monto&quot;: {
+    &quot;$numberDecimal&quot;: &quot;1&quot;
+  },
+  &quot;saldo&quot;: {
+    &quot;$numberDecimal&quot;: &quot;301.00&quot;
+  },
+  &quot;fecha&quot;: {
+    &quot;$date&quot;: &quot;2026-11-08T01:40:03.536Z&quot;
+  },
+  &quot;canal&quot;: &quot;PUSH&quot;,
+  &quot;token&quot;: &quot;fcm:demo-002180000000000003&quot;,
+  &quot;titulo&quot;: &quot;TRANSFERENCIA_RECIBIDA&quot;,
+  &quot;cuerpo&quot;: &quot;TRANSFERENCIA_RECIBIDA por 1, saldo resultante 301.00&quot;
+}</pre><footer>Vista construida desde respuestas y comandos reales. Ejecución asistida con Codex; no es una sesión de Terminal ni evidencia de asistencia a clase.</footer></main></html>
