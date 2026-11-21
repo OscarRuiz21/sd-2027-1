@@ -1,0 +1,42 @@
+name: t01-rest-grpc
+
+services:
+
+  servidor:
+    build:
+      context: .
+      dockerfile: Dockerfile.servidor
+    image: t01-servidor
+    container_name: t01-servidor
+    networks: [red-t01]
+    ports:
+      - "8000:8000"
+      - "50051:50051"
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://localhost:8000/salud').status==200 else 1)"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+      start_period: 3s
+
+  cliente:
+    build:
+      context: .
+      dockerfile: Dockerfile.cliente
+    image: t01-cliente
+    container_name: t01-cliente
+    networks: [red-t01]
+    depends_on:
+      servidor:
+        condition: service_healthy
+    environment:
+      SERVIDOR_HOST: servidor
+      PUERTO_REST: "8000"
+      PUERTO_GRPC: "50051"
+    command: sh -c "python -u cliente.py && python -u medicion.py"
+
+networks:
+  red-t01:
+    name: red-t01
+    driver: bridge
