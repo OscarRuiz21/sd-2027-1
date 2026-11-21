@@ -1,0 +1,27 @@
+services:
+  web:
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:8080:80"
+    depends_on:
+      db:
+        condition: service_healthy
+  db:
+    image: postgres:17-alpine
+    env_file: .env
+    volumes:
+      - datos_banco:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1"]
+      interval: 2s
+      timeout: 3s
+      retries: 15
+  cache:
+    image: redis:8-alpine
+  broker:
+    image: rabbitmq:4-management-alpine
+    ports:
+      - "127.0.0.1:15672:15672"
+
+volumes:
+  datos_banco:
