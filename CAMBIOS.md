@@ -2,6 +2,25 @@
 
 Lo que cambia para el alumno, con fecha. Lo más nuevo arriba.
 
+## 2026-11-14
+
+- **Corte de entregas del 14 de noviembre** en `calificaciones/P00-L10-corte-14nov.xlsx`, por número de cuenta: entran las entregas y las correcciones que subiste entre el 7 y el 14 de noviembre. La T04 y la S11 cerraron como **tarde** el sábado 14 a las 07:00. Este corte trae solo la matriz, sin observaciones ni pestañas por cuenta. Si corregiste algo y tu renglón no lo refleja, avisa al profesor.
+- **Deck de la S13** (*Observabilidad y del requisito al diseño*, HTML y PDF) en `material/S13/` y en el índice. Primera parte: monitoreo contra observabilidad, la falla silenciosa, percentiles, trazas, las tres señales, propagación de contexto y cómo se implementa con el agente de OpenTelemetry. Segunda parte: un método de seis fases para diseñar un sistema que nunca has visto, aplicado fase por fase a una venta relámpago. Las láminas 44 a 52 no alcanzaron en clase y quedan para que las revises: el cambio de requerimiento a media respuesta, la rúbrica de un diseño y un caso para practicar, *La puerta del estadio*.
+- **Recursos que se mencionaron en clase**: el método viene del *Interview Playbook* de [System Design Atlas](https://systemdesignatlas.dev/docs/11-interview-playbook) (la guía completa es de paga; lo que necesitas ya está en el deck). Libros: *System Design Interview*, de Alex Xu (volúmenes 1 y 2; las estimaciones están en el capítulo 2 del primero), y *Designing Data-Intensive Applications*, de Martin Kleppmann.
+- **Práctica opcional · trazas en Mexi Banco**: quien quiera puede instrumentar Mexi Banco con el agente de OpenTelemetry y Jaeger (láminas 15 a 20 del deck) y subirlo a su rama de entregas como práctica extra; cuenta como puntos extra sobre los laboratorios. Primero el examen: no le quites tiempo de estudio.
+- **Entrevista técnica del sábado 21 de noviembre**: el grupo se divide en salas por equipo y el profesor pasa de sala en sala; cada quien contesta sus 4 preguntas. La cámara encendida es obligatoria y, conforme termina tu equipo, te puedes salir. El examen escrito a mano se entrega antes de las 06:59 de ese mismo día.
+- **Proyecto final**: se presenta el **sábado 28 de noviembre**, como el pitch de una startup: el problema, la solución y las decisiones técnicas. Habrá preguntas como las de un CTO (por qué ese patrón, qué pasa si la carga crece), a partir del PRD y del repo de tu equipo.
+
+## 2026-11-07
+
+- **Corte de entregas del 7 de noviembre** en `calificaciones/P00-L10-corte-07nov.xlsx`, por número de cuenta: se revisaron las correcciones que subiste después del corte del 4 de noviembre y varias entregas que estaban en **parcial** porque les faltaba poco pasaron a completas (lo que falta queda como detalle en tu pestaña). Ya entran revisadas la T04, la S11 y la Lectura 10, que cerraron el sábado 7 a las 07:00; la T04 y la S11 todavía se reciben como **tarde** hasta el sábado 14 de noviembre a las 07:00.
+- **Rúbrica del proyecto final** en `proyecto/RUBRICA.md`: prototipo funcionando 30 %, reporte final en PDF con diagrama funcional 30 %, presentación estilo pitch 20 % y participación individual más defensa técnica 20 %. Presentación el **sábado 28 de noviembre**; el código y el reporte deben estar en el repo del equipo antes de las 07:00 de ese día.
+- **Deck de la S12** (*Un libro mayor sin dueño*, HTML y PDF) en `material/S12/` y en el índice: Bitcoin construido pieza por pieza como sistema distribuido, desde un libro mayor sobre Raft hasta la prueba de trabajo, los forks, la finalidad probabilística, UTXO, la comparación con Raft y PBFT, y cuándo sí hace falta un blockchain.
+
+## 2026-11-05
+
+- **Examen escrito en casa** en `examen-escrito/` (HTML y PDF para imprimir): un banco de preguntas generales por tema, como las de una entrevista técnica. Entregas a mano las 10 preguntas fijas y 15 más que tú elijas, de al menos 5 temas distintos, en un solo PDF escaneado en `entregas/apellido_nombre/examen/examen-escrito.pdf`, por push, antes del **sábado 21 de noviembre a las 06:59**. Es tu acordeón para la entrevista de ese día: pasas tú solo y se sortean 4 preguntas de este mismo banco.
+
 ## 2026-11-04
 
 - **Corte de entregas del 4 de noviembre** en `calificaciones/P00-L10-corte-04nov.xlsx`, por número de cuenta: entran los labs S07, S08 y S09 y las lecturas 7 y 9. Si tu renglón dice **parcial**, tu pestaña dice qué falta y cómo se corrige. Un lab o una tarea que llegó después de la sesión siguiente, pero completo, quedó como **tarde** (no baja puntos). T04, S11 y Lectura 10 siguen abiertas hasta el sábado 7 de noviembre antes de las 07:00.
