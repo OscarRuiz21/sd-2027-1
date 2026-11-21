@@ -1,0 +1,399 @@
+cuenta-2  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC
+cuenta-2  | 
+cuenta-2  |   .   ____          _            __ _ _
+cuenta-2  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+cuenta-2  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+cuenta-2  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+cuenta-2  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+cuenta-2  |  =========|_|==============|___/=/_/_/_/
+cuenta-2  | 
+cuenta-2  |  :: Spring Boot ::                (v3.3.4)
+cuenta-2  | 
+cuenta-2  | 2026-10-20T22:03:13.505Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+cuenta-2  | 2026-10-20T22:03:13.517Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: "default"
+cuenta-2  | 2026-10-20T22:03:30.105Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+cuenta-2  | 2026-10-20T22:03:32.604Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2417 ms. Found 1 JPA repository interface.
+cuenta-2  | 2026-10-20T22:03:36.821Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f930a747-cb3d-3d5a-81b7-26b27f06156f
+cuenta-2  | 2026-10-20T22:03:40.085Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+cuenta-2  | 2026-10-20T22:03:40.104Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+cuenta-2  | 2026-10-20T22:03:44.085Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+cuenta-2  | 2026-10-20T22:03:44.413Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+cuenta-2  | 2026-10-20T22:03:44.429Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+cuenta-2  | 2026-10-20T22:03:45.068Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+cuenta-2  | 2026-10-20T22:03:45.075Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 31116 ms
+cuenta-2  | 2026-10-20T22:03:49.803Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+cuenta-2  | 2026-10-20T22:03:51.520Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+cuenta-2  | 2026-10-20T22:03:52.872Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+cuenta-2  | 2026-10-20T22:03:56.968Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+cuenta-2  | 2026-10-20T22:03:57.288Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+cuenta-2  | 2026-10-20T22:03:58.878Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6f69e2d8
+cuenta-2  | 2026-10-20T22:03:58.948Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+cuenta-2  | 2026-10-20T22:04:13.612Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+cuenta-2  | 2026-10-20T22:04:13.992Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+cuenta-2  | 2026-10-20T22:04:26.310Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+cuenta-2  | 2026-10-20T22:04:26.736Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+cuenta-2  | 2026-10-20T22:04:26.799Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+cuenta-2  | 2026-10-20T22:04:27.368Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+cuenta-2  | 2026-10-20T22:04:27.573Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+cuenta-2  | 2026-10-20T22:04:27.610Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-2  | 2026-10-20T22:04:27.861Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+cuenta-2  | 2026-10-20T22:04:27.867Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+cuenta-2  | 2026-10-20T22:04:27.867Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+cuenta-2  | 2026-10-20T22:04:27.867Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+cuenta-2  | 2026-10-20T22:04:27.868Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+cuenta-2  | 2026-10-20T22:04:27.868Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+cuenta-2  | 2026-10-20T22:04:27.873Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+cuenta-2  | 2026-10-20T22:04:30.498Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+cuenta-2  | 2026-10-20T22:04:30.574Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+cuenta-2  | 2026-10-20T22:04:30.612Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+cuenta-2  | 2026-10-20T22:04:30.681Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792533870670 with initial instances count: 6
+cuenta-2  | 2026-10-20T22:04:30.761Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP
+cuenta-2  | 2026-10-20T22:04:30.769Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792533870769, current=UP, previous=STARTING]
+cuenta-2  | 2026-10-20T22:04:30.822Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/1cc6e63d5433:cuenta:8080: registering service...
+cuenta-2  | 2026-10-20T22:04:31.040Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+cuenta-2  | 2026-10-20T22:04:31.072Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+cuenta-2  | 2026-10-20T22:04:31.190Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/1cc6e63d5433:cuenta:8080 - registration status: 204
+cuenta-2  | 2026-10-20T22:04:31.244Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 82.626 seconds (process running for 100.311)
+cuenta-2  | 2026-10-20T22:04:33.370Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+cuenta-2  | 2026-10-20T22:04:33.373Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+cuenta-2  | 2026-10-20T22:04:33.379Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+cuenta-2  | 2026-10-20T22:05:41.948Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:05:43.162Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:05:43.308Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:05:43.388Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:05:46.881Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:05:56.178Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:05:57.221Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:06.574Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:10.707Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:12.852Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:19.006Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:21.127Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:23.400Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:25.523Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:27.635Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:29.741Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:31.889Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:35.055Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:37.152Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:40.318Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:42.456Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:44.537Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:46.615Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:06:48.703Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:32.916Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403799 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:35.053Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:39.797Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403702 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:49.706Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:50.398Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403702 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:53.924Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas/002180009253403701/cargos atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:07:59.208Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:08:00.235Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:08:01.273Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:08:01.795Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:08:01.960Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403702 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:08:02.056Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 1cc6e63d5433
+cuenta-2  | 2026-10-20T22:09:27.891Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-3  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC
+cuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC
+cuenta-1  | 
+cuenta-1  |   .   ____          _            __ _ _
+cuenta-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+cuenta-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+cuenta-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+cuenta-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+cuenta-1  |  =========|_|==============|___/=/_/_/_/
+cuenta-1  | 
+cuenta-1  |  :: Spring Boot ::                (v3.3.4)
+cuenta-1  | 
+cuenta-1  | 2026-10-19T22:12:24.219Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+cuenta-1  | 2026-10-19T22:12:24.245Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: "default"
+cuenta-1  | 2026-10-19T22:12:34.875Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+cuenta-1  | 2026-10-19T22:12:36.768Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1849 ms. Found 1 JPA repository interface.
+cuenta-1  | 2026-10-19T22:12:42.536Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f930a747-cb3d-3d5a-81b7-26b27f06156f
+cuenta-1  | 2026-10-19T22:12:50.267Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+cuenta-1  | 2026-10-19T22:12:50.354Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+cuenta-1  | 2026-10-19T22:13:03.188Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+cuenta-1  | 2026-10-19T22:13:03.315Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+cuenta-1  | 2026-10-19T22:13:03.317Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+cuenta-1  | 2026-10-19T22:13:07.474Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+cuenta-1  | 2026-10-19T22:13:07.617Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 42837 ms
+cuenta-1  | 2026-10-19T22:13:17.234Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+cuenta-1  | 2026-10-19T22:13:21.974Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+cuenta-1  | 2026-10-19T22:13:25.857Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+cuenta-1  | 2026-10-19T22:13:29.596Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+cuenta-1  | 2026-10-19T22:13:29.869Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+cuenta-1  | 2026-10-19T22:13:32.326Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5af641d3
+cuenta-1  | 2026-10-19T22:13:32.352Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+cuenta-1  | 2026-10-19T22:14:15.727Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+cuenta-1  | 2026-10-19T22:14:17.032Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+cuenta-1  | 2026-10-19T22:14:37.541Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+cuenta-1  | 2026-10-19T22:14:37.783Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+cuenta-1  | 2026-10-19T22:14:37.823Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+cuenta-1  | 2026-10-19T22:14:38.085Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+cuenta-1  | 2026-10-19T22:14:38.252Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+cuenta-1  | 2026-10-19T22:14:38.290Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:14:38.563Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+cuenta-1  | 2026-10-19T22:14:38.570Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+cuenta-1  | 2026-10-19T22:14:38.570Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+cuenta-1  | 2026-10-19T22:14:38.570Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+cuenta-1  | 2026-10-19T22:14:38.571Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+cuenta-1  | 2026-10-19T22:14:38.571Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+cuenta-1  | 2026-10-19T22:14:38.574Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+cuenta-1  | 2026-10-19T22:14:41.476Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+cuenta-1  | 2026-10-19T22:14:41.484Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+cuenta-1  | 2026-10-19T22:14:41.513Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+cuenta-1  | 2026-10-19T22:14:41.522Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792448081520 with initial instances count: 0
+cuenta-1  | 2026-10-19T22:14:41.550Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP
+cuenta-1  | 2026-10-19T22:14:41.556Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792448081556, current=UP, previous=STARTING]
+cuenta-1  | 2026-10-19T22:14:41.584Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080: registering service...
+cuenta-1  | 2026-10-19T22:14:42.156Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+cuenta-1  | 2026-10-19T22:14:42.183Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+cuenta-1  | 2026-10-19T22:14:42.692Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 143.797 seconds (process running for 166.449)
+cuenta-1  | 2026-10-19T22:14:44.194Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080 - registration status: 204
+cuenta-1  | 2026-10-19T22:14:46.485Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+cuenta-1  | 2026-10-19T22:14:46.523Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+cuenta-1  | 2026-10-19T22:14:46.523Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+cuenta-1  | 2026-10-19T22:14:46.523Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application is null : false
+cuenta-1  | 2026-10-19T22:14:46.524Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+cuenta-1  | 2026-10-19T22:14:46.526Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Application version is -1: false
+cuenta-1  | 2026-10-19T22:14:46.526Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+cuenta-1  | 2026-10-19T22:14:47.089Z  INFO 1 --- [cuenta] [reshExecutor-%d] com.netflix.discovery.DiscoveryClient    : The response status is 200
+cuenta-1  | 2026-10-19T22:14:48.263Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+cuenta-1  | 2026-10-19T22:14:48.264Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+cuenta-1  | 2026-10-19T22:14:48.270Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 5 ms
+cuenta-1  | 2026-10-19T22:19:38.735Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:24:38.937Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:29:39.078Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:34:39.138Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:39:39.153Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:44:39.085Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:49:39.095Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-19T22:50:28.813Z  INFO 1 --- [cuenta] [ionShutdownHook] o.s.c.n.e.s.EurekaServiceRegistry        : Unregistering application CUENTA with eureka with status DOWN
+cuenta-1  | 2026-10-19T22:50:28.851Z  INFO 1 --- [cuenta] [ionShutdownHook] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792450228837, current=DOWN, previous=UP]
+cuenta-1  | 2026-10-19T22:50:28.855Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080: registering service...
+cuenta-1  | 2026-10-19T22:50:29.634Z  INFO 1 --- [cuenta] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+cuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC
+cuenta-1  | 
+cuenta-1  |   .   ____          _            __ _ _
+cuenta-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+cuenta-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+cuenta-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+cuenta-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+cuenta-1  |  =========|_|==============|___/=/_/_/_/
+cuenta-1  | 
+cuenta-1  |  :: Spring Boot ::                (v3.3.4)
+cuenta-1  | 
+cuenta-1  | 2026-10-20T21:59:28.621Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+cuenta-1  | 2026-10-20T21:59:28.643Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: "default"
+cuenta-1  | 2026-10-20T21:59:42.488Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+cuenta-1  | 2026-10-20T21:59:44.671Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 2131 ms. Found 1 JPA repository interface.
+cuenta-1  | 2026-10-20T21:59:49.098Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f930a747-cb3d-3d5a-81b7-26b27f06156f
+cuenta-1  | 2026-10-20T21:59:54.900Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+cuenta-1  | 2026-10-20T21:59:54.958Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+cuenta-1  | 2026-10-20T21:59:57.886Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+cuenta-1  | 2026-10-20T21:59:57.982Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+cuenta-1  | 2026-10-20T21:59:57.982Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+cuenta-1  | 2026-10-20T21:59:59.096Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+cuenta-1  | 2026-10-20T21:59:59.098Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 30024 ms
+cuenta-1  | 2026-10-20T22:00:05.129Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+cuenta-1  | 2026-10-20T22:00:08.267Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+cuenta-1  | 2026-10-20T22:00:08.926Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+cuenta-1  | 2026-10-20T22:00:15.631Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+cuenta-1  | 2026-10-20T22:00:16.065Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+cuenta-1  | 2026-10-20T22:00:19.143Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@147097ad
+cuenta-1  | 2026-10-20T22:00:19.253Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+cuenta-1  | 2026-10-20T22:00:50.795Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+cuenta-1  | 2026-10-20T22:00:51.928Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+cuenta-1  | 2026-10-20T22:01:33.397Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+cuenta-1  | 2026-10-20T22:01:34.970Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+cuenta-1  | 2026-10-20T22:01:35.327Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+cuenta-1  | 2026-10-20T22:01:36.458Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+cuenta-1  | 2026-10-20T22:01:36.794Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+cuenta-1  | 2026-10-20T22:01:36.894Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-20T22:01:37.136Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+cuenta-1  | 2026-10-20T22:01:37.137Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+cuenta-1  | 2026-10-20T22:01:37.137Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+cuenta-1  | 2026-10-20T22:01:37.137Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+cuenta-1  | 2026-10-20T22:01:37.138Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+cuenta-1  | 2026-10-20T22:01:37.138Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+cuenta-1  | 2026-10-20T22:01:37.138Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+cuenta-1  | 2026-10-20T22:01:45.782Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+cuenta-1  | 2026-10-20T22:01:45.808Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+cuenta-1  | 2026-10-20T22:01:45.908Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+cuenta-1  | 2026-10-20T22:01:45.938Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792533705932 with initial instances count: 2
+cuenta-1  | 2026-10-20T22:01:46.158Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP
+cuenta-1  | 2026-10-20T22:01:46.167Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792533706167, current=UP, previous=STARTING]
+cuenta-1  | 2026-10-20T22:01:46.228Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080: registering service...
+cuenta-1  | 2026-10-20T22:01:46.575Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+cuenta-1  | 2026-10-20T22:01:46.589Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+cuenta-1  | 2026-10-20T22:01:46.850Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 143.748 seconds (process running for 152.703)
+cuenta-1  | 2026-10-20T22:01:47.166Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080 - registration status: 204
+cuenta-1  | 2026-10-20T22:01:49.045Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+cuenta-1  | 2026-10-20T22:01:49.047Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+cuenta-1  | 2026-10-20T22:01:49.066Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+cuenta-1  | 2026-10-20T22:05:40.303Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:05:43.053Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:05:43.277Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:05:43.358Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por 71ba3ff2c80a
+cuenta-1  | Picked up JAVA_TOOL_OPTIONS: -Xmx192m -XX:MaxMetaspaceSize=160m -XX:ActiveProcessorCount=1 -XX:TieredStopAtLevel=1 -XX:+UseSerialGC
+cuenta-1  | 
+cuenta-1  |   .   ____          _            __ _ _
+cuenta-1  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+cuenta-1  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+cuenta-1  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+cuenta-1  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+cuenta-1  |  =========|_|==============|___/=/_/_/_/
+cuenta-1  | 
+cuenta-1  |  :: Spring Boot ::                (v3.3.4)
+cuenta-1  | 
+cuenta-1  | 2026-10-20T22:06:55.468Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+cuenta-1  | 2026-10-20T22:06:55.474Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: "default"
+cuenta-1  | 2026-10-20T22:07:00.897Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+cuenta-1  | 2026-10-20T22:07:02.606Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1634 ms. Found 1 JPA repository interface.
+cuenta-1  | 2026-10-20T22:07:04.629Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f930a747-cb3d-3d5a-81b7-26b27f06156f
+cuenta-1  | 2026-10-20T22:07:05.831Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+cuenta-1  | 2026-10-20T22:07:05.837Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+cuenta-1  | 2026-10-20T22:07:06.958Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+cuenta-1  | 2026-10-20T22:07:06.998Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+cuenta-1  | 2026-10-20T22:07:06.998Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+cuenta-1  | 2026-10-20T22:07:07.213Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+cuenta-1  | 2026-10-20T22:07:07.216Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 11592 ms
+cuenta-1  | 2026-10-20T22:07:08.665Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+cuenta-1  | 2026-10-20T22:07:09.076Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+cuenta-1  | 2026-10-20T22:07:09.239Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+cuenta-1  | 2026-10-20T22:07:10.482Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+cuenta-1  | 2026-10-20T22:07:10.764Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+cuenta-1  | 2026-10-20T22:07:12.576Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6f69e2d8
+cuenta-1  | 2026-10-20T22:07:12.582Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+cuenta-1  | 2026-10-20T22:07:17.983Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+cuenta-1  | 2026-10-20T22:07:18.163Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+cuenta-1  | 2026-10-20T22:07:27.045Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+cuenta-1  | 2026-10-20T22:07:27.433Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+cuenta-1  | 2026-10-20T22:07:27.474Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+cuenta-1  | 2026-10-20T22:07:27.851Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+cuenta-1  | 2026-10-20T22:07:28.018Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+cuenta-1  | 2026-10-20T22:07:28.040Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-1  | 2026-10-20T22:07:28.101Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+cuenta-1  | 2026-10-20T22:07:28.101Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+cuenta-1  | 2026-10-20T22:07:28.102Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+cuenta-1  | 2026-10-20T22:07:28.102Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+cuenta-1  | 2026-10-20T22:07:28.103Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+cuenta-1  | 2026-10-20T22:07:28.103Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+cuenta-1  | 2026-10-20T22:07:28.104Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+cuenta-1  | 2026-10-20T22:07:29.405Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+cuenta-1  | 2026-10-20T22:07:29.413Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+cuenta-1  | 2026-10-20T22:07:29.425Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+cuenta-1  | 2026-10-20T22:07:29.452Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792534049450 with initial instances count: 7
+cuenta-1  | 2026-10-20T22:07:29.473Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP
+cuenta-1  | 2026-10-20T22:07:29.474Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792534049474, current=UP, previous=STARTING]
+cuenta-1  | 2026-10-20T22:07:29.486Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080: registering service...
+cuenta-1  | 2026-10-20T22:07:29.537Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+cuenta-1  | 2026-10-20T22:07:29.540Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+cuenta-1  | 2026-10-20T22:07:29.606Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 35.816 seconds (process running for 39.464)
+cuenta-1  | 2026-10-20T22:07:29.708Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/71ba3ff2c80a:cuenta:8080 - registration status: 204
+cuenta-1  | 2026-10-20T22:07:32.082Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+cuenta-1  | 2026-10-20T22:07:32.082Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+cuenta-1  | 2026-10-20T22:07:32.087Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+cuenta-1  | 2026-10-20T22:07:37.976Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:07:40.665Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas/002180009253403702/abonos atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:07:50.206Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:07:59.409Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:08:00.888Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:08:01.421Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:08:01.813Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403799 atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:08:01.980Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas/002180009253403701/cargos atendida por 71ba3ff2c80a
+cuenta-1  | 2026-10-20T22:08:02.158Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403702 atendida por 71ba3ff2c80a
+cuenta-3  | 
+cuenta-3  |   .   ____          _            __ _ _
+cuenta-3  |  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+cuenta-3  | ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+cuenta-3  |  \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+cuenta-3  |   '  |____| .__|_| |_|_| |_\__, | / / / /
+cuenta-3  |  =========|_|==============|___/=/_/_/_/
+cuenta-3  | 
+cuenta-3  |  :: Spring Boot ::                (v3.3.4)
+cuenta-3  | 
+cuenta-3  | 2026-10-20T22:03:14.345Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Starting CuentaApplication v0.6.0 using Java 21.0.12.1 with PID 1 (/app/app.jar started by root in /app)
+cuenta-3  | 2026-10-20T22:03:14.390Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : No active profile set, falling back to 1 default profile: "default"
+cuenta-3  | 2026-10-20T22:03:30.669Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+cuenta-3  | 2026-10-20T22:03:32.258Z  INFO 1 --- [cuenta] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 1550 ms. Found 1 JPA repository interface.
+cuenta-3  | 2026-10-20T22:03:36.239Z  INFO 1 --- [cuenta] [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=f930a747-cb3d-3d5a-81b7-26b27f06156f
+cuenta-3  | 2026-10-20T22:03:39.606Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig' of type [org.springframework.cloud.client.loadbalancer.LoadBalancerAutoConfiguration$DeferringLoadBalancerInterceptorConfig] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). The currently created BeanPostProcessor [lbRestClientPostProcessor] is declared through a non-static factory method on that class; consider declaring it as static instead.
+cuenta-3  | 2026-10-20T22:03:39.622Z  WARN 1 --- [cuenta] [           main] trationDelegate$BeanPostProcessorChecker : Bean 'deferringLoadBalancerInterceptor' of type [org.springframework.cloud.client.loadbalancer.DeferringLoadBalancerInterceptor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying). Is this bean getting eagerly injected into a currently created BeanPostProcessor [lbRestClientPostProcessor]? Check the corresponding BeanPostProcessor declaration and its dependencies.
+cuenta-3  | 2026-10-20T22:03:43.347Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+cuenta-3  | 2026-10-20T22:03:43.453Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+cuenta-3  | 2026-10-20T22:03:43.454Z  INFO 1 --- [cuenta] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.30]
+cuenta-3  | 2026-10-20T22:03:44.458Z  INFO 1 --- [cuenta] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+cuenta-3  | 2026-10-20T22:03:44.470Z  INFO 1 --- [cuenta] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 29675 ms
+cuenta-3  | 2026-10-20T22:03:48.878Z  INFO 1 --- [cuenta] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+cuenta-3  | 2026-10-20T22:03:50.190Z  INFO 1 --- [cuenta] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+cuenta-3  | 2026-10-20T22:03:50.898Z  INFO 1 --- [cuenta] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+cuenta-3  | 2026-10-20T22:03:57.307Z  INFO 1 --- [cuenta] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+cuenta-3  | 2026-10-20T22:03:57.788Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+cuenta-3  | 2026-10-20T22:04:00.034Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@147097ad
+cuenta-3  | 2026-10-20T22:04:00.281Z  INFO 1 --- [cuenta] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+cuenta-3  | 2026-10-20T22:04:13.868Z  INFO 1 --- [cuenta] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+cuenta-3  | 2026-10-20T22:04:14.348Z  INFO 1 --- [cuenta] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+cuenta-3  | 2026-10-20T22:04:25.351Z  INFO 1 --- [cuenta] [           main] DiscoveryClientOptionalArgsConfiguration : Eureka HTTP Client uses RestTemplate.
+cuenta-3  | 2026-10-20T22:04:25.793Z  WARN 1 --- [cuenta] [           main] iguration$LoadBalancerCaffeineWarnLogger : Spring Cloud LoadBalancer is currently working with the default cache. While this cache implementation is useful for development and tests, it's recommended to use Caffeine cache in production.You can switch to using Caffeine cache, by adding it and org.springframework.cache.caffeine.CaffeineCacheManager to the classpath.
+cuenta-3  | 2026-10-20T22:04:25.833Z  INFO 1 --- [cuenta] [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 2 endpoints beneath base path '/actuator'
+cuenta-3  | 2026-10-20T22:04:26.486Z  INFO 1 --- [cuenta] [           main] o.s.c.n.eureka.InstanceInfoFactory       : Setting initial instance status as: STARTING
+cuenta-3  | 2026-10-20T22:04:26.753Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Initializing Eureka in region us-east-1
+cuenta-3  | 2026-10-20T22:04:26.787Z  INFO 1 --- [cuenta] [           main] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration
+cuenta-3  | 2026-10-20T22:04:26.841Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Disable delta property : false
+cuenta-3  | 2026-10-20T22:04:26.841Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Single vip registry refresh property : null
+cuenta-3  | 2026-10-20T22:04:26.842Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Force full registry fetch : false
+cuenta-3  | 2026-10-20T22:04:26.842Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application is null : false
+cuenta-3  | 2026-10-20T22:04:26.842Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Registered Applications size is zero : true
+cuenta-3  | 2026-10-20T22:04:26.842Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Application version is -1: true
+cuenta-3  | 2026-10-20T22:04:26.842Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Getting all instance registry info from the eureka server
+cuenta-3  | 2026-10-20T22:04:29.633Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : The response status is 200
+cuenta-3  | 2026-10-20T22:04:29.648Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Starting heartbeat executor: renew interval is: 5
+cuenta-3  | 2026-10-20T22:04:29.672Z  INFO 1 --- [cuenta] [           main] c.n.discovery.InstanceInfoReplicator     : InstanceInfoReplicator onDemand update allowed rate per min is 4
+cuenta-3  | 2026-10-20T22:04:29.689Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Discovery Client initialized at timestamp 1792533869685 with initial instances count: 6
+cuenta-3  | 2026-10-20T22:04:29.792Z  INFO 1 --- [cuenta] [           main] o.s.c.n.e.s.EurekaServiceRegistry        : Registering application CUENTA with eureka with status UP
+cuenta-3  | 2026-10-20T22:04:29.798Z  INFO 1 --- [cuenta] [           main] com.netflix.discovery.DiscoveryClient    : Saw local status change event StatusChangeEvent [timestamp=1792533869798, current=UP, previous=STARTING]
+cuenta-3  | 2026-10-20T22:04:29.822Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/fc3490e36177:cuenta:8080: registering service...
+cuenta-3  | 2026-10-20T22:04:29.990Z  INFO 1 --- [cuenta] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+cuenta-3  | 2026-10-20T22:04:30.001Z  INFO 1 --- [cuenta] [           main] .s.c.n.e.s.EurekaAutoServiceRegistration : Updating port to 8080
+cuenta-3  | 2026-10-20T22:04:30.210Z  INFO 1 --- [cuenta] [           main] mx.mexibanco.CuentaApplication           : Started CuentaApplication in 80.749 seconds (process running for 98.241)
+cuenta-3  | 2026-10-20T22:04:30.502Z  INFO 1 --- [cuenta] [foReplicator-%d] com.netflix.discovery.DiscoveryClient    : DiscoveryClient_CUENTA/fc3490e36177:cuenta:8080 - registration status: 204
+cuenta-3  | 2026-10-20T22:04:32.666Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+cuenta-3  | 2026-10-20T22:04:32.666Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+cuenta-3  | 2026-10-20T22:04:32.671Z  INFO 1 --- [cuenta] [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+cuenta-3  | 2026-10-20T22:05:42.426Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/000 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:05:43.190Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:05:43.333Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:05:43.412Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:05:50.963Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:05:55.112Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:01.355Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:05.498Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:11.808Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:13.885Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:17.958Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:20.047Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:22.324Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:24.447Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:26.596Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:28.690Z  INFO 1 --- [cuenta] [nio-8080-exec-5] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:30.807Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:32.930Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:33.987Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:36.098Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:38.213Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:39.276Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:41.408Z  INFO 1 --- [cuenta] [nio-8080-exec-6] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:43.493Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:45.572Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:06:47.655Z  INFO 1 --- [cuenta] [io-8080-exec-10] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/S071792533939 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:07:33.061Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:07:40.032Z  INFO 1 --- [cuenta] [nio-8080-exec-8] mx.mexibanco.cuenta.CabeceraInstancia    : POST /cuentas/002180009253403701/cargos atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:07:49.953Z  INFO 1 --- [cuenta] [nio-8080-exec-9] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403702 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:07:59.107Z  INFO 1 --- [cuenta] [nio-8080-exec-1] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:07:59.699Z  INFO 1 --- [cuenta] [nio-8080-exec-2] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:08:01.107Z  INFO 1 --- [cuenta] [nio-8080-exec-3] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:08:01.560Z  INFO 1 --- [cuenta] [nio-8080-exec-4] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:08:01.939Z  INFO 1 --- [cuenta] [nio-8080-exec-7] mx.mexibanco.cuenta.CabeceraInstancia    : GET /cuentas/002180009253403701 atendida por fc3490e36177
+cuenta-3  | 2026-10-20T22:09:26.847Z  INFO 1 --- [cuenta] [rap-executor-%d] c.n.d.s.r.aws.ConfigClusterResolver      : Resolving eureka endpoints via configuration

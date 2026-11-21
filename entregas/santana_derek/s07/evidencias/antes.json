@@ -1,0 +1,33 @@
+{
+  "cuenta": {
+    "hora": "2026-10-19T16:05:14.310949-06:00",
+    "codigo": 404,
+    "cabeceras": {
+      "X-Instancia": "4272d1736d90",
+      "Content-Type": "application/problem+json",
+      "Transfer-Encoding": "chunked",
+      "Date": "Mon, 19 Oct 2026 22:05:14 GMT",
+      "Connection": "close"
+    },
+    "cuerpo": "{\"type\":\"about:blank\",\"title\":\"Not Found\",\"status\":404,\"detail\":\"No existe la CLABE 000\",\"instance\":\"/cuentas/000\"}",
+    "segundos": 2.638
+  },
+  "movimiento": {
+    "hora": "2026-10-19T16:05:14.854291-06:00",
+    "codigo": 400,
+    "cabeceras": {
+      "Content-Type": "application/problem+json",
+      "Transfer-Encoding": "chunked",
+      "Date": "Mon, 19 Oct 2026 22:05:14 GMT",
+      "Connection": "close"
+    },
+    "cuerpo": "{\"type\":\"about:blank\",\"title\":\"Bad Request\",\"status\":400,\"detail\":\"Failed to read request\",\"instance\":\"/movimientos\"}",
+    "segundos": 0.552
+  },
+  "directorio": {
+    "hora": "2026-10-19T16:05:14.865039-06:00",
+    "codigo": 0,
+    "error": "<urlopen error [Errno 61] Connection refused>",
+    "segundos": 0.001
+  }
+}

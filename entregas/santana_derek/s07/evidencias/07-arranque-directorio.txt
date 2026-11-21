@@ -1,0 +1,4 @@
+ Container derek-s07-discovery-1 Creating 
+ Container derek-s07-discovery-1 Created 
+ Container derek-s07-discovery-1 Starting 
+ Container derek-s07-discovery-1 Started 
