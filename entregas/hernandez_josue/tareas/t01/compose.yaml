@@ -1,0 +1,19 @@
+services:
+  servidor:
+    build:
+      context: .
+      dockerfile: servidor/Dockerfile
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8080/libros?id=L01', timeout=2).close()"]
+      interval: 2s
+      timeout: 3s
+      retries: 10
+
+  cliente:
+    build:
+      context: .
+      dockerfile: cliente/Dockerfile
+    profiles: ["cliente"]
+    depends_on:
+      servidor:
+        condition: service_healthy

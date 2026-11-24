@@ -1,0 +1,51 @@
+T01 | Catálogo de libros
+
+$ docker compose ps servidor
+NAME             IMAGE          COMMAND              SERVICE    CREATED          STATUS                    PORTS
+t01-servidor-1   t01-servidor   "python -u app.py"   servidor   18 seconds ago   Up 17 seconds (healthy)   8080/tcp, 50051/tcp
+
+$ docker compose run --rm -T cliente
+ Container t01-servidor-1  Running
+
+Consulta de L01
+REST 200: {'anio': 1955, 'id': 'L01', 'titulo': 'Pedro Páramo'} (54 bytes de JSON)
+gRPC OK: {'id': 'L01', 'titulo': 'Pedro Páramo', 'anio': 1955} (23 bytes de Protobuf)
+
+Consulta de L99
+REST 404: Libro no encontrado
+gRPC NOT_FOUND: Libro no encontrado
+
+$ docker compose run --rm -T cliente L02
+ Container t01-servidor-1  Running
+
+Consulta de L02
+REST 200: {'anio': 1960, 'id': 'L02', 'titulo': 'La tregua'} (46 bytes de JSON)
+gRPC OK: {'id': 'L02', 'titulo': 'La tregua', 'anio': 1960} (19 bytes de Protobuf)
+
+Medición de una consulta de L01
+
+$ tcpdump -p -i eth0 -s 0 -U -w t01.pcap 'tcp and (port 8080 or port 50051)'
+$ docker compose run --rm -T cliente L01
+ Container t01-servidor-1  Running
+
+Consulta de L01
+REST 200: {'anio': 1955, 'id': 'L01', 'titulo': 'Pedro Páramo'} (54 bytes de JSON)
+gRPC OK: {'id': 'L01', 'titulo': 'Pedro Páramo', 'anio': 1955} (23 bytes de Protobuf)
+
+$ tcpdump -nn -q -r t01.pcap
+15:51:51.057812 IP 172.22.0.3.36220 > 172.22.0.2.8080: tcp 130
+15:51:51.061790 IP 172.22.0.2.8080 > 172.22.0.3.36220: tcp 166
+15:51:51.061883 IP 172.22.0.2.8080 > 172.22.0.3.36220: tcp 54
+15:51:51.125540 IP 172.22.0.3.41958 > 172.22.0.2.50051: tcp 82
+15:51:51.128498 IP 172.22.0.2.50051 > 172.22.0.3.41958: tcp 46
+15:51:51.128663 IP 172.22.0.2.50051 > 172.22.0.3.41958: tcp 9
+15:51:51.129363 IP 172.22.0.3.41958 > 172.22.0.2.50051: tcp 9
+15:51:51.129533 IP 172.22.0.3.41958 > 172.22.0.2.50051: tcp 290
+15:51:51.131880 IP 172.22.0.2.50051 > 172.22.0.3.41958: tcp 17
+15:51:51.132705 IP 172.22.0.2.50051 > 172.22.0.3.41958: tcp 176
+15:51:51.134531 IP 172.22.0.3.41958 > 172.22.0.2.50051: tcp 47
+15:51:51.135693 IP 172.22.0.2.50051 > 172.22.0.3.41958: tcp 17
+
+Suma de los datos TCP por puerto y sentido:
+REST: 130 del cliente, 220 del servidor, 350 bytes en total
+gRPC: 428 del cliente, 265 del servidor, 693 bytes en total
