@@ -1,0 +1,10 @@
+A 1 | local prepara el pedido
+A 2 | envía a B pedido
+C 1 | local revisa inventario
+B 3 | recibe de A pedido (enviado en 2)
+B 4 | envía a C reserva
+C 5 | recibe de B reserva (enviado en 4)
+C 6 | envía a A confirmación
+A 7 | recibe de C confirmación (enviado en 6)
+A 8 | envía a B cierre
+B 9 | recibe de A cierre (enviado en 8)
