@@ -35,6 +35,7 @@ mexibanco:
 
   demo:
     pausa-entre-cargo-y-abono-ms: ${PAUSA_ENTRE_CARGO_Y_ABONO_MS:0}
+    fallar-abono-a-clabe: ${FALLAR_ABONO_A_CLABE:}
 
 eureka:
   client:

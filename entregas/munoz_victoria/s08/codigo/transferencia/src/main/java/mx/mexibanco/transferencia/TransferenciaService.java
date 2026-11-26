@@ -21,18 +21,21 @@ public class TransferenciaService {
     private final MovimientoCliente movimientos;
     private final NotificacionCliente notificaciones;
     private final long pausaEntreCargoYAbonoMs;
+    private final String fallarAbonoAClabe;
 
     public TransferenciaService(
             TransferenciaRepository transferencias,
             CuentaCliente cuentas,
             MovimientoCliente movimientos,
             NotificacionCliente notificaciones,
-            @Value("${mexibanco.demo.pausa-entre-cargo-y-abono-ms:0}") long pausaEntreCargoYAbonoMs) {
+            @Value("${mexibanco.demo.pausa-entre-cargo-y-abono-ms:0}") long pausaEntreCargoYAbonoMs,
+            @Value("${mexibanco.demo.fallar-abono-a-clabe:}") String fallarAbonoAClabe) {
         this.transferencias = transferencias;
         this.cuentas = cuentas;
         this.movimientos = movimientos;
         this.notificaciones = notificaciones;
         this.pausaEntreCargoYAbonoMs = pausaEntreCargoYAbonoMs;
+        this.fallarAbonoAClabe = fallarAbonoAClabe == null ? "" : fallarAbonoAClabe.trim();
     }
 
     public Transferencia transferir(String claveOrigen, String claveDestino, BigDecimal monto) {
@@ -55,10 +58,16 @@ public class TransferenciaService {
             throw errorCargo;
         }
 
+        // Paso 1 completado: el dinero ya salio del origen. Se guarda en la base
+        // para que, si el servicio cae aqui, quede registro de en que paso se quedo.
+        transferencia.setEstado(EstadoTransferencia.CARGADA);
+        transferencia = transferencias.save(transferencia);
+
         pausaDeDemo();
 
         CuentaRemota destino;
         try {
+            falloProvocadoDeAbono(claveDestino);
             destino = cuentas.abonar(claveDestino, monto);
         } catch (RuntimeException errorAbono) {
             try {
@@ -100,6 +109,18 @@ public class TransferenciaService {
         return transferencias.findById(id)
                 .orElseThrow(() -> new NoEncontradoException(
                         "No existe la transferencia " + id));
+    }
+
+    /**
+     * Falla provocada para probar la compensacion con cuenta arriba.
+     * Si FALLAR_ABONO_A_CLABE coincide con la CLABE destino, el abono falla
+     * sin llamar a cuenta y la saga debe compensar.
+     */
+    private void falloProvocadoDeAbono(String claveDestino) {
+        if (!fallarAbonoAClabe.isEmpty() && fallarAbonoAClabe.equals(claveDestino)) {
+            throw new IllegalStateException(
+                    "Falla provocada (FALLAR_ABONO_A_CLABE) en el abono a " + claveDestino);
+        }
     }
 
     private void pausaDeDemo() {
