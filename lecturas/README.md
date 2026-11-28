@@ -70,3 +70,44 @@ Léanlas con el caso de la tarea del lab de la S7 en la cabeza: la transferencia
 *timeout* aunque el dinero sí se movió. Pongan la atención en los **tres estados del circuit
 breaker** y en la **compensación** de una saga: si el abono falla con el cargo ya aplicado,
 ¿reintentan, deshacen o esperan?
+
+## Lectura 7 · para la S9 (17 de octubre)
+
+- Kreps, *The Log: What every software engineer should know about real-time data's unifying
+  abstraction* (2013), **partes 1 y 2** (copia del Internet Archive; el blog de LinkedIn ya no la tiene):
+  https://web.archive.org/web/20240105095933/https://engineering.linkedin.com/distributed-systems/log-what-every-software-engineer-should-know-about-real-time-datas-unifying
+- Richardson, *Pattern: Transactional outbox*: https://microservices.io/patterns/data/transactional-outbox.html
+- 2 preguntas + 1 hallazgo en la [Discussion #49](https://github.com/OscarRuiz21/sd-2027-1/discussions/49):
+  **en tiempo hasta el sábado 17-oct, 06:59 · tarde hasta el domingo 18-oct.**
+
+La S9 es de mensajería: brokers, Outbox y la saga por coreografía, ya con mensajes. Lean el log de
+Kreps con el de Raft en la cabeza, y el Outbox con esta pregunta: si un servicio guarda en su base y
+luego publica "ya cobré", ¿qué pasa si se cae justo entre las dos cosas?
+
+## Lectura 9 · para la S11 (31 de octubre)
+
+- Fowler, *Polyglot Persistence* (2011): https://martinfowler.com/bliki/PolyglotPersistence.html
+- Nakamoto, *Bitcoin: A Peer-to-Peer Electronic Cash System* (2008), **secciones 1 a 6**
+  (las 7 a 12 son opcionales): https://bitcoin.org/bitcoin.pdf
+- 2 preguntas + 1 hallazgo en la [Discussion #54](https://github.com/OscarRuiz21/sd-2027-1/discussions/54):
+  **en tiempo hasta el sábado 31-oct, 06:59 · tarde hasta el domingo 1-nov.**
+
+La S11 es de persistencia políglota y caché, con una parte corta de blockchain. Lean a Fowler con
+esta pregunta: ¿qué datos de Mexi Banco separarían de la base relacional y qué consistencia pierden
+al hacerlo? Lean a Nakamoto como paper de sistemas distribuidos: orden y acuerdo sin coordinador.
+La caché no tiene lectura: se ve en clase.
+
+## Lectura 10 · para la S12 (7 de noviembre)
+
+- **Obligatoria.** OpenTelemetry, *Observability primer*: https://opentelemetry.io/docs/concepts/observability-primer/
+- Opcional. Sigelman et al., *Dapper, a Large-Scale Distributed Systems Tracing Infrastructure*
+  (Google, 2010), **secciones 1 y 2** (páginas 1 a 5):
+  https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/
+- Opcional. Nakamoto, *Bitcoin* (2008), **secciones 7 a 12**, el resto del paper de la Lectura 9:
+  https://bitcoin.org/bitcoin.pdf
+- 2 preguntas + 1 hallazgo en la [Discussion #58](https://github.com/OscarRuiz21/sd-2027-1/discussions/58):
+  **en tiempo hasta el sábado 7-nov, 06:59 · tarde hasta el domingo 8-nov.**
+
+La S12 es de telemetría y del resto de blockchain. Lean el *primer* con esta pregunta: una
+transferencia de Mexi Banco tardó 4 segundos; ¿cómo averiguan en cuál de los servicios se fue el
+tiempo, si cada uno tiene sus propios logs?

@@ -5,11 +5,35 @@ casos están en la [Discussion #44](https://github.com/OscarRuiz21/sd-2027-1/dis
 Igual que Mexi Banco, empieza como un monolito sencillo y se va partiendo por ramas
 (`01-monolito`, `02-separacion`, `03-...`) conforme avanzamos en el curso.
 
+**Cómo se califica:** ver la [rúbrica del proyecto final](RUBRICA.md) (prototipo 30 %, reporte en PDF 30 %, pitch 20 % y participación y defensa individual 20 %). La presentación es el sábado 28 de noviembre.
+
 En la defensa no califico la lógica de negocio: le voy a preguntar a **cualquiera** del equipo
 dónde vive el gateway, el directorio, el balanceador, cómo manejan las operaciones entre
 servicios y qué pasa si algo falla.
 
-## Esta semana: el PRD
+## Para el sábado 17 de octubre: el repo del equipo y su monolito
+
+**Entrega por equipo · sábado 17 de octubre, antes de las 07:00**
+
+Ya con el PRD, el equipo abre **su propio repositorio** y escribe la primera versión de su sistema:
+un **monolito** sencillo, igual que empezó Mexi Banco.
+
+1. **Un repo por equipo** en GitHub, con el nombre `sd-2027-1-nombre-del-equipo` (minúsculas y
+   guiones). Lo crea un integrante y agrega a los demás y a **OscarRuiz21** como colaboradores
+   (*Settings → Collaborators*).
+2. **Rama `main`** con el `README.md` (qué es el sistema, quiénes son y cómo se levanta) y el PRD en
+   `docs/PRD.md`.
+3. **Rama `01-monolito`** con el monolito: sus operaciones, la lógica de negocio y los endpoints,
+   en una sola aplicación con su base de datos y su `docker-compose.yml`. No tiene que estar
+   completo: tiene que correr y tener las operaciones principales del PRD.
+4. **El trabajo se reparte entre los cuatro**: en la defensa se nota en el historial de commits.
+5. Cuando esté, **respondan a su comentario en la [Discussion #44](https://github.com/OscarRuiz21/sd-2027-1/discussions/44)**
+   con la liga al repo.
+
+Si su equipo no usa Java, está bien: al final van a tener que explicar cómo resolvieron en su
+tecnología el gateway, el directorio, el balanceo, los datos y el manejo de fallas.
+
+## El PRD (ya entregado)
 
 **Entrega por equipo · sábado 10 de octubre, antes de las 07:00**
 
